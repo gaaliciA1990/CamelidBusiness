@@ -14,15 +14,15 @@ Before the game begins, the user will have the option to pick up to six preset c
 ## Alpacas
 * Range clan that provides support with items and has higher Speed to start with.
 * Preferred weapons: bolas or bow.
-* When the Alpacas have the Incan Scarf equipped, they can do a ranged spit attack to hit all enemies to implement disgust, lowering the enemy’s defenses for two turns.
+* Special Attack: Can do a ranged spit attack to hit all enemies to implement disgust, lowering the enemy’s defenses for two turns.
 ## Llamas
 * Tank clan that provides some defense and starts with higher damage to start with.
 * Preferred weapons: mace or club.
-* When the Llamas have a Golden Anklet equipped on their foot, they can do a roundhouse kick to hit all enemies for a moderate amount of damage once per battle. 
+* Special Attack: Can do a roundhouse kick to hit all enemies for a moderate amount of damage once per battle. 
 ## Vicuñas
 * Magic clan that provides healing and starts with higher health.
 * Preferred weapons: magic staff or spear.
-* When Vicuñas have the Fedora equipped, they can cast a glamour spell on an enemy that will cause them to attack their neighbors (left and right) for two turns.  
+* Special Attack: Can cast a glamour spell on an enemy that will cause them to attack their neighbors (left and right) for two turns.  
 
 # Monsters
 ## Low level
