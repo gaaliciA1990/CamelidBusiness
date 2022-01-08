@@ -25,15 +25,13 @@ Before the game begins, the user will have the option to pick up to six preset c
 * Special Attack: Can cast a glamour spell on an enemy that will cause them to attack their neighbors (left and right) for two turns.  
 
 # Monsters
-## Low level
 * Coyotes
 * Culpeo
-## Mid level
 * Ocelots
 * Pumas
-## High level
 * Mountain Lions
 * Bears
-## The Final boss 
+
+## The Great Leader
 * A surprise twist in our game that should be experienced.
 
