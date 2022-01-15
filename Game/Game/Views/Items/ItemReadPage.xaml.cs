@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-
+using System.Collections.Generic;
 using Game.ViewModels;
 using Game.Models;
 
@@ -18,6 +18,13 @@ namespace Game.Views
         // View Model for Item
         public readonly GenericViewModel<ItemModel> ViewModel;
 
+        //List<string> test = new List<string>(Enum.GetNames(typeof(ItemLocationEnum)));
+        //LocationPicker.SelectedItem = ViewModel.Data.Location.ToString();
+        
+
+
+
+
         // Empty Constructor for UTs
         public ItemReadPage(bool UnitTest) { }
 
@@ -32,6 +39,14 @@ namespace Game.Views
             InitializeComponent();
 
             BindingContext = this.ViewModel = data;
+            LocationPicker.SelectedItem = data.Data.Location.ToString();
+            LocationPicker.IsEnabled = false;
+            AttributePicker.SelectedItem = data.Data.Attribute.ToString();
+            AttributePicker.IsEnabled = false;
+
+            DamageSlider.IsEnabled = false;
+            RangeSlider.IsEnabled = false;
+            ValueSlider.IsEnabled = false;
         }
 
         /// <summary>
