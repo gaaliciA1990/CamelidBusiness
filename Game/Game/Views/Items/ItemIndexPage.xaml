@@ -13,25 +13,24 @@
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
-        <StackLayout Style="{StaticResource OuterBoxStack}">
+        <ScrollView>
+            <StackLayout Style="{StaticResource OuterBoxStack}">
+                <Label Font="Bold" HorizontalOptions="CenterAndExpand"  Text="Items List Page" Style="{StaticResource HeaderStyle}"/>
 
-            <Label Text="Items List Page" Style="{StaticResource HeaderStyle}"/>
+                <CollectionView  x:Name="ItemsListView"
+	                SelectionMode="Single"
+	                SelectionChanged="OnCollectionViewSelectionChanged"
+	                ItemsSource="{Binding Dataset}" 
+                    VerticalOptions="FillAndExpand">
 
-            <ListView x:Name="ItemsListView" 
-                    ItemsSource="{Binding Dataset}"
-                    IsRefreshing="{Binding IsBusy, Mode=OneWay}"
-                    RefreshCommand="{Binding LoadItemsCommand}"
-                    CachingStrategy="RecycleElement"
-                    ItemSelected="OnItemSelected"
-                    HasUnevenRows="true"
-                    Margin="5,0,5,0"
-                    RowHeight="80"
-                    >
-                
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <Grid ColumnSpacing="5" RowSpacing="1">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical" Span="4" />
+                    </CollectionView.ItemsLayout>
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame CornerRadius="10" BackgroundColor="#bda27f">
+                                <Grid Margin="10">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="auto"/>
                                     <ColumnDefinition Width="*"/>
@@ -43,36 +42,37 @@
                                 </Grid.RowDefinitions>
 
                                 <Image  Grid.Column="0" Grid.Row="0" Grid.RowSpan="3"
-                                        Source="{Binding ImageURI}"
-                                        Style="{StaticResource ImageMediumStyle}"
-                                        VerticalOptions="CenterAndExpand"/>
+                                            Source="{Binding ImageURI}"
+                                            Style="{StaticResource ImageMediumStyle}"
+                                            VerticalOptions="CenterAndExpand"/>
 
                                 <Label Grid.Column="1" Grid.Row="0"
-                                       Text="{Binding Name}" 
-                                       Style="{StaticResource ListStyle}"/>
+                                           Text="{Binding Name}" 
+                                           Style="{StaticResource ListStyle}"/>
 
                                 <StackLayout Grid.Column="1" Grid.Row="1"
-                                    Orientation="Horizontal">
-                                    
+                                        Orientation="Horizontal">
+
                                     <Label 
-                                       Text="{Binding Attribute}" 
-                                       Style="{StaticResource ListStyle}"/>
+                                           Text="{Binding Attribute}" 
+                                           Style="{StaticResource ListStyle}"/>
 
                                     <Label Text="{Binding Value}" 
-                                        Style="{StaticResource ListStyle}"/>
-                                
+                                            Style="{StaticResource ListStyle}"/>
+
                                 </StackLayout>
 
                                 <Label Grid.Column="1" Grid.Row="2"
-                                       Text="{Binding Description}" 
-                                       Style="{StaticResource ListStyle}"
-                                       FontSize="Micro"/>
+                                           Text="{Binding Description}" 
+                                           Style="{StaticResource ListStyle}"
+                                           FontSize="Micro"/>
 
                             </Grid>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </StackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
