@@ -55,6 +55,23 @@ namespace Game.Views
             ItemsListView.SelectedItem = null;
         }
 
+        public async void OnCollectionViewSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ItemModel data = ((CollectionView)sender).SelectedItem as ItemModel;
+            if (data == null)
+            {
+                return;
+            }
+
+            // Open the Read Page
+            await Navigation.PushAsync(new ItemReadPage(new GenericViewModel<ItemModel>(data)));
+
+            // Manually deselect item.
+            ItemsListView.SelectedItem = null;
+
+        }
+
+
         /// <summary>
         /// Call to Add a new record
         /// </summary>
