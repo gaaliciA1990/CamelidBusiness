@@ -71,7 +71,7 @@ namespace Game.Views
         /// <param name="e"></param>
         public void Range_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
         {
-            RangeValue.Text = String.Format("{0}", e.NewValue);
+            //RangeValue.Text = String.Format("{0}", e.NewValue);
         }
 
         /// <summary>
@@ -81,7 +81,7 @@ namespace Game.Views
         /// <param name="e"></param>
         public void Value_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
         {
-            ValueValue.Text = String.Format("{0}", e.NewValue);
+            //ValueValue.Text = String.Format("{0}", e.NewValue);
         }
 
         /// <summary>
@@ -91,7 +91,7 @@ namespace Game.Views
         /// <param name="e"></param>
         public void Damage_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
         {
-            DamageValue.Text = String.Format("{0}", e.NewValue);
+            //DamageValue.Text = String.Format("{0}", e.NewValue);
         }
     }
 }
