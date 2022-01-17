@@ -50,6 +50,11 @@ namespace Game.Views
                 ViewModel.Data.ImageURI = Services.ItemService.DefaultImageURI;
             }
 
+            //Convert to int so the values stay consistent with the UI
+            //ViewModel.Data.Range = (int)ViewModel.Data.Range;
+            //ViewModel.Data.Value = (int)ViewModel.Data.Value;
+            //ViewModel.Data.Damage = (int)ViewModel.Data.Damage;
+
             MessagingCenter.Send(this, "Update", ViewModel.Data);
             _ = await Navigation.PopModalAsync();
         }
@@ -71,7 +76,7 @@ namespace Game.Views
         /// <param name="e"></param>
         public void Range_OnSliderValueChanged(object sender, ValueChangedEventArgs e)
         {
-            RangeLabel.Text = String.Format("{0}", (int) e.NewValue);
+            RangeLabel.Text = String.Format("{0}", Math.Round(e.NewValue));
         }
 
         /// <summary>
@@ -81,7 +86,7 @@ namespace Game.Views
         /// <param name="e"></param>
         public void Value_OnSliderValueChanged(object sender, ValueChangedEventArgs e)
         {
-            ValueLabel.Text = String.Format("{0}", (int) e.NewValue);
+            ValueLabel.Text = String.Format("{0}", Math.Round(e.NewValue));
         }
 
         /// <summary>
@@ -91,7 +96,7 @@ namespace Game.Views
         /// <param name="e"></param>
         public void Damage_OnSliderValueChanged(object sender, ValueChangedEventArgs e)
         {
-            DamageLabel.Text = String.Format("{0}", (int) e.NewValue);
+            DamageLabel.Text = String.Format("{0}", Math.Round(e.NewValue));
         }
     }
 }
