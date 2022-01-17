@@ -69,9 +69,9 @@ namespace Game.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public void Range_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
+        public void Range_OnSliderValueChanged(object sender, ValueChangedEventArgs e)
         {
-            //RangeValue.Text = String.Format("{0}", e.NewValue);
+            RangeLabel.Text = String.Format("{0}", (int) e.NewValue);
         }
 
         /// <summary>
@@ -79,9 +79,9 @@ namespace Game.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public void Value_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
+        public void Value_OnSliderValueChanged(object sender, ValueChangedEventArgs e)
         {
-            //ValueValue.Text = String.Format("{0}", e.NewValue);
+            ValueLabel.Text = String.Format("{0}", (int) e.NewValue);
         }
 
         /// <summary>
@@ -89,9 +89,9 @@ namespace Game.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public void Damage_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
+        public void Damage_OnSliderValueChanged(object sender, ValueChangedEventArgs e)
         {
-            //DamageValue.Text = String.Format("{0}", e.NewValue);
+            DamageLabel.Text = String.Format("{0}", (int) e.NewValue);
         }
     }
 }

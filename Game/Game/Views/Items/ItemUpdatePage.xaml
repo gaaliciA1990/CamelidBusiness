@@ -83,7 +83,7 @@
                                     </OnPlatform>
                                 </Label.Margin>
                             </Label>
-                            <Slider x:Name="ValueSlider" Maximum="15" Minimum="0" Value="{Binding Data.Value}" HorizontalOptions="FillAndExpand">
+                            <Slider x:Name="ValueSlider" Maximum="15" Minimum="0" Value="{Binding Data.Value}" HorizontalOptions="FillAndExpand" ValueChanged="Value_OnSliderValueChanged">
                                 <Slider.Margin>
                                     <OnPlatform x:TypeArguments="Thickness">
                                         <On Platform="iOS" Value="10,0" />
@@ -107,7 +107,7 @@
                                     </OnPlatform>
                                 </Label.Margin>
                             </Label>
-                            <Slider x:Name="DamageSlider" Maximum="15" Minimum="0" Value="{Binding Data.Damage}" HorizontalOptions="FillAndExpand">
+                            <Slider x:Name="DamageSlider" Maximum="15" Minimum="0" Value="{Binding Data.Damage}" HorizontalOptions="FillAndExpand" ValueChanged="Damage_OnSliderValueChanged">
                                 <Slider.Margin>
                                     <OnPlatform x:TypeArguments="Thickness">
                                         <On Platform="iOS" Value="10,0" />
