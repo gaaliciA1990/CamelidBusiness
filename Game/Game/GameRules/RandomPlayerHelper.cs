@@ -303,5 +303,19 @@ namespace Game.GameRules
 
             return result;
         }
+
+        /// <summary>
+        /// Get Random Item Image for Item Create Page
+        /// </summary>
+        /// <returns></returns>
+        public static string GetItemImage()
+        {
+            List<String> FirstNameList = new List<String> { "hat1.png", "hat2.png", "ring1.png", "ring2.png", "shield1.png", "shield2.png", "shield3.png", "shield4.png",
+            "sword1.png", "sword2.png", "sword3.png", "sword4.png", "sword5.png", "sword6.png", "sword7.png", "sword8.png", "sword9.png", "sword10.png", "sword11.png"};
+
+            var result = FirstNameList.ElementAt(DiceHelper.RollDice(1, FirstNameList.Count()) - 1);
+
+            return result;
+        }
     }
 }
