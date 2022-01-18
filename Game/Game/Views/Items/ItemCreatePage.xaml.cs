@@ -69,7 +69,7 @@ namespace Game.Views
         }
 
         /// <summary>
-        /// Catch the change to the Stepper for Range
+        /// Catch the change to the slider for Range
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -79,7 +79,7 @@ namespace Game.Views
         }
 
         /// <summary>
-        /// Catch the change to the stepper for Value
+        /// Catch the change to the slider for Value
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -89,7 +89,7 @@ namespace Game.Views
         }
 
         /// <summary>
-        /// Catch the change to the stepper for Damage
+        /// Catch the change to the slider for Damage
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
