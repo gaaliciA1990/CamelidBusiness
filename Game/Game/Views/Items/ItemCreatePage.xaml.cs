@@ -1,5 +1,6 @@
 ﻿using Game.Models;
 using Game.ViewModels;
+using Game.GameRules;
 
 using System;
 using System.ComponentModel;
@@ -72,9 +73,9 @@ namespace Game.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public void Range_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
+        public void Range_OnSliderValueChanged(object sender, ValueChangedEventArgs e)
         {
-            RangeValue.Text = String.Format("{0}", e.NewValue);
+            RangeLabel.Text = String.Format("{0}", Math.Round(e.NewValue));
         }
 
         /// <summary>
@@ -82,9 +83,9 @@ namespace Game.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public void Value_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
+        public void Value_OnSliderValueChanged(object sender, ValueChangedEventArgs e)
         {
-            ValueValue.Text = String.Format("{0}", e.NewValue);
+            ValueLabel.Text = String.Format("{0}", Math.Round(e.NewValue));
         }
 
         /// <summary>
@@ -92,9 +93,36 @@ namespace Game.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public void Damage_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
+        public void Damage_OnSliderValueChanged(object sender, ValueChangedEventArgs e)
         {
-            DamageValue.Text = String.Format("{0}", e.NewValue);
+            DamageLabel.Text = String.Format("{0}", Math.Round(e.NewValue));
         }
+
+        /*
+         * This section of code is intended to implement a Photo selection from our preset option. Users will not be able to upload an image
+         * 
+
+        /// <summary>
+        /// Radomize the Item Photo to select a new image
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void RandomImage_Clicked(object sender, EventArgs e)
+        {
+            _ = RandomizeItem();
+        }
+
+        /// <summary>
+        /// Display a random item photo. Nothing else is changed
+        /// </summary>
+        /// <returns></returns>
+
+        public bool RandomizeItem()
+        {
+            ViewModel.Data.ImageURI = RandomPlayerHelper.GetItemImage();
+
+            return true;
+        }
+        */
     }
 }
