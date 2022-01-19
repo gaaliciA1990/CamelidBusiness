@@ -39,48 +39,39 @@
 
                 <StackLayout Grid.Row="0" Grid.Column="0" 
                              HorizontalOptions="FillAndExpand" 
-                             VerticalOptions="FillAndExpand" 
+                             VerticalOptions="FillAndExpand"
+                             Padding="20"
                              Style="{StaticResource OuterBoxStack}">
-                    <Label Grid.Row="0" Grid.Column="0"
-                           FontSize="Medium" 
-                           FontAttributes="Bold, Italic" 
-                           HorizontalOptions="Center" 
-                           Text="Name" 
-                           Style="{StaticResource LabelStyle}"/>
+                   
                     <Entry Grid.Row="0" Grid.Column="1"
+                           Placeholder="Name"
+                           FontSize="Medium" 
+                           FontAttributes="Bold, Italic"
+                           HorizontalOptions="FillAndExpand" 
                            Text="{Binding Data.Name, Mode=TwoWay}"
-                           HorizontalOptions="CenterAndExpand" 
                            Style="{StaticResource EntryStyle}"/>
-                    
-                    <Image HorizontalOptions="FillAndExpand" 
+
+                    <Image HorizontalOptions="FillAndExpand"
                            Aspect="AspectFit" 
-                           VerticalOptions="FillAndExpand" 
+                           VerticalOptions="FillAndExpand"
+                           Margin="10"
                            Source="{Binding Data.ImageURI, Mode=TwoWay}" 
                            Style="{StaticResource ImageLargeStyle}"/>
-                    <!-- THIS SECTION IS TO IMPLEMENTING A RANDOM IMAGE SELECTION FOR OUR ITEM. NEED HELP IMPLEMENTING
-                    <Button
-                        x:Name="RandomImg"
-                        Text="Random"
-                        BorderColor="Teal"
-                        CornerRadius="5"
-                        BorderWidth="2"
-                        Clicked="RandomImage_Clicked"/>-->
-                    
-                    <Label Grid.Row="2" Grid.Column="0"
-                           Text="Description"
-                           FontSize="Medium" 
-                           HorizontalOptions="Center" 
-                           Style="{StaticResource LabelStyle}"/>
+
                     <Entry Grid.Row="2" Grid.Column="1"
+                           Placeholder="Description"
+                           FontSize="Medium" 
+                           HorizontalOptions="FillAndExpand" 
                            Text="{Binding Data.Description, Mode=TwoWay}"
-                           HorizontalOptions="CenterAndExpand" 
                            Style="{StaticResource EntryStyle}"/>
                 </StackLayout>
 
                 <StackLayout Grid.Row="0" Grid.Column="1" 
                              HorizontalOptions="FillAndExpand" 
                              VerticalOptions="FillAndExpand" 
+                             Padding="10"
                              Style="{StaticResource OuterBoxStack}">
+                    
                     <StackLayout Style="{StaticResource HorizontalStack}" 
                                  HorizontalOptions="FillAndExpand" 
                                  VerticalOptions="Center">
@@ -98,21 +89,30 @@
                     </StackLayout>
 
                     <Grid HorizontalOptions="Center" 
-                          VerticalOptions="FillAndExpand">
-                        <Label Text="Range : "
+                          VerticalOptions="FillAndExpand"
+                          Padding="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        
+                        <Label Text="Range: "
                                FontSize="Medium" 
-                               Grid.Row="0" Grid.Column="0" 
+                               Grid.Row="0" Grid.Column="0"
                                Style="{StaticResource LabelStyle}" 
                                VerticalOptions="Center"/>
 
-                        <StackLayout Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" 
+                        <StackLayout Grid.Row="0" Grid.Column="1" 
+                                     Orientation="Horizontal"
                                      VerticalOptions="Center">
+                            
                             <Label x:Name="RangeLabel" 
-                                   Text="{Binding Data.Range}"FontSize="Medium" 
+                                   Text="{Binding Data.Range}"
+                                   FontSize="Medium" 
                                    FontAttributes="Bold" 
                                    HorizontalOptions="Start" 
-                                   HorizontalTextAlignment="Center" 
-                                   VerticalOptions="EndAndExpand">
+                                   HorizontalTextAlignment="Start" 
+                                   VerticalOptions="Center">
                                 <Label.Margin>
                                     <OnPlatform x:TypeArguments="Thickness">
                                         <On Platform="iOS" Value="15,0"/>
@@ -126,30 +126,33 @@
                                     Minimum="0" 
                                     Value="{Binding Data.Range}" 
                                     HorizontalOptions="FillAndExpand" 
+                                    VerticalOptions="Center"
                                     ValueChanged="Range_OnSliderValueChanged">
                                 <Slider.Margin>
                                     <OnPlatform x:TypeArguments="Thickness">
-                                        <On Platform="iOS" Value="10,0"/>
+                                        <On Platform="iOS" Value="15,0"/>
+                                        <On Platform="Android" Value="10,0"/>
                                     </OnPlatform>
                                 </Slider.Margin>
                             </Slider>
                         </StackLayout>
 
                         <Label Grid.Row="1" Grid.Column="0" 
-                               Text="Value : " 
+                               Text="Value: " 
                                FontSize="Medium" 
                                Style="{StaticResource LabelStyle}" 
                                VerticalOptions="Center"/>
                         
                         <StackLayout Grid.Row="1" Grid.Column="1" 
-                                     Grid.ColumnSpan="2"
+                                     Orientation="Horizontal"
                                      VerticalOptions="Center">
+                            
                             <Label x:Name="ValueLabel" 
                                    Text="{Binding Data.Value}" FontSize="Medium" 
                                    FontAttributes="Bold" 
                                    HorizontalOptions="Start" 
-                                   HorizontalTextAlignment="Center" 
-                                   VerticalOptions="EndAndExpand">
+                                   HorizontalTextAlignment="Start" 
+                                   VerticalOptions="Center">
                                 <Label.Margin>
                                     <OnPlatform x:TypeArguments="Thickness">
                                         <On Platform="iOS" Value="15,0"/>
@@ -163,31 +166,34 @@
                                     Minimum="0" 
                                     Value="{Binding Data.Value}" 
                                     HorizontalOptions="FillAndExpand" 
+                                    VerticalOptions="Center"
                                     ValueChanged="Value_OnSliderValueChanged">
                                 <Slider.Margin>
                                     <OnPlatform x:TypeArguments="Thickness">
-                                        <On Platform="iOS" Value="10,0"/>
+                                        <On Platform="iOS" Value="15,0"/>
+                                        <On Platform="Android" Value="10,0"/>                                    
                                     </OnPlatform>
                                 </Slider.Margin>
                             </Slider>
                         </StackLayout>
 
                         <Label Grid.Row="2" Grid.Column="0" 
-                               Text="Damage : "
+                               Text="Damage: "
                                FontSize="Medium" 
                                Style="{StaticResource LabelStyle}" 
                                VerticalOptions="Center"/>
                         
                         <StackLayout Grid.Row="2" Grid.Column="1" 
-                                     Grid.ColumnSpan="2" 
+                                     Orientation="Horizontal"
                                      VerticalOptions="Center">
+                            
                             <Label x:Name="DamageLabel" 
                                    Text="{Binding Data.Damage}" 
                                    FontSize="Medium" 
                                    FontAttributes="Bold" 
                                    HorizontalOptions="Start" 
-                                   HorizontalTextAlignment="Center" 
-                                   VerticalOptions="EndAndExpand">
+                                   HorizontalTextAlignment="Start"
+                                   VerticalOptions="Center">
                                 <Label.Margin>
                                     <OnPlatform x:TypeArguments="Thickness">
                                         <On Platform="iOS" Value="15,0"/>
@@ -195,15 +201,18 @@
                                     </OnPlatform>
                                 </Label.Margin>
                             </Label>
+                            
                             <Slider x:Name="DamageSlider" 
                                     Maximum="15" 
                                     Minimum="0"
                                     Value="{Binding Data.Damage}" 
                                     HorizontalOptions="FillAndExpand" 
+                                    VerticalOptions="Center"
                                     ValueChanged="Damage_OnSliderValueChanged">
                                 <Slider.Margin>
                                     <OnPlatform x:TypeArguments="Thickness">
-                                        <On Platform="iOS" Value="10,0"/>
+                                        <On Platform="iOS" Value="15,0"/>
+                                        <On Platform="Android" Value="10,0"/>
                                     </OnPlatform>
                                 </Slider.Margin>
                             </Slider>
