@@ -165,7 +165,7 @@ namespace Game.Views
 
             // Update the image
             this.ViewModel.Data.ImageURI = imageList[imageIndex];
-            //ImageLabel.Source = this.ViewModel.Data.ImageURI;
+            ImageLabel.Source = this.ViewModel.Data.ImageURI;
         }
 
         /// <summary>
@@ -192,7 +192,7 @@ namespace Game.Views
 
             // Update the image
             this.ViewModel.Data.ImageURI = imageList[imageIndex];
-            //ImageLabel.Source = this.ViewModel.Data.ImageURI;
+            ImageLabel.Source = this.ViewModel.Data.ImageURI;
         }
     }
 }
