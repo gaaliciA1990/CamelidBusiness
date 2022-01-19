@@ -15,59 +15,60 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Style="{StaticResource OuterBoxStack}">
-                <Label Font="Bold" HorizontalOptions="CenterAndExpand"  Text="Items List Page" Style="{StaticResource HeaderStyle}"/>
-
+                <Label Font="Bold" 
+                       HorizontalOptions="CenterAndExpand"  
+                       Text="Items List Page" 
+                       Style="{StaticResource HeaderStyle}"/>
                 <CollectionView  x:Name="ItemsListView"
-	                SelectionMode="Single"
-	                SelectionChanged="OnCollectionViewSelectionChanged"
-	                ItemsSource="{Binding Dataset}" 
-                    VerticalOptions="FillAndExpand">
+                                 SelectionMode="Single"
+	                             SelectionChanged="OnCollectionViewSelectionChanged"
+	                             ItemsSource="{Binding Dataset}" 
+                                 VerticalOptions="FillAndExpand">
 
                     <CollectionView.ItemsLayout>
                         <GridItemsLayout Orientation="Vertical" Span="4" />
                     </CollectionView.ItemsLayout>
-
+                    
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            <Frame CornerRadius="10" BackgroundColor="#bda27f">
+                            <Frame CornerRadius="10"
+                                   BackgroundColor="#bda27f"
+                                   BorderColor="MidnightBlue">
                                 <Grid Margin="10">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="auto"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                </Grid.RowDefinitions>
-
-                                <Image  Grid.Column="0" Grid.Row="0" Grid.RowSpan="3"
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+                                    
+                                    <Image  Grid.Column="0" Grid.Row="0" 
+                                            Grid.RowSpan="3"
                                             Source="{Binding ImageURI}"
                                             Style="{StaticResource ImageMediumStyle}"
                                             VerticalOptions="CenterAndExpand"/>
 
-                                <Label Grid.Column="1" Grid.Row="0"
+                                    <Label Grid.Column="1" Grid.Row="0"
                                            Text="{Binding Name}" 
                                            Style="{StaticResource ListStyle}"/>
 
-                                <StackLayout Grid.Column="1" Grid.Row="1"
-                                        Orientation="Horizontal">
-
-                                    <Label 
-                                           Text="{Binding Attribute}" 
-                                           Style="{StaticResource ListStyle}"/>
-
-                                    <Label Text="{Binding Value}" 
-                                            Style="{StaticResource ListStyle}"/>
-
-                                </StackLayout>
-
-                                <Label Grid.Column="1" Grid.Row="2"
+                                    <StackLayout Grid.Column="1" Grid.Row="1"
+                                                 Orientation="Horizontal">
+                                        <Label Text="{Binding Attribute}"
+                                               Style="{StaticResource ListStyle}"/>
+                                        
+                                        <Label Text="{Binding Value}" 
+                                               Style="{StaticResource ListStyle}"/>
+                                    </StackLayout>
+                                    
+                                    <Label Grid.Column="1" Grid.Row="2"
                                            Text="{Binding Description}" 
                                            Style="{StaticResource ListStyle}"
                                            FontSize="Micro"/>
-
-                            </Grid>
+                                </Grid>
                             </Frame>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
