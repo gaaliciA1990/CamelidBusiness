@@ -7,6 +7,7 @@ using System.ComponentModel;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using System.Collections.Generic;
 
 namespace Game.Views
 {
@@ -17,6 +18,12 @@ namespace Game.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ItemCreatePage : ContentPage
     {
+        // List of Item images for the player to select
+        private List<String> imageList = GameImagesHelper.GetItemImage();
+
+        // Image index variable, to load first image on Create page to implement "scrolling"
+        private int imageIndex = 0;
+
         // The item to create
         public GenericViewModel<ItemImageModel> ViewModel = new GenericViewModel<ItemImageModel>();
 
@@ -31,6 +38,8 @@ namespace Game.Views
             InitializeComponent();
 
             this.ViewModel.Data = new ItemImageModel();
+
+            this.ViewModel.Data.ImageURI = imageList[imageIndex];
             
             BindingContext = this.ViewModel;
 
@@ -98,31 +107,58 @@ namespace Game.Views
             DamageLabel.Text = String.Format("{0}", Math.Round(e.NewValue));
         }
 
-        /*
-         * This section of code is intended to implement a Photo selection from our preset option. Users will not be able to upload an image
-         * 
-
         /// <summary>
-        /// Radomize the Item Photo to select a new image
+        /// When the left button is clicked, the image will change to the previous index or the end of the
+        /// index if at 0.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public void RandomImage_Clicked(object sender, EventArgs e)
+        private void LeftButton_Clicked(object sender, EventArgs e)
         {
-            _ = RandomizeItem();
+            int imageCount = imageList.Count;
+
+            // check if we are at the first photo and move to last photo when clicked
+            if (imageIndex == 0)
+            {
+                imageIndex = imageCount - 1 ;
+            }
+
+            // Move to the previous photo in the list
+            if (imageIndex > 0)
+            {
+                imageIndex--;
+            }
+
+            // Update the image
+            this.ViewModel.Data.ImageURI = imageList[imageIndex];
+            ImageLabel.Source = this.ViewModel.Data.ImageURI;
         }
 
         /// <summary>
-        /// Display a random item photo. Nothing else is changed
+        /// When the right button is clicked, the image will change to the next index or the beginning of the
+        /// index if at the last index. 
         /// </summary>
-        /// <returns></returns>
-
-        public bool RandomizeItem()
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void RightButton_Clicked(object sender, EventArgs e)
         {
-            ViewModel.Data.ImageURI = RandomPlayerHelper.GetItemImage();
+            int imageCount = imageList.Count;
 
-            return true;
+            // check if we are at the last photo and move to first photo when clicked
+            if (imageIndex == imageCount - 1)
+            {
+                imageIndex = 0;
+            }
+
+            // Move to the next photo in the list
+            if (imageIndex < imageCount - 1)
+            {
+                imageIndex++;
+            }
+
+            // Update the image
+            this.ViewModel.Data.ImageURI = imageList[imageIndex];
+            ImageLabel.Source = this.ViewModel.Data.ImageURI;
         }
-        */
     }
 }
