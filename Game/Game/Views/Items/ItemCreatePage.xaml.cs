@@ -1,6 +1,6 @@
 ﻿using Game.Models;
 using Game.ViewModels;
-using Game.GameRules;
+using Game.Helpers;
 
 using System;
 using System.ComponentModel;
@@ -18,7 +18,7 @@ namespace Game.Views
     public partial class ItemCreatePage : ContentPage
     {
         // The item to create
-        public GenericViewModel<ItemModel> ViewModel = new GenericViewModel<ItemModel>();
+        public GenericViewModel<ItemImageModel> ViewModel = new GenericViewModel<ItemImageModel>();
 
         // Empty Constructor for UTs
         public ItemCreatePage(bool UnitTest) { }
@@ -30,8 +30,8 @@ namespace Game.Views
         {
             InitializeComponent();
 
-            this.ViewModel.Data = new ItemModel();
-
+            this.ViewModel.Data = new ItemImageModel();
+            
             BindingContext = this.ViewModel;
 
             this.ViewModel.Title = "Create";
