@@ -29,6 +29,13 @@ namespace Game.Views
             BindingContext = this.viewModel = data;
 
             this.viewModel.Title = "Delete " + data.Title;
+            
+            //Disable pickers so they are read only
+            LocationPicker.IsEnabled = false;
+            AttributePicker.IsEnabled = false;
+            DamageSlider.IsEnabled = false;
+            RangeSlider.IsEnabled = false;
+            ValueSlider.IsEnabled = false;
         }
 
         /// <summary>
