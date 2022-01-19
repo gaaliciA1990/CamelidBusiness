@@ -43,26 +43,39 @@
                              Padding="20"
                              Style="{StaticResource OuterBoxStack}">
                    
-                    <Entry Grid.Row="0" Grid.Column="1"
-                           Placeholder="Name"
+                    <Entry Placeholder="Name"
                            FontSize="Medium" 
-                           FontAttributes="Bold, Italic"
-                           HorizontalOptions="FillAndExpand" 
+                           HorizontalOptions="FillAndExpand"
+                           BackgroundColor="White"
                            Text="{Binding Data.Name, Mode=TwoWay}"
                            Style="{StaticResource EntryStyle}"/>
 
-                    <Image HorizontalOptions="FillAndExpand"
-                           Aspect="AspectFit" 
-                           VerticalOptions="FillAndExpand"
-                           Margin="10"
-                           Source="{Binding Data.ImageURI, Mode=TwoWay}" 
-                           Style="{StaticResource ImageLargeStyle}"/>
-
-                    <Entry Grid.Row="2" Grid.Column="1"
-                           Placeholder="Description"
+                    <StackLayout Orientation="Horizontal"
+                                 HorizontalOptions="FillAndExpand" 
+                                 VerticalOptions="FillAndExpand">
+                        <Button x:Name="LeftButton"
+                                Text="Left"
+                                Clicked="LeftButton_Clicked"
+                                BorderColor="DarkSlateGray"
+                                CornerRadius="5"/>
+                        <Image  x:Name="ImageLabel"
+                                Source="{Binding Data.ImageURI}"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="FillAndExpand"
+                                Aspect="AspectFit"
+                                Margin="10"/>
+                        <Button x:Name="RightButton"
+                                Text="Right"
+                                Clicked="RightButton_Clicked"
+                                BorderColor="DarkSlateGray"
+                                CornerRadius="5"/>
+                    </StackLayout>
+                    
+                    <Entry Placeholder="Description"
                            FontSize="Medium" 
-                           HorizontalOptions="FillAndExpand" 
-                           Text="{Binding Data.Description, Mode=TwoWay}"
+                           HorizontalOptions="FillAndExpand"
+                           BackgroundColor="White"
+                           Text="{Binding Data.Description, Mode= TwoWay}"
                            Style="{StaticResource EntryStyle}"/>
                 </StackLayout>
 
@@ -77,12 +90,14 @@
                                  VerticalOptions="Center">
                         <Picker Title="Select a location"
                                 HorizontalOptions="FillAndExpand"
+                                BackgroundColor="White"
                                 ItemsSource="{x:Static local:ItemLocationEnumHelper.GetListCharacter}"
                                 SelectedItem="{Binding Data.Location, Converter={StaticResource StringEnum}, Mode=TwoWay}"
                                 x:Name="LocationPicker"/>
 
                         <Picker Title="Select an attribute"
                                 HorizontalOptions="FillAndExpand"
+                                BackgroundColor="White"
                                 ItemsSource="{x:Static local:AttributeEnumHelper.GetListCharacter}"
                                 SelectedItem="{Binding Data.Attribute, Converter={StaticResource StringEnum}, Mode=TwoWay}"
                                 x:Name="AttributePicker"/>
@@ -123,7 +138,8 @@
 
                             <Slider x:Name="RangeSlider" 
                                     Maximum="15" 
-                                    Minimum="0" 
+                                    Minimum="0"
+                                    BackgroundColor="White"
                                     Value="{Binding Data.Range}" 
                                     HorizontalOptions="FillAndExpand" 
                                     VerticalOptions="Center"
@@ -164,6 +180,7 @@
                             <Slider x:Name="ValueSlider" 
                                     Maximum="15" 
                                     Minimum="0" 
+                                    BackgroundColor="White"
                                     Value="{Binding Data.Value}" 
                                     HorizontalOptions="FillAndExpand" 
                                     VerticalOptions="Center"
@@ -205,6 +222,7 @@
                             <Slider x:Name="DamageSlider" 
                                     Maximum="15" 
                                     Minimum="0"
+                                    BackgroundColor="White"
                                     Value="{Binding Data.Damage}" 
                                     HorizontalOptions="FillAndExpand" 
                                     VerticalOptions="Center"
