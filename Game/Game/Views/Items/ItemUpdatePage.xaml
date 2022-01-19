@@ -46,14 +46,16 @@
                 <StackLayout Grid.Row="1" Grid.Column="0" 
                              HorizontalOptions="FillAndExpand" 
                              VerticalOptions="FillAndExpand" 
+                             Padding="20"
                              Style="{StaticResource OuterBoxStack}">
-                    
-                    <Label FontSize="Large" 
-                           FontAttributes="Bold, Italic" 
-                           HorizontalOptions="Center" 
-                           VerticalOptions="FillAndExpand" 
-                           Text="{Binding Data.Name}" 
-                           Style="{StaticResource ValueStyle}"/>
+
+                    <Entry Placeholder="Name"
+                           FontSize="Medium" 
+                           HorizontalOptions="FillAndExpand"
+                           BackgroundColor="White"
+                           Text="{Binding Data.Name, Mode=TwoWay}"
+                           TextChanged="InputsAreValidCheck"
+                           Style="{StaticResource EntryStyle}"/>
 
 
                     <StackLayout Orientation="Horizontal"
@@ -77,33 +79,40 @@
                                 CornerRadius="5"/>
                     </StackLayout>
 
-                    <Label FontSize="Medium" 
-                           HorizontalOptions="Center" 
-                           VerticalOptions="FillAndExpand"
-                           Text="{Binding Data.Description}" 
-                           Style="{StaticResource ValueStyle}"/>
+                    <Entry Placeholder="Description"
+                           FontSize="Medium" 
+                           HorizontalOptions="FillAndExpand"
+                           BackgroundColor="White"
+                           TextChanged="InputsAreValidCheck"
+                           Text="{Binding Data.Description, Mode= TwoWay}"
+                           
+                           Style="{StaticResource EntryStyle}"/>
                 </StackLayout>
 
                 <StackLayout Grid.Row="1" Grid.Column="1" 
                              HorizontalOptions="FillAndExpand" 
                              VerticalOptions="FillAndExpand" 
+                             Padding="10"
                              Style="{StaticResource OuterBoxStack}">
-                    
+
                     <StackLayout Style="{StaticResource HorizontalStack}" 
                                  HorizontalOptions="FillAndExpand" 
                                  VerticalOptions="Center">
-                        
-                        <Picker HorizontalOptions="FillAndExpand"
-                                ItemsSource="{x:Static local:ItemLocationEnumHelper.GetListCharacter}" 
+                        <Picker Title="Select a location"
+                                HorizontalOptions="FillAndExpand"
+                                BackgroundColor="White"
+                                ItemsSource="{x:Static local:ItemLocationEnumHelper.GetListCharacter}"
                                 SelectedItem="{Binding Data.Location, Converter={StaticResource StringEnum}, Mode=TwoWay}"
-                                x:Name="LocationPicker"
-                                SelectedIndexChanged="InputsAreValidCheck"/>
+                                SelectedIndexChanged="InputsAreValidCheck"
+                                x:Name="LocationPicker"/>
 
-                        <Picker HorizontalOptions="FillAndExpand"
-                                ItemsSource="{x:Static local:AttributeEnumHelper.GetListCharacter}" 
+                        <Picker Title="Select an attribute"
+                                HorizontalOptions="FillAndExpand"
+                                BackgroundColor="White"
+                                ItemsSource="{x:Static local:AttributeEnumHelper.GetListCharacter}"
                                 SelectedItem="{Binding Data.Attribute, Converter={StaticResource StringEnum}, Mode=TwoWay}"
-                                x:Name="AttributePicker"
-                                SelectedIndexChanged="InputsAreValidCheck"/>
+                                SelectedIndexChanged="InputsAreValidCheck"
+                                x:Name="AttributePicker"/>
                     </StackLayout>
 
                     <Grid HorizontalOptions="Center" 
