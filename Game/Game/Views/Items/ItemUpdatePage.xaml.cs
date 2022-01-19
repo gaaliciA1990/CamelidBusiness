@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-
+using System.Collections.Generic;
 using Game.ViewModels;
 using Game.Models;
 
@@ -20,6 +20,9 @@ namespace Game.Views
 
         // Empty Constructor for Tests
         public ItemUpdatePage(bool UnitTest) { }
+
+        //errors
+        List<string> errors = new List<string>();
 
         /// <summary>
         /// Constructor that takes and existing data item
@@ -97,6 +100,38 @@ namespace Game.Views
         public void Damage_OnSliderValueChanged(object sender, ValueChangedEventArgs e)
         {
             DamageLabel.Text = String.Format("{0}", Math.Round(e.NewValue));
+        }
+
+
+        /// <summary>
+        /// Allow submission only if inputs are valid
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void InputsAreValidCheck(object sender, EventArgs e)
+        {
+            errors.Clear();
+
+            DamageSlider.IsEnabled = false;
+            RangeSlider.IsEnabled = false;
+            RangeLabel.Text = "-";
+            DamageLabel.Text = "-";
+
+            if (this.ViewModel.Data.Location == ItemLocationEnum.Unknown)
+                errors.Add("Location not selected");
+            else if (this.ViewModel.Data.Attribute == AttributeEnum.Unknown)
+                errors.Add("Attribute not selected");
+            else if (this.ViewModel.Data.Location != ItemLocationEnum.PrimaryHand && this.ViewModel.Data.Attribute == AttributeEnum.Attack)
+                errors.Add("Item on " + this.ViewModel.Data.Location.ToString() + " cannot be used as " + this.ViewModel.Data.Attribute.ToString());
+            else if (this.ViewModel.Data.Location == ItemLocationEnum.PrimaryHand && this.ViewModel.Data.Attribute == AttributeEnum.Attack)
+            {
+                DamageSlider.IsEnabled = true;
+                RangeSlider.IsEnabled = true;
+                RangeLabel.Text = RangeSlider.Value.ToString();
+                DamageLabel.Text = DamageSlider.Value.ToString();
+            }
+            BindableLayout.SetItemsSource(errorMessageList, null);
+            BindableLayout.SetItemsSource(errorMessageList, errors);
         }
     }
 }
