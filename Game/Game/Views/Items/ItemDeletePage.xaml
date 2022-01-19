@@ -9,8 +9,8 @@
              Title="{Binding Title}">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Cancel" Clicked="Cancel_Clicked" IconImageSource="icon_cancel.png"/>
-        <ToolbarItem Text="Delete" Clicked="Delete_Clicked" IconImageSource="icon_delete.png"/>
+        <!--<ToolbarItem Text="Cancel" Clicked="Cancel_Clicked" IconImageSource="icon_cancel.png"/>
+        --><!--<ToolbarItem Text="Delete" Clicked="Delete_Clicked" IconImageSource="icon_delete.png"/>-->
     </ContentPage.ToolbarItems>
 
     <ContentPage.Resources>
@@ -18,7 +18,7 @@
             <local_helpers:StringEnumConverter x:Key="StringEnum"/>
         </ResourceDictionary>
     </ContentPage.Resources>
-    
+
     <ContentPage.Content>
 
         <ScrollView>
@@ -193,9 +193,44 @@
                                 </Slider.Margin>
                             </Slider>
                         </StackLayout>
-
                     </Grid>
                 </StackLayout>
+                
+                <Frame x:Name="Sheet"
+                       HeightRequest="200"
+                       WidthRequest="300"
+                       VerticalOptions="End"
+                       BorderColor="Black"
+                       BackgroundColor="LightGray"
+                       CornerRadius="5"
+                       IsClippedToBounds="true"
+                       Grid.Row="1"
+                       Grid.ColumnSpan="2">
+                    
+                    <Grid>
+                        
+                        <Label Text="Deleted data cannot be recovered. Delete this data?" 
+                               FontSize="Medium"
+                               FontAttributes="Bold"
+                               HorizontalTextAlignment="Center"
+                               Grid.Row="0" Grid.ColumnSpan="2"/>
+                        <Button Text="DELETE" Grid.Row="1" Grid.Column="0"
+                                BackgroundColor="White"
+                                BorderRadius="20"
+                                BorderWidth="2"
+                                BorderColor="Black"
+                                HorizontalOptions="Center"
+                                Clicked="Delete_Clicked"/>
+                        <Button Text="CANCEL" Grid.Row="1" Grid.Column="1"
+                                BackgroundColor="White"
+                                BorderRadius="20"
+                                BorderWidth="2"
+                                BorderColor="Black"
+                                HorizontalOptions="Center"
+                                Clicked="Cancel_Clicked"/>
+
+                    </Grid>
+                </Frame>
             </Grid>
         </ScrollView>
     </ContentPage.Content>
