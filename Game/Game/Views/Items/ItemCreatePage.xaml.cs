@@ -39,6 +39,7 @@ namespace Game.Views
 
             this.ViewModel.Data = new ItemModel();
 
+            // Load the first image in the list when the Create page is opened
             this.ViewModel.Data.ImageURI = imageList[imageIndex];
             
             BindingContext = this.ViewModel;
