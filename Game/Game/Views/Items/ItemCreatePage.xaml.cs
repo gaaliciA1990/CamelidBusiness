@@ -25,7 +25,7 @@ namespace Game.Views
         private int imageIndex = 0;
 
         // The item to create
-        public GenericViewModel<ItemImageModel> ViewModel = new GenericViewModel<ItemImageModel>();
+        public GenericViewModel<ItemModel> ViewModel = new GenericViewModel<ItemModel>();
 
         // Empty Constructor for UTs
         public ItemCreatePage(bool UnitTest) { }
@@ -37,7 +37,7 @@ namespace Game.Views
         {
             InitializeComponent();
 
-            this.ViewModel.Data = new ItemImageModel();
+            this.ViewModel.Data = new ItemModel();
 
             this.ViewModel.Data.ImageURI = imageList[imageIndex];
             
