@@ -11,8 +11,12 @@
              Title="{Binding Title}">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Cancel" Clicked="Cancel_Clicked" IconImageSource="icon_cancel.png"/>
-        <ToolbarItem Text="Save" Clicked="Save_Clicked" IconImageSource="icon_save.png"/>
+        <ToolbarItem Text="Cancel" 
+                     Clicked="Cancel_Clicked" 
+                     IconImageSource="icon_cancel.png"/>
+        <ToolbarItem Text="Save" 
+                     Clicked="Save_Clicked" 
+                     IconImageSource="icon_save.png"/>
     </ContentPage.ToolbarItems>
 
     <ContentPage.Resources>
@@ -95,18 +99,17 @@
 
                     <Grid HorizontalOptions="Center" 
                           VerticalOptions="FillAndExpand">
-                        <Label FontSize="Medium" 
+                        <Label Text="Range : "
+                               FontSize="Medium" 
                                Grid.Row="0" Grid.Column="0" 
-                               Text="Range : " 
                                Style="{StaticResource LabelStyle}" 
                                VerticalOptions="Center"/>
 
                         <StackLayout Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" 
                                      VerticalOptions="Center">
-                            <Label FontSize="Medium" 
+                            <Label x:Name="RangeLabel" 
+                                   Text="{Binding Data.Range}"FontSize="Medium" 
                                    FontAttributes="Bold" 
-                                   x:Name="RangeLabel" 
-                                   Text="{Binding Data.Range}" 
                                    HorizontalOptions="Start" 
                                    HorizontalTextAlignment="Center" 
                                    VerticalOptions="EndAndExpand">
@@ -137,13 +140,13 @@
                                FontSize="Medium" 
                                Style="{StaticResource LabelStyle}" 
                                VerticalOptions="Center"/>
+                        
                         <StackLayout Grid.Row="1" Grid.Column="1" 
                                      Grid.ColumnSpan="2"
                                      VerticalOptions="Center">
-                            <Label FontSize="Medium" 
+                            <Label x:Name="ValueLabel" 
+                                   Text="{Binding Data.Value}" FontSize="Medium" 
                                    FontAttributes="Bold" 
-                                   x:Name="ValueLabel" 
-                                   Text="{Binding Data.Value}" 
                                    HorizontalOptions="Start" 
                                    HorizontalTextAlignment="Center" 
                                    VerticalOptions="EndAndExpand">
@@ -154,6 +157,7 @@
                                     </OnPlatform>
                                 </Label.Margin>
                             </Label>
+                            
                             <Slider x:Name="ValueSlider" 
                                     Maximum="15" 
                                     Minimum="0" 
@@ -169,17 +173,18 @@
                         </StackLayout>
 
                         <Label Grid.Row="2" Grid.Column="0" 
+                               Text="Damage : "
                                FontSize="Medium" 
-                               Text="Damage : " 
                                Style="{StaticResource LabelStyle}" 
                                VerticalOptions="Center"/>
+                        
                         <StackLayout Grid.Row="2" Grid.Column="1" 
                                      Grid.ColumnSpan="2" 
                                      VerticalOptions="Center">
-                            <Label FontSize="Medium" 
-                                   FontAttributes="Bold" 
-                                   x:Name="DamageLabel" 
+                            <Label x:Name="DamageLabel" 
                                    Text="{Binding Data.Damage}" 
+                                   FontSize="Medium" 
+                                   FontAttributes="Bold" 
                                    HorizontalOptions="Start" 
                                    HorizontalTextAlignment="Center" 
                                    VerticalOptions="EndAndExpand">
