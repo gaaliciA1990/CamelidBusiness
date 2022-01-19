@@ -54,13 +54,29 @@
                            VerticalOptions="FillAndExpand" 
                            Text="{Binding Data.Name}" 
                            Style="{StaticResource ValueStyle}"/>
-                   
-                    <Image HorizontalOptions="FillAndExpand" 
-                           Aspect="AspectFit" 
-                           VerticalOptions="FillAndExpand"
-                           Source="{Binding Data.ImageURI}"
-                           Style="{StaticResource ImageLargeStyle}"/>
-                    
+
+
+                    <StackLayout Orientation="Horizontal"
+                                 HorizontalOptions="FillAndExpand" 
+                                 VerticalOptions="FillAndExpand">
+                        <Button x:Name="LeftButton"
+                                Text="Left"
+                                Clicked="LeftButton_Clicked"
+                                BorderColor="DarkSlateGray"
+                                CornerRadius="5"/>
+                        <Image  x:Name="ImageLabel"
+                                Source="{Binding Data.ImageURI}"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="FillAndExpand"
+                                Aspect="AspectFit"
+                                Margin="10"/>
+                        <Button x:Name="RightButton"
+                                Text="Right"
+                                Clicked="RightButton_Clicked"
+                                BorderColor="DarkSlateGray"
+                                CornerRadius="5"/>
+                    </StackLayout>
+
                     <Label FontSize="Medium" 
                            HorizontalOptions="Center" 
                            VerticalOptions="FillAndExpand"
