@@ -137,6 +137,10 @@ namespace Game.Views
                 RangeLabel.Text = RangeSlider.Value.ToString();
                 DamageLabel.Text = DamageSlider.Value.ToString();
             }
+
+            if (this.ViewModel.Data.Name.Length <= 0)
+                errors.Add("Name cannot be empty");
+
             BindableLayout.SetItemsSource(errorMessageList, null);
             BindableLayout.SetItemsSource(errorMessageList, errors);
         }
