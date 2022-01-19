@@ -23,7 +23,8 @@
     <ContentPage.Content>
 
         <ScrollView>
-            <Grid x:Name="FormLayoutGrid" Grid.Row="1" Grid.Column="0">
+            <Grid x:Name="FormLayoutGrid" 
+                  Grid.Row="1" Grid.Column="0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
@@ -32,31 +33,71 @@
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
 
-                <StackLayout Grid.Row="0" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource OuterBoxStack}">
-                    <Label FontSize="Large" FontAttributes="Bold, Italic" HorizontalOptions="Center" VerticalOptions="FillAndExpand" Text="{Binding Data.Name}" Style="{StaticResource ValueStyle}"/>
-                    <Image HorizontalOptions="FillAndExpand" Aspect="AspectFit"  VerticalOptions="FillAndExpand" Source="{Binding Data.ImageURI}" Style="{StaticResource ImageLargeStyle}"/>
-                    <Label FontSize="Medium" HorizontalOptions="Center" VerticalOptions="FillAndExpand" Text="{Binding Data.Description}" Style="{StaticResource ValueStyle}"/>
+                <StackLayout Grid.Row="0" Grid.Column="0" 
+                             HorizontalOptions="FillAndExpand" 
+                             VerticalOptions="FillAndExpand" 
+                             Style="{StaticResource OuterBoxStack}">
+                    
+                    <Label FontSize="Large" 
+                           FontAttributes="Bold, Italic" 
+                           HorizontalOptions="Center" 
+                           VerticalOptions="FillAndExpand" 
+                           Text="{Binding Data.Name}" 
+                           Style="{StaticResource ValueStyle}"/>
+                   
+                    <Image HorizontalOptions="FillAndExpand" 
+                           Aspect="AspectFit" 
+                           VerticalOptions="FillAndExpand"
+                           Source="{Binding Data.ImageURI}"
+                           Style="{StaticResource ImageLargeStyle}"/>
+                    
+                    <Label FontSize="Medium" 
+                           HorizontalOptions="Center" 
+                           VerticalOptions="FillAndExpand"
+                           Text="{Binding Data.Description}" 
+                           Style="{StaticResource ValueStyle}"/>
                 </StackLayout>
 
-                <StackLayout Grid.Row="0" Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource OuterBoxStack}">
-                    <StackLayout Style="{StaticResource HorizontalStack}" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+                <StackLayout Grid.Row="0" Grid.Column="1" 
+                             HorizontalOptions="FillAndExpand" 
+                             VerticalOptions="FillAndExpand" 
+                             Style="{StaticResource OuterBoxStack}">
+                    
+                    <StackLayout Style="{StaticResource HorizontalStack}" 
+                                 HorizontalOptions="FillAndExpand" 
+                                 VerticalOptions="Center">
+                        
                         <Picker HorizontalOptions="FillAndExpand"
-                        ItemsSource="{x:Static local:ItemLocationEnumHelper.GetListCharacter}" 
-                         SelectedItem="{Binding Data.Location, Converter={StaticResource StringEnum}, Mode=TwoWay}"
-                         x:Name="LocationPicker"/>
+                                ItemsSource="{x:Static local:ItemLocationEnumHelper.GetListCharacter}" 
+                                SelectedItem="{Binding Data.Location, Converter={StaticResource StringEnum}, Mode=TwoWay}"
+                                x:Name="LocationPicker"/>
 
                         <Picker HorizontalOptions="FillAndExpand"
-                        ItemsSource="{x:Static local:AttributeEnumHelper.GetListCharacter}" 
-                        SelectedItem="{Binding Data.Attribute, Converter={StaticResource StringEnum}, Mode=TwoWay}"
-                        x:Name="AttributePicker"/>
-
+                                ItemsSource="{x:Static local:AttributeEnumHelper.GetListCharacter}" 
+                                SelectedItem="{Binding Data.Attribute, Converter={StaticResource StringEnum}, Mode=TwoWay}"
+                                x:Name="AttributePicker"/>
                     </StackLayout>
 
-                    <Grid HorizontalOptions="Center" VerticalOptions="FillAndExpand">
+                    <Grid HorizontalOptions="Center" 
+                          VerticalOptions="FillAndExpand">
 
-                        <Label FontSize="Medium"  Grid.Row="0" Grid.Column="0" Text="Range : " Style="{StaticResource LabelStyle}" VerticalOptions="Center"/>
-                        <StackLayout Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" VerticalOptions="Center">
-                            <Label FontSize="Medium" FontAttributes="Bold" x:Name="RangeLabel" Text="{Binding Data.Range}" HorizontalOptions="Start" HorizontalTextAlignment="Center" VerticalOptions="EndAndExpand">
+                        <Label Grid.Row="0" Grid.Column="0" 
+                               FontSize="Medium" 
+                               Text="Range : " 
+                               Style="{StaticResource LabelStyle}" 
+                               VerticalOptions="Center"/>
+                        
+                        <StackLayout Grid.Row="0" Grid.Column="1" 
+                                     Grid.ColumnSpan="2" 
+                                     VerticalOptions="Center">
+                            
+                            <Label FontSize="Medium" 
+                                   FontAttributes="Bold" 
+                                   x:Name="RangeLabel" 
+                                   Text="{Binding Data.Range}"
+                                   HorizontalOptions="Start" 
+                                   HorizontalTextAlignment="Center" 
+                                   VerticalOptions="EndAndExpand">
                                 <Label.Margin>
                                     <OnPlatform x:TypeArguments="Thickness">
                                         <On Platform="iOS" Value="15,0" />
@@ -64,7 +105,13 @@
                                     </OnPlatform>
                                 </Label.Margin>
                             </Label>
-                            <Slider x:Name="RangeSlider" Maximum="15" Minimum="0" Value="{Binding Data.Range}" HorizontalOptions="FillAndExpand" ValueChanged="Range_OnSliderValueChanged">
+                            
+                            <Slider x:Name="RangeSlider"
+                                    Maximum="15"
+                                    Minimum="0" 
+                                    Value="{Binding Data.Range}"
+                                    HorizontalOptions="FillAndExpand"
+                                    ValueChanged="Range_OnSliderValueChanged">
                                 <Slider.Margin>
                                     <OnPlatform x:TypeArguments="Thickness">
                                         <On Platform="iOS" Value="10,0" />
@@ -73,9 +120,23 @@
                             </Slider>
                         </StackLayout>
 
-                        <Label FontSize="Medium"  Grid.Row="1" Grid.Column="0" Text="Value : " Style="{StaticResource LabelStyle}" VerticalOptions="Center"/>
-                        <StackLayout Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" VerticalOptions="Center">
-                            <Label FontSize="Medium" FontAttributes="Bold" x:Name="ValueLabel" Text="{Binding Data.Value}" HorizontalOptions="Start" HorizontalTextAlignment="Center" VerticalOptions="EndAndExpand">
+                        <Label Grid.Row="1" Grid.Column="0"
+                               FontSize="Medium" 
+                               Text="Value : " 
+                               Style="{StaticResource LabelStyle}" 
+                               VerticalOptions="Center"/>
+                        
+                        <StackLayout Grid.Row="1" Grid.Column="1" 
+                                     Grid.ColumnSpan="2" 
+                                     VerticalOptions="Center">
+                            
+                            <Label FontSize="Medium"
+                                   FontAttributes="Bold"
+                                   x:Name="ValueLabel" 
+                                   Text="{Binding Data.Value}" 
+                                   HorizontalOptions="Start" 
+                                   HorizontalTextAlignment="Center" 
+                                   VerticalOptions="EndAndExpand">
                                 <Label.Margin>
                                     <OnPlatform x:TypeArguments="Thickness">
                                         <On Platform="iOS" Value="15,0" />
@@ -83,7 +144,13 @@
                                     </OnPlatform>
                                 </Label.Margin>
                             </Label>
-                            <Slider x:Name="ValueSlider" Maximum="15" Minimum="0" Value="{Binding Data.Value}" HorizontalOptions="FillAndExpand" ValueChanged="Value_OnSliderValueChanged">
+                            
+                            <Slider x:Name="ValueSlider" 
+                                    Maximum="15" 
+                                    Minimum="0" 
+                                    Value="{Binding Data.Value}" 
+                                    HorizontalOptions="FillAndExpand" 
+                                    ValueChanged="Value_OnSliderValueChanged">
                                 <Slider.Margin>
                                     <OnPlatform x:TypeArguments="Thickness">
                                         <On Platform="iOS" Value="10,0" />
@@ -92,14 +159,23 @@
                             </Slider>
                         </StackLayout>
 
+                        <Label  Grid.Row="2" Grid.Column="0" 
+                                FontSize="Medium" 
+                                Text="Damage : " 
+                                Style="{StaticResource LabelStyle}" 
+                                VerticalOptions="Center"/>
 
-
-
-                        <Label FontSize="Medium"  Grid.Row="2" Grid.Column="0" Text="Damage : " Style="{StaticResource LabelStyle}" VerticalOptions="Center"/>
-
-
-                        <StackLayout Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" VerticalOptions="Center">
-                            <Label FontSize="Medium" FontAttributes="Bold" x:Name="DamageLabel" Text="{Binding Data.Damage}" HorizontalOptions="Start"  HorizontalTextAlignment="Center" VerticalOptions="EndAndExpand">
+                        <StackLayout Grid.Row="2" Grid.Column="1"
+                                     Grid.ColumnSpan="2" 
+                                     VerticalOptions="Center">
+                           
+                            <Label FontSize="Medium" 
+                                   FontAttributes="Bold" 
+                                   x:Name="DamageLabel" 
+                                   Text="{Binding Data.Damage}" 
+                                   HorizontalOptions="Start"  
+                                   HorizontalTextAlignment="Center" 
+                                   VerticalOptions="EndAndExpand">
                                 <Label.Margin>
                                     <OnPlatform x:TypeArguments="Thickness">
                                         <On Platform="iOS" Value="15,0" />
@@ -107,7 +183,13 @@
                                     </OnPlatform>
                                 </Label.Margin>
                             </Label>
-                            <Slider x:Name="DamageSlider" Maximum="15" Minimum="0" Value="{Binding Data.Damage}" HorizontalOptions="FillAndExpand" ValueChanged="Damage_OnSliderValueChanged">
+                            
+                            <Slider x:Name="DamageSlider" 
+                                    Maximum="15" 
+                                    Minimum="0" 
+                                    Value="{Binding Data.Damage}" 
+                                    HorizontalOptions="FillAndExpand" 
+                                    ValueChanged="Damage_OnSliderValueChanged">
                                 <Slider.Margin>
                                     <OnPlatform x:TypeArguments="Thickness">
                                         <On Platform="iOS" Value="10,0" />
