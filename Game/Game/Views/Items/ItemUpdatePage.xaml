@@ -38,7 +38,7 @@
                 <StackLayout x:Name="errorMessageList" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="CenterAndExpand" Padding="20">
                     <BindableLayout.ItemTemplate>
                         <DataTemplate>
-                            <Label Text="{Binding}" TextColor="SaddleBrown" FontSize="Medium" FontAttributes="Bold, Italic"></Label>
+                            <Label Text="{Binding Value}" TextColor="SaddleBrown" FontSize="Medium" FontAttributes="Bold, Italic"></Label>
                         </DataTemplate>
                     </BindableLayout.ItemTemplate>
                 </StackLayout>
@@ -51,10 +51,11 @@
 
                     <Entry Placeholder="Name"
                            FontSize="Medium" 
+                           MaxLength="20"
                            HorizontalOptions="FillAndExpand"
                            BackgroundColor="White"
                            Text="{Binding Data.Name, Mode=TwoWay}"
-                           TextChanged="InputsAreValidCheck"
+                           TextChanged="Entry_TextChanged"
                            Style="{StaticResource EntryStyle}"/>
 
 
@@ -81,6 +82,7 @@
 
                     <Entry Placeholder="Description"
                            FontSize="Medium" 
+                           MaxLength="50"
                            HorizontalOptions="FillAndExpand"
                            BackgroundColor="White"
                            TextChanged="InputsAreValidCheck"
@@ -103,7 +105,7 @@
                                 BackgroundColor="White"
                                 ItemsSource="{x:Static local:ItemLocationEnumHelper.GetListCharacter}"
                                 SelectedItem="{Binding Data.Location, Converter={StaticResource StringEnum}, Mode=TwoWay}"
-                                SelectedIndexChanged="InputsAreValidCheck"
+                                SelectedIndexChanged="LocationPicker_SelectedIndexChanged"
                                 x:Name="LocationPicker"/>
 
                         <Picker Title="Select an attribute"
@@ -111,7 +113,7 @@
                                 BackgroundColor="White"
                                 ItemsSource="{x:Static local:AttributeEnumHelper.GetListCharacter}"
                                 SelectedItem="{Binding Data.Attribute, Converter={StaticResource StringEnum}, Mode=TwoWay}"
-                                SelectedIndexChanged="InputsAreValidCheck"
+                                SelectedIndexChanged="AttributePicker_SelectedIndexChanged"
                                 x:Name="AttributePicker"/>
                     </StackLayout>
 
@@ -121,6 +123,7 @@
                         <Label Grid.Row="0" Grid.Column="0" 
                                FontSize="Medium" 
                                Text="Range : " 
+                               x:Name="rangeLabel"
                                Style="{StaticResource LabelStyle}" 
                                VerticalOptions="Center"/>
                         
@@ -199,6 +202,7 @@
                         <Label  Grid.Row="2" Grid.Column="0" 
                                 FontSize="Medium" 
                                 Text="Damage : " 
+                                x:Name="damageLabel"
                                 Style="{StaticResource LabelStyle}" 
                                 VerticalOptions="Center"/>
 
