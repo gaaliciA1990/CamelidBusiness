@@ -134,20 +134,6 @@ namespace Game.Views
             DamageLabel.Text = String.Format("{0}", Math.Round(e.NewValue));
         }
 
-
-        /// <summary>
-        /// Allow submission only if inputs are valid
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        public void InputsAreValidCheck(object sender, EventArgs e)
-        {
-            errors.Clear();
-
-            BindableLayout.SetItemsSource(errorMessageList, null);
-            BindableLayout.SetItemsSource(errorMessageList, errors);
-        }
-
         /// <summary>
         /// When the left button is clicked, the image will change to the previous index or the end of the
         /// index if at 0.
