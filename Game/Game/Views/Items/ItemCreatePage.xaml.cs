@@ -216,7 +216,7 @@ namespace Game.Views
             // validate the Description has something entered
             if (String.IsNullOrWhiteSpace(this.ViewModel.Data.Description))
             {
-                errors["Description"] = "Discription is required";
+                errors["Description"] = "Description is required";
             }
 
             // Display the error message generated
