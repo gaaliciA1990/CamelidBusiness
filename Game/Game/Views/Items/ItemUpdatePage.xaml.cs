@@ -25,6 +25,9 @@ namespace Game.Views
         // View Model for Item
         public readonly GenericViewModel<ItemModel> ViewModel;
 
+        // Backup ViewModel for when user don't want to keep their changes
+        private ItemModel BackupData = new ItemModel();
+
         // Empty Constructor for Tests
         public ItemUpdatePage(bool UnitTest) { }
 
@@ -39,6 +42,9 @@ namespace Game.Views
             InitializeComponent();
 
             BindingContext = this.ViewModel = data;
+
+            //Create a backup for current data in the item
+            CopyValues(data.Data, BackupData);
 
             this.ViewModel.Title = "Update " + data.Title;
 
@@ -63,11 +69,6 @@ namespace Game.Views
                 ViewModel.Data.ImageURI = Services.ItemService.DefaultImageURI;
             }
 
-            //Convert to int so the values stay consistent with the UI
-            //ViewModel.Data.Range = (int)ViewModel.Data.Range;
-            //ViewModel.Data.Value = (int)ViewModel.Data.Value;
-            //ViewModel.Data.Damage = (int)ViewModel.Data.Damage;
-
             MessagingCenter.Send(this, "Update", ViewModel.Data);
             _ = await Navigation.PopModalAsync();
         }
@@ -79,7 +80,28 @@ namespace Game.Views
         /// <param name="e"></param>
         public async void Cancel_Clicked(object sender, EventArgs e)
         {
+            //Undo all unconfirmed changes user might have made
+            CopyValues(BackupData, this.ViewModel.Data);
+
             _ = await Navigation.PopModalAsync();
+        }
+
+        /// <summary>
+        /// Helper function to copy data from an ItemModel object to another ItemModel object
+        /// </summary>
+        /// <param name="data"></param>
+        /// <param name="copyTarget"></param>
+        private void CopyValues(ItemModel data, ItemModel copyTarget)
+        {
+            //Get the Properties on each ItemModel object
+            var propertiesData = data.GetType().GetProperties();
+            var propertiesCopyTarget = copyTarget.GetType().GetProperties();
+
+            //Then copy over
+            for (int i = 0; i < propertiesData.Length; i++)
+            {
+                propertiesCopyTarget[i].SetValue(copyTarget, propertiesData[i].GetValue(data));
+            }
         }
 
         /// <summary>
