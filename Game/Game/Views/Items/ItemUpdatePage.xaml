@@ -97,7 +97,7 @@
                            MaxLength="50"
                            HorizontalOptions="FillAndExpand"
                            BackgroundColor="White"
-                           TextChanged="InputsAreValidCheck"
+                           TextChanged="Entry_TextChanged"
                            Keyboard="Text"
                            ReturnType="Done"
                            IsSpellCheckEnabled="True"

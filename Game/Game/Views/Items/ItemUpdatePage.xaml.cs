@@ -209,14 +209,26 @@ namespace Game.Views
         /// <param name="e"></param>
         private void Entry_TextChanged(object sender, TextChangedEventArgs e)
         {
+            // Check the dictionary for the Name and Description key and remove to start fresh
             if (errors.ContainsKey("Name"))
             {
-                errors.Remove("Name"); 
+                errors.Remove("Name");
+            }
+            if (errors.ContainsKey("Description"))
+            {
+                errors.Remove("Description");
             }
 
-            if (string.IsNullOrWhiteSpace(this.ViewModel.Data.Name))
+            // validate the Name has something entered
+            if (String.IsNullOrWhiteSpace(this.ViewModel.Data.Name))
             {
-                errors["Name"] = "Name cannot be empty";
+                errors["Name"] = "Name is required";
+            }
+
+            // validate the Description has something entered
+            if (String.IsNullOrWhiteSpace(this.ViewModel.Data.Description))
+            {
+                errors["Description"] = "Description is required";
             }
 
             BindableLayout.SetItemsSource(errorMessageList, null);
