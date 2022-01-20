@@ -30,6 +30,9 @@ namespace Game.Views
         // Empty Constructor for UTs
         public ItemCreatePage(bool UnitTest) { }
 
+        // Dictionary of errors to return based on field being encountered
+        Dictionary<string, string> errors = new Dictionary<string, string>();
+
         /// <summary>
         /// Constructor for Create makes a new model
         /// </summary>
@@ -58,6 +61,30 @@ namespace Game.Views
         /// <param name="e"></param>
         public async void Save_Clicked(object sender, EventArgs e)
         {
+            // Validate the Location picker is not empty on save
+            if (this.ViewModel.Data.Location == ItemLocationEnum.Unknown)
+            {
+                errors["Location"] = "Location is required";
+
+                // Display the error message generated
+                BindableLayout.SetItemsSource(errorMessageList, null);
+                BindableLayout.SetItemsSource(errorMessageList, errors);
+
+                return; //Stop save
+            }
+
+            // Validate the Attribute picker is not empty on save
+            if (this.ViewModel.Data.Attribute == AttributeEnum.Unknown)
+            {
+                errors["Attribute"] = "Attribute is required";
+
+                // Display the error message generated
+                BindableLayout.SetItemsSource(errorMessageList, null);
+                BindableLayout.SetItemsSource(errorMessageList, errors);
+
+                return; //Stop save
+            }
+
             // If the image in the data box is empty, use the default one..
             if (string.IsNullOrEmpty(ViewModel.Data.ImageURI))
             {
@@ -160,6 +187,75 @@ namespace Game.Views
             // Update the image
             this.ViewModel.Data.ImageURI = imageList[imageIndex];
             ImageLabel.Source = this.ViewModel.Data.ImageURI;
+        }
+
+        /// <summary>
+        /// Validate the Entry fields for Name and Descriptions
+        /// are filled with valid text
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Entry_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            // Check the dictionary for the Name and Description key and remove to start fresh
+            if (errors.ContainsKey("Name"))
+            {
+                errors.Remove("Name");
+            }
+            if (errors.ContainsKey("Description"))
+            {
+                errors.Remove("Description");
+            }
+
+            // validate the Name has something entered
+            if (String.IsNullOrWhiteSpace(this.ViewModel.Data.Name))
+            {
+                errors["Name"] = "Name is required";
+            }
+            
+            // validate the Description has something entered
+            if (String.IsNullOrWhiteSpace(this.ViewModel.Data.Description))
+            {
+                errors["Description"] = "Discription is required";
+            }
+
+            // Display the error message generated
+            BindableLayout.SetItemsSource(errorMessageList, null);
+            BindableLayout.SetItemsSource(errorMessageList, errors);
+        }
+
+        /// <summary>
+        /// Validate picker field option has a valid input
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Picker_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Check the dictionary for the Location and Attribute key and remove to start fresh
+            if (errors.ContainsKey("Location"))
+            {
+                errors.Remove("Location");
+            }
+            if (errors.ContainsKey("Attribute"))
+            {
+                errors.Remove("Attribute");
+            }
+
+            // Validate the Location picker has been selected
+            if (this.ViewModel.Data.Location == ItemLocationEnum.Unknown)
+            {
+                errors["Location"] = "Location is required";
+            }
+
+            // Validate the Attribute picker has been selected
+            if (this.ViewModel.Data.Attribute == AttributeEnum.Unknown)
+            {
+                errors["Attribute"] = "Attribute is required";
+            }
+
+            // Display the error message generated
+            BindableLayout.SetItemsSource(errorMessageList, null);
+            BindableLayout.SetItemsSource(errorMessageList, errors);
         }
     }
 }
