@@ -144,9 +144,6 @@ namespace Game.Views
         {
             errors.Clear();
 
-            
-            
-
             BindableLayout.SetItemsSource(errorMessageList, null);
             BindableLayout.SetItemsSource(errorMessageList, errors);
         }
@@ -212,9 +209,16 @@ namespace Game.Views
         /// <param name="e"></param>
         private void Entry_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (errors.ContainsKey("Name")) { errors.Remove("Name"); };
+            if (errors.ContainsKey("Name"))
+            {
+                errors.Remove("Name"); 
+            }
+
             if (string.IsNullOrWhiteSpace(this.ViewModel.Data.Name))
+            {
                 errors["Name"] = "Name cannot be empty";
+            }
+
             BindableLayout.SetItemsSource(errorMessageList, null);
             BindableLayout.SetItemsSource(errorMessageList, errors);
         }
@@ -226,12 +230,17 @@ namespace Game.Views
         /// <param name="e"></param>
         private void AttributePicker_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (errors.ContainsKey("LocationAttribute")) { errors.Remove("LocationAttribute"); };
+            if (errors.ContainsKey("LocationAttribute"))
+            { 
+                errors.Remove("LocationAttribute"); 
+            }
 
             if (this.ViewModel.Data.Attribute == AttributeEnum.Unknown)
+            {
                 errors["LocationAttribute"] = "Location not selected";
 
-            
+            }
+
             BindableLayout.SetItemsSource(errorMessageList, null);
             BindableLayout.SetItemsSource(errorMessageList, errors);
         }
