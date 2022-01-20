@@ -35,10 +35,18 @@
                 </Grid.RowDefinitions>
 
 
-                <StackLayout x:Name="errorMessageList" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="CenterAndExpand" Padding="20">
+                <StackLayout x:Name="errorMessageList" 
+                             Grid.Row="0" Grid.Column="0" 
+                             Grid.ColumnSpan="2" 
+                             HorizontalOptions="CenterAndExpand" 
+                             Padding="20">
                     <BindableLayout.ItemTemplate>
                         <DataTemplate>
-                            <Label Text="{Binding Value}" TextColor="SaddleBrown" FontSize="Medium" FontAttributes="Bold, Italic"></Label>
+                            <Label Text="{Binding Value}" 
+                                   TextColor="Red" 
+                                   FontSize="Samll" 
+                                   FontAttributes="Bold, Italic">
+                            </Label>
                         </DataTemplate>
                     </BindableLayout.ItemTemplate>
                 </StackLayout>
@@ -54,6 +62,8 @@
                            MaxLength="20"
                            HorizontalOptions="FillAndExpand"
                            BackgroundColor="White"
+                           Keyboard="Text"
+                           ReturnType="Done"
                            Text="{Binding Data.Name, Mode=TwoWay}"
                            TextChanged="Entry_TextChanged"
                            Style="{StaticResource EntryStyle}"/>
@@ -66,6 +76,7 @@
                                 Text="Left"
                                 Clicked="LeftButton_Clicked"
                                 BorderColor="DarkSlateGray"
+                                WidthRequest="50"
                                 CornerRadius="5"/>
                         <Image  x:Name="ImageLabel"
                                 Source="{Binding Data.ImageURI}"
@@ -77,6 +88,7 @@
                                 Text="Right"
                                 Clicked="RightButton_Clicked"
                                 BorderColor="DarkSlateGray"
+                                WidthRequest="50"
                                 CornerRadius="5"/>
                     </StackLayout>
 
@@ -86,6 +98,9 @@
                            HorizontalOptions="FillAndExpand"
                            BackgroundColor="White"
                            TextChanged="InputsAreValidCheck"
+                           Keyboard="Text"
+                           ReturnType="Done"
+                           IsSpellCheckEnabled="True"
                            Text="{Binding Data.Description, Mode= TwoWay}"
                            
                            Style="{StaticResource EntryStyle}"/>
