@@ -42,11 +42,14 @@
                              VerticalOptions="FillAndExpand"
                              Padding="20"
                              Style="{StaticResource OuterBoxStack}">
-                   
+
                     <Entry Placeholder="Name"
                            FontSize="Medium" 
                            HorizontalOptions="FillAndExpand"
                            BackgroundColor="White"
+                           MaxLength="30"
+                           Keyboard="Text"
+                           ReturnType="Done"
                            Text="{Binding Data.Name, Mode=TwoWay}"
                            Style="{StaticResource EntryStyle}"/>
 
@@ -75,6 +78,10 @@
                            FontSize="Medium" 
                            HorizontalOptions="FillAndExpand"
                            BackgroundColor="White"
+                           MaxLength="150"
+                           Keyboard="Text"
+                           ReturnType="Done"
+                           IsSpellCheckEnabled="True"
                            Text="{Binding Data.Description, Mode= TwoWay}"
                            Style="{StaticResource EntryStyle}"/>
                 </StackLayout>
