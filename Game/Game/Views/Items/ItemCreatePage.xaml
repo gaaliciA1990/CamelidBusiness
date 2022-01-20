@@ -11,19 +11,18 @@
              Title="{Binding Title}">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Save" 
-                     Clicked="Save_Clicked" 
-                     IconImageSource="icon_save.png"/>
+        <ToolbarItem Text="Save"
+                     Clicked="Save_Clicked"
+                     IconImageSource="icon_save.png" />
     </ContentPage.ToolbarItems>
 
     <ContentPage.Resources>
         <ResourceDictionary>
-            <local_helpers:StringEnumConverter x:Key="StringEnum"/>
+            <local_helpers:StringEnumConverter x:Key="StringEnum" />
         </ResourceDictionary>
     </ContentPage.Resources>
 
     <ContentPage.Content>
-
         <ScrollView>
             <StackLayout>
                 <StackLayout x:Name="errorMessageList"
