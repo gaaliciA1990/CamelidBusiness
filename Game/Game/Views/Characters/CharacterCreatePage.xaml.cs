@@ -45,7 +45,7 @@ namespace Game.Views
             // Load the values for the Level into the Picker
             for (var i = 1; i <= LevelTableHelper.MaxLevel; i++)
             {
-                LevelPicker.Items.Add(i.ToString());
+                //LevelPicker.Items.Add(i.ToString());
             }
 
             this.ViewModel.Data.Level = 1;
@@ -69,7 +69,7 @@ namespace Game.Views
 
             // This resets the Picker to -1 index, need to reset it back
             ViewModel.Data.Level = level;
-            LevelPicker.SelectedIndex = ViewModel.Data.Level - 1;
+            //LevelPicker.SelectedIndex = ViewModel.Data.Level - 1;
 
             ManageHealth();
 
@@ -87,7 +87,7 @@ namespace Game.Views
         public void Level_Changed(object sender, EventArgs args)
         {
             // Change the Level
-            ViewModel.Data.Level = LevelPicker.SelectedIndex + 1;
+            //ViewModel.Data.Level = LevelPicker.SelectedIndex + 1;
 
             ManageHealth();
         }
@@ -253,6 +253,7 @@ namespace Game.Views
                 _ = ItemBox.Children.Remove(data);
             }
 
+            //Add a StackLayout for each of the children 
             ItemBox.Children.Add(GetItemToDisplay(ItemLocationEnum.Head));
             ItemBox.Children.Add(GetItemToDisplay(ItemLocationEnum.Necklass));
             ItemBox.Children.Add(GetItemToDisplay(ItemLocationEnum.PrimaryHand));
