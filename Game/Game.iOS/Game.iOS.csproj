@@ -307,4 +307,10 @@
   <ItemGroup>
     <BundleResource Include="Resources\troll3.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\leftarrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\rightarrow.png" />
+  </ItemGroup>
 </Project>

@@ -159,9 +159,11 @@
     <Content Include="item.png" />
     <Content Include="items.png" />
     <Content Include="knight.png" />
+    <Content Include="leftarrow.png" />
     <Content Include="neck1.png" />
     <Content Include="neck2.png" />
     <Content Include="Properties\Default.rd.xml" />
+    <Content Include="rightarrow.png" />
     <Content Include="ring1.png" />
     <Content Include="ring2.png" />
     <Content Include="score.png" />
