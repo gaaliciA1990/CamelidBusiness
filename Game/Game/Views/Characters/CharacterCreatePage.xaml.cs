@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-
+using Game.Helpers;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -20,6 +20,8 @@ namespace Game.Views
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0060:Remove unused parameter", Justification = "<Pending>")]
     public partial class CharacterCreatePage : ContentPage
     {
+        private List<String> imageList = GameImagesHelper.GetCharacterImage();
+
         // The Character to create
         public GenericViewModel<CharacterModel> ViewModel { get; set; }
 
