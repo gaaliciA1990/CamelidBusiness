@@ -357,6 +357,7 @@ namespace Game.Views
             ViewModel.Data.Attack = RandomPlayerHelper.GetAbilityValue();
             ViewModel.Data.Speed = RandomPlayerHelper.GetAbilityValue();
             ViewModel.Data.Defense = RandomPlayerHelper.GetAbilityValue();
+            ViewModel.Data.Level = RandomPlayerHelper.GetAbilityValue();
 
             // Randomize an Item for Location
             ViewModel.Data.Head = RandomPlayerHelper.GetItem(ItemLocationEnum.Head);
