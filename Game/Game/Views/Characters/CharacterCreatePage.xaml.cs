@@ -20,7 +20,11 @@ namespace Game.Views
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0060:Remove unused parameter", Justification = "<Pending>")]
     public partial class CharacterCreatePage : ContentPage
     {
+        //Local storage for images
         private List<String> imageList = GameImagesHelper.GetCharacterImage();
+
+        //index tracer for local storage
+        private int imageIndex = 0;
 
         // The Character to create
         public GenericViewModel<CharacterModel> ViewModel { get; set; }
@@ -408,6 +412,33 @@ namespace Game.Views
             parentAnimation.Commit(this, "ChildAnimations", 16, duration, null, null);
 
             return true;
+        }
+
+        /// <summary>
+        /// When the right button is clicked, the image will change to the next index or the beginning of the
+        /// index if at the last index. 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void RightButton_Clicked(object sender, EventArgs e)
+        {
+            int imageCount = imageList.Count;
+
+            // check if we are at the last photo and move to first photo when clicked
+            if (imageIndex == imageCount - 1)
+            {
+                imageIndex = 0;
+            }
+
+            // Move to the next photo in the list
+            if (imageIndex < imageCount - 1)
+            {
+                imageIndex++;
+            }
+
+            // Update the image
+            this.ViewModel.Data.ImageURI = imageList[imageIndex];
+            ImageLabel.Source = this.ViewModel.Data.ImageURI;
         }
     }
 }
