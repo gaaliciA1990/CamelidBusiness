@@ -309,8 +309,9 @@
 
                     </Grid>
                     <FlexLayout
-                                x:Name="ItemBox"
-                                HorizontalOptions="Center">
+                            x:Name="ItemBox"
+                            HorizontalOptions="Center"
+                            HeightRequest="100">
                     </FlexLayout>
 
                 </StackLayout>
