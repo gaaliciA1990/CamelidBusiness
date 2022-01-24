@@ -293,30 +293,39 @@
                                 </Slider.Margin>
                             </Slider>
                         </StackLayout>
+
                         <StackLayout Orientation="Horizontal" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2">
                             <Label Text="MAX HEALTH" FontSize="Medium" Style="{StaticResource LabelStyle}"/>
 
-                            <Label Grid.Row="4" Grid.Column="1"
+                            <Label
                                            x:Name="MaxHealthValue"
                                            Text="{Binding Data.MaxHealth, StringFormat= '{0:G} hp'}" 
                                            Style="{StaticResource ValueStyle}"/>
                         </StackLayout>
                     </Grid>
-                    <FlexLayout
-                            x:Name="ItemBox"
-                            HorizontalOptions="Center"
-                            HeightRequest="100">
-                    </FlexLayout>
-
                 </StackLayout>
+
+
+
+                <StackLayout
+                    Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+                    x:Name="ItemBox"
+                    Orientation="Horizontal"
+                    HorizontalOptions="Center"
+                    HeightRequest="100">
+                </StackLayout>
+
+
+
+
+
 
 
                 <AbsoluteLayout Padding="0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Grid.ColumnSpan="2">
                     <Frame x:Name="PopupLoadingView"  
                            IsVisible="false" 
-                           HeightRequest="300"
                            WidthRequest="300"
-                           Opacity=".9" 
+                           Opacity=".95" 
                            VerticalOptions="End"
                            AbsoluteLayout.LayoutBounds="0.5, 0.5, -1, -1" 
                            AbsoluteLayout.LayoutFlags="PositionProportional"
