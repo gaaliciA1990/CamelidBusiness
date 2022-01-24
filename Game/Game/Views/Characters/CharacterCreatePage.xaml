@@ -54,10 +54,10 @@
                                      HorizontalOptions="CenterAndExpand"
                                      VerticalOptions="CenterAndExpand">
                             <ImageButton x:Name="LeftButton"
-                                    Source="leftarrow.png"
-
-                                    BorderColor="DarkSlateGray"
-                                    CornerRadius="5" />
+                                         Source="leftarrow.png"
+                                         Clicked="LeftButton_Clicked"
+                                         BorderColor="DarkSlateGray"
+                                         CornerRadius="5" />
                             <Image  x:Name="ImageLabel"
                                     Source="{Binding Data.ImageURI}"
                                     HorizontalOptions="FillAndExpand"
@@ -65,10 +65,10 @@
                                     Aspect="AspectFit"
                                     Margin="10" />
                             <ImageButton x:Name="RightButton"
-                                    Source="rightarrow.png"
+                                         Source="rightarrow.png"
                                          Clicked="RightButton_Clicked"
-                                    BorderColor="DarkSlateGray"
-                                    CornerRadius="5" />
+                                         BorderColor="DarkSlateGray"
+                                         CornerRadius="5" />
                         </StackLayout>
 
                         <Entry Placeholder="Description"

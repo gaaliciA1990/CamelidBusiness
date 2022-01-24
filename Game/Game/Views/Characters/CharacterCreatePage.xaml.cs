@@ -440,5 +440,32 @@ namespace Game.Views
             this.ViewModel.Data.ImageURI = imageList[imageIndex];
             ImageLabel.Source = this.ViewModel.Data.ImageURI;
         }
+
+        /// <summary>
+        /// When the left button is clicked, the image will change to the previous index or the end of the
+        /// index if at 0.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void LeftButton_Clicked(object sender, EventArgs e)
+        {
+            int imageCount = imageList.Count;
+
+            // check if we are at the first photo and move to last photo when clicked
+            if (imageIndex == 0)
+            {
+                imageIndex = imageCount - 1;
+            }
+
+            // Move to the previous photo in the list
+            if (imageIndex > 0)
+            {
+                imageIndex--;
+            }
+
+            // Update the image
+            this.ViewModel.Data.ImageURI = imageList[imageIndex];
+            ImageLabel.Source = this.ViewModel.Data.ImageURI;
+        }
     }
 }
