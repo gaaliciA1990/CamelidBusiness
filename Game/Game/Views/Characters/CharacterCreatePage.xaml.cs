@@ -136,6 +136,16 @@ namespace Game.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
+        public void Level_OnSliderValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            LevelValue.Text = String.Format("{0}", Math.Round(e.NewValue));
+        }
+
+        /// <summary>
+        /// Catch the change to the Stepper for Attack
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void Attack_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
         {
             AttackValue.Text = String.Format("{0}", e.NewValue);

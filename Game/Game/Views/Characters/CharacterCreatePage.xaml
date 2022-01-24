@@ -151,13 +151,13 @@
                                 </Label>
 
                                 <Slider 
-                                        Maximum="15"
-                                        Minimum="0"
+                                        Maximum="20"
+                                        Minimum="1"
                                         BackgroundColor="White"
                                         Value="{Binding Data.Level, Mode=TwoWay}"
                                         HorizontalOptions="FillAndExpand"
                                         VerticalOptions="Center"
-                                        ValueChanged="Defense_OnStepperValueChanged">
+                                        ValueChanged="Level_OnSliderValueChanged">
                                     <Slider.Margin>
                                         <OnPlatform x:TypeArguments="Thickness">
                                             <On Platform="iOS"
