@@ -438,7 +438,7 @@ namespace Game.Views
 
             // Update the image
             this.ViewModel.Data.ImageURI = imageList[imageIndex];
-            ImageLabel.Source = this.ViewModel.Data.ImageURI;
+            UpdatePageBindingContext();
         }
 
         /// <summary>
@@ -465,7 +465,7 @@ namespace Game.Views
 
             // Update the image
             this.ViewModel.Data.ImageURI = imageList[imageIndex];
-            ImageLabel.Source = this.ViewModel.Data.ImageURI;
+            UpdatePageBindingContext();
         }
     }
 }
