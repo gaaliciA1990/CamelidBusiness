@@ -36,7 +36,7 @@
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
                     <StackLayout Grid.Row="0"
@@ -111,88 +111,278 @@
                                  VerticalOptions="FillAndExpand"
                                  Padding="10"
                                  Style="{StaticResource OuterBoxStack}">
-
                         
-                        <StackLayout Style="{StaticResource VerticalStack}"
-                                     Grid.Column="1"
-                                     >
+                        
+                        <Grid HorizontalOptions="Center"
+                              VerticalOptions="FillAndExpand"
+                              Padding="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
 
-                            <Label Text="Attack" Style="{StaticResource LabelStyle}"/>
+                            <Label Text="LEVEL: "
+                                   FontSize="Medium"
+                                   Grid.Row="0"
+                                   Grid.Column="0"
+                                   Style="{StaticResource LabelStyle}"
+                                   VerticalOptions="Center" />
 
-                            <StackLayout Style="{StaticResource HorizontalStack}" Padding="10,0,10,0">
+                            <StackLayout Grid.Row="0"
+                                         Grid.Column="1"
+                                         Orientation="Horizontal"
+                                         VerticalOptions="Center">
 
-                                <Label 
-                                    Text="{Binding Data.Attack, Mode=TwoWay}" 
-                                    x:Name="AttackValue"
-                                    Style="{StaticResource ValueStyle}"
-                                    Padding="0,0,10,0"
-                                    HorizontalOptions="End"
-                                    HorizontalTextAlignment="End"/>
+                                <Label x:Name="LevelValue"
+                                       Text="{Binding Data.Defense, Mode=TwoWay}" 
+                                       Style="{StaticResource ValueStyle}"
+                                       FontAttributes="Bold"
+                                       HorizontalOptions="Start"
+                                       HorizontalTextAlignment="Start"
+                                       VerticalOptions="Center">
+                                    <Label.Margin>
+                                        <OnPlatform x:TypeArguments="Thickness">
+                                            <On Platform="iOS"
+                                                Value="15,0" />
+                                            <On Platform="Android"
+                                                Value="10,0" />
+                                        </OnPlatform>
+                                    </Label.Margin>
+                                </Label>
 
-                                <Stepper 
-                                    Value="{Binding Data.Attack, Mode=TwoWay}"
-                                    ValueChanged="Attack_OnStepperValueChanged"/>
+                                <Slider 
+                                        Maximum="15"
+                                        Minimum="0"
+                                        BackgroundColor="White"
+                                        Value="{Binding Data.Level, Mode=TwoWay}"
+                                        HorizontalOptions="FillAndExpand"
+                                        VerticalOptions="Center"
+                                        ValueChanged="Defense_OnStepperValueChanged">
+                                    <Slider.Margin>
+                                        <OnPlatform x:TypeArguments="Thickness">
+                                            <On Platform="iOS"
+                                                Value="15,0" />
+                                            <On Platform="Android"
+                                                Value="10,0" />
+                                        </OnPlatform>
+                                    </Slider.Margin>
+                                </Slider>
 
                             </StackLayout>
 
-                            <Label Text="Defense" Style="{StaticResource LabelStyle}"/>
+                            <Label Text="ATK: "
+                                   FontSize="Medium"
+                                   Grid.Row="1"
+                                   Grid.Column="0"
+                                   Style="{StaticResource LabelStyle}"
+                                   VerticalOptions="Center" />
 
-                            <StackLayout Style="{StaticResource HorizontalStack}" Padding="10,0,10,0">
+                            <StackLayout Grid.Row="1"
+                                         Grid.Column="1"
+                                         Orientation="Horizontal"
+                                         VerticalOptions="Center">
 
-                                <Label 
-                                    Text="{Binding Data.Defense, Mode=TwoWay}" 
-                                    x:Name="DefenseValue"
-                                    Style="{StaticResource ValueStyle}"
-                                    Padding="0,0,10,0"
-                                    HorizontalOptions="End"
-                                    HorizontalTextAlignment="End"/>
+                                <Label x:Name="AttackValue"
+                                       Text="{Binding Data.Attack, Mode=TwoWay}" 
+                                       Style="{StaticResource ValueStyle}"
+                                       FontAttributes="Bold"
+                                       HorizontalOptions="Start"
+                                       HorizontalTextAlignment="Start"
+                                       VerticalOptions="Center">
+                                    <Label.Margin>
+                                        <OnPlatform x:TypeArguments="Thickness">
+                                            <On Platform="iOS"
+                                                Value="15,0" />
+                                            <On Platform="Android"
+                                                Value="10,0" />
+                                        </OnPlatform>
+                                    </Label.Margin>
+                                </Label>
 
-                                <Stepper 
-                                    Value="{Binding Data.Defense, Mode=TwoWay}"
-                                    ValueChanged="Defense_OnStepperValueChanged"/>
+                                <Slider 
+                                        Maximum="15"
+                                        Minimum="0"
+                                        BackgroundColor="White"
+                                        Value="{Binding Data.Attack, Mode=TwoWay}"
+                                        HorizontalOptions="FillAndExpand"
+                                        VerticalOptions="Center"
+                                        ValueChanged="Attack_OnStepperValueChanged">
+                                    <Slider.Margin>
+                                        <OnPlatform x:TypeArguments="Thickness">
+                                            <On Platform="iOS"
+                                                Value="15,0" />
+                                            <On Platform="Android"
+                                                Value="10,0" />
+                                        </OnPlatform>
+                                    </Slider.Margin>
+                                </Slider>
 
                             </StackLayout>
 
-                            <Label Text="Speed" Style="{StaticResource LabelStyle}"/>
+                            <Label Text="DEF: "
+                                   FontSize="Medium"
+                                   Grid.Row="2"
+                                   Grid.Column="0"
+                                   Style="{StaticResource LabelStyle}"
+                                   VerticalOptions="Center" />
 
-                            <StackLayout Style="{StaticResource HorizontalStack}" Padding="10,0,10,0">
+                            <StackLayout Grid.Row="2"
+                                         Grid.Column="1"
+                                         Orientation="Horizontal"
+                                         VerticalOptions="Center">
 
-                                <Label 
-                                    Text="{Binding Data.Speed, Mode=TwoWay}" 
-                                    x:Name="SpeedValue"
-                                    Style="{StaticResource ValueStyle}"
-                                    Padding="0,0,10,0"
-                                    HorizontalOptions="End"
-                                    HorizontalTextAlignment="End"/>
+                                <Label x:Name="DefenseValue"
+                                       Text="{Binding Data.Defense, Mode=TwoWay}" 
+                                       Style="{StaticResource ValueStyle}"
+                                       FontAttributes="Bold"
+                                       HorizontalOptions="Start"
+                                       HorizontalTextAlignment="Start"
+                                       VerticalOptions="Center">
+                                    <Label.Margin>
+                                        <OnPlatform x:TypeArguments="Thickness">
+                                            <On Platform="iOS"
+                                                Value="15,0" />
+                                            <On Platform="Android"
+                                                Value="10,0" />
+                                        </OnPlatform>
+                                    </Label.Margin>
+                                </Label>
 
-                                <Stepper 
-                                    Value="{Binding Data.Speed, Mode=TwoWay}"
-                                    ValueChanged="Speed_OnStepperValueChanged"/>
+                                <Slider 
+                                        Maximum="15"
+                                        Minimum="0"
+                                        BackgroundColor="White"
+                                        Value="{Binding Data.Defense, Mode=TwoWay}"
+                                        HorizontalOptions="FillAndExpand"
+                                        VerticalOptions="Center"
+                                        ValueChanged="Defense_OnStepperValueChanged">
+                                    <Slider.Margin>
+                                        <OnPlatform x:TypeArguments="Thickness">
+                                            <On Platform="iOS"
+                                                Value="15,0" />
+                                            <On Platform="Android"
+                                                Value="10,0" />
+                                        </OnPlatform>
+                                    </Slider.Margin>
+                                </Slider>
 
                             </StackLayout>
 
-                            <StackLayout Orientation="Horizontal">
-                                <Label
-                                Text="Max Health" 
-                                Style="{StaticResource LabelStyle}"/>
+                            <Label Text="SPD: "
+                                   FontSize="Medium"
+                                   Grid.Row="3"
+                                   Grid.Column="0"
+                                   Style="{StaticResource LabelStyle}"
+                                   VerticalOptions="Center" />
+
+                            <StackLayout Grid.Row="3"
+                                         Grid.Column="1"
+                                         Orientation="Horizontal"
+                                         VerticalOptions="Center">
+
+                                <Label x:Name="SpeedValue"
+                                       Text="{Binding Data.Speed, Mode=TwoWay}" 
+                                       Style="{StaticResource ValueStyle}"
+                                       FontAttributes="Bold"
+                                       HorizontalOptions="Start"
+                                       HorizontalTextAlignment="Start"
+                                       VerticalOptions="Center">
+                                    <Label.Margin>
+                                        <OnPlatform x:TypeArguments="Thickness">
+                                            <On Platform="iOS"
+                                                Value="15,0" />
+                                            <On Platform="Android"
+                                                Value="10,0" />
+                                        </OnPlatform>
+                                    </Label.Margin>
+                                </Label>
+
+                                <Slider 
+                                        Maximum="15"
+                                        Minimum="0"
+                                        BackgroundColor="White"
+                                        Value="{Binding Data.Speed, Mode=TwoWay}"
+                                        HorizontalOptions="FillAndExpand"
+                                        VerticalOptions="Center"
+                                        ValueChanged="Speed_OnStepperValueChanged">
+                                    <Slider.Margin>
+                                        <OnPlatform x:TypeArguments="Thickness">
+                                            <On Platform="iOS"
+                                                Value="15,0" />
+                                            <On Platform="Android"
+                                                Value="10,0" />
+                                        </OnPlatform>
+                                    </Slider.Margin>
+                                </Slider>
+
+                            </StackLayout>
+
+                            <Label Text="RANGE: "
+                                   FontSize="Medium"
+                                   Grid.Row="4"
+                                   Grid.Column="0"
+                                   Style="{StaticResource LabelStyle}"
+                                   VerticalOptions="Center" />
+
+                            <StackLayout Grid.Row="4"
+                                         Grid.Column="1"
+                                         Orientation="Horizontal"
+                                         VerticalOptions="Center">
+
+                                <Label x:Name="RangeValue"
+                                       Text="{Binding Data.Range, Mode=TwoWay}" 
+                                       Style="{StaticResource ValueStyle}"
+                                       FontAttributes="Bold"
+                                       HorizontalOptions="Start"
+                                       HorizontalTextAlignment="Start"
+                                       VerticalOptions="Center">
+                                    <Label.Margin>
+                                        <OnPlatform x:TypeArguments="Thickness">
+                                            <On Platform="iOS"
+                                                Value="15,0" />
+                                            <On Platform="Android"
+                                                Value="10,0" />
+                                        </OnPlatform>
+                                    </Label.Margin>
+                                </Label>
+
+                                <Slider 
+                                        Maximum="15"
+                                        Minimum="0"
+                                        BackgroundColor="White"
+                                        Value="{Binding Data.Defense, Mode=TwoWay}"
+                                        HorizontalOptions="FillAndExpand"
+                                        VerticalOptions="Center"
+                                        ValueChanged="Defense_OnStepperValueChanged">
+                                    <Slider.Margin>
+                                        <OnPlatform x:TypeArguments="Thickness">
+                                            <On Platform="iOS"
+                                                Value="15,0" />
+                                            <On Platform="Android"
+                                                Value="10,0" />
+                                        </OnPlatform>
+                                    </Slider.Margin>
+                                </Slider>
+
+                            </StackLayout>
+
+                            <StackLayout Orientation="Horizontal" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2">
+                                <Label Text="MAX HEALTH" FontSize="Medium" Style="{StaticResource LabelStyle}"/>
 
                                 <Label Grid.Row="4" Grid.Column="1"
-                                x:Name="MaxHealthValue"
-                                Text="{Binding Data.MaxHealth, StringFormat= '{0:G} hp'}" 
-                                Style="{StaticResource ValueStyle}"/>
+                                       x:Name="MaxHealthValue"
+                                       Text="{Binding Data.MaxHealth, StringFormat= '{0:G} hp'}" 
+                                       Style="{StaticResource ValueStyle}"/>
                             </StackLayout>
-
-                            <StackLayout
+                        </Grid>
+                        <StackLayout
                                 Orientation="Horizontal"
                                 x:Name="ItemBox"
-                                HorizontalOptions="Center"
-                                BackgroundColor="White">
-                                
-                            </StackLayout>
+                                HorizontalOptions="Center">
+
                         </StackLayout>
-                    </StackLayout>
-
-
+ 
+                    </StackLayout> 
                 </Grid>
             </ScrollView>
             
