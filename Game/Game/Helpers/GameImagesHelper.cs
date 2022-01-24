@@ -21,5 +21,12 @@ namespace Game.Helpers
 
             return ItemImageList;
         }
+
+        public static List<String> GetCharacterImage()
+        {
+            List<String> ImageList = new List<String> { "elf1.png", "elf2.png", "elf3.png", "elf4.png", "elf5.png", "elf6.png", "elf7.png", "knight.png", "troll1.png", "troll4.png" };
+
+            return ImageList;
+        }
     }
 }
