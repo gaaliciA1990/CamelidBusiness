@@ -206,7 +206,7 @@
                                         Value="{Binding Data.Attack, Mode=TwoWay}"
                                         HorizontalOptions="FillAndExpand"
                                         VerticalOptions="Center"
-                                        ValueChanged="Attack_OnStepperValueChanged">
+                                        ValueChanged="Attack_OnSliderValueChanged">
                                     <Slider.Margin>
                                         <OnPlatform x:TypeArguments="Thickness">
                                             <On Platform="iOS"
@@ -255,7 +255,7 @@
                                         Value="{Binding Data.Defense, Mode=TwoWay}"
                                         HorizontalOptions="FillAndExpand"
                                         VerticalOptions="Center"
-                                        ValueChanged="Defense_OnStepperValueChanged">
+                                        ValueChanged="Defense_OnSliderValueChanged">
                                     <Slider.Margin>
                                         <OnPlatform x:TypeArguments="Thickness">
                                             <On Platform="iOS"
@@ -304,7 +304,7 @@
                                         Value="{Binding Data.Speed, Mode=TwoWay}"
                                         HorizontalOptions="FillAndExpand"
                                         VerticalOptions="Center"
-                                        ValueChanged="Speed_OnStepperValueChanged">
+                                        ValueChanged="Speed_OnSliderValueChanged">
                                     <Slider.Margin>
                                         <OnPlatform x:TypeArguments="Thickness">
                                             <On Platform="iOS"
@@ -353,7 +353,7 @@
                                         Value="{Binding Data.Defense, Mode=TwoWay}"
                                         HorizontalOptions="FillAndExpand"
                                         VerticalOptions="Center"
-                                        ValueChanged="Defense_OnStepperValueChanged">
+                                        >
                                     <Slider.Margin>
                                         <OnPlatform x:TypeArguments="Thickness">
                                             <On Platform="iOS"
