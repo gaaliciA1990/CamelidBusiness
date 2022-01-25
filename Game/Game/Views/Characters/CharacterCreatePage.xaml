@@ -372,12 +372,13 @@
                         </StackLayout>
 
                         <StackLayout Orientation="Horizontal" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2">
-                            <Label Text="MAX HEALTH" FontSize="Medium" Style="{StaticResource LabelStyle}"/>
+                            <Label Text="MH" FontSize="Medium" Style="{StaticResource LabelStyle}"/>
 
                             <Label Grid.Row="4" Grid.Column="1"
-                                       x:Name="MaxHealthValue"
-                                       Text="{Binding Data.MaxHealth, StringFormat= '{0:G} hp'}" 
-                                       Style="{StaticResource ValueStyle}"/>
+                                   x:Name="MaxHealthValue"
+                                   Text="{Binding Data.MaxHealth, StringFormat= '{0:G} hp'}"
+                                   Style="{StaticResource ValueStyle}"
+                                   FontSize="Medium"/>
                         </StackLayout>
                     </Grid>
                 </StackLayout>
@@ -387,12 +388,12 @@
                     Grid.ColumnSpan="2"
                     x:Name="ItemBox"
                     HorizontalOptions="Center"
+                    Orientation="Horizontal"
                     HeightRequest="100">
                 </StackLayout>
 
                 <!--The Item Popup-->
-                <AbsoluteLayout Padding="0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Grid.ColumnSpan="2">
-                    <Frame x:Name="PopupItemSelector"
+                <StackLayout x:Name="PopupItemSelector"
                              BackgroundColor="{StaticResource PageBackgroundColor}" 
                              IsVisible="false" 
                              AbsoluteLayout.LayoutBounds=".5, .5,.5,.5" 
@@ -401,19 +402,19 @@
                              WidthRequest="350"
                              HeightRequest="350">
 
-                        <StackLayout 
+                    <StackLayout 
                         VerticalOptions="CenterAndExpand" 
                         HorizontalOptions="CenterAndExpand"
                         WidthRequest="300"
                         HeightRequest="300"
                     >
 
-                            <Frame  BorderColor="{StaticResource TriciaryTextColor}" Padding="1">
-                                <StackLayout Style="{StaticResource VerticalStack}" HorizontalOptions="CenterAndExpand" Padding="2" BackgroundColor="Beige">
-                                    <Label x:Name="PopupLocationLabel" Style="{StaticResource PopupItemTextStyle}" />
-                                    <Label x:Name="PopupLocationValue" Style="{StaticResource PopupItemTextStyle}" />
+                        <Frame  BorderColor="{StaticResource TriciaryTextColor}" Padding="1">
+                            <StackLayout Style="{StaticResource VerticalStack}" HorizontalOptions="CenterAndExpand" Padding="2" BackgroundColor="Beige">
+                                <Label x:Name="PopupLocationLabel" Style="{StaticResource PopupItemTextStyle}" />
+                                <Label x:Name="PopupLocationValue" Style="{StaticResource PopupItemTextStyle}" />
 
-                                    <ListView x:Name="PopupLocationItemListView" 
+                                <ListView x:Name="PopupLocationItemListView" 
                                 CachingStrategy="RecycleElement"
                                 ItemSelected="OnPopupItemSelected"
                                 HasUnevenRows="true"
@@ -421,53 +422,52 @@
                                 RowHeight="80"
                                 >
 
-                                        <ListView.ItemTemplate>
-                                            <DataTemplate>
-                                                <ViewCell>
-                                                    <Grid ColumnSpacing="5" RowSpacing="1">
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition Width="auto"/>
-                                                            <ColumnDefinition Width="*"/>
-                                                        </Grid.ColumnDefinitions>
-                                                        <Grid.RowDefinitions>
-                                                            <RowDefinition Height="auto"/>
-                                                            <RowDefinition Height="auto"/>
-                                                            <RowDefinition Height="auto"/>
-                                                        </Grid.RowDefinitions>
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <ViewCell>
+                                                <Grid ColumnSpacing="5" RowSpacing="1">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="auto"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="auto"/>
+                                                        <RowDefinition Height="auto"/>
+                                                        <RowDefinition Height="auto"/>
+                                                    </Grid.RowDefinitions>
 
-                                                        <Image  Grid.Column="0" Grid.Row="0" Grid.RowSpan="3"
+                                                    <Image  Grid.Column="0" Grid.Row="0" Grid.RowSpan="3"
                                             Source="{Binding ImageURI}"
                                             Style="{StaticResource ImageSmallStyle}"
                                             VerticalOptions="CenterAndExpand"/>
 
-                                                        <Label Grid.Column="1" Grid.Row="0"
+                                                    <Label Grid.Column="1" Grid.Row="0"
                                             Text="{Binding Name}" 
                                             Style="{StaticResource ListStyle}"/>
 
-                                                        <StackLayout Grid.Column="1" Grid.Row="1" Orientation="Horizontal">
-                                                            <Label Text="{Binding Attribute}" Style="{StaticResource ListStyle}"/>
-                                                            <Label Text="{Binding Value}" Style="{StaticResource ListStyle}"/>
-                                                        </StackLayout>
+                                                    <StackLayout Grid.Column="1" Grid.Row="1" Orientation="Horizontal">
+                                                        <Label Text="{Binding Attribute}" Style="{StaticResource ListStyle}"/>
+                                                        <Label Text="{Binding Value}" Style="{StaticResource ListStyle}"/>
+                                                    </StackLayout>
 
-                                                        <Label Grid.Column="1" Grid.Row="2"
+                                                    <Label Grid.Column="1" Grid.Row="2"
                                                 Text="{Binding Description}" 
                                                 Style="{StaticResource ListStyle}"
                                                 FontSize="Micro"/>
-                                                    </Grid>
-                                                </ViewCell>
-                                            </DataTemplate>
-                                        </ListView.ItemTemplate>
-                                    </ListView>
+                                                </Grid>
+                                            </ViewCell>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
 
-                                    <Button x:Name="PopupCloseButton" 
+                                <Button x:Name="PopupCloseButton" 
                                 Clicked="ClosePopup_Clicked" 
                                 Text="Close"/>
-                                </StackLayout>
-                            </Frame>
-                        </StackLayout>
-                    </Frame>
-                </AbsoluteLayout>
-                
+                            </StackLayout>
+                        </Frame>
+                    </StackLayout>
+                </StackLayout>
+
             </Grid>
         </ScrollView>
     </ContentPage.Content>
