@@ -9,70 +9,80 @@
              Title="{Binding Title}">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add" Clicked="Add_Clicked" IconImageSource="icon_add.png"/>
+        <ToolbarItem Text="Add"
+                     Clicked="Add_Clicked"
+                     IconImageSource="icon_add.png" />
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
         <StackLayout Style="{StaticResource OuterBoxStack}">
 
-            <Label Text="Items List Page" Style="{StaticResource HeaderStyle}"/>
+            <Label Font="Bold"
+                   HorizontalOptions="CenterAndExpand"
+                   Text="Character List Page"
+                   Style="{StaticResource HeaderStyle}" />
 
-            <ListView x:Name="CharactersListView" 
-                    ItemsSource="{Binding Dataset}"
-                    IsRefreshing="{Binding IsBusy, Mode=OneWay}"
-                    RefreshCommand="{Binding LoadItemsCommand}"
-                    CachingStrategy="RecycleElement"
-                    ItemSelected="OnItemSelected"
-                    HasUnevenRows="true"
-                    Margin="5,0,5,0"
-                    RowHeight="80"
-                    >
-                
-                <ListView.ItemTemplate>
+            <FlexLayout x:Name="CharactersListView"
+                        BindableLayout.ItemsSource="{Binding Dataset}"
+                        Wrap="Wrap"
+                        Direction="Row"
+                        JustifyContent="SpaceEvenly">
+
+                <BindableLayout.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell>
-                            <Grid ColumnSpacing="5" RowSpacing="1">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="auto"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                </Grid.RowDefinitions>
+                        <Grid HeightRequest="200">
 
-                                <Image  Grid.Column="0" Grid.Row="0" Grid.RowSpan="3"
-                                        Source="{Binding ImageURI}"
-                                        Style="{StaticResource ImageMediumStyle}"
-                                        VerticalOptions="CenterAndExpand"/>
+                            <StackLayout Grid.Column="0"
+                                         Grid.Row="0">
 
-                                <Label Grid.Column="1" Grid.Row="0"
-                                       Text="{Binding Name}" 
-                                       Style="{StaticResource ListStyle}"/>
+                                <Frame OutlineColor="Black"
+                                       Padding="1">
 
-                                <StackLayout Grid.Column="1" Grid.Row="1"
-                                    Orientation="Horizontal">
-                                    
-                                    <Label 
-                                       Text="{Binding Path=Level, StringFormat='Level {0:G}'}" 
-                                       Style="{StaticResource ListStyle}"/>
+                                    <StackLayout BackgroundColor="Beige"
+                                                 WidthRequest="150"
+                                                 Padding="20">
 
-                                    <Label Text="{Binding Path=MaxHealth, StringFormat= '{0:G} hp'}" 
-                                        Style="{StaticResource ListStyle}"/>
-                                
-                                </StackLayout>
+                                        <Image Source="{Binding ImageURI}"
+                                               Style="{StaticResource ImageBattleLargeStyle}"
+                                               HorizontalOptions="CenterAndExpand" />
 
-                                <Label Grid.Column="1" Grid.Row="2"
-                                       Text="{Binding Description}" 
-                                       Style="{StaticResource ListStyle}"
-                                       FontSize="Micro"/>
+                                        <Label Text="{Binding Name}"
+                                               Style="{StaticResource ListStyle}"
+                                               HorizontalTextAlignment="Center"
+                                               HorizontalOptions="CenterAndExpand" />
 
-                            </Grid>
-                        </ViewCell>
+                                        <StackLayout Orientation="Horizontal"
+                                                     HorizontalOptions="CenterAndExpand">
+
+                                            <Label Text="{Binding Path=Level, StringFormat='Level {0:G}'}"
+                                                   Style="{StaticResource ListStyle}" />
+
+                                            <Label Text="{Binding Path=MaxHealth, StringFormat= '{0:G} hp'}"
+                                                   Style="{StaticResource ListStyle}" />
+
+                                        </StackLayout>
+
+                                        <Label Text="{Binding Description}"
+                                               Style="{StaticResource ListStyle}"
+                                               FontSize="Micro"
+                                               HorizontalTextAlignment="Center"
+                                               HorizontalOptions="CenterAndExpand" />
+
+                                    </StackLayout>
+                                </Frame>
+
+                            </StackLayout>
+
+                            <ImageButton Grid.Column="0"
+                                         Grid.Row="0"
+                                         HorizontalOptions="FillAndExpand"
+                                         VerticalOptions="FillAndExpand"
+                                         Clicked="FlexCharacter_Clicked"
+                                         CommandParameter="{Binding Id}" />
+                        </Grid>
                     </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+                </BindableLayout.ItemTemplate>
+            </FlexLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
