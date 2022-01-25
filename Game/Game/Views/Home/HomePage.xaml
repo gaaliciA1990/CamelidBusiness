@@ -19,7 +19,7 @@
                          Source="logo_placeholder.png"
                          Style="{StaticResource ImageLargeStyle}"/>
                     <Label 
-                        Text="Mountain Alpaca"
+                        Text="Camelid Business"
                         Style="{StaticResource CenterMessageStyle}"
                         FontSize="Large"
                         LineBreakMode="WordWrap"
