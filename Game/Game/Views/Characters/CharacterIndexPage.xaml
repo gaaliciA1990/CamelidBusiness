@@ -15,89 +15,107 @@
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
-        <StackLayout Style="{StaticResource OuterBoxStack}">
+        <ScrollView>
+            <StackLayout Style="{StaticResource OuterBoxStack}">
 
-            <Label Font="Bold"
-                   HorizontalOptions="CenterAndExpand"
-                   Text="Character List Page"
-                   Style="{StaticResource HeaderStyle}" />
+                <Label Font="Bold"
+                       HorizontalOptions="CenterAndExpand"
+                       Text="Character List Page"
+                       Style="{StaticResource HeaderStyle}" />
 
-            <FlexLayout x:Name="CharactersListView"
-                        BindableLayout.ItemsSource="{Binding Dataset}"
-                        Wrap="Wrap"
-                        Direction="Row"
-                        JustifyContent="SpaceEvenly">
+                <FlexLayout x:Name="CharactersListView"
+                            BindableLayout.ItemsSource="{Binding Dataset}"
+                            Wrap="Wrap"
+                            Direction="Row"
+                            JustifyContent="SpaceEvenly">
 
-                <BindableLayout.ItemTemplate>
-                    <DataTemplate>
-                        <Grid HeightRequest="200">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Grid HeightRequest="200">
 
-                            <StackLayout Grid.Column="0"
-                                         Grid.Row="0">
+                                <StackLayout Grid.Column="0"
+                                             Grid.Row="0">
 
-                                <Frame OutlineColor="Black"
-                                       Padding="1">
-                                    <Grid BackgroundColor="Beige"
-                                          WidthRequest="200"
-                                          Padding="20">
+                                    <Frame OutlineColor="Black"
+                                           Padding="1">
+                                        <Grid BackgroundColor="LightSeaGreen"
+                                              WidthRequest="200"
+                                              Padding="20">
 
-                                        <Image x:Name="ImageLabel"
-                                               Source="{Binding ImageURI}"
-                                               Style="{StaticResource ImageBattleLargeStyle}"
-                                               HorizontalOptions="StartAndExpand" />
-
-                                        <StackLayout Grid.Column="1"
-                                                     Grid.Row="0"
-                                                     Orientation="Vertical">
                                             <Frame OutlineColor="Black"
-                                                   BackgroundColor="LightGray"
-                                                   Padding="1"
-                                                   WidthRequest="100">
-                                                <Label x:Name="NameLabel"
-                                                       Text="{Binding Name}"
-                                                       Style="{StaticResource ListStyle}"
-                                                       BackgroundColor="LightGray"
-                                                       FontAttributes="Bold"
-                                                       HorizontalOptions="CenterAndExpand" />
+                                                   BackgroundColor="LightBlue"
+                                                   Padding="5"
+                                                   HeightRequest="100">
+                                                <Image x:Name="ImageLabel"
+                                                       Source="{Binding ImageURI}"
+                                                       Style="{StaticResource ImageBattleLargeStyle}"
+                                                       HorizontalOptions="StartAndExpand" />
                                             </Frame>
                                             
-                                            <StackLayout Orientation="Horizontal">
+                                            <StackLayout Grid.Column="1"
+                                                         Grid.Row="0"
+                                                         Orientation="Vertical">
                                                 <Frame OutlineColor="Black"
-                                                       Padding="3"
-                                                       BackgroundColor="LightCyan">
-                                                    <Label x:Name="LevelLabel"
-                                                           Text="{Binding Path=Level, StringFormat='LVL {0:G}'}"
+                                                       BackgroundColor="LightGray"
+                                                       Padding="1"
+                                                       WidthRequest="100">
+                                                    <Label x:Name="NameLabel"
+                                                           Text="{Binding Name}"
                                                            Style="{StaticResource ListStyle}"
+                                                           BackgroundColor="LightGray"
                                                            FontAttributes="Bold"
-                                                           HorizontalTextAlignment="Center"/>
+                                                           HorizontalOptions="CenterAndExpand" />
                                                 </Frame>
+                                            
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Frame OutlineColor="Black"
+                                                           Padding="3"
+                                                           BackgroundColor="LightCyan">
+                                                        <Label x:Name="LevelLabel"
+                                                               Text="{Binding Path=Level, StringFormat='LVL {0:G}'}"
+                                                               Style="{StaticResource ListStyle}"
+                                                               FontAttributes="Bold"
+                                                               HorizontalTextAlignment="Center"/>
+                                                    </Frame>
 
-                                                <Frame OutlineColor="Black"
-                                                       Padding="3"
-                                                       BackgroundColor="LightCyan">
-                                                    <Label x:Name="
-                                                           MaxHealthLabel"
-                                                           Text="{Binding Path=MaxHealth, StringFormat='HP {0:G}'}"
-                                                           Style="{StaticResource ListStyle}"
-                                                           FontAttributes="Bold" />
-                                                </Frame>
+                                                    <Frame OutlineColor="Black"
+                                                           Padding="3"
+                                                           BackgroundColor="LightCyan">
+                                                        <Label x:Name="MaxHealthLabel"
+                                                               Text="{Binding Path=MaxHealth, StringFormat='HP {0:G}'}"
+                                                               Style="{StaticResource ListStyle}"
+                                                               FontAttributes="Bold" />
+                                                    </Frame>
+                                                </StackLayout>
+
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Frame OutlineColor="Black"
+                                                           Padding="3"
+                                                           BackgroundColor="LightCyan">
+                                                        <Label x:Name="XPLabel"
+                                                               Text="{Binding Path=ExperienceTotal, StringFormat='XP {0:G}'}"
+                                                               Style="{StaticResource ListStyle}"
+                                                               FontAttributes="Bold" />
+                                                    </Frame>
+                                                </StackLayout>
                                             </StackLayout>
-                                        </StackLayout>
-                                    </Grid>
-                                </Frame>
+                                        </Grid>
+                                    </Frame>
 
-                            </StackLayout>
+                                </StackLayout>
 
-                            <ImageButton Grid.Column="0"
-                                         Grid.Row="0"
-                                         HorizontalOptions="FillAndExpand"
-                                         VerticalOptions="FillAndExpand"
-                                         Clicked="FlexCharacter_Clicked"
-                                         CommandParameter="{Binding Id}" />
-                        </Grid>
-                    </DataTemplate>
-                </BindableLayout.ItemTemplate>
-            </FlexLayout>
-        </StackLayout>
+                                <ImageButton Grid.Column="0"
+                                             Grid.Row="0"
+                                             HorizontalOptions="FillAndExpand"
+                                             VerticalOptions="FillAndExpand"
+                                             HeightRequest="200"
+                                             Clicked="FlexCharacter_Clicked"
+                                             CommandParameter="{Binding Id}" />
+                            </Grid>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </FlexLayout>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
