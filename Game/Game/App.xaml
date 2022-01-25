@@ -23,8 +23,8 @@
                 -->
 
             <Color x:Key="PageBackgroundColor">tan</Color>
-            <Color x:Key="ViewBackgroundColor">brown</Color>
-            <Color x:Key="NavigationBarColor">orange</Color>
+            <Color x:Key="ViewBackgroundColor">tan</Color>
+            <Color x:Key="NavigationBarColor">tan</Color>
 
             <Color x:Key="PrimaryBackgroundColor">red</Color>
             <Color x:Key="SecondaryBackgroundColor">gray</Color>
