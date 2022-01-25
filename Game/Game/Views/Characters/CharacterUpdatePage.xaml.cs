@@ -27,7 +27,12 @@ namespace Game.Views
         private int imageIndex = 0;
 
         //backup data
-        private CharacterModel BackupData;
+        private readonly CharacterModel BackupData;
+
+        //Flag to control whether Max Health should be updated 
+        //This is a workaround for when binding cause the value on the Level slider to change
+        //thus invoke ManageHealth, which is not our intention.
+        private bool updateMH = false;
 
         // The Character to create
         public GenericViewModel<CharacterModel> ViewModel { get; set; }
@@ -45,6 +50,10 @@ namespace Game.Views
         {
             InitializeComponent();
 
+            this.ViewModel = data;
+            //Create a backup
+            BackupData = new CharacterModel(data.Data);
+            //_ = UpdatePageBindingContext();
             BindingContext = this.ViewModel = data;
 
             this.ViewModel.Title = "Update " + data.Title;
@@ -52,10 +61,7 @@ namespace Game.Views
             NameEntry.Placeholder = "Give your character a name";
             DescriptionEntry.Placeholder = "Describe your character";
 
-            //Create a backup
-            BackupData = new CharacterModel(data.Data);
-
-            _ = UpdatePageBindingContext();
+            updateMH = true;
         }
 
         /// <summary>
@@ -64,14 +70,17 @@ namespace Game.Views
         /// <returns></returns>
         public bool UpdatePageBindingContext()
         {
+            //Don't update MH when re-binding
+            updateMH = false;
 
             // Clear the Binding and reset it
             BindingContext = null;
             BindingContext = this.ViewModel;
 
-            ManageHealth();
-
             AddItemsToDisplay();
+
+            //Set flag to okay after binding
+            updateMH = true;
 
             return true;
         }
@@ -92,6 +101,12 @@ namespace Game.Views
         /// </summary>
         public void ManageHealth()
         {
+            //No need to update MH when don't have to
+            if(updateMH == false)
+            {
+                return;
+            }
+
             // Roll for new HP
             ViewModel.Data.MaxHealth = RandomPlayerHelper.GetHealth(ViewModel.Data.Level);
 
