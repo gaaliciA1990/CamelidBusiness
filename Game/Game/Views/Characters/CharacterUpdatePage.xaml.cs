@@ -49,6 +49,9 @@ namespace Game.Views
 
             this.ViewModel.Title = "Update " + data.Title;
 
+            NameEntry.Placeholder = "Give your character a name";
+            DescriptionEntry.Placeholder = "Describe your character";
+
             //Create a backup
             BackupData = new CharacterModel(data.Data);
 
@@ -122,6 +125,12 @@ namespace Game.Views
             if (string.IsNullOrEmpty(ViewModel.Data.ImageURI))
             {
                 ViewModel.Data.ImageURI = new CharacterModel().ImageURI;
+            }
+
+            bool isValid = Entry_Validator();
+            if(isValid == false)
+            {
+                return;
             }
 
             MessagingCenter.Send(this, "Create", ViewModel.Data);
