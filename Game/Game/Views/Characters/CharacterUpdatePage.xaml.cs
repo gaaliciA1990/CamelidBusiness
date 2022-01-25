@@ -42,7 +42,7 @@ namespace Game.Views
             // Load the values for the Level into the Picker
             for (var i = 1; i <= LevelTableHelper.MaxLevel; i++)
             {
-                LevelPicker.Items.Add(i.ToString());
+                //LevelPicker.Items.Add(i.ToString());
             }
 
             _ = UpdatePageBindingContext();
@@ -63,7 +63,7 @@ namespace Game.Views
 
             // This resets the Picker to -1 index, need to reset it back
             ViewModel.Data.Level = level;
-            LevelPicker.SelectedIndex = ViewModel.Data.Level - 1;
+            //LevelPicker.SelectedIndex = ViewModel.Data.Level - 1;
 
             ManageHealth();
 
@@ -81,7 +81,7 @@ namespace Game.Views
         public void Level_Changed(object sender, EventArgs args)
         {
             // Change the Level
-            ViewModel.Data.Level = LevelPicker.SelectedIndex + 1;
+            //ViewModel.Data.Level = LevelPicker.SelectedIndex + 1;
 
             ManageHealth();
         }
@@ -131,12 +131,23 @@ namespace Game.Views
             _ = await Navigation.PopModalAsync();
         }
 
+
+        /// <summary>
+        /// Catch the change to the Slider for Level
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void Level_OnSliderValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            LevelValue.Text = String.Format("{0}", Math.Round(e.NewValue));
+        }
+
         /// <summary>
         /// Catch the change to the Stepper for Attack
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public void Attack_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
+        public void Attack_OnSliderValueChanged(object sender, ValueChangedEventArgs e)
         {
             AttackValue.Text = String.Format("{0}", e.NewValue);
         }
@@ -146,7 +157,7 @@ namespace Game.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public void Defense_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
+        public void Defense_OnSliderValueChanged(object sender, ValueChangedEventArgs e)
         {
             DefenseValue.Text = String.Format("{0}", e.NewValue);
         }
@@ -156,7 +167,7 @@ namespace Game.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public void Speed_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
+        public void Speed_OnSliderValueChanged(object sender, ValueChangedEventArgs e)
         {
             SpeedValue.Text = String.Format("{0}", e.NewValue);
         }
@@ -390,5 +401,40 @@ namespace Game.Views
 
             return true;
         }
+
+
+        private bool Entry_Validator()
+        {
+            bool isValid = true;
+
+            // validate the Name has something entered
+            if (String.IsNullOrWhiteSpace(this.ViewModel.Data.Name))
+            {
+                NameEntry.PlaceholderColor = Xamarin.Forms.Color.Red;
+                isValid = false;
+            }
+
+            // validate the Description has something entered
+            if (String.IsNullOrWhiteSpace(this.ViewModel.Data.Description))
+            {
+                DescriptionEntry.PlaceholderColor = Xamarin.Forms.Color.Red;
+                isValid = false;
+            }
+
+            return isValid;
+        }
+
+        /// <summary>
+        /// Validate the Entry fields for Name and Descriptions
+        /// are filled with valid text
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Entry_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Entry_Validator();
+        }
+
+
     }
 }
