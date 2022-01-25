@@ -10,17 +10,6 @@
              Title="{Binding Title}"
              NavigationPage.HasNavigationBar="False">
 
-
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Delete"
-                     Clicked="Delete_Clicked"
-                     IconImageSource="icon_delete.png" />
-        <ToolbarItem Text="Update"
-                     Clicked="Update_Clicked"
-                     IconImageSource="icon_edit.png" />
-
-    </ContentPage.ToolbarItems>
-
     <ContentPage.Resources>
         <ResourceDictionary>
             <local_helpers:StringEnumConverter x:Key="StringEnum" />
