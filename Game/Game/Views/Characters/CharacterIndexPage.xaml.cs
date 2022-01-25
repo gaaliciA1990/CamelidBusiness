@@ -57,7 +57,7 @@ namespace Game.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public async void Add_Clicked(object sender, EventArgs e)
+        public async void Create_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushModalAsync(new NavigationPage(new CharacterCreatePage(new GenericViewModel<CharacterModel>())));
         }
@@ -84,6 +84,11 @@ namespace Game.Views
             }
 
             BindingContext = ViewModel;
+        }
+
+        private async void Back_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushModalAsync(new NavigationPage(new VillagePage()));
         }
     }
 }

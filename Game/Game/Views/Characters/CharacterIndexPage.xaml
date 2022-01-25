@@ -6,22 +6,25 @@
              mc:Ignorable="d"
              x:Name="BrowseItemsPage"
              x:Class="Game.Views.CharacterIndexPage"
-             Title="{Binding Title}">
-
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add"
-                     Clicked="Add_Clicked"
-                     IconImageSource="icon_add.png" />
-    </ContentPage.ToolbarItems>
+             Title="{Binding Title}"
+             NavigationPage.HasNavigationBar="False">
 
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Style="{StaticResource OuterBoxStack}">
+                <StackLayout Orientation="Horizontal">
+                    <Button x:Name="BackButton" Text="Back" 
+                            Clicked="Back_Clicked" />
 
-                <Label Font="Bold"
-                       HorizontalOptions="CenterAndExpand"
-                       Text="Character List Page"
-                       Style="{StaticResource HeaderStyle}" />
+                    <Label Font="Bold"
+                           HorizontalOptions="CenterAndExpand"
+                           Text="Character List Page"
+                           Style="{StaticResource HeaderStyle}" />
+
+                    <Button x:Name="CreateButton" 
+                            Text="Create" 
+                            Clicked="Create_Clicked" />
+                </StackLayout>
 
                 <FlexLayout x:Name="CharactersListView"
                             BindableLayout.ItemsSource="{Binding Dataset}"
@@ -51,7 +54,7 @@
                                                        Style="{StaticResource ImageBattleLargeStyle}"
                                                        HorizontalOptions="StartAndExpand" />
                                             </Frame>
-                                            
+
                                             <StackLayout Grid.Column="1"
                                                          Grid.Row="0"
                                                          Orientation="Vertical">
@@ -66,7 +69,7 @@
                                                            FontAttributes="Bold"
                                                            HorizontalOptions="CenterAndExpand" />
                                                 </Frame>
-                                            
+
                                                 <StackLayout Orientation="Horizontal">
                                                     <Frame OutlineColor="Black"
                                                            Padding="3"
