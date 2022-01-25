@@ -4,68 +4,68 @@ using Xamarin.Forms.Xaml;
 
 namespace Game.Views
 {
-	/// <summary>
-	/// The Main Game Page
-	/// </summary>
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class VillagePage : ContentPage
-	{
-		/// <summary>
-		/// Constructor
-		/// </summary>
-		public VillagePage ()
-		{
-			InitializeComponent ();
-		}
+    /// <summary>
+    /// The Main Game Page
+    /// </summary>
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class VillagePage : ContentPage
+    {
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        public VillagePage()
+        {
+            InitializeComponent();
+        }
 
-		/// <summary>
-		/// Jump to the Monsters
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		public async void MonstersButton_Clicked(object sender, EventArgs e)
-		{
-			await Navigation.PushModalAsync(new MonsterIndexPage());
-		}
+        /// <summary>
+        /// Jump to the Monsters
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public async void MonstersButton_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushModalAsync(new MonsterIndexPage());
+        }
 
-		/// <summary>
-		/// Jump to the Characters
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		public async void CharactersButton_Clicked(object sender, EventArgs e)
-		{
-			await Navigation.PushModalAsync(new CharacterIndexPage());
-		}
+        /// <summary>
+        /// Jump to the Characters
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public async void CharactersButton_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushModalAsync(new CharacterIndexPage());
+        }
 
-		/// <summary>
-		/// Jump to the Items
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		public async void ItemsButton_Clicked(object sender, EventArgs e)
-		{
-			await Navigation.PushModalAsync(new ItemIndexPage());
-		}
+        /// <summary>
+        /// Jump to the Items
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public async void ItemsButton_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushModalAsync(new ItemIndexPage());
+        }
 
-		/// <summary>
-		/// Jump to the Scores
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		public async void ScoresButton_Clicked(object sender, EventArgs e)
-		{
-			await Navigation.PushModalAsync(new ScoreIndexPage());
-		}
+        /// <summary>
+        /// Jump to the Scores
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public async void ScoresButton_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushModalAsync(new ScoreIndexPage());
+        }
 
-		/// <summary>
-		/// Navigation back to the home screen (game page)
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
+        /// <summary>
+        /// Navigation back to the home screen (game page)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void HomeButton_Clicked(object sender, EventArgs e)
         {
-			await Navigation.PushModalAsync(new GamePage());
+            await Navigation.PushModalAsync(new GamePage());
         }
     }
 }
