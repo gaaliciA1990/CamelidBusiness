@@ -32,7 +32,8 @@
                     <Label Font="Bold"
                            HorizontalOptions="CenterAndExpand"
                            Text="Create New Character"
-                           Style="{StaticResource HeaderStyle}" />
+                           Style="{StaticResource HeaderStyle}"
+                           FontSize="Large"/>
 
 
                     <ImageButton Source="icon_save.png"
