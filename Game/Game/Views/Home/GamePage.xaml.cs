@@ -47,5 +47,10 @@ namespace Game.Views
         {
             await Navigation.PushModalAsync(new AutoBattlePage());
         }
+
+        private void QuitButton_Clicked(object sender, EventArgs e)
+        {
+
+        }
     }
 }

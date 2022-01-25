@@ -5,54 +5,73 @@
              NavigationPage.HasNavigationBar="False">
 
     <ContentPage.Content>
+        <StackLayout Style="{StaticResource OuterBoxStack}"
+                     VerticalOptions="FillAndExpand">
+            <ScrollView Orientation="Vertical"
+                        HorizontalScrollBarVisibility="Never"
+                        VerticalScrollBarVisibility="Never"
+                        Padding="0, 90">
 
-        <ScrollView Orientation="Vertical" HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never" Padding="0, 90">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
 
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
 
-                
-                <StackLayout Style="{StaticResource CardImageTextBox}" VerticalOptions="Start" Grid.Row="0" Grid.Column="0">
+                    <StackLayout Style="{StaticResource CardImageTextBox}"
+                                 VerticalOptions="Start"
+                                 Grid.Row="0"
+                                 Grid.Column="0">
 
-                    <ImageButton
-                        Source="item.png"
-                        Style="{StaticResource ImageLargeStyle}"
-                        Clicked="VillageButton_Clicked"/>
+                        <ImageButton Source="item.png"
+                                     Style="{StaticResource ImageLargeStyle}"
+                                     Clicked="VillageButton_Clicked" />
 
-                    <Label 
-                        Text="Village"
-                        Style="{StaticResource CenterMessageStyle}"/>
-                </StackLayout>
+                        <Label Text="Village"
+                               Style="{StaticResource CenterMessageStyle}" />
+                    </StackLayout>
 
-                <StackLayout Style="{StaticResource CardImageTextBox}" VerticalOptions="Center" Grid.Row="0" Grid.Column="1">
+                    <StackLayout Style="{StaticResource CardImageTextBox}"
+                                 VerticalOptions="Center"
+                                 Grid.Row="0"
+                                 Grid.Column="1">
 
-                    <Label 
-                        Text="Dungeon"
-                        Style="{StaticResource CenterMessageStyle}"/>
+                        <Label Text="Dungeon"
+                               Style="{StaticResource CenterMessageStyle}" />
 
-                    <ImageButton
-                        Source="item.png"
-                        Style="{StaticResource ImageLargeStyle}"
-                        Clicked="DungeonButton_Clicked"/>
+                        <ImageButton Source="item.png"
+                                     Style="{StaticResource ImageLargeStyle}"
+                                     Clicked="DungeonButton_Clicked" />
 
-                </StackLayout>
+                    </StackLayout>
 
-                <StackLayout Style="{StaticResource CardImageTextBox}" VerticalOptions="Start" Grid.Row="0" Grid.Column="2">
+                    <StackLayout Style="{StaticResource CardImageTextBox}"
+                                 VerticalOptions="Start"
+                                 Grid.Row="0"
+                                 Grid.Column="2">
 
-                    <ImageButton
-                        Source="item.png"
-                        Style="{StaticResource ImageLargeStyle}"
-                        Clicked="AutobattleButton_Clicked"/>
+                        <ImageButton Source="item.png"
+                                     Style="{StaticResource ImageLargeStyle}"
+                                     Clicked="AutobattleButton_Clicked" />
 
-                    <Label 
-                        Text="Auto Battle"
-                        Style="{StaticResource CenterMessageStyle}"/>
-                </StackLayout>
-            </Grid>
-        </ScrollView>
+                        <Label Text="Auto Battle"
+                               Style="{StaticResource CenterMessageStyle}" />
+                    </StackLayout>
+                </Grid>
+            </ScrollView>
+            
+            <!--Exit the application button-->
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="Center">
+                <Button x:Name="QuitButton"
+                        Text="Quit Game"
+                        Clicked="QuitButton_Clicked"
+                        Padding="5"
+                        WidthRequest="90"
+                        HeightRequest="50" />
+            </StackLayout>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>
