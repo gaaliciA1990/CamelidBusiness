@@ -156,6 +156,9 @@ namespace Game.Views
         public void Level_OnSliderValueChanged(object sender, ValueChangedEventArgs e)
         {
             LevelValue.Text = String.Format("{0}", Math.Round(e.NewValue));
+
+            //TODO: may need a condition to change on whole value
+            Level_Changed(null, null);
         }
 
         /// <summary>
@@ -165,7 +168,7 @@ namespace Game.Views
         /// <param name="e"></param>
         public void Attack_OnSliderValueChanged(object sender, ValueChangedEventArgs e)
         {
-            AttackValue.Text = String.Format("{0}", e.NewValue);
+            AttackValue.Text = String.Format("{0}", Math.Round(e.NewValue));
         }
 
         /// <summary>
@@ -175,7 +178,7 @@ namespace Game.Views
         /// <param name="e"></param>
         public void Defense_OnSliderValueChanged(object sender, ValueChangedEventArgs e)
         {
-            DefenseValue.Text = String.Format("{0}", e.NewValue);
+            DefenseValue.Text = String.Format("{0}", Math.Round(e.NewValue));
         }
 
         /// <summary>
@@ -185,7 +188,7 @@ namespace Game.Views
         /// <param name="e"></param>
         public void Speed_OnSliderValueChanged(object sender, ValueChangedEventArgs e)
         {
-            SpeedValue.Text = String.Format("{0}", e.NewValue);
+            SpeedValue.Text = String.Format("{0}", Math.Round(e.NewValue));
         }
 
         /// <summary>
