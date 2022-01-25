@@ -13,7 +13,7 @@
                         JustifyContent="SpaceAround"
                         AlignContent="SpaceAround">
 
-                <StackLayout Style="{StaticResource CardImageTextBox}">
+                <StackLayout Style="{StaticResource CardImageTextBox}" Padding="0, -90, 0, 30">
 
                     <ImageButton
                                 Source="item.png"
@@ -26,7 +26,7 @@
 
                 </StackLayout>
 
-                <StackLayout Style="{StaticResource CardImageTextBox}">
+                <StackLayout Style="{StaticResource CardImageTextBox}" Padding="0, 50, 0, 30">
 
                     <ImageButton
                                 Source="item.png"
@@ -40,7 +40,7 @@
                 </StackLayout>
 
 
-                <StackLayout Style="{StaticResource CardImageTextBox}">
+                <StackLayout Style="{StaticResource CardImageTextBox}" Padding="0, -90, 0, 30">
 
                     <ImageButton
                                 Source="item.png"
@@ -53,7 +53,7 @@
                 </StackLayout>
 
 
-                <StackLayout Style="{StaticResource CardImageTextBox}">
+                <StackLayout Style="{StaticResource CardImageTextBox}" Padding="0, 50, 0, 30">
 
                     <ImageButton
                                 Source="item.png"
