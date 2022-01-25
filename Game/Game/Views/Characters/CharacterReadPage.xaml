@@ -9,41 +9,42 @@
              NavigationPage.HasNavigationBar="False">
 
     <ContentPage.Content>
-        <ScrollView>
-            <StackLayout Style="{StaticResource OuterBoxStack}">
-                <StackLayout Orientation="Horizontal">
-                    <ImageButton Source="leftarrow.png"
-                                 Aspect="AspectFit"
-                                 HorizontalOptions="Start"
-                                 Clicked="Back_Clicked"
-                                 Padding="10"
-                                 WidthRequest="65"
-                                 HeightRequest="65" />
+        <StackLayout Style="{StaticResource OuterBoxStack}">
+            <StackLayout Orientation="Horizontal">
+                <ImageButton Source="leftarrow.png"
+                             Aspect="AspectFit"
+                             HorizontalOptions="Start"
+                             Clicked="Back_Clicked"
+                             Padding="10"
+                             WidthRequest="65"
+                             HeightRequest="65" />
 
-                    <Label FontSize="Large"
-                           FontAttributes="Bold, Italic"
-                           HorizontalOptions="CenterAndExpand"
-                           VerticalOptions="FillAndExpand"
-                           Text="{Binding Data.Name, StringFormat= 'Character: {0:G}'}"
-                           Style="{StaticResource ValueStyle}" />
+                <Label FontSize="Large"
+                       FontAttributes="Bold, Italic"
+                       HorizontalOptions="CenterAndExpand"
+                       VerticalOptions="FillAndExpand"
+                       Text="{Binding Data.Name, StringFormat= 'Character: {0:G}'}"
+                       Style="{StaticResource ValueStyle}" />
 
-                    <ImageButton Source="icon_delete.png"
-                                 Aspect="AspectFit"
-                                 HorizontalOptions="End"
-                                 Clicked="Delete_Clicked"
-                                 Padding="10"
-                                 WidthRequest="65"
-                                 HeightRequest="65" />
+                <ImageButton Source="icon_delete.png"
+                             Aspect="AspectFit"
+                             HorizontalOptions="End"
+                             Clicked="Delete_Clicked"
+                             Padding="10"
+                             WidthRequest="65"
+                             HeightRequest="65" />
 
-                    <ImageButton Source="icon_edit.png"
-                                 Aspect="AspectFit"
-                                 HorizontalOptions="End"
-                                 Clicked="Update_Clicked"
-                                 Padding="10"
-                                 WidthRequest="65"
-                                 HeightRequest="65" />
-                </StackLayout>
-                <Grid x:Name="FormLayoutGrid">
+                <ImageButton Source="icon_edit.png"
+                             Aspect="AspectFit"
+                             HorizontalOptions="End"
+                             Clicked="Update_Clicked"
+                             Padding="10"
+                             WidthRequest="65"
+                             HeightRequest="65" />
+            </StackLayout>
+            
+            <ScrollView>
+            <Grid x:Name="FormLayoutGrid">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
@@ -414,7 +415,7 @@
                         </Frame>
                     </AbsoluteLayout>
                 </Grid>
-            </StackLayout>
-        </ScrollView>
+            </ScrollView>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>
