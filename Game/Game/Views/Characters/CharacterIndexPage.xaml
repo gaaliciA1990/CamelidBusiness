@@ -20,8 +20,8 @@
                            HorizontalOptions="CenterAndExpand"
                            Text="Character List Page"
                            Style="{StaticResource HeaderStyle}" />
-
-                    <Button x:Name="CreateButton" 
+                    
+                    <Button x:Name="CreateButton"
                             Text="Create" 
                             Clicked="Create_Clicked" />
                 </StackLayout>
@@ -104,7 +104,6 @@
                                             </StackLayout>
                                         </Grid>
                                     </Frame>
-
                                 </StackLayout>
 
                                 <ImageButton Grid.Column="0"
