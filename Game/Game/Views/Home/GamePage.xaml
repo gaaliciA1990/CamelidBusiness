@@ -13,7 +13,7 @@
                         JustifyContent="SpaceAround"
                         AlignContent="SpaceAround">
 
-                <StackLayout Style="{StaticResource CardImageTextBox}">
+                <StackLayout Style="{StaticResource CardImageTextBox}" Padding="0, -90, 0, 30">
 
                     <ImageButton
                         Source="item.png"
@@ -25,19 +25,20 @@
                         Style="{StaticResource CenterMessageStyle}"/>
                 </StackLayout>
 
-                <StackLayout Style="{StaticResource CardImageTextBox}">
+                <StackLayout Style="{StaticResource CardImageTextBox}" Padding="0, 90, 0, 30">
 
+                    <Label 
+                        Text="Dungeon"
+                        Style="{StaticResource CenterMessageStyle}"/>
+                    
                     <ImageButton
                         Source="item.png"
                         Style="{StaticResource ImageLargeStyle}"
                         Clicked="DungeonButton_Clicked"/>
 
-                    <Label 
-                        Text="Dungeon"
-                        Style="{StaticResource CenterMessageStyle}"/>
                 </StackLayout>
 
-                <StackLayout Style="{StaticResource CardImageTextBox}">
+                <StackLayout Style="{StaticResource CardImageTextBox}" Padding="0, -90, 0, 30">
 
                     <ImageButton
                         Source="item.png"
