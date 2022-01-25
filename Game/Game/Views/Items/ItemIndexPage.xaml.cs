@@ -75,7 +75,7 @@ namespace Game.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private async void FlexItem_Clicked(object sender, EventArgs e)
+        public async void FlexItem_Clicked(object sender, EventArgs e)
         {
             var button = sender as ImageButton;
             var id = button.CommandParameter as String;
