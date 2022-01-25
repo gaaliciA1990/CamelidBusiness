@@ -7,7 +7,8 @@
              xmlns:local_helpers="clr-namespace:Game.Helpers"
              xmlns:local="using:Game.Models"
              x:Class="Game.Views.ItemReadPage"
-             Title="{Binding Title}">
+             Title="{Binding Title}"
+             NavigationPage.HasNavigationBar="False">
 
 
     <ContentPage.ToolbarItems>
