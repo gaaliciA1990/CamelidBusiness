@@ -46,13 +46,15 @@
                                Style="{StaticResource EntryStyle}" />
 
                     <StackLayout Orientation="Horizontal"
-                                     HorizontalOptions="CenterAndExpand"
+                                     HorizontalOptions="Center"
                                      VerticalOptions="CenterAndExpand">
                         <ImageButton x:Name="LeftButton"
                                          Source="leftarrow.png"
                                      Clicked="LeftButton_Clicked"
                                          BorderColor="DarkSlateGray"
-                                         CornerRadius="5" />
+                                         CornerRadius="5"
+                                     WidthRequest="50"
+                                     HeightRequest="50"/>
                         <Image  x:Name="ImageLabel"
                                     Source="{Binding Data.ImageURI}"
                                     HorizontalOptions="FillAndExpand"
@@ -63,7 +65,9 @@
                                          Source="rightarrow.png"
                                      Clicked="RightButton_Clicked"
                                          BorderColor="DarkSlateGray"
-                                         CornerRadius="5" />
+                                         CornerRadius="5"
+                                     WidthRequest="50"
+                                     HeightRequest="50"/>
                     </StackLayout>
 
                     <Entry x:Name="DescriptionEntry"
@@ -382,15 +386,14 @@
                         </StackLayout>
                     </Grid>
                 </StackLayout>
-                <StackLayout
-                    Grid.Row="1"
-                    Grid.Column="0"
-                    Grid.ColumnSpan="2"
-                    x:Name="ItemBox"
-                    HorizontalOptions="Center"
-                    Orientation="Horizontal"
-                    HeightRequest="100">
-                </StackLayout>
+                <FlexLayout Grid.Column="0" Grid.Row="1"
+                            Grid.ColumnSpan="2"
+                            Padding="5"
+                            Wrap="Wrap"
+                            JustifyContent="SpaceAround"
+                            AlignContent="SpaceAround"
+                            x:Name="ItemBox">
+                </FlexLayout>
 
                 <!--The Item Popup-->
                 <StackLayout x:Name="PopupItemSelector"
