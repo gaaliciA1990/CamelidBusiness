@@ -15,7 +15,7 @@
                         WidthRequest="65"
                         HeightRequest="65" />
             </StackLayout>
-            
+
             <ScrollView Orientation="Vertical"
                         HorizontalScrollBarVisibility="Never"
                         VerticalScrollBarVisibility="Never"
@@ -87,7 +87,7 @@
 
                     </StackLayout>
                 </Grid>
-            </StackLayout>
-        </ScrollView>
+            </ScrollView>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>
