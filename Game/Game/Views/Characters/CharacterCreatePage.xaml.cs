@@ -48,6 +48,9 @@ namespace Game.Views
 
             this.ViewModel.Title = "Create";
 
+            NameEntry.Placeholder = "Give your character a name";
+            DescriptionEntry.Placeholder = "Describe your character";
+
             // Load the values for the Level into the Picker
             for (var i = 1; i <= LevelTableHelper.MaxLevel; i++)
             {
@@ -117,6 +120,13 @@ namespace Game.Views
         /// <param name="e"></param>
         public async void Save_Clicked(object sender, EventArgs e)
         {
+            //Check if the required input fields are filled
+            bool isValid = Entry_Validator();
+            if(isValid == false)
+            {
+                return;
+            }
+
             // If the image in the data box is empty, use the default one..
             if (string.IsNullOrEmpty(ViewModel.Data.ImageURI))
             {
@@ -466,6 +476,38 @@ namespace Game.Views
             // Update the image
             this.ViewModel.Data.ImageURI = imageList[imageIndex];
             UpdatePageBindingContext();
+        }
+
+        private bool Entry_Validator()
+        {
+            bool isValid = true;
+
+            // validate the Name has something entered
+            if (String.IsNullOrWhiteSpace(this.ViewModel.Data.Name))
+            {
+                NameEntry.PlaceholderColor = Xamarin.Forms.Color.Red;
+                isValid = false;
+            }
+
+            // validate the Description has something entered
+            if (String.IsNullOrWhiteSpace(this.ViewModel.Data.Description))
+            {
+                DescriptionEntry.PlaceholderColor = Xamarin.Forms.Color.Red;
+                isValid = false;
+            }
+
+            return isValid;
+        }
+
+        /// <summary>
+        /// Validate the Entry fields for Name and Descriptions
+        /// are filled with valid text
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Entry_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Entry_Validator();
         }
     }
 }

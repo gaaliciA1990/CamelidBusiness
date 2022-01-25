@@ -34,14 +34,14 @@
                                  VerticalOptions="FillAndExpand"
                                  Style="{StaticResource OuterBoxStack}">
 
-                    <Entry Placeholder="Name"
+                    <Entry x:Name="NameEntry"
                                FontSize="Medium"
                                HorizontalOptions="FillAndExpand"
                                BackgroundColor="White"
                                MaxLength="20"
                                Keyboard="Text"
                                ReturnType="Done"
-
+                           TextChanged="Entry_TextChanged"
                                Text="{Binding Data.Name, Mode=TwoWay}"
                                Style="{StaticResource EntryStyle}" />
 
@@ -66,7 +66,7 @@
                                          CornerRadius="5" />
                     </StackLayout>
 
-                    <Entry Placeholder="Description"
+                    <Entry x:Name="DescriptionEntry"
                                FontSize="Medium"
                                HorizontalOptions="FillAndExpand"
                                BackgroundColor="White"
@@ -74,7 +74,7 @@
                                Keyboard="Text"
                                ReturnType="Done"
                                IsSpellCheckEnabled="True"
-
+                           TextChanged="Entry_TextChanged"
                                Text="{Binding Data.Description, Mode= TwoWay}"
                                Style="{StaticResource EntryStyle}" />
 
