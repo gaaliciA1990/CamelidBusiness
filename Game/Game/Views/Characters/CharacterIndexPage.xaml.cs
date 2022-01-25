@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.ComponentModel;
 
 using Xamarin.Forms;
@@ -36,23 +37,19 @@ namespace Game.Views
         }
 
         /// <summary>
-        /// The row selected from the list
+        /// The character selected from the list
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
-        public async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
+        public async void FlexCharacter_Clicked(object sender, EventArgs args)
         {
-            CharacterModel data = args.SelectedItem as CharacterModel;
-            if (data == null)
-            {
-                return;
-            }
+            var button = sender as ImageButton;
+            var id = button.CommandParameter as String;
+            var data = ViewModel.Dataset.FirstOrDefault(m => m.Id.Equals(id));
 
-            // Open the Read Page
+            // Open the read page
             await Navigation.PushAsync(new CharacterReadPage(new GenericViewModel<CharacterModel>(data)));
 
-            // Manually deselect Character.
-            CharactersListView.SelectedItem = null;
         }
 
         /// <summary>
