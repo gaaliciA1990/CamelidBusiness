@@ -82,7 +82,7 @@ namespace Game.Views
             var data = viewModel.Data.GetItemByLocation(location);
             if (data == null)
             {
-                data = new ItemModel { Location = location, ImageURI = "icon_add.png" };
+                data = new ItemModel { Location = location, ImageURI = "icon_cancel.png" };
             }
 
             // Hookup the Image Button to show the Item picture
