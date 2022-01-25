@@ -6,7 +6,8 @@
              mc:Ignorable="d"
              x:Class="Game.Views.ItemDeletePage"
              xmlns:local_helpers="clr-namespace:Game.Helpers"
-             Title="{Binding Title}">
+             Title="{Binding Title}"
+             NavigationPage.HasNavigationBar="False">
 
     <ContentPage.ToolbarItems>
         <!--<ToolbarItem Text="Cancel" Clicked="Cancel_Clicked" IconImageSource="icon_cancel.png"/>
