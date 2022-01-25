@@ -57,5 +57,10 @@ namespace Game.Views
 		{
 			await Navigation.PushAsync(new ScoreIndexPage());
 		}
-	}
+
+        private async void Home_Clicked(object sender, EventArgs e)
+        {
+			await Navigation.PushModalAsync(new GamePage());
+        }
+    }
 }

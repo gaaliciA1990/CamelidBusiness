@@ -6,9 +6,20 @@
 
     <ContentPage.Content>
 
-        <FlexLayout>
-            <ScrollView Orientation="Vertical" HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never" HorizontalOptions="CenterAndExpand" Padding="0, 90">
-
+        <ScrollView Orientation="Vertical" 
+                    HorizontalScrollBarVisibility="Never" 
+                    VerticalScrollBarVisibility="Never" 
+                    HorizontalOptions="CenterAndExpand">
+            <StackLayout Style="{StaticResource OuterBoxStack}">
+                <StackLayout Orientation="Horizontal">
+                    <Button Text="Home"
+                            HorizontalOptions="Start"
+                            Clicked="Home_Clicked"
+                            Padding="10"
+                            WidthRequest="65"
+                            HeightRequest="65" />
+                </StackLayout>
+                
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
@@ -17,60 +28,64 @@
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
 
-                    <StackLayout Style="{StaticResource CardImageTextBox}" VerticalOptions="Start" Grid.Row="0" Grid.Column="0" >
+                    <StackLayout Style="{StaticResource CardImageTextBox}"
+                                 VerticalOptions="Start"
+                                 Grid.Row="0"
+                                 Grid.Column="0">
 
-                        <ImageButton
-                                    Source="item.png"
-                                    Style="{StaticResource ImageLargeStyle}"
-                                    Clicked="CharactersButton_Clicked"/>
+                        <ImageButton Source="item.png"
+                                     Style="{StaticResource ImageLargeStyle}"
+                                     Clicked="CharactersButton_Clicked" />
 
-                        <Label 
-                                    Text="Characters"
-                                    Style="{StaticResource CenterMessageStyle}"/>
-
-                    </StackLayout>
-
-                    <StackLayout Style="{StaticResource CardImageTextBox}" VerticalOptions="Center" Grid.Row="0" Grid.Column="1" >
-
-                        <ImageButton
-                                    Source="item.png"
-                                    Style="{StaticResource ImageLargeStyle}"
-                                    Clicked="MonstersButton_Clicked"/>
-
-                        <Label 
-                                    Text="Monsters"
-                                    Style="{StaticResource CenterMessageStyle}"/>
+                        <Label Text="Characters"
+                               Style="{StaticResource CenterMessageStyle}" />
 
                     </StackLayout>
 
+                    <StackLayout Style="{StaticResource CardImageTextBox}"
+                                 VerticalOptions="Center"
+                                 Grid.Row="0"
+                                 Grid.Column="1">
 
-                    <StackLayout Style="{StaticResource CardImageTextBox}" VerticalOptions="Start" Grid.Row="0" Grid.Column="2">
+                        <ImageButton Source="item.png"
+                                     Style="{StaticResource ImageLargeStyle}"
+                                     Clicked="MonstersButton_Clicked" />
 
-                        <ImageButton
-                                    Source="item.png"
-                                    Style="{StaticResource ImageLargeStyle}"
-                                    Clicked="ItemsButton_Clicked"/>
+                        <Label Text="Monsters"
+                               Style="{StaticResource CenterMessageStyle}" />
 
-                        <Label 
-                                    Text="Items"
-                                    Style="{StaticResource CenterMessageStyle}"/>
                     </StackLayout>
 
 
-                    <StackLayout Style="{StaticResource CardImageTextBox}" VerticalOptions="Center" Grid.Row="0" Grid.Column="3" >
+                    <StackLayout Style="{StaticResource CardImageTextBox}"
+                                 VerticalOptions="Start"
+                                 Grid.Row="0"
+                                 Grid.Column="2">
 
-                        <ImageButton
-                                    Source="item.png"
-                                    Style="{StaticResource ImageLargeStyle}"
-                                    Clicked="ScoresButton_Clicked"/>
+                        <ImageButton Source="item.png"
+                                     Style="{StaticResource ImageLargeStyle}"
+                                     Clicked="ItemsButton_Clicked" />
 
-                        <Label 
-                                    Text="Scores"
-                                    Style="{StaticResource CenterMessageStyle}"/>
+                        <Label Text="Items"
+                               Style="{StaticResource CenterMessageStyle}" />
+                    </StackLayout>
+
+
+                    <StackLayout Style="{StaticResource CardImageTextBox}"
+                                 VerticalOptions="Center"
+                                 Grid.Row="0"
+                                 Grid.Column="3">
+
+                        <ImageButton Source="item.png"
+                                     Style="{StaticResource ImageLargeStyle}"
+                                     Clicked="ScoresButton_Clicked" />
+
+                        <Label Text="Scores"
+                               Style="{StaticResource CenterMessageStyle}" />
 
                     </StackLayout>
                 </Grid>
-            </ScrollView>
-        </FlexLayout>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
