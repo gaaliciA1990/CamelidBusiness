@@ -18,30 +18,32 @@
     </ContentPage.Resources>
 
     <ContentPage.Content>
-        <ScrollView>
-			<StackLayout Style="{StaticResource OuterBoxStack}">
-				<StackLayout Orientation="Horizontal">
-					<ImageButton Source="icon_cancel.png"
-                                     Aspect="AspectFit"
-                                     HorizontalOptions="Start"
-                                     Clicked="Cancel_Clicked"
-                                     Padding="10"
-                                     WidthRequest="65"
-                                     HeightRequest="65"/>
+        <StackLayout Style="{StaticResource OuterBoxStack}">
+            <StackLayout Orientation="Horizontal">
+                <ImageButton Source="icon_cancel.png"
+                             Aspect="AspectFit"
+                             HorizontalOptions="Start"
+                             Clicked="Cancel_Clicked"
+                             Padding="10"
+                             WidthRequest="65"
+                             HeightRequest="65" />
 
-					<Label Font="Bold"
-                           HorizontalOptions="CenterAndExpand"
-                           Text="Update Character"
-                           Style="{StaticResource HeaderStyle}" />
+                <Label Font="Bold"
+                       HorizontalOptions="CenterAndExpand"
+                       Text="Update Character"
+                       Style="{StaticResource HeaderStyle}" />
 
-					<ImageButton Source="icon_save.png"
-                                 Aspect="AspectFit"
-                                 HorizontalOptions="Start"
-                                 Clicked="Save_Clicked"
-                                 Padding="10"
-                                 WidthRequest="65"
-                                 HeightRequest="65" />
-				</StackLayout>
+                <ImageButton Source="icon_save.png"
+                             Aspect="AspectFit"
+                             HorizontalOptions="Start"
+                             Clicked="Save_Clicked"
+                             Padding="10"
+                             WidthRequest="65"
+                             HeightRequest="65" />
+            </StackLayout>
+            
+            <ScrollView>
+			
 				<Grid>
 					<Grid.ColumnDefinitions>
 						<ColumnDefinition Width="*" />
@@ -476,7 +478,7 @@
 						</StackLayout>
 					</StackLayout>
 				</Grid>
-			</StackLayout>
-        </ScrollView>
+			</ScrollView>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>
