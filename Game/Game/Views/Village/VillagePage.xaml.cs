@@ -25,7 +25,7 @@ namespace Game.Views
 		/// <param name="e"></param>
 		public async void MonstersButton_Clicked(object sender, EventArgs e)
 		{
-			await Navigation.PushAsync(new MonsterIndexPage());
+			await Navigation.PushModalAsync(new MonsterIndexPage());
 		}
 
 		/// <summary>
@@ -35,7 +35,7 @@ namespace Game.Views
 		/// <param name="e"></param>
 		public async void CharactersButton_Clicked(object sender, EventArgs e)
 		{
-			await Navigation.PushAsync(new CharacterIndexPage());
+			await Navigation.PushModalAsync(new CharacterIndexPage());
 		}
 
 		/// <summary>
@@ -45,7 +45,7 @@ namespace Game.Views
 		/// <param name="e"></param>
 		public async void ItemsButton_Clicked(object sender, EventArgs e)
 		{
-			await Navigation.PushAsync(new ItemIndexPage());
+			await Navigation.PushModalAsync(new ItemIndexPage());
 		}
 
 		/// <summary>
@@ -55,10 +55,15 @@ namespace Game.Views
 		/// <param name="e"></param>
 		public async void ScoresButton_Clicked(object sender, EventArgs e)
 		{
-			await Navigation.PushAsync(new ScoreIndexPage());
+			await Navigation.PushModalAsync(new ScoreIndexPage());
 		}
 
-        private async void Home_Clicked(object sender, EventArgs e)
+		/// <summary>
+		/// Navigation back to the home screen (game page)
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+        private async void HomeButton_Clicked(object sender, EventArgs e)
         {
 			await Navigation.PushModalAsync(new GamePage());
         }
