@@ -172,5 +172,10 @@ namespace Game.Views
             await Navigation.PushModalAsync(new NavigationPage(new CharacterDeletePage(ViewModel)));
             _ = await Navigation.PopAsync();
         }
+
+        private async void Back_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushModalAsync(new NavigationPage(new CharacterIndexPage()));
+        }
     }
 }
