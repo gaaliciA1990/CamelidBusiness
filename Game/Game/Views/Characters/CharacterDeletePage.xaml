@@ -11,17 +11,17 @@
 
 
     <ContentPage.Content>
-        <ScrollView>
-            <StackLayout Style="{StaticResource OuterBoxStack}">
-                <StackLayout Orientation="Horizontal">
-                    <Label FontSize="Large"
-                           FontAttributes="Bold, Italic"
-                           HorizontalOptions="CenterAndExpand"
-                           VerticalOptions="FillAndExpand"
-                           Text="{Binding Data.Name, StringFormat= 'Delete: {0:G}'}"
-                           Style="{StaticResource ValueStyle}" />
-                </StackLayout>
-
+        <StackLayout Style="{StaticResource OuterBoxStack}">
+            <StackLayout Orientation="Horizontal">
+                <Label FontSize="Large"
+                       FontAttributes="Bold, Italic"
+                       HorizontalOptions="CenterAndExpand"
+                       VerticalOptions="FillAndExpand"
+                       Text="{Binding Data.Name, StringFormat= 'Delete: {0:G}'}"
+                       Style="{StaticResource ValueStyle}" />
+            </StackLayout>
+            
+            <ScrollView>
                 <Grid x:Name="FormLayoutGrid">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
@@ -375,19 +375,11 @@
                                         BorderColor="Black"
                                         HorizontalOptions="Center"
                                         Clicked="Cancel_Clicked" />
-
                             </Grid>
                         </Frame>
-
-
-
                     </AbsoluteLayout>
-
-
-
-
                 </Grid>
-            </StackLayout>
-        </ScrollView>
+            </ScrollView>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>
