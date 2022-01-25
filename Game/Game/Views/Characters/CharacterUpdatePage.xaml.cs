@@ -26,6 +26,9 @@ namespace Game.Views
         //index tracer for local storage
         private int imageIndex = 0;
 
+        //backup data
+        private CharacterModel BackupData;
+
         // The Character to create
         public GenericViewModel<CharacterModel> ViewModel { get; set; }
 
@@ -45,6 +48,9 @@ namespace Game.Views
             BindingContext = this.ViewModel = data;
 
             this.ViewModel.Title = "Update " + data.Title;
+
+            //Create a backup
+            BackupData = new CharacterModel(data.Data);
 
             // Load the values for the Level into the Picker
             for (var i = 1; i <= LevelTableHelper.MaxLevel; i++)
@@ -134,6 +140,9 @@ namespace Game.Views
             // Don't want to set the value on update constructor, only after save on the page
             // need to make sure that cancel from a save, actually cancels.
             // Make a copy of the object and work from that and then have that passed in to update
+            
+            //Tadaaa, revert the change
+            ViewModel.Data.Update(BackupData);
 
             _ = await Navigation.PopModalAsync();
         }
