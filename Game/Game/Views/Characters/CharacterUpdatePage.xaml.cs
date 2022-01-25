@@ -9,6 +9,7 @@ using Xamarin.Forms.Xaml;
 using Game.ViewModels;
 using Game.Models;
 using Game.GameRules;
+using Game.Helpers;
 
 namespace Game.Views
 {
@@ -19,6 +20,12 @@ namespace Game.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CharacterUpdatePage : ContentPage
     {
+        //Local storage for images
+        private List<String> imageList = GameImagesHelper.GetCharacterImage();
+
+        //index tracer for local storage
+        private int imageIndex = 0;
+
         // The Character to create
         public GenericViewModel<CharacterModel> ViewModel { get; set; }
 
@@ -402,6 +409,59 @@ namespace Game.Views
             return true;
         }
 
+        /// <summary>
+        /// When the right button is clicked, the image will change to the next index or the beginning of the
+        /// index if at the last index. 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void RightButton_Clicked(object sender, EventArgs e)
+        {
+            int imageCount = imageList.Count;
+
+            // check if we are at the last photo and move to first photo when clicked
+            if (imageIndex == imageCount - 1)
+            {
+                imageIndex = 0;
+            }
+
+            // Move to the next photo in the list
+            if (imageIndex < imageCount - 1)
+            {
+                imageIndex++;
+            }
+
+            // Update the image
+            this.ViewModel.Data.ImageURI = imageList[imageIndex];
+            UpdatePageBindingContext();
+        }
+
+        /// <summary>
+        /// When the left button is clicked, the image will change to the previous index or the end of the
+        /// index if at 0.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void LeftButton_Clicked(object sender, EventArgs e)
+        {
+            int imageCount = imageList.Count;
+
+            // check if we are at the first photo and move to last photo when clicked
+            if (imageIndex == 0)
+            {
+                imageIndex = imageCount - 1;
+            }
+
+            // Move to the previous photo in the list
+            if (imageIndex > 0)
+            {
+                imageIndex--;
+            }
+
+            // Update the image
+            this.ViewModel.Data.ImageURI = imageList[imageIndex];
+            UpdatePageBindingContext();
+        }
 
         private bool Entry_Validator()
         {

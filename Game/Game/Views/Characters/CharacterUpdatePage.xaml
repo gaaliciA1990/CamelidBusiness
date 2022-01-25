@@ -50,7 +50,7 @@
                                      VerticalOptions="CenterAndExpand">
                         <ImageButton x:Name="LeftButton"
                                          Source="leftarrow.png"
-
+                                     Clicked="LeftButton_Clicked"
                                          BorderColor="DarkSlateGray"
                                          CornerRadius="5" />
                         <Image  x:Name="ImageLabel"
@@ -61,7 +61,7 @@
                                     Margin="10" />
                         <ImageButton x:Name="RightButton"
                                          Source="rightarrow.png"
-
+                                     Clicked="RightButton_Clicked"
                                          BorderColor="DarkSlateGray"
                                          CornerRadius="5" />
                     </StackLayout>
