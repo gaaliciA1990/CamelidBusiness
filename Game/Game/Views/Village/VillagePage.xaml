@@ -5,22 +5,24 @@
              NavigationPage.HasNavigationBar="False">
 
     <ContentPage.Content>
+        <StackLayout Style="{StaticResource OuterBoxStack}"
+                     VerticalOptions="FillAndExpand">
+            <StackLayout Orientation="Horizontal">
+                <Button x:Name="HomeButton"
+                        Text="Home"
+                        Clicked="HomeButton_Clicked"
+                        Padding="5"
+                        WidthRequest="65"
+                        HeightRequest="65" />
+            </StackLayout>
+            
+            <ScrollView Orientation="Vertical"
+                        HorizontalScrollBarVisibility="Never"
+                        VerticalScrollBarVisibility="Never"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="CenterAndExpand">
 
-        <ScrollView Orientation="Vertical" 
-                    HorizontalScrollBarVisibility="Never" 
-                    VerticalScrollBarVisibility="Never" 
-                    HorizontalOptions="CenterAndExpand">
-            <StackLayout Style="{StaticResource OuterBoxStack}">
-                <StackLayout Orientation="Horizontal">
-                    <Button Text="Home"
-                            HorizontalOptions="Start"
-                            Clicked="Home_Clicked"
-                            Padding="10"
-                            WidthRequest="65"
-                            HeightRequest="65" />
-                </StackLayout>
-                
-                <Grid>
+                <Grid VerticalOptions="FillAndExpand">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
@@ -85,7 +87,7 @@
 
                     </StackLayout>
                 </Grid>
-            </StackLayout>
-        </ScrollView>
+            </ScrollView>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>
