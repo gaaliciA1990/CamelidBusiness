@@ -85,9 +85,8 @@
                         <Label Text="Scores"
                                Style="{StaticResource CenterMessageStyle}" />
 
-                    </StackLayout>
-                </Grid>
-            </ScrollView>
-        </StackLayout>
+                </StackLayout>
+            </Grid>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
