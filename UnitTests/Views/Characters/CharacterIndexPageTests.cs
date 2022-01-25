@@ -57,7 +57,7 @@ namespace UnitTests.Views
             // Arrange
 
             // Act
-            page.Create_Clicked(null, null);
+            page.CreateCharacter_Clicked(null, null);
 
             // Reset
 
@@ -89,7 +89,7 @@ namespace UnitTests.Views
             var selectedCharacterChangedEventArgs = new SelectedItemChangedEventArgs(selectedCharacter, 0);
 
             // Act
-            page.OnItemSelected(null, selectedCharacterChangedEventArgs);
+            page.FlexCharacter_Clicked(null, selectedCharacterChangedEventArgs);
 
             // Reset
 
@@ -105,7 +105,7 @@ namespace UnitTests.Views
             var selectedCharacterChangedEventArgs = new SelectedItemChangedEventArgs(null, 0);
 
             // Act
-            page.OnItemSelected(null, selectedCharacterChangedEventArgs);
+            page.FlexCharacter_Clicked(null, selectedCharacterChangedEventArgs);
 
             // Reset
 
