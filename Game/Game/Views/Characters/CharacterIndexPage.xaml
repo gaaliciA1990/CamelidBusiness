@@ -23,7 +23,7 @@
                     
                     <Button x:Name="CreateButton"
                             Text="Create" 
-                            Clicked="Create_Clicked" />
+                            Clicked="CreateCharacter_Clicked" />
                 </StackLayout>
 
                 <FlexLayout x:Name="CharactersListView"
