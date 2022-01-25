@@ -37,38 +37,53 @@
 
                                 <Frame OutlineColor="Black"
                                        Padding="1">
+                                    <Grid BackgroundColor="Beige"
+                                          WidthRequest="200"
+                                          Padding="20">
 
-                                    <StackLayout BackgroundColor="Beige"
-                                                 WidthRequest="150"
-                                                 Padding="20">
-
-                                        <Image Source="{Binding ImageURI}"
+                                        <Image x:Name="ImageLabel"
+                                               Source="{Binding ImageURI}"
                                                Style="{StaticResource ImageBattleLargeStyle}"
-                                               HorizontalOptions="CenterAndExpand" />
+                                               HorizontalOptions="StartAndExpand" />
 
-                                        <Label Text="{Binding Name}"
-                                               Style="{StaticResource ListStyle}"
-                                               HorizontalTextAlignment="Center"
-                                               HorizontalOptions="CenterAndExpand" />
+                                        <StackLayout Grid.Column="1"
+                                                     Grid.Row="0"
+                                                     Orientation="Vertical">
+                                            <Frame OutlineColor="Black"
+                                                   BackgroundColor="LightGray"
+                                                   Padding="1"
+                                                   WidthRequest="100">
+                                                <Label x:Name="NameLabel"
+                                                       Text="{Binding Name}"
+                                                       Style="{StaticResource ListStyle}"
+                                                       BackgroundColor="LightGray"
+                                                       FontAttributes="Bold"
+                                                       HorizontalOptions="CenterAndExpand" />
+                                            </Frame>
+                                            
+                                            <StackLayout Orientation="Horizontal">
+                                                <Frame OutlineColor="Black"
+                                                       Padding="3"
+                                                       BackgroundColor="LightCyan">
+                                                    <Label x:Name="LevelLabel"
+                                                           Text="{Binding Path=Level, StringFormat='LVL {0:G}'}"
+                                                           Style="{StaticResource ListStyle}"
+                                                           FontAttributes="Bold"
+                                                           HorizontalTextAlignment="Center"/>
+                                                </Frame>
 
-                                        <StackLayout Orientation="Horizontal"
-                                                     HorizontalOptions="CenterAndExpand">
-
-                                            <Label Text="{Binding Path=Level, StringFormat='Level {0:G}'}"
-                                                   Style="{StaticResource ListStyle}" />
-
-                                            <Label Text="{Binding Path=MaxHealth, StringFormat= '{0:G} hp'}"
-                                                   Style="{StaticResource ListStyle}" />
-
+                                                <Frame OutlineColor="Black"
+                                                       Padding="3"
+                                                       BackgroundColor="LightCyan">
+                                                    <Label x:Name="
+                                                           MaxHealthLabel"
+                                                           Text="{Binding Path=MaxHealth, StringFormat='HP {0:G}'}"
+                                                           Style="{StaticResource ListStyle}"
+                                                           FontAttributes="Bold" />
+                                                </Frame>
+                                            </StackLayout>
                                         </StackLayout>
-
-                                        <Label Text="{Binding Description}"
-                                               Style="{StaticResource ListStyle}"
-                                               FontSize="Micro"
-                                               HorizontalTextAlignment="Center"
-                                               HorizontalOptions="CenterAndExpand" />
-
-                                    </StackLayout>
+                                    </Grid>
                                 </Frame>
 
                             </StackLayout>
