@@ -313,4 +313,7 @@
   <ItemGroup>
     <BundleResource Include="Resources\rightarrow.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\logo_placeholder.PNG" />
+  </ItemGroup>
 </Project>

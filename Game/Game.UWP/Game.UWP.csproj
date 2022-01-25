@@ -160,6 +160,7 @@
     <Content Include="items.png" />
     <Content Include="knight.png" />
     <Content Include="leftarrow.png" />
+    <Content Include="logo_placeholder.PNG" />
     <Content Include="neck1.png" />
     <Content Include="neck2.png" />
     <Content Include="Properties\Default.rd.xml" />
