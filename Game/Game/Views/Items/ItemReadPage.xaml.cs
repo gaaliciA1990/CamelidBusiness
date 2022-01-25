@@ -70,5 +70,10 @@ namespace Game.Views
             await Navigation.PushModalAsync(new NavigationPage(new ItemDeletePage(ViewModel)));
             _ = await Navigation.PopAsync();
         }
+
+        public async void BackButton_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushModalAsync(new NavigationPage(new ItemIndexPage()));
+        }
     }
 }
