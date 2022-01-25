@@ -82,7 +82,7 @@ namespace Game.Views
             var data = ViewModel.Dataset.FirstOrDefault(m => m.Id.Equals(id));
 
             // Open the read page
-            await Navigation.PushAsync(new ItemReadPage(new GenericViewModel<ItemModel>(data)));
+            await Navigation.PushModalAsync(new ItemReadPage(new GenericViewModel<ItemModel>(data)));
         }
 
         /// <summary>
