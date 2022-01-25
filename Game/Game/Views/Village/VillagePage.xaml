@@ -6,14 +6,17 @@
 
     <ContentPage.Content>
 
-        <ScrollView Orientation="Vertical" HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never" Padding="10">
+        <ScrollView Orientation="Vertical" HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never" HorizontalOptions="CenterAndExpand">
 
-            <FlexLayout x:Name="flexLayout"
-                        Wrap="Wrap"
-                        JustifyContent="SpaceAround"
-                        AlignContent="SpaceAround">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
 
-                <StackLayout Style="{StaticResource CardImageTextBox}" Padding="0, -90, 0, 30">
+                <StackLayout Style="{StaticResource CardImageTextBox}" VerticalOptions="Start" Grid.Row="0" Grid.Column="0" >
 
                     <ImageButton
                                 Source="item.png"
@@ -26,7 +29,7 @@
 
                 </StackLayout>
 
-                <StackLayout Style="{StaticResource CardImageTextBox}" Padding="0, 50, 0, 30">
+                <StackLayout Style="{StaticResource CardImageTextBox}" VerticalOptions="Center" Grid.Row="0" Grid.Column="1" >
 
                     <ImageButton
                                 Source="item.png"
@@ -40,7 +43,7 @@
                 </StackLayout>
 
 
-                <StackLayout Style="{StaticResource CardImageTextBox}" Padding="0, -90, 0, 30">
+                <StackLayout Style="{StaticResource CardImageTextBox}" VerticalOptions="Start" Grid.Row="0" Grid.Column="2">
 
                     <ImageButton
                                 Source="item.png"
@@ -53,7 +56,7 @@
                 </StackLayout>
 
 
-                <StackLayout Style="{StaticResource CardImageTextBox}" Padding="0, 50, 0, 30">
+                <StackLayout Style="{StaticResource CardImageTextBox}" VerticalOptions="Center" Grid.Row="0" Grid.Column="3" >
 
                     <ImageButton
                                 Source="item.png"
@@ -65,8 +68,7 @@
                                 Style="{StaticResource CenterMessageStyle}"/>
 
                 </StackLayout>
-
-            </FlexLayout>
+            </Grid>
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>
