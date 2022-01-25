@@ -53,7 +53,7 @@ namespace Game.Views
         }
 
         /// <summary>
-        /// Call to Add a new record
+        /// Call to Create a new record
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -86,6 +86,11 @@ namespace Game.Views
             BindingContext = ViewModel;
         }
 
+        /// <summary>
+        /// Call to go back a page
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void Back_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushModalAsync(new NavigationPage(new VillagePage()));
