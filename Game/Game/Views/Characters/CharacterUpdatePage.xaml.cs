@@ -463,6 +463,10 @@ namespace Game.Views
             UpdatePageBindingContext();
         }
 
+        /// <summary>
+        /// Helper function to help validate required input fields
+        /// </summary>
+        /// <returns></returns>
         private bool Entry_Validator()
         {
             bool isValid = true;
