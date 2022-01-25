@@ -9,71 +9,125 @@
              Title="{Binding Title}"
              NavigationPage.HasNavigationBar="False">
 
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add" Clicked="AddItem_Clicked" IconImageSource="icon_add.png"/>
-    </ContentPage.ToolbarItems>
-
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Style="{StaticResource OuterBoxStack}">
-                <Label Font="Bold" 
+                <StackLayout Orientation="Horizontal">
+                    <Button x:Name="BackButton" Text="Back" 
+                            Clicked="BackButton_Clicked" />
+
+                    <Label Font="Bold" 
                        HorizontalOptions="CenterAndExpand"  
                        Text="Items List Page" 
                        Style="{StaticResource HeaderStyle}"/>
-                <CollectionView  x:Name="ItemsListView"
-                                 SelectionMode="Single"
-	                             SelectionChanged="OnCollectionViewSelectionChanged"
-	                             ItemsSource="{Binding Dataset}" 
-                                 VerticalOptions="FillAndExpand">
 
-                    <CollectionView.ItemsLayout>
-                        <GridItemsLayout Orientation="Vertical" Span="4" />
-                    </CollectionView.ItemsLayout>
-                    
-                    <CollectionView.ItemTemplate>
+                    <Button x:Name="CreateButton"
+                            Text="Create" 
+                            Clicked="CreateItem_Clicked" />
+                </StackLayout>
+
+                <FlexLayout x:Name="ItemsListView"
+	                        BindableLayout.ItemsSource="{Binding Dataset}" 
+                            Wrap="Wrap"
+                            Direction="Row"
+                            JustifyContent="SpaceEvenly">
+
+                    <BindableLayout.ItemTemplate>
                         <DataTemplate>
-                            <Frame CornerRadius="10"
-                                   BackgroundColor="#bda27f"
-                                   BorderColor="MidnightBlue">
-                                <Grid Margin="10">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="auto"/>
-                                        <ColumnDefinition Width="*"/>
-                                    </Grid.ColumnDefinitions>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="auto"/>
-                                        <RowDefinition Height="auto"/>
-                                        <RowDefinition Height="auto"/>
-                                    </Grid.RowDefinitions>
-                                    
-                                    <Image  Grid.Column="0" Grid.Row="0" 
-                                            Grid.RowSpan="3"
-                                            Source="{Binding ImageURI}"
-                                            Style="{StaticResource ImageMediumStyle}"
-                                            VerticalOptions="CenterAndExpand"/>
+                            <Grid HeightRequest="150">
+                                <StackLayout Grid.Column="0"
+                                             Grid.Row="0"
+                                             Padding="5">
+                                    <Frame OutlineColor="Black"
+                                           Padding="0"
+                                           WidthRequest="250">
+                                        <Grid BackgroundColor="LightSeaGreen"
+                                              WidthRequest="200"
+                                              Padding="20">
+                                            <Frame OutlineColor="Black"
+                                                   BackgroundColor="LightBlue"
+                                                   Padding="5"
+                                                   HeightRequest="150"
+                                                   WidthRequest="75"
+                                                   HorizontalOptions="Start">
+                                                <Image  x:Name="ImageLabel"
+                                                        Source="{Binding ImageURI}"
+                                                        Style="{StaticResource ImageMediumStyle}"
+                                                        VerticalOptions="CenterAndExpand"/>
+                                            </Frame>
 
-                                    <Label Grid.Column="1" Grid.Row="0"
-                                           Text="{Binding Name}" 
-                                           Style="{StaticResource ListStyle}"/>
+                                            <StackLayout Grid.Column="1" Grid.Row="0"
+                                                         Orientation="Vertical">
+                                                <Frame OutlineColor="Black"
+                                                       BackgroundColor="LightGray"
+                                                       Padding="5"
+                                                       WidthRequest="200">
+                                                    <Label x:Name="NameLabel"
+                                                           Text="{Binding Name}" 
+                                                           Style="{StaticResource ListStyle}"
+                                                           BackgroundColor="LightGray"
+                                                           HorizontalOptions="CenterAndExpand"
+                                                           FontSize="Caption"
+                                                           FontAttributes="Bold"/>
+                                                </Frame>
+                                                
+                                                <StackLayout Grid.Column="1" Grid.Row="1"
+                                                            Orientation="Horizontal">
+                                                    <Frame  OutlineColor="Black"
+                                                            BackgroundColor="LightGray"
+                                                            Padding="3"
+                                                            WidthRequest="90">
+                                                        <Label x:Name="AttributeLabel"
+                                                               Text="{Binding Attribute}"
+                                                               Style="{StaticResource ListStyle}"
+                                                               HorizontalOptions="Center"
+                                                               BackgroundColor="LightGray"
+                                                               FontSize="Caption"
+                                                               FontAttributes="Bold"/>
+                                                    </Frame>
+                                                    
+                                                    <Frame  OutlineColor="Black"
+                                                            BackgroundColor="LightGray"
+                                                            Padding="3"
+                                                            WidthRequest="30">
+                                                        <Label x:Name="AttributeValueLabel" 
+                                                               Text="{Binding Value}" 
+                                                               Style="{StaticResource ListStyle}"
+                                                               HorizontalOptions="Center"
+                                                               FontAttributes="Bold"
+                                                               FontSize="Caption"
+                                                               BackgroundColor="LightGray"/>
+                                                    </Frame>
+                                                </StackLayout>
 
-                                    <StackLayout Grid.Column="1" Grid.Row="1"
-                                                 Orientation="Horizontal">
-                                        <Label Text="{Binding Attribute}"
-                                               Style="{StaticResource ListStyle}"/>
-                                        
-                                        <Label Text="{Binding Value}" 
-                                               Style="{StaticResource ListStyle}"/>
-                                    </StackLayout>
-                                    
-                                    <Label Grid.Column="1" Grid.Row="2"
-                                           Text="{Binding Description}" 
-                                           Style="{StaticResource ListStyle}"
-                                           FontSize="Micro"/>
-                                </Grid>
-                            </Frame>
+                                                <Frame OutlineColor="Black"
+                                                       BackgroundColor="LightGray"
+                                                       Padding="5"
+                                                       WidthRequest="100">
+                                                    <Label Grid.Column="1" Grid.Row="2"
+                                                           Text="{Binding Description}" 
+                                                           Style="{StaticResource ListStyle}"
+                                                           FontSize="Caption"
+                                                           LineBreakMode="TailTruncation"
+                                                           HorizontalOptions="CenterAndExpand"/>
+                                                </Frame>
+
+                                            </StackLayout>
+                                        </Grid>
+                                    </Frame>
+                                </StackLayout>
+                                
+                                <ImageButton Grid.Column="0"
+                                             Grid.Row="0"
+                                             HorizontalOptions="FillAndExpand"
+                                             VerticalOptions="FillAndExpand"
+                                             HeightRequest="200"
+                                             Clicked="FlexItem_Clicked"
+                                             CommandParameter="{Binding Id}" />
+                            </Grid>
                         </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
+                    </BindableLayout.ItemTemplate>
+                </FlexLayout>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
