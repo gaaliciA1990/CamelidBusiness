@@ -57,7 +57,7 @@ namespace UnitTests.Views
             // Arrange
 
             // Act
-            page.Add_Clicked(null, null);
+            page.Create_Clicked(null, null);
 
             // Reset
 
