@@ -19,7 +19,8 @@
                     <Label Font="Bold"
                            HorizontalOptions="CenterAndExpand"
                            Text="Character List Page"
-                           Style="{StaticResource HeaderStyle}" />
+                           Style="{StaticResource HeaderStyle}"
+                           FontSize="Large"/>
                     
                     <Button x:Name="CreateButton"
                             Text="Create" 
