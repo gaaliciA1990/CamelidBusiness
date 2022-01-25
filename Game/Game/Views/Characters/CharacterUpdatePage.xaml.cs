@@ -55,12 +55,6 @@ namespace Game.Views
             //Create a backup
             BackupData = new CharacterModel(data.Data);
 
-            // Load the values for the Level into the Picker
-            for (var i = 1; i <= LevelTableHelper.MaxLevel; i++)
-            {
-                //LevelPicker.Items.Add(i.ToString());
-            }
-
             _ = UpdatePageBindingContext();
         }
 
@@ -70,16 +64,10 @@ namespace Game.Views
         /// <returns></returns>
         public bool UpdatePageBindingContext()
         {
-            // Temp store off the Level
-            var level = this.ViewModel.Data.Level;
 
             // Clear the Binding and reset it
             BindingContext = null;
             BindingContext = this.ViewModel;
-
-            // This resets the Picker to -1 index, need to reset it back
-            ViewModel.Data.Level = level;
-            //LevelPicker.SelectedIndex = ViewModel.Data.Level - 1;
 
             ManageHealth();
 
@@ -96,9 +84,6 @@ namespace Game.Views
         /// <param name="args"></param>
         public void Level_Changed(object sender, EventArgs args)
         {
-            // Change the Level
-            //ViewModel.Data.Level = LevelPicker.SelectedIndex + 1;
-
             ManageHealth();
         }
 
