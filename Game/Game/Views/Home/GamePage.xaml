@@ -62,7 +62,7 @@
                 </Grid>
             </ScrollView>
             
-            <!--Exit the application button-->
+            <!--Exit the application button
             <StackLayout Orientation="Horizontal"
                          HorizontalOptions="End">
                 <Button x:Name="QuitButton"
@@ -72,6 +72,7 @@
                         WidthRequest="90"
                         HeightRequest="30"/>
             </StackLayout>
+            -->
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
