@@ -21,10 +21,6 @@ namespace Game.Views
         //List<string> test = new List<string>(Enum.GetNames(typeof(ItemLocationEnum)));
         //LocationPicker.SelectedItem = ViewModel.Data.Location.ToString();
         
-
-
-
-
         // Empty Constructor for UTs
         public ItemReadPage(bool UnitTest) { }
 
