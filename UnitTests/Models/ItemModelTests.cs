@@ -120,6 +120,8 @@ namespace UnitTests.Models
         {
             // Arrange
             var data = new ItemModel();
+            data.Name = "This is an Item";
+            data.Description = "Item Description";
 
             // Act
             var result = data.FormatOutput();
