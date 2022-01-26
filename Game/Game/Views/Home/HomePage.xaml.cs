@@ -19,13 +19,24 @@ namespace Game.Views
         }
 
         /// <summary>
-        /// Example of a Button Click (this one is Sync, if calling Async then needs to be Async)
+        /// Redirects the player to the Game screen to start their game
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         public async void GameButton_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new GamePage());
+        }
+
+        /// <summary>
+        /// Redirects the player to the About page where they can see information about the game
+        /// and the creators of the game
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private async void AboutButton_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new AboutPage());
         }
     }
 }
