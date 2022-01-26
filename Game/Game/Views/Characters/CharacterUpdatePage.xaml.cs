@@ -62,6 +62,8 @@ namespace Game.Views
             DescriptionEntry.Placeholder = "Describe your character";
 
             updateMH = true;
+
+            AddItemsToDisplay();
         }
 
         /// <summary>
