@@ -8,8 +8,6 @@
              Title="{Binding Title}"
              NavigationPage.HasNavigationBar="False">
 
-
-
     <ContentPage.Content>
         <StackLayout Style="{StaticResource OuterBoxStack}">
             <StackLayout Orientation="Horizontal">
