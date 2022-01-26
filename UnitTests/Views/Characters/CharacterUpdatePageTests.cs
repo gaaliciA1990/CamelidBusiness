@@ -123,7 +123,7 @@ namespace UnitTests.Views
             var args = new ValueChangedEventArgs(oldValue, newValue);
 
             // Act
-            page.Attack_OnStepperValueChanged(null, args);
+            page.Attack_OnSliderValueChanged(null, args);
 
             // Reset
 
@@ -145,7 +145,7 @@ namespace UnitTests.Views
             var args = new ValueChangedEventArgs(oldRange, newRange);
 
             // Act
-            page.Defense_OnStepperValueChanged(null, args);
+            page.Defense_OnSliderValueChanged(null, args);
 
             // Reset
 
@@ -167,7 +167,7 @@ namespace UnitTests.Views
             var args = new ValueChangedEventArgs(oldDamage, newDamage);
 
             // Act
-            page.Speed_OnStepperValueChanged(null, args);
+            page.Speed_OnSliderValueChanged(null, args);
 
             // Reset
 
