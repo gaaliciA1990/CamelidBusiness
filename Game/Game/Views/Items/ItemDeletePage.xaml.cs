@@ -24,6 +24,7 @@ namespace Game.Views
         // Constructor for Delete takes a view model of what to delete
         public ItemDeletePage(GenericViewModel<ItemModel> data)
         {
+
             InitializeComponent();
 
             BindingContext = this.viewModel = data;

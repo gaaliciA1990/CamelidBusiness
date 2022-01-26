@@ -25,7 +25,7 @@ namespace Game.Views
         /// <param name="e"></param>
         public async void DungeonButton_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new PickCharactersPage());
+            await Navigation.PushAsync(new PickCharactersPage());
         }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace Game.Views
         /// <param name="e"></param>
         public async void VillageButton_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new VillagePage());
+            await Navigation.PushAsync(new VillagePage());
         }
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace Game.Views
         /// <param name="e"></param>
         public async void AutobattleButton_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new AutoBattlePage());
+            await Navigation.PushAsync(new AutoBattlePage());
         }
 
         private void QuitButton_Clicked(object sender, EventArgs e)

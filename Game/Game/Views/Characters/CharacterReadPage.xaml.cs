@@ -159,7 +159,7 @@ namespace Game.Views
         public async void Update_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushModalAsync(new NavigationPage(new CharacterUpdatePage(ViewModel)));
-            //_ = await Navigation.PopAsync();
+            _ = await Navigation.PopAsync();
         }
 
         /// <summary>
@@ -170,12 +170,12 @@ namespace Game.Views
         public async void Delete_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushModalAsync(new NavigationPage(new CharacterDeletePage(ViewModel)));
-            //_ = await Navigation.PopAsync();
+            _ = await Navigation.PopAsync();
         }
 
         private async void Back_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new NavigationPage(new CharacterIndexPage()));
+            await Navigation.PushAsync(new NavigationPage(new CharacterIndexPage()));
         }
     }
 }

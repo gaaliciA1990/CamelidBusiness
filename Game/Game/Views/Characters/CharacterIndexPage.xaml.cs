@@ -48,7 +48,7 @@ namespace Game.Views
             var data = ViewModel.Dataset.FirstOrDefault(m => m.Id.Equals(id));
 
             // Open the read page
-            await Navigation.PushModalAsync(new CharacterReadPage(new GenericViewModel<CharacterModel>(data)));
+            await Navigation.PushAsync(new CharacterReadPage(new GenericViewModel<CharacterModel>(data)));
 
         }
 
@@ -93,7 +93,7 @@ namespace Game.Views
         /// <param name="e"></param>
         private async void Back_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new NavigationPage(new VillagePage()));
+            await Navigation.PushAsync(new NavigationPage(new VillagePage()));
         }
     }
 }
