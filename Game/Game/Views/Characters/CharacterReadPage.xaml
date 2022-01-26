@@ -9,8 +9,13 @@
              NavigationPage.HasNavigationBar="False">
 
     <ContentPage.Content>
-        <StackLayout Style="{StaticResource OuterBoxStack}">
-            <StackLayout Orientation="Horizontal">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <StackLayout Orientation="Horizontal" Grid.Row="0">
                 <ImageButton Source="leftarrow.png"
                              Aspect="AspectFit"
                              HorizontalOptions="Start"
@@ -42,8 +47,7 @@
                              WidthRequest="65"
                              HeightRequest="65" />
             </StackLayout>
-
-            <ScrollView VerticalScrollBarVisibility="Always">
+            <ScrollView VerticalScrollBarVisibility="Always" Grid.Row="1">
                 <Grid x:Name="FormLayoutGrid">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
@@ -416,6 +420,9 @@
                     </AbsoluteLayout>
                 </Grid>
             </ScrollView>
-        </StackLayout>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
+    
+    
+    
