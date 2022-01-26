@@ -27,7 +27,7 @@
                         Clicked="CreateItem_Clicked" />
             </StackLayout>
 
-            <ScrollView>
+            <ScrollView VerticalScrollBarVisibility="Always">
                 <FlexLayout x:Name="ItemsListView"
 	                        BindableLayout.ItemsSource="{Binding Dataset}" 
                             Wrap="Wrap"

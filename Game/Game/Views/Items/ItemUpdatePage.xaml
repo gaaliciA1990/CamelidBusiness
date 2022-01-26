@@ -30,7 +30,8 @@
                 <Label Font="Bold"
                        HorizontalOptions="CenterAndExpand"
                        Text="Update Item"
-                       Style="{StaticResource HeaderStyle}" />
+                       Style="{StaticResource HeaderStyle}"
+                       FontSize="Large"/>
 
                 <ImageButton Source="icon_save.png"
                              Aspect="AspectFit"
@@ -41,7 +42,7 @@
                              HeightRequest="65" />
             </StackLayout>
 
-            <ScrollView>
+            <ScrollView VerticalScrollBarVisibility="Always">
                 <Grid x:Name="FormLayoutGrid"
                       Grid.Row="1"
                       Grid.Column="0">
@@ -125,15 +126,6 @@
                                IsSpellCheckEnabled="True"
                                Text="{Binding Data.Description, Mode= TwoWay}"
                                Style="{StaticResource EntryStyle}" />
-
-                        <ImageButton Source="icon_cancel.png"
-                                     Aspect="AspectFit"
-                                     HorizontalOptions="Start"
-                                     Clicked="Cancel_Clicked"
-                                     Padding="10"
-                                     WidthRequest="50"
-                                     HeightRequest="50">
-                        </ImageButton>
                     </StackLayout>
 
                     <StackLayout Grid.Row="1"
