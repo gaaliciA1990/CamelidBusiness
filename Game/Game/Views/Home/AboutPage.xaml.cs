@@ -196,5 +196,16 @@ namespace Game.Views
 
             return true;
         }
+
+        /// <summary>
+        /// Go back to the Home Page to start the game
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private async void StartButton_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new HomePage());
+            await Navigation.PopAsync();
+        }
     }
 }
