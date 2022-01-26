@@ -10,15 +10,15 @@
             <ScrollView Orientation="Vertical"
                         HorizontalScrollBarVisibility="Never"
                         VerticalScrollBarVisibility="Never"
-                        Padding="0, 90">
-
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="CenterAndExpand"
+                        Padding="0, 75">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-
 
                     <StackLayout Style="{StaticResource CardImageTextBox}"
                                  VerticalOptions="Start"
