@@ -53,7 +53,7 @@ namespace Game.Views
         public async void Update_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushModalAsync(new NavigationPage(new ItemUpdatePage(ViewModel)));
-            //_ = await Navigation.PopAsync();
+            await Navigation.PopAsync();
         }
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace Game.Views
         public async void Delete_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushModalAsync(new NavigationPage(new ItemDeletePage(ViewModel)));
-            //_ = await Navigation.PopModalAsync();
+            await Navigation.PopModalAsync();
         }
 
         public async void BackButton_Clicked(object sender, EventArgs e)
