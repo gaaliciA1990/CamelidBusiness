@@ -64,13 +64,13 @@
             
             <!--Exit the application button-->
             <StackLayout Orientation="Horizontal"
-                         HorizontalOptions="Center">
+                         HorizontalOptions="End">
                 <Button x:Name="QuitButton"
                         Text="Quit Game"
                         Clicked="QuitButton_Clicked"
                         Padding="5"
                         WidthRequest="90"
-                        HeightRequest="50" />
+                        HeightRequest="30"/>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>
