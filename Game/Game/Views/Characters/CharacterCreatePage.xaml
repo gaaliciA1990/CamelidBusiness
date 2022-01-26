@@ -18,7 +18,7 @@
     </ContentPage.Resources>
 
     <ContentPage.Content>
-        <ScrollView>
+        <ScrollView VerticalScrollBarVisibility="Always">
             <StackLayout Style="{StaticResource OuterBoxStack}">
                 <StackLayout Orientation="Horizontal">
                     <ImageButton Source="icon_cancel.png"
@@ -397,6 +397,7 @@
 
                         </Grid>
                     </StackLayout>
+                    
                     <FlexLayout Grid.Column="0" Grid.Row="1"
                             Grid.ColumnSpan="2"
                             Padding="5"
@@ -475,8 +476,8 @@
                                     </ListView>
 
                                     <Button x:Name="PopupCloseButton" 
-                                Clicked="ClosePopup_Clicked" 
-                                Text="Close"/>
+                                            Clicked="ClosePopup_Clicked" 
+                                            Text="Close"/>
                                 </StackLayout>
                             </Frame>
                         </StackLayout>
