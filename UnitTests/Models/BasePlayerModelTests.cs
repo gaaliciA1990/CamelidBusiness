@@ -32,7 +32,8 @@ namespace UnitTests.Models
             // Reset
 
             // Assert
-            Assert.AreEqual("This is an Item", result.Name);
+            Assert.AreEqual("icon_new.png", result.ImageURI);
+            Assert.AreEqual(CharacterJobEnum.Unknown, result.Job);
         }
 
         [Test]
