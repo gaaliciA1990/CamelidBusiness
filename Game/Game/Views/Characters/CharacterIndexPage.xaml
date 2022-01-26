@@ -10,29 +10,29 @@
              NavigationPage.HasNavigationBar="False">
 
     <ContentPage.Content>
-        <ScrollView>
-            <StackLayout Style="{StaticResource OuterBoxStack}">
-                <StackLayout Orientation="Horizontal">
-                    <Button x:Name="BackButton" Text="Back" 
-                            Clicked="Back_Clicked" />
+        <StackLayout Style="{StaticResource OuterBoxStack}">
+            <StackLayout Orientation="Horizontal">
+                <Button x:Name="BackButton"
+                        Text="Back"
+                        Clicked="Back_Clicked" />
 
-                    <Label Font="Bold"
-                           HorizontalOptions="CenterAndExpand"
-                           Text="Character List Page"
-                           Style="{StaticResource HeaderStyle}"
-                           FontSize="Large"/>
-                    
-                    <Button x:Name="CreateButton"
-                            Text="Create" 
-                            Clicked="CreateCharacter_Clicked" />
-                </StackLayout>
+                <Label Font="Bold"
+                       HorizontalOptions="CenterAndExpand"
+                       Text="Character List Page"
+                       Style="{StaticResource HeaderStyle}"
+                       FontSize="Large" />
 
+                <Button x:Name="CreateButton"
+                        Text="Create"
+                        Clicked="CreateCharacter_Clicked" />
+            </StackLayout>
+            
+            <ScrollView VerticalScrollBarVisibility="Always">
                 <FlexLayout x:Name="CharactersListView"
                             BindableLayout.ItemsSource="{Binding Dataset}"
                             Wrap="Wrap"
                             Direction="Row"
                             JustifyContent="SpaceEvenly">
-
                     <BindableLayout.ItemTemplate>
                         <DataTemplate>
                             <Grid HeightRequest="200">
@@ -118,7 +118,7 @@
                         </DataTemplate>
                     </BindableLayout.ItemTemplate>
                 </FlexLayout>
-            </StackLayout>
-        </ScrollView>
+            </ScrollView>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>
