@@ -42,9 +42,9 @@
                              WidthRequest="65"
                              HeightRequest="65" />
             </StackLayout>
-            
+
             <ScrollView VerticalScrollBarVisibility="Always">
-            <Grid x:Name="FormLayoutGrid">
+                <Grid x:Name="FormLayoutGrid">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
@@ -325,7 +325,7 @@
                                     </Slider.Margin>
                                 </Slider>
                             </StackLayout>
-                            
+
                             <!-- Max Health Value-->
                             <StackLayout Orientation="Horizontal"
                                          Grid.Row="5"
@@ -339,7 +339,7 @@
                                        Text="{Binding Data.MaxHealth, StringFormat= '{0:G}'}"
                                        Style="{StaticResource ValueStyle}"
                                        FontAttributes="Bold"
-                                       FontSize="Medium"/>
+                                       FontSize="Medium" />
                             </StackLayout>
                         </Grid>
                     </StackLayout>
