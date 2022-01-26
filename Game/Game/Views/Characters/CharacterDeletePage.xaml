@@ -9,8 +9,13 @@
              NavigationPage.HasNavigationBar="False">
 
     <ContentPage.Content>
-        <StackLayout Style="{StaticResource OuterBoxStack}">
-            <StackLayout Orientation="Horizontal">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <StackLayout Orientation="Horizontal" Grid.Row="0">
                 <Label FontSize="Large"
                        FontAttributes="Bold, Italic"
                        HorizontalOptions="CenterAndExpand"
@@ -18,8 +23,7 @@
                        Text="{Binding Data.Name, StringFormat= 'Delete: {0:G}'}"
                        Style="{StaticResource ValueStyle}" />
             </StackLayout>
-            
-            <ScrollView>
+            <ScrollView Grid.Row="1">
                 <Grid x:Name="FormLayoutGrid">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
@@ -378,6 +382,8 @@
                     </AbsoluteLayout>
                 </Grid>
             </ScrollView>
-        </StackLayout>
+
+
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
