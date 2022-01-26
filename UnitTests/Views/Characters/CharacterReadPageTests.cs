@@ -143,7 +143,7 @@ namespace UnitTests.Views
             // Arrange
 
             // Put some data into the box so it can be removed
-            FlexLayout itemBox = (FlexLayout)page.Content.FindByName("ItemBox");
+            StackLayout itemBox = (StackLayout)page.Content.FindByName("ItemBox");
 
             itemBox.Children.Add(new Label());
             itemBox.Children.Add(new Label());
