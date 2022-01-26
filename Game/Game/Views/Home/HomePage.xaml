@@ -9,8 +9,6 @@
             VerticalOptions="CenterAndExpand"
             HorizontalOptions="CenterAndExpand">
             
-            
-            
             <StackLayout
                 VerticalOptions="Center"
                 HorizontalOptions="Center">
@@ -27,25 +25,25 @@
                         MaxLines="5"
                         BackgroundColor="Beige"/>
                 </StackLayout>
-                
-                <StackLayout HorizontalOptions="Center" Padding="70,5,70,0"> 
-               
 
+                <StackLayout HorizontalOptions="Center"
+                             Padding="70,5,70,0">
+                    <Button x:Name="GameButton"
+                            Text="Start Game"
+                            Clicked="GameButton_Clicked"
+                            BackgroundColor="Bisque" />
 
-                    <Label 
-                        Text="Help them on their mission."
-                        Style="{StaticResource CenterMessageStyle}"
-                        FontSize="Micro"
-                        LineBreakMode="WordWrap"
-                        MaxLines="5"
-                        />
+                    <Label Text="Help them on their mission."
+                           Style="{StaticResource CenterMessageStyle}"
+                           FontSize="Micro"
+                           LineBreakMode="WordWrap"
+                           MaxLines="5" />
+
+                    <Button x:Name="AboutButton"
+                            Text="About Game"
+                            Clicked="AboutButton_Clicked"
+                            BackgroundColor="Bisque" />
                 </StackLayout>
-
-                <Button
-                    Text="Start Game"
-                    Clicked="GameButton_Clicked"
-                    BackgroundColor="Bisque"/>
-
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
