@@ -47,10 +47,5 @@ namespace Game.Views
         {
             await Navigation.PushAsync(new AutoBattlePage());
         }
-
-        private void QuitButton_Clicked(object sender, EventArgs e)
-        {
-
-        }
     }
 }
