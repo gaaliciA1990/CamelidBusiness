@@ -18,10 +18,14 @@
     </ContentPage.Resources>
 
     <ContentPage.Content>
-        <ScrollView VerticalScrollBarVisibility="Always">
-            <StackLayout Style="{StaticResource OuterBoxStack}">
-                <StackLayout Orientation="Horizontal">
-                    <ImageButton Source="icon_cancel.png"
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <StackLayout Orientation="Horizontal" Grid.Row="0">
+                <ImageButton Source="icon_cancel.png"
                                      Aspect="AspectFit"
                                      HorizontalOptions="Start"
                                      Clicked="Cancel_Clicked"
@@ -29,28 +33,30 @@
                                      WidthRequest="65"
                                      HeightRequest="65"/>
 
-                    <Label Font="Bold"
+                <Label Font="Bold"
                            HorizontalOptions="CenterAndExpand"
                            Text="Create New Character"
                            Style="{StaticResource HeaderStyle}"
                            FontSize="Large"/>
 
 
-                    <ImageButton Source="icon_save.png"
+                <ImageButton Source="icon_save.png"
                                  Aspect="AspectFit"
                                  HorizontalOptions="Start"
                                  Clicked="Save_Clicked"
                                  Padding="10"
                                  WidthRequest="65"
                                  HeightRequest="65" />
-                </StackLayout>
+            </StackLayout>
 
+            <ScrollView VerticalScrollBarVisibility="Always" Grid.Row="1">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
@@ -72,30 +78,36 @@
                                Text="{Binding Data.Name, Mode=TwoWay}"
                                Style="{StaticResource EntryStyle}" />
 
-                        <StackLayout Orientation="Horizontal"
-                                     HorizontalOptions="Center"
-                                     VerticalOptions="CenterAndExpand">
-                            <ImageButton x:Name="LeftButton"
+                        <Grid HorizontalOptions="CenterAndExpand" VerticalOptions="FillAndExpand">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="3*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+
+                            <ImageButton Grid.Column="0" Grid.Row="0"
+                                         x:Name="LeftButton"
                                          Source="leftarrow.png"
                                          Clicked="LeftButton_Clicked"
                                          BorderColor="DarkSlateGray"
-                                         CornerRadius="1"
-                                     WidthRequest="50"
-                                     HeightRequest="50"/>
-                            <Image  x:Name="ImageLabel"
+                                         CornerRadius="1"/>
+                            <Image  Grid.Column="1" Grid.Row="0"
+                                    x:Name="ImageLabel"
                                     Source="{Binding Data.ImageURI}"
                                     HorizontalOptions="FillAndExpand"
                                     VerticalOptions="FillAndExpand"
                                     Aspect="AspectFit"
                                     Margin="10" />
-                            <ImageButton x:Name="RightButton"
+                            <ImageButton Grid.Column="2" Grid.Row="0"
+                                         x:Name="RightButton"
                                          Source="rightarrow.png"
                                          Clicked="RightButton_Clicked"
                                          BorderColor="DarkSlateGray"
-                                         CornerRadius="5"
-                                     WidthRequest="50"
-                                     HeightRequest="50"/>
-                        </StackLayout>
+                                         CornerRadius="5"/>
+                        </Grid>
 
                         <Entry x:Name="DescriptionEntry"
                                FontSize="Medium"
@@ -397,7 +409,8 @@
 
                         </Grid>
                     </StackLayout>
-                    
+
+                    <!--
                     <FlexLayout Grid.Column="0" Grid.Row="1"
                             Grid.ColumnSpan="2"
                             Padding="5"
@@ -406,6 +419,16 @@
                             AlignContent="SpaceAround"
                             x:Name="ItemBox">
                     </FlexLayout>
+                    -->
+
+                    <StackLayout Grid.Row="1"
+                                 Grid.Column="0"
+                                 Grid.ColumnSpan="2"
+                                 x:Name="ItemBox"
+                                 Orientation="Horizontal"
+                                 HorizontalOptions="Center"
+                                 HeightRequest="100">
+                    </StackLayout>
 
                     <!--The Item Popup-->
                     <StackLayout x:Name="PopupItemSelector"
@@ -483,7 +506,7 @@
                         </StackLayout>
                     </StackLayout>
                 </Grid>
-            </StackLayout>
-        </ScrollView>
+            </ScrollView>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
