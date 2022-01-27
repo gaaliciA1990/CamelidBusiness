@@ -158,7 +158,6 @@ namespace Game.Views
             _ = await Navigation.PopModalAsync();
         }
 
-
         /// <summary>
         /// Catch the change to the Slider for Level
         /// </summary>
@@ -521,7 +520,5 @@ namespace Game.Views
         {
             Entry_Validator();
         }
-
-
     }
 }
