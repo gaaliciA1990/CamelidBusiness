@@ -50,8 +50,7 @@
                                        HorizontalOptions="Center"
                                        HorizontalTextAlignment="Center"
                                        FontAttributes="Bold" />
-                                <Label Text="Welcome to the our game! This is a raid dungeon crawler that focuses around 3 Camelid Clans: Alpacas, Llamas, and Vincuñas.
-                               Your job is to help the champions defeat the threat to their land. As you go through the levels, you will pick up items
+                                <Label Text="Welcome to the our game! This is a raid dungeon crawler that focuses around 3 Camelid Clans: Alpacas, Llamas, and Vincuñas. Your job is to help the champions defeat the threat to their land. As you go through the levels, you will pick up items
                                and gain XP to improve your characters to defeat the Great Leader. Hurry, your champions need you!"
                                        HorizontalTextAlignment="Start"
                                        FontSize="Caption" />
