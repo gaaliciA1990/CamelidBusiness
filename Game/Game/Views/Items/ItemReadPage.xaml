@@ -50,7 +50,8 @@
                          HeightRequest="65" />
         </StackLayout>
 
-        <ScrollView VerticalScrollBarVisibility="Always">
+        <ScrollView VerticalScrollBarVisibility="Always"
+                    Grid.Row="1">
             <Grid x:Name="FormLayoutGrid"
                   Grid.Row="1"
                   Grid.Column="0">
