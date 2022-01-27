@@ -96,6 +96,7 @@
                                TextChanged="Entry_TextChanged"
                                Text="{Binding Data.Name, Mode=TwoWay}"
                                Style="{StaticResource EntryStyle}" />
+                        
                         <Grid HorizontalOptions="CenterAndExpand"
                               VerticalOptions="FillAndExpand">
                             <Grid.ColumnDefinitions>
@@ -188,7 +189,7 @@
                                    Style="{StaticResource LabelStyle}"
                                    VerticalOptions="Center" />
 
-                            <!--Speed Slider-->
+                            <!--Range Slider-->
                             <StackLayout Grid.Row="0"
                                          Grid.Column="1"
                                          Orientation="Horizontal"
