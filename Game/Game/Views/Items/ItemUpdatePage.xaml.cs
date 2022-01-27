@@ -48,20 +48,33 @@ namespace Game.Views
 
             this.ViewModel.Title = "Update " + data.Title;
 
+            NameEntry.Placeholder = "Give your character a name";
+            DescriptionEntry.Placeholder = "Describe your character";
+
             //Need to make the SelectedItem a string, so it can select the correct item.
             LocationPicker.SelectedItem = data.Data.Location.ToString();
             AttributePicker.SelectedItem = data.Data.Attribute.ToString();
         }
 
         /// <summary>
-        /// Save calls to Update
+        /// Save calls to Update. Validation checks are implemented to prevent saving with 
+        /// empty fields
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         public async void Save_Clicked(object sender, EventArgs e)
         {
-            if (errors.Count > 0)
+            bool isValid = Entry_Validator();
+            if (isValid == false)
+            {
                 return;
+            }
+
+
+            if (errors.Count > 0)
+            {
+                return;
+            }
 
             // If the image in the data box is empty, use the default one..
             if (string.IsNullOrEmpty(ViewModel.Data.ImageURI))
@@ -188,38 +201,7 @@ namespace Game.Views
             ImageLabel.Source = this.ViewModel.Data.ImageURI;
         }
 
-        /// <summary>
-        /// Validate name entry
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Entry_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            // Check the dictionary for the Name and Description key and remove to start fresh
-            if (errors.ContainsKey("Name"))
-            {
-                errors.Remove("Name");
-            }
-            if (errors.ContainsKey("Description"))
-            {
-                errors.Remove("Description");
-            }
-
-            // validate the Name has something entered
-            if (String.IsNullOrWhiteSpace(this.ViewModel.Data.Name))
-            {
-                errors["Name"] = "Name is required";
-            }
-
-            // validate the Description has something entered
-            if (String.IsNullOrWhiteSpace(this.ViewModel.Data.Description))
-            {
-                errors["Description"] = "Description is required";
-            }
-
-            BindableLayout.SetItemsSource(errorMessageList, null);
-            BindableLayout.SetItemsSource(errorMessageList, errors);
-        }
+        
 
         /// <summary>
         /// Validate Attribute Dropdown
@@ -258,6 +240,42 @@ namespace Game.Views
 
             BindableLayout.SetItemsSource(errorMessageList, null);
             BindableLayout.SetItemsSource(errorMessageList, errors);
+        }
+
+        /// <summary>
+        /// Helper function to help validate required input fields
+        /// </summary>
+        /// <returns></returns>
+        private bool Entry_Validator()
+        {
+            bool isValid = true;
+
+            // validate the Name has something entered
+            if (String.IsNullOrWhiteSpace(this.ViewModel.Data.Name))
+            {
+                NameEntry.PlaceholderColor = Xamarin.Forms.Color.Red;
+                isValid = false;
+            }
+
+            // validate the Description has something entered
+            if (String.IsNullOrWhiteSpace(this.ViewModel.Data.Description))
+            {
+                DescriptionEntry.PlaceholderColor = Xamarin.Forms.Color.Red;
+                isValid = false;
+            }
+
+            return isValid;
+        }
+
+        /// <summary>
+        /// Validate entry fields for Name and Description
+        /// are filled with valid text
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Entry_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Entry_Validator();
         }
     }
 }

@@ -27,11 +27,34 @@
                              WidthRequest="65"
                              HeightRequest="65" />
 
-                <Label Font="Bold"
-                       HorizontalOptions="CenterAndExpand"
-                       Text="Update Item"
-                       Style="{StaticResource HeaderStyle}"
-                       FontSize="Large"/>
+                <StackLayout Grid.Row="0"
+                             Grid.Column="0"
+                             Grid.ColumnSpan="2"
+                             Orientation="Vertical"
+                             VerticalOptions="CenterAndExpand"
+                             HorizontalOptions="CenterAndExpand"
+                             Padding="5">
+                    <!--Page Title-->
+                    <Label x:Name="TitleLabel"
+                           Font="Bold"
+                           HorizontalOptions="CenterAndExpand"
+                           Text="Update Item"
+                           Style="{StaticResource HeaderStyle}"
+                           FontSize="Large" />
+                    <StackLayout x:Name="errorMessageList"
+                                 HorizontalOptions="Center">
+                        <!--Error Message-->
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <Label Text="{Binding Value}"
+                                       TextColor="Red"
+                                       FontSize="Small"
+                                       FontAttributes="Bold, Italic">
+                                </Label>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </StackLayout>
+                </StackLayout>
 
                 <ImageButton Source="icon_save.png"
                              Aspect="AspectFit"
@@ -42,7 +65,8 @@
                              HeightRequest="65" />
             </StackLayout>
 
-            <ScrollView VerticalScrollBarVisibility="Always">
+            <ScrollView VerticalScrollBarVisibility="Always"
+                        Grid.Row="1">
                 <Grid x:Name="FormLayoutGrid"
                       Grid.Row="1"
                       Grid.Column="0">
@@ -55,32 +79,15 @@
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
 
-
-                    <StackLayout x:Name="errorMessageList"
-                                 Grid.Row="0"
-                                 Grid.Column="0"
-                                 Grid.ColumnSpan="2"
-                                 HorizontalOptions="CenterAndExpand"
-                                 Padding="20">
-                        <BindableLayout.ItemTemplate>
-                            <DataTemplate>
-                                <Label Text="{Binding Value}"
-                                       TextColor="Red"
-                                       FontSize="Small"
-                                       FontAttributes="Bold, Italic">
-                                </Label>
-                            </DataTemplate>
-                        </BindableLayout.ItemTemplate>
-                    </StackLayout>
-
-                    <StackLayout Grid.Row="1"
+                    <StackLayout Grid.Row="0"
                                  Grid.Column="0"
                                  HorizontalOptions="FillAndExpand"
                                  VerticalOptions="FillAndExpand"
                                  Padding="20"
                                  Style="{StaticResource OuterBoxStack}">
 
-                        <Entry Placeholder="Name"
+                        <Entry x:Name="NameEntry"
+                               Placeholder="Name"
                                FontSize="Medium"
                                MaxLength="20"
                                HorizontalOptions="FillAndExpand"
@@ -92,49 +99,63 @@
                                Style="{StaticResource EntryStyle}" />
 
 
-                        <StackLayout Orientation="Horizontal"
-                                     HorizontalOptions="FillAndExpand"
-                                     VerticalOptions="FillAndExpand">
-                            <Button x:Name="LeftButton"
-                                    Text="Left"
-                                    Clicked="LeftButton_Clicked"
-                                    BorderColor="DarkSlateGray"
-                                    WidthRequest="50"
-                                    CornerRadius="5" />
-                            <Image  x:Name="ImageLabel"
+                        <Grid HorizontalOptions="CenterAndExpand"
+                              VerticalOptions="FillAndExpand">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="3*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+
+                            <ImageButton Grid.Column="0"
+                                         Grid.Row="0"
+                                         x:Name="LeftButton"
+                                         Source="leftarrow.png"
+                                         Clicked="LeftButton_Clicked"
+                                         BorderColor="DarkSlateGray"
+                                         CornerRadius="1" />
+                            <Image  Grid.Column="1"
+                                    Grid.Row="0"
+                                    x:Name="ImageLabel"
                                     Source="{Binding Data.ImageURI}"
                                     HorizontalOptions="FillAndExpand"
                                     VerticalOptions="FillAndExpand"
                                     Aspect="AspectFit"
                                     Margin="10" />
-                            <Button x:Name="RightButton"
-                                    Text="Right"
-                                    Clicked="RightButton_Clicked"
-                                    BorderColor="DarkSlateGray"
-                                    WidthRequest="50"
-                                    CornerRadius="5" />
-                        </StackLayout>
+                            <ImageButton Grid.Column="2"
+                                         Grid.Row="0"
+                                         x:Name="RightButton"
+                                         Source="rightarrow.png"
+                                         Clicked="RightButton_Clicked"
+                                         BorderColor="DarkSlateGray"
+                                         CornerRadius="5" />
+                        </Grid>
 
-                        <Entry Placeholder="Description"
+                        <Entry x:Name="DescriptionEntry"
                                FontSize="Medium"
-                               MaxLength="50"
                                HorizontalOptions="FillAndExpand"
                                BackgroundColor="White"
-                               TextChanged="Entry_TextChanged"
+                               MaxLength="50"
                                Keyboard="Text"
                                ReturnType="Done"
                                IsSpellCheckEnabled="True"
+                               TextChanged="Entry_TextChanged"
                                Text="{Binding Data.Description, Mode= TwoWay}"
                                Style="{StaticResource EntryStyle}" />
                     </StackLayout>
 
-                    <StackLayout Grid.Row="1"
+                    <!--Attributes setup-->
+                    <StackLayout Grid.Row="0"
                                  Grid.Column="1"
                                  HorizontalOptions="FillAndExpand"
                                  VerticalOptions="FillAndExpand"
                                  Padding="10"
                                  Style="{StaticResource OuterBoxStack}">
-
+                        
+                        <!--Location and Attribute Pickers-->
                         <StackLayout Style="{StaticResource HorizontalStack}"
                                      HorizontalOptions="FillAndExpand"
                                      VerticalOptions="Center">
@@ -157,15 +178,20 @@
 
                         <Grid HorizontalOptions="Center"
                               VerticalOptions="FillAndExpand">
-
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            
                             <Label Grid.Row="0"
                                    Grid.Column="0"
                                    FontSize="Medium"
-                                   Text="Range : "
+                                   Text="RNG : "
                                    x:Name="rangeLabel"
                                    Style="{StaticResource LabelStyle}"
                                    VerticalOptions="Center" />
-
+                            
+                            <!--Range Slider-->
                             <StackLayout Grid.Row="0"
                                          Grid.Column="1"
                                          Grid.ColumnSpan="2"
@@ -206,7 +232,7 @@
                             <Label Grid.Row="1"
                                    Grid.Column="0"
                                    FontSize="Medium"
-                                   Text="Value : "
+                                   Text="VAL : "
                                    Style="{StaticResource LabelStyle}"
                                    VerticalOptions="Center" />
 
@@ -215,6 +241,7 @@
                                          Grid.ColumnSpan="2"
                                          VerticalOptions="Center">
 
+                                <!--Value Slider-->
                                 <Label FontSize="Medium"
                                        FontAttributes="Bold"
                                        x:Name="ValueLabel"
@@ -250,11 +277,12 @@
                             <Label  Grid.Row="2"
                                     Grid.Column="0"
                                     FontSize="Medium"
-                                    Text="Damage : "
+                                    Text="DMG : "
                                     x:Name="damageLabel"
                                     Style="{StaticResource LabelStyle}"
                                     VerticalOptions="Center" />
 
+                            <!--Damage Slider-->
                             <StackLayout Grid.Row="2"
                                          Grid.Column="1"
                                          Grid.ColumnSpan="2"
