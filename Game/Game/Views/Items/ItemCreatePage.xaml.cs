@@ -49,6 +49,10 @@ namespace Game.Views
 
             this.ViewModel.Title = "Create";
 
+            // Set the entry placeholder text
+            NameEntry.Placeholder = "Give your character a name";
+            DescriptionEntry.Placeholder = "Describe your character";
+
             //Need to make the SelectedItem a string, so it can select the correct item.
             LocationPicker.SelectedItem = ViewModel.Data.Location.ToString();
             AttributePicker.SelectedItem = ViewModel.Data.Attribute.ToString();
@@ -61,6 +65,13 @@ namespace Game.Views
         /// <param name="e"></param>
         public async void Save_Clicked(object sender, EventArgs e)
         {
+            //Check if required entry fields are filled
+            bool isValid = Entry_Validator();
+            if (isValid == false)
+            {
+                return;
+            }
+
             // Validate the Location picker is not empty on save
             if (this.ViewModel.Data.Location == ItemLocationEnum.Unknown)
             {
@@ -197,31 +208,7 @@ namespace Game.Views
         /// <param name="e"></param>
         private void Entry_TextChanged(object sender, TextChangedEventArgs e)
         {
-            // Check the dictionary for the Name and Description key and remove to start fresh
-            if (errors.ContainsKey("Name"))
-            {
-                errors.Remove("Name");
-            }
-            if (errors.ContainsKey("Description"))
-            {
-                errors.Remove("Description");
-            }
-
-            // validate the Name has something entered
-            if (String.IsNullOrWhiteSpace(this.ViewModel.Data.Name))
-            {
-                errors["Name"] = "Name is required";
-            }
-            
-            // validate the Description has something entered
-            if (String.IsNullOrWhiteSpace(this.ViewModel.Data.Description))
-            {
-                errors["Description"] = "Description is required";
-            }
-
-            // Display the error message generated
-            BindableLayout.SetItemsSource(errorMessageList, null);
-            BindableLayout.SetItemsSource(errorMessageList, errors);
+            Entry_Validator();
         }
 
         /// <summary>
@@ -256,6 +243,31 @@ namespace Game.Views
             // Display the error message generated
             BindableLayout.SetItemsSource(errorMessageList, null);
             BindableLayout.SetItemsSource(errorMessageList, errors);
+        }
+
+        /// <summary>
+        /// Helper function to validate required entry fields
+        /// </summary>
+        /// <returns></returns>
+        private bool Entry_Validator()
+        {
+            bool isValid = true;
+
+            // validate the Name something entered
+            if (String.IsNullOrWhiteSpace(this.ViewModel.Data.Name))
+            {
+                NameEntry.PlaceholderColor = Xamarin.Forms.Color.Red;
+                isValid = false;
+            }
+
+            // validate the Description has something entered
+            if (String.IsNullOrWhiteSpace(this.ViewModel.Data.Description))
+            {
+                DescriptionEntry.PlaceholderColor = Xamarin.Forms.Color.Red;
+                isValid = false;
+            }
+
+            return isValid;
         }
     }
 }
