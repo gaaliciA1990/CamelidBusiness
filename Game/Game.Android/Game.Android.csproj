@@ -272,5 +272,16 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\logo_placeholder.PNG" />
   </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\alpaca1.png" />
+    <AndroidResource Include="Resources\drawable\alpaca2.png" />
+    <AndroidResource Include="Resources\drawable\alpaca3.png" />
+    <AndroidResource Include="Resources\drawable\llama1.png" />
+    <AndroidResource Include="Resources\drawable\llama2.png" />
+    <AndroidResource Include="Resources\drawable\llama3.png" />
+    <AndroidResource Include="Resources\drawable\vicuna1.png" />
+    <AndroidResource Include="Resources\drawable\vicuna2.png" />
+    <AndroidResource Include="Resources\drawable\vicuna3.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

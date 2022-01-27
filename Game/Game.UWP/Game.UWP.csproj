@@ -108,6 +108,9 @@
     <Content Include="action_attack.png" />
     <Content Include="action_default.png" />
     <Content Include="action_move.png" />
+    <Content Include="alpaca1.png" />
+    <Content Include="alpaca2.png" />
+    <Content Include="alpaca3.png" />
     <Content Include="Assets\LargeTile.scale-100.png" />
     <Content Include="Assets\LargeTile.scale-200.png" />
     <Content Include="Assets\LargeTile.scale-400.png" />
@@ -160,6 +163,9 @@
     <Content Include="items.png" />
     <Content Include="knight.png" />
     <Content Include="leftarrow.png" />
+    <Content Include="llama1.png" />
+    <Content Include="llama2.png" />
+    <Content Include="llama3.png" />
     <Content Include="logo_placeholder.PNG" />
     <Content Include="neck1.png" />
     <Content Include="neck2.png" />
@@ -190,6 +196,9 @@
     <Content Include="troll4.png" />
     <Content Include="troll5.png" />
     <Content Include="troll6.png" />
+    <Content Include="vicuna1.png" />
+    <Content Include="vicuna2.png" />
+    <Content Include="vicuna3.png" />
     <Content Include="village.png" />
   </ItemGroup>
   <ItemGroup>
