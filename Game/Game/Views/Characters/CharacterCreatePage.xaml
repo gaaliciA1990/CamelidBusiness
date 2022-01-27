@@ -300,7 +300,7 @@
                                 </Slider>
                             </StackLayout>
                             
-                            <!--Speed Attribute-->
+                            <!--Speed Slider-->
                             <Label Text="SPD: "
                                    FontSize="Medium"
                                    Grid.Row="3"
@@ -349,8 +349,8 @@
 
                             </StackLayout>
                             
-                            <!--Range Attribute-->
-                            <Label Text="RANGE: "
+                            <!--Range Slider-->
+                            <Label Text="RNG: "
                                    FontSize="Medium"
                                    Grid.Row="4"
                                    Grid.Column="0"
