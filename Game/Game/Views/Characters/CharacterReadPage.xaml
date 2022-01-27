@@ -85,7 +85,6 @@
                                Style="{StaticResource ValueStyle}" />
                     </StackLayout>
 
-
                     <StackLayout Grid.Row="0"
                                  Grid.Column="1"
                                  HorizontalOptions="FillAndExpand"
