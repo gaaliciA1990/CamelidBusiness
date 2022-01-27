@@ -20,9 +20,10 @@
                        FontAttributes="Bold, Italic"
                        HorizontalOptions="CenterAndExpand"
                        VerticalOptions="FillAndExpand"
-                       Text="{Binding Data.Name, StringFormat= 'Delete: {0:G}'}"
+                       Text="{Binding Data.Name, StringFormat= 'Delete: {0:G}?'}"
                        Style="{StaticResource ValueStyle}" />
             </StackLayout>
+            
             <ScrollView Grid.Row="1">
                 <Grid x:Name="FormLayoutGrid">
                     <Grid.ColumnDefinitions>
@@ -60,7 +61,6 @@
                                Text="{Binding Data.Description}"
                                Style="{StaticResource ValueStyle}" />
                     </StackLayout>
-
 
                     <StackLayout Grid.Row="0"
                                  Grid.Column="1"
@@ -148,6 +148,7 @@
                                         </OnPlatform>
                                     </Label.Margin>
                                 </Label>
+                                
                                 <Slider Maximum="20"
                                         IsEnabled="False"
                                         Minimum="1"
@@ -193,6 +194,7 @@
                                         </OnPlatform>
                                     </Label.Margin>
                                 </Label>
+                                
                                 <Slider Maximum="20"
                                         IsEnabled="False"
                                         Minimum="1"
@@ -238,6 +240,7 @@
                                         </OnPlatform>
                                     </Label.Margin>
                                 </Label>
+                                
                                 <Slider Maximum="20"
                                         IsEnabled="False"
                                         Minimum="1"
@@ -255,7 +258,6 @@
                                     </Slider.Margin>
                                 </Slider>
                             </StackLayout>
-
 
                             <!--RANGE-->
                             <Label Text="RANGE: "
@@ -284,6 +286,7 @@
                                         </OnPlatform>
                                     </Label.Margin>
                                 </Label>
+                                
                                 <Slider Maximum="20"
                                         IsEnabled="False"
                                         Minimum="1"
@@ -302,8 +305,6 @@
                                 </Slider>
                             </StackLayout>
 
-
-
                             <StackLayout Orientation="Horizontal"
                                          Grid.Row="5"
                                          Grid.Column="0"
@@ -316,9 +317,6 @@
                                        Text="{Binding Data.MaxHealth, StringFormat= '{0:G} hp'}"
                                        Style="{StaticResource ValueStyle}" />
                             </StackLayout>
-
-
-
                         </Grid>
                     </StackLayout>
 
@@ -331,13 +329,12 @@
                                  HeightRequest="100">
                     </StackLayout>
 
-
-
                     <AbsoluteLayout Padding="0"
                                     HorizontalOptions="CenterAndExpand"
                                     VerticalOptions="CenterAndExpand"
                                     Grid.ColumnSpan="2">
                         <Frame x:Name="Sheet"
+                               HeightRequest="200"
                                WidthRequest="300"
                                Opacity=".9"
                                VerticalOptions="End"
@@ -349,10 +346,8 @@
                                IsClippedToBounds="true"
                                Grid.Row="1"
                                Grid.ColumnSpan="2">
-
                             <Grid>
-
-                                <Label Text="Deleted data cannot be recovered. Delete this character?"
+                                <Label Text="Deleted characters cannot be recovered. Delete this character?"
                                        FontSize="Medium"
                                        FontAttributes="Bold"
                                        VerticalTextAlignment="Center"
