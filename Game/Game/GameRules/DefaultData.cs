@@ -300,80 +300,42 @@ namespace Game.GameRules
             var datalist = new List<CharacterModel>()
             {
                 new CharacterModel {
-                    Name = "Mike",
-                    Description = "Archer Wannabe",
+                    Name = "Bill",
+                    Description = "Majestic",
                     Level = 1,
                     MaxHealth = 5,
-                    ImageURI = "elf1.png",
+                    ImageURI = "Alpaca1.png",
                     Head = HeadString,
-                    Necklass = NecklassString,
                     PrimaryHand = PrimaryHandString,
                     OffHand = OffHandString,
-                    Feet = FeetString,
                     RightFinger = RightFingerString,
                     LeftFinger = LeftFingerString,
                 },
 
                 new CharacterModel {
-                    Name = "Tim",
-                    Description = "Hawk eye",
+                    Name = "Jill",
+                    Description = "Wild",
                     Level = 1,
                     MaxHealth = 5,
-                    ImageURI = "elf2.png",
+                    ImageURI = "Llama2.png",
                     Head = HeadString,
                     Necklass = NecklassString,
                     PrimaryHand = PrimaryHandString,
-                    OffHand = OffHandString,
                     Feet = FeetString,
-                    RightFinger = RightFingerString,
                     LeftFinger = LeftFingerString,
                 },
 
                 new CharacterModel {
-                    Name = "Doug",
-                    Description = "Warrior in training",
+                    Name = "Will",
+                    Description = "Untaimed",
                     Level = 1,
                     MaxHealth = 8,
-                    ImageURI = "elf4.png",
-                    Head = HeadString,
+                    ImageURI = "Vicuna3.png",
                     Necklass = NecklassString,
                     PrimaryHand = PrimaryHandString,
                     OffHand = OffHandString,
                     Feet = FeetString,
                     RightFinger = RightFingerString,
-                    LeftFinger = LeftFingerString,
-                },
-
-                new CharacterModel {
-                    Name = "Sue",
-                    Description = "A strong Warrior",
-                    Level = 4,
-                    MaxHealth = 38,
-                    ImageURI = "elf3.png"
-                },
-
-                new CharacterModel {
-                    Name = "Jea",
-                    Description = "Come and get me",
-                    Level = 5,
-                    MaxHealth = 43,
-                    ImageURI = "elf5.png"
-                },
-
-                new CharacterModel {
-                    Name = "Darren",
-                    Description = "The Wiz",
-                    Level = 5,
-                    MaxHealth = 43,
-                    ImageURI = "elf6.png"
-                },
-
-                new CharacterModel {
-                    Name = "Dani",
-                    Description = "A powerfull Cleric",
-                    Level = 5,
-                    MaxHealth = 43,
-                    ImageURI = "elf7.png"
                 }
             };
 
