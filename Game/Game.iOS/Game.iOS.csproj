@@ -224,27 +224,6 @@
     <BundleResource Include="Resources\feet1.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\elf1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\elf2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\elf3.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\elf4.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\elf5.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\elf6.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\elf7.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\knight.png" />
   </ItemGroup>
   <ItemGroup>

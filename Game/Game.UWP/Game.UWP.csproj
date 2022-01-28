@@ -142,13 +142,6 @@
     <Content Include="d10.png" />
     <Content Include="d20_2.png" />
     <Content Include="dungeon_door.png" />
-    <Content Include="elf1.png" />
-    <Content Include="elf2.png" />
-    <Content Include="elf3.png" />
-    <Content Include="elf4.png" />
-    <Content Include="elf5.png" />
-    <Content Include="elf6.png" />
-    <Content Include="elf7.png" />
     <Content Include="feet1.png" />
     <Content Include="feet2.png" />
     <Content Include="hat1.png" />
