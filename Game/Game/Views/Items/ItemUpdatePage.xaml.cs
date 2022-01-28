@@ -218,7 +218,6 @@ namespace Game.Views
             if (this.ViewModel.Data.Attribute == AttributeEnum.Unknown)
             {
                 errors["LocationAttribute"] = "Location not selected";
-
             }
 
             BindableLayout.SetItemsSource(errorMessageList, null);
@@ -232,11 +231,15 @@ namespace Game.Views
         /// <param name="e"></param>
         private void LocationPicker_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (errors.ContainsKey("LocationAttribute")) { errors.Remove("LocationAttribute"); };
+            if (errors.ContainsKey("LocationAttribute")) 
+            { 
+                errors.Remove("LocationAttribute"); 
+            };
 
             if (this.ViewModel.Data.Attribute == AttributeEnum.Unknown)
+            {
                 errors["LocationAttribute"] = "Location not selected";
-
+            }
 
             BindableLayout.SetItemsSource(errorMessageList, null);
             BindableLayout.SetItemsSource(errorMessageList, errors);
