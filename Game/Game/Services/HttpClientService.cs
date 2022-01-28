@@ -119,7 +119,7 @@ namespace Game.Services
                 };
 
                 var myString = (JObject)JToken.FromObject(myError);
-                return mystring.ToString();
+                return myString.ToString();
             }
 
             // Version string is  1.1.1.1  MajorCode.MinorCode.MajorData.MinorData
