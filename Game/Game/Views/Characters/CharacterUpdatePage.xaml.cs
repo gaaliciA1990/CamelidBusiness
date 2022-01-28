@@ -165,7 +165,7 @@ namespace Game.Views
         /// <param name="e"></param>
         public void Level_OnSliderValueChanged(object sender, ValueChangedEventArgs e)
         {
-            LevelValue.Text = String.Format("{0}", Math.Round(e.NewValue));
+            LevelValue.Text = string.Format("{0}", Math.Round(e.NewValue));
 
             //TODO: may need a condition to change on whole value
             Level_Changed(null, null);
@@ -178,7 +178,7 @@ namespace Game.Views
         /// <param name="e"></param>
         public void Attack_OnSliderValueChanged(object sender, ValueChangedEventArgs e)
         {
-            AttackValue.Text = String.Format("{0}", Math.Round(e.NewValue));
+            AttackValue.Text = string.Format("{0}", Math.Round(e.NewValue));
         }
 
         /// <summary>
@@ -188,7 +188,7 @@ namespace Game.Views
         /// <param name="e"></param>
         public void Defense_OnSliderValueChanged(object sender, ValueChangedEventArgs e)
         {
-            DefenseValue.Text = String.Format("{0}", Math.Round(e.NewValue));
+            DefenseValue.Text = string.Format("{0}", Math.Round(e.NewValue));
         }
 
         /// <summary>
@@ -198,7 +198,7 @@ namespace Game.Views
         /// <param name="e"></param>
         public void Speed_OnSliderValueChanged(object sender, ValueChangedEventArgs e)
         {
-            SpeedValue.Text = String.Format("{0}", Math.Round(e.NewValue));
+            SpeedValue.Text = string.Format("{0}", Math.Round(e.NewValue));
         }
 
         /// <summary>
@@ -494,14 +494,14 @@ namespace Game.Views
             bool isValid = true;
 
             // validate the Name has something entered
-            if (String.IsNullOrWhiteSpace(this.ViewModel.Data.Name))
+            if (string.IsNullOrWhiteSpace(this.ViewModel.Data.Name))
             {
                 NameEntry.PlaceholderColor = Xamarin.Forms.Color.Red;
                 isValid = false;
             }
 
             // validate the Description has something entered
-            if (String.IsNullOrWhiteSpace(this.ViewModel.Data.Description))
+            if (string.IsNullOrWhiteSpace(this.ViewModel.Data.Description))
             {
                 DescriptionEntry.PlaceholderColor = Xamarin.Forms.Color.Red;
                 isValid = false;

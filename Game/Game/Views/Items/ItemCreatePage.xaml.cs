@@ -123,7 +123,7 @@ namespace Game.Views
         /// <param name="e"></param>
         public void Range_OnSliderValueChanged(object sender, ValueChangedEventArgs e)
         {
-            RangeLabel.Text = String.Format("{0}", Math.Round(e.NewValue));
+            RangeLabel.Text = string.Format("{0}", Math.Round(e.NewValue));
         }
 
         /// <summary>
@@ -133,7 +133,7 @@ namespace Game.Views
         /// <param name="e"></param>
         public void Value_OnSliderValueChanged(object sender, ValueChangedEventArgs e)
         {
-            ValueLabel.Text = String.Format("{0}", Math.Round(e.NewValue));
+            ValueLabel.Text = string.Format("{0}", Math.Round(e.NewValue));
         }
 
         /// <summary>
@@ -143,7 +143,7 @@ namespace Game.Views
         /// <param name="e"></param>
         public void Damage_OnSliderValueChanged(object sender, ValueChangedEventArgs e)
         {
-            DamageLabel.Text = String.Format("{0}", Math.Round(e.NewValue));
+            DamageLabel.Text = string.Format("{0}", Math.Round(e.NewValue));
         }
 
         /// <summary>
@@ -254,14 +254,14 @@ namespace Game.Views
             bool isValid = true;
 
             // validate the Name something entered
-            if (String.IsNullOrWhiteSpace(this.ViewModel.Data.Name))
+            if (string.IsNullOrWhiteSpace(this.ViewModel.Data.Name))
             {
                 NameEntry.PlaceholderColor = Xamarin.Forms.Color.Red;
                 isValid = false;
             }
 
             // validate the Description has something entered
-            if (String.IsNullOrWhiteSpace(this.ViewModel.Data.Description))
+            if (string.IsNullOrWhiteSpace(this.ViewModel.Data.Description))
             {
                 DescriptionEntry.PlaceholderColor = Xamarin.Forms.Color.Red;
                 isValid = false;
