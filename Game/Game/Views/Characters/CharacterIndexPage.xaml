@@ -41,7 +41,8 @@
                                              Grid.Row="0">
 
                                     <Frame OutlineColor="Black"
-                                           Padding="1">
+                                           Padding="1"
+                                           MinimumWidthRequest="200">
                                         <Grid BackgroundColor="LightSeaGreen"
                                               WidthRequest="200"
                                               Padding="20">
