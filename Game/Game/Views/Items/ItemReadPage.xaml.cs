@@ -18,11 +18,12 @@ namespace Game.Views
         // View Model for Item
         public readonly GenericViewModel<ItemModel> ViewModel;
 
-        //List<string> test = new List<string>(Enum.GetNames(typeof(ItemLocationEnum)));
-        //LocationPicker.SelectedItem = ViewModel.Data.Location.ToString();
-        
         // Empty Constructor for UTs
-        public ItemReadPage(bool UnitTest) { }
+        public ItemReadPage(bool UnitTest)
+        {
+
+        }
+        
 
         /// <summary>
         /// Constructor called with a view model
