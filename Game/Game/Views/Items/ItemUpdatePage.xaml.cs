@@ -70,7 +70,6 @@ namespace Game.Views
                 return;
             }
 
-
             if (errors.Count > 0)
             {
                 return;
