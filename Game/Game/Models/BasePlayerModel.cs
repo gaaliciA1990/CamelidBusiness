@@ -358,7 +358,7 @@ namespace Game.Models
             get
             {
 
-                if (GetDamageItemBonusstring.Equals("-"))
+                if (GetDamageItemBonusString.Equals("-"))
                 {
                     return GetDamageLevelBonus.ToString();
                 }
