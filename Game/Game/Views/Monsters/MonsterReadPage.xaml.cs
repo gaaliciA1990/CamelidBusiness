@@ -55,5 +55,15 @@ namespace Game.Views
             await Navigation.PushModalAsync(new NavigationPage(new MonsterDeletePage(ViewModel)));
             _ = await Navigation.PopAsync();
         }
+
+        /// <summary>
+        /// Back button clicked to return to index page
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private async void Back_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new NavigationPage(new MonsterIndexPage()));
+        }
     }
 }
