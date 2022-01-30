@@ -19,7 +19,7 @@
 
                 <Label Font="Bold"
                        HorizontalOptions="CenterAndExpand"
-                       Text="Character List Page"
+                       Text="Monster List Page"
                        Style="{StaticResource HeaderStyle}"
                        FontSize="Large" />
 
