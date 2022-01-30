@@ -128,7 +128,7 @@
                         <StackLayout Style="{StaticResource HorizontalStack}">
 
                             <Button x:Name="RollDice"
-                                    Text="Suprise Me!"
+                                    Text="Surprise Me!"
                                     TextColor="Black"
                                     Clicked="RollDice_Clicked"
                                     HorizontalOptions="Center"
