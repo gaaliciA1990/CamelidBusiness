@@ -5,6 +5,7 @@ using Xamarin.Forms.Xaml;
 
 using Game.ViewModels;
 using Game.Models;
+using System.Collections.Generic;
 
 namespace Game.Views
 {
@@ -20,6 +21,8 @@ namespace Game.Views
 
         public ScoreReadPage(bool UnitTest) { }
 
+        public List<string> strList = new List<string>() { "One", "Two", "Three" };
+
         /// <summary>
         /// Constructor called with a view model
         /// This is the primary way to open the page
@@ -30,7 +33,20 @@ namespace Game.Views
         {
             InitializeComponent();
 
+
             BindingContext = this.ViewModel = data;
+
+            //just for testing layout stuff
+            for (int x = 0; x < 5; x++)
+            {
+                Grid grid = new Grid();
+                ImageButton img = new ImageButton();
+                var chr = new CharacterModel();
+                var plr = new PlayerInfoModel(chr);
+                img.Source = plr.ImageURI;
+                grid.Children.Add(img);
+                CharactersAtDeath.Children.Add(grid);
+            }
         }
 
         /// <summary>
@@ -53,6 +69,14 @@ namespace Game.Views
         {
             await Navigation.PushModalAsync(new NavigationPage(new ScoreDeletePage(ViewModel)));
             _ = await Navigation.PopAsync();
+        }
+
+
+
+        public async void BackButton_Clicked(object sender, EventArgs e)
+        {
+            //Pop itself off the stack
+            await Navigation.PopAsync();
         }
     }
 }
