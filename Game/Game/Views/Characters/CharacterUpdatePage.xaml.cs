@@ -51,8 +51,10 @@ namespace Game.Views
             InitializeComponent();
 
             this.ViewModel = data;
+
             //Create a backup
             BackupData = new CharacterModel(data.Data);
+
             //_ = UpdatePageBindingContext();
             BindingContext = this.ViewModel = data;
 
@@ -191,7 +193,7 @@ namespace Game.Views
         }
 
         /// <summary>
-        /// Catch the change to the Stepper for Attack
+        /// Catch the change to the slider for Attack
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -201,7 +203,7 @@ namespace Game.Views
         }
 
         /// <summary>
-        /// Catch the change to the Stepper for Defense
+        /// Catch the change to the slider for Defense
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -211,7 +213,7 @@ namespace Game.Views
         }
 
         /// <summary>
-        /// Catch the change to the Stepper for Speed
+        /// Catch the change to the slider for Speed
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
