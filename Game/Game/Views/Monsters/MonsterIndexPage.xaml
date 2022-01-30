@@ -9,49 +9,118 @@
              Title="{Binding Title}"
              NavigationPage.HasNavigationBar="False">
 
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add" Clicked="Add_Clicked" IconImageSource="icon_add.png"/>
-    </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
         <StackLayout Style="{StaticResource OuterBoxStack}">
+            <StackLayout Orientation="Horizontal">
+                <Button x:Name="BackButton"
+                        Text="Back"
+                        Clicked="Back_Clicked" />
 
-            <Label Text="Items List Page" Style="{StaticResource HeaderStyle}"/>
+                <Label Font="Bold"
+                       HorizontalOptions="CenterAndExpand"
+                       Text="Character List Page"
+                       Style="{StaticResource HeaderStyle}"
+                       FontSize="Large" />
 
-            <ListView x:Name="MonstersListView" 
-                    ItemsSource="{Binding Dataset}"
-                    IsRefreshing="{Binding IsBusy, Mode=OneWay}"
-                    RefreshCommand="{Binding LoadItemsCommand}"
-                    CachingStrategy="RecycleElement"
-                    ItemSelected="OnItemSelected"
-                    HasUnevenRows="true"
-                    Margin="5,0,5,0"
-                    RowHeight="80"
-                    >
-                
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <Grid ColumnSpacing="5" RowSpacing="1">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="auto"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                </Grid.RowDefinitions>
+                <Button x:Name="CreateButton"
+                        Text="Create"
+                        Clicked="CreateMonster_Clicked" />
+            </StackLayout>
 
-                                <Label Grid.Column="1" Grid.Row="0"
-                                       Text="{Binding Name}" 
-                                       Style="{StaticResource ListStyle}"/>
+            <ScrollView VerticalScrollBarVisibility="Always">
+                <FlexLayout x:Name="MonstersListView"
+                            BindableLayout.ItemsSource="{Binding Dataset}"
+                            Wrap="Wrap"
+                            Direction="Row"
+                            JustifyContent="SpaceEvenly">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Grid HeightRequest="200">
 
+                                <StackLayout Grid.Column="0"
+                                             Grid.Row="0">
+
+                                    <Frame OutlineColor="Black"
+                                           Padding="1"
+                                           MinimumWidthRequest="200">
+                                        <Grid BackgroundColor="LightSeaGreen"
+                                              WidthRequest="200"
+                                              Padding="20">
+
+                                            <Frame OutlineColor="Black"
+                                                   BackgroundColor="LightBlue"
+                                                   Padding="5"
+                                                   HeightRequest="100">
+                                                <Image x:Name="ImageLabel"
+                                                       Source="{Binding ImageURI}"
+                                                       Style="{StaticResource ImageBattleLargeStyle}"
+                                                       HorizontalOptions="StartAndExpand" />
+                                            </Frame>
+
+                                            <StackLayout Grid.Column="1"
+                                                         Grid.Row="0"
+                                                         Orientation="Vertical">
+                                                <Frame OutlineColor="Black"
+                                                       BackgroundColor="LightGray"
+                                                       Padding="1"
+                                                       WidthRequest="100">
+                                                    <Label x:Name="NameLabel"
+                                                           Text="{Binding Name}"
+                                                           Style="{StaticResource ListStyle}"
+                                                           BackgroundColor="LightGray"
+                                                           FontAttributes="Bold"
+                                                           HorizontalOptions="CenterAndExpand" />
+                                                </Frame>
+
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Frame OutlineColor="Black"
+                                                           Padding="3"
+                                                           BackgroundColor="LightCyan">
+                                                        <Label x:Name="DifficultyLabel"
+                                                               Text="{Binding Path=Difficulty, StringFormat='DIFF {0:G}'}"
+                                                               Style="{StaticResource ListStyle}"
+                                                               FontAttributes="Bold"
+                                                               HorizontalTextAlignment="Center" />
+                                                    </Frame>
+
+                                                    <Frame OutlineColor="Black"
+                                                           Padding="3"
+                                                           BackgroundColor="LightCyan">
+                                                        <Label x:Name="MaxHealthLabel"
+                                                               Text="{Binding Path=MaxHealth, StringFormat='HP {0:G}'}"
+                                                               Style="{StaticResource ListStyle}"
+                                                               FontAttributes="Bold" />
+                                                    </Frame>
+                                                </StackLayout>
+
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Frame OutlineColor="Black"
+                                                           Padding="3"
+                                                           BackgroundColor="LightCyan">
+                                                        <Label x:Name="XPLabel"
+                                                               Text="{Binding Path=ExperienceTotal, StringFormat='XP {0:G}'}"
+                                                               Style="{StaticResource ListStyle}"
+                                                               FontAttributes="Bold" />
+                                                    </Frame>
+                                                </StackLayout>
+                                            </StackLayout>
+                                        </Grid>
+                                    </Frame>
+                                </StackLayout>
+
+                                <ImageButton Grid.Column="0"
+                                             Grid.Row="0"
+                                             HorizontalOptions="FillAndExpand"
+                                             VerticalOptions="FillAndExpand"
+                                             HeightRequest="200"
+                                             Clicked="FlexMonster_Clicked"
+                                             CommandParameter="{Binding Id}" />
                             </Grid>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </FlexLayout>
+            </ScrollView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.ComponentModel;
 
 using Xamarin.Forms;
@@ -36,23 +37,18 @@ namespace Game.Views
         }
 
         /// <summary>
-        /// The row selected from the list
+        /// The monster selected from the list
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
-        public async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
+        public async void FlexMonster_Clicked(object sender, EventArgs args)
         {
-            MonsterModel data = args.SelectedItem as MonsterModel;
-            if (data == null)
-            {
-                return;
-            }
+            var button = sender as ImageButton;
+            var id = button.CommandParameter as String;
+            var data = ViewModel.Dataset.FirstOrDefault(m => m.Id.Equals(id));
 
-            // Open the Read Page
+            // Open the read page
             await Navigation.PushAsync(new MonsterReadPage(new GenericViewModel<MonsterModel>(data)));
-
-            // Manually deselect Monster.
-            MonstersListView.SelectedItem = null;
         }
 
         /// <summary>
@@ -60,7 +56,7 @@ namespace Game.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public async void Add_Clicked(object sender, EventArgs e)
+        public async void CreateMonster_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushModalAsync(new NavigationPage(new MonsterCreatePage(new GenericViewModel<MonsterModel>())));
         }
@@ -87,6 +83,16 @@ namespace Game.Views
             }
 
             BindingContext = ViewModel;
+        }
+
+        /// <summary>
+        /// Call to go back a page
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private async void Back_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new NavigationPage(new VillagePage()));
         }
     }
 }
