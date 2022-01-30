@@ -36,7 +36,7 @@
 
                 <Label Font="Bold"
                        HorizontalOptions="CenterAndExpand"
-                       Text="Update Monster"
+                       Text="Create Monster"
                        Style="{StaticResource HeaderStyle}"
                        FontSize="Large" />
 
