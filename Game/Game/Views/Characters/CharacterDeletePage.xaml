@@ -377,8 +377,6 @@
                     </AbsoluteLayout>
                 </Grid>
             </ScrollView>
-
-
         </Grid>
     </ContentPage.Content>
 </ContentPage>
