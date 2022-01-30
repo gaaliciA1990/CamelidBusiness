@@ -152,7 +152,7 @@
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
                             
-                            <Label Text="LEVEL: "
+                            <Label Text="LVL: "
                                    FontSize="Medium"
                                    Grid.Row="0"
                                    Grid.Column="0"
@@ -374,7 +374,7 @@
                                 <Slider Maximum="15"
                                         Minimum="0"
                                         BackgroundColor="White"
-                                        Value="{Binding Data.Defense, Mode=TwoWay}"
+                                        Value="{Binding Data.Range, Mode=TwoWay}"
                                         HorizontalOptions="FillAndExpand"
                                         VerticalOptions="Center">
                                     <Slider.Margin>
