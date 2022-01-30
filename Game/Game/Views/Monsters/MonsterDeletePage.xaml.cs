@@ -33,7 +33,7 @@ namespace Game.Views
         }
 
         /// <summary>
-        /// Save calls to Update
+        /// Delete calls to Delete
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
