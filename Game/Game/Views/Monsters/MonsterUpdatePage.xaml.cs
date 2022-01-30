@@ -179,6 +179,7 @@ namespace Game.Views
         {
             SpeedValue.Text = string.Format("{0}", Math.Round(e.NewValue));
         }
+
         /// <summary>
         /// Validate the Entry fields for Name and Descriptions
         /// are filled with valid text
