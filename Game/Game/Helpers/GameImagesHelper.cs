@@ -11,7 +11,7 @@ namespace Game.Helpers
     class GameImagesHelper
     {
         /// <summary>
-        /// Creates a list of images for viewing in CRUDI layouts
+        /// Creates a list of images for viewing in items CRUDI layouts
         /// </summary>
         /// <returns></returns>
         public static List<String> GetItemImage()
@@ -22,9 +22,24 @@ namespace Game.Helpers
             return ItemImageList;
         }
 
+        /// <summary>
+        /// Creates a list of images for viewing in character CRUDi layouts
+        /// </summary>
+        /// <returns></returns>
         public static List<String> GetCharacterImage()
         {
             List<String> ImageList = new List<String> { "alpaca1.png", "alpaca2.png", "alpaca3.png", "llama1.png", "llama2.png", "llama3.png", "vicuna1.png", "vicuna2.png", "vicuna3.png" };
+
+            return ImageList;
+        }
+
+        /// <summary>
+        /// Creates a list of images for viewing in monster Crudi layouts
+        /// </summary>
+        /// <returns></returns>
+        public static List<String> GetMonsterImage()
+        {
+            List<String> ImageList = new List<String> { "troll.png", "troll1.png", "troll2.png", "troll3.png", "troll4.png", "troll5.png", "troll6.png" };
 
             return ImageList;
         }
