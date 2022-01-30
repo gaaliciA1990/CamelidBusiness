@@ -64,6 +64,8 @@ namespace Game.Views
             updateMH = true;
 
             AddItemsToDisplay();
+
+            _ = UpdatePageBindingContext();
         }
 
         /// <summary>
@@ -81,11 +83,28 @@ namespace Game.Views
 
             AddItemsToDisplay();
 
+            AdjustValuesWithBonuses();
+
             //Set flag to okay after binding
             updateMH = true;
 
             return true;
         }
+
+        /// <summary>
+        /// adjust attribute values to include item bonuses 
+        /// </summary>
+        public void AdjustValuesWithBonuses()
+        {
+            SpeedValue.Text = (this.ViewModel.Data.Speed + this.ViewModel.Data.GetSpeedItemBonus).ToString();
+            AttackValue.Text = (this.ViewModel.Data.Attack + this.ViewModel.Data.GetAttackItemBonus).ToString();
+            DefenseValue.Text = (this.ViewModel.Data.Defense + this.ViewModel.Data.GetDefenseItemBonus).ToString();
+            MaxHealthValue.Text = (this.ViewModel.Data.MaxHealth + this.ViewModel.Data.GetMaxHealthItemBonus).ToString();
+            DefenseSlider.Maximum = 50 - this.ViewModel.Data.GetDefenseItemBonus;
+            AttackSlider.Maximum = 50 - this.ViewModel.Data.GetAttackItemBonus;
+            SpeedSlider.Maximum = 50 - this.ViewModel.Data.GetSpeedItemBonus;
+        }
+
 
         /// <summary>
         /// The Level selected from the list
@@ -178,7 +197,7 @@ namespace Game.Views
         /// <param name="e"></param>
         public void Attack_OnSliderValueChanged(object sender, ValueChangedEventArgs e)
         {
-            AttackValue.Text = string.Format("{0}", Math.Round(e.NewValue));
+            AttackValue.Text = string.Format("{0}", Math.Round(e.NewValue) + this.ViewModel.Data.GetAttackItemBonus);
         }
 
         /// <summary>
@@ -188,7 +207,7 @@ namespace Game.Views
         /// <param name="e"></param>
         public void Defense_OnSliderValueChanged(object sender, ValueChangedEventArgs e)
         {
-            DefenseValue.Text = string.Format("{0}", Math.Round(e.NewValue));
+            DefenseValue.Text = string.Format("{0}", Math.Round(e.NewValue) + this.ViewModel.Data.GetDefenseItemBonus);
         }
 
         /// <summary>
@@ -198,7 +217,7 @@ namespace Game.Views
         /// <param name="e"></param>
         public void Speed_OnSliderValueChanged(object sender, ValueChangedEventArgs e)
         {
-            SpeedValue.Text = string.Format("{0}", Math.Round(e.NewValue));
+            SpeedValue.Text = string.Format("{0}", Math.Round(e.NewValue) + this.ViewModel.Data.GetSpeedItemBonus);
         }
 
         /// <summary>
@@ -215,6 +234,8 @@ namespace Game.Views
             }
 
             _ = ViewModel.Data.AddItem(PopupLocationEnum, data.Id);
+
+            UpdatePageBindingContext();
 
             AddItemsToDisplay();
 

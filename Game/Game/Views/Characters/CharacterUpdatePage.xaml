@@ -212,7 +212,7 @@
                                          VerticalOptions="Center">
 
                                 <Label x:Name="AttackValue"
-                                       Text="{Binding Data.Attack, Mode=TwoWay}"
+                                       Text="{Binding Data.GetAttackTotal}"
                                        Style="{StaticResource ValueStyle}"
                                        FontAttributes="Bold"
                                        HorizontalOptions="Start"
@@ -228,8 +228,9 @@
                                     </Label.Margin>
                                 </Label>
 
-                                <Slider Maximum="15"
+                                <Slider Maximum="50"
                                         Minimum="0"
+                                        x:Name="AttackSlider"
                                         BackgroundColor="White"
                                         Value="{Binding Data.Attack, Mode=TwoWay}"
                                         HorizontalOptions="FillAndExpand"
@@ -259,7 +260,7 @@
                                          VerticalOptions="Center">
 
                                 <Label x:Name="DefenseValue"
-                                       Text="{Binding Data.Defense, Mode=TwoWay}"
+                                       Text="{Binding Data.GetDefenseTotal}"
                                        Style="{StaticResource ValueStyle}"
                                        FontAttributes="Bold"
                                        HorizontalOptions="Start"
@@ -275,8 +276,9 @@
                                     </Label.Margin>
                                 </Label>
 
-                                <Slider Maximum="15"
+                                <Slider Maximum="50"
                                         Minimum="0"
+                                        x:Name="DefenseSlider"
                                         BackgroundColor="White"
                                         Value="{Binding Data.Defense, Mode=TwoWay}"
                                         HorizontalOptions="FillAndExpand"
@@ -300,14 +302,14 @@
                                    Grid.Column="0"
                                    Style="{StaticResource LabelStyle}"
                                    VerticalOptions="Center" />
-                            <!--Speed Sl;ider-->
+                            <!--Speed Slider-->
                             <StackLayout Grid.Row="3"
                                          Grid.Column="1"
                                          Orientation="Horizontal"
                                          VerticalOptions="Center">
 
                                 <Label x:Name="SpeedValue"
-                                       Text="{Binding Data.Speed, Mode=TwoWay}"
+                                       Text="{Binding Data.GetSpeedTotal}"
                                        Style="{StaticResource ValueStyle}"
                                        FontAttributes="Bold"
                                        HorizontalOptions="Start"
@@ -323,8 +325,9 @@
                                     </Label.Margin>
                                 </Label>
 
-                                <Slider Maximum="15"
+                                <Slider Maximum="50"
                                         Minimum="0"
+                                        x:Name="SpeedSlider"
                                         BackgroundColor="White"
                                         Value="{Binding Data.Speed, Mode=TwoWay}"
                                         HorizontalOptions="FillAndExpand"
@@ -333,7 +336,7 @@
                                     <Slider.Margin>
                                         <OnPlatform x:TypeArguments="Thickness">
                                             <On Platform="iOS"
-                                                Value="15,0" />
+                                                Value="50,0" />
                                             <On Platform="Android"
                                                 Value="10,0" />
                                         </OnPlatform>
@@ -364,15 +367,16 @@
                                     <Label.Margin>
                                         <OnPlatform x:TypeArguments="Thickness">
                                             <On Platform="iOS"
-                                                Value="15,0" />
+                                                Value="50,0" />
                                             <On Platform="Android"
                                                 Value="10,0" />
                                         </OnPlatform>
                                     </Label.Margin>
                                 </Label>
 
-                                <Slider Maximum="15"
+                                <Slider Maximum="50"
                                         Minimum="0"
+                                        x:Name="RangeSlider"
                                         BackgroundColor="White"
                                         Value="{Binding Data.Defense, Mode=TwoWay}"
                                         HorizontalOptions="FillAndExpand"
