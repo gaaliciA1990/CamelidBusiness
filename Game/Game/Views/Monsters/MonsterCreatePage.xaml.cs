@@ -1,9 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 
+using Game.Helpers;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+
+using Game.GameRules;
 using Game.Models;
 using Game.ViewModels;
 using Game.Helpers;
@@ -216,6 +220,63 @@ namespace Game.Views
         public async void Cancel_Clicked(object sender, EventArgs e)
         {
             _ = await Navigation.PopModalAsync();
+        }
+
+        /// <summary>
+        /// Catch the change to the Slider for Difficulty
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void Difficulty_OnSliderValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            DifficultyValue.Text = string.Format("{0}", Math.Round(e.NewValue));
+
+            //TODO: may need a condition to change on whole value
+            //Level_Changed(null, null);
+        }
+
+        /// <summary>
+        /// Catch the change to the Slider for Attack
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void Attack_OnSliderValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            AttackValue.Text = string.Format("{0}", Math.Round(e.NewValue));
+        }
+
+        /// <summary>
+        /// Catch the change to the Slider for Defense
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void Defense_OnSliderValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            DefenseValue.Text = string.Format("{0}", Math.Round(e.NewValue));
+        }
+
+        /// <summary>
+        /// Catch the change to the Slider for Speed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void Speed_OnSliderValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            SpeedValue.Text = string.Format("{0}", Math.Round(e.NewValue));
+        }
+
+        /// <summary>
+        /// Randomize Monster Values and Items
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void RollDice_Clicked(object sender, EventArgs e)
+        {
+            _ = DiceAnimationHandeler();
+
+            _ = RandomizeMonster();
+
+            return;
         }
 
         #region Randomize
