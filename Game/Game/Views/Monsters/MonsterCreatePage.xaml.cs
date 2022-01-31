@@ -229,7 +229,7 @@ namespace Game.Views
         /// <param name="e"></param>
         public void Difficulty_OnSliderValueChanged(object sender, ValueChangedEventArgs e)
         {
-            DifficultyValue.Text = string.Format("{0}", Math.Round(e.NewValue));
+            LevelValue.Text = string.Format("{0}", Math.Round(e.NewValue));
 
             //TODO: may need a condition to change on whole value
             //Level_Changed(null, null);
@@ -263,20 +263,6 @@ namespace Game.Views
         public void Speed_OnSliderValueChanged(object sender, ValueChangedEventArgs e)
         {
             SpeedValue.Text = string.Format("{0}", Math.Round(e.NewValue));
-        }
-
-        /// <summary>
-        /// Randomize Monster Values and Items
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        public void RollDice_Clicked(object sender, EventArgs e)
-        {
-            _ = DiceAnimationHandeler();
-
-            _ = RandomizeMonster();
-
-            return;
         }
 
         #region Randomize
