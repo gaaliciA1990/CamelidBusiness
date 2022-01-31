@@ -87,6 +87,26 @@ namespace Game.Views
         }
 
         /// <summary>
+        /// When the user clicks the close in the Popup
+        /// hide the view
+        /// show the scroll view
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void ClosePopup_Clicked(object sender, EventArgs e)
+        {
+            ClosePopup();
+        }
+
+        /// <summary>
+        /// Close the popup
+        /// </summary>
+        public void ClosePopup()
+        {
+            PopupItemSelector.IsVisible = false;
+        }
+
+        /// <summary>
         /// Cancel the Create
         /// </summary>
         /// <param name="sender"></param>
