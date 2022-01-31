@@ -173,6 +173,7 @@ namespace Game.Views
         public void Level_OnSliderValueChanged(object sender, ValueChangedEventArgs e)
         {
             LevelValue.Text = string.Format("{0}", Math.Round(e.NewValue));
+            ManageHealth();
         }
 
         /// <summary>
