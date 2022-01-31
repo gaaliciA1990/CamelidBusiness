@@ -112,5 +112,42 @@ namespace Game.Views
 
         //    return true;
         //}
+
+
+        /// <summary>
+        /// Helper function to help validate required input fields
+        /// </summary>
+        /// <returns></returns>
+        private bool Entry_Validator()
+        {
+            bool isValid = true;
+
+            // validate the Name has something entered
+            if (string.IsNullOrWhiteSpace(this.ViewModel.Data.Name))
+            {
+                NameEntry.PlaceholderColor = Xamarin.Forms.Color.Red;
+                isValid = false;
+            }
+
+            // validate the Description has something entered
+            if (string.IsNullOrWhiteSpace(this.ViewModel.Data.Description))
+            {
+                DescriptionEntry.PlaceholderColor = Xamarin.Forms.Color.Red;
+                isValid = false;
+            }
+
+            return isValid;
+        }
+
+        /// <summary>
+        /// Validate the Entry fields for Name and Descriptions
+        /// are filled with valid text
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Entry_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Entry_Validator();
+        }
     }
 }
