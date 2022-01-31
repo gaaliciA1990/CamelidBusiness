@@ -97,6 +97,20 @@ namespace Game.Views
         }
 
         /// <summary>
+        /// Randomize Character Values and Items
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void RollDice_Clicked(object sender, EventArgs e)
+        {
+            _ = DiceAnimationHandeler();
+
+            _ = RandomizeMonster();
+
+            return;
+        }
+
+        /// <summary>
         /// 
         /// Randomize the Monster
         /// Keep the Level the Same
