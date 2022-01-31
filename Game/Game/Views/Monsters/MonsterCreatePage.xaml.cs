@@ -88,6 +88,45 @@ namespace Game.Views
 
         #region Popup
         /// <summary>
+        /// Show the Popup for Selecting Items
+        /// </summary>
+        /// <param name="location"></param>
+        /// <returns></returns>
+        public bool ShowPopup(ItemLocationEnum location)
+        {
+            PopupItemSelector.IsVisible = true;
+
+            PopupLocationLabel.Text = "Items for :";
+            PopupLocationValue.Text = location.ToMessage();
+
+            // Make a fake item for None
+            var NoneItem = new ItemModel
+            {
+                Id = null, // will use null to clear the item
+                Guid = "None", // how to find this item amoung all of them
+                ImageURI = "icon_cancel.png",
+                Name = "None",
+                Description = "None"
+            };
+
+            List<ItemModel> itemList = new List<ItemModel>
+            {
+                NoneItem
+            };
+
+            // Add the rest of the items to the list
+            itemList.AddRange(ItemIndexViewModel.Instance.GetLocationItems(location));
+
+            // Populate the list with the items
+            PopupLocationItemListView.ItemsSource = itemList;
+
+            // Remember the location for this popup
+            PopupLocationEnum = location;
+
+            return true;
+        }
+
+        /// <summary>
         /// When the user clicks the close in the Popup
         /// hide the view
         /// show the scroll view
