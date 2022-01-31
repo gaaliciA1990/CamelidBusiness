@@ -19,7 +19,7 @@ namespace Game.Views
     public partial class MonsterCreatePage : ContentPage
     {
         //Local storage for images
-        private List<String> imageList = GameImagesHelper.GetCharacterImage();
+        private List<String> imageList = GameImagesHelper.GetMonsterImage();
 
         //index tracer for local storage
         private int imageIndex = 0;
