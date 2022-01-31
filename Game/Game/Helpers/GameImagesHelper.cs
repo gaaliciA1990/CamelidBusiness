@@ -28,5 +28,12 @@ namespace Game.Helpers
 
             return ImageList;
         }
+
+        public static List<String> GetMonsterImage()
+        {
+            List<String> ImageList = new List<String> { "troll1.png", "troll2.png", "troll3.png", "troll5.png", "troll6.png", "troll.png"};
+
+            return ImageList;
+        }
     }
 }
