@@ -11,11 +11,6 @@
              Title="{Binding Title}"
              NavigationPage.HasNavigationBar="False">
 
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Cancel" Clicked="Cancel_Clicked" IconImageSource="icon_cancel.png"/>
-        <ToolbarItem Text="Save" Clicked="Save_Clicked" IconImageSource="icon_save.png"/>
-    </ContentPage.ToolbarItems>
-
     <ContentPage.Resources>
         <ResourceDictionary>
             <local_helpers:StringEnumConverter x:Key="StringEnum" />
@@ -81,7 +76,7 @@
                                MaxLength="20"
                                Keyboard="Text"
                                ReturnType="Done"
-
+                               TextChanged="Entry_TextChanged"
                                Text="{Binding Data.Name, Mode=TwoWay}"
                                Style="{StaticResource EntryStyle}" />
 
@@ -100,7 +95,7 @@
                                          Grid.Row="0"
                                          x:Name="LeftButton"
                                          Source="leftarrow.png"
-
+                                         Clicked="LeftButton_Clicked"
                                          BorderColor="DarkSlateGray"
                                          CornerRadius="1" />
                             <Image  Grid.Column="1"
@@ -115,7 +110,7 @@
                                          Grid.Row="0"
                                          x:Name="RightButton"
                                          Source="rightarrow.png"
-
+                                         Clicked="RightButton_Clicked"
                                          BorderColor="DarkSlateGray"
                                          CornerRadius="5" />
                         </Grid>
@@ -128,7 +123,7 @@
                                Keyboard="Text"
                                ReturnType="Done"
                                IsSpellCheckEnabled="True"
-
+                               TextChanged="Entry_TextChanged"
                                Text="{Binding Data.Description, Mode= TwoWay}"
                                Style="{StaticResource EntryStyle}" />
 
@@ -137,7 +132,7 @@
                             <Button x:Name="RollDice"
                                     Text="Surprise Me!"
                                     TextColor="Black"
-
+                                    Clicked="RollDice_Clicked"
                                     HorizontalOptions="Center"
                                     BackgroundColor="Beige"
                                     CornerRadius="5" />
@@ -519,7 +514,7 @@
                             </ListView>
 
                             <Button x:Name="PopupCloseButton"
-
+                                    Clicked="ClosePopup_Clicked"
                                     Text="Close" />
                         </StackLayout>
                     </Frame>
