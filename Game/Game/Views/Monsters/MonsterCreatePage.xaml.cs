@@ -86,6 +86,7 @@ namespace Game.Views
             _ = await Navigation.PopModalAsync();
         }
 
+        #region Popup
         /// <summary>
         /// When the user clicks the close in the Popup
         /// hide the view
@@ -106,6 +107,8 @@ namespace Game.Views
             PopupItemSelector.IsVisible = false;
         }
 
+        #endregion Popup
+
         /// <summary>
         /// Cancel the Create
         /// </summary>
@@ -116,6 +119,7 @@ namespace Game.Views
             _ = await Navigation.PopModalAsync();
         }
 
+        #region Randomize
         /// <summary>
         /// Randomize Character Values and Items
         /// </summary>
@@ -189,6 +193,7 @@ namespace Game.Views
 
             return true;
         }
+        #endregion Randomize
 
         /// <summary>
         /// When the right button is clicked, the image will change to the next index or the beginning of the
