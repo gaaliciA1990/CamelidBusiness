@@ -7,6 +7,7 @@ using Xamarin.Forms.Xaml;
 using Game.Models;
 using Game.ViewModels;
 using Game.Helpers;
+using Game.GameRules;
 
 namespace Game.Views
 {
@@ -95,34 +96,34 @@ namespace Game.Views
             _ = await Navigation.PopModalAsync();
         }
 
-        ///// <summary>
-        ///// 
-        ///// Randomize the Monster
-        ///// Keep the Level the Same
-        ///// 
-        ///// </summary>
-        ///// <returns></returns>
-        //public bool RandomizeMonster()
-        //{
-        //    // Randomize Name
-        //    ViewModel.Data.Name = RandomPlayerHelper.GetMonsterName();
-        //    ViewModel.Data.Description = RandomPlayerHelper.GetMonsterDescription();
+        /// <summary>
+        /// 
+        /// Randomize the Monster
+        /// Keep the Level the Same
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public bool RandomizeMonster()
+        {
+            // Randomize Name
+            ViewModel.Data.Name = RandomPlayerHelper.GetMonsterName();
+            ViewModel.Data.Description = RandomPlayerHelper.GetMonsterDescription();
 
-        //    // Randomize the Attributes
-        //    ViewModel.Data.Attack = RandomPlayerHelper.GetAbilityValue();
-        //    ViewModel.Data.Speed = RandomPlayerHelper.GetAbilityValue();
-        //    ViewModel.Data.Defense = RandomPlayerHelper.GetAbilityValue();
+            // Randomize the Attributes
+            ViewModel.Data.Attack = RandomPlayerHelper.GetAbilityValue();
+            ViewModel.Data.Speed = RandomPlayerHelper.GetAbilityValue();
+            ViewModel.Data.Defense = RandomPlayerHelper.GetAbilityValue();
 
-        //    ViewModel.Data.Difficulty = RandomPlayerHelper.GetMonsterDifficultyValue();
+            ViewModel.Data.Difficulty = RandomPlayerHelper.GetMonsterDifficultyValue();
 
-        //    ViewModel.Data.ImageURI = RandomPlayerHelper.GetMonsterImage();
+            ViewModel.Data.ImageURI = RandomPlayerHelper.GetMonsterImage();
 
-        //    ViewModel.Data.UniqueItem = RandomPlayerHelper.GetMonsterUniqueItem();
+            //ViewModel.Data.UniqueItem = RandomPlayerHelper.GetMonsterUniqueItem();
 
-        //    _ = UpdatePageBindingContext();
+            _ = UpdatePageBindingContext();
 
-        //    return true;
-        //}
+            return true;
+        }
 
         /// <summary>
         /// Setup the Dice Animation
