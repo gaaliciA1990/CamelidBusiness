@@ -124,6 +124,36 @@ namespace Game.Views
         //    return true;
         //}
 
+        /// <summary>
+        /// Setup the Dice Animation
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public bool DiceAnimationHandeler()
+        {
+            // Animate the Rolling of the Dice
+            var image = RollDice;
+            uint duration = 1000;
+
+            var parentAnimation = new Animation();
+
+            // Grow the image Size
+            var scaleUpAnimation = new Animation(v => image.Scale = v, 1, 2, Easing.SpringIn);
+
+            // Spin the Image
+            var rotateAnimation = new Animation(v => image.Rotation = v, 0, 360);
+
+            // Shrink the Image
+            var scaleDownAnimation = new Animation(v => image.Scale = v, 2, 1, Easing.SpringOut);
+
+            parentAnimation.Add(0, 0.5, scaleUpAnimation);
+            parentAnimation.Add(0, 1, rotateAnimation);
+            parentAnimation.Add(0.5, 1, scaleDownAnimation);
+
+            parentAnimation.Commit(this, "ChildAnimations", 16, duration, null, null);
+
+            return true;
+        }
 
         /// <summary>
         /// When the right button is clicked, the image will change to the next index or the beginning of the
