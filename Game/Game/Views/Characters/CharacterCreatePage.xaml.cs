@@ -334,7 +334,9 @@ namespace Game.Views
             var ItemButton = new ImageButton
             {
                 Style = (Style)Application.Current.Resources["ImageMediumStyle"],
-                Source = data.ImageURI
+                Source = data.ImageURI,
+                HeightRequest = 40,
+                WidthRequest = 40
             };
 
             // Add a event to the user can click the item and see more
