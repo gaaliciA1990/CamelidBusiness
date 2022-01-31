@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Game.Models;
 using Game.ViewModels;
+using Game.Helpers;
 
 namespace Game.Views
 {
@@ -15,6 +17,12 @@ namespace Game.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MonsterCreatePage : ContentPage
     {
+        //Local storage for images
+        private List<String> imageList = GameImagesHelper.GetCharacterImage();
+
+        //index tracer for local storage
+        private int imageIndex = 0;
+
         // The Monster to create
         public GenericViewModel<MonsterModel> ViewModel { get; set; }
 
@@ -116,6 +124,33 @@ namespace Game.Views
         //    return true;
         //}
 
+
+        /// <summary>
+        /// When the right button is clicked, the image will change to the next index or the beginning of the
+        /// index if at the last index. 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void RightButton_Clicked(object sender, EventArgs e)
+        {
+            int imageCount = imageList.Count;
+
+            // check if we are at the last photo and move to first photo when clicked
+            if (imageIndex == imageCount - 1)
+            {
+                imageIndex = 0;
+            }
+
+            // Move to the next photo in the list
+            if (imageIndex < imageCount - 1)
+            {
+                imageIndex++;
+            }
+
+            // Update the image
+            this.ViewModel.Data.ImageURI = imageList[imageIndex];
+            UpdatePageBindingContext();
+        }
 
         /// <summary>
         /// Helper function to help validate required input fields
