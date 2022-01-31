@@ -36,6 +36,9 @@ namespace Game.Views
 
             this.ViewModel.Title = "Create";
 
+            NameEntry.Placeholder = "Give your monster a name";
+            DescriptionEntry.Placeholder = "Describe your monster";
+
             _ = UpdatePageBindingContext();
         }
 
