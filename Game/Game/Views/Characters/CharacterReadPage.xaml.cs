@@ -82,7 +82,9 @@ namespace Game.Views
             var ItemButton = new ImageButton
             {
                 Style = (Style)Application.Current.Resources["ImageMediumStyle"],
-                Source = data.ImageURI
+                Source = data.ImageURI,
+                HeightRequest = 40,
+                WidthRequest = 40
             };
 
             if (ClickableButton)
