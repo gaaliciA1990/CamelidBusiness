@@ -37,6 +37,13 @@
                              Padding="10"
                              WidthRequest="65"
                              HeightRequest="65" />
+            <ImageButton Source="icon_delete.png"
+                             Aspect="AspectFit"
+                             Clicked="Delete_Clicked"
+                             HorizontalOptions="End"
+                             Padding="10"
+                             WidthRequest="65"
+                             HeightRequest="65" />
         </StackLayout>
 
         <Grid Grid.Row="1" ColumnSpacing="10">
