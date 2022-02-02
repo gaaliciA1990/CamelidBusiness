@@ -73,6 +73,8 @@ namespace Game.Views
 
             ViewModel.Data.Difficulty = difficulty;
 
+            AddItemsToDisplay();
+
             return true;
         }
 
