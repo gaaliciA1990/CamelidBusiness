@@ -155,14 +155,14 @@
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
 
-                            <Label Text="LEVEL: "
+                            <Label Text="DIFF: "
                                    FontSize="Medium"
                                    Grid.Row="0"
                                    Grid.Column="0"
                                    Style="{StaticResource LabelStyle}"
                                    VerticalOptions="Center" />
 
-                            <!--Level Slider-->
+                            <!--Difficulty Labels-->
                             <StackLayout Grid.Row="0"
                                          Grid.Column="1"
                                          Orientation="Horizontal"
@@ -340,55 +340,6 @@
                                         HorizontalOptions="FillAndExpand"
                                         VerticalOptions="Center">
 
-                                    <Slider.Margin>
-                                        <OnPlatform x:TypeArguments="Thickness">
-                                            <On Platform="iOS"
-                                                Value="15,0" />
-                                            <On Platform="Android"
-                                                Value="10,0" />
-                                        </OnPlatform>
-                                    </Slider.Margin>
-                                </Slider>
-
-                            </StackLayout>
-
-                            <!--Range Slider-->
-                            <Label Text="RNG: "
-                                   FontSize="Medium"
-                                   Grid.Row="4"
-                                   Grid.Column="0"
-                                   Style="{StaticResource LabelStyle}"
-                                   VerticalOptions="Center" />
-
-                            <StackLayout Grid.Row="4"
-                                         Grid.Column="1"
-                                         Orientation="Horizontal"
-                                         VerticalOptions="Center">
-
-                                <Label x:Name="RangeValue"
-                                       Text="{Binding Data.Range, Mode=TwoWay}"
-                                       Style="{StaticResource ValueStyle}"
-                                       FontAttributes="Bold"
-                                       HorizontalOptions="Start"
-                                       HorizontalTextAlignment="Start"
-                                       VerticalOptions="Center">
-                                    <Label.Margin>
-                                        <OnPlatform x:TypeArguments="Thickness">
-                                            <On Platform="iOS"
-                                                Value="15,0" />
-                                            <On Platform="Android"
-                                                Value="10,0" />
-                                        </OnPlatform>
-                                    </Label.Margin>
-                                </Label>
-
-                                <Slider Maximum="50"
-                                        Minimum="0"
-                                        x:Name="RangeSlider"
-                                        BackgroundColor="White"
-                                        Value="{Binding Data.Defense, Mode=TwoWay}"
-                                        HorizontalOptions="FillAndExpand"
-                                        VerticalOptions="Center">
                                     <Slider.Margin>
                                         <OnPlatform x:TypeArguments="Thickness">
                                             <On Platform="iOS"
