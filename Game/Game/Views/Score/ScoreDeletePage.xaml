@@ -5,86 +5,122 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="Game.Views.ScoreDeletePage"
+             NavigationPage.HasNavigationBar="False"
              Title="{Binding Title}">
-    
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Cancel" Clicked="Cancel_Clicked" IconImageSource="icon_cancel.png"/>
-        <ToolbarItem Text="Delete" Clicked="Delete_Clicked" IconImageSource="icon_delete.png"/>
-    </ContentPage.ToolbarItems>
 
-    <ScrollView>
-        <StackLayout Style="{StaticResource OuterBoxStack}"
-                Spacing="10">
 
-            <Label Text="Delete Page" Style="{StaticResource HeaderStyle}"/>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
-            <StackLayout>
-                <StackLayout Style="{StaticResource HorizontalStack}">
-                    <Label 
-                       Text="Name : " 
-                        Style="{StaticResource LabelStyle}"/>
-                    <Label 
-                        Text="{Binding Data.Name}" 
-                        Style="{StaticResource ValueStyle}"/>
-                </StackLayout>
+        <Label Grid.Row="0" FontSize="Large"
+                           FontAttributes="Bold, Italic"
+                           HorizontalOptions="CenterAndExpand"
+                           Text="Game Data"
+                           Style="{StaticResource ValueStyle}" />
 
-                <StackLayout Style="{StaticResource HorizontalStack}">
-                    <Label 
-                        Text="Game Date:"
-                        Style="{StaticResource LabelStyle}"/>
+        <Grid Grid.Row="1" ColumnSpacing="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
 
-                    <Label 
-                        Text="{Binding Data.GameDate}"
-                        Style="{StaticResource ValueStyle}"/>
-                </StackLayout>
+            <Label Grid.Row="0" Grid.Column="0" Style="{StaticResource LabelStyle}" Text="Name"/>
+            <Label Grid.Row="0" Grid.Column="1" Style="{StaticResource ValueStyle}" Text="{Binding Data.Name}"/>
+            <Grid Grid.Row="0" Grid.Column="2" Grid.RowSpan="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" Style="{StaticResource ValueStyle}" Text="Characters at death" HorizontalOptions="CenterAndExpand"></Label>
+                <StackLayout  Grid.Row="1" Grid.Column="0" x:Name="CharactersAtDeath" Orientation="Horizontal" HorizontalOptions="Center"/>
+            </Grid>
 
-                <StackLayout Style="{StaticResource HorizontalStack}">
-                    <Label 
-                        Text="AutoBattle:"                      
-                        Style="{StaticResource LabelStyle}"/>
+            <Label Grid.Row="1" Grid.Column="0" Style="{StaticResource LabelStyle}" Text="Score"/>
+            <Label Grid.Row="1" Grid.Column="1" Style="{StaticResource ValueStyle}" Text="{Binding Data.ScoreTotal}"/>
+            <Label Grid.Row="2" Grid.Column="0" Style="{StaticResource LabelStyle}" Text="Date"/>
+            <Label Grid.Row="2" Grid.Column="1" Style="{StaticResource ValueStyle}" Text="{Binding Data.GameDate}"/>
+            <Label Grid.Row="3" Grid.Column="0" Style="{StaticResource LabelStyle}" Text="Autobattle"/>
+            <Label Grid.Row="3" Grid.Column="1" Style="{StaticResource ValueStyle}" Text="{Binding Data.AutoBattle}"/>
 
-                    <Label 
-                        Text="{Binding Data.AutoBattle}"
-                        Style="{StaticResource ValueStyle}"/>
-                </StackLayout>
+            <Grid Grid.Row="3" Grid.Column="2" Grid.RowSpan="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" Style="{StaticResource ValueStyle}" Text="Monsters killed" HorizontalOptions="CenterAndExpand"></Label>
+                <StackLayout  Grid.Row="1" Grid.Column="0" x:Name="MonstersKilled" Orientation="Horizontal" HorizontalOptions="Center"/>
+            </Grid>
 
-                <StackLayout Style="{StaticResource HorizontalStack}">
-                    <Label 
-                        Text="Score:" 
-                        Style="{StaticResource LabelStyle}"/>
-                    <Label 
-                        Text="{Binding Data.ScoreTotal}"
-                        Style="{StaticResource ValueStyle}"/>
-                </StackLayout>
+            <Label Grid.Row="4" Grid.Column="0" Style="{StaticResource LabelStyle}" Text="Rounds"/>
+            <Label Grid.Row="4" Grid.Column="1" Style="{StaticResource ValueStyle}" Text="{Binding Data.RoundCount}"/>
+            <Label Grid.Row="5" Grid.Column="0" Style="{StaticResource LabelStyle}" Text="Turns"/>
+            <Label Grid.Row="5" Grid.Column="1" Style="{StaticResource ValueStyle}" Text="{Binding Data.TurnCount}"/>
+            <Label Grid.Row="6" Grid.Column="0" Style="{StaticResource LabelStyle}" Text="Monsters slayed"/>
+            <Label Grid.Row="6" Grid.Column="1" Style="{StaticResource ValueStyle}" Text="{Binding Data.MonsterSlainNumber}"/>
+            <Grid Grid.Row="6" Grid.Column="2" Grid.RowSpan="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" Style="{StaticResource ValueStyle}" Text="Items dropped" HorizontalOptions="CenterAndExpand"></Label>
+                <StackLayout  Grid.Row="1" Grid.Column="0" x:Name="ItemsDropped" Orientation="Horizontal" HorizontalOptions="Center"/>
+            </Grid>
+            <Label Grid.Row="7" Grid.Column="0" Style="{StaticResource LabelStyle}" Text="Total experience"/>
+            <Label Grid.Row="7" Grid.Column="1" Style="{StaticResource ValueStyle}" Text="{Binding Data.ExperienceGainedTotal}"/>
+        </Grid>
 
-                <StackLayout Style="{StaticResource HorizontalStack}">
-                    <Label 
-                        Text="Number of Rounds:"                      
-                        Style="{StaticResource LabelStyle}"/>
-
-                    <Label 
-                        Text="{Binding Data.RoundCount}"
-                        Style="{StaticResource ValueStyle}"/>
-                </StackLayout>
-   
-            </StackLayout>
-
-            <StackLayout 
-                HorizontalOptions="Center" 
-                Padding="20">
-
-                <Label Text="Really delete this?" Style="{StaticResource MessageStyle}"/>
-
-                <Button 
-                    Text="Yes" 
-                    Clicked="Delete_Clicked" 
-                    HorizontalOptions="Center"
-                    FontSize="Medium"
-                    BorderWidth="1" 
-                    BorderColor="black">
-                </Button>
-
-            </StackLayout>
-        </StackLayout>
-    </ScrollView>
+        <Frame HeightRequest="200" WidthRequest="300"
+                   Opacity=".9"
+               Grid.Row="1"
+                   VerticalOptions="Center"
+                   AbsoluteLayout.LayoutBounds="0.5, 0.5, -1, -1"
+                   AbsoluteLayout.LayoutFlags="PositionProportional"
+                   BorderColor="Black"
+                   BackgroundColor="LightGray"
+                   CornerRadius="5"
+                   IsClippedToBounds="true">
+            <Grid>
+                <Label Text="Deleted scores cannot be recovered. Delete this score?"
+                                   FontSize="Medium"
+                                   FontAttributes="Bold"
+                                   HorizontalTextAlignment="Center"
+                                   Grid.Row="0"
+                                   Grid.ColumnSpan="2" />
+                <Button Text="DELETE"
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    BackgroundColor="White"
+                                    BorderRadius="20"
+                                    BorderWidth="2"
+                                    BorderColor="Black"
+                                    HorizontalOptions="Center"
+                                    Clicked="Delete_Clicked" />
+                <Button Text="CANCEL"
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    BackgroundColor="White"
+                                    BorderRadius="20"
+                                    BorderWidth="2"
+                                    BorderColor="Black"
+                                    HorizontalOptions="Center"
+                                    Clicked="Cancel_Clicked" />
+            </Grid>
+        </Frame>
+        
+        
+    </Grid>
 </ContentPage>
