@@ -339,7 +339,8 @@
                                         x:Name="SpeedSlider"
                                         Value="{Binding Data.Speed, Mode=TwoWay}"
                                         HorizontalOptions="FillAndExpand"
-                                        VerticalOptions="Center">
+                                        VerticalOptions="Center"
+                                        ValueChanged="Speed_OnSliderValueChanged">
 
                                     <Slider.Margin>
                                         <OnPlatform x:TypeArguments="Thickness">
