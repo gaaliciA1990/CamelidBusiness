@@ -372,15 +372,11 @@
                     </StackLayout>
 
                     <!--Items selection-->
-                    <FlexLayout Grid.Column="0"
+                    <StackLayout Grid.Column="1"
                                 Grid.Row="1"
-                                Grid.ColumnSpan="2"
                                 Padding="5"
-                                Wrap="Wrap"
-                                JustifyContent="SpaceAround"
-                                AlignContent="SpaceAround"
                                 x:Name="ItemBox">
-                    </FlexLayout>
+                    </StackLayout>
                 </Grid>
             </ScrollView>
 
