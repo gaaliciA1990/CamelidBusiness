@@ -8,61 +8,108 @@
              xmlns:local_helpers="clr-namespace:Game.Helpers"
              xmlns:local_enum="clr-namespace:Game.Models"
              x:Class="Game.Views.ScoreCreatePage"
-             Title="{Binding Title}">
-
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Cancel" Clicked="Cancel_Clicked" IconImageSource="icon_cancel.png"/>
-        <ToolbarItem Text="Save" Clicked="Save_Clicked" IconImageSource="icon_save.png"/>
-    </ContentPage.ToolbarItems>
+             Title="{Binding Title}"
+             NavigationPage.HasNavigationBar="False">
 
     <ContentPage.Resources>
         <ResourceDictionary>
-            <local_helpers:StringEnumConverter x:Key="StringEnum"/>
+            <local_helpers:StringEnumConverter x:Key="StringEnum" />
         </ResourceDictionary>
     </ContentPage.Resources>
 
     <ContentPage.Content>
+        <StackLayout Style="{StaticResource OuterBoxStack}"
+                     Spacing="10"
+                     HorizontalOptions="FillAndExpand"
+                     VerticalOptions="FillAndExpand">
+            <StackLayout Orientation="Horizontal"
+                         Grid.Row="0">
+                <ImageButton Source="icon_cancel.png"
+                             Aspect="AspectFit"
+                             HorizontalOptions="Start"
+                             Clicked="Cancel_Clicked"
+                             Padding="10"
+                             WidthRequest="45"
+                             HeightRequest="45" />
 
-        <ScrollView>
-            <StackLayout Style="{StaticResource OuterBoxStack}"
-                Spacing="10">
+                <Label Font="Bold"
+                       HorizontalOptions="CenterAndExpand"
+                       Text="Create Score"
+                       Style="{StaticResource HeaderStyle}"
+                       FontSize="Large" />
 
-                <Label Text="Create Page" Style="{StaticResource HeaderStyle}"/>
 
-                <Grid
-                    RowSpacing="1"
-                    ColumnSpacing="2"
-                    VerticalOptions="Center">
+                <ImageButton Source="icon_save.png"
+                             Aspect="AspectFit"
+                             HorizontalOptions="Start"
+                             Clicked="Save_Clicked"
+                             Padding="10"
+                             WidthRequest="45"
+                             HeightRequest="45" />
+            </StackLayout>
+            <!--Score entries, centered to the screen relatively-->
+            <RelativeLayout>
+                <Grid RowSpacing="1"
+                      ColumnSpacing="2"
+                      RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.33}"
+                      RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.33}"
+                      RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.33}"
+                      RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.33}">
 
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto" />
                     </Grid.ColumnDefinitions>
 
-                    <Label Grid.Row="0" Grid.Column="0"
-                        Text="Name" 
-                        Style="{StaticResource LabelStyle}"/>
-                    
-                    <Entry Grid.Row="0" Grid.Column="1"
-                        Text="{Binding Data.Name}" 
-                        Style="{StaticResource EntryStyle}"/>
-
-                    <Label Grid.Row="1" Grid.Column="0"
-                        Text="Score" 
-                        Style="{StaticResource LabelStyle}"/>
-                    
-                    <Entry Grid.Row="1" Grid.Column="1"
-                        Text="{Binding Data.ScoreTotal}" 
-                        Style="{StaticResource EntryStyle}"/>
-
-                    <Label Grid.Row="1" Grid.Column="0"
-                        Text="Score" 
-                        Style="{StaticResource LabelStyle}"/>
-
+                    <!--Name entry-->
+                    <Frame CornerRadius="5"
+                           Grid.Row="0"
+                           Grid.Column="0"
+                           HeightRequest="30"
+                           WidthRequest="50">
+                        <Label x:Name="NameLabel"
+                               Text="Name"
+                               Style="{StaticResource LabelStyle}"
+                               HorizontalOptions="CenterAndExpand" />
+                    </Frame>
+                    <Frame CornerRadius="5"
+                           Grid.Row="0"
+                           Grid.Column="1"
+                           WidthRequest="100"
+                           HorizontalOptions="CenterAndExpand">
+                        <Entry x:Name="NameEntry"
+                               Placeholder="Enter Name"
+                               Text="{Binding Data.Name}"
+                               Style="{StaticResource EntryStyle}"
+                               HorizontalOptions="CenterAndExpand"
+                               HorizontalTextAlignment="Center" />
+                    </Frame>
+                    <!--Score Entry-->
+                    <Frame CornerRadius="5"
+                           Grid.Row="1"
+                           Grid.Column="0"
+                           HeightRequest="30"
+                           WidthRequest="50">
+                        <Label x:Name="ScoreLabel"
+                               Text="Score"
+                               Style="{StaticResource LabelStyle}"
+                               HorizontalOptions="CenterAndExpand" />
+                    </Frame>
+                    <Frame CornerRadius="5"
+                           Grid.Row="1"
+                           Grid.Column="1"
+                           WidthRequest="100"
+                           HorizontalOptions="CenterAndExpand">
+                        <Entry x:Name="ScoreEntry"
+                               Text="{Binding Data.ScoreTotal}"
+                               Style="{StaticResource EntryStyle}"
+                               HorizontalOptions="CenterAndExpand"
+                               HorizontalTextAlignment="Center" />
+                    </Frame>
                 </Grid>
-            </StackLayout>
-        </ScrollView>
+            </RelativeLayout>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>
