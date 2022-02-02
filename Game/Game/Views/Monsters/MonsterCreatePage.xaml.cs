@@ -70,50 +70,12 @@ namespace Game.Views
 
             ViewModel.Data.Difficulty = difficulty;
 
-            return true;
-        }
-
-        #region Popup
-        /// <summary>
-        /// Show the Popup for Selecting Items
-        /// </summary>
-        /// <param name="location"></param>
-        /// <returns></returns>
-        public bool ShowPopup(ItemLocationEnum location)
-        {
-            PopupItemSelector.IsVisible = true;
-
-            PopupLocationLabel.Text = "Items for :";
-            PopupLocationValue.Text = location.ToMessage();
-
-            // Make a fake item for None
-            var NoneItem = new ItemModel
-            {
-                Id = null, // will use null to clear the item
-                Guid = "None", // how to find this item amoung all of them
-                ImageURI = "icon_cancel.png",
-                Name = "None",
-                Description = "None"
-            };
-
-            List<ItemModel> itemList = new List<ItemModel>
-            {
-                NoneItem
-            };
-
-            // Add the rest of the items to the list
-            itemList.AddRange(ItemIndexViewModel.Instance.GetLocationItems(location));
-
-            // Populate the list with the items
-            PopupLocationItemListView.ItemsSource = itemList;
-
-            // Remember the location for this popup
-            PopupLocationEnum = location;
+            AddItemsToDisplay();
 
             return true;
         }
 
-        #endregion Popup
+ 
 
         /// <summary>
         /// Save by calling for Create
@@ -140,6 +102,22 @@ namespace Game.Views
         }
 
         #region Popup
+        /// <summary>
+        /// Show the Items the Character has
+        /// </summary>
+        public void AddItemsToDisplay()
+        {
+            var FlexList = ItemBox.Children.ToList();
+            foreach (var data in FlexList)
+            {
+                _ = ItemBox.Children.Remove(data);
+            }
+
+            //Add a StackLayout for each of the children 
+            //Placeholder, unique items will have their unique location enum
+            ItemBox.Children.Add(GetItemToDisplay(ItemLocationEnum.Head));
+        }
+
         /// <summary>
         /// Show the Popup for Selecting Items
         /// </summary>
@@ -230,6 +208,29 @@ namespace Game.Views
             };
 
             return ItemStack;
+        }
+
+        /// <summary>
+        /// The row selected from the list
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0019:Use pattern matching", Justification = "<Pending>")]
+        public void OnPopupItemSelected(object sender, SelectedItemChangedEventArgs args)
+        {
+            ItemModel data = args.SelectedItem as ItemModel;
+            if (data == null)
+            {
+                return;
+            }
+
+            _ = ViewModel.Data.AddItem(PopupLocationEnum, data.Id);
+
+            UpdatePageBindingContext();
+
+            AddItemsToDisplay();
+
+            ClosePopup();
         }
 
         /// <summary>
