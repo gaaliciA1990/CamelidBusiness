@@ -239,7 +239,8 @@
                                         BackgroundColor="White"
                                         Value="{Binding Data.Attack, Mode=TwoWay}"
                                         HorizontalOptions="FillAndExpand"
-                                        VerticalOptions="Center">
+                                        VerticalOptions="Center"
+                                        ValueChanged="Attack_OnSliderValueChanged">
 
                                     <Slider.Margin>
                                         <OnPlatform x:TypeArguments="Thickness">
