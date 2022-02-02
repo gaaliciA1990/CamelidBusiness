@@ -8,140 +8,233 @@
              xmlns:local="using:Game.Models"
              xmlns:local_enum="clr-namespace:Game.Models"
              x:Class="Game.Views.ScoreUpdatePage"
-             Title="{Binding Title}">
-
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Cancel" Clicked="Cancel_Clicked" IconImageSource="icon_cancel.png"/>
-        <ToolbarItem Text="Save" Clicked="Save_Clicked" IconImageSource="icon_save.png"/>
-    </ContentPage.ToolbarItems>
+             Title="{Binding Title}"
+             NavigationPage.HasNavigationBar="False">
 
     <ContentPage.Resources>
         <ResourceDictionary>
-            <local_helpers:StringEnumConverter x:Key="StringEnum"/>
+            <local_helpers:StringEnumConverter x:Key="StringEnum" />
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <ContentPage.Content>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
 
-        <ScrollView>
-            <StackLayout Style="{StaticResource OuterBoxStack}"
-                Spacing="10">
+        <StackLayout Orientation="Horizontal"
+                     Grid.Row="0">
+            <ImageButton Source="leftarrow.png"
+                         Aspect="AspectFit"
+                         Clicked="BackButton_Clicked"
+                         HorizontalOptions="Start"
+                         Padding="10"
+                         WidthRequest="45"
+                         HeightRequest="45" />
 
-                <Label Text="Update Page" Style="{StaticResource HeaderStyle}"/>
+            <Label FontSize="Large"
+                   FontAttributes="Bold, Italic"
+                   HorizontalOptions="CenterAndExpand"
+                   VerticalOptions="FillAndExpand"
+                   Text="Update Score"
+                   Style="{StaticResource ValueStyle}" />
 
-                <Grid
-                    RowSpacing="1"
-                    ColumnSpacing="2"
-                    VerticalOptions="Center">
+            <ImageButton Source="icon_save.png"
+                         Aspect="AspectFit"
+                         HorizontalOptions="Start"
+                         Clicked="Save_Clicked"
+                         Padding="10"
+                         WidthRequest="45"
+                         HeightRequest="45" />
+        </StackLayout>
 
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="auto" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto"/>
-                    </Grid.ColumnDefinitions>
+        <Grid Grid.Row="1"
+              ColumnSpacing="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <!--Name fields-->
+            <Label x:Name="NameLabel"
+                   Grid.Row="0"
+                   Grid.Column="0"
+                   Style="{StaticResource LabelStyle}"
+                   Text="Name" />
+            <Entry x:Name="NameEntry"
+                   Grid.Row="0"
+                   Grid.Column="1"
+                   Style="{StaticResource EntryStyle}"
+                   Text="{Binding Data.Name, Mode=TwoWay}" />
 
-                    <Label Grid.Row="0" Grid.Column="0"
-                        Text="Name" 
-                        Style="{StaticResource LabelStyle}"/>
 
-                    <Entry Grid.Row="0" Grid.Column="1"
-                        Text="{Binding Data.Name}" 
-                        Style="{StaticResource EntryStyle}"/>
-                </Grid>
+            <!--Score Fields-->
+            <Label x:Name="ScoreLabel"
+                   Grid.Row="1"
+                   Grid.Column="0"
+                   Style="{StaticResource LabelStyle}"
+                   Text="Score" />
+            <Entry x:Name="ScoreEntry"
+                   Grid.Row="1"
+                   Grid.Column="1"
+                   Style="{StaticResource EntryStyle}"
+                   Text="{Binding Data.ScoreTotal, Mode=TwoWay}" />
+
+            <!--Date Fields-->
+            <Label x:Name="DateLabel"
+                   Grid.Row="2"
+                   Grid.Column="0"
+                   Style="{StaticResource LabelStyle}"
+                   Text="Date" />
+            <Label x:Name="DateDataLabel"
+                   Grid.Row="2"
+                   Grid.Column="1"
+                   Style="{StaticResource ValueStyle}"
+                   Text="{Binding Data.GameDate}" />
+
+            <!--Autobattle Fields-->
+            <Label x:Name="AutobattleLabel"
+                   Grid.Row="3"
+                   Grid.Column="0"
+                   Style="{StaticResource LabelStyle}"
+                   Text="Autobattle" />
+            <Label x:Name="AutobattleDataLabel"
+                   Grid.Row="3"
+                   Grid.Column="1"
+                   Style="{StaticResource ValueStyle}"
+                   Text="{Binding Data.AutoBattle}" />
 
 
-                <StackLayout Style="{StaticResource HorizontalStack}">
-                    <Label 
-                    Text="Game Date:"
-                    Style="{StaticResource LabelStyle}"/>
 
-                    <Label 
-                    Text="{Binding Data.GameDate}"
-                    Style="{StaticResource ValueStyle}"/>
+            <!--Rounds Fields-->
+            <Label x:Name="RoundsLabel"
+                   Grid.Row="4"
+                   Grid.Column="0"
+                   Style="{StaticResource LabelStyle}"
+                   Text="Rounds" />
+            <Label x:Name="RoundsDataLabel"
+                   Grid.Row="4"
+                   Grid.Column="1"
+                   Style="{StaticResource ValueStyle}"
+                   Text="{Binding Data.RoundCount}" />
+
+            <!--Turns Fields-->
+            <Label x:Name="TurnsLabel"
+                   Grid.Row="5"
+                   Grid.Column="0"
+                   Style="{StaticResource LabelStyle}"
+                   Text="Turns" />
+            <Label x:Name="TurnsDataLabel"
+                   Grid.Row="5"
+                   Grid.Column="1"
+                   Style="{StaticResource ValueStyle}"
+                   Text="{Binding Data.TurnCount}" />
+
+            <!--Slain Monsters Field-->
+            <Label x:Name="SlainMonsterLabel"
+                   Grid.Row="6"
+                   Grid.Column="0"
+                   Style="{StaticResource LabelStyle}"
+                   Text="Monsters slayed" />
+            <Label x:Name="SlainMonstersDataLabel"
+                   Grid.Row="6"
+                   Grid.Column="1"
+                   Style="{StaticResource ValueStyle}"
+                   Text="{Binding Data.MonsterSlainNumber}" />
+
+            <!--Total XP Field-->
+            <Label x:Name="XPLabel"
+                   Grid.Row="7"
+                   Grid.Column="0"
+                   Style="{StaticResource LabelStyle}"
+                   Text="Total experience" />
+            <Label x:Name="XPDataLabel"
+                   Grid.Row="7"
+                   Grid.Column="1"
+                   Style="{StaticResource ValueStyle}"
+                   Text="{Binding Data.ExperienceGainedTotal}" />
+
+            <Grid Grid.Row="0"
+                  Grid.Column="2"
+                  Grid.RowSpan="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <StackLayout Orientation="Horizontal">
+                    <!--Label for list of dead characters-->
+                    <Label x:Name="CharacterDeadLabel"
+                           Grid.Row="0"
+                           Grid.Column="0"
+                           Style="{StaticResource ValueStyle}"
+                           Text="Characters at death"
+                           LineBreakMode="WordWrap"
+                           HorizontalOptions="CenterAndExpand" />
+                    <StackLayout  x:Name="CharactersDeadList"
+                                  Grid.Row="1"
+                                  Grid.Column="0"
+                                  Orientation="Horizontal"
+                                  HorizontalOptions="Center" />
                 </StackLayout>
+            </Grid>
 
-                <StackLayout Style="{StaticResource HorizontalStack}">
-                    <Label 
-                    Text="AutoBattle:"                      
-                    Style="{StaticResource LabelStyle}"/>
-
-                    <Label 
-                    Text="{Binding Data.AutoBattle}"
-                    Style="{StaticResource ValueStyle}"/>
+            <Grid Grid.Row="3"
+                  Grid.Column="2"
+                  Grid.RowSpan="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <StackLayout Orientation="Horizontal">
+                    <!--Label for list of monsters killed-->
+                    <Label x:Name="MonsterDeadLabel"
+                           Grid.Row="0"
+                           Grid.Column="0"
+                           Style="{StaticResource ValueStyle}"
+                           Text="Monsters killed"
+                           LineBreakMode="WordWrap"
+                           HorizontalOptions="CenterAndExpand"></Label>
+                    <StackLayout  x:Name="MonstersDeadList"
+                                  Grid.Row="1"
+                                  Grid.Column="0"
+                                  Orientation="Horizontal"
+                                  HorizontalOptions="Center" />
                 </StackLayout>
+            </Grid>
 
-                <StackLayout Style="{StaticResource HorizontalStack}">
-                    <Label 
-                    Text="Score:" 
-                    Style="{StaticResource LabelStyle}"/>
-                    <Label 
-                    Text="{Binding Data.ScoreTotal}"
-                    Style="{StaticResource ValueStyle}"/>
+            <Grid Grid.Row="6"
+                  Grid.Column="2"
+                  Grid.RowSpan="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <StackLayout Orientation="Horizontal">
+                    <!--Label for list of Items drops-->
+                    <Label Grid.Row="0"
+                           Grid.Column="0"
+                           Style="{StaticResource ValueStyle}"
+                           Text="Items dropped"
+                           LineBreakMode="WordWrap"
+                           HorizontalOptions="CenterAndExpand"></Label>
+                    <StackLayout  x:Name="ItemsDroppedList"
+                                  Grid.Row="1"
+                                  Grid.Column="0"
+                                  Orientation="Horizontal"
+                                  HorizontalOptions="Center" />
                 </StackLayout>
-
-                <StackLayout Style="{StaticResource HorizontalStack}">
-                    <Label 
-                    Text="Number of Rounds:"                      
-                    Style="{StaticResource LabelStyle}"/>
-
-                    <Label 
-                    Text="{Binding Data.RoundCount}"
-                    Style="{StaticResource ValueStyle}"/>
-                </StackLayout>
-
-                <StackLayout Style="{StaticResource HorizontalStack}">
-                    <Label 
-                    Text="Number of Turns:"  
-                    Style="{StaticResource LabelStyle}"/>
-
-                    <Label 
-                    Text="{Binding Data.TurnCount}"
-                    Style="{StaticResource ValueStyle}"/>
-                </StackLayout>
-
-                <StackLayout Style="{StaticResource HorizontalStack}">
-                    <Label 
-                    Text="Number of Monsters Slain:"
-                    Style="{StaticResource LabelStyle}"/>
-                    <Label 
-                    Text="{Binding Data.MonsterSlainNumber}"
-                    Style="{StaticResource ValueStyle}"/>
-                </StackLayout>
-
-                <StackLayout Style="{StaticResource HorizontalStack}">
-                    <Label 
-                    Text="Total Experience Gained:"
-                    Style="{StaticResource LabelStyle}"/>
-
-                    <Label 
-                    Text="{Binding Data.ExperienceGainedTotal}" 
-                    Style="{StaticResource ValueStyle}"/>
-                </StackLayout>
-
-                <Label 
-                Text="Characters at Death:"
-                Style="{StaticResource LabelStyle}"/>
-                <Label 
-                Text="{Binding Data.CharacterAtDeathList}" 
-                Style="{StaticResource ValueStyle}"/>
-
-                <Label 
-                Text="Monsters Killed:"
-                Style="{StaticResource LabelStyle}"/>
-                <Label 
-                Text="{Binding Data.MonstersKilledList}" 
-                Style="{StaticResource ValueStyle}"/>
-
-                <Label 
-                Text="Items Dropped:"
-                Style="{StaticResource LabelStyle}"/>
-                <Label 
-                Text="{Binding Data.ItemsDroppedList}"
-                Style="{StaticResource ValueStyle}"/>
-
-
-            </StackLayout>
-        </ScrollView>
-    </ContentPage.Content>
+            </Grid>
+        </Grid>
+    </Grid>
 </ContentPage>
