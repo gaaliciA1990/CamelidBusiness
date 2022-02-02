@@ -80,8 +80,7 @@
                            WidthRequest="100"
                            HorizontalOptions="CenterAndExpand">
                         <Entry x:Name="NameEntry"
-                               Placeholder="Enter Name"
-                               Text="{Binding Data.Name}"
+                               Text="{Binding Data.Name, Mode=TwoWay}"
                                Style="{StaticResource EntryStyle}"
                                HorizontalOptions="CenterAndExpand"
                                HorizontalTextAlignment="Center" />
@@ -103,7 +102,7 @@
                            WidthRequest="100"
                            HorizontalOptions="CenterAndExpand">
                         <Entry x:Name="ScoreEntry"
-                               Text="{Binding Data.ScoreTotal}"
+                               Text="{Binding Data.ScoreTotal, Mode=TwoWay}"
                                Style="{StaticResource EntryStyle}"
                                HorizontalOptions="CenterAndExpand"
                                HorizontalTextAlignment="Center" />

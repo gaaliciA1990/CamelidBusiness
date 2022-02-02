@@ -34,6 +34,8 @@ namespace Game.Views
             BindingContext = this.ViewModel = data;
 
             this.ViewModel.Title = "Create";
+
+            NameEntry.Placeholder = "Your Name";
         }
 
         /// <summary>
@@ -43,6 +45,13 @@ namespace Game.Views
         /// <param name="e"></param>
         public async void Save_Clicked(object sender, EventArgs e)
         {
+            //Check if the required input fields are filled
+            bool isValid = Entry_Validator();
+            if (isValid == false)
+            {
+                return;
+            }
+
             // If the image in the data box is empty, use the default one..
             if (string.IsNullOrEmpty(ViewModel.Data.ImageURI))
             {
@@ -61,6 +70,35 @@ namespace Game.Views
         public async void Cancel_Clicked(object sender, EventArgs e)
         {
             _ = await Navigation.PopModalAsync();
+        }
+
+        /// <summary>
+        /// Helper function to help validate required input fields
+        /// </summary>
+        /// <returns></returns>
+        private bool Entry_Validator()
+        {
+            bool isValid = true;
+
+            // validate the Name has something entered
+            if (string.IsNullOrWhiteSpace(this.ViewModel.Data.Name))
+            {
+                NameEntry.PlaceholderColor = Xamarin.Forms.Color.Red;
+                isValid = false;
+            }
+
+            return isValid;
+        }
+
+        /// <summary>
+        /// Validate the Entry fields for Name and Descriptions
+        /// are filled with valid text
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Entry_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Entry_Validator();
         }
     }
 }
