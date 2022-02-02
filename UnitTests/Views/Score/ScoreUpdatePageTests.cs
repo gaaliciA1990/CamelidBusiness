@@ -57,7 +57,7 @@ namespace UnitTests.Views
             // Arrange
 
             // Act
-            page.Cancel_Clicked(null, null);
+            page.BackButton_Clicked(null, null);
 
             // Reset
 
