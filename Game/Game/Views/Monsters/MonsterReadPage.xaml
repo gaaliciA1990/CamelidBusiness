@@ -48,8 +48,8 @@
                              WidthRequest="65"
                              HeightRequest="65" />
             </StackLayout>
-            <ScrollView VerticalScrollBarVisibility="Always"
-                        Grid.Row="1">
+            
+            <StackLayout Grid.Row="1">
                 <Grid x:Name="FormLayoutGrid">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
@@ -288,29 +288,13 @@
                                 </Slider>
                             </StackLayout>
 
-                            <!-- Max Health Value-->
-                            <StackLayout Orientation="Horizontal"
-                                         Grid.Row="5"
-                                         Grid.Column="0"
-                                         Grid.ColumnSpan="2">
-                                <Label Text="HP: "
-                                       FontSize="Medium"
-                                       Style="{StaticResource LabelStyle}" />
-
-                                <Label x:Name="MaxHealthValue"
-                                       Text="{Binding Data.MaxHealth, StringFormat= '{0:G}'}"
-                                       Style="{StaticResource ValueStyle}"
-                                       FontAttributes="Bold"
-                                       FontSize="Medium" />
-
-                                <!--Unique Item selection--><!--
+                            <!--Unique Item selection--><!--
                                 <Picker x:Name="UniqueItemPicker"
                                         IsEnabled="False"
                                         Title="Select a Unique Item"
                                         HorizontalOptions="FillAndExpand"
                                         BackgroundColor="White"
                                         ItemsSource="{x:Static local:ItemLocationEnumHelper.GetListItem}" />-->
-                            </StackLayout>
                         </Grid>
 
                         <!--Items selection-->
@@ -321,7 +305,7 @@
                         
                     </StackLayout>
                 </Grid>
-            </ScrollView>
+            </StackLayout>
         </Grid>
     </ContentPage.Content>
 </ContentPage>
