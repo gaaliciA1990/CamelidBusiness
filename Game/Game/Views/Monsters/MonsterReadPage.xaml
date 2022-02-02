@@ -56,7 +56,7 @@
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
@@ -78,7 +78,7 @@
                                 HorizontalOptions="FillAndExpand"
                                 VerticalOptions="FillAndExpand"
                                 Aspect="AspectFit"
-                                Margin="10" />
+                                Margin="5" />
 
                         <Label FontSize="Medium"
                                HorizontalOptions="Center"
@@ -298,11 +298,9 @@
                         </Grid>
 
                         <!--Items selection-->
-                        <StackLayout x:Name="ItemBox" 
-                                         Grid.Row="4"
-                                         Grid.Column="1">
+                        <StackLayout x:Name="ItemBox" Margin="15" VerticalOptions="Center"> 
                         </StackLayout>
-                        
+
                     </StackLayout>
                 </Grid>
             </StackLayout>
