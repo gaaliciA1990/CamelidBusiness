@@ -91,7 +91,7 @@ namespace Game.Views
         }
 
         /// <summary>
-        /// Validate the Entry fields for Name and Descriptions
+        /// Validate the Entry fields for Name
         /// are filled with valid text
         /// </summary>
         /// <param name="sender"></param>
