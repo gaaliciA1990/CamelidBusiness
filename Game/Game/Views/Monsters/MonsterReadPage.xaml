@@ -312,6 +312,13 @@
                                         ItemsSource="{x:Static local:ItemLocationEnumHelper.GetListItem}" />-->
                             </StackLayout>
                         </Grid>
+
+                        <!--Items selection-->
+                        <StackLayout x:Name="ItemBox" 
+                                         Grid.Row="4"
+                                         Grid.Column="1">
+                        </StackLayout>
+                        
                     </StackLayout>
                 </Grid>
             </ScrollView>
