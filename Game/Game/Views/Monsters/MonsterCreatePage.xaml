@@ -50,7 +50,7 @@
                              HeightRequest="65" />
             </StackLayout>
 
-            <ScrollView VerticalScrollBarVisibility="Always"
+            <StackLayout
                         Grid.Row="1">
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -349,36 +349,18 @@
                                         </OnPlatform>
                                     </Slider.Margin>
                                 </Slider>
-
-                            </StackLayout>
-
-                            <!--Health Attribute-->
-                            <StackLayout Orientation="Horizontal"
-                                         Grid.Row="5"
-                                         Grid.Column="0"
-                                         Grid.ColumnSpan="2">
-                                <Label Text="MH"
-                                       FontSize="Medium"
-                                       Style="{StaticResource LabelStyle}" />
-
-                                <Label Grid.Row="4"
-                                       Grid.Column="1"
-                                       x:Name="MaxHealthValue"
-                                       Text="{Binding Data.MaxHealth, StringFormat= '{0:G} hp'}"
-                                       Style="{StaticResource ValueStyle}"
-                                       FontSize="Medium" />
                             </StackLayout>
                         </Grid>
+
+                        <!--Items selection-->
+                        <StackLayout x:Name="ItemBox" 
+                                         Grid.Row="4"
+                                         Grid.Column="1">
+                        </StackLayout>
                     </StackLayout>
 
-                    <!--Items selection-->
-                    <StackLayout Grid.Column="1"
-                                Grid.Row="1"
-                                Padding="5"
-                                x:Name="ItemBox">
-                    </StackLayout>
                 </Grid>
-            </ScrollView>
+            </StackLayout>
 
             <!--The Item Popup-->
             <StackLayout x:Name="PopupItemSelector"
@@ -388,7 +370,9 @@
                          AbsoluteLayout.LayoutFlags="All"
                          Opacity=".95"
                          WidthRequest="350"
-                         HeightRequest="350">
+                         HeightRequest="350"
+                         Grid.Row="0"
+                         Grid.RowSpan="2">
 
                 <StackLayout VerticalOptions="CenterAndExpand"
                              HorizontalOptions="CenterAndExpand"
@@ -408,7 +392,7 @@
 
                             <ListView x:Name="PopupLocationItemListView"
                                       CachingStrategy="RecycleElement"
-
+                                      ItemSelected="OnPopupItemSelected"
                                       HasUnevenRows="true"
                                       Margin="5,0,5,0"
                                       RowHeight="80">
