@@ -163,44 +163,11 @@
                                    VerticalOptions="Center" />
 
                             <!--Difficulty Labels-->
-                            <StackLayout Grid.Row="0"
+                            <StackLayout x:Name="DifficultyStack" 
+                                         Grid.Row="0"
                                          Grid.Column="1"
                                          Orientation="Horizontal"
                                          VerticalOptions="Center">
-
-                                <Label x:Name="LevelValue"
-                                       Text="{Binding Data.Defense, Mode=TwoWay}"
-                                       Style="{StaticResource ValueStyle}"
-                                       FontAttributes="Bold"
-                                       HorizontalOptions="Start"
-                                       HorizontalTextAlignment="Start"
-                                       VerticalOptions="Center">
-                                    <Label.Margin>
-                                        <OnPlatform x:TypeArguments="Thickness">
-                                            <On Platform="iOS"
-                                                Value="15,0" />
-                                            <On Platform="Android"
-                                                Value="10,0" />
-                                        </OnPlatform>
-                                    </Label.Margin>
-                                </Label>
-
-                                <Slider Maximum="20"
-                                        Minimum="1"
-                                        BackgroundColor="White"
-                                        Value="{Binding Data.Level, Mode=TwoWay}"
-                                        HorizontalOptions="FillAndExpand"
-                                        VerticalOptions="Center">
-
-                                    <Slider.Margin>
-                                        <OnPlatform x:TypeArguments="Thickness">
-                                            <On Platform="iOS"
-                                                Value="15,0" />
-                                            <On Platform="Android"
-                                                Value="10,0" />
-                                        </OnPlatform>
-                                    </Slider.Margin>
-                                </Slider>
                             </StackLayout>
 
                             <Label Text="ATK: "
