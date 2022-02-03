@@ -36,8 +36,13 @@ namespace Game.Views
 
             AddItemsToDisplay();
 
+
+            LevelBar.Progress = (float)ViewModel.Data.Level / 20;
+            AttackBar.Progress = (float)ViewModel.Data.GetAttackTotal / 50;
+            DefenseBar.Progress = (float)ViewModel.Data.GetDefenseTotal / 50;
+            SpeedBar.Progress = (float)ViewModel.Data.GetSpeedTotal / 50;
             RangeValue.Text = ViewModel.Data.GetItemRange().ToString();
-            RangeSlider.Value = ViewModel.Data.GetItemRange();
+            RangeBar.Progress = (float)ViewModel.Data.GetItemRange() / 20;
         }
 
         /// <summary>
