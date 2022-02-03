@@ -43,12 +43,24 @@
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
-                    <Label Grid.Row="0" FontSize="Medium"
+                    <Grid Grid.Row="0" HorizontalOptions="FillAndExpand">
+
+                        <Label Grid.Row="0" Grid.Column="0"
+                               FontSize="Medium"
                                FontAttributes="Bold, Italic"
                                HorizontalOptions="Center"
                                VerticalOptions="FillAndExpand"
                                Text="{Binding Data.Name}"
                                Style="{StaticResource ValueStyle}" />
+
+                        <Label Grid.Row="0" Grid.Column="1" x:Name="ClanPicker"
+                               Text="{Binding Data.Clan}"
+                               FontSize="Medium"
+                               FontAttributes="Bold, Italic"
+                               HorizontalOptions="Center"
+                               VerticalOptions="FillAndExpand"
+                               Style="{StaticResource ValueStyle}"/>
+                    </Grid>
 
                     <Image Grid.Row="1" x:Name="ImageLabel"
                                 Source="{Binding Data.ImageURI}"
