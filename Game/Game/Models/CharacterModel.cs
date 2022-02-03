@@ -9,6 +9,10 @@ namespace Game.Models
     /// </summary>
     public class CharacterModel : BasePlayerModel<CharacterModel>
     {
+
+        // The clan the character belongs to
+        public CharacterClanEnum Clan { get; set; } = CharacterClanEnum.Unknown;
+
         /// <summary>
         /// Default character
         /// 
@@ -22,6 +26,7 @@ namespace Game.Models
             Description = "Eats grass, kicks ass!!!";
             Level = 1;
             ImageURI = "alpaca1.png";
+            Clan = CharacterClanEnum.Alpaca;
             ExperienceTotal = 0;
             ExperienceRemaining = LevelTableHelper.LevelDetailsList[Level + 1].Experience - 1;
 
