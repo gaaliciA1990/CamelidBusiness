@@ -49,11 +49,13 @@ namespace Game.Views
 
             data.Data = new MonsterModel();
             this.ViewModel = data;
-
             this.ViewModel.Title = "Create";
 
             NameEntry.Placeholder = "Give your monster a name";
             DescriptionEntry.Placeholder = "Describe your monster";
+            //No difficulty is selected when a new monster is first created
+            ViewModel.Data.Difficulty = DifficultyEnum.Unknown;
+            AddDifficultySelections();
 
             _ = UpdatePageBindingContext();
         }
@@ -74,7 +76,6 @@ namespace Game.Views
             ViewModel.Data.Difficulty = difficulty;
 
             AddItemsToDisplay();
-            AddDifficultySelections();
 
             return true;
         }
@@ -272,28 +273,24 @@ namespace Game.Views
 
         #region AttributeEventHandlers
         /// <summary>
-        /// Catch the change to the Slider for Difficulty
+        /// Catch the change to Difficulty level
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         public void SaveDifficulty(object sender, DifficultyEnum difficulty)
         {
-            bool DifferentSelection = difficulty == ViewModel.Data.Difficulty ? false : true;
-
-            Button myButton = (Button)sender;
-            myButton.IsEnabled = false;
-            //Need to reenable when they choose another difficulty
+            //Initate the current selection
             if (CurrentDifficulty == null)
             {
-                CurrentDifficulty = myButton;
+                CurrentDifficulty = (Button)sender;
             }
 
-            if (DifferentSelection)
-            {
-                CurrentDifficulty.IsEnabled = true;
+            //Release the current selection first
+            CurrentDifficulty.IsEnabled = true;
 
-            }
-            CurrentDifficulty = myButton;
+            //Subsequent assignments
+            CurrentDifficulty = (Button)sender;
+            CurrentDifficulty.IsEnabled = false;
 
             //Save the difficulty selected
             ViewModel.Data.Difficulty = difficulty;
@@ -317,6 +314,11 @@ namespace Game.Views
             }
         }
 
+        /// <summary>
+        /// Function to create a button for each difficulty level
+        /// </summary>
+        /// <param name="difficulty"></param>
+        /// <returns></returns>
         public Button CreateDifficultyButton(DifficultyEnum difficulty)
         {
             string label = difficulty == DifficultyEnum.Difficult ? "Difficult" : difficulty.ToMessage();
