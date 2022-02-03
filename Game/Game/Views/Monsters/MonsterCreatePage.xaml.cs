@@ -75,8 +75,8 @@ namespace Game.Views
             return true;
         }
 
- 
 
+        #region SaveCancelButtons
         /// <summary>
         /// Save by calling for Create
         /// </summary>
@@ -100,6 +100,17 @@ namespace Game.Views
             MessagingCenter.Send(this, "Create", ViewModel.Data);
             _ = await Navigation.PopModalAsync();
         }
+
+        /// <summary>
+        /// Cancel the Create
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public async void Cancel_Clicked(object sender, EventArgs e)
+        {
+            _ = await Navigation.PopModalAsync();
+        }
+        #endregion SaveCancelButtons
 
         #region Popup
         /// <summary>
@@ -255,16 +266,7 @@ namespace Game.Views
 
         #endregion Popup
 
-        /// <summary>
-        /// Cancel the Create
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        public async void Cancel_Clicked(object sender, EventArgs e)
-        {
-            _ = await Navigation.PopModalAsync();
-        }
-
+        #region AttributeEventHandlers
         /// <summary>
         /// Catch the change to the Slider for Difficulty
         /// </summary>
@@ -307,6 +309,7 @@ namespace Game.Views
         {
             SpeedValue.Text = string.Format("{0}", Math.Round(e.NewValue));
         }
+        #endregion AttributeEventHandlers
 
         #region Randomize
         /// <summary>
@@ -384,6 +387,7 @@ namespace Game.Views
         }
         #endregion Randomize
 
+        #region LeftRightButtons
         /// <summary>
         /// When the right button is clicked, the image will change to the next index or the beginning of the
         /// index if at the last index. 
@@ -437,6 +441,7 @@ namespace Game.Views
             this.ViewModel.Data.ImageURI = imageList[imageIndex];
             ImageLabel.Source = ViewModel.Data.ImageURI;
         }
+        #endregion LeftRightButtons
 
         /// <summary>
         /// Helper function to help validate required input fields
