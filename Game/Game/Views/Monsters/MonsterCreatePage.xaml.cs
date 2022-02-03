@@ -22,6 +22,10 @@ namespace Game.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MonsterCreatePage : ContentPage
     {
+        //placeholder texts
+        private readonly string nameHolder = "Give your monster a name";
+        private readonly string descriptionHolder = "Describe your monster";
+
         //Local storage for images
         private List<String> imageList = GameImagesHelper.GetMonsterImage();
 
@@ -51,13 +55,17 @@ namespace Game.Views
             this.ViewModel = data;
             this.ViewModel.Title = "Create";
 
-            NameEntry.Placeholder = "Give your monster a name";
-            DescriptionEntry.Placeholder = "Describe your monster";
             //No difficulty is selected when a new monster is first created
             ViewModel.Data.Difficulty = DifficultyEnum.Unknown;
             AddDifficultySelections();
 
             _ = UpdatePageBindingContext();
+            NameEntry.Placeholder = "Give it a name";
+            DescriptionEntry.Placeholder = "Describe your monster";
+            //Erase default info
+            // TODO: update this when we get connected to the database
+            DescriptionEntry.Text = "";
+            NameEntry.Text = "";
         }
 
         /// <summary>
