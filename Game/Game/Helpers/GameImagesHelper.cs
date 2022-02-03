@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Game.Models;
 
 namespace Game.Helpers
 {
@@ -26,9 +27,13 @@ namespace Game.Helpers
         /// Creates a list of images for viewing in character CRUDi layouts
         /// </summary>
         /// <returns></returns>
-        public static List<String> GetCharacterImage()
+        public static Dictionary<CharacterClanEnum, List<string>> GetCharacterImage()
         {
-            List<String> ImageList = new List<String> { "alpaca1.png", "alpaca2.png", "alpaca3.png", "llama1.png", "llama2.png", "llama3.png", "vicuna1.png", "vicuna2.png", "vicuna3.png" };
+            Dictionary<CharacterClanEnum, List<string>> ImageList = new Dictionary<CharacterClanEnum, List<string>>{
+                { CharacterClanEnum.Alpaca, new List<string>{ "alpaca1.png", "alpaca2.png", "alpaca3.png" } },
+                { CharacterClanEnum.Llama,  new List<string>{ "llama1.png",  "llama2.png",  "llama3.png" } },
+                { CharacterClanEnum.Vicuña, new List<string>{ "vicuna1.png", "vicuna2.png", "vicuna3.png" } },
+            };
 
             return ImageList;
         }
