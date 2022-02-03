@@ -34,6 +34,9 @@ namespace Game.Views
         // Hold the current location selected
         public ItemLocationEnum PopupLocationEnum = ItemLocationEnum.Unknown;
 
+        //Hold the current difficulty selected
+        public Button CurrentDifficulty;
+
         // Empty Constructor for UTs
         public MonsterCreatePage(bool UnitTest) { }
 
@@ -71,6 +74,7 @@ namespace Game.Views
             ViewModel.Data.Difficulty = difficulty;
 
             AddItemsToDisplay();
+            AddDifficultySelections();
 
             return true;
         }
@@ -272,12 +276,66 @@ namespace Game.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public void Difficulty_OnSliderValueChanged(object sender, ValueChangedEventArgs e)
+        public void SaveDifficulty(object sender, DifficultyEnum difficulty)
         {
-            LevelValue.Text = string.Format("{0}", Math.Round(e.NewValue));
+            bool DifferentSelection = difficulty == ViewModel.Data.Difficulty ? false : true;
 
-            //TODO: may need a condition to change on whole value
-            //Level_Changed(null, null);
+            Button myButton = (Button)sender;
+            myButton.IsEnabled = false;
+            //Need to reenable when they choose another difficulty
+            if (CurrentDifficulty == null)
+            {
+                CurrentDifficulty = myButton;
+            }
+
+            if (DifferentSelection)
+            {
+                CurrentDifficulty.IsEnabled = true;
+
+            }
+            CurrentDifficulty = myButton;
+
+            //Save the difficulty selected
+            ViewModel.Data.Difficulty = difficulty;
+        }
+
+        /// <summary>
+        /// Create selections for Difficulty levels
+        /// </summary>
+        public void AddDifficultySelections()
+        {
+
+            //Add selections to difficulty stack
+            foreach (var level in Enum.GetValues(typeof(DifficultyEnum)))
+            {
+                //Skip Unknown
+                if((DifficultyEnum)level == DifficultyEnum.Unknown)
+                {
+                    continue;
+                }
+                DifficultyStack.Children.Add(CreateDifficultyButton((DifficultyEnum)level));
+            }
+        }
+
+        public Button CreateDifficultyButton(DifficultyEnum difficulty)
+        {
+            string label = difficulty == DifficultyEnum.Difficult ? "Difficult" : difficulty.ToMessage();
+
+            //Add the basic stuff first
+            Button toReturn = new Button
+            {
+                Text = label,
+                BackgroundColor = Xamarin.Forms.Color.Beige,
+                BorderRadius = 15,
+                BorderWidth = 2,
+                BorderColor = Xamarin.Forms.Color.Black
+            };
+
+            //Add the event handler
+            toReturn.Clicked += (sender, args) => SaveDifficulty(sender, difficulty);
+
+
+            return toReturn;
         }
 
         /// <summary>
