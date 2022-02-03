@@ -115,39 +115,10 @@
                                Text="Range : "
                                Style="{StaticResource LabelStyle}"
                                VerticalOptions="Center" />
-                        <StackLayout Grid.Row="0"
-                                     Grid.Column="1"
-                                     Grid.ColumnSpan="2"
-                                     VerticalOptions="Center">
-                            <Label FontSize="Medium"
-                                   FontAttributes="Bold"
-                                   x:Name="RangeLabel"
-                                   Text="{Binding Data.Range}"
-                                   HorizontalOptions="Start"
-                                   HorizontalTextAlignment="Center"
-                                   VerticalOptions="EndAndExpand">
-                                <Label.Margin>
-                                    <OnPlatform x:TypeArguments="Thickness">
-                                        <On Platform="iOS"
-                                            Value="15,0" />
-                                        <On Platform="Android"
-                                            Value="10,0" />
-                                    </OnPlatform>
-                                </Label.Margin>
-                            </Label>
-                            <Slider x:Name="RangeSlider"
-                                    Maximum="15"
-                                    Minimum="0"
-                                    Value="{Binding Data.Range}"
-                                    HorizontalOptions="FillAndExpand">
-                                <Slider.Margin>
-                                    <OnPlatform x:TypeArguments="Thickness">
-                                        <On Platform="iOS"
-                                            Value="10,0" />
-                                    </OnPlatform>
-                                </Slider.Margin>
-                            </Slider>
-                        </StackLayout>
+                        <Grid Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                            <ProgressBar x:Name="RangeBar" ScaleY="5" ProgressColor="MediumSeaGreen" HeightRequest="5" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Progress="0.5"   />
+                            <Label TextColor="Black" VerticalOptions="CenterAndExpand"  FontAttributes="Bold" Text="{Binding Data.Range , StringFormat='  {0:G}'}" FontSize="Medium" HorizontalOptions="CenterAndExpand" />
+                        </Grid>
 
                         <Label Grid.Row="1"
                                Grid.Column="0"
@@ -155,80 +126,21 @@
                                Text="Value : "
                                Style="{StaticResource LabelStyle}"
                                VerticalOptions="Center" />
-                        <StackLayout Grid.Row="1"
-                                     Grid.Column="1"
-                                     Grid.ColumnSpan="2"
-                                     VerticalOptions="Center">
-                            <Label FontSize="Medium"
-                                   FontAttributes="Bold"
-                                   x:Name="ValueLabel"
-                                   Text="{Binding Data.Value}"
-                                   HorizontalOptions="Start"
-                                   HorizontalTextAlignment="Center"
-                                   VerticalOptions="EndAndExpand">
-                                <Label.Margin>
-                                    <OnPlatform x:TypeArguments="Thickness">
-                                        <On Platform="iOS"
-                                            Value="15,0" />
-                                        <On Platform="Android"
-                                            Value="10,0" />
-                                    </OnPlatform>
-                                </Label.Margin>
-                            </Label>
-                            <Slider x:Name="ValueSlider"
-                                    Maximum="15"
-                                    Minimum="0"
-                                    Value="{Binding Data.Value}"
-                                    HorizontalOptions="FillAndExpand">
-                                <Slider.Margin>
-                                    <OnPlatform x:TypeArguments="Thickness">
-                                        <On Platform="iOS"
-                                            Value="10,0" />
-                                    </OnPlatform>
-                                </Slider.Margin>
-                            </Slider>
-                        </StackLayout>
-
+                        <Grid Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                            <ProgressBar x:Name="ValueBar" ScaleY="5" ProgressColor="MediumSeaGreen" HeightRequest="5" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Progress="0.5"   />
+                            <Label TextColor="Black" VerticalOptions="CenterAndExpand"  FontAttributes="Bold" Text="{Binding Data.Value , StringFormat='  {0:G}'}" FontSize="Medium" HorizontalOptions="CenterAndExpand" />
+                        </Grid>
+                        
                         <Label Grid.Row="2"
                                Grid.Column="0"
                                FontSize="Medium"
                                Text="Damage : "
                                Style="{StaticResource LabelStyle}"
                                VerticalOptions="Center" />
-
-                        <StackLayout Grid.Row="2"
-                                     Grid.Column="1"
-                                     Grid.ColumnSpan="2"
-                                     VerticalOptions="Center">
-                            <Label FontSize="Medium"
-                                   FontAttributes="Bold"
-                                   x:Name="DamageLabel"
-                                   Text="{Binding Data.Damage}"
-                                   HorizontalOptions="Start"
-                                   HorizontalTextAlignment="Center"
-                                   VerticalOptions="EndAndExpand">
-                                <Label.Margin>
-                                    <OnPlatform x:TypeArguments="Thickness">
-                                        <On Platform="iOS"
-                                            Value="15,0" />
-                                        <On Platform="Android"
-                                            Value="10,0" />
-                                    </OnPlatform>
-                                </Label.Margin>
-                            </Label>
-                            <Slider Maximum="15"
-                                    Minimum="0"
-                                    x:Name="DamageSlider"
-                                    Value="{Binding Data.Damage}"
-                                    HorizontalOptions="FillAndExpand">
-                                <Slider.Margin>
-                                    <OnPlatform x:TypeArguments="Thickness">
-                                        <On Platform="iOS"
-                                            Value="10,0" />
-                                    </OnPlatform>
-                                </Slider.Margin>
-                            </Slider>
-                        </StackLayout>
+                        <Grid Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                            <ProgressBar x:Name="DamageBar" ScaleY="5" ProgressColor="MediumSeaGreen" HeightRequest="5" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Progress="0.5"   />
+                            <Label TextColor="Black" VerticalOptions="CenterAndExpand"  FontAttributes="Bold" Text="{Binding Data.Damage , StringFormat='  {0:G}'}" FontSize="Medium" HorizontalOptions="CenterAndExpand" />
+                        </Grid>
                     </Grid>
                 </StackLayout>
             </Grid>

@@ -41,9 +41,9 @@ namespace Game.Views
             AttributePicker.SelectedItem = data.Data.Attribute.ToString();
             AttributePicker.IsEnabled = false;
 
-            DamageSlider.IsEnabled = false;
-            RangeSlider.IsEnabled = false;
-            ValueSlider.IsEnabled = false;
+            RangeBar.Progress = (float)ViewModel.Data.Range / 15;
+            ValueBar.Progress = (float)ViewModel.Data.Value / 15;
+            DamageBar.Progress = (float)ViewModel.Data.Damage / 15;
         }
 
         /// <summary>
