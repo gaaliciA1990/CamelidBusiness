@@ -68,6 +68,8 @@ namespace Game.Views
             AddItemsToDisplay();
 
             AdjustSliderValues();
+
+            ClanPicker.SelectedItem = ViewModel.Data.Clan.ToString();
         }
 
         /// <summary>
