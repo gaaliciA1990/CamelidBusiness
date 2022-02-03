@@ -63,26 +63,48 @@
                 <Grid Grid.Row="0" Grid.Column="0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                         <RowDefinition Height="*" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
 
-                    <Label Grid.Row="0" FontSize="Medium"
+
+                    <Grid Grid.Row="0" HorizontalOptions="FillAndExpand">
+
+                        <Label Grid.Row="0" Grid.Column="0"
+                               FontSize="Medium"
                                FontAttributes="Bold, Italic"
                                HorizontalOptions="Center"
                                VerticalOptions="FillAndExpand"
                                Text="{Binding Data.Name}"
                                Style="{StaticResource ValueStyle}" />
 
-                    <Image Grid.Row="1" x:Name="ImageLabel"
+                        <Label Grid.Row="0" Grid.Column="1" x:Name="ClanPicker"
+                               Text="{Binding Data.Clan}"
+                               FontSize="Medium"
+                               FontAttributes="Bold, Italic"
+                               HorizontalOptions="Center"
+                               VerticalOptions="FillAndExpand"
+                               Style="{StaticResource ValueStyle}"/>
+                    </Grid>
+
+
+
+
+
+                    <Image Grid.Row="2" x:Name="ImageLabel"
                                 Source="{Binding Data.ImageURI}"
                                 HorizontalOptions="FillAndExpand"
                                 VerticalOptions="FillAndExpand"
                                 Aspect="AspectFit"
                                 Margin="10" />
 
-                    <Label Grid.Row="2" FontSize="Medium"
+                    <Label Grid.Row="3" FontSize="Medium"
                                HorizontalOptions="Center"
                                VerticalOptions="FillAndExpand"
                                Text="{Binding Data.Description}"
