@@ -66,10 +66,11 @@ namespace Game.GameRules
         /// Get Random Image
         /// </summary>
         /// <returns></returns>
-        public static string GetCharacterImage()
+        public static (String, CharacterClanEnum) GetCharacterImage()
         {
-
-            List<String> FirstNameList = new List<String> { "alpaca1.png", "alpaca2.png", "alpaca3.png", "llama1.png", "llama2.png", "llama3.png", "vicuna1.png", "vicuna2.png", "vicuna3.png" };
+            List<(String, CharacterClanEnum)> FirstNameList = new List<(String, CharacterClanEnum)> { ("alpaca1.png", CharacterClanEnum.Alpaca), ("alpaca2.png", CharacterClanEnum.Alpaca), ("alpaca3.png", CharacterClanEnum.Alpaca),
+                                                                                                   ("llama1.png", CharacterClanEnum.Llama), ("llama2.png", CharacterClanEnum.Llama), ("llama3.png", CharacterClanEnum.Llama),
+                                                                                                   ("vicuna1.png", CharacterClanEnum.Vicuña), ("vicuna2.png", CharacterClanEnum.Vicuña), ("vicuna3.png", CharacterClanEnum.Vicuña)};
 
             var result = FirstNameList.ElementAt(DiceHelper.RollDice(1, FirstNameList.Count()) - 1);
 
@@ -216,9 +217,10 @@ namespace Game.GameRules
                 RightFinger = GetItem(ItemLocationEnum.Finger),
                 LeftFinger = GetItem(ItemLocationEnum.Finger),
                 Feet = GetItem(ItemLocationEnum.Feet),
-
-                ImageURI = GetCharacterImage()
             };
+
+            (result.ImageURI, result.Clan) = GetCharacterImage();
+
 
             result.MaxHealth = DiceHelper.RollDice(MaxLevel, 10);
 
