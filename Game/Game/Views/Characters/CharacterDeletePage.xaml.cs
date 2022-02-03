@@ -38,6 +38,9 @@ namespace Game.Views
             ItemBox.Children.Add(GetItemToDisplay(ItemLocationEnum.RightFinger));
             ItemBox.Children.Add(GetItemToDisplay(ItemLocationEnum.LeftFinger));
             ItemBox.Children.Add(GetItemToDisplay(ItemLocationEnum.Feet));
+
+            RangeValue.Text = viewModel.Data.GetItemRange().ToString();
+            RangeSlider.Value = viewModel.Data.GetItemRange();
         }
 
         /// <summary>
