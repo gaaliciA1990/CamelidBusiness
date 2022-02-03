@@ -72,6 +72,18 @@
                                                            HorizontalOptions="CenterAndExpand" />
                                                 </Frame>
 
+                                                <Frame OutlineColor="Black"
+                                                       BackgroundColor="LightCyan"
+                                                       Padding="1"
+                                                       WidthRequest="100">
+                                                    <Label x:Name="ClanLabel"
+                                                           Text="{Binding Clan}"
+                                                           Style="{StaticResource ListStyle}"
+                                                           BackgroundColor="LightCyan"
+                                                           FontAttributes="Bold"
+                                                           HorizontalOptions="CenterAndExpand" />
+                                                </Frame>
+
                                                 <StackLayout Orientation="Horizontal">
                                                     <Frame OutlineColor="Black"
                                                            Padding="3"
