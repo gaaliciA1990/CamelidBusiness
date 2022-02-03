@@ -112,39 +112,10 @@
                                          Grid.Column="1"
                                          Orientation="Horizontal"
                                          VerticalOptions="Center">
-
-                                <Label Style="{StaticResource ValueStyle}"
-                                       FontAttributes="Bold"
-                                       Text="{Binding Data.Difficulty, StringFormat='  {0:G}'}"
-                                       HorizontalOptions="Start"
-                                       HorizontalTextAlignment="Start"
-                                       VerticalOptions="Center"
-                                       FontSize="Medium">
-                                    <Label.Margin>
-                                        <OnPlatform x:TypeArguments="Thickness">
-                                            <On Platform="iOS"
-                                                Value="15,0" />
-                                            <On Platform="Android"
-                                                Value="10,0" />
-                                        </OnPlatform>
-                                    </Label.Margin>
-                                </Label>
-                                <Slider Maximum="20"
-                                        IsEnabled="False"
-                                        Minimum="1"
-                                        Value="{Binding Data.Difficulty}"
-                                        BackgroundColor="White"
-                                        HorizontalOptions="FillAndExpand"
-                                        VerticalOptions="Center">
-                                    <Slider.Margin>
-                                        <OnPlatform x:TypeArguments="Thickness">
-                                            <On Platform="iOS"
-                                                Value="15,0" />
-                                            <On Platform="Android"
-                                                Value="10,0" />
-                                        </OnPlatform>
-                                    </Slider.Margin>
-                                </Slider>
+                                <Grid Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                    <ProgressBar x:Name="DifficultyBar" ScaleY="5" ProgressColor="MediumSeaGreen" HeightRequest="5" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"    />
+                                    <Label TextColor="Black" VerticalOptions="CenterAndExpand"  FontAttributes="Bold" Text="{Binding Data.Difficulty , StringFormat='  {0:G}'}" FontSize="Medium" HorizontalOptions="CenterAndExpand" />
+                                </Grid>
                             </StackLayout>
 
                             <!--ATTACK-->
@@ -158,40 +129,10 @@
                                          Grid.Column="1"
                                          Orientation="Horizontal"
                                          VerticalOptions="Center">
-
-                                <Label Style="{StaticResource ValueStyle}"
-                                       FontAttributes="Bold"
-                                       HorizontalOptions="Start"
-                                       Text="{Binding Data.Attack, StringFormat='  {0:G}'}"
-                                       HorizontalTextAlignment="Start"
-                                       VerticalOptions="Center"
-                                       FontSize="Medium">
-                                    <Label.Margin>
-                                        <OnPlatform x:TypeArguments="Thickness">
-                                            <On Platform="iOS"
-                                                Value="15,0" />
-                                            <On Platform="Android"
-                                                Value="10,0" />
-                                        </OnPlatform>
-                                    </Label.Margin>
-                                </Label>
-                                <Slider x:Name="AttackSlider"
-                                        Maximum="20"
-                                        IsEnabled="False"
-                                        Minimum="1"
-                                        Value="{Binding Data.Attack}"
-                                        BackgroundColor="White"
-                                        HorizontalOptions="FillAndExpand"
-                                        VerticalOptions="Center">
-                                    <Slider.Margin>
-                                        <OnPlatform x:TypeArguments="Thickness">
-                                            <On Platform="iOS"
-                                                Value="15,0" />
-                                            <On Platform="Android"
-                                                Value="10,0" />
-                                        </OnPlatform>
-                                    </Slider.Margin>
-                                </Slider>
+                                <Grid Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                    <ProgressBar x:Name="AttackBar" ScaleY="5" ProgressColor="MediumSeaGreen" HeightRequest="5" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"   />
+                                    <Label TextColor="Black" VerticalOptions="CenterAndExpand"  FontAttributes="Bold" Text="{Binding Data.Attack , StringFormat='  {0:G}'}" FontSize="Medium" HorizontalOptions="CenterAndExpand" />
+                                </Grid>
                             </StackLayout>
 
                             <!--DEFENSE-->
@@ -205,40 +146,10 @@
                                          Grid.Column="1"
                                          Orientation="Horizontal"
                                          VerticalOptions="Center">
-
-                                <Label Style="{StaticResource ValueStyle}"
-                                       FontAttributes="Bold"
-                                       HorizontalOptions="Start"
-                                       Text="{Binding Data.Defense, StringFormat='  {0:G}'}"
-                                       HorizontalTextAlignment="Start"
-                                       VerticalOptions="Center"
-                                       FontSize="Medium">
-                                    <Label.Margin>
-                                        <OnPlatform x:TypeArguments="Thickness">
-                                            <On Platform="iOS"
-                                                Value="15,0" />
-                                            <On Platform="Android"
-                                                Value="10,0" />
-                                        </OnPlatform>
-                                    </Label.Margin>
-                                </Label>
-                                <Slider x:Name="DefenseSlider"
-                                        Maximum="20"
-                                        IsEnabled="False"
-                                        Minimum="1"
-                                        Value="{Binding Data.Defense}"
-                                        BackgroundColor="White"
-                                        HorizontalOptions="FillAndExpand"
-                                        VerticalOptions="Center">
-                                    <Slider.Margin>
-                                        <OnPlatform x:TypeArguments="Thickness">
-                                            <On Platform="iOS"
-                                                Value="15,0" />
-                                            <On Platform="Android"
-                                                Value="10,0" />
-                                        </OnPlatform>
-                                    </Slider.Margin>
-                                </Slider>
+                                <Grid Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                    <ProgressBar x:Name="DefenseBar" ScaleY="5" ProgressColor="MediumSeaGreen" HeightRequest="5" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"   />
+                                    <Label TextColor="Black" VerticalOptions="CenterAndExpand"  FontAttributes="Bold" Text="{Binding Data.Defense , StringFormat='  {0:G}'}" FontSize="Medium" HorizontalOptions="CenterAndExpand" />
+                                </Grid>
                             </StackLayout>
 
                             <!--SPEED-->
@@ -252,40 +163,10 @@
                                          Grid.Column="1"
                                          Orientation="Horizontal"
                                          VerticalOptions="Center">
-
-                                <Label Style="{StaticResource ValueStyle}"
-                                       FontAttributes="Bold"
-                                       Text="{Binding Data.Speed , StringFormat='  {0:G}'}"
-                                       HorizontalOptions="Start"
-                                       HorizontalTextAlignment="Start"
-                                       VerticalOptions="Center"
-                                       FontSize="Medium">
-                                    <Label.Margin>
-                                        <OnPlatform x:TypeArguments="Thickness">
-                                            <On Platform="iOS"
-                                                Value="15,0" />
-                                            <On Platform="Android"
-                                                Value="10,0" />
-                                        </OnPlatform>
-                                    </Label.Margin>
-                                </Label>
-                                <Slider x:Name="SpeedSlider"
-                                        Maximum="20"
-                                        IsEnabled="False"
-                                        Minimum="1"
-                                        Value="{Binding Data.Speed}"
-                                        BackgroundColor="White"
-                                        HorizontalOptions="FillAndExpand"
-                                        VerticalOptions="Center">
-                                    <Slider.Margin>
-                                        <OnPlatform x:TypeArguments="Thickness">
-                                            <On Platform="iOS"
-                                                Value="15,0" />
-                                            <On Platform="Android"
-                                                Value="10,0" />
-                                        </OnPlatform>
-                                    </Slider.Margin>
-                                </Slider>
+                                <Grid Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                    <ProgressBar x:Name="SpeedBar" ScaleY="5" ProgressColor="MediumSeaGreen" HeightRequest="5" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"   />
+                                    <Label TextColor="Black" VerticalOptions="CenterAndExpand"  FontAttributes="Bold" Text="{Binding Data.Speed , StringFormat='  {0:G}'}" FontSize="Medium" HorizontalOptions="CenterAndExpand" />
+                                </Grid>
                             </StackLayout>
 
                             <!--Unique Item selection--><!--

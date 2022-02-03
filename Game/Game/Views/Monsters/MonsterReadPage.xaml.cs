@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using System.Collections.Generic;
 
 using Game.ViewModels;
 using Game.Models;
@@ -35,6 +36,13 @@ namespace Game.Views
             BindingContext = this.ViewModel = data;
 
             AddItemsToDisplay();
+
+            Dictionary<DifficultyEnum, string> DifficultyColor = new Dictionary<DifficultyEnum, string> { { DifficultyEnum.Easy, "#3cb371" }, { DifficultyEnum.Average, "#749b38" }, { DifficultyEnum.Hard, "#957e12" }, { DifficultyEnum.Difficult, "#aa5c1a" }, { DifficultyEnum.Impossible, "#af3736" } };
+            DifficultyBar.Progress = (float)ViewModel.Data.Difficulty / 18;
+            DifficultyBar.ProgressColor = Color.FromHex(DifficultyColor[ViewModel.Data.Difficulty]);
+            AttackBar.Progress = (float)ViewModel.Data.Attack / 20;
+            DefenseBar.Progress = (float)ViewModel.Data.Defense / 20;
+            SpeedBar.Progress = (float)ViewModel.Data.Speed / 20;
         }
 
         /// <summary>
