@@ -35,6 +35,9 @@ namespace Game.Views
             BindingContext = this.ViewModel = data;
 
             AddItemsToDisplay();
+
+            RangeValue.Text = ViewModel.Data.GetItemRange().ToString();
+            RangeSlider.Value = ViewModel.Data.GetItemRange();
         }
 
         /// <summary>

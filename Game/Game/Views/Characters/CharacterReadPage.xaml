@@ -186,7 +186,7 @@
                             <Label Style="{StaticResource ValueStyle}"
                                        FontAttributes="Bold"
                                        HorizontalOptions="Start"
-                                       Text="{Binding Data.Attack, StringFormat='  {0:G}'}"
+                                       Text="{Binding Data.GetAttackTotal, StringFormat='  {0:G}'}"
                                        HorizontalTextAlignment="Start"
                                        VerticalOptions="Center"
                                        FontSize="Medium">
@@ -199,10 +199,10 @@
                                     </OnPlatform>
                                 </Label.Margin>
                             </Label>
-                            <Slider Maximum="20"
+                            <Slider Maximum="50"
                                         IsEnabled="False"
                                         Minimum="1"
-                                        Value="{Binding Data.Attack}"
+                                        Value="{Binding Data.GetAttackTotal}"
                                         BackgroundColor="White"
                                         HorizontalOptions="FillAndExpand"
                                         VerticalOptions="Center">
@@ -232,7 +232,7 @@
                             <Label Style="{StaticResource ValueStyle}"
                                        FontAttributes="Bold"
                                        HorizontalOptions="Start"
-                                       Text="{Binding Data.Defense, StringFormat='  {0:G}'}"
+                                       Text="{Binding Data.GetDefenseTotal, StringFormat='  {0:G}'}"
                                        HorizontalTextAlignment="Start"
                                        VerticalOptions="Center"
                                        FontSize="Medium">
@@ -245,10 +245,10 @@
                                     </OnPlatform>
                                 </Label.Margin>
                             </Label>
-                            <Slider Maximum="20"
+                            <Slider Maximum="50"
                                         IsEnabled="False"
                                         Minimum="1"
-                                        Value="{Binding Data.Defense}"
+                                        Value="{Binding Data.GetDefenseTotal}"
                                         BackgroundColor="White"
                                         HorizontalOptions="FillAndExpand"
                                         VerticalOptions="Center">
@@ -277,7 +277,7 @@
 
                             <Label Style="{StaticResource ValueStyle}"
                                        FontAttributes="Bold"
-                                       Text="{Binding Data.Speed , StringFormat='  {0:G}'}"
+                                       Text="{Binding Data.GetSpeedTotal , StringFormat='  {0:G}'}"
                                        HorizontalOptions="Start"
                                        HorizontalTextAlignment="Start"
                                        VerticalOptions="Center"
@@ -291,10 +291,10 @@
                                     </OnPlatform>
                                 </Label.Margin>
                             </Label>
-                            <Slider Maximum="20"
+                            <Slider Maximum="50"
                                         IsEnabled="False"
                                         Minimum="1"
-                                        Value="{Binding Data.Speed}"
+                                        Value="{Binding Data.GetSpeedTotal}"
                                         BackgroundColor="White"
                                         HorizontalOptions="FillAndExpand"
                                         VerticalOptions="Center">
@@ -322,12 +322,13 @@
                                          VerticalOptions="Center">
 
                             <Label Style="{StaticResource ValueStyle}"
-                                       FontAttributes="Bold"
-                                       HorizontalOptions="Start"
-                                       Text="{Binding Data.Range, StringFormat='  {0:G}'}"
-                                       HorizontalTextAlignment="Start"
-                                       VerticalOptions="Center"
-                                       FontSize="Medium">
+                                   FontAttributes="Bold"
+                                   HorizontalOptions="Start"
+                                   x:Name="RangeValue"
+                                   Text="{Binding Data.GetItemRange, StringFormat='  {0:G}'}"
+                                   HorizontalTextAlignment="Start"
+                                   VerticalOptions="Center"
+                                   FontSize="Medium">
                                 <Label.Margin>
                                     <OnPlatform x:TypeArguments="Thickness">
                                         <On Platform="iOS"
@@ -338,12 +339,13 @@
                                 </Label.Margin>
                             </Label>
                             <Slider Maximum="20"
-                                        IsEnabled="False"
-                                        Minimum="1"
-                                        Value="{Binding Data.Range}"
-                                        BackgroundColor="White"
-                                        HorizontalOptions="FillAndExpand"
-                                        VerticalOptions="Center">
+                                    IsEnabled="False"
+                                    Minimum="1"
+                                    x:Name="RangeSlider"
+                                    Value="{Binding Data.GetItemRange}"
+                                    BackgroundColor="White"
+                                    HorizontalOptions="FillAndExpand"
+                                    VerticalOptions="Center">
                                 <Slider.Margin>
                                     <OnPlatform x:TypeArguments="Thickness">
                                         <On Platform="iOS"
