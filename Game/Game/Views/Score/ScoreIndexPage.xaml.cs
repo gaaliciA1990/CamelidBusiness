@@ -60,9 +60,20 @@ namespace Game.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public async void AddScore_Clicked(object sender, EventArgs e)
+        public async void CreateScore_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushModalAsync(new NavigationPage(new ScoreCreatePage(new GenericViewModel<ScoreModel>())));
+        }
+
+        /// <summary>
+        /// Call to go back a page
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private async void BackButton_Clicked(object sender, EventArgs e)
+        {
+            //Pop itself from the stack
+            await Navigation.PopAsync();
         }
 
         /// <summary>
