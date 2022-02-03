@@ -176,7 +176,7 @@
                                          VerticalOptions="Center">
 
                                 <Label x:Name="LevelValue"
-                                       Text="{Binding Data.Defense, Mode=TwoWay}"
+                                       Text="{Binding Data.Level}"
                                        Style="{StaticResource ValueStyle}"
                                        FontAttributes="Bold"
                                        HorizontalOptions="Start"
@@ -373,7 +373,7 @@
                                          VerticalOptions="Center">
 
                                 <Label x:Name="RangeValue"
-                                       Text="{Binding Data.Range, Mode=TwoWay}"
+                                       Text="{Binding Data.GetItemRange}"
                                        Style="{StaticResource ValueStyle}"
                                        FontAttributes="Bold"
                                        HorizontalOptions="Start"
@@ -389,11 +389,12 @@
                                     </Label.Margin>
                                 </Label>
 
-                                <Slider Maximum="50"
+                                <Slider Maximum="20"
                                         Minimum="0"
                                         x:Name="RangeSlider"
                                         BackgroundColor="White"
-                                        Value="{Binding Data.Defense, Mode=TwoWay}"
+                                        IsEnabled="False"
+                                        Value="{Binding Data.GetItemRange}"
                                         HorizontalOptions="FillAndExpand"
                                         VerticalOptions="Center">
                                     <Slider.Margin>
@@ -405,9 +406,7 @@
                                         </OnPlatform>
                                     </Slider.Margin>
                                 </Slider>
-
                             </StackLayout>
-
                             <!--Health Attribute-->
                             <StackLayout Orientation="Horizontal"
                                          Grid.Row="5"

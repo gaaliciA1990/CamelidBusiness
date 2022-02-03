@@ -64,6 +64,8 @@ namespace Game.Views
             _ = UpdatePageBindingContext();
 
             ClanPicker.SelectedItem = ViewModel.Data.Clan.ToString();
+            
+            AdjustSliderValues();
         }
 
         /// <summary>
@@ -83,11 +85,11 @@ namespace Game.Views
             ViewModel.Data.Level = level;
             //LevelPicker.SelectedIndex = ViewModel.Data.Level - 1;
 
+            ClanPicker.SelectedItem = ViewModel.Data.Clan.ToString();
+
             ManageHealth();
 
             AddItemsToDisplay();
-
-            AdjustValuesWithBonuses();
 
             return true;
         }
@@ -96,25 +98,63 @@ namespace Game.Views
         /// <summary>
         /// adjust attribute values to include item bonuses 
         /// </summary>
-        public void AdjustValuesWithBonuses()
+        public void AdjustValuesWithBonuses(ItemModel item)
         {
-            SpeedValue.Text = (this.ViewModel.Data.Speed + this.ViewModel.Data.GetSpeedItemBonus).ToString();
-            AttackValue.Text = (this.ViewModel.Data.Attack + this.ViewModel.Data.GetAttackItemBonus).ToString();
-            DefenseValue.Text = (this.ViewModel.Data.Defense + this.ViewModel.Data.GetDefenseItemBonus).ToString();
-            MaxHealthValue.Text = (this.ViewModel.Data.MaxHealth + this.ViewModel.Data.GetMaxHealthItemBonus).ToString();
-            DefenseSlider.Maximum = 50 - this.ViewModel.Data.GetDefenseItemBonus;
-            AttackSlider.Maximum = 50 - this.ViewModel.Data.GetAttackItemBonus;
-            SpeedSlider.Maximum = 50 - this.ViewModel.Data.GetSpeedItemBonus;
+            switch (item.Attribute)
+            {
+                case AttributeEnum.Speed:
+                    ViewModel.Data.Speed += Math.Min(0, 50 - ViewModel.Data.GetSpeedTotal);
+                    SpeedValue.Text = ViewModel.Data.GetSpeedTotal.ToString();
+                    SpeedSlider.Maximum = 50 - ViewModel.Data.GetSpeedTotal + ViewModel.Data.Speed;
+                    break;
+                case AttributeEnum.Defense:
+                    ViewModel.Data.Defense += Math.Min(0, 50 - ViewModel.Data.GetDefenseTotal);
+                    DefenseValue.Text = ViewModel.Data.GetDefenseTotal.ToString();
+                    break;
+                case AttributeEnum.Attack:
+                    ViewModel.Data.Attack += Math.Min(0, 50 - ViewModel.Data.GetAttackTotal);
+                    AttackValue.Text = ViewModel.Data.GetAttackTotal.ToString();
+                    break;
+                case AttributeEnum.MaxHealth:
+                    MaxHealthValue.Text = ViewModel.Data.GetMaxHealthTotal.ToString();
+                    break;
+                case AttributeEnum.CurrentHealth:
+                    break;
+                case AttributeEnum.Unknown:
+                    AdjustSliderValues();
+                    break;
+            }
+        }
+
+        /// <summary>
+        /// Adjust slider values
+        /// </summary>
+        /// <param name="s"></param>
+        public void AdjustSliderValues()
+        {
+            SpeedValue.Text = ViewModel.Data.GetSpeedTotal.ToString();
+            SpeedSlider.Maximum = 50 - ViewModel.Data.GetSpeedTotal + ViewModel.Data.Speed;
+
+            DefenseValue.Text = ViewModel.Data.GetDefenseTotal.ToString();
+            DefenseSlider.Maximum = 50 - ViewModel.Data.GetDefenseTotal + ViewModel.Data.Defense;
+
+            AttackValue.Text = ViewModel.Data.GetAttackTotal.ToString();
+            AttackSlider.Maximum = 50 - ViewModel.Data.GetAttackTotal + ViewModel.Data.Attack;
+
+            RangeValue.Text = ViewModel.Data.GetItemRange().ToString();
+            RangeSlider.Value = ViewModel.Data.GetItemRange();
         }
 
 
-        /// <summary>
-        /// The Level selected from the list
-        /// Need to recalculate Max Health
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="args"></param>
-        public void Level_Changed(object sender, EventArgs args)
+
+
+            /// <summary>
+            /// The Level selected from the list
+            /// Need to recalculate Max Health
+            /// </summary>
+            /// <param name="sender"></param>
+            /// <param name="args"></param>
+            public void Level_Changed(object sender, EventArgs args)
         {
             // Change the Level
             //ViewModel.Data.Level = LevelPicker.SelectedIndex + 1;
@@ -176,6 +216,7 @@ namespace Game.Views
         public void Level_OnSliderValueChanged(object sender, ValueChangedEventArgs e)
         {
             LevelValue.Text = string.Format("{0}", Math.Round(e.NewValue));
+            AdjustSliderValues();
             ManageHealth();
         }
 
@@ -186,7 +227,7 @@ namespace Game.Views
         /// <param name="e"></param>
         public void Attack_OnSliderValueChanged(object sender, ValueChangedEventArgs e)
         {
-            AttackValue.Text = string.Format("{0}", Math.Round(e.NewValue) + this.ViewModel.Data.GetAttackItemBonus);
+            AttackValue.Text = string.Format("{0}", this.ViewModel.Data.GetAttackTotal);
         }
 
         /// <summary>
@@ -196,7 +237,7 @@ namespace Game.Views
         /// <param name="e"></param>
         public void Defense_OnSliderValueChanged(object sender, ValueChangedEventArgs e)
         {
-            DefenseValue.Text = string.Format("{0}", Math.Round(e.NewValue) + this.ViewModel.Data.GetDefenseItemBonus);
+            DefenseValue.Text = string.Format("{0}", this.ViewModel.Data.GetDefenseTotal);
         }
 
         /// <summary>
@@ -206,9 +247,8 @@ namespace Game.Views
         /// <param name="e"></param>
         public void Speed_OnSliderValueChanged(object sender, ValueChangedEventArgs e)
         {
-            SpeedValue.Text = string.Format("{0}", Math.Round(e.NewValue) + this.ViewModel.Data.GetSpeedItemBonus);
+            SpeedValue.Text = string.Format("{0}", this.ViewModel.Data.GetSpeedTotal);
         }
-
 
         /// <summary>
         /// The row selected from the list
@@ -226,7 +266,11 @@ namespace Game.Views
 
             _ = ViewModel.Data.AddItem(PopupLocationEnum, data.Id);
 
+            AdjustValuesWithBonuses(data);
+            
             UpdatePageBindingContext();
+
+            AdjustSliderValues();
 
             AddItemsToDisplay();
 
@@ -415,6 +459,8 @@ namespace Game.Views
             (ViewModel.Data.ImageURI, ViewModel.Data.Clan) = RandomPlayerHelper.GetCharacterImage();
 
             _ = UpdatePageBindingContext();
+
+            AdjustSliderValues();
 
             return true;
         }
