@@ -408,9 +408,7 @@ namespace Game.Views
 
             // Update the image
             this.ViewModel.Data.ImageURI = imageList[imageIndex];
-
-            //TODO: fix to set a refresh instead of updating the whole model
-            UpdatePageBindingContext();
+            ImageLabel.Source = ViewModel.Data.ImageURI;
         }
 
         /// <summary>
@@ -437,7 +435,7 @@ namespace Game.Views
 
             // Update the image
             this.ViewModel.Data.ImageURI = imageList[imageIndex];
-            UpdatePageBindingContext();
+            ImageLabel.Source = ViewModel.Data.ImageURI;
         }
 
         /// <summary>
