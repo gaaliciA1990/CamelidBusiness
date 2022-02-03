@@ -196,7 +196,7 @@ namespace Game.Views
                 return;
             }
 
-            MessagingCenter.Send(this, "Create", ViewModel.Data);
+            MessagingCenter.Send(this, "Update", ViewModel.Data);
 
             _ = await Navigation.PopModalAsync();
         }
