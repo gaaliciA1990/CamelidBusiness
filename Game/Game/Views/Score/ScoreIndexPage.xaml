@@ -30,14 +30,14 @@
                         Clicked="CreateScore_Clicked" />
             </StackLayout>
 
-            <RelativeLayout VerticalOptions="FillAndExpand"
-                            HorizontalOptions="FillAndExpand">
-                <ScrollView VerticalScrollBarVisibility="Always"
-                            VerticalOptions="FillAndExpand"
-                            RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.33}"
-                            RelativeLayout.YConstraint="{ConstraintExpression Type=Constant, Constant=0}"
-                            RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.33}"
-                            RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1.0}">
+
+            <Frame BorderColor="Black"
+                        VerticalOptions="FillAndExpand"
+                        RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.33}"
+                        RelativeLayout.YConstraint="{ConstraintExpression Type=Constant, Constant=0}"
+                        RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.33}"
+                        RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1.0}"
+                        BackgroundColor="{StaticResource PageBackgroundColor}">
 
                     <ListView x:Name="DataListView"
                               ItemsSource="{Binding Dataset}"
@@ -47,12 +47,13 @@
                               ItemSelected="OnItemSelected"
                               HasUnevenRows="true"
                               Margin="5,0,5,0"
-                              RowHeight="80">
+                              BackgroundColor="{StaticResource PageBackgroundColor}">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
                                     <Grid ColumnSpacing="1"
-                                          RowSpacing="1">
+                                          RowSpacing="1"
+                                          >
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="auto" />
                                         </Grid.ColumnDefinitions>
@@ -88,8 +89,8 @@
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
-                </ScrollView>
-            </RelativeLayout>
+                </Frame>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
