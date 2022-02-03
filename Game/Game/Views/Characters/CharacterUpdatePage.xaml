@@ -68,16 +68,25 @@
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
-                    <Entry Grid.Row="0" x:Name="NameEntry"
-                               FontSize="Medium"
-                               HorizontalOptions="FillAndExpand"
-                               BackgroundColor="White"
-                               MaxLength="20"
-                               Keyboard="Text"
-                               ReturnType="Done"
-                               TextChanged="Entry_TextChanged"
-                               Text="{Binding Data.Name, Mode=TwoWay}"
-                               Style="{StaticResource EntryStyle}" />
+                    <Grid Grid.Row="0" HorizontalOptions="FillAndExpand">
+
+                        <Entry Grid.Row="0" Grid.Column="0" x:Name="NameEntry"
+                                   FontSize="Medium"
+                                   HorizontalOptions="FillAndExpand"
+                                   BackgroundColor="White"
+                                   MaxLength="20"
+                                   Keyboard="Text"
+                                   ReturnType="Done"
+                                   TextChanged="Entry_TextChanged"
+                                   Text="{Binding Data.Name, Mode=TwoWay}"
+                                   Style="{StaticResource EntryStyle}" />
+
+                        <Picker Grid.Row="0" Grid.Column="1" x:Name="ClanPicker"
+                                    BackgroundColor="White"
+                                    ItemsSource="{x:Static local:CharacterClanEnumHelper.GetClanList}"
+                                    SelectedItem="{Binding Data.Clan, Converter={StaticResource StringEnum}, Mode=TwoWay}"
+                                    SelectedIndexChanged="Picker_ClanChanged"/>
+                    </Grid>
 
                     <Grid Grid.Row="1" HorizontalOptions="CenterAndExpand"
                               VerticalOptions="FillAndExpand">
@@ -99,7 +108,7 @@
                                          CornerRadius="1" />
                         <Image  Grid.Column="1"
                                     Grid.Row="0"
-                                    x:Name="ImageLabel"
+                                    x:Name="CharacterImage"
                                     Source="{Binding Data.ImageURI}"
                                     HorizontalOptions="FillAndExpand"
                                     VerticalOptions="FillAndExpand"

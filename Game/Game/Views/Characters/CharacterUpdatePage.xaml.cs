@@ -21,7 +21,7 @@ namespace Game.Views
     public partial class CharacterUpdatePage : ContentPage
     {
         //Local storage for images
-        private List<String> imageList = GameImagesHelper.GetCharacterImage();
+        private Dictionary<CharacterClanEnum, List<string>> imageList = GameImagesHelper.GetCharacterImage();
 
         //index tracer for local storage
         private int imageIndex = 0;
@@ -68,6 +68,8 @@ namespace Game.Views
             AddItemsToDisplay();
 
             _ = UpdatePageBindingContext();
+
+            ClanPicker.SelectedItem = ViewModel.Data.Clan.ToString();
         }
 
         /// <summary>
@@ -418,7 +420,7 @@ namespace Game.Views
 
             ViewModel.Data.MaxHealth = RandomPlayerHelper.GetHealth(ViewModel.Data.Level);
 
-            ViewModel.Data.ImageURI = RandomPlayerHelper.GetCharacterImage();
+            (ViewModel.Data.ImageURI, ViewModel.Data.Clan) = RandomPlayerHelper.GetCharacterImage();
 
             _ = UpdatePageBindingContext();
 
@@ -464,23 +466,30 @@ namespace Game.Views
         /// <param name="e"></param>
         private void RightButton_Clicked(object sender, EventArgs e)
         {
-            int imageCount = imageList.Count;
+            int imageCount = imageList[ViewModel.Data.Clan].Count;
 
-            // check if we are at the last photo and move to first photo when clicked
-            if (imageIndex == imageCount - 1)
+            //increment, if greater than imagecount loop back
+            imageIndex++;
+            if (imageIndex >= imageCount)
             {
                 imageIndex = 0;
             }
 
-            // Move to the next photo in the list
-            if (imageIndex < imageCount - 1)
-            {
-                imageIndex++;
-            }
-
             // Update the image
-            this.ViewModel.Data.ImageURI = imageList[imageIndex];
-            UpdatePageBindingContext();
+            ViewModel.Data.ImageURI = imageList[ViewModel.Data.Clan][imageIndex];
+            CharacterImage.Source = ViewModel.Data.ImageURI;
+        }
+
+        /// <summary>
+        /// Change to default image of changed clan
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Picker_ClanChanged(object sender, EventArgs e)
+        {
+            imageIndex = 0;
+            ViewModel.Data.ImageURI = imageList[ViewModel.Data.Clan][imageIndex];
+            CharacterImage.Source = ViewModel.Data.ImageURI;
         }
 
         /// <summary>
@@ -491,23 +500,18 @@ namespace Game.Views
         /// <param name="e"></param>
         private void LeftButton_Clicked(object sender, EventArgs e)
         {
-            int imageCount = imageList.Count;
+            int imageCount = imageList[ViewModel.Data.Clan].Count;
 
-            // check if we are at the first photo and move to last photo when clicked
-            if (imageIndex == 0)
+            //decrement, if less than imagecount loop back
+            imageIndex--;
+            if (imageIndex < 0)
             {
                 imageIndex = imageCount - 1;
             }
 
-            // Move to the previous photo in the list
-            if (imageIndex > 0)
-            {
-                imageIndex--;
-            }
-
             // Update the image
-            this.ViewModel.Data.ImageURI = imageList[imageIndex];
-            UpdatePageBindingContext();
+            ViewModel.Data.ImageURI = imageList[ViewModel.Data.Clan][imageIndex];
+            CharacterImage.Source = ViewModel.Data.ImageURI;
         }
 
         /// <summary>
