@@ -140,18 +140,6 @@ namespace Game.Views
             return isValid;
         }
 
-        /// <summary>
-        /// Catch the change to the Slider for Difficulty
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        public void Difficulty_OnSliderValueChanged(object sender, ValueChangedEventArgs e)
-        {
-            DifficultyValue.Text = string.Format("{0}", Math.Round(e.NewValue));
-
-            //TODO: may need a condition to change on whole value
-            //Level_Changed(null, null);
-        }
 
         /// <summary>
         /// Catch the change to the Slider for Attack
