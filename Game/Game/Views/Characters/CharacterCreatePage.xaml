@@ -31,8 +31,8 @@
                              HorizontalOptions="Start"
                              Clicked="Cancel_Clicked"
                              Padding="10"
-                             WidthRequest="40"
-                             HeightRequest="40" />
+                             WidthRequest="45"
+                             HeightRequest="45" />
 
                 <Label Font="Bold"
                        HorizontalOptions="CenterAndExpand"
@@ -46,8 +46,8 @@
                              HorizontalOptions="Start"
                              Clicked="Save_Clicked"
                              Padding="10"
-                             WidthRequest="40"
-                             HeightRequest="40" />
+                             WidthRequest="45"
+                             HeightRequest="45" />
             </StackLayout>
 
             <Grid Grid.Row="1">
@@ -72,22 +72,27 @@
 
                     <Grid Grid.Row="0" HorizontalOptions="FillAndExpand">
 
+                        <Frame CornerRadius="5"
+                               BackgroundColor="#4C3C48">
                         <Entry Grid.Row="0" Grid.Column="0" x:Name="NameEntry"
                                    FontSize="Medium"
                                    HorizontalOptions="FillAndExpand"
-                                   BackgroundColor="White"
+                                   BackgroundColor="Transparent"
                                    MaxLength="20"
                                    Keyboard="Text"
                                    ReturnType="Done"
                                    TextChanged="Entry_TextChanged"
                                    Text="{Binding Data.Name, Mode=TwoWay}"
                                    Style="{StaticResource EntryStyle}" />
+                        </Frame>
 
+                        <Frame>
                         <Picker Grid.Row="0" Grid.Column="1" x:Name="ClanPicker"
                                     BackgroundColor="White"
                                     ItemsSource="{x:Static local:CharacterClanEnumHelper.GetClanList}"
                                     SelectedItem="{Binding Data.Clan, Converter={StaticResource StringEnum}, Mode=TwoWay}"
                                     SelectedIndexChanged="Picker_ClanChanged"/>
+                        </Frame>
                     </Grid>
 
                     <Grid Grid.Row="1" HorizontalOptions="CenterAndExpand"
