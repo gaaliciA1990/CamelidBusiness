@@ -158,6 +158,7 @@
                                 <!--Difficulty Labels-->
                                 <FlexLayout x:Name="DifficultyStack" 
                                              IsClippedToBounds="True"
+                                            HorizontalOptions="CenterAndExpand"
                                             Wrap="Wrap">
                                 </FlexLayout>
                             </StackLayout>
@@ -315,15 +316,15 @@
                         </Grid>
 
                         <!--Items selection-->
-                        <StackLayout Style="{StaticResource HorizontalStack}">
+                        <StackLayout Orientation="Horizontal">
                             <StackLayout x:Name="ItemBox"/>
 
                             <Button x:Name="RollDice"
                                     Text="Surprise Me!"
                                     TextColor="Black"
                                     Clicked="RollDice_Clicked"
-                                    HorizontalOptions="End"
                                     BackgroundColor="Beige"
+                                    VerticalOptions="Start"
                                     CornerRadius="5" />
                         </StackLayout>
                     </StackLayout>

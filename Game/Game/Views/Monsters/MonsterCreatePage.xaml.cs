@@ -224,7 +224,6 @@ namespace Game.Views
             {
                 Padding = 3,
                 Style = (Style)Application.Current.Resources["ItemImageLabelBox"],
-                HorizontalOptions = LayoutOptions.Center,
                 Children = {
                     ItemButton,
                     ItemLabel
@@ -336,9 +335,10 @@ namespace Game.Views
             {
                 Text = label,
                 BackgroundColor = Xamarin.Forms.Color.Beige,
-                BorderRadius = 15,
-                BorderWidth = 2,
-                BorderColor = Xamarin.Forms.Color.Black
+                BorderRadius = 10,
+                BorderWidth = 1,
+                BorderColor = Xamarin.Forms.Color.Black,
+                Padding = new Xamarin.Forms.Thickness(5.0)
             };
 
             //Add the event handler
