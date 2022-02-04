@@ -26,7 +26,7 @@ namespace Game.Views
         public readonly GenericViewModel<ItemModel> ViewModel;
 
         // Backup ViewModel for when user don't want to keep their changes
-        private ItemModel BackupData = new ItemModel();
+        private ItemModel BackupData;
 
         // Empty Constructor for Tests
         public ItemUpdatePage(bool UnitTest) { }
@@ -44,7 +44,7 @@ namespace Game.Views
             BindingContext = this.ViewModel = data;
 
             //Create a backup for current data in the item
-            CopyValues(data.Data, BackupData);
+            BackupData = new ItemModel(data.Data);
 
             this.ViewModel.Title = "Update " + data.Title;
 
@@ -93,27 +93,9 @@ namespace Game.Views
         public async void Cancel_Clicked(object sender, EventArgs e)
         {
             //Undo all unconfirmed changes user might have made
-            CopyValues(BackupData, this.ViewModel.Data);
+            this.ViewModel.Data.Update(BackupData);
 
             _ = await Navigation.PopModalAsync();
-        }
-
-        /// <summary>
-        /// Helper function to copy data from an ItemModel object to another ItemModel object
-        /// </summary>
-        /// <param name="data"></param>
-        /// <param name="copyTarget"></param>
-        private void CopyValues(ItemModel data, ItemModel copyTarget)
-        {
-            //Get the Properties on each ItemModel object
-            var propertiesData = data.GetType().GetProperties();
-            var propertiesCopyTarget = copyTarget.GetType().GetProperties();
-
-            //Then copy over
-            for (int i = 0; i < propertiesData.Length; i++)
-            {
-                propertiesCopyTarget[i].SetValue(copyTarget, propertiesData[i].GetValue(data));
-            }
         }
 
         /// <summary>
