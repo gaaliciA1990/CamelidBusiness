@@ -55,8 +55,8 @@ namespace Game.Views
             this.ViewModel = data;
             this.ViewModel.Title = "Create";
 
-            //No difficulty is selected when a new monster is first created
-            ViewModel.Data.Difficulty = DifficultyEnum.Unknown;
+            //Default difficulty is selected when a new monster is first created
+            ViewModel.Data.Difficulty = DifficultyEnum.Easy;
             AddDifficultySelections();
 
             _ = UpdatePageBindingContext();
@@ -316,17 +316,28 @@ namespace Game.Views
             foreach (var level in Enum.GetValues(typeof(DifficultyEnum)))
             {
                 //Skip Unknown
-                if((DifficultyEnum)level == DifficultyEnum.Unknown)
+                if ((DifficultyEnum)level == DifficultyEnum.Unknown)
                 {
                     continue;
                 }
-                if(buttonCounts < 3)
+                var button = CreateDifficultyButton((DifficultyEnum)level);
+
+                if (buttonCounts < 3)
                 {
-                    stackOne.Children.Add(CreateDifficultyButton((DifficultyEnum)level));
+                    stackOne.Children.Add(button);
                     buttonCounts++;
-                    continue;
                 }
-                stackTwo.Children.Add(CreateDifficultyButton((DifficultyEnum)level));
+                if (buttonCounts == 3)
+                {
+                    stackTwo.Children.Add(button);
+                }
+
+                //Save current selection as well
+                if ((DifficultyEnum)level == ViewModel.Data.Difficulty)
+                {
+                    CurrentDifficulty = button;
+                    CurrentDifficulty.IsEnabled = false;
+                }
             }
 
             DifficultyStack.Children.Add(stackOne);
