@@ -35,7 +35,7 @@ namespace Game.Views
 
             this.ViewModel.Title = "Create";
 
-            NameEntry.Placeholder = "Your Name";
+            NameEntry.Placeholder = "Enter Your Name";
         }
 
         /// <summary>
