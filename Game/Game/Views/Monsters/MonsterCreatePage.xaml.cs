@@ -308,7 +308,10 @@ namespace Game.Views
         /// </summary>
         public void AddDifficultySelections()
         {
-
+            StackLayout stackOne = new StackLayout() { Orientation = StackOrientation.Horizontal, HorizontalOptions = LayoutOptions.CenterAndExpand },
+                        stackTwo = new StackLayout() { Orientation = StackOrientation.Horizontal, HorizontalOptions = LayoutOptions.CenterAndExpand };
+            int buttonCounts = 0;
+           
             //Add selections to difficulty stack
             foreach (var level in Enum.GetValues(typeof(DifficultyEnum)))
             {
@@ -317,8 +320,17 @@ namespace Game.Views
                 {
                     continue;
                 }
-                DifficultyStack.Children.Add(CreateDifficultyButton((DifficultyEnum)level));
+                if(buttonCounts < 3)
+                {
+                    stackOne.Children.Add(CreateDifficultyButton((DifficultyEnum)level));
+                    buttonCounts++;
+                    continue;
+                }
+                stackTwo.Children.Add(CreateDifficultyButton((DifficultyEnum)level));
             }
+
+            DifficultyStack.Children.Add(stackOne);
+            DifficultyStack.Children.Add(stackTwo);
         }
 
         /// <summary>

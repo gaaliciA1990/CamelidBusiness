@@ -156,11 +156,10 @@
                                        HorizontalOptions="Center"/>
 
                                 <!--Difficulty Labels-->
-                                <FlexLayout x:Name="DifficultyStack" 
-                                             IsClippedToBounds="True"
-                                            HorizontalOptions="CenterAndExpand"
-                                            Wrap="Wrap">
-                                </FlexLayout>
+                                <StackLayout x:Name="DifficultyStack" 
+                                            HorizontalOptions="Center"
+                                            >
+                                </StackLayout>
                             </StackLayout>
                             
                             <Label Text="ATK: "
@@ -317,8 +316,7 @@
 
                         <!--Items selection-->
                         <StackLayout Orientation="Horizontal">
-                            <StackLayout x:Name="ItemBox"/>
-
+                            
                             <Button x:Name="RollDice"
                                     Text="Surprise Me!"
                                     TextColor="Black"
@@ -326,6 +324,8 @@
                                     BackgroundColor="Beige"
                                     VerticalOptions="Start"
                                     CornerRadius="5" />
+
+                            <StackLayout x:Name="ItemBox"/>
                         </StackLayout>
                     </StackLayout>
 
