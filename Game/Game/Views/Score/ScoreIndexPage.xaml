@@ -69,7 +69,8 @@
                         <DataTemplate>
                             <ViewCell>
                                 <Grid ColumnSpacing="1"
-                                      RowSpacing="1">
+                                      RowSpacing="1"
+                                      HorizontalOptions="CenterAndExpand">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="auto" />
                                     </Grid.ColumnDefinitions>
