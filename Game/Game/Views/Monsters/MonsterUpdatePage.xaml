@@ -71,14 +71,14 @@
                                Style="{StaticResource EntryStyle}" />
 
                         <Grid HorizontalOptions="CenterAndExpand"
-                              VerticalOptions="FillAndExpand">
+                              VerticalOptions="Fill">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="3*" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="*" />
+                                <RowDefinition Height="auto" />
                             </Grid.RowDefinitions>
 
                             <ImageButton Grid.Column="0"
@@ -111,11 +111,12 @@
                                BackgroundColor="White"
                                MaxLength="50"
                                Keyboard="Text"
-                               ReturnType="Done"
                                IsSpellCheckEnabled="True"
                                TextChanged="Entry_TextChanged"
+                               ReturnType="Done"
                                Text="{Binding Data.Description, Mode= TwoWay}"
-                               Style="{StaticResource EntryStyle}" />
+                               Style="{StaticResource EntryStyle}" 
+                               MinimumHeightRequest="100"/>
                     </StackLayout>
 
                     <!--Attributes setup-->
