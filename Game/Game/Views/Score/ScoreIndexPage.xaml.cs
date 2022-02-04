@@ -99,5 +99,16 @@ namespace Game.Views
 
             BindingContext = ViewModel;
         }
+
+        /// <summary>
+        /// Navigate to the Game Page from the Score page to start a game
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private async void StartGameButton_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new NavigationPage(new GamePage()));
+
+        }
     }
 }
