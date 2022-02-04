@@ -25,7 +25,6 @@
                             Clicked="BackButton_Clicked"
                             FontAttributes="Bold"
                             BackgroundColor="Transparent"/>
-
                 </Frame>
                 <Label Font="Bold"
                        HorizontalOptions="CenterAndExpand"
@@ -48,7 +47,6 @@
 
             </StackLayout>
 
-
             <Frame BorderColor="Transparent"
                    VerticalOptions="FillAndExpand"
                    HorizontalOptions="CenterAndExpand"
@@ -65,7 +63,7 @@
                           CachingStrategy="RecycleElement"
                           ItemSelected="OnItemSelected"
                           HasUnevenRows="true"
-                          Margin="0,0,0,0"
+                          Margin="5,0,5,0"
                           BackgroundColor="{StaticResource PageBackgroundColor}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
