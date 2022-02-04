@@ -127,8 +127,8 @@
                                      Source="leftarrow.png"
                                      Clicked="LeftButton_Clicked"
                                      BorderColor="DarkSlateGray"
-                                     CornerRadius="1" 
-                                     HorizontalOptions="Start"/>
+                                     CornerRadius="1"
+                                     HorizontalOptions="Start" />
                         <Image  Grid.Column="1"
                                 Grid.Row="0"
                                 x:Name="CharacterImage"
@@ -144,26 +144,26 @@
                                      Clicked="RightButton_Clicked"
                                      BorderColor="DarkSlateGray"
                                      CornerRadius="5"
-                                     HorizontalOptions="End"/>
+                                     HorizontalOptions="End" />
                     </Grid>
                     <Frame Grid.Row="2"
                            BackgroundColor="#4C3C48"
                            BorderColor="Transparent"
                            HorizontalOptions="CenterAndExpand"
                            CornerRadius="10">
-                        
-                    <Entry x:Name="DescriptionEntry"
-                           FontSize="Medium"
-                           HorizontalOptions="FillAndExpand"
-                           BackgroundColor="Transparent"
-                           TextColor="#FFFF"
-                           MaxLength="50"
-                           Keyboard="Text"
-                           ReturnType="Done"
-                           IsSpellCheckEnabled="True"
-                           TextChanged="Entry_TextChanged"
-                           Text="{Binding Data.Description, Mode= TwoWay}"
-                           Style="{StaticResource EntryStyle}" />
+
+                        <Entry x:Name="DescriptionEntry"
+                               FontSize="Medium"
+                               HorizontalOptions="FillAndExpand"
+                               BackgroundColor="Transparent"
+                               TextColor="#FFFF"
+                               MaxLength="50"
+                               Keyboard="Text"
+                               ReturnType="Done"
+                               IsSpellCheckEnabled="True"
+                               TextChanged="Entry_TextChanged"
+                               Text="{Binding Data.Description, Mode= TwoWay}"
+                               Style="{StaticResource EntryStyle}" />
                     </Frame>
 
                 </Grid>
@@ -201,14 +201,14 @@
                                BorderColor="#15071D"
                                CornerRadius="10"
                                WidthRequest="50">
-                            
-                        <Label Text="LVL:"
-                               FontSize="Medium"
-                               TextColor="#FFFF"
-                               HorizontalOptions="CenterAndExpand"
-                               HorizontalTextAlignment="Center"
-                               Style="{StaticResource LabelStyle}"
-                               BackgroundColor="Transparent"/>
+
+                            <Label Text="LVL:"
+                                   FontSize="Medium"
+                                   TextColor="#FFFF"
+                                   HorizontalOptions="CenterAndExpand"
+                                   HorizontalTextAlignment="Center"
+                                   Style="{StaticResource LabelStyle}"
+                                   BackgroundColor="Transparent" />
                         </Frame>
 
                         <!--Level Slider-->
@@ -220,6 +220,7 @@
                             <Label x:Name="LevelValue"
                                    Text="{Binding Data.Level}"
                                    Style="{StaticResource ValueStyle}"
+                                   FontSize="Medium"
                                    FontAttributes="Bold"
                                    HorizontalOptions="Start"
                                    HorizontalTextAlignment="Start"
@@ -236,11 +237,15 @@
 
                             <Slider Maximum="20"
                                     Minimum="1"
-                                    BackgroundColor="White"
+                                    BackgroundColor="Transparent"
+                                    MaximumTrackColor="#4C3C48"
+                                    MinimumTrackColor="#4C3C48"
+                                    ThumbImageSource="item.png"
                                     Value="{Binding Data.Level, Mode=TwoWay}"
                                     HorizontalOptions="FillAndExpand"
                                     VerticalOptions="Center"
-                                    ValueChanged="Level_OnSliderValueChanged">
+                                    ValueChanged="Level_OnSliderValueChanged"
+                                    >
                                 <Slider.Margin>
                                     <OnPlatform x:TypeArguments="Thickness">
                                         <On Platform="iOS"
