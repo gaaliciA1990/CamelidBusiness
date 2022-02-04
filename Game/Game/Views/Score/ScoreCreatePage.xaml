@@ -48,14 +48,18 @@
                              HeightRequest="45" />
             </StackLayout>
             <!--Score entries, centered to the screen relatively-->
-            <RelativeLayout>
+            <Frame RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.33}"
+                   RelativeLayout.YConstraint="{ConstraintExpression Type=Constant, Constant=0}"
+                   RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.33}"
+                   RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1.0}"
+                   BackgroundColor="Transparent"
+                   BorderColor="Transparent"
+                   HorizontalOptions="CenterAndExpand"
+                   VerticalOptions="FillAndExpand">
                 <Grid RowSpacing="1"
                       ColumnSpacing="2"
-                      RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.33}"
-                      RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.33}"
-                      RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.33}"
-                      RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.33}">
-
+                      HorizontalOptions="CenterAndExpand"
+                      VerticalOptions="Center">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto" />
                     </Grid.RowDefinitions>
@@ -64,51 +68,77 @@
                     </Grid.ColumnDefinitions>
 
                     <!--Name entry-->
-                    <Frame CornerRadius="5"
+                    <Frame CornerRadius="15"
                            Grid.Row="0"
                            Grid.Column="0"
-                           HeightRequest="30"
-                           WidthRequest="50">
+                           HeightRequest="35"
+                           WidthRequest="250"
+                           BackgroundColor="#4C3C48"
+                           BorderColor="#15071D"
+                           HorizontalOptions="CenterAndExpand">
                         <Label x:Name="NameLabel"
                                Text="Name"
+                               FontSize="Medium"
+                               FontAttributes="Bold"
+                               TextColor="#FFFF"
                                Style="{StaticResource LabelStyle}"
                                HorizontalOptions="CenterAndExpand" />
                     </Frame>
-                    <Frame CornerRadius="5"
+                    <Frame CornerRadius="15"
                            Grid.Row="0"
                            Grid.Column="1"
-                           WidthRequest="100"
-                           HorizontalOptions="CenterAndExpand">
+                           HeightRequest="35"
+                           WidthRequest="250"
+                           HorizontalOptions="CenterAndExpand"
+                           BackgroundColor="#FFFF"
+                           BorderColor="#15071D">
                         <Entry x:Name="NameEntry"
+                               TextColor="#15071D"
+                               FontSize="Small"
+                               BackgroundColor="Transparent"
                                Text="{Binding Data.Name, Mode=TwoWay}"
                                Style="{StaticResource EntryStyle}"
                                HorizontalOptions="CenterAndExpand"
-                               HorizontalTextAlignment="Center" />
+                               HorizontalTextAlignment="Center"
+                               WidthRequest="250"/>
                     </Frame>
                     <!--Score Entry-->
-                    <Frame CornerRadius="5"
+                    <Frame CornerRadius="15"
                            Grid.Row="1"
                            Grid.Column="0"
-                           HeightRequest="30"
-                           WidthRequest="50">
+                           HeightRequest="35"
+                           WidthRequest="250"
+                           BackgroundColor="#4C3C48"
+                           BorderColor="#15071D"
+                           HorizontalOptions="CenterAndExpand">
                         <Label x:Name="ScoreLabel"
                                Text="Score"
+                               FontSize="Medium"
+                               FontAttributes="Bold"
+                               TextColor="#FFFF"
                                Style="{StaticResource LabelStyle}"
                                HorizontalOptions="CenterAndExpand" />
                     </Frame>
-                    <Frame CornerRadius="5"
+                    <Frame CornerRadius="15"
                            Grid.Row="1"
                            Grid.Column="1"
-                           WidthRequest="100"
-                           HorizontalOptions="CenterAndExpand">
+                           HeightRequest="35"
+                           WidthRequest="250"
+                           HorizontalOptions="CenterAndExpand"
+                           BackgroundColor="#FFFF"
+                           BorderColor="#15071D">
                         <Entry x:Name="ScoreEntry"
+                               TextColor="#15071D"
+                               FontSize="Small"
+                               BackgroundColor="Transparent"
                                Text="{Binding Data.ScoreTotal, Mode=TwoWay}"
                                Style="{StaticResource EntryStyle}"
                                HorizontalOptions="CenterAndExpand"
-                               HorizontalTextAlignment="Center" />
+                               HorizontalTextAlignment="Center"
+                               WidthRequest="250" />
                     </Frame>
                 </Grid>
-            </RelativeLayout>
+            </Frame>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
