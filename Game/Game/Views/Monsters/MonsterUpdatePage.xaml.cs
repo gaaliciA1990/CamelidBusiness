@@ -35,6 +35,9 @@ namespace Game.Views
         // Hold the current location selected
         public ItemLocationEnum PopupLocationEnum = ItemLocationEnum.Unknown;
 
+        //Hold the current difficulty selected
+        public Button CurrentDifficulty;
+
         // Empty Constructor for UTs
         public MonsterUpdatePage(bool UnitTest) { }
 
@@ -52,11 +55,107 @@ namespace Game.Views
             //Create a backup
             BackupData = new MonsterModel(data.Data);
 
+            AddDifficultySelections();
+
             NameEntry.Placeholder = "Give your monster a name";
             DescriptionEntry.Placeholder = "Describe your monster";
 
             _ = UpdatePageBindingContext();
         }
+
+        #region DifficultyButtons
+        /// <summary>
+        /// Catch the change to Difficulty level
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void SaveDifficulty(object sender, DifficultyEnum difficulty)
+        {
+            //Initate the current selection
+            if (CurrentDifficulty == null)
+            {
+                CurrentDifficulty = (Button)sender;
+            }
+
+            //Release the current selection first
+            CurrentDifficulty.IsEnabled = true;
+
+            //Subsequent assignments
+            CurrentDifficulty = (Button)sender;
+            CurrentDifficulty.IsEnabled = false;
+
+            //Save the difficulty selected
+            ViewModel.Data.Difficulty = difficulty;
+        }
+
+        /// <summary>
+        /// Create selections for Difficulty levels
+        /// </summary>
+        public void AddDifficultySelections()
+        {
+            StackLayout stackOne = new StackLayout() { Orientation = StackOrientation.Horizontal, HorizontalOptions = LayoutOptions.CenterAndExpand },
+                        stackTwo = new StackLayout() { Orientation = StackOrientation.Horizontal, HorizontalOptions = LayoutOptions.CenterAndExpand };
+            int buttonCounts = 0;
+
+            //Add selections to difficulty stack
+            foreach (var level in Enum.GetValues(typeof(DifficultyEnum)))
+            {
+                //Skip Unknown
+                if ((DifficultyEnum)level == DifficultyEnum.Unknown)
+                {
+                    continue;
+                }
+                var button = CreateDifficultyButton((DifficultyEnum)level);
+
+                if (buttonCounts < 3)
+                {
+                    stackOne.Children.Add(button);
+                    buttonCounts++;
+                }
+                if (buttonCounts == 3)
+                {
+                    stackTwo.Children.Add(button);
+                }
+
+                //Save current selection as well
+                if ((DifficultyEnum) level == ViewModel.Data.Difficulty)
+                {
+                    CurrentDifficulty = button;
+                    CurrentDifficulty.IsEnabled = false;
+                }
+            }
+
+            DifficultyStack.Children.Add(stackOne);
+            DifficultyStack.Children.Add(stackTwo);
+        }
+
+        /// <summary>
+        /// Function to create a button for each difficulty level
+        /// </summary>
+        /// <param name="difficulty"></param>
+        /// <returns></returns>
+        public Button CreateDifficultyButton(DifficultyEnum difficulty)
+        {
+            string label = difficulty == DifficultyEnum.Difficult ? "Difficult" : difficulty.ToMessage();
+
+            //Add the basic stuff first
+            Button toReturn = new Button
+            {
+                Text = label,
+                BackgroundColor = Xamarin.Forms.Color.Beige,
+                BorderRadius = 10,
+                BorderWidth = 1,
+                BorderColor = Xamarin.Forms.Color.Black,
+                Padding = new Xamarin.Forms.Thickness(5.0)
+            };
+
+            //Add the event handler
+            toReturn.Clicked += (sender, args) => SaveDifficulty(sender, difficulty);
+
+            return toReturn;
+        }
+
+        #endregion
 
         /// <summary>
         /// Redo the Binding to cause a refresh
