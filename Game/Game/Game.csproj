@@ -11,6 +11,20 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Fonts\beachday.ttf" />
+    <None Remove="Resources\Fonts\MachineGunk.otf" />
+    <None Remove="Resources\Fonts\MyriadProBold.ttf" />
+    <None Remove="Resources\Fonts\MyriadProRegular.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Fonts\beachday.ttf" />
+    <EmbeddedResource Include="Resources\Fonts\MachineGunk.otf" />
+    <EmbeddedResource Include="Resources\Fonts\MyriadProBold.ttf" />
+    <EmbeddedResource Include="Resources\Fonts\MyriadProRegular.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2291" />
