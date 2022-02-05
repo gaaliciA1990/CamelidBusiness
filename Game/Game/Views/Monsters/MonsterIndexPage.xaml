@@ -17,8 +17,7 @@
                         Text="Back"
                         Clicked="Back_Clicked" />
 
-                <Label Font="Bold"
-                       HorizontalOptions="CenterAndExpand"
+                <Label HorizontalOptions="CenterAndExpand"
                        Text="Monster List Page"
                        Style="{StaticResource HeaderStyle}"
                        FontSize="Large" />

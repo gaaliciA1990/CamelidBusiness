@@ -369,7 +369,6 @@
                         <Grid>
                             <Label Text="Deleted characters cannot be recovered. Delete this character?"
                                        FontSize="Medium"
-                                       FontAttributes="Bold"
                                        VerticalTextAlignment="Center"
                                        HorizontalTextAlignment="Center"
                                        Grid.Row="0"

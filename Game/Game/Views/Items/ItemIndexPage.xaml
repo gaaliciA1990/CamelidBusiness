@@ -16,8 +16,7 @@
                         Text="Back"
                         Clicked="BackButton_Clicked" />
 
-                <Label Font="Bold"
-                       HorizontalOptions="CenterAndExpand"
+                <Label HorizontalOptions="CenterAndExpand"
                        Text="Items List Page"
                        Style="{StaticResource HeaderStyle}"
                        FontSize="Large"/>

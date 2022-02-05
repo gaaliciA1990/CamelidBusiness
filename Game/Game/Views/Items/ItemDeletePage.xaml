@@ -250,7 +250,6 @@
                         <Grid>
                             <Label Text="Deleted items cannot be recovered. Delete this item?"
                                    FontSize="Medium"
-                                   FontAttributes="Bold"
                                    HorizontalTextAlignment="Center"
                                    Grid.Row="0"
                                    Grid.ColumnSpan="2" />

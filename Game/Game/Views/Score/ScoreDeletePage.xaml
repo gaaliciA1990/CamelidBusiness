@@ -96,7 +96,6 @@
             <Grid>
                 <Label Text="Deleted scores cannot be recovered. Delete this score?"
                                    FontSize="Medium"
-                                   FontAttributes="Bold"
                                    HorizontalTextAlignment="Center"
                                    Grid.Row="0"
                                    Grid.ColumnSpan="2" />
