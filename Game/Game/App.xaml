@@ -90,6 +90,7 @@
                 x:Key="LabelBaseStyle"
                 BaseResourceKey="LayoutFontSize">
                 <Setter Property="TextColor" Value="{StaticResource PrimaryTextColor}" />
+                <Setter Property="FontFamily" Value="myriadpro"/>
                 <Setter Property="FontAttributes" Value="None" />
                 <Setter Property="FontSize" Value="Small" />
                 <Setter Property="LineBreakMode" Value="NoWrap" />
@@ -110,12 +111,14 @@
                 x:Key="HeaderStyle"
                 BasedOn="{StaticResource LabelBaseStyle}">
                 <Setter Property="BackgroundColor" Value="Transparent" />
+                <Setter Property="FontFamily" Value="machinegunk" />
                 <Setter Property="FontSize" Value="Small" />
             </Style>
 
             <Style TargetType="Label"
                 x:Key="LabelStyle"
                 BasedOn="{StaticResource LabelBaseStyle}">
+                <Setter Property="FontFamily" Value="beachday" />
                 <Setter Property="FontSize" Value="Micro" />
             </Style>
 
@@ -280,6 +283,7 @@
                 <Setter Property="BackgroundColor" Value="{StaticResource SecondaryBackgroundColor}" />
                 <Setter Property="TextColor" Value="{StaticResource SecondaryTextColor}" />
                 <Setter Property="BorderColor" Value="{StaticResource TriciaryBackgroundColor}"/>
+                <Setter Property="FontFamily" Value="beachday"/>
                 <Setter Property="HorizontalOptions" Value="Center" />
                 <Setter Property="VerticalOptions" Value="Center"/>
                 <Setter Property="FontSize" Value="Micro"/>
@@ -468,6 +472,7 @@
                 x:Key="EntryStyle">
                 <Setter Property="FontSize" Value="Small" />
                 <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="FontFamily" Value="myriadpro"/>
                 <Setter Property="VerticalOptions" Value="Center" />
                 <Setter Property="TextColor" Value="{StaticResource SecondaryTextColor}" />
                 <Setter Property="BackgroundColor" Value="{StaticResource LightBackgroundColor}" />
@@ -477,6 +482,7 @@
             <!-- Editor-->
             <Style TargetType="Editor">
                 <Setter Property="FontSize" Value="Small" />
+                <Setter Property="FontFamily" Value="myriadpro"/>
                 <Setter Property="HorizontalOptions" Value="FillAndExpand" />
                 <Setter Property="VerticalOptions" Value="StartAndExpand" />
                 <Setter Property="Margin" Value="0" />
