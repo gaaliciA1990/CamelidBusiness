@@ -213,13 +213,9 @@
                                 </Label>
 
                                 <Slider x:Name="RangeSlider"
-                                        Maximum="15"
-                                        Minimum="0"
-                                        BackgroundColor="White"
                                         Value="{Binding Data.Range}"
-                                        HorizontalOptions="FillAndExpand"
-                                        VerticalOptions="Center"
-                                        ValueChanged="Range_OnSliderValueChanged">
+                                        ValueChanged="Range_OnSliderValueChanged"
+                                        Style="{StaticResource SliderStyle}">
                                     <Slider.Margin>
                                         <OnPlatform x:TypeArguments="Thickness">
                                             <On Platform="iOS"
@@ -262,13 +258,9 @@
                                 </Label>
 
                                 <Slider x:Name="ValueSlider"
-                                        Maximum="15"
-                                        Minimum="0"
-                                        BackgroundColor="White"
                                         Value="{Binding Data.Value}"
-                                        HorizontalOptions="FillAndExpand"
-                                        VerticalOptions="Center"
-                                        ValueChanged="Value_OnSliderValueChanged">
+                                        ValueChanged="Value_OnSliderValueChanged"
+                                        Style="{StaticResource SliderStyle}">
                                     <Slider.Margin>
                                         <OnPlatform x:TypeArguments="Thickness">
                                             <On Platform="iOS"
@@ -311,13 +303,9 @@
                                 </Label>
 
                                 <Slider x:Name="DamageSlider"
-                                        Maximum="15"
-                                        Minimum="0"
-                                        BackgroundColor="White"
                                         Value="{Binding Data.Damage}"
-                                        HorizontalOptions="FillAndExpand"
-                                        VerticalOptions="Center"
-                                        ValueChanged="Damage_OnSliderValueChanged">
+                                        ValueChanged="Damage_OnSliderValueChanged"
+                                        Style="{StaticResource SliderStyle}">
                                     <Slider.Margin>
                                         <OnPlatform x:TypeArguments="Thickness">
                                             <On Platform="iOS"
