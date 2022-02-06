@@ -54,6 +54,17 @@
             <Color x:Key="BattleMapHitColor">darkorange</Color>
             <Color x:Key="BattleMapMissColor">darkred</Color>
             <Color x:Key="BattleMapLevelColor">skyblue</Color>
+            
+            
+            <!--Styles for CRUDi pages-->
+            <Style x:Key="CRUDiStyle" TargetType="ContentPage">
+                <Setter Property="Background">
+                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                        <GradientStop Color="#62a49a" Offset="0.0"/>
+                        <GradientStop Color="#f8de8f" Offset="0.75"/>
+                    </LinearGradientBrush>
+                </Setter>
+            </Style>
 
             <!-- <Thickness x:Key="PageMargin">0</Thickness> -->
 
