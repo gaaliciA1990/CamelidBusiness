@@ -24,9 +24,7 @@
                              Aspect="AspectFit"
                              HorizontalOptions="Start"
                              Clicked="Cancel_Clicked"
-                             Padding="10"
-                             WidthRequest="65"
-                             HeightRequest="65" />
+                             Padding="10" />
 
                 <Label Font="Bold"
                        HorizontalOptions="CenterAndExpand"
@@ -38,9 +36,7 @@
                              Aspect="AspectFit"
                              HorizontalOptions="Start"
                              Clicked="Save_Clicked"
-                             Padding="10"
-                             WidthRequest="65"
-                             HeightRequest="65" />
+                             Padding="10" />
             </StackLayout>
 
             <StackLayout Grid.Row="1">
