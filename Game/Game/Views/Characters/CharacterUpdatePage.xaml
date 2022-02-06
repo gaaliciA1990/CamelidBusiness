@@ -335,55 +335,6 @@
                                 </Slider>
                             </StackLayout>
 
-                            <Label Text="RANGE: "
-                                   FontSize="Medium"
-                                   Grid.Row="4"
-                                   Grid.Column="0"
-                                   Style="{StaticResource LabelStyle}"
-                                   VerticalOptions="Center" />
-
-                            <!--Range Attribute-->
-                            <StackLayout Grid.Row="4"
-                                             Grid.Column="1"
-                                             Orientation="Horizontal"
-                                             VerticalOptions="Center">
-
-                                <Label x:Name="RangeValue"
-                                           Text="{Binding Data.GetItemRange}"
-                                           Style="{StaticResource ValueStyle}"
-                                           FontAttributes="Bold"
-                                           HorizontalOptions="Start"
-                                           HorizontalTextAlignment="Start"
-                                           VerticalOptions="Center">
-                                    <Label.Margin>
-                                        <OnPlatform x:TypeArguments="Thickness">
-                                            <On Platform="iOS"
-                                                    Value="15,0" />
-                                            <On Platform="Android"
-                                                    Value="10,0" />
-                                        </OnPlatform>
-                                    </Label.Margin>
-                                </Label>
-
-                                <Slider Maximum="20"
-                                            Minimum="0"
-                                            x:Name="RangeSlider"
-                                            BackgroundColor="White"
-                                            IsEnabled="False"
-                                            Value="{Binding Data.GetItemRange}"
-                                            HorizontalOptions="FillAndExpand"
-                                            VerticalOptions="Center">
-                                    <Slider.Margin>
-                                        <OnPlatform x:TypeArguments="Thickness">
-                                            <On Platform="iOS"
-                                                    Value="15,0" />
-                                            <On Platform="Android"
-                                                    Value="10,0" />
-                                        </OnPlatform>
-                                    </Slider.Margin>
-                                </Slider>
-                            </StackLayout>
-
                         <!--Health Attribute-->
                             <StackLayout Orientation="Horizontal"
                                          Grid.Row="5"

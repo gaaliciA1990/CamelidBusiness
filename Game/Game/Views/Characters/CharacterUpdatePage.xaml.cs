@@ -142,9 +142,6 @@ namespace Game.Views
 
             AttackValue.Text = ViewModel.Data.GetAttackTotal.ToString();
             AttackSlider.Maximum = 50 - ViewModel.Data.GetAttackTotal + ViewModel.Data.Attack;
-
-            RangeValue.Text = ViewModel.Data.GetItemRange().ToString();
-            RangeSlider.Value = ViewModel.Data.GetItemRange();
         }
 
 
