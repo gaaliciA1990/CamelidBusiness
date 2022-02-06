@@ -262,5 +262,12 @@
     <AndroidResource Include="Resources\drawable\vicuna2.png" />
     <AndroidResource Include="Resources\drawable\vicuna3.png" />
   </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\llamaclanlogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\alpacaclanlogo.png" />
+    <AndroidResource Include="Resources\drawable\vicunaclanlogo.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

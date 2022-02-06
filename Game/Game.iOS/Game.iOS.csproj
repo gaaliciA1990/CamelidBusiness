@@ -299,11 +299,14 @@
     <Content Include="Resources\alpaca1.png" />
     <Content Include="Resources\alpaca2.png" />
     <Content Include="Resources\alpaca3.png" />
+    <BundleResource Include="Resources\alpacaclanlogo.png" />
     <Content Include="Resources\llama1.png" />
     <Content Include="Resources\llama2.png" />
     <Content Include="Resources\llama3.png" />
+    <BundleResource Include="Resources\llamaclanlogo.png" />
     <Content Include="Resources\vicuna1.png" />
     <Content Include="Resources\vicuna2.png" />
     <Content Include="Resources\vicuna3.png" />
+    <BundleResource Include="Resources\vicunaclanlogo.png" />
   </ItemGroup>
 </Project>
