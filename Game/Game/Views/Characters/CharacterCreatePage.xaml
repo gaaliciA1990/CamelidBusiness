@@ -235,7 +235,6 @@
                             </Label>
 
                             <Slider x:Name="LevelSlider"
-                                    ThumbImageSource="item.png"
                                     Value="{Binding Data.Level, Mode=TwoWay}"
                                     ValueChanged="Level_OnSliderValueChanged"
                                     Style="{StaticResource SliderStyle}"
