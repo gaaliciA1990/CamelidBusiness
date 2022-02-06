@@ -91,7 +91,7 @@ namespace Game.Views
 
         /// <summary>
         /// Populate the items the player dopped in their game. 
-        /// TODO: UPDATE SO DYNAMICALLY SHOW MONSTERS
+        /// TODO: UPDATE SO DYNAMICALLY SHOW ITEMS
         /// </summary>
         private void PopulateItems()
         {
