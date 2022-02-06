@@ -208,11 +208,6 @@ namespace Game.Views
         /// <param name="e"></param>
         public async void Cancel_Clicked(object sender, EventArgs e)
         {
-            // TODO: Mike, refactor this. Setting and Showing is causing a bug
-            // Don't want to set the value on update constructor, only after save on the page
-            // need to make sure that cancel from a save, actually cancels.
-            // Make a copy of the object and work from that and then have that passed in to update
-            
             //Tadaaa, revert the change
             ViewModel.Data.Update(BackupData);
 
