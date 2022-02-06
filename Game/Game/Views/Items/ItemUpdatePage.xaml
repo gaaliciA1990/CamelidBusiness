@@ -215,11 +215,9 @@
                                 </Label>
 
                                 <Slider x:Name="RangeSlider"
-                                        Maximum="15"
-                                        Minimum="0"
                                         Value="{Binding Data.Range}"
-                                        HorizontalOptions="FillAndExpand"
-                                        ValueChanged="Range_OnSliderValueChanged">
+                                        ValueChanged="Range_OnSliderValueChanged"
+                                        Style="{StaticResource SliderStyle}">
                                     <Slider.Margin>
                                         <OnPlatform x:TypeArguments="Thickness">
                                             <On Platform="iOS"
@@ -260,11 +258,9 @@
                                 </Label>
 
                                 <Slider x:Name="ValueSlider"
-                                        Maximum="15"
-                                        Minimum="0"
                                         Value="{Binding Data.Value}"
-                                        HorizontalOptions="FillAndExpand"
-                                        ValueChanged="Value_OnSliderValueChanged">
+                                        ValueChanged="Value_OnSliderValueChanged"
+                                        Style="{StaticResource SliderStyle}">
                                     <Slider.Margin>
                                         <OnPlatform x:TypeArguments="Thickness">
                                             <On Platform="iOS"
@@ -306,11 +302,9 @@
                                 </Label>
 
                                 <Slider x:Name="DamageSlider"
-                                        Maximum="15"
-                                        Minimum="0"
                                         Value="{Binding Data.Damage}"
-                                        HorizontalOptions="FillAndExpand"
-                                        ValueChanged="Damage_OnSliderValueChanged">
+                                        ValueChanged="Damage_OnSliderValueChanged"
+                                        Style="{StaticResource SliderStyle}">
                                     <Slider.Margin>
                                         <OnPlatform x:TypeArguments="Thickness">
                                             <On Platform="iOS"
