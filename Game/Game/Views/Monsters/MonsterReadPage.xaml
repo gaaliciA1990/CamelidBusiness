@@ -21,9 +21,7 @@
                              Aspect="AspectFit"
                              HorizontalOptions="Start"
                              Clicked="Back_Clicked"
-                             Padding="10"
-                             WidthRequest="65"
-                             HeightRequest="65" />
+                             Padding="10" />
 
                 <Label FontSize="Large"
                        FontAttributes="Bold, Italic"
@@ -36,17 +34,13 @@
                              Aspect="AspectFit"
                              HorizontalOptions="End"
                              Clicked="Delete_Clicked"
-                             Padding="10"
-                             WidthRequest="65"
-                             HeightRequest="65" />
+                             Padding="10" />
 
                 <ImageButton Source="icon_edit.png"
                              Aspect="AspectFit"
                              HorizontalOptions="End"
                              Clicked="Update_Clicked"
-                             Padding="10"
-                             WidthRequest="65"
-                             HeightRequest="65" />
+                             Padding="10" />
             </StackLayout>
             
             <StackLayout Grid.Row="1">
