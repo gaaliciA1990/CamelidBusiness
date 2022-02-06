@@ -32,7 +32,7 @@ namespace Game.Helpers
             Dictionary<CharacterClanEnum, List<string>> ImageList = new Dictionary<CharacterClanEnum, List<string>>{
                 { CharacterClanEnum.Alpaca, new List<string>{ "alpaca1.png", "alpaca2.png", "alpaca3.png" } },
                 { CharacterClanEnum.Llama,  new List<string>{ "llama1.png",  "llama2.png",  "llama3.png" } },
-                { CharacterClanEnum.Vicuña, new List<string>{ "vicuna1.png", "vicuna2.png", "vicuna3.png" } },
+                { CharacterClanEnum.Vicuna, new List<string>{ "vicuna1.png", "vicuna2.png", "vicuna3.png" } },
             };
 
             return ImageList;

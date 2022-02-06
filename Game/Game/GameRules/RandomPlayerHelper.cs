@@ -70,7 +70,7 @@ namespace Game.GameRules
         {
             List<(String, CharacterClanEnum)> FirstNameList = new List<(String, CharacterClanEnum)> { ("alpaca1.png", CharacterClanEnum.Alpaca), ("alpaca2.png", CharacterClanEnum.Alpaca), ("alpaca3.png", CharacterClanEnum.Alpaca),
                                                                                                    ("llama1.png", CharacterClanEnum.Llama), ("llama2.png", CharacterClanEnum.Llama), ("llama3.png", CharacterClanEnum.Llama),
-                                                                                                   ("vicuna1.png", CharacterClanEnum.Vicuña), ("vicuna2.png", CharacterClanEnum.Vicuña), ("vicuna3.png", CharacterClanEnum.Vicuña)};
+                                                                                                   ("vicuna1.png", CharacterClanEnum.Vicuna), ("vicuna2.png", CharacterClanEnum.Vicuna), ("vicuna3.png", CharacterClanEnum.Vicuna)};
 
             var result = FirstNameList.ElementAt(DiceHelper.RollDice(1, FirstNameList.Count()) - 1);
 

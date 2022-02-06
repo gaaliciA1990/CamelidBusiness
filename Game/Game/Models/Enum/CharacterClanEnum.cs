@@ -16,7 +16,7 @@ namespace Game.Models
         Llama = 1,
 
         //The Vicuna Clan
-        Vicuña = 2,
+        Vicuna = 2,
 
         // Not Known
         Unknown = 3

@@ -333,7 +333,7 @@ namespace Game.GameRules
                     Level = 1,
                     MaxHealth = 8,
                     ImageURI = "Vicuna3.png",
-                    Clan = CharacterClanEnum.Vicuña,
+                    Clan = CharacterClanEnum.Vicuna,
                     Necklass = NecklassString,
                     PrimaryHand = PrimaryHandString,
                     OffHand = OffHandString,
