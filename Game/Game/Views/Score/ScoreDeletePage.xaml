@@ -6,6 +6,7 @@
              mc:Ignorable="d"
              x:Class="Game.Views.ScoreDeletePage"
              NavigationPage.HasNavigationBar="False"
+             Style="{StaticResource CRUDiStyle}"
              Title="{Binding Title}">
 
 
