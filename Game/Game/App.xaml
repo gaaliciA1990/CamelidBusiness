@@ -22,18 +22,18 @@
                 Dark
                 -->
 
-            <Color x:Key="PageBackgroundColor">tan</Color>
-            <Color x:Key="ViewBackgroundColor">green</Color>
+            <Color x:Key="PageBackgroundColor">#D2BD8F</Color>
+            <Color x:Key="ViewBackgroundColor">#C07032</Color>
             <Color x:Key="NavigationBarColor">purple</Color>
 
-            <Color x:Key="PrimaryBackgroundColor">red</Color>
+            <Color x:Key="PrimaryBackgroundColor">#4C3C48</Color>
             <Color x:Key="SecondaryBackgroundColor">gray</Color>
-            <Color x:Key="TriciaryBackgroundColor">lightgray</Color>
-            <Color x:Key="LightBackgroundColor">orange</Color>
+            <Color x:Key="TriciaryBackgroundColor">#AF8347</Color>
+            <Color x:Key="LightBackgroundColor">#B4B3B2</Color>
 
-            <Color x:Key="PrimaryTextColor">black</Color>
-            <Color x:Key="SecondaryTextColor">darkblue</Color>
-            <Color x:Key="TriciaryTextColor">darkgreen</Color>
+            <Color x:Key="PrimaryTextColor">#15071D</Color>
+            <Color x:Key="SecondaryTextColor">#FEBF1E</Color>
+            <Color x:Key="TriciaryTextColor">#328706</Color>
 
             <Color x:Key="TransparentColor">Transparent</Color>
 
@@ -80,7 +80,7 @@
             <!-- Scroll View -->
 
             <Style TargetType="ScrollView">
-                <Setter Property="VerticalScrollBarVisibility" Value="Never"/>
+                <Setter Property="VerticalScrollBarVisibility" Value="Default"/>
                 <Setter Property="HorizontalScrollBarVisibility" Value="Never"/>
             </Style>
 
@@ -501,6 +501,25 @@
                 <Setter Property="Minimum" Value="0" />
                 <Setter Property="Maximum" Value="9" />
                 <Setter Property="Increment" Value="1" />
+            </Style>
+            
+            <!-- Slider -->
+            <Style TargetType="Slider"
+                   x:Key="SliderStyle">
+                <Setter Property="HorizontalOptions"
+                        Value="FillAndExpand" />
+                <Setter Property="VerticalOptions"
+                        Value="Center" />
+                <Setter Property="BackgroundColor"
+                        Value="Transparent" />
+                <Setter Property="MinimumTrackColor"
+                        Value="{StaticResource PrimaryBackgroundColor}" />
+                <Setter Property="MaximumTrackColor"
+                        Value="{StaticResource PrimaryBackgroundColor}" />
+                <Setter Property="Maximum"
+                        Value="50" />
+                <Setter Property="Minimum"
+                        Value="1" />
             </Style>
 
             <!-- Picker -->
