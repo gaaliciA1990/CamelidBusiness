@@ -31,9 +31,7 @@
                              Aspect="AspectFit"
                              HorizontalOptions="Start"
                              Clicked="Cancel_Clicked"
-                             Padding="10"
-                             WidthRequest="40"
-                             HeightRequest="40" />
+                             Padding="10"/>
 
                 <Label Font="Bold"
                        HorizontalOptions="CenterAndExpand"
