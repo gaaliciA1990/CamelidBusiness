@@ -5,6 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="Game.Views.MonsterReadPage"
+             Style="{StaticResource CRUDiStyle}"
              Title="{Binding Title}"
              NavigationPage.HasNavigationBar="False">
 
