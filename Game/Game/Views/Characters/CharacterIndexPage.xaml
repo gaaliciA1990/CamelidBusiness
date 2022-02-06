@@ -25,7 +25,7 @@
                         Text="Create"
                         Clicked="CreateCharacter_Clicked" />
             </StackLayout>
-            
+
             <ScrollView VerticalScrollBarVisibility="Always">
                 <FlexLayout x:Name="CharactersListView"
                             BindableLayout.ItemsSource="{Binding Dataset}"
@@ -34,99 +34,50 @@
                             JustifyContent="SpaceEvenly">
                     <BindableLayout.ItemTemplate>
                         <DataTemplate>
-                            <Grid HeightRequest="200">
+                            <Frame BackgroundColor="DarkSeaGreen" HeightRequest="190" Padding="5" Margin="20" >
+                                <StackLayout >
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="FlexCharacter_Clicked" CommandParameter="{Binding Id}"/>
+                                    </StackLayout.GestureRecognizers>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Frame Grid.Row="0" Grid.Column="0"
+                                           OutlineColor="Black"
+                                           BackgroundColor="CadetBlue">
+                                            <AbsoluteLayout IsClippedToBounds="True">
+                                                <Image Source="{Binding ImageURI}"  
+                                                                   HeightRequest="450"
+                                                                   WidthRequest="450"
+                                                                AbsoluteLayout.LayoutBounds="0.47, 0.02, 3, 3"  
+                                                                Style="{StaticResource ImageBattleLargeStyle}"
+                                                                AbsoluteLayout.LayoutFlags="All"  
+                                                                HorizontalOptions="StartAndExpand"/>
+                                            </AbsoluteLayout>
+                                        </Frame>
 
-                                <StackLayout Grid.Column="0"
-                                             Grid.Row="0">
+                                        <Image Grid.Row="0" Grid.Column="0" Source="{Binding Clan, StringFormat= '{0:G}clanlogo.png'}"
+                                            WidthRequest="40"
+                                            HeightRequest="40"
+                                            Margin="10"  
+                                            VerticalOptions="Start"
+                                            HorizontalOptions="End" />
 
-                                    <Frame OutlineColor="Black"
-                                           Padding="1"
-                                           MinimumWidthRequest="200">
-                                        <Grid BackgroundColor="LightSeaGreen"
-                                              WidthRequest="200"
-                                              Padding="20">
+                                    </Grid>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                                        <Label Margin="0,0,10,0"  Text="{Binding Name}" Style="{StaticResource LabelBaseStyle}"/>
 
-                                            <Frame OutlineColor="Black"
-                                                   BackgroundColor="LightBlue"
-                                                   Padding="5"
-                                                   HeightRequest="100">
-                                                <Image x:Name="ImageLabel"
-                                                       Source="{Binding ImageURI}"
-                                                       Style="{StaticResource ImageBattleLargeStyle}"
-                                                       HorizontalOptions="StartAndExpand" />
-                                            </Frame>
-
-                                            <StackLayout Grid.Column="1"
-                                                         Grid.Row="0"
-                                                         Orientation="Vertical">
-                                                <Frame OutlineColor="Black"
-                                                       BackgroundColor="LightGray"
-                                                       Padding="1"
-                                                       WidthRequest="100">
-                                                    <Label x:Name="NameLabel"
-                                                           Text="{Binding Name}"
-                                                           Style="{StaticResource ListStyle}"
-                                                           BackgroundColor="LightGray"
-                                                           FontAttributes="Bold"
-                                                           HorizontalOptions="CenterAndExpand" />
-                                                </Frame>
-
-                                                <Frame OutlineColor="Black"
-                                                       BackgroundColor="LightCyan"
-                                                       Padding="1"
-                                                       WidthRequest="100">
-                                                    <Label x:Name="ClanLabel"
-                                                           Text="{Binding Clan}"
-                                                           Style="{StaticResource ListStyle}"
-                                                           BackgroundColor="LightCyan"
-                                                           FontAttributes="Bold"
-                                                           HorizontalOptions="CenterAndExpand" />
-                                                </Frame>
-
-                                                <StackLayout Orientation="Horizontal">
-                                                    <Frame OutlineColor="Black"
-                                                           Padding="3"
-                                                           BackgroundColor="LightCyan">
-                                                        <Label x:Name="LevelLabel"
-                                                               Text="{Binding Path=Level, StringFormat='LVL {0:G}'}"
-                                                               Style="{StaticResource ListStyle}"
-                                                               FontAttributes="Bold"
-                                                               HorizontalTextAlignment="Center"/>
-                                                    </Frame>
-
-                                                    <Frame OutlineColor="Black"
-                                                           Padding="3"
-                                                           BackgroundColor="LightCyan">
-                                                        <Label x:Name="MaxHealthLabel"
-                                                               Text="{Binding Path=MaxHealth, StringFormat='HP {0:G}'}"
-                                                               Style="{StaticResource ListStyle}"
-                                                               FontAttributes="Bold" />
-                                                    </Frame>
-                                                </StackLayout>
-
-                                                <StackLayout Orientation="Horizontal">
-                                                    <Frame OutlineColor="Black"
-                                                           Padding="3"
-                                                           BackgroundColor="LightCyan">
-                                                        <Label x:Name="XPLabel"
-                                                               Text="{Binding Path=ExperienceTotal, StringFormat='XP {0:G}'}"
-                                                               Style="{StaticResource ListStyle}"
-                                                               FontAttributes="Bold" />
-                                                    </Frame>
-                                                </StackLayout>
-                                            </StackLayout>
-                                        </Grid>
-                                    </Frame>
+                                        <Label  Margin="10,0,0,0"
+                                       Text="{Binding Level, StringFormat= 'Lv: {0:G}'}"
+                                       Style="{StaticResource LabelBaseStyle}"/>
+                                    </StackLayout>
+                                    
                                 </StackLayout>
-
-                                <ImageButton Grid.Column="0"
-                                             Grid.Row="0"
-                                             HorizontalOptions="FillAndExpand"
-                                             VerticalOptions="FillAndExpand"
-                                             HeightRequest="200"
-                                             Clicked="FlexCharacter_Clicked"
-                                             CommandParameter="{Binding Id}" />
-                            </Grid>
+                            </Frame>
                         </DataTemplate>
                     </BindableLayout.ItemTemplate>
                 </FlexLayout>
@@ -134,3 +85,115 @@
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
+    
+    
+    
+    
+    
+    
+<!--
+    <Frame Grid.Row="1" Grid.Column="0">
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                                        <Label Margin="0,0,10,0"  Text="{Binding Name}" Style="{StaticResource ListStyle}"/>
+
+                                        <Label  Margin="10,0,0,0"
+                                               Text="{Binding Level, StringFormat= 'Lv: {0:G}'}"
+                                               Style="{StaticResource ListStyle}"/>
+                                    </StackLayout>
+                                </Frame>
+    
+    
+    
+    
+    <?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Name="BrowseItemsPage"
+             x:Class="Game.Views.CharacterIndexPage"
+             Title="{Binding Title}"
+             NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.Content>
+        <StackLayout Style="{StaticResource OuterBoxStack}">
+            <StackLayout Orientation="Horizontal">
+                <Button x:Name="BackButton"
+                        Text="Back"
+                        Clicked="Back_Clicked" />
+
+                <Label HorizontalOptions="CenterAndExpand"
+                       Text="Character List Page"
+                       Style="{StaticResource HeaderStyle}"
+                       FontSize="Large" />
+
+                <Button x:Name="CreateButton"
+                        Text="Create"
+                        Clicked="CreateCharacter_Clicked" />
+            </StackLayout>
+
+            <ScrollView VerticalScrollBarVisibility="Always">
+                <FlexLayout x:Name="CharactersListView"
+                            BindableLayout.ItemsSource="{Binding Dataset}"
+                            Wrap="Wrap"
+                            Direction="Row"
+                            JustifyContent="SpaceEvenly">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Frame  Padding="10" BackgroundColor="LightSeaGreen">
+                                <StackLayout >
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="FlexCharacter_Clicked" CommandParameter="{Binding Id}"/>
+                                    </StackLayout.GestureRecognizers>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Frame Grid.Row="0" Grid.Column="0"
+                                           OutlineColor="Black"
+                                           BackgroundColor="LightBlue"
+                                           Padding="5">
+                                            <AbsoluteLayout >
+                                                <Image Source="{Binding ImageURI}"  
+                                                                   HeightRequest="450"
+                                                                   WidthRequest="450"
+                                                                AbsoluteLayout.LayoutBounds="0.47, 0.02, 3, 3"  
+                                                                Style="{StaticResource ImageBattleLargeStyle}"
+                                                                AbsoluteLayout.LayoutFlags="All"  
+                                                                HorizontalOptions="StartAndExpand"/>
+                                            </AbsoluteLayout>
+                                        </Frame>
+
+                                        <BoxView Grid.Row="0" Grid.Column="0" Color="CornflowerBlue"
+                                            WidthRequest="40"
+                                            HeightRequest="40"
+                                            Margin="10"  
+                                            VerticalOptions="Start"
+                                            HorizontalOptions="End" />
+                                        
+                                    </Grid>
+
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                                        <Label Margin="0,0,10,0"  Text="{Binding Name}" Style="{StaticResource ListStyle}"/>
+
+                                        <Label  Margin="10,0,0,0"
+                                       Text="{Binding Level, StringFormat= 'Lv: {0:G}'}"
+                                       Style="{StaticResource ListStyle}"/>
+                                    </StackLayout>
+                                    
+                                    
+                                </StackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </FlexLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
+
+    -->
