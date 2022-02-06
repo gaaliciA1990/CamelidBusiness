@@ -192,14 +192,10 @@
                                     </Label.Margin>
                                 </Label>
 
-                                <Slider Maximum="50"
-                                        Minimum="0"
-                                        x:Name="AttackSlider"
-                                        BackgroundColor="White"
+                                <Slider x:Name="AttackSlider"
                                         Value="{Binding Data.Attack, Mode=TwoWay}"
-                                        HorizontalOptions="FillAndExpand"
-                                        VerticalOptions="Center"
-                                        ValueChanged="Attack_OnSliderValueChanged">
+                                        ValueChanged="Attack_OnSliderValueChanged"
+                                        Style="{StaticResource SliderStyle}">
 
                                     <Slider.Margin>
                                         <OnPlatform x:TypeArguments="Thickness">
@@ -243,14 +239,10 @@
                                     </Label.Margin>
                                 </Label>
 
-                                <Slider Maximum="50"
-                                        Minimum="0"
-                                        x:Name="DefenseSlider"
-                                        BackgroundColor="White"
+                                <Slider x:Name="DefenseSlider"
                                         Value="{Binding Data.Defense, Mode=TwoWay}"
-                                        HorizontalOptions="FillAndExpand"
-                                        
-                                        ValueChanged="Defense_OnSliderValueChanged">
+                                        ValueChanged="Defense_OnSliderValueChanged"
+                                        Style="{StaticResource SliderStyle}">
 
                                     <Slider.Margin>
                                         <OnPlatform x:TypeArguments="Thickness">
@@ -293,15 +285,10 @@
                                     </Label.Margin>
                                 </Label>
 
-                                <Slider Maximum="50"
-                                        Minimum="0"
-                                        BackgroundColor="White"
-                                        x:Name="SpeedSlider"
+                                <Slider x:Name="SpeedSlider"
                                         Value="{Binding Data.Speed, Mode=TwoWay}"
-                                        HorizontalOptions="FillAndExpand"
-                                        VerticalOptions="Center"
-                                        ValueChanged="Speed_OnSliderValueChanged">
-
+                                        ValueChanged="Speed_OnSliderValueChanged"
+                                        Style="{StaticResource SliderStyle}">
                                     <Slider.Margin>
                                         <OnPlatform x:TypeArguments="Thickness">
                                             <On Platform="iOS"
