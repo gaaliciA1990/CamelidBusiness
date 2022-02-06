@@ -23,7 +23,7 @@ namespace Game.Views
     public partial class CharacterCreatePage : ContentPage
     {
         //Local storage for images
-        private Dictionary<CharacterClanEnum,List<string>> imageList = GameImagesHelper.GetCharacterImage();
+        private Dictionary<CharacterClanEnum, List<string>> imageList = GameImagesHelper.GetCharacterImage();
 
         //index tracer for local storage
         private int imageIndex = 0;
@@ -64,7 +64,7 @@ namespace Game.Views
             _ = UpdatePageBindingContext();
 
             ClanPicker.SelectedItem = ViewModel.Data.Clan.ToString();
-            
+
             AdjustSliderValues();
         }
 
@@ -140,21 +140,15 @@ namespace Game.Views
 
             AttackValue.Text = ViewModel.Data.GetAttackTotal.ToString();
             AttackSlider.Maximum = 50 - ViewModel.Data.GetAttackTotal + ViewModel.Data.Attack;
-
-            RangeValue.Text = ViewModel.Data.GetItemRange().ToString();
-            RangeSlider.Value = ViewModel.Data.GetItemRange();
         }
 
-
-
-
-            /// <summary>
-            /// The Level selected from the list
-            /// Need to recalculate Max Health
-            /// </summary>
-            /// <param name="sender"></param>
-            /// <param name="args"></param>
-            public void Level_Changed(object sender, EventArgs args)
+        /// <summary>
+        /// The Level selected from the list
+        /// Need to recalculate Max Health
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
+        public void Level_Changed(object sender, EventArgs args)
         {
             // Change the Level
             //ViewModel.Data.Level = LevelPicker.SelectedIndex + 1;
@@ -183,7 +177,7 @@ namespace Game.Views
         {
             //Check if the required input fields are filled
             bool isValid = Entry_Validator();
-            if(isValid == false)
+            if (isValid == false)
             {
                 return;
             }
@@ -267,7 +261,7 @@ namespace Game.Views
             _ = ViewModel.Data.AddItem(PopupLocationEnum, data.Id);
 
             AdjustValuesWithBonuses(data);
-            
+
             UpdatePageBindingContext();
 
             AdjustSliderValues();
@@ -550,7 +544,7 @@ namespace Game.Views
             imageIndex--;
             if (imageIndex < 0)
             {
-                imageIndex = imageCount-1;
+                imageIndex = imageCount - 1;
             }
 
             // Update the image
