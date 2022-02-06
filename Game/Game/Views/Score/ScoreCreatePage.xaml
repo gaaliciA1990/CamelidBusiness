@@ -56,8 +56,8 @@
                    BorderColor="Transparent"
                    HorizontalOptions="CenterAndExpand"
                    VerticalOptions="FillAndExpand">
-                <Grid RowSpacing="1"
-                      ColumnSpacing="2"
+                <Grid RowSpacing="50"
+                      ColumnSpacing="10"
                       HorizontalOptions="CenterAndExpand"
                       VerticalOptions="Center">
                     <Grid.RowDefinitions>
@@ -100,7 +100,7 @@
                                Style="{StaticResource EntryStyle}"
                                HorizontalOptions="CenterAndExpand"
                                HorizontalTextAlignment="Center"
-                               WidthRequest="250"/>
+                               WidthRequest="250" />
                     </Frame>
                     <!--Score Entry-->
                     <Frame CornerRadius="15"
