@@ -7,6 +7,7 @@
              x:Name="BrowseItemsPage"
              x:Class="Game.Views.ItemIndexPage"
              Title="{Binding Title}"
+             Style="{StaticResource CRUDiStyle}"
              NavigationPage.HasNavigationBar="False">
 
     <ContentPage.Content>
