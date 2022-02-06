@@ -707,7 +707,7 @@
                 <Setter Property="MaximumTrackColor"
                         Value="{StaticResource PrimaryBackgroundColor}" />
                 <Setter Property="Maximum"
-                        Value="21" />
+                        Value="20" />
                 <Setter Property="Minimum"
                         Value="0" />
             </Style>
