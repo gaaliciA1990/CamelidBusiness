@@ -221,7 +221,6 @@
                                    Text="{Binding Data.Level}"
                                    Style="{StaticResource ValueStyle}"
                                    FontSize="Medium"
-                                   FontAttributes="Bold"
                                    HorizontalOptions="Start"
                                    HorizontalTextAlignment="Start"
                                    VerticalOptions="Center">
@@ -235,16 +234,11 @@
                                 </Label.Margin>
                             </Label>
 
-                            <Slider Maximum="20"
-                                    Minimum="1"
-                                    BackgroundColor="Transparent"
-                                    MaximumTrackColor="#4C3C48"
-                                    MinimumTrackColor="#4C3C48"
+                            <Slider x:Name="LevelSlider"
                                     ThumbImageSource="item.png"
                                     Value="{Binding Data.Level, Mode=TwoWay}"
-                                    HorizontalOptions="FillAndExpand"
-                                    VerticalOptions="Center"
                                     ValueChanged="Level_OnSliderValueChanged"
+                                    Style="{StaticResource SliderStyle}"
                                     >
                                 <Slider.Margin>
                                     <OnPlatform x:TypeArguments="Thickness">
@@ -273,7 +267,7 @@
                             <Label x:Name="AttackValue"
                                    Text="{Binding Data.GetAttackTotal}"
                                    Style="{StaticResource ValueStyle}"
-                                   FontAttributes="Bold"
+                                   FontSize="Medium"
                                    HorizontalOptions="Start"
                                    HorizontalTextAlignment="Start"
                                    VerticalOptions="Center">
@@ -287,14 +281,10 @@
                                 </Label.Margin>
                             </Label>
 
-                            <Slider Maximum="50"
-                                    Minimum="0"
-                                    x:Name="AttackSlider"
-                                    BackgroundColor="White"
+                            <Slider x:Name="AttackSlider"
                                     Value="{Binding Data.Attack, Mode=TwoWay}"
-                                    HorizontalOptions="FillAndExpand"
-                                    VerticalOptions="Center"
-                                    ValueChanged="Attack_OnSliderValueChanged">
+                                    ValueChanged="Attack_OnSliderValueChanged"
+                                    Style="{StaticResource SliderStyle}">
                                 <Slider.Margin>
                                     <OnPlatform x:TypeArguments="Thickness">
                                         <On Platform="iOS"
@@ -323,7 +313,7 @@
                             <Label x:Name="DefenseValue"
                                    Text="{Binding Data.GetDefenseTotal}"
                                    Style="{StaticResource ValueStyle}"
-                                   FontAttributes="Bold"
+                                   FontSize="Medium"
                                    HorizontalOptions="Start"
                                    HorizontalTextAlignment="Start"
                                    VerticalOptions="Center">
@@ -337,14 +327,10 @@
                                 </Label.Margin>
                             </Label>
 
-                            <Slider Maximum="50"
-                                    Minimum="0"
-                                    x:Name="DefenseSlider"
-                                    BackgroundColor="White"
+                            <Slider x:Name="DefenseSlider"
                                     Value="{Binding Data.Defense, Mode=TwoWay}"
-                                    HorizontalOptions="FillAndExpand"
-                                    VerticalOptions="Center"
-                                    ValueChanged="Defense_OnSliderValueChanged">
+                                    ValueChanged="Defense_OnSliderValueChanged"
+                                    Style="{StaticResource SliderStyle}">
                                 <Slider.Margin>
                                     <OnPlatform x:TypeArguments="Thickness">
                                         <On Platform="iOS"
@@ -372,7 +358,7 @@
                             <Label x:Name="SpeedValue"
                                    Text="{Binding Data.GetSpeedTotal}"
                                    Style="{StaticResource ValueStyle}"
-                                   FontAttributes="Bold"
+                                   FontSize="Medium"
                                    HorizontalOptions="Start"
                                    HorizontalTextAlignment="Start"
                                    VerticalOptions="Center">
@@ -386,14 +372,10 @@
                                 </Label.Margin>
                             </Label>
 
-                            <Slider Maximum="50"
-                                    Minimum="0"
-                                    BackgroundColor="White"
-                                    x:Name="SpeedSlider"
+                            <Slider x:Name="SpeedSlider"
                                     Value="{Binding Data.Speed, Mode=TwoWay}"
-                                    HorizontalOptions="FillAndExpand"
-                                    VerticalOptions="Center"
-                                    ValueChanged="Speed_OnSliderValueChanged">
+                                    ValueChanged="Speed_OnSliderValueChanged"
+                                    Style="{StaticResource SliderStyle}">
                                 <Slider.Margin>
                                     <OnPlatform x:TypeArguments="Thickness">
                                         <On Platform="iOS"
@@ -411,7 +393,8 @@
                                      Grid.Row="4"
                                      Grid.Column="0"
                                      Grid.ColumnSpan="2">
-                            <Label Text="MH"
+                            <Label x:Name="HealthLabel"
+                                   Text="HP"
                                    FontSize="Medium"
                                    Style="{StaticResource LabelStyle}" />
 
