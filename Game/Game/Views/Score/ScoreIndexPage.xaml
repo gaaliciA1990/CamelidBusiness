@@ -81,7 +81,7 @@
                                         <Frame HorizontalOptions="Center"
                                                BackgroundColor="Transparent"
                                                BorderColor="Transparent"
-                                               >
+                                               Margin="0,10,0,0">
                                             <!--Score Name-->
                                             <Label x:Name="NameLabel"
                                                    FontSize="Medium"
