@@ -345,6 +345,8 @@
                         Value="45" />
                 <Setter Property="WidthRequest"
                         Value="45" />
+                <Setter Property="Aspect"
+                        Value="AspectFit"/>
                 <Setter Property="BackgroundColor"
                         Value="Transparent" />
                 <Setter Property="HorizontalOptions"
