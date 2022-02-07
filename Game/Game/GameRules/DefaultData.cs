@@ -23,7 +23,8 @@ namespace Game.GameRules
                     Damage = 10,
                     Value = 9,
                     Location = ItemLocationEnum.PrimaryHand,
-                    Attribute = AttributeEnum.Attack},
+                    Attribute = AttributeEnum.Attack,
+                    IsUnique = true },
 
                 new ItemModel {
                     Name = "Pirate Sword",
@@ -153,7 +154,8 @@ namespace Game.GameRules
                     Damage = 0,
                     Value = 9,
                     Location = ItemLocationEnum.OffHand,
-                    Attribute = AttributeEnum.MaxHealth},
+                    Attribute = AttributeEnum.MaxHealth,
+                    IsUnique = true },
 
                 new ItemModel {
                     Name = "Lucky Shield",
@@ -173,7 +175,8 @@ namespace Game.GameRules
                     Damage = 0,
                     Value = 9,
                     Location = ItemLocationEnum.Head,
-                    Attribute = AttributeEnum.Speed},
+                    Attribute = AttributeEnum.Speed,
+                    IsUnique = true },
 
                 new ItemModel {
                     Name = "Horned Hat",
@@ -193,7 +196,8 @@ namespace Game.GameRules
                     Damage = 0,
                     Value = 9,
                     Location = ItemLocationEnum.Necklass,
-                    Attribute = AttributeEnum.Speed},
+                    Attribute = AttributeEnum.Speed,
+                    IsUnique = true },
 
                 new ItemModel {
                     Name = "Feel the Power",
