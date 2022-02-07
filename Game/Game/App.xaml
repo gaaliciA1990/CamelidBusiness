@@ -339,8 +339,7 @@
             </Style>
 
             <!-- ImageButton -->
-            <Style TargetType="ImageButton"
-                   x:Key="NavigationImageButton">
+            <Style TargetType="ImageButton">
                 <Setter Property="HeightRequest"
                         Value="45" />
                 <Setter Property="WidthRequest"
