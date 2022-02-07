@@ -43,6 +43,7 @@ namespace Game.Models
         //public int Category { get; set; } = 0;
 
         // Add Unique attributes for Item
+        public bool IsUnique { get; set; } = false;
 
         /// <summary>
         /// Default ItemModel
