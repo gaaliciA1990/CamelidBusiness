@@ -137,8 +137,7 @@ namespace Game.Views
                 _ = ItemBox.Children.Remove(data);
             }
 
-            //Add a StackLayout for each of the children 
-            //Placeholder, unique items will have their unique location enum
+            //Add the items to the stack for Unique Items         
             ItemBox.Children.Add(GetItemToDisplay(ItemLocationEnum.Head));
         }
 
@@ -147,12 +146,12 @@ namespace Game.Views
         /// </summary>
         /// <param name="location"></param>
         /// <returns></returns>
-        public bool ShowPopup(ItemLocationEnum location)
+        public bool ShowPopup()
         {
             PopupItemSelector.IsVisible = true;
 
-            PopupLocationLabel.Text = "Items for :";
-            PopupLocationValue.Text = location.ToMessage();
+            PopupLocationLabel.Text = "Items for Unique Drop:";
+            //PopupLocationValue.Text = location.ToMessage();
 
             // Make a fake item for None
             var NoneItem = new ItemModel
@@ -170,13 +169,13 @@ namespace Game.Views
             };
 
             // Add the rest of the items to the list
-            itemList.AddRange(ItemIndexViewModel.Instance.GetLocationItems(location));
+            itemList.AddRange(ItemIndexViewModel.Instance.UniqueItems);
 
             // Populate the list with the items
             PopupLocationItemListView.ItemsSource = itemList;
 
             // Remember the location for this popup
-            PopupLocationEnum = location;
+            //PopupLocationEnum = location;
 
             return true;
         }
@@ -208,12 +207,12 @@ namespace Game.Views
             };
 
             // Add a event to the user can click the item and see more
-            ItemButton.Clicked += (sender, args) => ShowPopup(location);
+            ItemButton.Clicked += (sender, args) => ShowPopup();
 
             // Add the Display Text for the item
             var ItemLabel = new Label
             {
-                Text = location.ToMessage(),
+                Text = "Unique Drop",
                 Style = (Style)Application.Current.Resources["ValueStyleMicro"],
                 HorizontalOptions = LayoutOptions.Center,
                 HorizontalTextAlignment = TextAlignment.Center
