@@ -43,7 +43,7 @@ namespace Game.Views
         /// <param name="args"></param>
         public async void FlexCharacter_Clicked(object sender, EventArgs args)
         {
-            StackLayout lblClicked = (StackLayout)sender;
+            Frame lblClicked = (Frame)sender;
             var item = (TapGestureRecognizer)lblClicked.GestureRecognizers[0];
             var id = item.CommandParameter;
             var data = ViewModel.Dataset.FirstOrDefault(m => m.Id.Equals(id));
