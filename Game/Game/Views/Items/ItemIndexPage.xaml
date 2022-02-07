@@ -37,95 +37,77 @@
                     <BindableLayout.ItemTemplate>
                         <DataTemplate>
                             <Grid HeightRequest="150">
-                                <StackLayout Grid.Column="0"
-                                             Grid.Row="0"
-                                             Padding="5">
-                                    <Frame OutlineColor="Black"
-                                           Padding="1"
-                                           MinimumWidthRequest="200">
-                                        <Grid BackgroundColor="LightSeaGreen"
-                                              WidthRequest="200"
-                                              Padding="20">
-                                            <Frame OutlineColor="Black"
+                                <Frame OutlineColor="Black"
+                                           Padding="1">
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="FlexItem_Clicked" CommandParameter="{Binding Id}"/>
+                                    </Frame.GestureRecognizers>
+                                    <Grid BackgroundColor="LightSeaGreen">
+
+                                        <Frame OutlineColor="Black"
                                                    BackgroundColor="LightBlue"
-                                                   Padding="5"
-                                                   HeightRequest="150"
-                                                   WidthRequest="75"
-                                                   HorizontalOptions="Start">
-                                                <Image  x:Name="ImageLabel"
-                                                        Source="{Binding ImageURI}"
-                                                        Style="{StaticResource ImageMediumStyle}"
-                                                        VerticalOptions="CenterAndExpand"/>
+                                                   HeightRequest="100" WidthRequest="80" Margin="0,10,0,10">
+                                            <Image x:Name="ImageLabel"
+                                                   Source="{Binding ImageURI}"  
+                                                   Style="{StaticResource ImageBattleLargeStyle}"
+                                                   HorizontalOptions="CenterAndExpand"/>
+                                        </Frame>
+                                        <StackLayout Grid.Column="1"
+                                                     Grid.Row="0"
+                                                     Margin="0,10,10,10"
+                                                     Orientation="Vertical"
+                                                     VerticalOptions="CenterAndExpand">
+                                            <Frame OutlineColor="Black"
+                                                   BackgroundColor="LightGray"
+                                                   Padding="3"
+                                                   WidthRequest="100">
+                                                <Label x:Name="NameLabel"
+                                                       Text="{Binding Name}"
+                                                       FontSize="20"
+                                                       Style="{StaticResource ListStyle}"
+                                                       BackgroundColor="LightGray"
+                                                       HorizontalOptions="CenterAndExpand" />
                                             </Frame>
 
-                                            <StackLayout Grid.Column="1" Grid.Row="0"
-                                                         Orientation="Vertical">
+                                            <StackLayout Orientation="Horizontal">
                                                 <Frame OutlineColor="Black"
-                                                       BackgroundColor="LightGray"
-                                                       Padding="5"
-                                                       WidthRequest="200">
-                                                    <Label x:Name="NameLabel"
-                                                           Text="{Binding Name}" 
+                                                           Padding="3"
+                                                       HorizontalOptions="End"
+                                                           BackgroundColor="LightCyan">
+                                                    <Label x:Name="AttributeLabel"
+                                                           Text="{Binding Attribute}"
                                                            Style="{StaticResource ListStyle}"
-                                                           BackgroundColor="LightGray"
-                                                           HorizontalOptions="CenterAndExpand"
-                                                           FontSize="Caption"
-                                                           FontAttributes="Bold"/>
-                                                </Frame>
-                                                
-                                                <StackLayout Grid.Column="1" Grid.Row="1"
-                                                            Orientation="Horizontal">
-                                                    <Frame  OutlineColor="Black"
-                                                            BackgroundColor="LightGray"
-                                                            Padding="3"
-                                                            WidthRequest="90">
-                                                        <Label x:Name="AttributeLabel"
-                                                               Text="{Binding Attribute}"
-                                                               Style="{StaticResource ListStyle}"
-                                                               HorizontalOptions="Center"
-                                                               BackgroundColor="LightGray"
-                                                               FontSize="Caption"
-                                                               FontAttributes="Bold"/>
-                                                    </Frame>
-                                                    
-                                                    <Frame  OutlineColor="Black"
-                                                            BackgroundColor="LightGray"
-                                                            Padding="3"
-                                                            WidthRequest="30">
-                                                        <Label x:Name="AttributeValueLabel" 
-                                                               Text="{Binding Value}" 
-                                                               Style="{StaticResource ListStyle}"
-                                                               HorizontalOptions="Center"
-                                                               FontAttributes="Bold"
-                                                               FontSize="Caption"
-                                                               BackgroundColor="LightGray"/>
-                                                    </Frame>
-                                                </StackLayout>
-
-                                                <Frame OutlineColor="Black"
-                                                       BackgroundColor="LightGray"
-                                                       Padding="5"
-                                                       WidthRequest="100">
-                                                    <Label Grid.Column="1" Grid.Row="2"
-                                                           Text="{Binding Description}" 
-                                                           Style="{StaticResource ListStyle}"
-                                                           FontSize="Caption"
-                                                           LineBreakMode="TailTruncation"
-                                                           HorizontalOptions="CenterAndExpand"/>
+                                                           FontSize="15"
+                                                           HorizontalTextAlignment="Center"/>
                                                 </Frame>
 
+                                                <Frame OutlineColor="Black"
+                                                           Padding="3"
+                                                       HorizontalOptions="End"
+                                                           BackgroundColor="LightCyan">
+                                                    <Label x:Name="ValueLabel"
+                                                           Text="{Binding Value}"
+                                                           Style="{StaticResource ListStyle}"
+                                                           HorizontalTextAlignment="Center"
+                                                           FontSize="15"/>
+                                                </Frame>
                                             </StackLayout>
-                                        </Grid>
-                                    </Frame>
-                                </StackLayout>
-                                
-                                <ImageButton Grid.Column="0"
-                                             Grid.Row="0"
-                                             HorizontalOptions="FillAndExpand"
-                                             VerticalOptions="FillAndExpand"
-                                             HeightRequest="200"
-                                             Clicked="FlexItem_Clicked"
-                                             CommandParameter="{Binding Id}" />
+
+                                            <Frame OutlineColor="Black"
+                                                   BackgroundColor="LightCyan"
+                                                   Padding="3"
+                                                   WidthRequest="100">
+                                                <Label
+                                                   HorizontalOptions="Center"
+                                                   x:Name="DescriptionLabel"
+                                                   Text="{Binding Description}"
+                                                   FontSize="15"
+                                                   Style="{StaticResource ListStyle}"
+                                                   BackgroundColor="LightCyan"/>
+                                            </Frame>
+                                        </StackLayout>
+                                    </Grid>
+                                </Frame>
                             </Grid>
                         </DataTemplate>
                     </BindableLayout.ItemTemplate>

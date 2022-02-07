@@ -77,8 +77,9 @@ namespace Game.Views
         /// <param name="e"></param>
         public async void FlexItem_Clicked(object sender, EventArgs e)
         {
-            var button = sender as ImageButton;
-            var id = button.CommandParameter as String;
+            Frame lblClicked = (Frame)sender;
+            var item = (TapGestureRecognizer)lblClicked.GestureRecognizers[0];
+            var id = item.CommandParameter as String;
             var data = ViewModel.Dataset.FirstOrDefault(m => m.Id.Equals(id));
 
             // Open the read page
