@@ -57,6 +57,8 @@ namespace Game.ViewModels
         {
             Title = "Items";
 
+            UniqueItems = new ObservableCollection<ItemModel>();
+
             #region Messages
 
             // Register the Create Message
