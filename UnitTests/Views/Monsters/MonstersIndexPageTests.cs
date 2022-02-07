@@ -57,7 +57,7 @@ namespace UnitTests.Views
             // Arrange
 
             // Act
-            page.Add_Clicked(null, null);
+            page.CreateMonster_Clicked(null, null);
 
             // Reset
 
@@ -89,7 +89,7 @@ namespace UnitTests.Views
             var selectedMonsterChangedEventArgs = new SelectedItemChangedEventArgs(selectedMonster, 0);
 
             // Act
-            page.OnItemSelected(null, selectedMonsterChangedEventArgs);
+            page.FlexMonster_Clicked(null, selectedMonsterChangedEventArgs);
 
             // Reset
 
@@ -105,7 +105,7 @@ namespace UnitTests.Views
             var selectedMonsterChangedEventArgs = new SelectedItemChangedEventArgs(null, 0);
 
             // Act
-            page.OnItemSelected(null, selectedMonsterChangedEventArgs);
+            page.FlexMonster_Clicked(null, selectedMonsterChangedEventArgs);
 
             // Reset
 
