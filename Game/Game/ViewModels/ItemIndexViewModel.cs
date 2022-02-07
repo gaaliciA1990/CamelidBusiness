@@ -7,6 +7,8 @@ using Xamarin.Forms;
 using Game.Models;
 using Game.Views;
 using Game.GameRules;
+using System.Threading.Tasks;
+using System.Collections.ObjectModel;
 
 namespace Game.ViewModels
 {
@@ -159,6 +161,38 @@ namespace Game.ViewModels
         }
 
         #endregion SortDataSet
+
+        #region UniqueItems
+        public ObservableCollection<ItemModel> UniqueItems { get; set; }
+
+        /// <summary>
+        /// Overloaded method from BaseViewModel
+        /// Load the Data from the Index Call into the Data List and sort items to Unique Item list as well
+        /// </summary>
+        /// <returns></returns>
+        public new async Task LoadDataFromIndexAsync()
+        {
+            Dataset.Clear();
+            var dataset = await DataStore.IndexAsync();
+
+            // Example of how to sort the database output using a linq query.
+            // Sort the list
+            dataset = SortDataset(dataset);
+
+            foreach (var data in dataset)
+            {
+                // Make a Copy of the Item Model to add to the List
+                Dataset.Add(data);
+
+                //Add to unique set if the item is unique
+                if (data.IsUnique)
+                {
+                    UniqueItems.Add(data);
+                }
+            }
+        }
+
+        #endregion SortUniqueItems
 
         /// <summary>
         /// Takes an item string ID and looks it up and returns the item
