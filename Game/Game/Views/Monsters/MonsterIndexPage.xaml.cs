@@ -43,8 +43,9 @@ namespace Game.Views
         /// <param name="args"></param>
         public async void FlexMonster_Clicked(object sender, EventArgs args)
         {
-            var button = sender as ImageButton;
-            var id = button.CommandParameter as String;
+            Frame lblClicked = (Frame)sender;
+            var item = (TapGestureRecognizer)lblClicked.GestureRecognizers[0];
+            var id = item.CommandParameter;
             var data = ViewModel.Dataset.FirstOrDefault(m => m.Id.Equals(id));
 
             // Open the read page
