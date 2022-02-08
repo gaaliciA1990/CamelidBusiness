@@ -22,8 +22,8 @@ namespace Game
             // Add each model here to warm up and load it.
             _ = Helpers.DataSetsHelper.WarmUp();
 
-            // Call the Main Page to open
-            MainPage = new MainPage();
+            // Call the Home Page to open
+            MainPage = new NavigationPage(new HomePage());
         }
 
         /// <summary>
