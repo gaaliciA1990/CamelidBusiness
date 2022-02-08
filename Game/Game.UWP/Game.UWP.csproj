@@ -104,7 +104,7 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="about game.png" />
+    <Content Include="about_game.png" />
     <Content Include="action_ability.png" />
     <Content Include="action_attack.png" />
     <Content Include="action_default.png" />
@@ -149,7 +149,7 @@
     <Content Include="feet2.png" />
     <Content Include="hat1.png" />
     <Content Include="hat2.png" />
-    <Content Include="homebackground.png" />
+    <Content Include="homebackground.jpg" />
     <Content Include="icon_add.png" />
     <Content Include="icon_cancel.png" />
     <Content Include="icon_delete.png" />
@@ -176,7 +176,6 @@
     <Content Include="neck1.png" />
     <Content Include="neck2.png" />
     <Content Include="Properties\Default.rd.xml" />
-    <Content Include="rightarrow .png" />
     <Content Include="rightarrow.png" />
     <Content Include="ring1.png" />
     <Content Include="ring2.png" />
