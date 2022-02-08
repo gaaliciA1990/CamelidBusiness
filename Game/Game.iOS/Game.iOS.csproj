@@ -227,9 +227,6 @@
     <BundleResource Include="Resources\knight.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\troll.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\item.png" />
   </ItemGroup>
   <ItemGroup>
@@ -267,24 +264,6 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\score.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\troll4.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\troll5.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\troll6.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\troll1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\troll2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\troll3.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\leftarrow.png" />
@@ -326,5 +305,26 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\vicuna1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\monster4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\monster5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\monster6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\monster.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\monster1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\monster2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\monster3.png" />
   </ItemGroup>
 </Project>
