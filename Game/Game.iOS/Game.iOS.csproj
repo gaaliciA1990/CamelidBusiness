@@ -239,9 +239,6 @@
     <BundleResource Include="Resources\icon_delete.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\icon_edit.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\icon_new.png" />
   </ItemGroup>
   <ItemGroup>
@@ -347,7 +344,7 @@
     <BundleResource Include="Resources\button_start.png" />
     <BundleResource Include="Resources\button_startgame.png" />
     <BundleResource Include="Resources\delete.png" />
-    <BundleResource Include="Resources\edit button.png" />
+    <BundleResource Include="Resources\icon_edit.png" />
     <BundleResource Include="Resources\exit.png" />
     <Content Include="Resources\monsters.png" />
     <BundleResource Include="Resources\random character icon.png" />
