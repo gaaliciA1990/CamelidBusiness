@@ -366,14 +366,14 @@
                         Value="CenterAndExpand" />
             </Style>
 
-            <Style x:Name="NavigationButtonStyle"
+            <Style x:Key="NavigationButtonStyle"
                    TargetType="ImageButton">
                 <Setter Property="Aspect"
-                        Value="AspectFit" />
+                        Value="AspectFill" />
                 <Setter Property="Padding"
                         Value="10" />
                 <Setter Property="Scale"
-                        Value="1.5" />
+                        Value="1.25" />
                 <Setter Property="WidthRequest"
                         Value="65" />
                 <Setter Property="HeightRequest"
