@@ -37,9 +37,6 @@ namespace Game.Views
 
             AddItemsToDisplay();
 
-            Dictionary<DifficultyEnum, string> DifficultyColor = new Dictionary<DifficultyEnum, string> { { DifficultyEnum.Easy, "#3cb371" }, { DifficultyEnum.Average, "#749b38" }, { DifficultyEnum.Hard, "#957e12" }, { DifficultyEnum.Difficult, "#aa5c1a" }, { DifficultyEnum.Impossible, "#af3736" } };
-            DifficultyBar.Progress = (float)ViewModel.Data.Difficulty / 18;
-            DifficultyBar.ProgressColor = Color.FromHex(DifficultyColor[ViewModel.Data.Difficulty]);
             AttackBar.Progress = (float)ViewModel.Data.Attack / 20;
             DefenseBar.Progress = (float)ViewModel.Data.Defense / 20;
             SpeedBar.Progress = (float)ViewModel.Data.Speed / 20;
@@ -148,5 +145,34 @@ namespace Game.Views
         }
 
         #endregion UniqueItemDisplay
+
+        #region Difficulty
+
+        /// <summary>
+        /// Function to create a button for each difficulty level
+        /// </summary>
+        /// <param name="difficulty"></param>
+        /// <returns></returns>
+        public Button CreateDifficultyButton()
+        {
+            string label = ViewModel.Data.Difficulty.ToMessage();
+
+            //Add the basic stuff first
+            Button toReturn = new Button
+            {
+                Text = label,
+                BorderRadius = 10,
+                BorderWidth = 1,
+                BorderColor = Xamarin.Forms.Color.Black,
+                Padding = new Xamarin.Forms.Thickness(5.0),
+                IsEnabled = false,
+                MinimumWidthRequest = 70,
+                MinimumHeightRequest = 50
+            };
+
+            return toReturn;
+        }
+
+        #endregion Difficulty
     }
 }
