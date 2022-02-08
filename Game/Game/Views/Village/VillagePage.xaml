@@ -78,7 +78,7 @@
                                  Grid.Row="0"
                                  Grid.Column="3">
 
-                        <ImageButton Source="item.png"
+                        <ImageButton Source="score.png"
                                      Style="{StaticResource ImageLargeStyle}"
                                      Clicked="ScoresButton_Clicked" />
 
