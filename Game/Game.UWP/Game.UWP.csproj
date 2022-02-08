@@ -141,11 +141,17 @@
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
     <Content Include="Assets\Wide310x150Logo.scale-400.png" />
     <Content Include="battleboard.png" />
+    <Content Include="button_continegame.png" />
+    <Content Include="button_start.png" />
+    <Content Include="button_startgame.png" />
     <Content Include="characters.png" />
     <Content Include="d10.png" />
     <Content Include="d20_2.png" />
+    <Content Include="delete.png" />
     <Content Include="dice.png" />
     <Content Include="dungeon_door.png" />
+    <Content Include="edit button.png" />
+    <Content Include="exit.png" />
     <Content Include="feet1.png" />
     <Content Include="feet2.png" />
     <Content Include="hat1.png" />
@@ -178,6 +184,7 @@
     <Content Include="neck1.png" />
     <Content Include="neck2.png" />
     <Content Include="Properties\Default.rd.xml" />
+    <Content Include="random character icon.png" />
     <Content Include="rightarrow.png" />
     <Content Include="ring1.png" />
     <Content Include="ring2.png" />
@@ -186,6 +193,7 @@
     <Content Include="shield2.png" />
     <Content Include="shield3.png" />
     <Content Include="shield4.png" />
+    <Content Include="slider_thumbnail.png" />
     <Content Include="startgame.png" />
     <Content Include="sword1.png" />
     <Content Include="sword10.png" />
