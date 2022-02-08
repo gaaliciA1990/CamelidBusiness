@@ -104,6 +104,7 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="about game.png" />
     <Content Include="action_ability.png" />
     <Content Include="action_attack.png" />
     <Content Include="action_default.png" />
@@ -153,6 +154,7 @@
     <Content Include="icon_cancel.png" />
     <Content Include="icon_delete.png" />
     <Content Include="icon_edit.png" />
+    <Content Include="icon_home.png" />
     <Content Include="icon_new.png" />
     <Content Include="icon_save.png" />
     <Content Include="item.png" />
@@ -163,7 +165,7 @@
     <Content Include="llama2.png" />
     <Content Include="llama3.png" />
     <Content Include="llamaclanlogo.png" />
-    <Content Include="logo_placeholder.PNG" />
+    <Content Include="logo.png" />
     <Content Include="monster.png" />
     <Content Include="monster1.png" />
     <Content Include="monster2.png" />
@@ -174,6 +176,7 @@
     <Content Include="neck1.png" />
     <Content Include="neck2.png" />
     <Content Include="Properties\Default.rd.xml" />
+    <Content Include="rightarrow .png" />
     <Content Include="rightarrow.png" />
     <Content Include="ring1.png" />
     <Content Include="ring2.png" />
@@ -182,6 +185,7 @@
     <Content Include="shield2.png" />
     <Content Include="shield3.png" />
     <Content Include="shield4.png" />
+    <Content Include="startgame.png" />
     <Content Include="sword1.png" />
     <Content Include="sword10.png" />
     <Content Include="sword11.png" />
