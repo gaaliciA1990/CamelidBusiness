@@ -91,7 +91,7 @@ namespace Game.Views
 
             //Add a StackLayout for each of the children 
             //Placeholder, unique items will have their unique location enum
-            ItemBox.Children.Add(GetItemToDisplay(ItemLocationEnum.Head));
+            ItemBox.Children.Add(GetItemToDisplay());
         }
 
         /// <summary>
@@ -99,7 +99,7 @@ namespace Game.Views
         /// </summary>
         /// <param name="location"></param>
         /// <returns></returns>
-        public StackLayout GetItemToDisplay(ItemLocationEnum location)
+        public StackLayout GetItemToDisplay()
         {
             // Get the Item, if it exist show the info
             // If it does not exist, show a Plus Icon for the location
@@ -107,23 +107,28 @@ namespace Game.Views
             // Defualt Image is the Plus
             var ImageSource = "icon_add.png";
 
-            var data = ViewModel.Data.GetItemByLocation(location);
+            //Get the current unique item's string id
+            var neededID = ViewModel.Data.UniqueItem;
+            //Find the unique Item by its id
+            var data = ItemIndexViewModel.Instance.UniqueItems.Where(a => a.Id.Equals(neededID)).FirstOrDefault();
+
             if (data == null)
             {
-                data = new ItemModel { Location = location, ImageURI = ImageSource };
+                data = new ItemModel {ImageURI = ImageSource};
             }
 
             // Hookup the Image Button to show the Item picture
             var ItemButton = new ImageButton
             {
                 Style = (Style)Application.Current.Resources["ImageMediumStyle"],
-                Source = data.ImageURI
+                Source = data.ImageURI,
+                IsEnabled = false,
             };
 
             // Add the Display Text for the item
             var ItemLabel = new Label
             {
-                Text = location.ToMessage(),
+                Text = "Unique Drop",
                 Style = (Style)Application.Current.Resources["ValueStyleMicro"],
                 HorizontalOptions = LayoutOptions.Center,
                 HorizontalTextAlignment = TextAlignment.Center
@@ -132,8 +137,6 @@ namespace Game.Views
             // Put the Image Button and Text inside a layout
             var ItemStack = new StackLayout
             {
-                Padding = 3,
-                Style = (Style)Application.Current.Resources["ItemImageLabelBox"],
                 HorizontalOptions = LayoutOptions.Center,
                 Children = {
                     ItemButton,
