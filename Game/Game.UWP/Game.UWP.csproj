@@ -142,6 +142,7 @@
     <Content Include="battleboard.png" />
     <Content Include="d10.png" />
     <Content Include="d20_2.png" />
+    <Content Include="dice.png" />
     <Content Include="dungeon_door.png" />
     <Content Include="feet1.png" />
     <Content Include="feet2.png" />
