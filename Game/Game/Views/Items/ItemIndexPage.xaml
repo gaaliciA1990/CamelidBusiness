@@ -13,23 +13,25 @@
     <ContentPage.Content>
         <StackLayout Style="{StaticResource OuterBoxStack}">
             <StackLayout Orientation="Horizontal">
-                <Button x:Name="BackButton"
-                        Text="Back"
-                        Clicked="BackButton_Clicked" />
+                <ImageButton x:Name="BackButton"
+                             Source="icon_back.png"
+                             Clicked="BackButton_Clicked"
+                             Style="{StaticResource NavigationButtonStyle}" />
 
                 <Label HorizontalOptions="CenterAndExpand"
                        Text="Items List Page"
                        Style="{StaticResource HeaderStyle}"
-                       FontSize="Large"/>
+                       FontSize="Large" />
 
-                <Button x:Name="CreateButton"
-                        Text="Create"
-                        Clicked="CreateItem_Clicked" />
+                <ImageButton x:Name="CreateButton"
+                             Source="icon_add.png"
+                             Clicked="CreateItem_Clicked"
+                             Style="{StaticResource NavigationButtonStyle}"/>
             </StackLayout>
 
             <ScrollView VerticalScrollBarVisibility="Always">
                 <FlexLayout x:Name="ItemsListView"
-	                        BindableLayout.ItemsSource="{Binding Dataset}" 
+                            BindableLayout.ItemsSource="{Binding Dataset}"
                             Wrap="Wrap"
                             Direction="Row"
                             JustifyContent="SpaceEvenly">
@@ -38,19 +40,22 @@
                         <DataTemplate>
                             <Grid HeightRequest="150">
                                 <Frame OutlineColor="Black"
-                                           Padding="1">
+                                       Padding="1">
                                     <Frame.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="FlexItem_Clicked" CommandParameter="{Binding Id}"/>
+                                        <TapGestureRecognizer Tapped="FlexItem_Clicked"
+                                                              CommandParameter="{Binding Id}" />
                                     </Frame.GestureRecognizers>
                                     <Grid BackgroundColor="LightSeaGreen">
 
                                         <Frame OutlineColor="Black"
-                                                   BackgroundColor="LightBlue"
-                                                   HeightRequest="100" WidthRequest="80" Margin="0,10,0,10">
+                                               BackgroundColor="LightBlue"
+                                               HeightRequest="100"
+                                               WidthRequest="80"
+                                               Margin="0,10,0,10">
                                             <Image x:Name="ImageLabel"
-                                                   Source="{Binding ImageURI}"  
+                                                   Source="{Binding ImageURI}"
                                                    Style="{StaticResource ImageBattleLargeStyle}"
-                                                   HorizontalOptions="CenterAndExpand"/>
+                                                   HorizontalOptions="CenterAndExpand" />
                                         </Frame>
                                         <StackLayout Grid.Column="1"
                                                      Grid.Row="0"
@@ -71,25 +76,25 @@
 
                                             <StackLayout Orientation="Horizontal">
                                                 <Frame OutlineColor="Black"
-                                                           Padding="3"
+                                                       Padding="3"
                                                        HorizontalOptions="End"
-                                                           BackgroundColor="LightCyan">
+                                                       BackgroundColor="LightCyan">
                                                     <Label x:Name="AttributeLabel"
                                                            Text="{Binding Attribute}"
                                                            Style="{StaticResource ListStyle}"
                                                            FontSize="15"
-                                                           HorizontalTextAlignment="Center"/>
+                                                           HorizontalTextAlignment="Center" />
                                                 </Frame>
 
                                                 <Frame OutlineColor="Black"
-                                                           Padding="3"
+                                                       Padding="3"
                                                        HorizontalOptions="End"
-                                                           BackgroundColor="LightCyan">
+                                                       BackgroundColor="LightCyan">
                                                     <Label x:Name="ValueLabel"
                                                            Text="{Binding Value}"
                                                            Style="{StaticResource ListStyle}"
                                                            HorizontalTextAlignment="Center"
-                                                           FontSize="15"/>
+                                                           FontSize="15" />
                                                 </Frame>
                                             </StackLayout>
 
@@ -97,13 +102,12 @@
                                                    BackgroundColor="LightCyan"
                                                    Padding="3"
                                                    WidthRequest="100">
-                                                <Label
-                                                   HorizontalOptions="Center"
-                                                   x:Name="DescriptionLabel"
-                                                   Text="{Binding Description}"
-                                                   FontSize="15"
-                                                   Style="{StaticResource ListStyle}"
-                                                   BackgroundColor="LightCyan"/>
+                                                <Label HorizontalOptions="Center"
+                                                       x:Name="DescriptionLabel"
+                                                       Text="{Binding Description}"
+                                                       FontSize="15"
+                                                       Style="{StaticResource ListStyle}"
+                                                       BackgroundColor="LightCyan" />
                                             </Frame>
                                         </StackLayout>
                                     </Grid>
