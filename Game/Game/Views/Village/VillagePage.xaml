@@ -35,7 +35,7 @@
                                  Grid.Row="0"
                                  Grid.Column="0">
 
-                        <ImageButton Source="item.png"
+                        <ImageButton Source="characters.png"
                                      Style="{StaticResource ImageLargeStyle}"
                                      Clicked="CharactersButton_Clicked" />
 
