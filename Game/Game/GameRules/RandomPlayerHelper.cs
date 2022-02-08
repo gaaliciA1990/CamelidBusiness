@@ -30,6 +30,8 @@ namespace Game.GameRules
         {
             var result = ItemIndexViewModel.Instance.UniqueItems.ElementAt(DiceHelper.RollDice(1, ItemIndexViewModel.Instance.UniqueItems.Count()) - 1).Id;
 
+            var forTest = ItemIndexViewModel.Instance.Dataset.ElementAt(DiceHelper.RollDice(1, ItemIndexViewModel.Instance.Dataset.Count()) - 1).Id;
+
             return result;
         }
 
