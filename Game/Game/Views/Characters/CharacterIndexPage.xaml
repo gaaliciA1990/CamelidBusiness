@@ -34,7 +34,7 @@
                             JustifyContent="SpaceEvenly">
                     <BindableLayout.ItemTemplate>
                         <DataTemplate>
-                            <Grid>
+                            <Grid HeightRequest="150">
                                 <Frame OutlineColor="Black"
                                            Padding="1">
                                     <Frame.GestureRecognizers>
@@ -49,9 +49,9 @@
                                                 <Image x:Name="ImageLabel"
                                                        Source="{Binding ImageURI}"  
                                                        Style="{StaticResource ImageBattleLargeStyle}"
-                                                       HeightRequest="250"
-                                                       WidthRequest="250"
-                                                       AbsoluteLayout.LayoutBounds="0.47, 0.1, 3, 3"  
+                                                       Scale="4"
+                                                       Aspect="AspectFit"
+                                                       AbsoluteLayout.LayoutBounds="-0.03, -0.06, 3, 3"  
                                                        AbsoluteLayout.LayoutFlags="All"  
                                                        HorizontalOptions="StartAndExpand"/>
                                             </AbsoluteLayout>
