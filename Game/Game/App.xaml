@@ -70,7 +70,7 @@
             <Style x:Key="HomeStyle"
                    TargetType="ContentPage">
                 <Setter Property="BackgroundImageSource"
-                        Value="homebackground.png" />
+                        Value="homebackground.jpg" />
             </Style>
 
             <!-- <Thickness x:Key="PageMargin">0</Thickness> -->
@@ -363,7 +363,6 @@
                         Value="Center" />
             </Style>
 
-            <!-- ImageButton -->
             <Style TargetType="ImageButton"
                    x:Key="BattleToolbarStyle">
                 <Setter Property="Aspect"
@@ -380,6 +379,18 @@
                         Value="2" />
                 <Setter Property="BackgroundColor"
                         Value="{StaticResource SecondaryBackgroundColor}" />
+            </Style>
+
+            <Style x:Key="HomeButtonStyle"
+                   TargetType="ImageButton">
+                <Setter Property="VerticalOptions"
+                        Value="CenterAndExpand" />
+                <Setter Property="WidthRequest"
+                        Value="100" />
+                <Setter Property="Aspect"
+                        Value="AspectFill" />
+                <Setter Property="BackgroundColor"
+                        Value="Transparent" />
             </Style>
 
             <!-- Button -->
