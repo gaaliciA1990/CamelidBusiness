@@ -6,44 +6,29 @@
              NavigationPage.HasNavigationBar="False">
 
     <ContentPage.Content>
-        <ScrollView
-            VerticalOptions="CenterAndExpand"
-            HorizontalOptions="CenterAndExpand">
-            
-            <StackLayout
-                VerticalOptions="Center"
-                HorizontalOptions="Center">
+        <ScrollView VerticalOptions="CenterAndExpand"
+                    HorizontalOptions="CenterAndExpand">
 
-                <StackLayout Style="{StaticResource HorizontalStack}" HorizontalOptions="CenterAndExpand" Orientation="Vertical">
-                    <Image
-                         Source="logo_placeholder.png"
-                         Style="{StaticResource ImageLargeStyle}"/>
-                    <Label 
-                        Text="Camelid Business"
-                        Style="{StaticResource CenterMessageStyle}"
-                        FontSize="Large"
-                        LineBreakMode="WordWrap"
-                        MaxLines="5"
-                        BackgroundColor="Beige"/>
-                </StackLayout>
+            <StackLayout VerticalOptions="Center"
+                         HorizontalOptions="Center">
 
-                <StackLayout HorizontalOptions="Center"
-                             Padding="70,5,70,0">
-                    <Button x:Name="GameButton"
-                            Text="Start Game"
-                            Clicked="GameButton_Clicked"
-                            BackgroundColor="Bisque" />
-
-                    <Label Text="Help them on their mission."
-                           Style="{StaticResource CenterMessageStyle}"
-                           FontSize="Micro"
-                           LineBreakMode="WordWrap"
-                           MaxLines="5" />
-
-                    <Button x:Name="AboutButton"
-                            Text="About Game"
-                            Clicked="AboutButton_Clicked"
-                            BackgroundColor="Bisque" />
+                <Image Source="logo.png"
+                       Style="{StaticResource ImageLargeStyle}" />
+                <Label Text="Help them on their mission."
+                       Style="{StaticResource CenterMessageStyle}"
+                       FontSize="Micro"
+                       LineBreakMode="WordWrap"
+                       MaxLines="5" />
+                
+                <StackLayout HorizontalOptions="Center">
+                    <ImageButton x:Name="GameButton"
+                                 Source="startgame.png"
+                                 Clicked="GameButton_Clicked"
+                                 Style="{StaticResource HomeButtonStyle}"/>
+                    <ImageButton x:Name="AboutButton"
+                                 Source="about_game.png"
+                                 Clicked="AboutButton_Clicked"
+                                 Style="{StaticResource HomeButtonStyle}" />
                 </StackLayout>
             </StackLayout>
         </ScrollView>
