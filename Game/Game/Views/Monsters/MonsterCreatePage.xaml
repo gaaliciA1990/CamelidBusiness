@@ -67,13 +67,11 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
-
-                    <Grid Grid.Row="0"
-                          HorizontalOptions="FillAndExpand">
-
-                        <Entry x:Name="NameEntry"
+                    
+                    <Entry x:Name="NameEntry"
+                           Grid.Row="0"
                                FontSize="Medium"
-                               HorizontalOptions="CenterAndExpand"
+                               HorizontalOptions="FillAndExpand"
                                BackgroundColor="White"
                                MaxLength="20"
                                Keyboard="Text"
@@ -81,9 +79,8 @@
                                TextChanged="Entry_TextChanged"
                                Text="{Binding Data.Name, Mode=TwoWay}"
                                Style="{StaticResource EntryStyle}" />
-                    </Grid>
 
-                    <Grid Grid.Row="1"
+                        <Grid Grid.Row="1"
                           HorizontalOptions="FillAndExpand"
                           VerticalOptions="FillAndExpand">
                         <Grid.ColumnDefinitions>
