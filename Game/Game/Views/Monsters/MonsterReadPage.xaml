@@ -166,8 +166,12 @@
                         </Grid>
 
                         <!--Items selection-->
-                        <StackLayout x:Name="ItemBox" Margin="15" VerticalOptions="Center"> 
-                        </StackLayout>
+                        <Frame BorderColor="Black"
+                               CornerRadius="10"
+                               >
+                            <StackLayout x:Name="ItemBox" VerticalOptions="Center"> 
+                            </StackLayout>
+                        </Frame>    
 
                     </StackLayout>
                 </Grid>
