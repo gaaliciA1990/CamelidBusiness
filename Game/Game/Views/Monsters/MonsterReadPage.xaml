@@ -163,14 +163,6 @@
                                     <Label TextColor="Black" VerticalOptions="CenterAndExpand"  FontAttributes="Bold" Text="{Binding Data.Speed , StringFormat='  {0:G}'}" FontSize="Medium" HorizontalOptions="CenterAndExpand" />
                                 </Grid>
                             </StackLayout>
-
-                            <!--Unique Item selection--><!--
-                                <Picker x:Name="UniqueItemPicker"
-                                        IsEnabled="False"
-                                        Title="Select a Unique Item"
-                                        HorizontalOptions="FillAndExpand"
-                                        BackgroundColor="White"
-                                        ItemsSource="{x:Static local:ItemLocationEnumHelper.GetListItem}" />-->
                         </Grid>
 
                         <!--Items selection-->
