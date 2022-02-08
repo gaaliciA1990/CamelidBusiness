@@ -296,17 +296,35 @@
     <BundleResource Include="Resources\logo_placeholder.PNG" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\alpaca1.png" />
-    <Content Include="Resources\alpaca2.png" />
-    <Content Include="Resources\alpaca3.png" />
     <BundleResource Include="Resources\alpacaclanlogo.png" />
-    <Content Include="Resources\llama1.png" />
-    <Content Include="Resources\llama2.png" />
-    <Content Include="Resources\llama3.png" />
     <BundleResource Include="Resources\llamaclanlogo.png" />
-    <Content Include="Resources\vicuna1.png" />
-    <Content Include="Resources\vicuna2.png" />
-    <Content Include="Resources\vicuna3.png" />
     <BundleResource Include="Resources\vicunaclanlogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\vicuna2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\vicuna3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\alpaca1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\alpaca2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\alpaca3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\llama1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\llama2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\llama3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\vicuna1.png" />
   </ItemGroup>
 </Project>
