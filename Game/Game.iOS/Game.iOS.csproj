@@ -342,4 +342,7 @@
   <ItemGroup>
     <BundleResource Include="Resources\characters.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\monsters.png" />
+  </ItemGroup>
 </Project>
