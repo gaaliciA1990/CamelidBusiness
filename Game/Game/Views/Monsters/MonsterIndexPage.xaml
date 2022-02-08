@@ -94,15 +94,6 @@
                                                            FontSize="15"
                                                            HorizontalTextAlignment="Center"/>
                                                 </Frame>
-
-                                                <Frame OutlineColor="Black"
-                                                           Padding="3"
-                                                           BackgroundColor="LightCyan">
-                                                    <Label x:Name="MaxHealthLabel"
-                                                           Text="{Binding Path=MaxHealth, StringFormat='HP {0:G}'}"
-                                                           Style="{StaticResource ListStyle}"
-                                                           FontSize="15"/>
-                                                </Frame>
                                             </StackLayout>
                                         </StackLayout>
                                     </Grid>
