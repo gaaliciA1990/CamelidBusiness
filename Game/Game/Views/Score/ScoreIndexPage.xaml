@@ -11,9 +11,18 @@
              NavigationPage.HasNavigationBar="False">
 
     <ContentPage.Content>
-        <StackLayout Style="{StaticResource OuterBoxStack}"
-                     HorizontalOptions="FillAndExpand">
-            <StackLayout Orientation="Horizontal"
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+        
+            <StackLayout Grid.Row="0" Grid.Column="0" 
+                         Orientation="Horizontal"
                          HorizontalOptions="FillAndExpand">
                 <Frame CornerRadius="15"
                        HorizontalOptions="StartAndExpand"
@@ -47,75 +56,59 @@
 
             </StackLayout>
 
-            <Frame BorderColor="Transparent"
-                   VerticalOptions="FillAndExpand"
-                   HorizontalOptions="CenterAndExpand"
-                   RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.33}"
-                   RelativeLayout.YConstraint="{ConstraintExpression Type=Constant, Constant=0}"
-                   RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.33}"
-                   RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1.0}"
-                   BackgroundColor="{StaticResource PageBackgroundColor}">
 
-                <ListView x:Name="DataListView"
-                          ItemsSource="{Binding Dataset}"
-                          IsRefreshing="{Binding IsBusy, Mode=OneWay}"
-                          RefreshCommand="{Binding LoadItemsCommand}"
-                          CachingStrategy="RecycleElement"
-                          ItemSelected="OnItemSelected"
-                          HasUnevenRows="true"
-                          Margin="5,0,5,0"
-                          BackgroundColor="{StaticResource PageBackgroundColor}">
+            <Frame Grid.Row="1" Grid.Column="0" BorderColor="Transparent" BackgroundColor="#50FFFFFF">
+                <ListView  x:Name="DataListView"
+                       ItemsSource="{Binding Dataset}"
+                       ItemSelected="OnItemSelected"
+                       HasUnevenRows="true"
+                       Margin="5,0,5,0">
                     <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <Grid ColumnSpacing="1"
-                                      RowSpacing="1"
-                                      HorizontalOptions="CenterAndExpand">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="auto" />
-                                    </Grid.ColumnDefinitions>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <Grid Padding="20">
                                     <Grid.RowDefinitions>
-                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="Auto"/>
                                     </Grid.RowDefinitions>
-                                    <StackLayout Orientation="Vertical"
-                                                 HorizontalOptions="CenterAndExpand">
-                                        <Frame HorizontalOptions="Center"
-                                               BackgroundColor="Transparent"
-                                               BorderColor="Transparent"
-                                               Margin="0,10,0,0">
-                                            <!--Score Name-->
-                                            <Label x:Name="NameLabel"
-                                                   FontSize="Medium"
-                                                   FontAttributes="Bold"
-                                                   Grid.Column="0"
-                                                   Grid.Row="0"
-                                                   Text="{Binding Name}"
-                                                   Style="{StaticResource ListStyle}"
-                                                   HorizontalOptions="CenterAndExpand"/>
-                                        </Frame>
-                                        <StackLayout Orientation="Horizontal">
-                                            <Frame BackgroundColor="LightGray"
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+
+
+                                    <Label FontSize="Medium"
+                                           FontAttributes="Bold"
+                                           Grid.Column="0"
+                                           Grid.Row="0"
+                                           Grid.ColumnSpan="2"
+                                           Text="{Binding Name}"
+                                           Style="{StaticResource ListStyle}"
+                                           HorizontalOptions="CenterAndExpand"/>
+
+                                    <Frame Grid.Column="0" Grid.Row="1" HorizontalOptions="EndAndExpand" BackgroundColor="LightGray"
                                                    BorderColor="Black"
                                                    CornerRadius="10"
                                                    WidthRequest="175"
                                                    HeightRequest="30">
-                                                <!--Round Data-->
-                                                <Label x:Name="RoundLabel"
+                                        <Label x:Name="RoundLabel"
                                                        HorizontalTextAlignment="Center"
                                                        HorizontalOptions="CenterAndExpand"
                                                        FontAttributes="Bold"
                                                        FontSize="Small"
-                                                       Grid.Column="0"
-                                                       Grid.Row="1"
                                                        Text="Rounds"
                                                        Style="{StaticResource ListStyle}" />
-                                            </Frame>
-                                            <Frame BackgroundColor="White"
+                                    </Frame>
+
+                                    <Frame Grid.Column="1" Grid.Row="1" HorizontalOptions="StartAndExpand" BackgroundColor="White"
                                                    BorderColor="Black"
                                                    CornerRadius="10"
                                                    WidthRequest="175"
                                                    HeightRequest="30">
-                                                <Label x:Name="RoundDataLabel"
+                                        <Label x:Name="RoundDataLabel"
                                                        HorizontalTextAlignment="Center"
                                                        HorizontalOptions="CenterAndExpand"
                                                        FontSize="Small"
@@ -123,17 +116,14 @@
                                                        Grid.Row="1"
                                                        Text="{Binding RoundCount}"
                                                        Style="{StaticResource ListStyle}" />
+                                    </Frame>
 
-                                            </Frame>
-                                        </StackLayout>
-                                        <StackLayout Orientation="Horizontal">
-                                            <Frame BackgroundColor="LightGray"
+                                    <Frame Grid.Column="0" Grid.Row="2" HorizontalOptions="EndAndExpand" BackgroundColor="LightGray"
                                                    BorderColor="Black"
                                                    CornerRadius="10"
                                                    WidthRequest="175"
                                                    HeightRequest="30">
-                                                <!--Score Data-->
-                                                <Label x:Name="ScoreLabel"
+                                        <Label x:Name="ScoreLabel"
                                                        HorizontalTextAlignment="Center"
                                                        HorizontalOptions="CenterAndExpand"
                                                        FontAttributes="Bold"
@@ -142,14 +132,14 @@
                                                        Grid.Row="2"
                                                        Text="Score"
                                                        Style="{StaticResource ListStyle}" />
-                                            </Frame>
+                                    </Frame>
 
-                                            <Frame BackgroundColor="White"
+                                    <Frame Grid.Column="1" Grid.Row="2" HorizontalOptions="StartAndExpand" BackgroundColor="White"
                                                    BorderColor="Black"
                                                    CornerRadius="10"
                                                    WidthRequest="175"
                                                    HeightRequest="30">
-                                                <Label x:Name="ScoreDataLabel"
+                                        <Label x:Name="ScoreDataLabel"
                                                        HorizontalTextAlignment="Center"
                                                        HorizontalOptions="CenterAndExpand"
                                                        FontSize="Small"
@@ -157,17 +147,19 @@
                                                        Grid.Row="2"
                                                        Text="{Binding ScoreTotal}"
                                                        Style="{StaticResource ListStyle}" />
-                                            </Frame>
-                                        </StackLayout>
-                                    </StackLayout>
+                                    </Frame>
+
                                 </Grid>
-                            </ViewCell>
-                        </DataTemplate>
+                            </ViewCell.View>
+                        </ViewCell>
+                    </DataTemplate>
                     </ListView.ItemTemplate>
-                </ListView>
+            </ListView>
+
             </Frame>
 
-            <Frame CornerRadius="15"
+            <Frame Grid.Row="2" Grid.Column="0"
+                   CornerRadius="15"
                    HorizontalOptions="EndAndExpand"
                    BackgroundColor="LightGray"
                    BorderColor="Transparent"
@@ -179,6 +171,8 @@
                     Clicked="StartGameButton_Clicked"
                     FontAttributes="Bold"/>
             </Frame>
-        </StackLayout>
+
+        </Grid>
+
     </ContentPage.Content>
 </ContentPage>
