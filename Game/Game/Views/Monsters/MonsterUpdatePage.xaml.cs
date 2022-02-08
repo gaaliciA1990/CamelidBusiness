@@ -417,10 +417,8 @@ namespace Game.Views
             {
                 _ = ItemBox.Children.Remove(data);
             }
-
-            //Add a StackLayout for each of the children 
-            //Placeholder, unique items will have their unique location enum
-            ItemBox.Children.Add(GetItemToDisplay(ItemLocationEnum.Head));
+            //Add the items to the stack for Unique Items         
+            ItemBox.Children.Add(GetItemToDisplay());
         }
 
         /// <summary>
@@ -428,12 +426,11 @@ namespace Game.Views
         /// </summary>
         /// <param name="location"></param>
         /// <returns></returns>
-        public bool ShowPopup(ItemLocationEnum location)
+        public bool ShowPopup()
         {
             PopupItemSelector.IsVisible = true;
 
-            PopupLocationLabel.Text = "Items for :";
-            PopupLocationValue.Text = location.ToMessage();
+            PopupLocationLabel.Text = "Items for Unique Drop:";
 
             // Make a fake item for None
             var NoneItem = new ItemModel
@@ -451,13 +448,10 @@ namespace Game.Views
             };
 
             // Add the rest of the items to the list
-            itemList.AddRange(ItemIndexViewModel.Instance.GetLocationItems(location));
+            itemList.AddRange(ItemIndexViewModel.Instance.UniqueItems);
 
             // Populate the list with the items
             PopupLocationItemListView.ItemsSource = itemList;
-
-            // Remember the location for this popup
-            PopupLocationEnum = location;
 
             return true;
         }
@@ -467,7 +461,7 @@ namespace Game.Views
         /// </summary>
         /// <param name="location"></param>
         /// <returns></returns>
-        public StackLayout GetItemToDisplay(ItemLocationEnum location)
+        public StackLayout GetItemToDisplay()
         {
             // Get the Item, if it exist show the info
             // If it does not exist, show a Plus Icon for the location
@@ -475,10 +469,14 @@ namespace Game.Views
             // Defualt Image is the Plus
             var ImageSource = "icon_add.png";
 
-            var data = ViewModel.Data.GetItemByLocation(location);
+            //Get the current unique item's string id
+            var neededID = ViewModel.Data.UniqueItem;
+            //Find the unique Item by its id
+            var data = ItemIndexViewModel.Instance.UniqueItems.Where(a => a.Id.Equals(neededID)).FirstOrDefault();
+
             if (data == null)
             {
-                data = new ItemModel { Location = location, ImageURI = ImageSource };
+                data = new ItemModel {ImageURI = ImageSource };
             }
 
             // Hookup the Image Button to show the Item picture
@@ -489,12 +487,12 @@ namespace Game.Views
             };
 
             // Add a event to the user can click the item and see more
-            ItemButton.Clicked += (sender, args) => ShowPopup(location);
+            ItemButton.Clicked += (sender, args) => ShowPopup();
 
             // Add the Display Text for the item
             var ItemLabel = new Label
             {
-                Text = location.ToMessage(),
+                Text = "Unique Drop",
                 Style = (Style)Application.Current.Resources["ValueStyleMicro"],
                 HorizontalOptions = LayoutOptions.Center,
                 HorizontalTextAlignment = TextAlignment.Center
@@ -529,7 +527,8 @@ namespace Game.Views
                 return;
             }
 
-            _ = ViewModel.Data.AddItem(PopupLocationEnum, data.Id);
+            //Save the id of the selected item to the monster's unique item field
+            ViewModel.Data.UniqueItem = data.Id;
 
             UpdatePageBindingContext();
 
