@@ -21,14 +21,11 @@
     <ContentPage.Content>
         <StackLayout Style="{StaticResource OuterBoxStack}">
             <StackLayout Orientation="Horizontal">
-                <ImageButton Source="icon_cancel.png"
-                             Aspect="AspectFit"
+                <ImageButton x:Name="CancelButton"
+                             Source="icon_back.png"
                              HorizontalOptions="Start"
                              Clicked="Cancel_Clicked"
-                             Padding="10"
-                             WidthRequest="65"
-                             HeightRequest="65" />
-                
+                             Style="{StaticResource NavigationButtonStyle}" />
                 <StackLayout Grid.Row="0"
                              Grid.Column="0"
                              Grid.ColumnSpan="2"
@@ -59,12 +56,9 @@
                 </StackLayout>
 
                 <ImageButton Source="icon_save.png"
-                             Aspect="AspectFit"
                              HorizontalOptions="Start"
                              Clicked="Save_Clicked"
-                             Padding="10"
-                             WidthRequest="65"
-                             HeightRequest="65" />
+                             Style="{StaticResource NavigationButtonStyle}"/>
             </StackLayout>
 
             <ScrollView VerticalScrollBarVisibility="Always"
