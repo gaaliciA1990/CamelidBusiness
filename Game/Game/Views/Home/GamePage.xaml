@@ -25,7 +25,7 @@
                                  Grid.Row="0"
                                  Grid.Column="0">
 
-                        <ImageButton Source="item.png"
+                        <ImageButton Source="village.png"
                                      Style="{StaticResource ImageLargeStyle}"
                                      Clicked="VillageButton_Clicked" />
 
@@ -41,7 +41,7 @@
                         <Label Text="Dungeon"
                                Style="{StaticResource CenterMessageStyle}" />
 
-                        <ImageButton Source="item.png"
+                        <ImageButton Source="dungeon_door.png"
                                      Style="{StaticResource ImageLargeStyle}"
                                      Clicked="DungeonButton_Clicked" />
 
