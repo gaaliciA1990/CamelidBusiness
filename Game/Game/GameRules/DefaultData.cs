@@ -359,39 +359,39 @@ namespace Game.GameRules
             var datalist = new List<MonsterModel>()
             {
                 new MonsterModel {
-                    Name = "Green Troll",
+                    Name = "Angry Bear",
                     Description = "Big and Ugly",
-                    ImageURI = "troll1.png",
+                    ImageURI = "monster1.png",
                 },
 
                 new MonsterModel {
-                    Name = "Old Troll",
+                    Name = "Saavy Coyote",
                     Description = "Old and Powerfull",
-                    ImageURI = "troll2.png",
+                    ImageURI = "monster2.png",
                 },
 
                 new MonsterModel {
-                    Name = "Dainty Troll",
-                    Description = "and fast",
-                    ImageURI = "troll3.png",
+                    Name = "Cunning Culpeo",
+                    Description = "Don't mess with",
+                    ImageURI = "monster3.png",
                 },
 
                 new MonsterModel {
-                    Name = "Troll's Troll",
-                    Description = "wozer",
-                    ImageURI = "troll4.png",
+                    Name = "Great Leader",
+                    Description = "Camelid with a grudge",
+                    ImageURI = "monster.png",
                 },
 
                 new MonsterModel {
-                    Name = "Warrior Troll",
-                    Description = "with sword",
-                    ImageURI = "troll5.png",
+                    Name = "Ferocious Lion",
+                    Description = "He's from the mountain",
+                    ImageURI = "monster5.png",
                 },
 
                 new MonsterModel {
-                    Name = "Ax Troll",
-                    Description = "with Hat and Ax",
-                    ImageURI = "troll6.png",
+                    Name = "Puma Pam",
+                    Description = "Sleek and fast",
+                    ImageURI = "monster6.png",
                 },
             };
 
