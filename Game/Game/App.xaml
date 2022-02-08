@@ -70,6 +70,8 @@
 
             <!-- Pages -->
             <Style TargetType="NavigationPage">
+                <Setter Property="Shell.NavBarIsVisible" Value="False"/>
+                <Setter Property="NavigationPage.HasNavigationBar" Value="False"/>
                 <Setter Property="BarBackgroundColor"
                         Value="{StaticResource ViewBackgroundColor}" />
                 <Setter Property="BarTextColor"
