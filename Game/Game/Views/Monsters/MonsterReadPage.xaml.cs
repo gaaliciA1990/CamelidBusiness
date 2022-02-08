@@ -36,7 +36,7 @@ namespace Game.Views
             BindingContext = this.ViewModel = data;
 
             AddItemsToDisplay();
-
+            DifficultyStack.Children.Add(CreateDifficultyButton());
             AttackBar.Progress = (float)ViewModel.Data.Attack / 20;
             DefenseBar.Progress = (float)ViewModel.Data.Defense / 20;
             SpeedBar.Progress = (float)ViewModel.Data.Speed / 20;
