@@ -268,9 +268,6 @@
     <AndroidResource Include="Resources\drawable\dice.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\icon_edit.png" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable\icon_home.png" />
   </ItemGroup>
   <ItemGroup>
@@ -325,7 +322,7 @@
     <AndroidResource Include="Resources\drawable\delete.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\edit button.png" />
+    <AndroidResource Include="Resources\drawable\icon_edit.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\exit.png" />
