@@ -30,6 +30,8 @@ namespace Game.Views
             BindingContext = this.viewModel = data;
 
             this.viewModel.Title = "Delete " + data.Title;
+
+            DifficultyStack.Children.Add(CreateDifficultyButton());
         }
 
         /// <summary>

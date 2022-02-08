@@ -79,49 +79,19 @@
                             </Grid.ColumnDefinitions>
 
                             <!--Difficulty-->
-                            <Label Text="DIFF: "
-                                   FontSize="Medium"
-                                   Grid.Row="0"
-                                   Grid.Column="0"
-                                   Style="{StaticResource LabelStyle}"
-                                   VerticalOptions="Center" />
                             <StackLayout Grid.Row="0"
-                                         Grid.Column="1"
+                                         Grid.ColumnSpan="2"
                                          Orientation="Horizontal"
-                                         VerticalOptions="Center">
+                                         VerticalOptions="FillAndExpand">
+                                <Label Text="DIFFICULTY "
+                                   FontSize="Medium"
+                                   Style="{StaticResource LabelStyle}"
+                                   HorizontalOptions="Center" />
 
-                                <Label Style="{StaticResource ValueStyle}"
-                                       FontAttributes="Bold"
-                                       Text="{Binding Data.Difficulty, StringFormat='  {0:G}'}"
-                                       HorizontalOptions="Start"
-                                       HorizontalTextAlignment="Start"
-                                       VerticalOptions="Center"
-                                       FontSize="Medium">
-                                    <Label.Margin>
-                                        <OnPlatform x:TypeArguments="Thickness">
-                                            <On Platform="iOS"
-                                                Value="15,0" />
-                                            <On Platform="Android"
-                                                Value="10,0" />
-                                        </OnPlatform>
-                                    </Label.Margin>
-                                </Label>
-                                <Slider Maximum="20"
-                                        IsEnabled="False"
-                                        Minimum="1"
-                                        Value="{Binding Data.Difficulty}"
-                                        BackgroundColor="White"
-                                        HorizontalOptions="FillAndExpand"
-                                        VerticalOptions="Center">
-                                    <Slider.Margin>
-                                        <OnPlatform x:TypeArguments="Thickness">
-                                            <On Platform="iOS"
-                                                Value="15,0" />
-                                            <On Platform="Android"
-                                                Value="10,0" />
-                                        </OnPlatform>
-                                    </Slider.Margin>
-                                </Slider>
+                                <StackLayout x:Name="DifficultyStack"
+                                         HorizontalOptions="Center">
+                                </StackLayout>
+
                             </StackLayout>
 
                             <!--ATTACK-->
