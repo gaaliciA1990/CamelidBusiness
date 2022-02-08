@@ -162,6 +162,13 @@
     <Content Include="llama3.png" />
     <Content Include="llamaclanlogo.png" />
     <Content Include="logo_placeholder.PNG" />
+    <Content Include="monster.png" />
+    <Content Include="monster1.png" />
+    <Content Include="monster2.png" />
+    <Content Include="monster3.png" />
+    <Content Include="monster4.png" />
+    <Content Include="monster5.png" />
+    <Content Include="monster6.png" />
     <Content Include="neck1.png" />
     <Content Include="neck2.png" />
     <Content Include="Properties\Default.rd.xml" />
@@ -184,13 +191,6 @@
     <Content Include="sword7.png" />
     <Content Include="sword8.png" />
     <Content Include="sword9.png" />
-    <Content Include="troll.png" />
-    <Content Include="troll1.png" />
-    <Content Include="troll2.png" />
-    <Content Include="troll3.png" />
-    <Content Include="troll4.png" />
-    <Content Include="troll5.png" />
-    <Content Include="troll6.png" />
     <Content Include="vicuna1.png" />
     <Content Include="vicuna2.png" />
     <Content Include="vicuna3.png" />
