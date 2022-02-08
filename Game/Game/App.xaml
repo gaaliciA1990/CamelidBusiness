@@ -65,6 +65,13 @@
                     </LinearGradientBrush>
                 </Setter>
             </Style>
+            
+            <!-- Home page background style-->
+            <Style x:Key="HomeStyle"
+                   TargetType="ContentPage">
+                <Setter Property="BackgroundImageSource"
+                        Value="homebackground.png" />
+            </Style>
 
             <!-- <Thickness x:Key="PageMargin">0</Thickness> -->
 
