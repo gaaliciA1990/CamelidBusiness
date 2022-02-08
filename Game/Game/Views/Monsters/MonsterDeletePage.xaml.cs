@@ -62,5 +62,34 @@ namespace Game.Views
             // Add your code here...
             return true;
         }
+
+        #region DifficultyLabel
+
+        /// <summary>
+        /// Function to create a button for each difficulty level
+        /// </summary>
+        /// <param name="difficulty"></param>
+        /// <returns></returns>
+        public Button CreateDifficultyButton()
+        {
+            string label = viewModel.Data.Difficulty.ToMessage();
+
+            //Add the basic stuff first
+            Button toReturn = new Button
+            {
+                Text = label,
+                BorderRadius = 10,
+                BorderWidth = 1,
+                BorderColor = Xamarin.Forms.Color.Black,
+                Padding = new Xamarin.Forms.Thickness(5.0),
+                IsEnabled = false,
+                MinimumWidthRequest = 70,
+                MinimumHeightRequest = 50
+            };
+
+            return toReturn;
+        }
+
+        #endregion DifficultyLabel
     }
 }
