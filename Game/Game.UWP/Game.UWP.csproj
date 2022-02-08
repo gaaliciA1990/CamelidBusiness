@@ -150,6 +150,7 @@
     <Content Include="delete.png" />
     <Content Include="dice.png" />
     <Content Include="dungeon_door.png" />
+    <Content Include="icon_back.png" />
     <Content Include="icon_edit.png" />
     <Content Include="exit.png" />
     <Content Include="feet1.png" />
