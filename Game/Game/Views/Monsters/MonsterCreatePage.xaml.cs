@@ -23,7 +23,7 @@ namespace Game.Views
     public partial class MonsterCreatePage : ContentPage
     {
         //placeholder texts
-        private readonly string nameHolder = "Give your monster a name";
+        private readonly string nameHolder = "Give it a name";
         private readonly string descriptionHolder = "Describe your monster";
 
         //Local storage for images
@@ -60,10 +60,11 @@ namespace Game.Views
             AddDifficultySelections();
 
             _ = UpdatePageBindingContext();
-            NameEntry.Placeholder = "Give it a name";
-            DescriptionEntry.Placeholder = "Describe your monster";
+
             //Erase default info
             // TODO: update this when we get connected to the database
+            NameEntry.Placeholder = nameHolder;
+            DescriptionEntry.Placeholder = descriptionHolder;
             DescriptionEntry.Text = "";
             NameEntry.Text = "";
         }
