@@ -6,31 +6,25 @@
              NavigationPage.HasNavigationBar="False">
 
     <ContentPage.Content>
-        <ScrollView VerticalOptions="CenterAndExpand"
-                    HorizontalOptions="CenterAndExpand">
+        <StackLayout VerticalOptions="Center"
+                     HorizontalOptions="CenterAndExpand"
+                     Padding="30">
+            <Image Source="logo.png"
+                   Style="{StaticResource ImageLargeStyle}"
+                   Scale="1.5"
+                   Margin="5" />
 
-            <StackLayout VerticalOptions="Center"
-                         HorizontalOptions="Center">
-
-                <Image Source="logo.png"
-                       Style="{StaticResource ImageLargeStyle}" />
-                <Label Text="Help them on their mission."
-                       Style="{StaticResource CenterMessageStyle}"
-                       FontSize="Micro"
-                       LineBreakMode="WordWrap"
-                       MaxLines="5" />
-                
-                <StackLayout HorizontalOptions="Center">
-                    <ImageButton x:Name="GameButton"
-                                 Source="startgame.png"
-                                 Clicked="GameButton_Clicked"
-                                 Style="{StaticResource HomeButtonStyle}"/>
-                    <ImageButton x:Name="AboutButton"
-                                 Source="about_game.png"
-                                 Clicked="AboutButton_Clicked"
-                                 Style="{StaticResource HomeButtonStyle}" />
-                </StackLayout>
+            <StackLayout HorizontalOptions="Center"
+                         Padding="5">
+                <ImageButton x:Name="GameButton"
+                             Source="button_start.png"
+                             Clicked="GameButton_Clicked"
+                             Style="{StaticResource HomeButtonStyle}" />
+                <ImageButton x:Name="AboutButton"
+                             Source="about_game.png"
+                             Clicked="AboutButton_Clicked"
+                             Style="{StaticResource HomeButtonStyle}" />
             </StackLayout>
-        </ScrollView>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>
