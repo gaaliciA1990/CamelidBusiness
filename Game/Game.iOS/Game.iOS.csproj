@@ -272,9 +272,6 @@
     <BundleResource Include="Resources\rightarrow.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\logo_placeholder.PNG" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\alpacaclanlogo.png" />
     <BundleResource Include="Resources\llamaclanlogo.png" />
     <BundleResource Include="Resources\vicunaclanlogo.png" />
@@ -329,5 +326,20 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\homebackground.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\icon_home.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\rightarrow .png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\startgame.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\about game.png" />
   </ItemGroup>
 </Project>
