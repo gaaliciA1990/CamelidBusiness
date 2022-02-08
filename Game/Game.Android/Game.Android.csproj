@@ -304,7 +304,7 @@
     <AndroidResource Include="Resources\drawable\icon_add.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\random character icon.png" />
+    <AndroidResource Include="Resources\drawable\icon_random.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\slider_thumbnail.png" />
