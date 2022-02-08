@@ -348,6 +348,7 @@
             </Style>
 
             <!-- ImageButton -->
+            
             <Style TargetType="ImageButton">
                 <Setter Property="HeightRequest"
                         Value="45" />
@@ -361,6 +362,22 @@
                         Value="Center" />
                 <Setter Property="VerticalOptions"
                         Value="Center" />
+                <Setter Property="VerticalOptions"
+                        Value="CenterAndExpand" />
+            </Style>
+
+            <Style x:Name="NavigationButtonStyle"
+                   TargetType="ImageButton">
+                <Setter Property="Aspect"
+                        Value="AspectFit" />
+                <Setter Property="Padding"
+                        Value="10" />
+                <Setter Property="Scale"
+                        Value="1.5" />
+                <Setter Property="WidthRequest"
+                        Value="65" />
+                <Setter Property="HeightRequest"
+                        Value="65" />
             </Style>
 
             <Style TargetType="ImageButton"
