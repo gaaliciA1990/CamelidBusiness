@@ -28,7 +28,7 @@ namespace Game.GameRules
         /// <returns></returns>
         public static string GetMonsterUniqueItem()
         {
-            var result = ItemIndexViewModel.Instance.Dataset.ElementAt(DiceHelper.RollDice(1, ItemIndexViewModel.Instance.Dataset.Count()) - 1).Id;
+            var result = ItemIndexViewModel.Instance.UniqueItems.ElementAt(DiceHelper.RollDice(1, ItemIndexViewModel.Instance.UniqueItems.Count()) - 1).Id;
 
             return result;
         }
@@ -54,10 +54,10 @@ namespace Game.GameRules
         /// <returns></returns>
         public static string GetMonsterImage()
         {
+            //extract from our current dataset
+            var allURIs = from monster in MonsterIndexViewModel.Instance.Dataset select monster.ImageURI;
 
-            List<String> FirstNameList = new List<String> { "troll1.png", "troll2.png", "troll3.png", "troll4.png", "troll5.png", "troll6.png" };
-
-            var result = FirstNameList.ElementAt(DiceHelper.RollDice(1, FirstNameList.Count()) - 1);
+            var result = allURIs.ElementAt(DiceHelper.RollDice(1, allURIs.Count()) - 1);
 
             return result;
         }
@@ -86,7 +86,8 @@ namespace Game.GameRules
         public static string GetMonsterName()
         {
 
-            List<String> FirstNameList = new List<String> { "Arg", "Deg", "Ase", "Xes", "Zez", "Klk", "Oi", "Oni", "Tanu" };
+            //extract from our current dataset
+            var FirstNameList = from monster in MonsterIndexViewModel.Instance.Dataset select monster.Name;
 
             var result = FirstNameList.ElementAt(DiceHelper.RollDice(1, FirstNameList.Count()) - 1);
 
@@ -101,7 +102,8 @@ namespace Game.GameRules
         /// <returns></returns>
         public static string GetMonsterDescription()
         {
-            List<String> StringList = new List<String> { "eats Elf", "the Elf hater", "Elf destoryer", "Elf Hunter", "Elf Killer", "Can't we all get along?" };
+            //extract from our current dataset
+            var StringList = from monster in MonsterIndexViewModel.Instance.Dataset select monster.Description;
 
             var result = StringList.ElementAt(DiceHelper.RollDice(1, StringList.Count()) - 1);
 
