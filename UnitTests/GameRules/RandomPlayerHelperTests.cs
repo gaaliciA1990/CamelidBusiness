@@ -77,7 +77,7 @@ namespace UnitTests.Helpers
             _ = DiceHelper.DisableForcedRolls();
 
             // Assert
-            Assert.AreEqual("Deg", result);
+            Assert.AreEqual("Saavy Coyote", result);
         }
 
         [Test]
@@ -94,7 +94,7 @@ namespace UnitTests.Helpers
             _ = DiceHelper.DisableForcedRolls();
 
             // Assert
-            Assert.AreEqual("the Elf hater", result);
+            Assert.AreEqual("Old and Powerfull", result);
         }
 
         [Test]
@@ -193,7 +193,7 @@ namespace UnitTests.Helpers
             _ = DiceHelper.DisableForcedRolls();
 
             // Assert
-            Assert.AreEqual("troll2.png", result);
+            Assert.AreEqual("monster2.png", result);
         }
 
         [Test]
@@ -210,7 +210,7 @@ namespace UnitTests.Helpers
             _ = DiceHelper.DisableForcedRolls();
 
             // Assert
-            Assert.AreEqual("elf2.png", result);
+            Assert.AreEqual(("alpaca2.png", CharacterClanEnum.Alpaca), result);
         }
 
         [Test]
@@ -220,7 +220,7 @@ namespace UnitTests.Helpers
             _ = DiceHelper.EnableForcedRolls();
             _ = DiceHelper.SetForcedRollValue(2);
 
-            var expected = ItemIndexViewModel.Instance.Dataset.ElementAt(1).Id;
+            var expected = ItemIndexViewModel.Instance.UniqueItems.ElementAt(1).Id;
 
             // Act
             var result = RandomPlayerHelper.GetMonsterUniqueItem();
@@ -244,7 +244,7 @@ namespace UnitTests.Helpers
             // Reset
 
             // Assert
-            Assert.AreEqual(true, result.Name.Contains("Elf"));
+            Assert.AreEqual(true, result.Name.Contains("Ace"));
         }
 
         [Test]
