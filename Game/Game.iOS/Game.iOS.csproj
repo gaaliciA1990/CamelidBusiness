@@ -343,6 +343,14 @@
     <BundleResource Include="Resources\characters.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\button_continegame.png" />
+    <BundleResource Include="Resources\button_start.png" />
+    <BundleResource Include="Resources\button_startgame.png" />
+    <BundleResource Include="Resources\delete.png" />
+    <BundleResource Include="Resources\edit button.png" />
+    <BundleResource Include="Resources\exit.png" />
     <Content Include="Resources\monsters.png" />
+    <BundleResource Include="Resources\random character icon.png" />
+    <BundleResource Include="Resources\slider_thumbnail.png" />
   </ItemGroup>
 </Project>
