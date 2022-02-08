@@ -36,6 +36,7 @@ namespace Game.ViewModels
                         {
                             instance = new ItemIndexViewModel();
                             instance.Initialize();
+                            instance.LoadUniqueItems();
                         }
                     }
                 }
@@ -57,7 +58,6 @@ namespace Game.ViewModels
         {
             Title = "Items";
 
-            UniqueItems = new ObservableCollection<ItemModel>();
 
             #region Messages
 
@@ -168,29 +168,17 @@ namespace Game.ViewModels
         public ObservableCollection<ItemModel> UniqueItems { get; set; }
 
         /// <summary>
-        /// Overloaded method from BaseViewModel
-        /// Load the Data from the Index Call into the Data List and sort items to Unique Item list as well
+        /// Sort out the unique items from the dataset
         /// </summary>
         /// <returns></returns>
-        public new async Task LoadDataFromIndexAsync()
+        public void LoadUniqueItems()
         {
-            Dataset.Clear();
-            var dataset = await DataStore.IndexAsync();
-
-            // Example of how to sort the database output using a linq query.
-            // Sort the list
-            dataset = SortDataset(dataset);
-
-            foreach (var data in dataset)
+            UniqueItems = new ObservableCollection<ItemModel>();
+            //Load from the dataset
+            var temp = Dataset.Where(a => a.IsUnique.Equals(true));
+            foreach (var item in temp)
             {
-                // Make a Copy of the Item Model to add to the List
-                Dataset.Add(data);
-
-                //Add to unique set if the item is unique
-                if (data.IsUnique)
-                {
-                    UniqueItems.Add(data);
-                }
+                UniqueItems.Add(item);
             }
         }
 
