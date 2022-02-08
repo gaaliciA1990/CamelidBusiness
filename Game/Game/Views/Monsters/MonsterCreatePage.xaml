@@ -301,15 +301,17 @@
                         </Grid>
 
                         <!--Items selection-->
-                        <StackLayout Orientation="Horizontal">
+                        <StackLayout Orientation="Horizontal"
+                                     HorizontalOptions="CenterAndExpand">
                             
-                            <Button x:Name="RollDice"
-                                    Text="Surprise Me!"
-                                    TextColor="Black"
+                            <ImageButton x:Name="RollDice" 
+                                    Source="dice.png"
                                     Clicked="RollDice_Clicked"
                                     BackgroundColor="Beige"
                                     VerticalOptions="Start"
-                                    CornerRadius="5" />
+                                    CornerRadius="5"
+                                    Style="{StaticResource ImageLargeStyle}"
+                                    HorizontalOptions="Start"/>
 
                             <StackLayout x:Name="ItemBox"/>
                         </StackLayout>
