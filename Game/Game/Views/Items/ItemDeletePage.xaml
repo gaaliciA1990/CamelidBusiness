@@ -12,12 +12,13 @@
 
     <ContentPage.ToolbarItems>
         <!--<ToolbarItem Text="Cancel" Clicked="Cancel_Clicked" IconImageSource="icon_cancel.png"/>
-        --><!--<ToolbarItem Text="Delete" Clicked="Delete_Clicked" IconImageSource="icon_delete.png"/>-->
+        -->
+        <!--<ToolbarItem Text="Delete" Clicked="Delete_Clicked" IconImageSource="icon_delete.png"/>-->
     </ContentPage.ToolbarItems>
 
     <ContentPage.Resources>
         <ResourceDictionary>
-            <local_helpers:StringEnumConverter x:Key="StringEnum"/>
+            <local_helpers:StringEnumConverter x:Key="StringEnum" />
         </ResourceDictionary>
     </ContentPage.Resources>
 
@@ -254,24 +255,18 @@
                                    HorizontalTextAlignment="Center"
                                    Grid.Row="0"
                                    Grid.ColumnSpan="2" />
-                            <Button Text="DELETE"
-                                    Grid.Row="1"
-                                    Grid.Column="0"
-                                    BackgroundColor="White"
-                                    BorderRadius="20"
-                                    BorderWidth="2"
-                                    BorderColor="Black"
-                                    HorizontalOptions="Center"
-                                    Clicked="Delete_Clicked" />
-                            <Button Text="CANCEL"
-                                    Grid.Row="1"
-                                    Grid.Column="1"
-                                    BackgroundColor="White"
-                                    BorderRadius="20"
-                                    BorderWidth="2"
-                                    BorderColor="Black"
-                                    HorizontalOptions="Center"
-                                    Clicked="Cancel_Clicked" />
+                            <ImageButton x:Name="DeleteButton"
+                                         Source="button_delete.png"
+                                         Grid.Row="1"
+                                         Grid.Column="0"
+                                         Clicked="Delete_Clicked"
+                                         Style="{StaticResource DeleteButtonStyle}" />
+                            <ImageButton x:Name="CancelButton"
+                                         Source="icon_cancel.png"
+                                         Grid.Row="1"
+                                         Grid.Column="1"
+                                         Clicked="Cancel_Clicked" 
+                                         Style="{StaticResource DeleteButtonStyle}"/>
                         </Grid>
                     </Frame>
                 </Grid>
