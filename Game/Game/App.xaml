@@ -380,6 +380,22 @@
                         Value="65" />
             </Style>
 
+            <Style x:Key="DeleteButtonStyle"
+                   TargetType="ImageButton">
+                <Setter Property="Aspect"
+                        Value="AspectFit" />
+                <Setter Property="Padding"
+                        Value="10" />
+                <Setter Property="Scale"
+                        Value="2" />
+                <Setter Property="WidthRequest"
+                        Value="75" />
+                <Setter Property="HeightRequest"
+                        Value="65" />
+                <Setter Property="HorizontalOptions"
+                        Value="CenterAndExpand" />
+            </Style>
+
             <Style TargetType="ImageButton"
                    x:Key="BattleToolbarStyle">
                 <Setter Property="Aspect"
