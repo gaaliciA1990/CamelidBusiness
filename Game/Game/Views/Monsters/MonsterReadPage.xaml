@@ -18,11 +18,10 @@
 
             <StackLayout Orientation="Horizontal"
                          Grid.Row="0">
-                <ImageButton Source="leftarrow.png"
-                             Aspect="AspectFit"
+                <ImageButton Source="icon_back.png"
                              HorizontalOptions="Start"
                              Clicked="Back_Clicked"
-                             Padding="10" />
+                             Style="{StaticResource NavigationButtonStyle}"/>
 
                 <Label FontSize="Large"
                        FontAttributes="Bold, Italic"
@@ -32,16 +31,14 @@
                        Style="{StaticResource ValueStyle}" />
 
                 <ImageButton Source="icon_delete.png"
-                             Aspect="AspectFit"
                              HorizontalOptions="End"
                              Clicked="Delete_Clicked"
-                             Padding="10" />
+                             Style="{StaticResource NavigationButtonStyle}" />
 
                 <ImageButton Source="icon_edit.png"
-                             Aspect="AspectFit"
                              HorizontalOptions="End"
                              Clicked="Update_Clicked"
-                             Padding="10" />
+                             Style="{StaticResource NavigationButtonStyle}" />
             </StackLayout>
             
             <StackLayout Grid.Row="1">
