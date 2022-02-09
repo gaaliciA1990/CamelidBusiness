@@ -652,6 +652,16 @@
                         Value="{StaticResource PrimaryBackgroundColor}" />
             </Style>
 
+            <Style x:Key="CrudiTopEntryFrame"
+                   TargetType="Frame">
+                <Setter Property="CornerRadius"
+                        Value="20" />
+                <Setter Property="BackgroundColor"
+                        Value="#FFFF" />
+                <Setter Property="HorizontalOptions"
+                        Value="CenterAndExpand" />
+            </Style>
+
             <Style TargetType="Frame"
                    x:Key="PlayerBattleOuterFrame">
                 <Setter Property="HeightRequest"
