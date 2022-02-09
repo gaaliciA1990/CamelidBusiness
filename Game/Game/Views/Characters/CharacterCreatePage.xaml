@@ -72,17 +72,10 @@
                                Grid.Row="0"
                                Grid.Column="0">
                             <Entry  x:Name="NameEntry"
-                                    FontSize="Medium"
-                                    HorizontalOptions="Center"
-                                    BackgroundColor="Transparent"
-                                    TextColor="#15071D"
-                                    MaxLength="20"
-                                    Keyboard="Text"
                                     WidthRequest="125"
-                                    ReturnType="Done"
                                     TextChanged="Entry_TextChanged"
                                     Text="{Binding Data.Name, Mode=TwoWay}"
-                                    Style="{StaticResource EntryStyle}" />
+                                    Style="{StaticResource EntryTopStyle}" />
                         </Frame>
 
                         <Frame Style="{StaticResource CrudiTopEntryFrame }" 
@@ -134,19 +127,10 @@
                     </Grid>
                     <Frame Grid.Row="2"
                            Style="{StaticResource CrudiBottomEnterFrame}">
-
                         <Entry x:Name="DescriptionEntry"
-                               FontSize="Medium"
-                               HorizontalOptions="FillAndExpand"
-                               BackgroundColor="Transparent"
-                               TextColor="#FFFF"
-                               MaxLength="50"
-                               Keyboard="Text"
-                               ReturnType="Done"
-                               IsSpellCheckEnabled="True"
                                TextChanged="Entry_TextChanged"
                                Text="{Binding Data.Description, Mode= TwoWay}"
-                               Style="{StaticResource EntryStyle}" />
+                               Style="{StaticResource EntryBottomStyle}" />
                     </Frame>
 
                 </Grid>
