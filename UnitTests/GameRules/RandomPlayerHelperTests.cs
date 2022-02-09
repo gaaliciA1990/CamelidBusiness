@@ -220,7 +220,7 @@ namespace UnitTests.Helpers
             _ = DiceHelper.EnableForcedRolls();
             _ = DiceHelper.SetForcedRollValue(2);
 
-            var expected = ItemIndexViewModel.Instance.UniqueItems.ElementAt(1).Id;
+            var expected = ItemIndexViewModel.Instance.Dataset.ElementAt(1).Id;
 
             // Act
             var result = RandomPlayerHelper.GetMonsterUniqueItem();
