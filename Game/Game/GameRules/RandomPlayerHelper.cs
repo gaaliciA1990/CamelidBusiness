@@ -28,12 +28,24 @@ namespace Game.GameRules
         /// <returns></returns>
         public static string GetMonsterUniqueItem()
         {
-            var result = ItemIndexViewModel.Instance.UniqueItems.ElementAt(DiceHelper.RollDice(1, ItemIndexViewModel.Instance.UniqueItems.Count()) - 1).Id;
 
-            var forTest = ItemIndexViewModel.Instance.Dataset.ElementAt(DiceHelper.RollDice(1, ItemIndexViewModel.Instance.Dataset.Count()) - 1).Id;
+            var result = ItemIndexViewModel.Instance.Dataset.ElementAt(DiceHelper.RollDice(1, ItemIndexViewModel.Instance.Dataset.Count()) - 1).Id;
 
             return result;
         }
+
+        /// <summary>
+        /// Get A Random unique item
+        /// </summary>
+        /// <returns></returns>
+        public static string GetRandomUniqueItem()
+        {
+
+            var result = ItemIndexViewModel.Instance.UniqueItems.ElementAt(DiceHelper.RollDice(1, ItemIndexViewModel.Instance.UniqueItems.Count()) - 1).Id;
+
+            return result;
+        }
+        
 
         /// <summary>
         /// Get A Random Difficulty
