@@ -780,6 +780,8 @@
             <!-- Slider -->
             <Style TargetType="Slider"
                    x:Key="SliderStyle">
+                <Setter Property="ThumbImageSource"
+                        Value="slider_thumbnail.png" />
                 <Setter Property="HorizontalOptions"
                         Value="FillAndExpand" />
                 <Setter Property="VerticalOptions"
