@@ -282,13 +282,15 @@
                         <!--Items selection-->
                         <StackLayout Orientation="Horizontal">
 
-                            <Button x:Name="RollDice"
-                                    Text="Surprise Me!"
-                                    TextColor="Black"
+                            <ImageButton x:Name="RollDice"
+                                    Source="icon_dice.png"
                                     Clicked="RollDice_Clicked"
                                     BackgroundColor="Beige"
                                     VerticalOptions="Start"
-                                    CornerRadius="5" />
+                                    CornerRadius="5" 
+                                    Style="{StaticResource ImageLargeStyle}"
+                                    HeightRequest="80"
+                                    WidthRequest="80"/>
 
                             <StackLayout x:Name="ItemBox"/>
                         </StackLayout>
