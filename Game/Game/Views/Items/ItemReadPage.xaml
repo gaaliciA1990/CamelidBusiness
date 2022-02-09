@@ -19,13 +19,9 @@
 
     <StackLayout Style="{StaticResource OuterBoxStack}">
         <StackLayout Orientation="Horizontal">
-            <ImageButton Source="leftarrow.png"
-                         Aspect="AspectFit"
-                         HorizontalOptions="Start"
-                         Clicked="BackButton_Clicked"
-                         Padding="10"
-                         WidthRequest="65"
-                         HeightRequest="65" />
+            <ImageButton Source="icon_back.png"
+                         Style="{StaticResource NavigationButtonStyle}"
+                         Clicked="BackButton_Clicked"/>
 
             <Label FontSize="Large"
                    FontAttributes="Bold, Italic"
@@ -35,20 +31,14 @@
                    Style="{StaticResource ValueStyle}" />
 
             <ImageButton Source="icon_delete.png"
-                         Aspect="AspectFit"
                          HorizontalOptions="End"
                          Clicked="Delete_Clicked"
-                         Padding="10"
-                         WidthRequest="65"
-                         HeightRequest="65" />
+                         Style="{StaticResource NavigationButtonStyle}"/>
 
             <ImageButton Source="icon_edit.png"
-                         Aspect="AspectFit"
                          HorizontalOptions="End"
                          Clicked="Update_Clicked"
-                         Padding="10"
-                         WidthRequest="65"
-                         HeightRequest="65" />
+                         Style="{StaticResource NavigationButtonStyle}" />
         </StackLayout>
 
         <ScrollView VerticalScrollBarVisibility="Always"
