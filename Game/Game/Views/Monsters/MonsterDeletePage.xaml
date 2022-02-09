@@ -25,7 +25,7 @@
                        Text="{Binding Data.Name, StringFormat= 'Delete: {0:G}?'}"
                        Style="{StaticResource ValueStyle}" />
             </StackLayout>
-            
+
             <ScrollView Grid.Row="1">
                 <Grid x:Name="FormLayoutGrid">
                     <Grid.ColumnDefinitions>
@@ -84,12 +84,12 @@
                                          Orientation="Horizontal"
                                          VerticalOptions="FillAndExpand">
                                 <Label Text="DIFFICULTY "
-                                   FontSize="Medium"
-                                   Style="{StaticResource LabelStyle}"
-                                   HorizontalOptions="Center" />
+                                       FontSize="Medium"
+                                       Style="{StaticResource LabelStyle}"
+                                       HorizontalOptions="Center" />
 
                                 <StackLayout x:Name="DifficultyStack"
-                                         HorizontalOptions="Center">
+                                             HorizontalOptions="Center">
                                 </StackLayout>
 
                             </StackLayout>
@@ -261,7 +261,7 @@
                             </StackLayout>
                         </Grid>
                     </StackLayout>
-                    
+
                     <AbsoluteLayout Padding="0"
                                     HorizontalOptions="CenterAndExpand"
                                     VerticalOptions="CenterAndExpand"
@@ -286,24 +286,19 @@
                                        HorizontalTextAlignment="Center"
                                        Grid.Row="0"
                                        Grid.ColumnSpan="2" />
-                                <Button Text="DELETE"
-                                        Grid.Row="1"
-                                        Grid.Column="0"
-                                        BackgroundColor="White"
-                                        BorderRadius="15"
-                                        BorderWidth="2"
-                                        BorderColor="Black"
-                                        HorizontalOptions="Center"
-                                        Clicked="Delete_Clicked" />
-                                <Button Text="CANCEL"
-                                        Grid.Row="1"
-                                        Grid.Column="1"
-                                        BackgroundColor="White"
-                                        BorderRadius="15"
-                                        BorderWidth="2"
-                                        BorderColor="Black"
-                                        HorizontalOptions="Center"
-                                        Clicked="Cancel_Clicked" />
+                                <ImageButton x:Name="DeleteButton"
+                                             Source="button_delete.png"
+                                             Grid.Row="1"
+                                             Grid.Column="0"
+                                             Clicked="Delete_Clicked"
+                                             Style="{StaticResource DeleteButtonStyle}" />
+
+                                <ImageButton x:Name="CancelButton"
+                                             Source="icon_cancel.png"
+                                             Grid.Row="1"
+                                             Grid.Column="1"
+                                             Clicked="Cancel_Clicked"
+                                             Style="{StaticResource DeleteButtonStyle}" />
                             </Grid>
                         </Frame>
                     </AbsoluteLayout>
