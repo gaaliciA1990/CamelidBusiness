@@ -41,7 +41,7 @@
             <StackLayout Grid.Row="1">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="250" />
+                        <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
@@ -277,14 +277,6 @@
                                     </Slider.Margin>
                                 </Slider>
                             </StackLayout>
-
-                            <!--Unique Item selection-->
-                            <!--<Picker x:Name="UniqueItemPicker"
-                                        Title="Select a Unique Item"
-                                        HorizontalOptions="FillAndExpand"
-                                        BackgroundColor="White"
-                                        ItemsSource="{x:Static local:ItemLocationEnumHelper.GetListItem}" />-->
-
                         </Grid>
 
                         <!--Items selection-->
