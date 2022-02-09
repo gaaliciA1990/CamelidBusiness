@@ -278,21 +278,19 @@
                                 </Slider>
                             </StackLayout>
                         </Grid>
-
                         <!--Items selection-->
-                        <StackLayout Orientation="Horizontal">
-
+                        <StackLayout HorizontalOptions="CenterAndExpand" 
+                                     Orientation="Horizontal"
+                                     HeightRequest="90">
+                            <StackLayout x:Name="ItemBox"/>
                             <ImageButton x:Name="RollDice"
                                     Source="icon_dice.png"
                                     Clicked="RollDice_Clicked"
-                                    BackgroundColor="Beige"
-                                    VerticalOptions="Start"
                                     CornerRadius="5" 
-                                    Style="{StaticResource ImageLargeStyle}"
+                                    Style="{StaticResource ImageMediumStyle}"
                                     HeightRequest="80"
-                                    WidthRequest="80"/>
-
-                            <StackLayout x:Name="ItemBox"/>
+                                    WidthRequest="80"
+                                         HorizontalOptions="End"/>
                         </StackLayout>
                         
                     </StackLayout>
