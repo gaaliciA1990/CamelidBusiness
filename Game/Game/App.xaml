@@ -658,6 +658,20 @@
                         Value="20" />
                 <Setter Property="BackgroundColor"
                         Value="#FFFF" />
+                <Setter Property="BorderColor"
+                        Value="#FFFF" />
+                <Setter Property="HorizontalOptions"
+                        Value="CenterAndExpand" />
+            </Style>
+
+            <Style x:Key="CrudiBottomEnterFrame"
+                   TargetType="Frame">
+                <Setter Property="CornerRadius"
+                        Value="20" />
+                <Setter Property="BackgroundColor"
+                        Value="#4C3C48" />
+                <Setter Property="BorderColor"
+                        Value="#4C3C48" />
                 <Setter Property="HorizontalOptions"
                         Value="CenterAndExpand" />
             </Style>
