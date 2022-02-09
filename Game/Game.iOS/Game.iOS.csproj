@@ -343,7 +343,7 @@
     <BundleResource Include="Resources\button_continegame.png" />
     <BundleResource Include="Resources\button_start.png" />
     <BundleResource Include="Resources\button_startgame.png" />
-    <BundleResource Include="Resources\delete.png" />
+    <BundleResource Include="Resources\button_delete.png" />
     <BundleResource Include="Resources\icon_edit.png" />
     <BundleResource Include="Resources\exit.png" />
     <BundleResource Include="Resources\icon_back.png" />
