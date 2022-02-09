@@ -10,22 +10,23 @@
              Title="{Binding Title}"
              NavigationPage.HasNavigationBar="False">
 
-
     <ContentPage.Content>
         <StackLayout Style="{StaticResource OuterBoxStack}">
             <StackLayout Orientation="Horizontal">
-                <Button x:Name="BackButton"
-                        Text="Back"
-                        Clicked="Back_Clicked" />
+                <ImageButton x:Name="BackButton"
+                             Source="icon_back.png"
+                             Clicked="Back_Clicked"
+                             Style="{StaticResource NavigationButtonStyle}" />
 
                 <Label HorizontalOptions="CenterAndExpand"
                        Text="Monster List Page"
                        Style="{StaticResource HeaderStyle}"
                        FontSize="Large" />
 
-                <Button x:Name="CreateButton"
-                        Text="Create"
-                        Clicked="CreateMonster_Clicked" />
+                <ImageButton x:Name="CreateButton"
+                             Source="icon_add.png"
+                             Clicked="CreateMonster_Clicked"
+                             Style="{StaticResource NavigationButtonStyle}"/>
             </StackLayout>
 
             <ScrollView VerticalScrollBarVisibility="Always">
@@ -38,21 +39,24 @@
                         <DataTemplate>
                             <Grid HeightRequest="150">
                                 <Frame OutlineColor="Black"
-                                           Padding="1">
+                                       Padding="1">
                                     <Frame.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="FlexMonster_Clicked" CommandParameter="{Binding Id}"/>
+                                        <TapGestureRecognizer Tapped="FlexMonster_Clicked"
+                                                              CommandParameter="{Binding Id}" />
                                     </Frame.GestureRecognizers>
                                     <Grid BackgroundColor="LightSeaGreen">
 
                                         <Frame OutlineColor="Black"
-                                                   BackgroundColor="LightBlue"
-                                                   HeightRequest="100" WidthRequest="80" Margin="0,10,0,10">
+                                               BackgroundColor="LightBlue"
+                                               HeightRequest="100"
+                                               WidthRequest="80"
+                                               Margin="0,10,0,10">
                                             <Image x:Name="ImageLabel"
-                                                   Source="{Binding ImageURI}"  
+                                                   Source="{Binding ImageURI}"
                                                    Style="{StaticResource ImageBattleLargeStyle}"
-                                                   AbsoluteLayout.LayoutBounds="0.47, 0.1, 3, 3"  
-                                                   AbsoluteLayout.LayoutFlags="All"  
-                                                   HorizontalOptions="StartAndExpand"/>
+                                                   AbsoluteLayout.LayoutBounds="0.47, 0.1, 3, 3"
+                                                   AbsoluteLayout.LayoutFlags="All"
+                                                   HorizontalOptions="StartAndExpand" />
                                         </Frame>
                                         <StackLayout Grid.Column="1"
                                                      Grid.Row="0"
@@ -75,24 +79,23 @@
                                                    BackgroundColor="LightCyan"
                                                    Padding="1"
                                                    WidthRequest="100">
-                                                <Label 
-                                                           x:Name="DifficultyLabel"
-                                                    HorizontalOptions="Center"
-                                                           Text="{Binding Difficulty}"
-                                                           FontSize="15"
-                                                           Style="{StaticResource ListStyle}"
-                                                           BackgroundColor="LightCyan"/>
+                                                <Label x:Name="DifficultyLabel"
+                                                       HorizontalOptions="Center"
+                                                       Text="{Binding Difficulty}"
+                                                       FontSize="15"
+                                                       Style="{StaticResource ListStyle}"
+                                                       BackgroundColor="LightCyan" />
                                             </Frame>
 
                                             <StackLayout Orientation="Horizontal">
                                                 <Frame OutlineColor="Black"
-                                                           Padding="3"
-                                                           BackgroundColor="LightCyan">
+                                                       Padding="3"
+                                                       BackgroundColor="LightCyan">
                                                     <Label x:Name="LevelLabel"
                                                            Text="{Binding Path=Level, StringFormat='LVL {0:G}'}"
                                                            Style="{StaticResource ListStyle}"
                                                            FontSize="15"
-                                                           HorizontalTextAlignment="Center"/>
+                                                           HorizontalTextAlignment="Center" />
                                                 </Frame>
                                             </StackLayout>
                                         </StackLayout>
