@@ -347,6 +347,7 @@
     <BundleResource Include="Resources\icon_edit.png" />
     <BundleResource Include="Resources\exit.png" />
     <BundleResource Include="Resources\icon_back.png" />
+    <BundleResource Include="Resources\icon_dice.png" />
     <Content Include="Resources\monsters.png" />
     <BundleResource Include="Resources\icon_random.png" />
     <BundleResource Include="Resources\slider_thumbnail.png" />
