@@ -12,18 +12,20 @@
     <ContentPage.Content>
         <StackLayout Style="{StaticResource OuterBoxStack}">
             <StackLayout Orientation="Horizontal">
-                <Button x:Name="BackButton"
-                        Text="Back"
-                        Clicked="Back_Clicked" />
+                <ImageButton x:Name="BackButton"
+                             Source="icon_back.png"
+                             Clicked="Back_Clicked" 
+                             Style="{StaticResource NavigationButtonStyle}"/>
 
                 <Label HorizontalOptions="CenterAndExpand"
                        Text="Character List Page"
                        Style="{StaticResource HeaderStyle}"
                        FontSize="Large" />
 
-                <Button x:Name="CreateButton"
-                        Text="Create"
-                        Clicked="CreateCharacter_Clicked" />
+                <ImageButton x:Name="CreateButton"
+                             Source="icon_add.png"
+                             Clicked="CreateCharacter_Clicked" 
+                             Style="{StaticResource NavigationButtonStyle}"/>
             </StackLayout>
 
             <ScrollView VerticalScrollBarVisibility="Always">
@@ -36,24 +38,27 @@
                         <DataTemplate>
                             <Grid HeightRequest="150">
                                 <Frame OutlineColor="Black"
-                                           Padding="1">
+                                       Padding="1">
                                     <Frame.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="FlexCharacter_Clicked" CommandParameter="{Binding Id}"/>
+                                        <TapGestureRecognizer Tapped="FlexCharacter_Clicked"
+                                                              CommandParameter="{Binding Id}" />
                                     </Frame.GestureRecognizers>
                                     <Grid BackgroundColor="LightSeaGreen">
 
                                         <Frame OutlineColor="Black"
-                                                   BackgroundColor="LightBlue"
-                                                   HeightRequest="100" WidthRequest="80" Margin="0,10,0,10">
+                                               BackgroundColor="LightBlue"
+                                               HeightRequest="100"
+                                               WidthRequest="80"
+                                               Margin="0,10,0,10">
                                             <AbsoluteLayout IsClippedToBounds="True">
                                                 <Image x:Name="ImageLabel"
-                                                       Source="{Binding ImageURI}"  
+                                                       Source="{Binding ImageURI}"
                                                        Style="{StaticResource ImageBattleLargeStyle}"
                                                        Scale="4"
                                                        Aspect="AspectFit"
-                                                       AbsoluteLayout.LayoutBounds="-0.03, -0.06, 3, 3"  
-                                                       AbsoluteLayout.LayoutFlags="All"  
-                                                       HorizontalOptions="StartAndExpand"/>
+                                                       AbsoluteLayout.LayoutBounds="-0.03, -0.06, 3, 3"
+                                                       AbsoluteLayout.LayoutFlags="All"
+                                                       HorizontalOptions="StartAndExpand" />
                                             </AbsoluteLayout>
                                         </Frame>
                                         <StackLayout Grid.Column="1"
@@ -78,36 +83,39 @@
                                                    Padding="1"
                                                    WidthRequest="100">
                                                 <Grid HorizontalOptions="Center">
-                                                    <Image Grid.Row="0" Grid.Column="0"  Source="{Binding Clan, StringFormat= '{0:G}clanlogo.png'}"
+                                                    <Image Grid.Row="0"
+                                                           Grid.Column="0"
+                                                           Source="{Binding Clan, StringFormat= '{0:G}clanlogo.png'}"
                                                            WidthRequest="25"
-                                                           HeightRequest="25"  />
-                                                    <Label Grid.Row="0" Grid.Column="1"
+                                                           HeightRequest="25" />
+                                                    <Label Grid.Row="0"
+                                                           Grid.Column="1"
                                                            x:Name="ClanLabel"
                                                            Text="{Binding Clan}"
                                                            FontSize="15"
                                                            Style="{StaticResource ListStyle}"
-                                                           BackgroundColor="LightCyan"/>
+                                                           BackgroundColor="LightCyan" />
                                                 </Grid>
                                             </Frame>
 
                                             <StackLayout Orientation="Horizontal">
                                                 <Frame OutlineColor="Black"
-                                                           Padding="3"
-                                                           BackgroundColor="LightCyan">
+                                                       Padding="3"
+                                                       BackgroundColor="LightCyan">
                                                     <Label x:Name="LevelLabel"
                                                            Text="{Binding Path=Level, StringFormat='LVL {0:G}'}"
                                                            Style="{StaticResource ListStyle}"
                                                            FontSize="15"
-                                                           HorizontalTextAlignment="Center"/>
+                                                           HorizontalTextAlignment="Center" />
                                                 </Frame>
 
                                                 <Frame OutlineColor="Black"
-                                                           Padding="3"
-                                                           BackgroundColor="LightCyan">
+                                                       Padding="3"
+                                                       BackgroundColor="LightCyan">
                                                     <Label x:Name="MaxHealthLabel"
                                                            Text="{Binding Path=MaxHealth, StringFormat='HP {0:G}'}"
                                                            Style="{StaticResource ListStyle}"
-                                                           FontSize="15"/>
+                                                           FontSize="15" />
                                                 </Frame>
                                             </StackLayout>
                                         </StackLayout>
