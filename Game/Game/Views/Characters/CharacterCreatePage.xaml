@@ -68,10 +68,7 @@
                     <Grid Grid.Row="0"
                           HorizontalOptions="FillAndExpand">
 
-                        <Frame CornerRadius="10"
-                               BackgroundColor="#FFFF"
-                               BorderColor="#15071D"
-                               HorizontalOptions="StartAndExpand"
+                        <Frame Style="{StaticResource CrudiTopEntryFrame}"
                                Grid.Row="0"
                                Grid.Column="0">
                             <Entry  x:Name="NameEntry"
@@ -88,12 +85,9 @@
                                     Style="{StaticResource EntryStyle}" />
                         </Frame>
 
-                        <Frame Grid.Row="0"
-                               Grid.Column="1"
-                               BackgroundColor="#FFFF"
-                               BorderColor="#15071D"
-                               HorizontalOptions="CenterAndExpand"
-                               CornerRadius="10">
+                        <Frame Style="{StaticResource CrudiTopEntryFrame }" 
+                               Grid.Row="0"
+                               Grid.Column="1" >
                             <Picker x:Name="ClanPicker"
                                     BackgroundColor="Transparent"
                                     TextColor="#15071D"
