@@ -8,12 +8,10 @@
         <StackLayout Style="{StaticResource OuterBoxStack}"
                      VerticalOptions="FillAndExpand">
             <StackLayout Orientation="Horizontal">
-                <Button x:Name="HomeButton"
-                        Text="Home"
-                        Clicked="HomeButton_Clicked"
-                        Padding="5"
-                        WidthRequest="65"
-                        HeightRequest="35" />
+                <ImageButton x:Name="HomeButton"
+                             Source="icon_home.png"
+                             Clicked="HomeButton_Clicked"
+                             Style="{StaticResource NavigationButtonStyle}" />
             </StackLayout>
 
             <ScrollView Orientation="Vertical"
