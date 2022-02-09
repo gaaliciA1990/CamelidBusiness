@@ -32,7 +32,7 @@
             <Color x:Key="LightBackgroundColor">#B4B3B2</Color>
 
             <Color x:Key="PrimaryTextColor">#15071D</Color>
-            <Color x:Key="SecondaryTextColor">#FEBF1E</Color>
+            <Color x:Key="SecondaryTextColor">#FFFF</Color>
             <Color x:Key="TriciaryTextColor">#328706</Color>
 
             <Color x:Key="TransparentColor">Transparent</Color>
@@ -54,18 +54,21 @@
             <Color x:Key="BattleMapHitColor">darkorange</Color>
             <Color x:Key="BattleMapMissColor">darkred</Color>
             <Color x:Key="BattleMapLevelColor">skyblue</Color>
-            
-            
+
             <!--Styles for CRUDi pages-->
-            <Style x:Key="CRUDiStyle" TargetType="ContentPage">
+            <Style x:Key="CRUDiStyle"
+                   TargetType="ContentPage">
                 <Setter Property="Background">
-                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                        <GradientStop Color="#62a49a" Offset="0.0"/>
-                        <GradientStop Color="#f8de8f" Offset="0.75"/>
+                    <LinearGradientBrush StartPoint="0.5,0"
+                                         EndPoint="0.5,1">
+                        <GradientStop Color="#62a49a"
+                                      Offset="0.0" />
+                        <GradientStop Color="#f8de8f"
+                                      Offset="0.75" />
                     </LinearGradientBrush>
                 </Setter>
             </Style>
-            
+
             <!-- Home page background style-->
             <Style x:Key="HomeStyle"
                    TargetType="ContentPage">
@@ -77,8 +80,10 @@
 
             <!-- Pages -->
             <Style TargetType="NavigationPage">
-                <Setter Property="Shell.NavBarIsVisible" Value="False"/>
-                <Setter Property="NavigationPage.HasNavigationBar" Value="False"/>
+                <Setter Property="Shell.NavBarIsVisible"
+                        Value="False" />
+                <Setter Property="NavigationPage.HasNavigationBar"
+                        Value="False" />
                 <Setter Property="BarBackgroundColor"
                         Value="{StaticResource ViewBackgroundColor}" />
                 <Setter Property="BarTextColor"
@@ -348,14 +353,14 @@
             </Style>
 
             <!-- ImageButton -->
-            
+
             <Style TargetType="ImageButton">
                 <Setter Property="HeightRequest"
                         Value="45" />
                 <Setter Property="WidthRequest"
                         Value="45" />
                 <Setter Property="Aspect"
-                        Value="AspectFit"/>
+                        Value="AspectFit" />
                 <Setter Property="BackgroundColor"
                         Value="Transparent" />
                 <Setter Property="HorizontalOptions"
@@ -425,7 +430,7 @@
                 <Setter Property="HorizontalOptions"
                         Value="CenterAndExpand" />
                 <Setter Property="VerticalOptions"
-                        Value="CenterAndExpand"  />
+                        Value="CenterAndExpand" />
                 <Setter Property="Aspect"
                         Value="AspectFit" />
                 <Setter Property="Scale"
@@ -513,7 +518,6 @@
                 <Setter Property="Spacing"
                         Value="1" />
             </Style>
-
 
             <Style TargetType="StackLayout"
                    x:Key="ItemImageLabelBox"
@@ -747,8 +751,58 @@
                         Value="{StaticResource SecondaryTextColor}" />
                 <Setter Property="BackgroundColor"
                         Value="{StaticResource LightBackgroundColor}" />
+            </Style>
+
+            <Style TargetType="Entry"
+                   x:Key="EntryBottomStyle">
+                <Setter Property="FontSize"
+                        Value="Small" />
+                <Setter Property="HorizontalOptions"
+                        Value="FillAndExpand" />
+                <Setter Property="FontFamily"
+                        Value="myriadpro" />
+                <Setter Property="VerticalOptions"
+                        Value="Center" />
+                <Setter Property="TextColor"
+                        Value="{StaticResource SecondaryTextColor}" />
+                <Setter Property="BackgroundColor"
+                        Value="Transparent" />
                 <Setter Property="PlaceholderColor"
                         Value="{StaticResource TriciaryTextColor}" />
+                <Setter Property="IsSpellCheckEnabled"
+                        Value="True" />
+                <Setter Property="ReturnType"
+                        Value="Done" />
+                <Setter Property="Keyboard"
+                        Value="Text" />
+                <Setter Property="MaxLength"
+                        Value="50" />
+            </Style>
+
+            <Style TargetType="Entry"
+                   x:Key="EntryTopStyle">
+                <Setter Property="FontSize"
+                        Value="Small" />
+                <Setter Property="HorizontalOptions"
+                        Value="FillAndExpand" />
+                <Setter Property="FontFamily"
+                        Value="myriadpro" />
+                <Setter Property="VerticalOptions"
+                        Value="Center" />
+                <Setter Property="TextColor"
+                        Value="{StaticResource PrimaryTextColor}" />
+                <Setter Property="BackgroundColor"
+                        Value="Transparent" />
+                <Setter Property="PlaceholderColor"
+                        Value="{StaticResource TriciaryTextColor}" />
+                <Setter Property="IsSpellCheckEnabled"
+                        Value="True" />
+                <Setter Property="ReturnType"
+                        Value="Done" />
+                <Setter Property="Keyboard"
+                        Value="Text" />
+                <Setter Property="MaxLength"
+                        Value="20" />
             </Style>
 
             <!-- Editor-->
