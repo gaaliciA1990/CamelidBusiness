@@ -44,28 +44,23 @@
                              Style="{StaticResource NavigationButtonStyle}" />
             </StackLayout>
 
-            <Grid Grid.Row="1">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="auto" />
-                    <RowDefinition Height="auto" />
-                </Grid.RowDefinitions>
-
-                <Grid Grid.Row="0"
-                      Grid.Column="0">
+            <StackLayout Grid.Row="1">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="auto" />
                     </Grid.RowDefinitions>
-                    
-                    <Entry x:Name="NameEntry"
-                           Grid.Row="0"
+
+                    <StackLayout Grid.Row="0"
+                                 Grid.Column="0"
+                                 HorizontalOptions="FillAndExpand"
+                                 VerticalOptions="FillAndExpand"
+                                 Style="{StaticResource OuterBoxStack}">
+
+                        <Entry x:Name="NameEntry"
                                FontSize="Medium"
                                HorizontalOptions="FillAndExpand"
                                BackgroundColor="White"
@@ -76,245 +71,241 @@
                                Text="{Binding Data.Name, Mode=TwoWay}"
                                Style="{StaticResource EntryStyle}" />
 
-                        <Grid Grid.Row="1"
-                          HorizontalOptions="FillAndExpand"
-                          VerticalOptions="FillAndExpand">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="3*" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*" />
-                        </Grid.RowDefinitions>
+                        <Grid HorizontalOptions="CenterAndExpand"
+                              VerticalOptions="Fill">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="3*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" />
+                            </Grid.RowDefinitions>
 
-                        <ImageButton Grid.Column="0"
-                                     Grid.Row="0"
-                                     x:Name="LeftButton"
-                                     Source="leftarrow.png"
-                                     Clicked="LeftButton_Clicked"
-                                     BorderColor="DarkSlateGray"
-                                     CornerRadius="1"
-                                     HorizontalOptions="Start" />
-                        
-                        <Image Grid.Column="1"
-                               Grid.Row="0"
-                               x:Name="ImageLabel"
-                               Source="{Binding Data.ImageURI}"
+                            <ImageButton Grid.Column="0"
+                                         Grid.Row="0"
+                                         x:Name="LeftButton"
+                                         Source="leftarrow.png"
+                                         Clicked="LeftButton_Clicked"
+                                         BorderColor="DarkSlateGray"
+                                         CornerRadius="1" />
+                            <Image  Grid.Column="1"
+                                    Grid.Row="0"
+                                    x:Name="ImageLabel"
+                                    Source="{Binding Data.ImageURI}"
+                                    HorizontalOptions="FillAndExpand"
+                                    VerticalOptions="FillAndExpand"
+                                    Aspect="AspectFit"
+                                    Margin="10" />
+                            <ImageButton Grid.Column="2"
+                                         Grid.Row="0"
+                                         x:Name="RightButton"
+                                         Source="rightarrow.png"
+                                         Clicked="RightButton_Clicked"
+                                         BorderColor="DarkSlateGray"
+                                         CornerRadius="5" />
+                        </Grid>
+
+                        <Entry x:Name="DescriptionEntry"
+                               FontSize="Medium"
                                HorizontalOptions="FillAndExpand"
-                               VerticalOptions="FillAndExpand"
-                               Aspect="AspectFit"
-                               Margin="10" />
-                        
-                        <ImageButton Grid.Column="2"
-                                     Grid.Row="0"
-                                     x:Name="RightButton"
-                                     Source="rightarrow.png"
-                                     Clicked="RightButton_Clicked"
-                                     BorderColor="DarkSlateGray"
-                                     CornerRadius="5" />
-                    </Grid>
+                               BackgroundColor="White"
+                               MaxLength="50"
+                               Keyboard="Text"
+                               IsSpellCheckEnabled="True"
+                               TextChanged="Entry_TextChanged"
+                               ReturnType="Done"
+                               Text="{Binding Data.Description, Mode= TwoWay}"
+                               Style="{StaticResource EntryStyle}" 
+                               MinimumHeightRequest="100"/>
+                    </StackLayout>
 
-                    <Entry x:Name="DescriptionEntry"
-                           Grid.Row="2"
-                           FontSize="Medium"
-                           HorizontalOptions="FillAndExpand"
-                           BackgroundColor="White"
-                           MaxLength="50"
-                           Keyboard="Text"
-                           IsSpellCheckEnabled="True"
-                           TextChanged="Entry_TextChanged"
-                           ReturnType="Done"
-                           Text="{Binding Data.Description, Mode= TwoWay}"
-                           Style="{StaticResource EntryStyle}" />
-                </Grid>
+                    <!--Attributes setup-->
+                    <StackLayout Grid.Column="1"
+                                 Grid.Row="0"
+                                 HorizontalOptions="FillAndExpand"
+                                 VerticalOptions="FillAndExpand"
+                                 Padding="10"
+                                 Style="{StaticResource OuterBoxStack}">
+                        <Grid HorizontalOptions="Center"
+                              VerticalOptions="FillAndExpand">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" />
+                            </Grid.RowDefinitions>
 
-                <!--Attributes setup-->
-                <StackLayout Grid.Column="1"
-                             Grid.Row="0"
-                             Grid.RowSpan="2"
-                             HorizontalOptions="FillAndExpand"
-                             VerticalOptions="FillAndExpand"
-                             Padding="10"
-                             Style="{StaticResource OuterBoxStack}">
+                            <StackLayout Grid.Row="0"
+                                         Grid.ColumnSpan="2">
+                                <Label Text="DIFFICULTY "
+                                       FontSize="Medium"
+                                       Style="{StaticResource LabelStyle}"
+                                       HorizontalOptions="Center"/>
 
-                    <Grid HorizontalOptions="Center"
-                          VerticalOptions="FillAndExpand"
-                          Padding="10">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-
-                        <StackLayout Grid.Row="0"
-                                     Grid.ColumnSpan="2"
-                                     VerticalOptions="FillAndExpand">
-                            <Label Text="DIFFICULTY "
-                                   FontSize="Medium"
-                                   Style="{StaticResource LabelStyle}"
-                                   HorizontalOptions="Center" />
-
-                            <!--Difficulty Labels-->
-                            <StackLayout x:Name="DifficultyStack"
-                                         HorizontalOptions="Center">
+                                <!--Difficulty Labels-->
+                                <StackLayout x:Name="DifficultyStack" 
+                                            HorizontalOptions="Center"
+                                            >
+                                </StackLayout>
                             </StackLayout>
-                        </StackLayout>
 
-                        <Label Text="ATK: "
-                               FontSize="Medium"
-                               Grid.Row="1"
-                               Grid.Column="0"
-                               Style="{StaticResource LabelStyle}"
-                               VerticalOptions="Center" />
+                            <Label Text="ATK: "
+                                   FontSize="Medium"
+                                   Grid.Row="1"
+                                   Grid.Column="0"
+                                   Style="{StaticResource LabelStyle}"
+                                   VerticalOptions="Center" />
+                            <!--Attack Slider-->
+                            <StackLayout Grid.Row="1"
+                                         Grid.Column="1"
+                                         Orientation="Horizontal"
+                                         VerticalOptions="Center">
 
-                        <!--Attack Slider-->
-                        <StackLayout Grid.Row="1"
-                                     Grid.Column="1"
-                                     Orientation="Horizontal"
-                                     VerticalOptions="Center">
+                                <Label x:Name="AttackValue"
+                                       Text="{Binding Data.Attack, Mode=TwoWay}"
+                                       Style="{StaticResource ValueStyle}"
+                                       FontAttributes="Bold"
+                                       HorizontalOptions="Start"
+                                       HorizontalTextAlignment="Start"
+                                       VerticalOptions="Center">
+                                    <Label.Margin>
+                                        <OnPlatform x:TypeArguments="Thickness">
+                                            <On Platform="iOS"
+                                                Value="15,2" />
+                                            <On Platform="Android"
+                                                Value="10,2" />
+                                        </OnPlatform>
+                                    </Label.Margin>
+                                </Label>
 
-                            <Label x:Name="AttackValue"
-                                   Text="{Binding Data.GetAttackTotal}"
-                                   Style="{StaticResource ValueStyle}"
-                                   FontAttributes="Bold"
-                                   HorizontalOptions="Start"
-                                   HorizontalTextAlignment="Start">
-                                <Label.Margin>
-                                    <OnPlatform x:TypeArguments="Thickness">
-                                        <On Platform="iOS"
-                                            Value="15,0" />
-                                        <On Platform="Android"
-                                            Value="10,0" />
-                                    </OnPlatform>
-                                </Label.Margin>
-                            </Label>
+                                <Slider x:Name="AttackSlider"
+                                        Value="{Binding Data.Attack, Mode=TwoWay}"
+                                        ValueChanged="Attack_OnSliderValueChanged"
+                                        Style="{StaticResource SliderStyle}">
+                                    <Slider.Margin>
+                                        <OnPlatform x:TypeArguments="Thickness">
+                                            <On Platform="iOS"
+                                                Value="15,0" />
+                                            <On Platform="Android"
+                                                Value="10,0" />
+                                        </OnPlatform>
+                                    </Slider.Margin>
+                                </Slider>
+                            </StackLayout>
 
-                            <Slider x:Name="AttackSlider"
-                                    Value="{Binding Data.Attack, Mode=TwoWay}"
-                                    ValueChanged="Attack_OnSliderValueChanged"
-                                    Style="{StaticResource SliderStyle}">
+                            <Label Text="DEF: "
+                                   FontSize="Medium"
+                                   Grid.Row="2"
+                                   Grid.Column="0"
+                                   Style="{StaticResource LabelStyle}"
+                                   VerticalOptions="Center" />
+                            <!--Defense Slider-->
+                            <StackLayout Grid.Row="2"
+                                         Grid.Column="1"
+                                         Orientation="Horizontal"
+                                         VerticalOptions="Center">
 
-                                <Slider.Margin>
-                                    <OnPlatform x:TypeArguments="Thickness">
-                                        <On Platform="iOS"
-                                            Value="15,0" />
-                                        <On Platform="Android"
-                                            Value="10,0" />
-                                    </OnPlatform>
-                                </Slider.Margin>
-                            </Slider>
+                                <Label x:Name="DefenseValue"
+                                       Text="{Binding Data.Defense, Mode=TwoWay}"
+                                       Style="{StaticResource ValueStyle}"
+                                       FontAttributes="Bold"
+                                       HorizontalOptions="Start"
+                                       HorizontalTextAlignment="Start"
+                                       VerticalOptions="Center">
+                                    <Label.Margin>
+                                        <OnPlatform x:TypeArguments="Thickness">
+                                            <On Platform="iOS"
+                                                Value="15,2" />
+                                            <On Platform="Android"
+                                                Value="10,2" />
+                                        </OnPlatform>
+                                    </Label.Margin>
+                                </Label>
 
-                        </StackLayout>
+                                <Slider x:Name="DefenseSlider"
+                                        Value="{Binding Data.Defense, Mode=TwoWay}"
+                                        ValueChanged="Defense_OnSliderValueChanged"
+                                        Style="{StaticResource SliderStyle}">
+                                    <Slider.Margin>
+                                        <OnPlatform x:TypeArguments="Thickness">
+                                            <On Platform="iOS"
+                                                Value="15,0" />
+                                            <On Platform="Android"
+                                                Value="10,0" />
+                                        </OnPlatform>
+                                    </Slider.Margin>
+                                </Slider>
 
-                        <Label Text="DEF: "
-                               FontSize="Medium"
-                               Grid.Row="2"
-                               Grid.Column="0"
-                               Style="{StaticResource LabelStyle}"
-                               VerticalOptions="Center"/>
+                            </StackLayout>
 
-                        <!--Defense Slider-->
-                        <StackLayout Grid.Row="2"
-                                     Grid.Column="1"
-                                     Orientation="Horizontal"
-                                     VerticalOptions="Center">
+                            <Label Text="SPD: "
+                                   FontSize="Medium"
+                                   Grid.Row="3"
+                                   Grid.Column="0"
+                                   Style="{StaticResource LabelStyle}"
+                                   VerticalOptions="Center" />
+                            <!--Speed Sl;ider-->
+                            <StackLayout Grid.Row="3"
+                                         Grid.Column="1"
+                                         Orientation="Horizontal"
+                                         VerticalOptions="Center">
 
-                            <Label x:Name="DefenseValue"
-                                   Text="{Binding Data.GetDefenseTotal}"
-                                   Style="{StaticResource ValueStyle}"
-                                   FontAttributes="Bold"
-                                   HorizontalOptions="Start"
-                                   HorizontalTextAlignment="Start">
-                                <Label.Margin>
-                                    <OnPlatform x:TypeArguments="Thickness">
-                                        <On Platform="iOS"
-                                            Value="15,0" />
-                                        <On Platform="Android"
-                                            Value="10,0" />
-                                    </OnPlatform>
-                                </Label.Margin>
-                            </Label>
+                                <Label x:Name="SpeedValue"
+                                       Text="{Binding Data.Speed, Mode=TwoWay}"
+                                       Style="{StaticResource ValueStyle}"
+                                       FontAttributes="Bold"
+                                       HorizontalOptions="Start"
+                                       HorizontalTextAlignment="Start"
+                                       VerticalOptions="Center">
+                                    <Label.Margin>
+                                        <OnPlatform x:TypeArguments="Thickness">
+                                            <On Platform="iOS"
+                                                Value="15,0" />
+                                            <On Platform="Android"
+                                                Value="10,0" />
+                                        </OnPlatform>
+                                    </Label.Margin>
+                                </Label>
 
-                            <Slider x:Name="DefenseSlider"
-                                    Value="{Binding Data.Defense, Mode=TwoWay}"
-                                    ValueChanged="Defense_OnSliderValueChanged"
-                                    Style="{StaticResource SliderStyle}">
-
-                                <Slider.Margin>
-                                    <OnPlatform x:TypeArguments="Thickness">
-                                        <On Platform="iOS"
-                                            Value="15,0" />
-                                        <On Platform="Android"
-                                            Value="10,0" />
-                                    </OnPlatform>
-                                </Slider.Margin>
-                            </Slider>
-                        </StackLayout>
-
-                        <!--Speed Slider-->
-                        <Label Text="SPD: "
-                               FontSize="Medium"
-                               Grid.Row="3"
-                               Grid.Column="0"
-                               Style="{StaticResource LabelStyle}"
-                               VerticalOptions="Center" />
-
-                        <StackLayout Grid.Row="3"
-                                     Grid.Column="1"
-                                     Orientation="Horizontal"
-                                     VerticalOptions="Center">
-
-                            <Label x:Name="SpeedValue"
-                                   Text="{Binding Data.GetSpeedTotal}"
-                                   Style="{StaticResource ValueStyle}"
-                                   FontAttributes="Bold"
-                                   HorizontalOptions="Start"
-                                   HorizontalTextAlignment="Start"
-                                   VerticalOptions="Center">
-                                <Label.Margin>
-                                    <OnPlatform x:TypeArguments="Thickness">
-                                        <On Platform="iOS"
-                                            Value="15,0" />
-                                        <On Platform="Android"
-                                            Value="10,0" />
-                                    </OnPlatform>
-                                </Label.Margin>
-                            </Label>
-
-                            <Slider x:Name="SpeedSlider"
-                                    Value="{Binding Data.Speed, Mode=TwoWay}"
-                                    ValueChanged="Speed_OnSliderValueChanged"
-                                    Style="{StaticResource SliderStyle}">
-                                <Slider.Margin>
-                                    <OnPlatform x:TypeArguments="Thickness">
-                                        <On Platform="iOS"
-                                            Value="15,0" />
-                                        <On Platform="Android"
-                                            Value="10,0" />
-                                    </OnPlatform>
-                                </Slider.Margin>
-                            </Slider>
-                        </StackLayout>
-                    </Grid>
+                                <Slider x:Name="SpeedSlider"
+                                        Value="{Binding Data.Speed, Mode=TwoWay}"
+                                        ValueChanged="Speed_OnSliderValueChanged"
+                                        Style="{StaticResource SliderStyle}">
+                                    <Slider.Margin>
+                                        <OnPlatform x:TypeArguments="Thickness">
+                                            <On Platform="iOS"
+                                                Value="15,0" />
+                                            <On Platform="Android"
+                                                Value="10,0" />
+                                        </OnPlatform>
+                                    </Slider.Margin>
+                                </Slider>
+                            </StackLayout>
+                        </Grid>
 
                         <!--Items selection-->
-                        <StackLayout Orientation="Horizontal"
-                                     HorizontalOptions="CenterAndExpand">
-                            
-                            <ImageButton x:Name="RollDice" 
-                                    Source="dice.png"
+                        <StackLayout Orientation="Horizontal">
+
+                            <ImageButton x:Name="RollDice"
+                                    Source="icon_dice.png"
                                     Clicked="RollDice_Clicked"
                                     BackgroundColor="Beige"
                                     VerticalOptions="Start"
-                                    CornerRadius="5"
-                                    Style="{StaticResource ImageLargeStyle}"
-                                    HorizontalOptions="Start"/>
+                                    CornerRadius="5" 
+                                    Style="{StaticResource ImageMediumStyle}"
+                                    HeightRequest="80"
+                                    WidthRequest="80"/>
 
-                        <StackLayout x:Name="ItemBox" />
+                            <StackLayout x:Name="ItemBox"/>
+                        </StackLayout>
+
                     </StackLayout>
-                </StackLayout>
 
-            </Grid>
+                </Grid>
+
+            </StackLayout>
 
             <!--The Item Popup-->
             <StackLayout x:Name="PopupItemSelector"
