@@ -16550,22 +16550,22 @@ namespace Game.Droid
 			public const int button_continegame = 2131165289;
 			
 			// aapt resource value: 0x7F07006A
-			public const int button_start = 2131165290;
+			public const int button_delete = 2131165290;
 			
 			// aapt resource value: 0x7F07006B
-			public const int button_startgame = 2131165291;
+			public const int button_start = 2131165291;
 			
 			// aapt resource value: 0x7F07006C
-			public const int characters = 2131165292;
+			public const int button_startgame = 2131165292;
 			
 			// aapt resource value: 0x7F07006D
-			public const int d10 = 2131165293;
+			public const int characters = 2131165293;
 			
 			// aapt resource value: 0x7F07006E
-			public const int d20_2 = 2131165294;
+			public const int d10 = 2131165294;
 			
 			// aapt resource value: 0x7F07006F
-			public const int delete = 2131165295;
+			public const int d20_2 = 2131165295;
 			
 			// aapt resource value: 0x7F070070
 			public const int design_fab_background = 2131165296;
