@@ -86,8 +86,7 @@
                                Placeholder="Name"
                                Text="{Binding Data.Name, Mode=TwoWay}"
                                TextChanged="Entry_TextChanged"
-                               Style="{StaticResource EntryStyle}" 
-                                   BackgroundColor="White"/>
+                               Style="{StaticResource EntryStyle}" />
                         </Frame>
 
                         <Grid HorizontalOptions="CenterAndExpand"
