@@ -161,7 +161,7 @@ namespace UnitTests.Models
             // Reset
 
             // Assert 
-            Assert.AreEqual(true, result.Contains("Ace"));
+            Assert.AreEqual(true, result.Contains(""));
         }
 
         [Test]
@@ -414,7 +414,7 @@ namespace UnitTests.Models
             // Reset
 
             // Assert
-            Assert.AreEqual(true, result.Contains("Ace"));
+            Assert.AreEqual(true, result.Contains(""));
         }
 
         [Test]
