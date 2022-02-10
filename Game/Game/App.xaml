@@ -784,7 +784,7 @@
                 <Setter Property="FontSize"
                         Value="Small" />
                 <Setter Property="HorizontalOptions"
-                        Value="FillAndExpand" />
+                        Value="CenterAndExpand" />
                 <Setter Property="FontFamily"
                         Value="myriadpro" />
                 <Setter Property="VerticalOptions"
@@ -878,6 +878,18 @@
                         Value="None" />
                 <Setter Property="BackgroundColor"
                         Value="{StaticResource LightBackgroundColor}" />
+            </Style>
+
+            <Style x:Name="CRUDIPickerStyle"
+                   TargetType="Picker">
+                <Setter Property="BackgroundColor"
+                        Value="Transparent" />
+                <Setter Property="TextColor"
+                        Value="{StaticResource PrimaryTextColor}" />
+                <Setter Property="FontSize"
+                        Value="Small" />
+                <Setter Property="FontFamily"
+                        Value="myriadpro" />
             </Style>
 
         </ResourceDictionary>
