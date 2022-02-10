@@ -409,6 +409,21 @@
                         Value="10" />
             </Style>
 
+            <Style x:Key="FlexCardImage"
+                   TargetType="Image"
+                   BasedOn="{StaticResource ImageBattleLargeStyle}">
+                <Setter Property="Scale"
+                        Value="4" />
+                <Setter Property="Aspect"
+                        Value="AspectFit" />
+                <Setter Property="AbsoluteLayout.LayoutBounds"
+                        Value="-0.03, -0.06, 3, 3" />
+                <Setter Property="AbsoluteLayout.LayoutFlags"
+                        Value="All" />
+                <Setter Property="HorizontalOptions"
+                        Value="StartAndExpand" />
+            </Style>
+
             <!-- ImageButton -->
 
             <Style TargetType="ImageButton">
@@ -879,6 +894,20 @@
                         Value="0.5, 0.5, -1, -1" />
                 <Setter Property="AbsoluteLayout.LayoutFlags"
                         Value="PositionProportional" />
+            </Style>
+
+            <Style x:Key="FlexCardImageFrame"
+                   TargetType="Frame">
+                <Setter Property="BorderColor"
+                        Value="{StaticResource PrimaryTextColor}" />
+                <Setter Property="BackgroundColor"
+                        Value="#B4B3B2" />
+                <Setter Property="HeightRequest"
+                        Value="100" />
+                <Setter Property="WidthRequest"
+                        Value="80" />
+                <Setter Property="Margin"
+                        Value="0,10,0,10" />
             </Style>
 
             <!-- Grid -->
