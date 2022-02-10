@@ -18,8 +18,8 @@ namespace Game.GameRules
                 new ItemModel {
                     Name = "Curved Bow",
                     Description = "An enhanced, curvy bow",
-                    ImageURI = "sword1.png",
-                    Range = 0,
+                    ImageURI = "curved_bow.png",
+                    Range = 6,
                     Damage = 10,
                     Value = 3,
                     Location = ItemLocationEnum.PrimaryHand,
@@ -29,8 +29,8 @@ namespace Game.GameRules
                 new ItemModel {
                     Name = "Bronze Spear",
                     Description = "A spectacular craftsmanship infused with magic that packs a punch!",
-                    ImageURI = "sword2.png",
-                    Range = 0,
+                    ImageURI = "bronze_spear.png",
+                    Range = 3,
                     Damage = 8,
                     Value = 4,
                     Location = ItemLocationEnum.PrimaryHand,
@@ -40,8 +40,8 @@ namespace Game.GameRules
                 new ItemModel {
                     Name = "Bronze Maze",
                     Description = "An  metal mace to beat your enemies with",
-                    ImageURI = "sword3.png",
-                    Range = 0,
+                    ImageURI = "bronze_mace.png",
+                    Range = 1,
                     Damage = 6,
                     Value = 3,
                     Location = ItemLocationEnum.PrimaryHand,
@@ -51,7 +51,7 @@ namespace Game.GameRules
                 new ItemModel {
                     Name = "Andean Hat",
                     Description = "A traditional and colorful hat. Stylish and protected!",
-                    ImageURI = "hat1.png",
+                    ImageURI = "andean_hat.png",
                     Range = 0,
                     Damage = 0,
                     Value = 4,
@@ -63,7 +63,7 @@ namespace Game.GameRules
                 new ItemModel {
                     Name = "Andean Cuff",
                     Description = "Beautiful adornments",
-                    ImageURI = "ring1.png",
+                    ImageURI = "andean_cuff.png",
                     Range = 0,
                     Damage = 0,
                     Value = 5,
@@ -74,7 +74,7 @@ namespace Game.GameRules
                 new ItemModel {
                     Name = "Pure Gold Ring",
                     Description = "Snazzy gold ring, will make you feel like the fanciest warrior",
-                    ImageURI = "ring2.png",
+                    ImageURI = "pure_gold_ring.png",
                     Range = 0,
                     Damage = 0,
                     Value = 6,
