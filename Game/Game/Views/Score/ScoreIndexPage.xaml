@@ -13,163 +13,160 @@
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-        
-            <StackLayout Grid.Row="0" Grid.Column="0" 
+
+            <StackLayout Grid.Row="0"
+                         Grid.Column="0"
                          Orientation="Horizontal"
                          HorizontalOptions="FillAndExpand">
-                <Frame CornerRadius="15"
-                       HorizontalOptions="StartAndExpand"
-                       BackgroundColor="LightGray"
-                       BorderColor="Transparent"
-                       WidthRequest="50"
-                       HeightRequest="35">
-                    <Button x:Name="BackButton"
-                            Text="Back"
-                            Clicked="BackButton_Clicked"
-                            FontAttributes="Bold"
-                            BackgroundColor="Transparent"/>
-                </Frame>
+                <ImageButton x:Name="BackButton"
+                             Source="icon_back.png"
+                             Clicked="BackButton_Clicked"
+                             Style="{StaticResource NavigationButtonStyle}" />
                 <Label HorizontalOptions="CenterAndExpand"
                        Text="Score List Page"
                        LineBreakMode="WordWrap"
                        Style="{StaticResource HeaderStyle}"
                        FontSize="Large" />
-                <Frame CornerRadius="15"
-                       HorizontalOptions="EndAndExpand"
-                       BackgroundColor="LightGray"
-                       BorderColor="Transparent"
-                       HeightRequest="35"
-                       WidthRequest="110">
-                    <Button x:Name="CreateButton"
-                            Text="Create Score"
-                            Clicked="CreateScore_Clicked"
-                            FontAttributes="Bold"
-                            BackgroundColor="Transparent"/>
-                </Frame>
-
+                <ImageButton x:Name="CreateButton"
+                             Source="icon_add.png"
+                             Clicked="CreateScore_Clicked"
+                             Style="{StaticResource NavigationButtonStyle}" />
             </StackLayout>
 
-
-            <Frame Grid.Row="1" Grid.Column="0" BorderColor="Transparent" BackgroundColor="#50FFFFFF">
+            <Frame Grid.Row="1"
+                   Grid.Column="0"
+                   BorderColor="Transparent"
+                   BackgroundColor="#50FFFFFF">
                 <ListView  x:Name="DataListView"
-                       ItemsSource="{Binding Dataset}"
-                       ItemSelected="OnItemSelected"
-                       HasUnevenRows="true"
-                       Margin="5,0,5,0">
+                           ItemsSource="{Binding Dataset}"
+                           ItemSelected="OnItemSelected"
+                           HasUnevenRows="true"
+                           Margin="5,0,5,0">
                     <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <ViewCell.View>
-                                <Grid Padding="20">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="*"/>
-                                        <RowDefinition Height="*"/>
-                                        <RowDefinition Height="Auto"/>
-                                    </Grid.RowDefinitions>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ViewCell.View>
+                                    <Grid Padding="20">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*" />
+                                            <RowDefinition Height="*" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
 
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="*" />
-                                    </Grid.ColumnDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
 
+                                        <Label FontSize="Medium"
+                                               FontAttributes="Bold"
+                                               Grid.Column="0"
+                                               Grid.Row="0"
+                                               Grid.ColumnSpan="2"
+                                               Text="{Binding Name}"
+                                               Style="{StaticResource ListStyle}"
+                                               HorizontalOptions="CenterAndExpand" />
 
-                                    <Label FontSize="Medium"
-                                           FontAttributes="Bold"
-                                           Grid.Column="0"
-                                           Grid.Row="0"
-                                           Grid.ColumnSpan="2"
-                                           Text="{Binding Name}"
-                                           Style="{StaticResource ListStyle}"
-                                           HorizontalOptions="CenterAndExpand"/>
+                                        <Frame Grid.Column="0"
+                                               Grid.Row="1"
+                                               HorizontalOptions="EndAndExpand"
+                                               BackgroundColor="LightGray"
+                                               BorderColor="Black"
+                                               CornerRadius="10"
+                                               WidthRequest="175"
+                                               HeightRequest="30">
+                                            <Label x:Name="RoundLabel"
+                                                   HorizontalTextAlignment="Center"
+                                                   HorizontalOptions="CenterAndExpand"
+                                                   FontAttributes="Bold"
+                                                   FontSize="Small"
+                                                   Text="Rounds"
+                                                   Style="{StaticResource ListStyle}" />
+                                        </Frame>
 
-                                    <Frame Grid.Column="0" Grid.Row="1" HorizontalOptions="EndAndExpand" BackgroundColor="LightGray"
-                                                   BorderColor="Black"
-                                                   CornerRadius="10"
-                                                   WidthRequest="175"
-                                                   HeightRequest="30">
-                                        <Label x:Name="RoundLabel"
-                                                       HorizontalTextAlignment="Center"
-                                                       HorizontalOptions="CenterAndExpand"
-                                                       FontAttributes="Bold"
-                                                       FontSize="Small"
-                                                       Text="Rounds"
-                                                       Style="{StaticResource ListStyle}" />
-                                    </Frame>
+                                        <Frame Grid.Column="1"
+                                               Grid.Row="1"
+                                               HorizontalOptions="StartAndExpand"
+                                               BackgroundColor="White"
+                                               BorderColor="Black"
+                                               CornerRadius="10"
+                                               WidthRequest="175"
+                                               HeightRequest="30">
+                                            <Label x:Name="RoundDataLabel"
+                                                   HorizontalTextAlignment="Center"
+                                                   HorizontalOptions="CenterAndExpand"
+                                                   FontSize="Small"
+                                                   Grid.Column="1"
+                                                   Grid.Row="1"
+                                                   Text="{Binding RoundCount}"
+                                                   Style="{StaticResource ListStyle}" />
+                                        </Frame>
 
-                                    <Frame Grid.Column="1" Grid.Row="1" HorizontalOptions="StartAndExpand" BackgroundColor="White"
-                                                   BorderColor="Black"
-                                                   CornerRadius="10"
-                                                   WidthRequest="175"
-                                                   HeightRequest="30">
-                                        <Label x:Name="RoundDataLabel"
-                                                       HorizontalTextAlignment="Center"
-                                                       HorizontalOptions="CenterAndExpand"
-                                                       FontSize="Small"
-                                                       Grid.Column="1"
-                                                       Grid.Row="1"
-                                                       Text="{Binding RoundCount}"
-                                                       Style="{StaticResource ListStyle}" />
-                                    </Frame>
+                                        <Frame Grid.Column="0"
+                                               Grid.Row="2"
+                                               HorizontalOptions="EndAndExpand"
+                                               BackgroundColor="LightGray"
+                                               BorderColor="Black"
+                                               CornerRadius="10"
+                                               WidthRequest="175"
+                                               HeightRequest="30">
+                                            <Label x:Name="ScoreLabel"
+                                                   HorizontalTextAlignment="Center"
+                                                   HorizontalOptions="CenterAndExpand"
+                                                   FontAttributes="Bold"
+                                                   FontSize="Small"
+                                                   Grid.Column="0"
+                                                   Grid.Row="2"
+                                                   Text="Score"
+                                                   Style="{StaticResource ListStyle}" />
+                                        </Frame>
 
-                                    <Frame Grid.Column="0" Grid.Row="2" HorizontalOptions="EndAndExpand" BackgroundColor="LightGray"
-                                                   BorderColor="Black"
-                                                   CornerRadius="10"
-                                                   WidthRequest="175"
-                                                   HeightRequest="30">
-                                        <Label x:Name="ScoreLabel"
-                                                       HorizontalTextAlignment="Center"
-                                                       HorizontalOptions="CenterAndExpand"
-                                                       FontAttributes="Bold"
-                                                       FontSize="Small"
-                                                       Grid.Column="0"
-                                                       Grid.Row="2"
-                                                       Text="Score"
-                                                       Style="{StaticResource ListStyle}" />
-                                    </Frame>
+                                        <Frame Grid.Column="1"
+                                               Grid.Row="2"
+                                               HorizontalOptions="StartAndExpand"
+                                               BackgroundColor="White"
+                                               BorderColor="Black"
+                                               CornerRadius="10"
+                                               WidthRequest="175"
+                                               HeightRequest="30">
+                                            <Label x:Name="ScoreDataLabel"
+                                                   HorizontalTextAlignment="Center"
+                                                   HorizontalOptions="CenterAndExpand"
+                                                   FontSize="Small"
+                                                   Grid.Column="1"
+                                                   Grid.Row="2"
+                                                   Text="{Binding ScoreTotal}"
+                                                   Style="{StaticResource ListStyle}" />
+                                        </Frame>
 
-                                    <Frame Grid.Column="1" Grid.Row="2" HorizontalOptions="StartAndExpand" BackgroundColor="White"
-                                                   BorderColor="Black"
-                                                   CornerRadius="10"
-                                                   WidthRequest="175"
-                                                   HeightRequest="30">
-                                        <Label x:Name="ScoreDataLabel"
-                                                       HorizontalTextAlignment="Center"
-                                                       HorizontalOptions="CenterAndExpand"
-                                                       FontSize="Small"
-                                                       Grid.Column="1"
-                                                       Grid.Row="2"
-                                                       Text="{Binding ScoreTotal}"
-                                                       Style="{StaticResource ListStyle}" />
-                                    </Frame>
-
-                                </Grid>
-                            </ViewCell.View>
-                        </ViewCell>
-                    </DataTemplate>
+                                    </Grid>
+                                </ViewCell.View>
+                            </ViewCell>
+                        </DataTemplate>
                     </ListView.ItemTemplate>
-            </ListView>
+                </ListView>
 
             </Frame>
 
-            <Frame Grid.Row="2" Grid.Column="0"
+            <Frame Grid.Row="2"
+                   Grid.Column="0"
                    CornerRadius="15"
                    HorizontalOptions="EndAndExpand"
                    BackgroundColor="LightGray"
                    BorderColor="Transparent"
                    HeightRequest="35">
                 <!--button for navigating to the game-->
-            <Button x:Name="StartGameButton"
-                    Text="Start New Game"
-                    BackgroundColor="Transparent"
-                    Clicked="StartGameButton_Clicked"
-                    FontAttributes="Bold"/>
+                <ImageButton x:Name="StartGameButton"
+                             Source="button_startgame.png"
+                             Clicked="StartGameButton_Clicked"
+                             Style="{StaticResource StartGameButtonStyle}"/>
             </Frame>
 
         </Grid>
