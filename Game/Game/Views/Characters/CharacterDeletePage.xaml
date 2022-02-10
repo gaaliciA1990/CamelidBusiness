@@ -228,9 +228,7 @@
                              Grid.Column="0"
                              Grid.ColumnSpan="2"
                              x:Name="ItemBox"
-                             Orientation="Horizontal"
-                             HorizontalOptions="Center"
-                             HeightRequest="60">
+                             Style="{StaticResource ItemBox}">
                 </StackLayout>
 
                 <AbsoluteLayout Padding="0"
