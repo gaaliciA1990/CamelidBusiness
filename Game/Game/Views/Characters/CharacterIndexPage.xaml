@@ -75,7 +75,8 @@
                                                            Grid.Column="1"
                                                            x:Name="ClanLabel"
                                                            Text="{Binding Clan}"
-                                                           Style="{StaticResource LabelStyle}"/>
+                                                           Style="{StaticResource LabelStyle}"
+                                                           FontSize="Micro" />
                                                 </Grid>
                                             </Frame>
 
@@ -83,13 +84,13 @@
                                                 <Frame Style="{StaticResource SmallFlexIndexFrame}">
                                                     <Label x:Name="LevelLabel"
                                                            Text="{Binding Path=Level, StringFormat='LVL {0:G}'}"
-                                                           Style="{StaticResource LabelStyle}" />
+                                                           Style="{StaticResource ValueStyleMicro}" />
                                                 </Frame>
 
                                                 <Frame Style="{StaticResource SmallFlexIndexFrame}">
                                                     <Label x:Name="MaxHealthLabel"
                                                            Text="{Binding Path=MaxHealth, StringFormat='HP {0:G}'}"
-                                                           Style="{StaticResource LabelStyle}" />
+                                                           Style="{StaticResource ValueStyleMicro}" />
                                                 </Frame>
                                             </StackLayout>
                                         </StackLayout>
