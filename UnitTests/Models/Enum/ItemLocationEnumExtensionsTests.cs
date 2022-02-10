@@ -88,7 +88,7 @@ namespace UnitTests.Models
             // Reset
 
             // Assert
-            Assert.AreEqual("Right Finger", result);
+            Assert.AreEqual("Right Ear", result);
         }
 
         [Test]
@@ -102,7 +102,7 @@ namespace UnitTests.Models
             // Reset
 
             // Assert
-            Assert.AreEqual("Left Finger", result);
+            Assert.AreEqual("Left Ear", result);
         }
 
         [Test]
@@ -116,7 +116,7 @@ namespace UnitTests.Models
             // Reset
 
             // Assert
-            Assert.AreEqual("Any Finger", result);
+            Assert.AreEqual("Any Ear", result);
         }
 
         [Test]
