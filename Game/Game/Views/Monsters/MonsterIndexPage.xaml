@@ -44,58 +44,35 @@
                                         <TapGestureRecognizer Tapped="FlexMonster_Clicked"
                                                               CommandParameter="{Binding Id}" />
                                     </Frame.GestureRecognizers>
-                                    <Grid BackgroundColor="LightSeaGreen">
+                                    <Grid BackgroundColor="{StaticResource PrimaryBackgroundColor}">
 
-                                        <Frame OutlineColor="Black"
-                                               BackgroundColor="LightBlue"
-                                               HeightRequest="100"
-                                               WidthRequest="80"
-                                               Margin="0,10,0,10">
+                                        <Frame Style="{StaticResource FlexCardImageFrame}">
                                             <Image x:Name="ImageLabel"
                                                    Source="{Binding ImageURI}"
-                                                   Style="{StaticResource ImageBattleLargeStyle}"
-                                                   AbsoluteLayout.LayoutBounds="0.47, 0.1, 3, 3"
-                                                   AbsoluteLayout.LayoutFlags="All"
-                                                   HorizontalOptions="StartAndExpand" />
+                                                   Style="{StaticResource FlexCardMonsterImage}" />
                                         </Frame>
                                         <StackLayout Grid.Column="1"
                                                      Grid.Row="0"
                                                      Margin="0,10,10,10"
                                                      Orientation="Vertical"
                                                      VerticalOptions="CenterAndExpand">
-                                            <Frame OutlineColor="Black"
-                                                   BackgroundColor="LightGray"
-                                                   Padding="1"
-                                                   WidthRequest="100">
+                                            <Frame Style="{StaticResource FlexIndexFrame}">
                                                 <Label x:Name="NameLabel"
                                                        Text="{Binding Name}"
-                                                       FontSize="15"
-                                                       Style="{StaticResource ListStyle}"
-                                                       BackgroundColor="LightGray"
-                                                       HorizontalOptions="CenterAndExpand" />
+                                                       Style="{StaticResource LabelStyle}"/>
                                             </Frame>
 
-                                            <Frame OutlineColor="Black"
-                                                   BackgroundColor="LightCyan"
-                                                   Padding="1"
-                                                   WidthRequest="100">
+                                            <Frame Style="{StaticResource FlexIndexFrame}">
                                                 <Label x:Name="DifficultyLabel"
-                                                       HorizontalOptions="Center"
                                                        Text="{Binding Difficulty}"
-                                                       FontSize="15"
-                                                       Style="{StaticResource ListStyle}"
-                                                       BackgroundColor="LightCyan" />
+                                                       Style="{StaticResource LabelStyle}" />
                                             </Frame>
 
                                             <StackLayout Orientation="Horizontal">
-                                                <Frame OutlineColor="Black"
-                                                       Padding="3"
-                                                       BackgroundColor="LightCyan">
+                                                <Frame Style="{StaticResource SmallFlexIndexFrame}">
                                                     <Label x:Name="LevelLabel"
                                                            Text="{Binding Path=Level, StringFormat='LVL {0:G}'}"
-                                                           Style="{StaticResource ListStyle}"
-                                                           FontSize="15"
-                                                           HorizontalTextAlignment="Center" />
+                                                           Style="{StaticResource LabelStyle}" />
                                                 </Frame>
                                             </StackLayout>
                                         </StackLayout>
