@@ -134,12 +134,7 @@
                                   HorizontalOptions="FillAndExpand"
                                   VerticalOptions="CenterAndExpand">
                                 <ProgressBar x:Name="LevelBar"
-                                             ScaleY="5"
-                                             ProgressColor="MediumSeaGreen"
-                                             HeightRequest="5"
-                                             HorizontalOptions="FillAndExpand"
-                                             VerticalOptions="CenterAndExpand"
-                                             Progress="0.5" />
+                                             Style="{StaticResource CrudiProgressBar}" />
                                 <Label TextColor="Black"
                                        VerticalOptions="CenterAndExpand"
                                        FontAttributes="Bold"
