@@ -358,26 +358,17 @@
             <!--The Item Popup-->
             <StackLayout x:Name="PopupItemSelector"
                          BackgroundColor="{StaticResource PageBackgroundColor}"
-                         IsVisible="false"
-                         AbsoluteLayout.LayoutBounds=".5, .5,.5,.5"
-                         AbsoluteLayout.LayoutFlags="All"
-                         Opacity=".95"
-                         WidthRequest="350"
-                         HeightRequest="350"
+                         Style="{StaticResource ItemSelectorPopup}"
                          Grid.Row="0"
                          Grid.RowSpan="2">
 
-                <StackLayout VerticalOptions="CenterAndExpand"
-                             HorizontalOptions="CenterAndExpand"
-                             WidthRequest="300"
-                             HeightRequest="300">
+                <StackLayout Style="{StaticResource ItemSelectorInnerPopup}">
 
                     <Frame  BorderColor="{StaticResource TriciaryTextColor}"
                             Padding="1">
                         <StackLayout Style="{StaticResource VerticalStack}"
                                      HorizontalOptions="CenterAndExpand"
-                                     Padding="2"
-                                     BackgroundColor="Beige">
+                                     Padding="2">
                             <Label x:Name="PopupLocationLabel"
                                    Style="{StaticResource PopupItemTextStyle}" />
                             <Label x:Name="PopupLocationValue"
@@ -437,9 +428,10 @@
                                 </ListView.ItemTemplate>
                             </ListView>
 
-                            <Button x:Name="PopupCloseButton"
-                                    Clicked="ClosePopup_Clicked"
-                                    Text="Close" />
+                            <ImageButton x:Name="PopupCloseButton"
+                                         Clicked="ClosePopup_Clicked"
+                                         Source="icon_cancel.png" 
+                                         Style="{StaticResource DeleteButtonStyle}"/>
                         </StackLayout>
                     </Frame>
                 </StackLayout>
