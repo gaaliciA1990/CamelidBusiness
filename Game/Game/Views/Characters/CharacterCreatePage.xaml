@@ -68,25 +68,25 @@
                     <Grid Grid.Row="0"
                           HorizontalOptions="FillAndExpand">
 
-                        <Frame Style="{StaticResource CrudiTopEntryFrame}"
+                        <Frame Style="{StaticResource CrudiTopEntryFrame }"
+                               WidthRequest="150"
                                Grid.Row="0"
                                Grid.Column="0">
+                            <Picker x:Name="ClanPicker"
+                                    ItemsSource="{x:Static local:CharacterClanEnumHelper.GetClanList}"
+                                    SelectedItem="{Binding Data.Clan, Converter={StaticResource StringEnum}, Mode=TwoWay}"
+                                    SelectedIndexChanged="Picker_ClanChanged" 
+                                    Style="{StaticResource CRUDIPickerStyle}"/>
+                        </Frame>
+
+                        <Frame Style="{StaticResource CrudiTopEntryFrame}"
+                               Grid.Row="0"
+                               Grid.Column="1">
                             <Entry  x:Name="NameEntry"
-                                    WidthRequest="125"
+                                    WidthRequest="75"
                                     TextChanged="Entry_TextChanged"
                                     Text="{Binding Data.Name, Mode=TwoWay}"
                                     Style="{StaticResource EntryTopStyle}" />
-                        </Frame>
-
-                        <Frame Style="{StaticResource CrudiTopEntryFrame }" 
-                               Grid.Row="0"
-                               Grid.Column="1" >
-                            <Picker x:Name="ClanPicker"
-                                    BackgroundColor="Transparent"
-                                    TextColor="#15071D"
-                                    ItemsSource="{x:Static local:CharacterClanEnumHelper.GetClanList}"
-                                    SelectedItem="{Binding Data.Clan, Converter={StaticResource StringEnum}, Mode=TwoWay}"
-                                    SelectedIndexChanged="Picker_ClanChanged" />
                         </Frame>
                     </Grid>
 
