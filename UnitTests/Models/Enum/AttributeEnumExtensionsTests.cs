@@ -32,7 +32,7 @@ namespace UnitTests.Models
             // Reset
 
             // Assert
-            Assert.AreEqual("Attack", result);
+            Assert.AreEqual("ATK", result);
         }
 
         [Test]
@@ -46,7 +46,7 @@ namespace UnitTests.Models
             // Reset
 
             // Assert
-            Assert.AreEqual("Current Health", result);
+            Assert.AreEqual("HP", result);
         }
 
         [Test]
@@ -60,7 +60,7 @@ namespace UnitTests.Models
             // Reset
 
             // Assert
-            Assert.AreEqual("Defense", result);
+            Assert.AreEqual("DEF", result);
         }
 
         [Test]
@@ -74,7 +74,7 @@ namespace UnitTests.Models
             // Reset
 
             // Assert
-            Assert.AreEqual("Max Health", result);
+            Assert.AreEqual("MaxHP", result);
         }
 
         [Test]
@@ -88,7 +88,7 @@ namespace UnitTests.Models
             // Reset
 
             // Assert
-            Assert.AreEqual("Speed", result);
+            Assert.AreEqual("SPD", result);
         }
     }
 }
