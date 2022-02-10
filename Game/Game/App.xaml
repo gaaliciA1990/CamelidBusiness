@@ -577,6 +577,20 @@
                         Value="300" />
                 <Setter Property="HeightRequest"
                         Value="300" />
+                <Setter Property="BackgroundColor"
+                        Value="Transparent" />
+            </Style>
+
+            <Style x:Key="ItemBox"
+                   TargetType="StackLayout">
+                <Setter Property="Orientation"
+                        Value="Horizontal" />
+                <Setter Property="HorizontalOptions"
+                        Value="Center" />
+                <Setter Property="VerticalOptions"
+                        Value="Center" />
+                <Setter Property="HeightRequest"
+                        Value="60" />
             </Style>
 
             <Style TargetType="StackLayout"
