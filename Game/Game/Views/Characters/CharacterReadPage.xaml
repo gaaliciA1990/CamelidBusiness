@@ -24,7 +24,8 @@
                              Style="{StaticResource NavigationButtonStyle}" />
 
                 <Label Text="{Binding Data.Name, StringFormat= 'Character: {0:G}'}"
-                       Style="{StaticResource HeaderStyle}" />
+                       Style="{StaticResource HeaderStyle}"
+                       FontSize="Large" />
 
                 <ImageButton Source="icon_delete.png"
                              HorizontalOptions="End"
