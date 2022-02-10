@@ -315,6 +315,21 @@
                         Value="{StaticResource SecondaryTextColor}" />
             </Style>
 
+            <Style x:Key="DeleteMessageLabel"
+                   TargetType="Label"
+                   BasedOn="{StaticResource LabelBaseStyle}">
+                <Setter Property="FontSize"
+                        Value="Medium" />
+                <Setter Property="VerticalTextAlignment"
+                        Value="Center" />
+                <Setter Property="HorizontalTextAlignment"
+                        Value="Center" />
+                <Setter Property="FontFamily"
+                        Value="beachday" />
+                <Setter Property="LineBreakMode"
+                        Value="WordWrap" />
+            </Style>
+
             <!-- Image -->
             <Style TargetType="Image"
                    x:Key="ImageLargeStyle">
