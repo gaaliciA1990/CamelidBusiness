@@ -69,7 +69,7 @@
                           HorizontalOptions="FillAndExpand">
 
                         <Frame Style="{StaticResource CrudiTopEntryFrame }"
-                               WidthRequest="150"
+                               WidthRequest="125"
                                Grid.Row="0"
                                Grid.Column="0">
                             <Picker x:Name="ClanPicker"
@@ -162,20 +162,9 @@
 
                         <Frame Grid.Row="0"
                                Grid.Column="0"
-                               VerticalOptions="Center"
-                               HorizontalOptions="Start"
-                               BackgroundColor="#4C3C48"
-                               BorderColor="#15071D"
-                               CornerRadius="10"
-                               WidthRequest="50">
-
-                            <Label Text="LVL:"
-                                   FontSize="Medium"
-                                   TextColor="#FFFF"
-                                   HorizontalOptions="CenterAndExpand"
-                                   HorizontalTextAlignment="Center"
-                                   Style="{StaticResource LabelStyle}"
-                                   BackgroundColor="Transparent" />
+                               Style="{StaticResource AttributeFrame}">
+                            <Label Text="LVL"
+                                   Style="{StaticResource LabelStyle}" />
                         </Frame>
 
                         <!--Level Slider-->
@@ -216,15 +205,16 @@
                                 </Slider.Margin>
                             </Slider>
                         </StackLayout>
-
-                        <Label Text="ATK: "
-                               FontSize="Medium"
-                               Grid.Row="1"
+                        
+                        <!--Attack Sider-->
+                        <Frame Grid.Row="1"
                                Grid.Column="0"
-                               Style="{StaticResource LabelStyle}"
-                               VerticalOptions="Center" />
+                               Style="{StaticResource AttributeFrame}">
+                            <Label Text="ATK"
+                                   Style="{StaticResource LabelStyle}" />
+                        </Frame>
+                        
 
-                        <!--Attack Slider-->
                         <StackLayout Grid.Row="1"
                                      Grid.Column="1"
                                      Orientation="Horizontal"
@@ -262,15 +252,14 @@
                             </Slider>
 
                         </StackLayout>
-
-                        <Label Text="DEF: "
-                               FontSize="Medium"
-                               Grid.Row="2"
-                               Grid.Column="0"
-                               Style="{StaticResource LabelStyle}"
-                               VerticalOptions="Center" />
-
+                        
                         <!--Defense Slider-->
+                        <Frame Grid.Row="2"
+                               Grid.Column="0"
+                               Style="{StaticResource AttributeFrame}">
+                            <Label Text="DEF"
+                                   Style="{StaticResource LabelStyle}" />
+                        </Frame>
                         <StackLayout Grid.Row="2"
                                      Grid.Column="1"
                                      Orientation="Horizontal"
@@ -309,12 +298,12 @@
                         </StackLayout>
 
                         <!--Speed Slider-->
-                        <Label Text="SPD: "
-                               FontSize="Medium"
-                               Grid.Row="3"
+                        <Frame Grid.Row="3"
                                Grid.Column="0"
-                               Style="{StaticResource LabelStyle}"
-                               VerticalOptions="Center" />
+                               Style="{StaticResource AttributeFrame}">
+                            <Label Text="SPD"
+                                   Style="{StaticResource LabelStyle}" />
+                        </Frame>
 
                         <StackLayout Grid.Row="3"
                                      Grid.Column="1"
@@ -359,17 +348,20 @@
                                      Grid.Row="4"
                                      Grid.Column="0"
                                      Grid.ColumnSpan="2">
-                            <Label x:Name="HealthLabel"
-                                   Text="HP"
-                                   FontSize="Medium"
-                                   Style="{StaticResource LabelStyle}" />
+                            <Frame Style="{StaticResource AttributeFrame}">
+                                <Label x:Name="HealthLabel"
+                                       Text="HP"
+                                       Style="{StaticResource LabelStyle}" />
+                            </Frame>
 
-                            <Label Grid.Row="4"
-                                   Grid.Column="1"
-                                   x:Name="MaxHealthValue"
-                                   Text="{Binding Data.MaxHealth, StringFormat= '{0:G} hp'}"
-                                   Style="{StaticResource ValueStyle}"
-                                   FontSize="Medium" />
+                            <Frame Style="{StaticResource AttributeFrame}">
+                                <Label Grid.Row="4"
+                                       Grid.Column="1"
+                                       x:Name="MaxHealthValue"
+                                       Text="{Binding Data.MaxHealth, StringFormat= '{0:G} hp'}"
+                                       Style="{StaticResource ValueStyle}"
+                                       FontSize="Medium" />
+                            </Frame>
                         </StackLayout>
                     </Grid>
                 </StackLayout>
