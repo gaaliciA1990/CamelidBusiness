@@ -69,7 +69,7 @@
                                ReturnType="Done"
                                TextChanged="Entry_TextChanged"
                                Text="{Binding Data.Name, Mode=TwoWay}"
-                               Style="{StaticResource EntryStyle}" />
+                               Style="{StaticResource EntryTopStyle}" />
 
                         <Grid HorizontalOptions="CenterAndExpand"
                               VerticalOptions="Fill">
@@ -83,41 +83,31 @@
                             </Grid.RowDefinitions>
 
                             <ImageButton Grid.Column="0"
-                                         Grid.Row="0"
-                                         x:Name="LeftButton"
-                                         Source="leftarrow.png"
-                                         Clicked="LeftButton_Clicked"
-                                         BorderColor="DarkSlateGray"
-                                         CornerRadius="1" />
+                                     Grid.Row="0"
+                                     x:Name="LeftButton"
+                                     Source="leftarrow.png"
+                                     Clicked="LeftButton_Clicked"
+                                     HorizontalOptions="Start" />
+                            
                             <Image  Grid.Column="1"
                                     Grid.Row="0"
                                     x:Name="ImageLabel"
                                     Source="{Binding Data.ImageURI}"
-                                    HorizontalOptions="FillAndExpand"
-                                    VerticalOptions="FillAndExpand"
-                                    Aspect="AspectFit"
-                                    Margin="10" />
+                                    Style="{StaticResource CrudiImageStyle}"/>
+
                             <ImageButton Grid.Column="2"
-                                         Grid.Row="0"
-                                         x:Name="RightButton"
-                                         Source="rightarrow.png"
-                                         Clicked="RightButton_Clicked"
-                                         BorderColor="DarkSlateGray"
-                                         CornerRadius="5" />
+                                     Grid.Row="0"
+                                     x:Name="RightButton"
+                                     Source="rightarrow.png"
+                                     Clicked="RightButton_Clicked"
+                                     HorizontalOptions="End" />
                         </Grid>
 
                         <Entry x:Name="DescriptionEntry"
-                               FontSize="Medium"
-                               HorizontalOptions="FillAndExpand"
-                               BackgroundColor="White"
-                               MaxLength="50"
-                               Keyboard="Text"
-                               IsSpellCheckEnabled="True"
                                TextChanged="Entry_TextChanged"
-                               ReturnType="Done"
                                Text="{Binding Data.Description, Mode= TwoWay}"
-                               Style="{StaticResource EntryStyle}" 
-                               MinimumHeightRequest="100"/>
+                               Style="{StaticResource EntryBottomStyle}"/>
+                        
                     </StackLayout>
 
                     <!--Attributes setup-->
@@ -127,6 +117,7 @@
                                  VerticalOptions="FillAndExpand"
                                  Padding="10"
                                  Style="{StaticResource OuterBoxStack}">
+                        
                         <Grid HorizontalOptions="Center"
                               VerticalOptions="FillAndExpand">
                             <Grid.ColumnDefinitions>
@@ -141,8 +132,7 @@
                                          Grid.ColumnSpan="2">
                                 <Label Text="DIFFICULTY "
                                        FontSize="Medium"
-                                       Style="{StaticResource LabelStyle}"
-                                       HorizontalOptions="Center"/>
+                                       Style="{StaticResource LabelStyle}"/>
 
                                 <!--Difficulty Labels-->
                                 <StackLayout x:Name="DifficultyStack" 
@@ -151,12 +141,12 @@
                                 </StackLayout>
                             </StackLayout>
 
-                            <Label Text="ATK: "
-                                   FontSize="Medium"
-                                   Grid.Row="1"
-                                   Grid.Column="0"
-                                   Style="{StaticResource LabelStyle}"
-                                   VerticalOptions="Center" />
+                            <Frame Grid.Row="1"
+                               Grid.Column="0"
+                               Style="{StaticResource AttributeFrame}">
+                                <Label Text="ATK"
+                                   Style="{StaticResource LabelStyle}" />
+                            </Frame>
                             <!--Attack Slider-->
                             <StackLayout Grid.Row="1"
                                          Grid.Column="1"
@@ -166,10 +156,7 @@
                                 <Label x:Name="AttackValue"
                                        Text="{Binding Data.Attack, Mode=TwoWay}"
                                        Style="{StaticResource ValueStyle}"
-                                       FontAttributes="Bold"
-                                       HorizontalOptions="Start"
-                                       HorizontalTextAlignment="Start"
-                                       VerticalOptions="Center">
+                                       FontAttributes="Bold">
                                     <Label.Margin>
                                         <OnPlatform x:TypeArguments="Thickness">
                                             <On Platform="iOS"
@@ -194,13 +181,13 @@
                                     </Slider.Margin>
                                 </Slider>
                             </StackLayout>
-
-                            <Label Text="DEF: "
-                                   FontSize="Medium"
-                                   Grid.Row="2"
-                                   Grid.Column="0"
-                                   Style="{StaticResource LabelStyle}"
-                                   VerticalOptions="Center" />
+                            
+                            <Frame Grid.Row="2"
+                               Grid.Column="0"
+                               Style="{StaticResource AttributeFrame}">
+                                <Label Text="DEF"
+                                   Style="{StaticResource LabelStyle}" />
+                            </Frame>
                             <!--Defense Slider-->
                             <StackLayout Grid.Row="2"
                                          Grid.Column="1"
@@ -210,10 +197,7 @@
                                 <Label x:Name="DefenseValue"
                                        Text="{Binding Data.Defense, Mode=TwoWay}"
                                        Style="{StaticResource ValueStyle}"
-                                       FontAttributes="Bold"
-                                       HorizontalOptions="Start"
-                                       HorizontalTextAlignment="Start"
-                                       VerticalOptions="Center">
+                                       FontAttributes="Bold">
                                     <Label.Margin>
                                         <OnPlatform x:TypeArguments="Thickness">
                                             <On Platform="iOS"
@@ -240,13 +224,13 @@
 
                             </StackLayout>
 
-                            <Label Text="SPD: "
-                                   FontSize="Medium"
-                                   Grid.Row="3"
-                                   Grid.Column="0"
-                                   Style="{StaticResource LabelStyle}"
-                                   VerticalOptions="Center" />
-                            <!--Speed Sl;ider-->
+                            <Frame Grid.Row="3"
+                               Grid.Column="0"
+                               Style="{StaticResource AttributeFrame}">
+                                <Label Text="SPD"
+                                   Style="{StaticResource LabelStyle}" />
+                            </Frame>
+                            <!--Speed Slider-->
                             <StackLayout Grid.Row="3"
                                          Grid.Column="1"
                                          Orientation="Horizontal"
@@ -255,10 +239,7 @@
                                 <Label x:Name="SpeedValue"
                                        Text="{Binding Data.Speed, Mode=TwoWay}"
                                        Style="{StaticResource ValueStyle}"
-                                       FontAttributes="Bold"
-                                       HorizontalOptions="Start"
-                                       HorizontalTextAlignment="Start"
-                                       VerticalOptions="Center">
+                                       FontAttributes="Bold">
                                     <Label.Margin>
                                         <OnPlatform x:TypeArguments="Thickness">
                                             <On Platform="iOS"
@@ -289,7 +270,8 @@
                         <StackLayout HorizontalOptions="CenterAndExpand" 
                                      Orientation="Horizontal"
                                      HeightRequest="90">
-                            <StackLayout x:Name="ItemBox"/>
+                            <StackLayout x:Name="ItemBox"
+                                         Style="{StaticResource ItemBox}"/>
                             <ImageButton x:Name="RollDice"
                                     Source="icon_dice.png"
                                     Clicked="RollDice_Clicked"
@@ -297,7 +279,7 @@
                                     Style="{StaticResource ImageMediumStyle}"
                                     HeightRequest="80"
                                     WidthRequest="80"
-                                         HorizontalOptions="End"/>
+                                    HorizontalOptions="End"/>
                         </StackLayout>
 
                     </StackLayout>
@@ -306,20 +288,11 @@
 
             <!--The Item Popup-->
             <StackLayout x:Name="PopupItemSelector"
-                         BackgroundColor="{StaticResource PageBackgroundColor}"
-                         IsVisible="false"
-                         AbsoluteLayout.LayoutBounds=".5, .5,.5,.5"
-                         AbsoluteLayout.LayoutFlags="All"
-                         Opacity=".95"
-                         WidthRequest="350"
-                         HeightRequest="350"
+                         Style="{StaticResource ItemSelectorPopup}"
                          Grid.Row="0"
                          Grid.RowSpan="2">
 
-                <StackLayout VerticalOptions="CenterAndExpand"
-                             HorizontalOptions="CenterAndExpand"
-                             WidthRequest="300"
-                             HeightRequest="300">
+                <StackLayout Style="{StaticResource ItemSelectorInnerPopup}">
 
                     <Frame BorderColor="{StaticResource TriciaryTextColor}"
                            Padding="1">
@@ -386,9 +359,10 @@
                                 </ListView.ItemTemplate>
                             </ListView>
 
-                            <Button x:Name="PopupCloseButton"
-                                    Clicked="ClosePopup_Clicked"
-                                    Text="Close" />
+                            <ImageButton x:Name="PopupCloseButton"
+                                         Clicked="ClosePopup_Clicked"
+                                         Source="icon_cancel.png" 
+                                         Style="{StaticResource DeleteButtonStyle}"/>
                         </StackLayout>
                     </Frame>
                 </StackLayout>
