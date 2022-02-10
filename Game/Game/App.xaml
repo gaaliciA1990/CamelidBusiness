@@ -278,6 +278,26 @@
                         Value="Center" />
             </Style>
 
+            <Style x:Key="CrudiTopLabelStyle"
+                   TargetType="Label">
+                <Setter Property="FontSize"
+                        Value="Small" />
+                <Setter Property="HorizontalOptions"
+                        Value="FillAndExpand" />
+                <Setter Property="FontFamily"
+                        Value="myriadpro" />
+                <Setter Property="VerticalOptions"
+                        Value="Center" />
+                <Setter Property="HorizontalTextAlignment"
+                        Value="Center" />
+                <Setter Property="TextColor"
+                        Value="{StaticResource PrimaryTextColor}" />
+                <Setter Property="BackgroundColor"
+                        Value="Transparent" />
+                <Setter Property="WidthRequest"
+                        Value="150" />
+            </Style>
+
             <!-- Image -->
             <Style TargetType="Image"
                    x:Key="ImageLargeStyle">
@@ -361,6 +381,18 @@
             <Style TargetType="Image"
                    x:Key="BattleMapPlayerSmallStyle"
                    BasedOn="{StaticResource ImageBattleSmallStyle}">
+            </Style>
+
+            <Style x:Key="CrudiImageStyle"
+                   TargetType="Image">
+                <Setter Property="HorizontalOptions"
+                        Value="FillAndExpand" />
+                <Setter Property="VerticalOptions"
+                        Value="FillAndExpand" />
+                <Setter Property="Aspect"
+                        Value="AspectFit" />
+                <Setter Property="Margin"
+                        Value="10" />
             </Style>
 
             <!-- ImageButton -->
@@ -695,7 +727,7 @@
                         Value="{StaticResource PrimaryBackgroundColor}" />
             </Style>
 
-            <Style x:Key="CrudiTopEntryFrame"
+            <Style x:Key="CrudiTopFrame"
                    TargetType="Frame">
                 <Setter Property="CornerRadius"
                         Value="20" />
@@ -709,7 +741,7 @@
                         Value="150" />
             </Style>
 
-            <Style x:Key="CrudiBottomEnterFrame"
+            <Style x:Key="CrudiBottomFrame"
                    TargetType="Frame">
                 <Setter Property="CornerRadius"
                         Value="20" />
