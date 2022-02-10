@@ -22,8 +22,8 @@ namespace Game.Models
         {
             PlayerType = PlayerTypeEnum.Character;
             Guid = Id;
-            Name = "Ace";
-            Description = "Eats grass, kicks ass!!!";
+            Name = "";
+            Description = "";
             Level = 1;
             ImageURI = "alpaca1.png";
             Clan = CharacterClanEnum.Alpaca;
