@@ -161,7 +161,7 @@
                 <Setter Property="FontFamily"
                         Value="machinegunk" />
                 <Setter Property="FontSize"
-                        Value="Header" />
+                        Value="Medium" />
                 <Setter Property="HorizontalOptions"
                         Value="CenterAndExpand" />
                 <Setter Property="VerticalOptions"
@@ -564,7 +564,7 @@
                 <Setter Property="HeightRequest"
                         Value="350" />
                 <Setter Property="BackgroundColor"
-                        Value="{StaticResource LightBackgroundColor}" />
+                        Value="Transparent"/>
             </Style>
 
             <Style x:Key="ItemSelectorInnerPopup"
@@ -857,6 +857,28 @@
                         Value="5" />
                 <Setter Property="IsClippedToBounds"
                         Value="True" />
+            </Style>
+
+            <Style x:Key="PopuploadingView"
+                   TargetType="Frame">
+                <Setter Property="BackgroundColor"
+                        Value="{StaticResource LightBackgroundColor}" />
+                <Setter Property="BorderColor"
+                        Value="Black" />
+                <Setter Property="IsVisible"
+                        Value="false" />
+                <Setter Property="WidthRequest"
+                        Value="300" />
+                <Setter Property="VerticalOptions"
+                        Value="End" />
+                <Setter Property="CornerRadius"
+                        Value="5" />
+                <Setter Property="IsClippedToBounds"
+                        Value="True" />
+                <Setter Property="AbsoluteLayout.LayoutBounds"
+                        Value="0.5, 0.5, -1, -1" />
+                <Setter Property="AbsoluteLayout.LayoutFlags"
+                        Value="PositionProportional" />
             </Style>
 
             <!-- Grid -->
