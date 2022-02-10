@@ -174,11 +174,7 @@
 
                             <Label x:Name="LevelValue"
                                    Text="{Binding Data.Level}"
-                                   Style="{StaticResource ValueStyle}"
-                                   FontSize="Medium"
-                                   HorizontalOptions="Start"
-                                   HorizontalTextAlignment="Start"
-                                   VerticalOptions="Center">
+                                   Style="{StaticResource ValueStyle}">
                                 <Label.Margin>
                                     <OnPlatform x:TypeArguments="Thickness">
                                         <On Platform="iOS"
@@ -219,11 +215,7 @@
 
                             <Label x:Name="AttackValue"
                                    Text="{Binding Data.GetAttackTotal}"
-                                   Style="{StaticResource ValueStyle}"
-                                   FontSize="Medium"
-                                   HorizontalOptions="Start"
-                                   HorizontalTextAlignment="Start"
-                                   VerticalOptions="Center">
+                                   Style="{StaticResource ValueStyle}">
                                 <Label.Margin>
                                     <OnPlatform x:TypeArguments="Thickness">
                                         <On Platform="iOS"
@@ -264,11 +256,7 @@
 
                             <Label x:Name="DefenseValue"
                                    Text="{Binding Data.GetDefenseTotal}"
-                                   Style="{StaticResource ValueStyle}"
-                                   FontSize="Medium"
-                                   HorizontalOptions="Start"
-                                   HorizontalTextAlignment="Start"
-                                   VerticalOptions="Center">
+                                   Style="{StaticResource ValueStyle}">
                                 <Label.Margin>
                                     <OnPlatform x:TypeArguments="Thickness">
                                         <On Platform="iOS"
@@ -309,11 +297,7 @@
 
                             <Label x:Name="SpeedValue"
                                    Text="{Binding Data.GetSpeedTotal}"
-                                   Style="{StaticResource ValueStyle}"
-                                   FontSize="Medium"
-                                   HorizontalOptions="Start"
-                                   HorizontalTextAlignment="Start"
-                                   VerticalOptions="Center">
+                                   Style="{StaticResource ValueStyle}">
                                 <Label.Margin>
                                     <OnPlatform x:TypeArguments="Thickness">
                                         <On Platform="iOS"
@@ -337,7 +321,6 @@
                                     </OnPlatform>
                                 </Slider.Margin>
                             </Slider>
-
                         </StackLayout>
 
                         <!--Health Attribute-->
@@ -355,8 +338,7 @@
                                    Grid.Column="1"
                                    x:Name="MaxHealthValue"
                                    Text="{Binding Data.MaxHealth, StringFormat= '{0:G} hp'}"
-                                   Style="{StaticResource ValueStyle}"
-                                   FontSize="Medium" />
+                                   Style="{StaticResource ValueStyle}" />
                         </StackLayout>
                     </Grid>
                 </StackLayout>
