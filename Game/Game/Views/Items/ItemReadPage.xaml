@@ -23,7 +23,7 @@
                          Style="{StaticResource NavigationButtonStyle}"
                          Clicked="BackButton_Clicked"/>
 
-            <Label Text="{Binding Data.Name, StringFormat= 'Character: {0:G}'}"
+            <Label Text="{Binding Data.Name, StringFormat= 'Item: {0:G}'}"
                    Style="{StaticResource HeaderStyle}" 
                    FontSize="Large"/>
 
@@ -60,7 +60,8 @@
                            Style="{StaticResource CrudiLabelStyle}" />
 
                     <Image Source="{Binding Data.ImageURI}"
-                           Style="{StaticResource CrudiImageStyle}" />
+                           Style="{StaticResource CrudiImageStyle}"
+                           />
 
                     <Label Text="{Binding Data.Description}"
                            Style="{StaticResource CrudiLabelStyle}" />
