@@ -135,12 +135,8 @@
                                   VerticalOptions="CenterAndExpand">
                                 <ProgressBar x:Name="LevelBar"
                                              Style="{StaticResource CrudiProgressBar}" />
-                                <Label TextColor="Black"
-                                       VerticalOptions="CenterAndExpand"
-                                       FontAttributes="Bold"
-                                       Text="{Binding Data.Level , StringFormat='  {0:G}'}"
-                                       FontSize="Medium"
-                                       HorizontalOptions="CenterAndExpand" />
+                                <Label Text="{Binding Data.Level , StringFormat='  {0:G}'}"
+                                       Style="{StaticResource ProgressBarLabel}" />
                             </Grid>
                         </StackLayout>
 
@@ -161,12 +157,8 @@
                                   VerticalOptions="CenterAndExpand">
                                 <ProgressBar x:Name="AttackBar"
                                              Style="{StaticResource CrudiProgressBar}" />
-                                <Label TextColor="Black"
-                                       VerticalOptions="CenterAndExpand"
-                                       FontAttributes="Bold"
-                                       Text="{Binding Data.GetAttackTotal , StringFormat='  {0:G}'}"
-                                       FontSize="Medium"
-                                       HorizontalOptions="CenterAndExpand" />
+                                <Label Text="{Binding Data.GetAttackTotal , StringFormat='  {0:G}'}"
+                                       Style="{StaticResource ProgressBarLabel}" />
                             </Grid>
                         </StackLayout>
 
@@ -187,12 +179,8 @@
                                   VerticalOptions="CenterAndExpand">
                                 <ProgressBar x:Name="DefenseBar"
                                              Style="{StaticResource CrudiProgressBar}" />
-                                <Label TextColor="Black"
-                                       VerticalOptions="CenterAndExpand"
-                                       FontAttributes="Bold"
-                                       Text="{Binding Data.GetDefenseTotal , StringFormat='  {0:G}'}"
-                                       FontSize="Medium"
-                                       HorizontalOptions="CenterAndExpand" />
+                                <Label Text="{Binding Data.GetDefenseTotal , StringFormat='  {0:G}'}"
+                                       Style="{StaticResource ProgressBarLabel}" />
                             </Grid>
                         </StackLayout>
 
@@ -213,12 +201,8 @@
                                   VerticalOptions="CenterAndExpand">
                                 <ProgressBar x:Name="SpeedBar"
                                              Style="{StaticResource CrudiProgressBar}" />
-                                <Label TextColor="Black"
-                                       VerticalOptions="CenterAndExpand"
-                                       FontAttributes="Bold"
-                                       Text="{Binding Data.GetSpeedTotal , StringFormat='  {0:G}'}"
-                                       FontSize="Medium"
-                                       HorizontalOptions="CenterAndExpand" />
+                                <Label Text="{Binding Data.GetSpeedTotal , StringFormat='  {0:G}'}"
+                                       Style="{StaticResource ProgressBarLabel}" />
                             </Grid>
                         </StackLayout>
 
@@ -239,13 +223,9 @@
                                   VerticalOptions="CenterAndExpand">
                                 <ProgressBar x:Name="RangeBar"
                                              Style="{StaticResource CrudiProgressBar}" />
-                                <Label TextColor="Black"
-                                       x:Name="RangeValue"
-                                       VerticalOptions="CenterAndExpand"
-                                       FontAttributes="Bold"
+                                <Label x:Name="RangeValue"
                                        Text="{Binding Data.GetItemRange , StringFormat='  {0:G}'}"
-                                       FontSize="Medium"
-                                       HorizontalOptions="CenterAndExpand" />
+                                       Style="{StaticResource ProgressBarLabel}" />
                             </Grid>
                         </StackLayout>
 
