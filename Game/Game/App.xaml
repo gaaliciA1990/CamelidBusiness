@@ -278,7 +278,7 @@
                         Value="Center" />
             </Style>
 
-            <Style x:Key="CrudiTopLabelStyle"
+            <Style x:Key="CrudiLabelStyle"
                    TargetType="Label">
                 <Setter Property="FontSize"
                         Value="Small" />
