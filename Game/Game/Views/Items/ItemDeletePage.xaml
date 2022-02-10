@@ -139,8 +139,7 @@
                            Grid.ColumnSpan="2">
                         <Grid>
                             <Label Text="Deleted items cannot be recovered. Delete this item?"
-                                   FontSize="Medium"
-                                   HorizontalTextAlignment="Center"
+                                   Style="{StaticResource DeleteMessageLabel}"
                                    Grid.Row="0"
                                    Grid.ColumnSpan="2" />
                             <ImageButton x:Name="DeleteButton"
