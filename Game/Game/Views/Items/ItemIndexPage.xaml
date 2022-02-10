@@ -76,7 +76,7 @@
                                             <StackLayout Orientation="Horizontal">
                                                 <Frame Style="{StaticResource SmallFlexIndexFrame}">
                                                     <Label x:Name="AttributeLabel"
-                                                           Text="{Binding Attribute}"
+                                                           Text="{Binding attributeToString}"
                                                            Style="{StaticResource LabelStyle}" />
                                                 </Frame>
 
