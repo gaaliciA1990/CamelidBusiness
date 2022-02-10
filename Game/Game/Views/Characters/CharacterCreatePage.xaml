@@ -155,7 +155,8 @@
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
-
+                        
+                        <!--Level Slider-->
                         <Frame Grid.Row="0"
                                Grid.Column="0"
                                Style="{StaticResource AttributeFrame}">
@@ -163,7 +164,6 @@
                                    Style="{StaticResource LabelStyle}" />
                         </Frame>
 
-                        <!--Level Slider-->
                         <StackLayout Grid.Row="0"
                                      Grid.Column="1"
                                      Orientation="Horizontal"
