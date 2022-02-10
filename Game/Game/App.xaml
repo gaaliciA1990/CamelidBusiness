@@ -880,7 +880,7 @@
                         Value="{StaticResource LightBackgroundColor}" />
             </Style>
 
-            <Style x:Name="CRUDIPickerStyle"
+            <Style x:Key="CRUDIPickerStyle"
                    TargetType="Picker">
                 <Setter Property="BackgroundColor"
                         Value="Transparent" />
