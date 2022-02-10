@@ -1014,7 +1014,7 @@
                 <Setter Property="HorizontalOptions"
                         Value="FillAndExpand" />
                 <Setter Property="FontFamily"
-                        Value="myriadpro" />
+                        Value="beachday" />
                 <Setter Property="VerticalOptions"
                         Value="Center" />
                 <Setter Property="HorizontalTextAlignment"
@@ -1036,29 +1036,14 @@
             </Style>
 
             <Style TargetType="Entry"
-                   x:Key="EntryTopStyle">
-                <Setter Property="FontSize"
-                        Value="Small" />
-                <Setter Property="HorizontalOptions"
-                        Value="FillAndExpand" />
-                <Setter Property="FontFamily"
-                        Value="myriadpro" />
-                <Setter Property="VerticalOptions"
-                        Value="Center" />
-                <Setter Property="HorizontalTextAlignment"
-                        Value="Center" />
+                   x:Key="EntryTopStyle"
+                   BasedOn="{StaticResource EntryBottomStyle}">
                 <Setter Property="TextColor"
                         Value="{StaticResource PrimaryTextColor}" />
                 <Setter Property="BackgroundColor"
                         Value="Transparent" />
                 <Setter Property="PlaceholderColor"
                         Value="{StaticResource TriciaryTextColor}" />
-                <Setter Property="IsSpellCheckEnabled"
-                        Value="True" />
-                <Setter Property="ReturnType"
-                        Value="Done" />
-                <Setter Property="Keyboard"
-                        Value="Text" />
                 <Setter Property="MaxLength"
                         Value="20" />
                 <Setter Property="WidthRequest"
@@ -1149,7 +1134,7 @@
                 <Setter Property="FontSize"
                         Value="Small" />
                 <Setter Property="FontFamily"
-                        Value="myriadpro" />
+                        Value="beachday" />
             </Style>
 
             <!-- Progress Bar -->
