@@ -177,7 +177,7 @@
                         Value="{StaticResource SecondaryTextColor}" />
                 <Setter Property="HorizontalOptions"
                         Value="CenterAndExpand" />
-                
+
             </Style>
 
             <Style TargetType="Label"
@@ -497,13 +497,41 @@
                 <Setter Property="Orientation"
                         Value="Vertical" />
             </Style>
-            
+
             <Style TargetType="StackLayout"
                    x:Key="OuterBoxStack"
                    BasedOn="{StaticResource VerticalStack}">
             </Style>
 
-            <Style TargetType="StackLayout"
+            <Style x:Key="ItemSelectorPopup"
+                   TargetType="StackLayout">
+                <Setter Property="IsVisible"
+                        Value="false" />
+                <Setter Property="AbsoluteLayout.LayoutBounds"
+                        Value=".5, .5,.5,.5" />
+                <Setter Property="AbsoluteLayout.LayoutFlags"
+                        Value="All" />
+                <Setter Property="Opacity"
+                        Value="0.95" />
+                <Setter Property="WidthRequest"
+                        Value="350" />
+                <Setter Property="HeightRequest"
+                        Value="350" />
+            </Style>
+
+            <Style x:Key="ItemSelectorInnerPopup"
+                   TargetType="StackLayout">
+                <Setter Property="VerticalOptions"
+                        Value="CenterAndExpand" />
+                <Setter Property="HorizontalOptions"
+                        Value="CenterAndExpand" />
+                <Setter Property="WidthRequest"
+                        Value="300" />
+                <Setter Property="HeightRequest"
+                        Value="300" />
+            </Style>
+
+                <Style TargetType="StackLayout"
                    x:Key="CardImageTextBox">
                 <Setter Property="Orientation"
                         Value="Vertical" />
