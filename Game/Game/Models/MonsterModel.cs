@@ -18,8 +18,8 @@ namespace Game.Models
         {
             PlayerType = PlayerTypeEnum.Monster;
             Guid = Id;
-            Name = "Monster";
-            Description = "Angry Monster";
+            Name = "";
+            Description = "";
             Attack = 1;
             Difficulty = DifficultyEnum.Average;
             UniqueItem = null;
