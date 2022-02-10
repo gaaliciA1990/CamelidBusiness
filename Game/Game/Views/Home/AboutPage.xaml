@@ -6,34 +6,30 @@
              mc:Ignorable="d"
              x:Class="Game.Views.AboutPage"
              Title="About"
-             NavigationPage.HasNavigationBar="False">
+             NavigationPage.HasNavigationBar="False"
+             Style="{StaticResource CRUDiStyle}">
 
     
     <ContentPage.Content>
         <StackLayout Style="{StaticResource OuterBoxStack}">
-            <Button x:Name="StartButton"
-                    Text="Start"
-                    Clicked="StartButton_Clicked"
-                    Padding="5"
-                    WidthRequest="65"
-                    HeightRequest="35"
-                    HorizontalOptions="Start">
-            </Button>
-            
+            <ImageButton x:Name="StartButton"
+                         Clicked="StartButton_Clicked"
+                         Source="button_start.png"
+                         Style="{StaticResource DeleteButtonStyle}"
+                         HorizontalOptions="StartAndExpand"
+                         Margin="10,0,0,0"/>
+
             <ScrollView Padding="10,10,10,10"
                         VerticalOptions="Start"
                         HorizontalOptions="FillAndExpand"
                         Orientation="Vertical"
                         VerticalScrollBarVisibility="Always">
                 <Grid>
-
-                    <Image Source="logo_placeholder.png"
+                    <Image Source="logo.png"
                            Style="{StaticResource ImageLargeStyle}"
                            Grid.Row="0"
                            Grid.Column="0"
-                           HorizontalOptions="CenterAndExpand"
-                           VerticalOptions="CenterAndExpand" />
-
+                           Scale="1.75" />
                     <StackLayout Style="{StaticResource VerticalStack}"
                                  HorizontalOptions="CenterAndExpand"
                                  Grid.Row="0"
@@ -41,15 +37,10 @@
                         <Frame BackgroundColor="White"
                                BorderColor="Black"
                                WidthRequest="500"
-                               HeightRequest="150"
+                               HeightRequest="110"
                                Padding="5, 0"
                                Margin="5">
                             <StackLayout Orientation="Vertical">
-                                <Label Text="Camelid Business"
-                                       Style="{StaticResource HeaderStyle}"
-                                       HorizontalOptions="Center"
-                                       HorizontalTextAlignment="Center"
-                                       FontAttributes="Bold" />
                                 <Label Text="Welcome to the our game! This is a raid dungeon crawler that focuses around 3 Camelid Clans: Alpacas, Llamas, and Vincuñas. Your job is to help the champions defeat the threat to their land. As you go through the levels, you will pick up items
                                and gain XP to improve your characters to defeat the Great Leader. Hurry, your champions need you!"
                                        HorizontalTextAlignment="Start"
