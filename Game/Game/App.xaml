@@ -35,6 +35,8 @@
             <Color x:Key="SecondaryTextColor">#FFFF</Color>
             <Color x:Key="TriciaryTextColor">#328706</Color>
             <Color x:Key="CrudiItemSelectColor">#4C3C48</Color>
+            <Color x:Key="GradientDarkColor">#62a49a</Color>
+            <Color x:Key="GradientLightColor">#f8de8f</Color>
 
             <Color x:Key="TransparentColor">Transparent</Color>
 
@@ -62,9 +64,9 @@
                 <Setter Property="Background">
                     <LinearGradientBrush StartPoint="0.5,0"
                                          EndPoint="0.5,1">
-                        <GradientStop Color="#62a49a"
+                        <GradientStop Color="{StaticResource GradientDarkColor}"
                                       Offset="0.0" />
-                        <GradientStop Color="#f8de8f"
+                        <GradientStop Color="{StaticResource GradientLightColor}"
                                       Offset="0.75" />
                     </LinearGradientBrush>
                 </Setter>
@@ -128,7 +130,7 @@
                 <Setter Property="TextColor"
                         Value="{StaticResource PrimaryTextColor}" />
                 <Setter Property="FontFamily"
-                        Value="myriadpro" />
+                        Value="beachday" />
                 <Setter Property="FontAttributes"
                         Value="None" />
                 <Setter Property="FontSize"
@@ -175,7 +177,7 @@
                 <Setter Property="FontFamily"
                         Value="beachday" />
                 <Setter Property="FontSize"
-                        Value="Micro" />
+                        Value="Medium" />
                 <Setter Property="HorizontalTextAlignment"
                         Value="Center" />
                 <Setter Property="TextColor"
@@ -207,6 +209,10 @@
                         Value="Bold" />
                 <Setter Property="LineBreakMode"
                         Value="WordWrap" />
+                <Setter Property="HorizontalOptions"
+                        Value="Center" />
+                <Setter Property="VerticalOptions"
+                        Value="Center" />
                 <Setter Property="HorizontalTextAlignment"
                         Value="Center" />
                 <Setter Property="TextColor"
@@ -930,7 +936,7 @@
                 <Setter Property="BorderColor"
                         Value="{StaticResource PrimaryTextColor}" />
                 <Setter Property="BackgroundColor"
-                        Value="#FFFF" />
+                        Value="{StaticResource GradientLightColor}" />
                 <Setter Property="HeightRequest"
                         Value="100" />
                 <Setter Property="WidthRequest"
@@ -942,7 +948,7 @@
             <Style x:Key="FlexIndexFrame"
                    TargetType="Frame">
                 <Setter Property="BackgroundColor"
-                        Value="#328706" />
+                        Value="{StaticResource GradientDarkColor}" />
                 <Setter Property="BorderColor"
                         Value="Black" />
                 <Setter Property="CornerRadius"
