@@ -19,9 +19,6 @@
             <StackLayout Orientation="Horizontal"
                          Grid.Row="0">
                 <Label FontSize="Large"
-                       FontAttributes="Bold, Italic"
-                       HorizontalOptions="CenterAndExpand"
-                       VerticalOptions="FillAndExpand"
                        Text="{Binding Data.Name, StringFormat= 'Delete: {0:G}?'}"
                        Style="{StaticResource HeaderStyle}" />
             </StackLayout>
