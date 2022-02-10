@@ -304,6 +304,8 @@
                         Value="Medium" />
                 <Setter Property="FontAttributes"
                         Value="Bold" />
+                <Setter Property="TextColor"
+                        Value="{StaticResource SecondaryTextColor}" />
             </Style>
 
             <!-- Image -->
@@ -557,6 +559,8 @@
                         Value="350" />
                 <Setter Property="HeightRequest"
                         Value="350" />
+                <Setter Property="BackgroundColor"
+                        Value="{StaticResource LightBackgroundColor}" />
             </Style>
 
             <Style x:Key="ItemSelectorInnerPopup"
@@ -571,7 +575,7 @@
                         Value="300" />
             </Style>
 
-                <Style TargetType="StackLayout"
+            <Style TargetType="StackLayout"
                    x:Key="CardImageTextBox">
                 <Setter Property="Orientation"
                         Value="Vertical" />
@@ -819,6 +823,24 @@
                         Value="{StaticResource SecondaryBackgroundColor}" />
             </Style>
 
+            <Style x:Key="DeletePopupFrame"
+                   TargetType="Frame">
+                <Setter Property="HeightRequest"
+                        Value="200" />
+                <Setter Property="WidthRequest"
+                        Value="300" />
+                <Setter Property="Opacity"
+                        Value="0.9" />
+                <Setter Property="BackgroundColor"
+                        Value="{StaticResource LightBackgroundColor}" />
+                <Setter Property="BorderColor"
+                        Value="Black" />
+                <Setter Property="CornerRadius"
+                        Value="5" />
+                <Setter Property="IsClippedToBounds"
+                        Value="True" />
+            </Style>
+
             <!-- Grid -->
             <Style TargetType="Grid">
                 <Setter Property="ColumnSpacing"
@@ -1000,7 +1022,7 @@
                 <Setter Property="FontFamily"
                         Value="myriadpro" />
             </Style>
-            
+
             <!-- Progress Bar -->
             <Style x:Key="CrudiProgressBar"
                    TargetType="ProgressBar">
