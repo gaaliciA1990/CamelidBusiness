@@ -187,6 +187,10 @@
                         Value="Start" />
                 <Setter Property="HorizontalTextAlignment"
                         Value="Start" />
+                <Setter Property="VerticalOptions"
+                        Value="Center" />
+                <Setter Property="FontSize"
+                        Value="Medium" />
             </Style>
 
             <Style TargetType="Label"
@@ -493,7 +497,7 @@
                 <Setter Property="Orientation"
                         Value="Vertical" />
             </Style>
-
+            
             <Style TargetType="StackLayout"
                    x:Key="OuterBoxStack"
                    BasedOn="{StaticResource VerticalStack}">
