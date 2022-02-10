@@ -23,12 +23,8 @@
                              Clicked="Back_Clicked"
                              Style="{StaticResource NavigationButtonStyle}" />
 
-                <Label FontSize="Large"
-                       FontAttributes="Bold, Italic"
-                       HorizontalOptions="CenterAndExpand"
-                       VerticalOptions="FillAndExpand"
-                       Text="{Binding Data.Name, StringFormat= 'Character: {0:G}'}"
-                       Style="{StaticResource ValueStyle}" />
+                <Label Text="{Binding Data.Name, StringFormat= 'Character: {0:G}'}"
+                       Style="{StaticResource HeaderStyle}" />
 
                 <ImageButton Source="icon_delete.png"
                              HorizontalOptions="End"
@@ -57,7 +53,6 @@
                       HorizontalOptions="CenterAndExpand">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
                         <RowDefinition Height="*" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
@@ -69,41 +64,33 @@
 
                     <Grid Grid.Row="0"
                           HorizontalOptions="FillAndExpand">
+                        <Frame Style="{StaticResource CrudiTopFrame}"
+                               Grid.Row="0"
+                               Grid.Column="0">
+                            <Label x:Name="ClanPicker"
+                                   Text="{Binding Data.Clan}"
+                                   Style="{StaticResource CrudiLabelStyle}" />
+                        </Frame>
 
-                        <Label Grid.Row="0"
-                               Grid.Column="0"
-                               FontSize="Medium"
-                               FontAttributes="Bold, Italic"
-                               HorizontalOptions="Center"
-                               VerticalOptions="FillAndExpand"
-                               Text="{Binding Data.Name}"
-                               Style="{StaticResource ValueStyle}" />
-
-                        <Label Grid.Row="0"
-                               Grid.Column="1"
-                               x:Name="ClanPicker"
-                               Text="{Binding Data.Clan}"
-                               FontSize="Medium"
-                               FontAttributes="Bold, Italic"
-                               HorizontalOptions="Center"
-                               VerticalOptions="FillAndExpand"
-                               Style="{StaticResource ValueStyle}" />
+                        <Frame Style="{StaticResource CrudiTopFrame}"
+                               Grid.Row="0"
+                               Grid.Column="1">
+                            <Label Text="{Binding Data.Name}"
+                                   Style="{StaticResource CrudiLabelStyle}" />
+                        </Frame>
                     </Grid>
 
-                    <Image Grid.Row="2"
+                    <Image Grid.Row="1"
                            x:Name="ImageLabel"
                            Source="{Binding Data.ImageURI}"
-                           HorizontalOptions="FillAndExpand"
-                           VerticalOptions="FillAndExpand"
-                           Aspect="AspectFit"
-                           Margin="10" />
+                           Style="{StaticResource CrudiImageStyle}" />
 
-                    <Label Grid.Row="3"
-                           FontSize="Medium"
-                           HorizontalOptions="Center"
-                           VerticalOptions="FillAndExpand"
-                           Text="{Binding Data.Description}"
-                           Style="{StaticResource ValueStyle}" />
+                    <Frame Style="{StaticResource CrudiBottomFrame}"
+                           Grid.Row="2">
+                        <Label Text="{Binding Data.Description}"
+                               Style="{StaticResource CrudiLabelStyle}"
+                               TextColor="{StaticResource SecondaryTextColor}" />
+                    </Frame>
                 </Grid>
 
                 <StackLayout Grid.Row="0"
@@ -119,12 +106,12 @@
                         </Grid.ColumnDefinitions>
 
                         <!--LEVEL-->
-                        <Label Text="LVL: "
-                               FontSize="Medium"
-                               Grid.Row="0"
-                               Grid.Column="0"
-                               Style="{StaticResource LabelStyle}"
-                               VerticalOptions="Center" />
+                        <Frame  Grid.Row="0"
+                                Grid.Column="0"
+                                Style="{StaticResource AttributeFrame}">
+                            <Label Text="LVL"
+                                   Style="{StaticResource LabelStyle}" />
+                        </Frame>
                         <StackLayout Grid.Row="0"
                                      Grid.Column="1"
                                      Orientation="Horizontal"
@@ -141,12 +128,12 @@
                         </StackLayout>
 
                         <!--ATTACK-->
-                        <Label Text="ATK: "
-                               FontSize="Medium"
-                               Grid.Row="1"
-                               Grid.Column="0"
-                               Style="{StaticResource LabelStyle}"
-                               VerticalOptions="Center" />
+                        <Frame  Grid.Row="1"
+                                Grid.Column="0"
+                                Style="{StaticResource AttributeFrame}">
+                            <Label Text="ATK"
+                                   Style="{StaticResource LabelStyle}" />
+                        </Frame>
                         <StackLayout Grid.Row="1"
                                      Grid.Column="1"
                                      Orientation="Horizontal"
@@ -163,12 +150,12 @@
                         </StackLayout>
 
                         <!--DEFENSE-->
-                        <Label Text="DEF: "
-                               FontSize="Medium"
-                               Grid.Row="2"
-                               Grid.Column="0"
-                               Style="{StaticResource LabelStyle}"
-                               VerticalOptions="Center" />
+                        <Frame  Grid.Row="2"
+                                Grid.Column="0"
+                                Style="{StaticResource AttributeFrame}">
+                            <Label Text="DEF"
+                                   Style="{StaticResource LabelStyle}" />
+                        </Frame>
                         <StackLayout Grid.Row="2"
                                      Grid.Column="1"
                                      Orientation="Horizontal"
@@ -185,12 +172,12 @@
                         </StackLayout>
 
                         <!--SPEED-->
-                        <Label Text="SPD: "
-                               FontSize="Medium"
-                               Grid.Row="3"
+                        <Frame Grid.Row="3"
                                Grid.Column="0"
-                               Style="{StaticResource LabelStyle}"
-                               VerticalOptions="Center" />
+                               Style="{StaticResource AttributeFrame}">
+                            <Label Text="SPD"
+                                   Style="{StaticResource LabelStyle}" />
+                        </Frame>
                         <StackLayout Grid.Row="3"
                                      Grid.Column="1"
                                      Orientation="Horizontal"
@@ -207,12 +194,12 @@
                         </StackLayout>
 
                         <!--RANGE-->
-                        <Label Text="RNG: "
-                               FontSize="Medium"
-                               Grid.Row="4"
+                        <Frame Grid.Row="4"
                                Grid.Column="0"
-                               Style="{StaticResource LabelStyle}"
-                               VerticalOptions="Center" />
+                               Style="{StaticResource AttributeFrame}">
+                            <Label Text="RNG"
+                                   Style="{StaticResource LabelStyle}" />
+                        </Frame>
                         <StackLayout Grid.Row="4"
                                      Grid.Column="1"
                                      Orientation="Horizontal"
@@ -234,15 +221,13 @@
                                      Grid.Row="5"
                                      Grid.Column="0"
                                      Grid.ColumnSpan="2">
-                            <Label Text="HP: "
-                                   FontSize="Medium"
-                                   Style="{StaticResource LabelStyle}" />
-
+                            <Frame Style="{StaticResource AttributeFrame}">
+                                <Label Text="HP"
+                                       Style="{StaticResource LabelStyle}" />
+                            </Frame>
                             <Label x:Name="MaxHealthValue"
                                    Text="{Binding Data.MaxHealth, StringFormat= '{0:G}'}"
-                                   Style="{StaticResource ValueStyle}"
-                                   FontAttributes="Bold"
-                                   FontSize="Medium" />
+                                   Style="{StaticResource ValueStyle}" />
                         </StackLayout>
                     </Grid>
                 </StackLayout>
@@ -251,9 +236,7 @@
                              Grid.Column="0"
                              Grid.ColumnSpan="2"
                              x:Name="ItemBox"
-                             Orientation="Horizontal"
-                             HorizontalOptions="Center"
-                             HeightRequest="60">
+                             Style="{StaticResource ItemBox}">
                 </StackLayout>
 
                 <AbsoluteLayout Padding="0"
@@ -261,16 +244,7 @@
                                 VerticalOptions="CenterAndExpand"
                                 Grid.ColumnSpan="2">
                     <Frame x:Name="PopupLoadingView"
-                           IsVisible="false"
-                           WidthRequest="300"
-                           Opacity=".95"
-                           VerticalOptions="End"
-                           AbsoluteLayout.LayoutBounds="0.5, 0.5, -1, -1"
-                           AbsoluteLayout.LayoutFlags="PositionProportional"
-                           BorderColor="Black"
-                           BackgroundColor="Gray"
-                           CornerRadius="5"
-                           IsClippedToBounds="true">
+                           Style="{StaticResource PopuploadingView}">
 
                         <StackLayout Style="{StaticResource VerticalStack}"
                                      HorizontalOptions="CenterAndExpand"
@@ -302,9 +276,10 @@
                                        Style="{StaticResource ValueStyle}" />
                             </StackLayout>
 
-                            <Button x:Name="PopupCloseButton"
-                                    Clicked="ClosePopup_Clicked"
-                                    Text="Close" />
+                            <ImageButton x:Name="PopupCloseButton"
+                                         Clicked="ClosePopup_Clicked"
+                                         Source="icon_cancel.png"
+                                         Style="{StaticResource DeleteButtonStyle}" />
                         </StackLayout>
                     </Frame>
                 </AbsoluteLayout>
