@@ -50,8 +50,8 @@ namespace Game.Views
 
             this.ViewModel.Title = "Create";
 
-            NameEntry.Placeholder = "Give your character a name";
-            DescriptionEntry.Placeholder = "Describe your character";
+            NameEntry.Placeholder = "Name";
+            DescriptionEntry.Placeholder = "Description";
 
             // Load the values for the Level into the Picker
             for (var i = 1; i <= LevelTableHelper.MaxLevel; i++)
