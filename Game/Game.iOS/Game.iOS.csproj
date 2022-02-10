@@ -155,39 +155,6 @@
     <BundleResource Include="Resources\battleboard.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\sword1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\sword2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\sword3.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\sword4.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\sword5.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\sword6.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\sword7.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\sword8.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\sword9.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\sword10.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\sword11.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\shield4.png" />
   </ItemGroup>
   <ItemGroup>
@@ -198,33 +165,6 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\shield3.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\hat2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\hat1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\neck2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\neck1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\ring2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\ring1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\feet2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\feet1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\knight.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\item.png" />
@@ -348,8 +288,13 @@
     <BundleResource Include="Resources\exit.png" />
     <BundleResource Include="Resources\icon_back.png" />
     <BundleResource Include="Resources\icon_dice.png" />
+    <BundleResource Include="Resources\bronze_spear.png" />
+    <BundleResource Include="Resources\curved_bow.png" />
+    <BundleResource Include="Resources\andean_cuff.png" />
+    <BundleResource Include="Resources\andean_hat.png" />
+    <BundleResource Include="Resources\bronze_mace.png" />
     <Content Include="Resources\monsters.png" />
-    <BundleResource Include="Resources\icon_random.png" />
     <BundleResource Include="Resources\slider_thumbnail.png" />
+    <BundleResource Include="Resources\pure_gold_ring.png" />
   </ItemGroup>
 </Project>
