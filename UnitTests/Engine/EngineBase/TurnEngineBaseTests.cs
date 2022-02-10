@@ -8,6 +8,7 @@ using Game.Helpers;
 using Game.ViewModels;
 using Game.Engine.EngineBase;
 using Game.Engine.EngineModels;
+using Game.GameRules;
 
 namespace UnitTests.Engine.EngineBase
 {
@@ -809,12 +810,14 @@ namespace UnitTests.Engine.EngineBase
             // Forece a Miss
             _ = DiceHelper.EnableForcedRolls();
             _ = DiceHelper.SetForcedRollValue(1);
+            RandomPlayerHelper.TurnOnTestMode();
 
             // Act
             var result = Engine.Round.Turn.TurnAsAttack(CharacterPlayer, MonsterPlayer);
 
             // Reset
             _ = DiceHelper.DisableForcedRolls();
+            RandomPlayerHelper.TurnOffTestMode();
 
             // Assert
             Assert.AreEqual(true, result);
@@ -835,12 +838,14 @@ namespace UnitTests.Engine.EngineBase
             // Forece a Miss
             _ = DiceHelper.EnableForcedRolls();
             _ = DiceHelper.SetForcedRollValue(20);
+            RandomPlayerHelper.TurnOnTestMode();
 
             // Act
             var result = Engine.Round.Turn.TurnAsAttack(CharacterPlayer, MonsterPlayer);
 
             // Reset
             _ = DiceHelper.DisableForcedRolls();
+            RandomPlayerHelper.TurnOffTestMode();
 
             // Assert
             Assert.AreEqual(true, result);
@@ -863,11 +868,14 @@ namespace UnitTests.Engine.EngineBase
             _ = DiceHelper.EnableForcedRolls();
             _ = DiceHelper.SetForcedRollValue(20);
 
+            RandomPlayerHelper.TurnOnTestMode();
+
             // Act
             var result = Engine.Round.Turn.TurnAsAttack(CharacterPlayer, MonsterPlayer);
 
             // Reset
             _ = DiceHelper.DisableForcedRolls();
+            RandomPlayerHelper.TurnOffTestMode();
 
             // Assert
             Assert.AreEqual(true, result);
@@ -888,12 +896,14 @@ namespace UnitTests.Engine.EngineBase
             // Forece a Miss
             _ = DiceHelper.EnableForcedRolls();
             _ = DiceHelper.SetForcedRollValue(1);
+            RandomPlayerHelper.TurnOnTestMode();
 
             // Act
             var result = Engine.Round.Turn.TurnAsAttack(MonsterPlayer, CharacterPlayer);
 
             // Reset
             _ = DiceHelper.DisableForcedRolls();
+            RandomPlayerHelper.TurnOffTestMode();
 
             // Assert
             Assert.AreEqual(true, result);
@@ -914,12 +924,14 @@ namespace UnitTests.Engine.EngineBase
             // Forece a Miss
             _ = DiceHelper.EnableForcedRolls();
             _ = DiceHelper.SetForcedRollValue(20);
+            RandomPlayerHelper.TurnOnTestMode();
 
             // Act
             var result = Engine.Round.Turn.TurnAsAttack(MonsterPlayer, CharacterPlayer);
 
             // Reset
             _ = DiceHelper.DisableForcedRolls();
+            RandomPlayerHelper.TurnOffTestMode();
 
             // Assert
             Assert.AreEqual(true, result);
@@ -940,6 +952,7 @@ namespace UnitTests.Engine.EngineBase
             // Forece a Miss
             _ = DiceHelper.EnableForcedRolls();
             _ = DiceHelper.SetForcedRollValue(20);
+            RandomPlayerHelper.TurnOnTestMode();
 
             var oldSetting = Engine.EngineSettings.BattleSettingsModel.AllowCriticalHit;
             Engine.EngineSettings.BattleSettingsModel.AllowCriticalHit = true;
@@ -950,6 +963,7 @@ namespace UnitTests.Engine.EngineBase
             // Reset
             _ = DiceHelper.DisableForcedRolls();
             Engine.EngineSettings.BattleSettingsModel.AllowCriticalHit = oldSetting;
+            RandomPlayerHelper.TurnOnTestMode();
 
             // Assert
             Assert.AreEqual(true, result);
@@ -970,6 +984,7 @@ namespace UnitTests.Engine.EngineBase
             // Forece a Miss
             _ = DiceHelper.EnableForcedRolls();
             _ = DiceHelper.SetForcedRollValue(1);
+            RandomPlayerHelper.TurnOnTestMode();
 
             var oldSetting = Engine.EngineSettings.BattleSettingsModel.AllowCriticalMiss;
             Engine.EngineSettings.BattleSettingsModel.AllowCriticalMiss = true;
@@ -980,6 +995,7 @@ namespace UnitTests.Engine.EngineBase
             // Reset
             _ = DiceHelper.DisableForcedRolls();
             Engine.EngineSettings.BattleSettingsModel.AllowCriticalMiss = oldSetting;
+            RandomPlayerHelper.TurnOffTestMode();
 
             // Assert
             Assert.AreEqual(true, result);
@@ -1060,12 +1076,14 @@ namespace UnitTests.Engine.EngineBase
             // Forece a Miss
             _ = DiceHelper.EnableForcedRolls();
             _ = DiceHelper.SetForcedRollValue(20);
+            RandomPlayerHelper.TurnOnTestMode();
 
             // Act
             var result = Engine.Round.Turn.TurnAsAttack(CharacterPlayer, MonsterPlayer);
 
             // Reset
             _ = DiceHelper.DisableForcedRolls();
+            RandomPlayerHelper.TurnOffTestMode();
 
             // Assert
             Assert.AreEqual(true, result);
