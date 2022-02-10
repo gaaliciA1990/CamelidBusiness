@@ -130,9 +130,11 @@
 
                             <StackLayout Grid.Row="0"
                                          Grid.ColumnSpan="2">
-                                <Label Text="DIFFICULTY "
-                                       FontSize="Medium"
-                                       Style="{StaticResource LabelStyle}"/>
+                                <Frame Style="{StaticResource AttributeFrame}"
+                                       WidthRequest="80">
+                                    <Label Text="DIFFICULTY"
+                                           Style="{StaticResource LabelStyle}" />
+                                </Frame>
 
                                 <!--Difficulty Labels-->
                                 <StackLayout x:Name="DifficultyStack" 
