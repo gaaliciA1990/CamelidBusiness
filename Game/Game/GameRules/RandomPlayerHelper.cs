@@ -11,6 +11,18 @@ namespace Game.GameRules
 {
     public static class RandomPlayerHelper
     {
+        private static bool InTestMode = false;
+
+        public static void TurnOnTestMode()
+        {
+            InTestMode = true;
+        }
+
+        public static void TurnOffTestMode()
+        {
+            InTestMode = false;
+        }
+
         /// <summary>
         /// Get Health
         /// </summary>
@@ -28,9 +40,18 @@ namespace Game.GameRules
         /// <returns></returns>
         public static string GetMonsterUniqueItem()
         {
-
-            var result = ItemIndexViewModel.Instance.Dataset.ElementAt(DiceHelper.RollDice(1, ItemIndexViewModel.Instance.Dataset.Count()) - 1).Id;
-
+            string result = "";
+            if (InTestMode)
+            {
+                DiceHelper.DisableForcedRolls();
+                result = ItemIndexViewModel.Instance.Dataset.ElementAt(DiceHelper.RollDice(1, ItemIndexViewModel.Instance.Dataset.Count()) - 1).Id;
+                
+            }
+            if (InTestMode == false)
+            {
+                result = ItemIndexViewModel.Instance.Dataset.ElementAt(DiceHelper.RollDice(1, ItemIndexViewModel.Instance.Dataset.Count()) - 1).Id;
+            }
+            
             return result;
         }
 
