@@ -155,16 +155,14 @@
 
             </Frame>
 
-                <!--button for navigating to the game-->
-                <ImageButton x:Name="StartGameButton"
-                             Grid.Row="2"
-                             Grid.Column="0"
-                             Source="button_startgame.png"
-                             Clicked="StartGameButton_Clicked"
-                             Style="{StaticResource StartGameButtonStyle}"
-                             HorizontalOptions="EndAndExpand"/>
-
+            <!--button for navigating to the game-->
+            <ImageButton x:Name="StartGameButton"
+                         Grid.Row="2"
+                         Grid.Column="0"
+                         Source="button_startgame.png"
+                         Clicked="StartGameButton_Clicked"
+                         Style="{StaticResource StartGameButtonStyle}"
+                         HorizontalOptions="EndAndExpand" />
         </Grid>
-
     </ContentPage.Content>
 </ContentPage>
