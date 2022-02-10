@@ -59,13 +59,13 @@
                                             <Frame Style="{StaticResource FlexIndexFrame}">
                                                 <Label x:Name="NameLabel"
                                                        Text="{Binding Name}"
-                                                       Style="{StaticResource LabelStyle}"/>
+                                                       Style="{StaticResource CrudiLabelStyle}"/>
                                             </Frame>
 
                                             <Frame Style="{StaticResource FlexIndexFrame}">
                                                 <Label x:Name="DifficultyLabel"
                                                        Text="{Binding Difficulty}"
-                                                       Style="{StaticResource LabelStyle}" />
+                                                       Style="{StaticResource CrudiLabelStyle}" />
                                             </Frame>
 
                                         </StackLayout>
