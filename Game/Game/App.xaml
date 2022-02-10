@@ -992,6 +992,23 @@
                 <Setter Property="FontFamily"
                         Value="myriadpro" />
             </Style>
+            
+            <!-- Progress Bar -->
+            <Style x:Key="CrudiProgressBar"
+                   TargetType="ProgressBar">
+                <Setter Property="ScaleY"
+                        Value="5" />
+                <Setter Property="ProgressColor"
+                        Value="MediumSeaGreen" />
+                <Setter Property="HeightRequest"
+                        Value="5" />
+                <Setter Property="HorizontalOptions"
+                        Value="FillAndExpand" />
+                <Setter Property="VerticalOptions"
+                        Value="CenterAndExpand" />
+                <Setter Property="Progress"
+                        Value="0.5" />
+            </Style>
 
         </ResourceDictionary>
     </Application.Resources>
