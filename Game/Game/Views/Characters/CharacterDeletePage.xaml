@@ -140,12 +140,12 @@
                         </StackLayout>
 
                         <!--DEFENSE-->
-                        <Label Text="DEF"
-                               FontSize="Medium"
-                               Grid.Row="2"
-                               Grid.Column="0"
-                               Style="{StaticResource LabelStyle}"
-                               VerticalOptions="Center" />
+                        <Frame  Grid.Row="2"
+                                Grid.Column="0"
+                                Style="{StaticResource AttributeFrame}">
+                            <Label Text="DEF"
+                                   Style="{StaticResource LabelStyle}" />
+                        </Frame>
                         <StackLayout Grid.Row="2"
                                      Grid.Column="1"
                                      Orientation="Horizontal"
@@ -162,12 +162,12 @@
                         </StackLayout>
 
                         <!--SPEED-->
-                        <Label Text="SPD"
-                               FontSize="Medium"
-                               Grid.Row="3"
+                        <Frame Grid.Row="3"
                                Grid.Column="0"
-                               Style="{StaticResource LabelStyle}"
-                               VerticalOptions="Center" />
+                               Style="{StaticResource AttributeFrame}">
+                            <Label Text="SPD"
+                                   Style="{StaticResource LabelStyle}" />
+                        </Frame>
                         <StackLayout Grid.Row="3"
                                      Grid.Column="1"
                                      Orientation="Horizontal"
@@ -184,12 +184,12 @@
                         </StackLayout>
 
                         <!--RANGE-->
-                        <Label Text="RNG"
-                               FontSize="Medium"
-                               Grid.Row="4"
+                        <Frame Grid.Row="4"
                                Grid.Column="0"
-                               Style="{StaticResource LabelStyle}"
-                               VerticalOptions="Center" />
+                               Style="{StaticResource AttributeFrame}">
+                            <Label Text="RNG"
+                                   Style="{StaticResource LabelStyle}" />
+                        </Frame>
                         <StackLayout Grid.Row="4"
                                      Grid.Column="1"
                                      Orientation="Horizontal"
