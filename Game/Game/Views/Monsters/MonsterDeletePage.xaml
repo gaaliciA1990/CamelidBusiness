@@ -170,9 +170,7 @@
                            Style="{StaticResource DeletePopupFrame}">
                             <Grid>
                                 <Label Text="Deleted characters cannot be recovered. Delete this character?"
-                                       FontSize="Medium"
-                                       VerticalTextAlignment="Center"
-                                       HorizontalTextAlignment="Center"
+                                       Style="{StaticResource DeleteMessageLabel}"
                                        Grid.Row="0"
                                        Grid.ColumnSpan="2" />
                                 <ImageButton x:Name="DeleteButton"
