@@ -819,7 +819,7 @@
                 <Setter Property="Margin"
                         Value="5" />
             </Style>
-
+ 
             <Style TargetType="Frame"
                    x:Key="PlayerBattleOuterFrame">
                 <Setter Property="HeightRequest"
@@ -901,7 +901,7 @@
                 <Setter Property="BorderColor"
                         Value="{StaticResource PrimaryTextColor}" />
                 <Setter Property="BackgroundColor"
-                        Value="#B4B3B2" />
+                        Value="#FFFF" />
                 <Setter Property="HeightRequest"
                         Value="100" />
                 <Setter Property="WidthRequest"
@@ -910,6 +910,31 @@
                         Value="0,10,0,10" />
             </Style>
 
+            <Style x:Key="FlexIndexFrame"
+                   TargetType="Frame">
+                <Setter Property="BackgroundColor"
+                        Value="#328706" />
+                <Setter Property="BorderColor"
+                        Value="Black" />
+                <Setter Property="CornerRadius"
+                        Value="10" />
+                <Setter Property="WidthRequest"
+                        Value="100" />
+                <Setter Property="Padding"
+                        Value="1" />
+            </Style>
+
+            <Style x:Key="SmallFlexIndexFrame"
+                   TargetType="Frame"
+                   BasedOn="{StaticResource FlexIndexFrame}">
+                <Setter Property="BackgroundColor"
+                        Value="#FEBf1B" />
+                <Setter Property="WidthRequest"
+                        Value="50" />
+                <Setter Property="Padding"
+                        Value="3" />
+            </Style>
+            
             <!-- Grid -->
             <Style TargetType="Grid">
                 <Setter Property="ColumnSpacing"
