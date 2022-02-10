@@ -73,15 +73,15 @@ namespace Game.Models
                     break;
 
                 case ItemLocationEnum.RightFinger:
-                    Message = "Right Finger";
+                    Message = "Right Ear";
                     break;
 
                 case ItemLocationEnum.LeftFinger:
-                    Message = "Left Finger";
+                    Message = "Left Ear";
                     break;
 
                 case ItemLocationEnum.Finger:
-                    Message = "Any Finger";
+                    Message = "Any Ear";
                     break;
 
                 case ItemLocationEnum.Feet:
