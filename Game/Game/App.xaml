@@ -292,7 +292,7 @@
                 <Setter Property="HorizontalOptions"
                         Value="FillAndExpand" />
                 <Setter Property="FontFamily"
-                        Value="myriadpro" />
+                        Value="beachday" />
                 <Setter Property="VerticalOptions"
                         Value="Center" />
                 <Setter Property="HorizontalTextAlignment"
