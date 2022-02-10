@@ -68,13 +68,6 @@
                                                        Style="{StaticResource LabelStyle}" />
                                             </Frame>
 
-                                            <StackLayout Orientation="Horizontal">
-                                                <Frame Style="{StaticResource SmallFlexIndexFrame}">
-                                                    <Label x:Name="LevelLabel"
-                                                           Text="{Binding Path=Level, StringFormat='LVL {0:G}'}"
-                                                           Style="{StaticResource LabelStyle}" />
-                                                </Frame>
-                                            </StackLayout>
                                         </StackLayout>
                                     </Grid>
                                 </Frame>
