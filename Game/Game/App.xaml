@@ -34,6 +34,7 @@
             <Color x:Key="PrimaryTextColor">#15071D</Color>
             <Color x:Key="SecondaryTextColor">#FFFF</Color>
             <Color x:Key="TriciaryTextColor">#328706</Color>
+            <Color x:Key="CrudiItemSelectColor">#4C3C48</Color>
 
             <Color x:Key="TransparentColor">Transparent</Color>
 
@@ -172,7 +173,7 @@
                    x:Key="LabelStyle"
                    BasedOn="{StaticResource LabelBaseStyle}">
                 <Setter Property="FontFamily"
-                        Value="myriadpro" />
+                        Value="beachday" />
                 <Setter Property="FontSize"
                         Value="Micro" />
                 <Setter Property="HorizontalTextAlignment"
@@ -208,6 +209,8 @@
                         Value="WordWrap" />
                 <Setter Property="HorizontalTextAlignment"
                         Value="Center" />
+                <Setter Property="TextColor"
+                        Value="{StaticResource CrudiItemSelectColor}" />
             </Style>
 
             <Style TargetType="Label"
@@ -974,7 +977,7 @@
                 <Setter Property="HorizontalOptions"
                         Value="FillAndExpand" />
                 <Setter Property="FontFamily"
-                        Value="myriadpro" />
+                        Value="beachday" />
                 <Setter Property="VerticalOptions"
                         Value="Center" />
                 <Setter Property="TextColor"
