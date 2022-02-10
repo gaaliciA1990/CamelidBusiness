@@ -57,20 +57,22 @@
                                                      Margin="0,10,10,10"
                                                      Orientation="Vertical"
                                                      VerticalOptions="CenterAndExpand">
-                                            <Frame Style="{StaticResource FlexIndexFrame}">
+                                            <Frame Style="{StaticResource FlexIndexFrame}"
+                                                   WidthRequest="150">
                                                 <Label x:Name="NameLabel"
                                                        Text="{Binding Name}"
                                                        Style="{StaticResource LabelStyle}"
-                                                       FontSize="15"/>
+                                                       FontSize="Small"/>
                                             </Frame>
 
                                             <Frame Style="{StaticResource FlexIndexFrame}"
-                                                   WidthRequest="135">
+                                                   WidthRequest="150">
                                                 <Label HorizontalOptions="Center"
                                                        x:Name="DescriptionLabel"
                                                        Text="{Binding Description}"
-                                                       FontSize="15"
-                                                       Style="{StaticResource LabelStyle}" />
+                                                       Style="{StaticResource ValueStyleMicro}"
+                                                       TextColor="#FFFF"
+                                                       LineBreakMode="TailTruncation"/>
                                             </Frame>
                                             
                                             <StackLayout Orientation="Horizontal">
@@ -86,7 +88,6 @@
                                                            Style="{StaticResource LabelStyle}" />
                                                 </Frame>
                                             </StackLayout>
-
                                         </StackLayout>
                                     </Grid>
                                 </Frame>
