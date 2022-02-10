@@ -32,9 +32,7 @@
                              Clicked="Cancel_Clicked"
                              Style="{StaticResource NavigationButtonStyle}" />
 
-                <Label Font="Bold"
-                       HorizontalOptions="CenterAndExpand"
-                       Text="Create New Character"
+                <Label Text="Create New Character"
                        Style="{StaticResource HeaderStyle}"
                        FontSize="Large" />
 
