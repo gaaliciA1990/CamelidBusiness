@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Game.Views.VillagePage"
-             NavigationPage.HasNavigationBar="False">
+             NavigationPage.HasNavigationBar="False"
+             Style="{StaticResource CRUDiStyle}">
 
     <ContentPage.Content>
         <StackLayout Style="{StaticResource OuterBoxStack}"
