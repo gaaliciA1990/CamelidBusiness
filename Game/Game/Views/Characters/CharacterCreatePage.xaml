@@ -55,7 +55,6 @@
                     <RowDefinition Height="auto" />
                 </Grid.RowDefinitions>
 
-
                 <Grid Grid.Row="0"
                       Grid.Column="0">
                     <Grid.RowDefinitions>
@@ -75,8 +74,8 @@
                             <Picker x:Name="ClanPicker"
                                     ItemsSource="{x:Static local:CharacterClanEnumHelper.GetClanList}"
                                     SelectedItem="{Binding Data.Clan, Converter={StaticResource StringEnum}, Mode=TwoWay}"
-                                    SelectedIndexChanged="Picker_ClanChanged" 
-                                    Style="{StaticResource CRUDIPickerStyle}"/>
+                                    SelectedIndexChanged="Picker_ClanChanged"
+                                    Style="{StaticResource CRUDIPickerStyle}" />
                         </Frame>
 
                         <Frame Style="{StaticResource CrudiTopEntryFrame}"
@@ -108,7 +107,7 @@
                                      Source="leftarrow.png"
                                      Clicked="LeftButton_Clicked"
                                      HorizontalOptions="Start" />
-                        
+
                         <Image  Grid.Column="1"
                                 Grid.Row="0"
                                 x:Name="CharacterImage"
@@ -117,7 +116,7 @@
                                 VerticalOptions="FillAndExpand"
                                 Aspect="AspectFit"
                                 Margin="10" />
-                        
+
                         <ImageButton Grid.Column="2"
                                      Grid.Row="0"
                                      x:Name="RightButton"
@@ -193,8 +192,7 @@
                             <Slider x:Name="LevelSlider"
                                     Value="{Binding Data.Level, Mode=TwoWay}"
                                     ValueChanged="Level_OnSliderValueChanged"
-                                    Style="{StaticResource SliderStyle}"
-                                    >
+                                    Style="{StaticResource SliderStyle}">
                                 <Slider.Margin>
                                     <OnPlatform x:TypeArguments="Thickness">
                                         <On Platform="iOS"
@@ -205,7 +203,7 @@
                                 </Slider.Margin>
                             </Slider>
                         </StackLayout>
-                        
+
                         <!--Attack Sider-->
                         <Frame Grid.Row="1"
                                Grid.Column="0"
@@ -213,7 +211,6 @@
                             <Label Text="ATK"
                                    Style="{StaticResource LabelStyle}" />
                         </Frame>
-                        
 
                         <StackLayout Grid.Row="1"
                                      Grid.Column="1"
@@ -252,7 +249,7 @@
                             </Slider>
 
                         </StackLayout>
-                        
+
                         <!--Defense Slider-->
                         <Frame Grid.Row="2"
                                Grid.Column="0"
@@ -354,14 +351,12 @@
                                        Style="{StaticResource LabelStyle}" />
                             </Frame>
 
-                            <Frame Style="{StaticResource AttributeFrame}">
-                                <Label Grid.Row="4"
-                                       Grid.Column="1"
-                                       x:Name="MaxHealthValue"
-                                       Text="{Binding Data.MaxHealth, StringFormat= '{0:G} hp'}"
-                                       Style="{StaticResource ValueStyle}"
-                                       FontSize="Medium" />
-                            </Frame>
+                            <Label Grid.Row="4"
+                                   Grid.Column="1"
+                                   x:Name="MaxHealthValue"
+                                   Text="{Binding Data.MaxHealth, StringFormat= '{0:G} hp'}"
+                                   Style="{StaticResource ValueStyle}"
+                                   FontSize="Medium" />
                         </StackLayout>
                     </Grid>
                 </StackLayout>
