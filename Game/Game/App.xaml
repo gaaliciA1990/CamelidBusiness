@@ -161,7 +161,7 @@
                 <Setter Property="FontFamily"
                         Value="machinegunk" />
                 <Setter Property="FontSize"
-                        Value="Small" />
+                        Value="Header" />
                 <Setter Property="HorizontalOptions"
                         Value="CenterAndExpand" />
                 <Setter Property="VerticalOptions"
