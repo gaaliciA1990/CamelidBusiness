@@ -73,7 +73,7 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
-                    
+
                     <StackLayout Grid.Row="0"
                                  Grid.Column="0"
                                  HorizontalOptions="FillAndExpand"
@@ -81,17 +81,15 @@
                                  Padding="20"
                                  Style="{StaticResource OuterBoxStack}">
 
-                        <Entry x:Name="NameEntry"
-                               FontSize="Medium"
-                               HorizontalOptions="FillAndExpand"
-                               BackgroundColor="White"
-                               MaxLength="20"
-                               Keyboard="Text"
-                               ReturnType="Done"
-                               TextChanged="Entry_TextChanged"
+                        <Frame Style="{StaticResource CrudiBottomFrame}">
+                            <Entry x:Name="NameEntry"
+                               Placeholder="Name"
                                Text="{Binding Data.Name, Mode=TwoWay}"
-                               Style="{StaticResource EntryStyle}" />
-                        
+                               TextChanged="Entry_TextChanged"
+                               Style="{StaticResource EntryStyle}" 
+                                   BackgroundColor="White"/>
+                        </Frame>
+
                         <Grid HorizontalOptions="CenterAndExpand"
                               VerticalOptions="FillAndExpand">
                             <Grid.ColumnDefinitions>
@@ -127,17 +125,13 @@
                                          CornerRadius="5" />
                         </Grid>
 
-                        <Entry x:Name="DescriptionEntry"
-                               FontSize="Medium"
-                               HorizontalOptions="FillAndExpand"
-                               BackgroundColor="White"
-                               MaxLength="50"
-                               Keyboard="Text"
-                               ReturnType="Done"
-                               IsSpellCheckEnabled="True"
+                        <Frame Style="{StaticResource CrudiBottomFrame}">
+                            <Entry x:Name="DescriptionEntry"
                                TextChanged="Entry_TextChanged"
                                Text="{Binding Data.Description, Mode= TwoWay}"
-                               Style="{StaticResource EntryStyle}" />
+                               Style="{StaticResource EntryBottomStyle}" />
+                        </Frame>
+                        
                     </StackLayout>
 
                     <!--Attributes setup-->
@@ -154,159 +148,151 @@
                                      VerticalOptions="Center">
                             <Picker Title="Select a location"
                                     HorizontalOptions="FillAndExpand"
-                                    BackgroundColor="White"
-                                    SelectedIndexChanged="Picker_SelectedIndexChanged"
                                     ItemsSource="{x:Static local:ItemLocationEnumHelper.GetListCharacter}"
                                     SelectedItem="{Binding Data.Location, Converter={StaticResource StringEnum}, Mode=TwoWay}"
+                                    Style="{StaticResource CRUDIPickerStyle}"
+                                    BackgroundColor="white"
+                                    SelectedIndexChanged="Picker_SelectedIndexChanged"
                                     x:Name="LocationPicker" />
 
                             <Picker Title="Select an attribute"
                                     HorizontalOptions="FillAndExpand"
-                                    BackgroundColor="White"
-                                    SelectedIndexChanged="Picker_SelectedIndexChanged"
                                     ItemsSource="{x:Static local:AttributeEnumHelper.GetListCharacter}"
                                     SelectedItem="{Binding Data.Attribute, Converter={StaticResource StringEnum}, Mode=TwoWay}"
+                                    Style="{StaticResource CRUDIPickerStyle}"
+                                    BackgroundColor="white"
+                                    SelectedIndexChanged="Picker_SelectedIndexChanged"
                                     x:Name="AttributePicker" />
                         </StackLayout>
 
                         <Grid HorizontalOptions="Center"
-                              VerticalOptions="FillAndExpand"
-                              Padding="10">
+                              VerticalOptions="FillAndExpand">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="100" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
 
-                            <Label Text="RNG: "
-                                   FontSize="Medium"
-                                   Grid.Row="0"
-                                   Grid.Column="0"
-                                   Style="{StaticResource LabelStyle}"
-                                   VerticalOptions="Center" />
+                            <Frame  Grid.Row="0"
+                                Grid.Column="0"
+                                Style="{StaticResource AttributeFrame}">
+                                <Label Text="RNG"
+                                   Style="{StaticResource LabelStyle}" />
+                            </Frame>
 
-                            <!--Range Slider-->
+
                             <StackLayout Grid.Row="0"
-                                         Grid.Column="1"
-                                         Orientation="Horizontal"
-                                         VerticalOptions="Center">
+                                     Grid.Column="1"
+                                         Grid.ColumnSpan="2"
+                                     Orientation="Horizontal"
+                                     VerticalOptions="Center">
 
                                 <Label x:Name="RangeLabel"
-                                       Text="{Binding Data.Range}"
-                                       FontSize="Medium"
-                                       FontAttributes="Bold"
-                                       HorizontalOptions="Start"
-                                       HorizontalTextAlignment="Start"
-                                       VerticalOptions="Center">
+                                   Text="{Binding Data.Range, Mode=TwoWay}"
+                                   Style="{StaticResource ValueStyle}">
                                     <Label.Margin>
                                         <OnPlatform x:TypeArguments="Thickness">
                                             <On Platform="iOS"
-                                                Value="15,0" />
+                                            Value="15,0" />
                                             <On Platform="Android"
-                                                Value="10,0" />
+                                            Value="10,0" />
                                         </OnPlatform>
                                     </Label.Margin>
                                 </Label>
 
                                 <Slider x:Name="RangeSlider"
-                                        Value="{Binding Data.Range}"
-                                        ValueChanged="Range_OnSliderValueChanged"
-                                        Style="{StaticResource SliderStyle}">
+                                    Value="{Binding Data.Range, Mode=TwoWay}"
+                                    ValueChanged="Range_OnSliderValueChanged"
+                                    Style="{StaticResource SliderStyle}">
                                     <Slider.Margin>
                                         <OnPlatform x:TypeArguments="Thickness">
                                             <On Platform="iOS"
-                                                Value="15,0" />
+                                            Value="15,0" />
                                             <On Platform="Android"
-                                                Value="10,0" />
+                                            Value="10,0" />
                                         </OnPlatform>
                                     </Slider.Margin>
                                 </Slider>
                             </StackLayout>
 
-                            <Label Grid.Row="1"
-                                   Grid.Column="0"
-                                   Text="VAL: "
-                                   FontSize="Medium"
-                                   Style="{StaticResource LabelStyle}"
-                                   VerticalOptions="Center" />
 
-                            <!--Value Slider-->
+                            <Frame  Grid.Row="1"
+                                Grid.Column="0"
+                                Style="{StaticResource AttributeFrame}">
+                                <Label Text="VAL"
+                                   Style="{StaticResource LabelStyle}" />
+                            </Frame>
+
                             <StackLayout Grid.Row="1"
-                                         Grid.Column="1"
-                                         Orientation="Horizontal"
-                                         VerticalOptions="Center">
+                                     Grid.Column="1"
+                                         Grid.ColumnSpan="2"
+                                     Orientation="Horizontal"
+                                     VerticalOptions="Center">
 
                                 <Label x:Name="ValueLabel"
-                                       Text="{Binding Data.Value}"
-                                       FontSize="Medium"
-                                       FontAttributes="Bold"
-                                       HorizontalOptions="Start"
-                                       HorizontalTextAlignment="Start"
-                                       VerticalOptions="Center">
+                                   Text="{Binding Data.Value, Mode=TwoWay}"
+                                   Style="{StaticResource ValueStyle}">
                                     <Label.Margin>
                                         <OnPlatform x:TypeArguments="Thickness">
                                             <On Platform="iOS"
-                                                Value="15,0" />
+                                            Value="15,0" />
                                             <On Platform="Android"
-                                                Value="10,0" />
+                                            Value="10,0" />
                                         </OnPlatform>
                                     </Label.Margin>
                                 </Label>
 
                                 <Slider x:Name="ValueSlider"
-                                        Value="{Binding Data.Value}"
-                                        ValueChanged="Value_OnSliderValueChanged"
-                                        Style="{StaticResource SliderStyle}">
+                                    Value="{Binding Data.Value, Mode=TwoWay}"
+                                    ValueChanged="Value_OnSliderValueChanged"
+                                    Style="{StaticResource SliderStyle}">
                                     <Slider.Margin>
                                         <OnPlatform x:TypeArguments="Thickness">
                                             <On Platform="iOS"
-                                                Value="15,0" />
+                                            Value="15,0" />
                                             <On Platform="Android"
-                                                Value="10,0" />
+                                            Value="10,0" />
                                         </OnPlatform>
                                     </Slider.Margin>
                                 </Slider>
                             </StackLayout>
 
-                            <Label Grid.Row="2"
-                                   Grid.Column="0"
-                                   Text="DMG: "
-                                   FontSize="Medium"
-                                   Style="{StaticResource LabelStyle}"
-                                   VerticalOptions="Center" />
-                            
-                            <!--Damage Slider-->
+
+                            <Frame  Grid.Row="2"
+                                Grid.Column="0"
+                                Style="{StaticResource AttributeFrame}">
+                                <Label Text="DMG"
+                                   Style="{StaticResource LabelStyle}" />
+                            </Frame>
+
                             <StackLayout Grid.Row="2"
-                                         Grid.Column="1"
-                                         Orientation="Horizontal"
-                                         VerticalOptions="Center">
+                                     Grid.Column="1"
+                                         Grid.ColumnSpan="2"
+                                     Orientation="Horizontal"
+                                     VerticalOptions="Center">
 
                                 <Label x:Name="DamageLabel"
-                                       Text="{Binding Data.Damage}"
-                                       FontSize="Medium"
-                                       FontAttributes="Bold"
-                                       HorizontalOptions="Start"
-                                       HorizontalTextAlignment="Start"
-                                       VerticalOptions="Center">
+                                   Text="{Binding Data.Damage, Mode=TwoWay}"
+                                   Style="{StaticResource ValueStyle}">
                                     <Label.Margin>
                                         <OnPlatform x:TypeArguments="Thickness">
                                             <On Platform="iOS"
-                                                Value="15,0" />
+                                            Value="15,0" />
                                             <On Platform="Android"
-                                                Value="10,0" />
+                                            Value="10,0" />
                                         </OnPlatform>
                                     </Label.Margin>
                                 </Label>
 
                                 <Slider x:Name="DamageSlider"
-                                        Value="{Binding Data.Damage}"
-                                        ValueChanged="Damage_OnSliderValueChanged"
-                                        Style="{StaticResource SliderStyle}">
+                                    Value="{Binding Data.Damage, Mode=TwoWay}"
+                                    ValueChanged="Damage_OnSliderValueChanged"
+                                    Style="{StaticResource SliderStyle}">
                                     <Slider.Margin>
                                         <OnPlatform x:TypeArguments="Thickness">
                                             <On Platform="iOS"
-                                                Value="15,0" />
+                                            Value="15,0" />
                                             <On Platform="Android"
-                                                Value="10,0" />
+                                            Value="10,0" />
                                         </OnPlatform>
                                     </Slider.Margin>
                                 </Slider>
