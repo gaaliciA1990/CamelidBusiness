@@ -47,23 +47,23 @@ namespace Game.Models
             switch (value)
             {
                 case AttributeEnum.Attack:
-                    Message = "Attack";
+                    Message = "ATK";
                     break;
 
                 case AttributeEnum.CurrentHealth:
-                    Message = "Current Health";
+                    Message = "HP";
                     break;
 
                 case AttributeEnum.Defense:
-                    Message = "Defense";
+                    Message = "DEF";
                     break;
 
                 case AttributeEnum.MaxHealth:
-                    Message = "Max Health";
+                    Message = "MaxHP";
                     break;
 
                 case AttributeEnum.Speed:
-                    Message = "Speed";
+                    Message = "SPD";
                     break;
 
                 case AttributeEnum.Unknown:
