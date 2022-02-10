@@ -4,17 +4,12 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="Game.Views.ItemDeletePage"
              xmlns:local_helpers="clr-namespace:Game.Helpers"
-             Title="{Binding Title}"
+             xmlns:local="using:Game.Models"
+             x:Class="Game.Views.ItemDeletePage"
              Style="{StaticResource CRUDiStyle}"
+             Title="{Binding Title}"
              NavigationPage.HasNavigationBar="False">
-
-    <ContentPage.ToolbarItems>
-        <!--<ToolbarItem Text="Cancel" Clicked="Cancel_Clicked" IconImageSource="icon_cancel.png"/>
-        -->
-        <!--<ToolbarItem Text="Delete" Clicked="Delete_Clicked" IconImageSource="icon_delete.png"/>-->
-    </ContentPage.ToolbarItems>
 
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -31,12 +26,9 @@
 
             <StackLayout Orientation="Horizontal"
                          Grid.Row="0">
-                <Label FontSize="Large"
-                       FontAttributes="Bold, Italic"
-                       HorizontalOptions="CenterAndExpand"
-                       VerticalOptions="FillAndExpand"
-                       Text="{Binding Data.Name, StringFormat= 'Delete: {0:G}?'}"
-                       Style="{StaticResource ValueStyle}" />
+                <Label Text="{Binding Data.Name, StringFormat= 'Delete: {0:G}?'}"
+                       Style="{StaticResource HeaderStyle}" 
+                       FontSize="Large"/>
             </StackLayout>
 
             <ScrollView Grid.Row="1">
@@ -58,25 +50,15 @@
                                  VerticalOptions="FillAndExpand"
                                  Style="{StaticResource OuterBoxStack}">
 
-                        <Label FontSize="Large"
-                               FontAttributes="Bold, Italic"
-                               HorizontalOptions="Center"
-                               VerticalOptions="FillAndExpand"
-                               Text="{Binding Data.Name}"
-                               Style="{StaticResource ValueStyle}" />
+                        <Label Text="{Binding Data.Name}"
+                               Style="{StaticResource CrudiLabelStyle}" />
 
                         <Image  x:Name="ImageLabel"
                                 Source="{Binding Data.ImageURI}"
-                                HorizontalOptions="FillAndExpand"
-                                VerticalOptions="FillAndExpand"
-                                Aspect="AspectFit"
-                                Margin="10" />
+                                Style="{StaticResource CrudiImageStyle}"/>
 
-                        <Label FontSize="Medium"
-                               HorizontalOptions="Center"
-                               VerticalOptions="FillAndExpand"
-                               Text="{Binding Data.Description}"
-                               Style="{StaticResource ValueStyle}" />
+                        <Label Text="{Binding Data.Description}"
+                               Style="{StaticResource CrudiLabelStyle}" />
                     </StackLayout>
 
                     <StackLayout Grid.Row="1"
@@ -91,162 +73,68 @@
                                      VerticalOptions="Center">
 
                             <Picker HorizontalOptions="FillAndExpand"
+                                    Style="{StaticResource CRUDIPickerStyle}"
+                                    ItemsSource="{x:Static local:ItemLocationEnumHelper.GetListCharacter}"
                                     SelectedItem="{Binding Data.Location, Converter={StaticResource StringEnum}, Mode=TwoWay}"
                                     x:Name="LocationPicker" />
 
                             <Picker HorizontalOptions="FillAndExpand"
+                                    Style="{StaticResource CRUDIPickerStyle}"
+                                    ItemsSource="{x:Static local:AttributeEnumHelper.GetListCharacter}"
                                     SelectedItem="{Binding Data.Attribute, Converter={StaticResource StringEnum}, Mode=TwoWay}"
                                     x:Name="AttributePicker" />
                         </StackLayout>
 
                         <Grid HorizontalOptions="Center"
-                              VerticalOptions="FillAndExpand">
+                          VerticalOptions="FillAndExpand">
 
-                            <Label Grid.Row="0"
-                                   Grid.Column="0"
-                                   FontSize="Medium"
-                                   Text="RNG : "
-                                   Style="{StaticResource LabelStyle}"
-                                   VerticalOptions="Center" />
+                            <Frame  Grid.Row="0"
+                                Grid.Column="0"
+                                Style="{StaticResource AttributeFrame}">
+                                <Label Text="RNG"
+                                   Style="{StaticResource LabelStyle}" />
+                            </Frame>
 
-                            <!--RANGE-->
-                            <StackLayout Grid.Row="0"
-                                         Grid.Column="1"
-                                         Grid.ColumnSpan="2"
-                                         VerticalOptions="Center">
+                            <Grid Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                <ProgressBar x:Name="RangeBar"
+                                         Style="{StaticResource CrudiProgressBar}"/>
+                                <Label Style="{StaticResource ProgressBarLabel}" Text="{Binding Data.Range , StringFormat='  {0:G}'}" />
+                            </Grid>
 
-                                <Label FontSize="Medium"
-                                       FontAttributes="Bold"
-                                       x:Name="RangeLabel"
-                                       Text="{Binding Data.Range}"
-                                       HorizontalOptions="Start"
-                                       HorizontalTextAlignment="Center"
-                                       VerticalOptions="EndAndExpand">
-                                    <Label.Margin>
-                                        <OnPlatform x:TypeArguments="Thickness">
-                                            <On Platform="iOS"
-                                                Value="15,0" />
-                                            <On Platform="Android"
-                                                Value="10,0" />
-                                        </OnPlatform>
-                                    </Label.Margin>
-                                </Label>
+                            <Frame  Grid.Row="1"
+                                Grid.Column="0"
+                                Style="{StaticResource AttributeFrame}">
+                                <Label Text="VAL"
+                                   Style="{StaticResource LabelStyle}" />
+                            </Frame>
 
-                                <Slider x:Name="RangeSlider"
-                                        Maximum="15"
-                                        Minimum="0"
-                                        Value="{Binding Data.Range}"
-                                        HorizontalOptions="FillAndExpand">
-                                    <Slider.Margin>
-                                        <OnPlatform x:TypeArguments="Thickness">
-                                            <On Platform="iOS"
-                                                Value="10,0" />
-                                        </OnPlatform>
-                                    </Slider.Margin>
-                                </Slider>
-                            </StackLayout>
+                            <Grid Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                <ProgressBar x:Name="ValueBar" 
+                                         Style="{StaticResource CrudiProgressBar}"/>
+                                <Label Style="{StaticResource ProgressBarLabel}"
+                                   Text="{Binding Data.Value , StringFormat='  {0:G}'}"/>
+                            </Grid>
 
-                            <Label Grid.Row="1"
-                                   Grid.Column="0"
-                                   FontSize="Medium"
-                                   Text="VAL : "
-                                   Style="{StaticResource LabelStyle}"
-                                   VerticalOptions="Center" />
 
-                            <!--VALUE-->
-                            <StackLayout Grid.Row="1"
-                                         Grid.Column="1"
-                                         Grid.ColumnSpan="2"
-                                         VerticalOptions="Center">
+                            <Frame  Grid.Row="2"
+                                Grid.Column="0"
+                                Style="{StaticResource AttributeFrame}">
+                                <Label Text="DMG"
+                                   Style="{StaticResource LabelStyle}" />
+                            </Frame>
 
-                                <Label FontSize="Medium"
-                                       FontAttributes="Bold"
-                                       x:Name="ValueLabel"
-                                       Text="{Binding Data.Value}"
-                                       HorizontalOptions="Start"
-                                       HorizontalTextAlignment="Center"
-                                       VerticalOptions="EndAndExpand">
-                                    <Label.Margin>
-                                        <OnPlatform x:TypeArguments="Thickness">
-                                            <On Platform="iOS"
-                                                Value="15,0" />
-                                            <On Platform="Android"
-                                                Value="10,0" />
-                                        </OnPlatform>
-                                    </Label.Margin>
-                                </Label>
-
-                                <Slider x:Name="ValueSlider"
-                                        Maximum="15"
-                                        Minimum="0"
-                                        Value="{Binding Data.Value}"
-                                        HorizontalOptions="FillAndExpand">
-                                    <Slider.Margin>
-                                        <OnPlatform x:TypeArguments="Thickness">
-                                            <On Platform="iOS"
-                                                Value="10,0" />
-                                        </OnPlatform>
-                                    </Slider.Margin>
-                                </Slider>
-                            </StackLayout>
-
-                            <Label  Grid.Row="2"
-                                    Grid.Column="0"
-                                    FontSize="Medium"
-                                    Text="DMG : "
-                                    Style="{StaticResource LabelStyle}"
-                                    VerticalOptions="Center" />
-
-                            <!--DAMAGE-->
-                            <StackLayout Grid.Row="2"
-                                         Grid.Column="1"
-                                         Grid.ColumnSpan="2"
-                                         VerticalOptions="Center">
-
-                                <Label FontSize="Medium"
-                                       FontAttributes="Bold"
-                                       x:Name="DamageLabel"
-                                       Text="{Binding Data.Damage}"
-                                       HorizontalOptions="Start"
-                                       HorizontalTextAlignment="Center"
-                                       VerticalOptions="EndAndExpand">
-                                    <Label.Margin>
-                                        <OnPlatform x:TypeArguments="Thickness">
-                                            <On Platform="iOS"
-                                                Value="15,0" />
-                                            <On Platform="Android"
-                                                Value="10,0" />
-                                        </OnPlatform>
-                                    </Label.Margin>
-                                </Label>
-
-                                <Slider x:Name="DamageSlider"
-                                        Maximum="15"
-                                        Minimum="0"
-                                        Value="{Binding Data.Damage}"
-                                        HorizontalOptions="FillAndExpand">
-                                    <Slider.Margin>
-                                        <OnPlatform x:TypeArguments="Thickness">
-                                            <On Platform="iOS"
-                                                Value="10,0" />
-                                        </OnPlatform>
-                                    </Slider.Margin>
-                                </Slider>
-                            </StackLayout>
+                            <Grid Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                <ProgressBar x:Name="DamageBar" 
+                                         Style="{StaticResource CrudiProgressBar}"/>
+                                <Label Style="{StaticResource ProgressBarLabel}"
+                                   Text="{Binding Data.Damage , StringFormat='  {0:G}'}"/>
+                            </Grid>
                         </Grid>
                     </StackLayout>
 
                     <Frame x:Name="Sheet"
-                           HeightRequest="200"
-                           WidthRequest="300"
-                           Opacity=".9"
-                           VerticalOptions="End"
-                           AbsoluteLayout.LayoutBounds="0.5, 0.5, -1, -1"
-                           AbsoluteLayout.LayoutFlags="PositionProportional"
-                           BorderColor="Black"
-                           BackgroundColor="LightGray"
-                           CornerRadius="5"
-                           IsClippedToBounds="true"
+                           Style="{StaticResource DeletePopupFrame}"
+                           VerticalOptions="Center"
                            Grid.Row="1"
                            Grid.ColumnSpan="2">
                         <Grid>

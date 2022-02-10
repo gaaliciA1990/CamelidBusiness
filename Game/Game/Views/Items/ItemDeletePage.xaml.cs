@@ -28,15 +28,16 @@ namespace Game.Views
             InitializeComponent();
 
             BindingContext = this.viewModel = data;
-
-            this.viewModel.Title = "Delete " + data.Title;
-            
-            //Disable pickers so they are read only
+            LocationPicker.SelectedItem = data.Data.Location.ToString();
             LocationPicker.IsEnabled = false;
+            AttributePicker.SelectedItem = data.Data.Attribute.ToString();
             AttributePicker.IsEnabled = false;
-            DamageSlider.IsEnabled = false;
-            RangeSlider.IsEnabled = false;
-            ValueSlider.IsEnabled = false;
+
+
+            RangeBar.Progress = (float)viewModel.Data.Range / 15;
+            ValueBar.Progress = (float)viewModel.Data.Value / 15;
+            DamageBar.Progress = (float)viewModel.Data.Damage / 15;
+
         }
 
         /// <summary>
