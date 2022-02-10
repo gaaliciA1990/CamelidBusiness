@@ -49,19 +49,19 @@ namespace UnitTests.Views
             Assert.IsNotNull(result);
         }
 
-        [Test]
-        public void MenuPage_Get_Default_Should_Pass()
-        {
-            // Arrange
+        //[Test]
+        //public void MenuPage_Get_Default_Should_Pass()
+        //{
+        //    // Arrange
 
-            // Act
-            var result = page.RootPage;
+        //    // Act
+        //    var result = page.RootPage;
 
-            // Reset
+        //    // Reset
 
-            // Assert
-            Assert.IsNotNull(result);
-        }
+        //    // Assert
+        //    Assert.IsNotNull(result);
+        //}
 
         [Test]
         public void MenuPage_ListViewMenu_InValid_Null_Should_Fail()
