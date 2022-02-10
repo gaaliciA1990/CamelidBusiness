@@ -89,31 +89,42 @@
 
                     <Grid HorizontalOptions="Center"
                           VerticalOptions="FillAndExpand">
-                        <Label Grid.Row="0"
-                               Grid.Column="0"
-                               Text="Range : "
-                               Style="{StaticResource CrudiLabelStyle}"/>
+
+                        <Frame  Grid.Row="0"
+                                Grid.Column="0"
+                                Style="{StaticResource AttributeFrame}">
+                            <Label Text="RNG"
+                                   Style="{StaticResource LabelStyle}" />
+                        </Frame>
+
                         <Grid Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
                             <ProgressBar x:Name="RangeBar"
                                          Style="{StaticResource CrudiProgressBar}"/>
                             <Label Style="{StaticResource ProgressBarLabel}" Text="{Binding Data.Range , StringFormat='  {0:G}'}" />
                         </Grid>
 
-                        <Label Grid.Row="1"
-                               Grid.Column="0"
-                               Text="Value : "
-                               Style="{StaticResource CrudiLabelStyle}"/>
+                        <Frame  Grid.Row="1"
+                                Grid.Column="0"
+                                Style="{StaticResource AttributeFrame}">
+                            <Label Text="VAL"
+                                   Style="{StaticResource LabelStyle}" />
+                        </Frame>
+
                         <Grid Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
                             <ProgressBar x:Name="ValueBar" 
                                          Style="{StaticResource CrudiProgressBar}"/>
                             <Label Style="{StaticResource ProgressBarLabel}"
                                    Text="{Binding Data.Value , StringFormat='  {0:G}'}"/>
                         </Grid>
-                        
-                        <Label Grid.Row="2"
-                               Grid.Column="0"
-                               Text="Damage : "
-                               Style="{StaticResource CrudiLabelStyle}" />
+
+
+                        <Frame  Grid.Row="2"
+                                Grid.Column="0"
+                                Style="{StaticResource AttributeFrame}">
+                            <Label Text="DMG"
+                                   Style="{StaticResource LabelStyle}" />
+                        </Frame>
+
                         <Grid Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
                             <ProgressBar x:Name="DamageBar" 
                                          Style="{StaticResource CrudiProgressBar}"/>
