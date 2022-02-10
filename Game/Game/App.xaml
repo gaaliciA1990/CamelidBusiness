@@ -508,6 +508,16 @@
                         Value="CenterAndExpand" />
             </Style>
 
+            <Style x:Key="StartGameButtonStyle"
+                   TargetType="ImageButton">
+                <Setter Property="BackgroundColor"
+                        Value="Transparent" />
+                <Setter Property="Scale"
+                        Value="1.25" />
+                <Setter Property="WidthRequest"
+                        Value="125" />
+            </Style>
+
             <Style TargetType="ImageButton"
                    x:Key="BattleToolbarStyle">
                 <Setter Property="Aspect"
