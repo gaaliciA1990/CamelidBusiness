@@ -40,7 +40,7 @@ namespace Game.Views
             ItemBox.Children.Add(GetItemToDisplay(ItemLocationEnum.Feet));
 
             RangeValue.Text = viewModel.Data.GetItemRange().ToString();
-            RangeSlider.Value = viewModel.Data.GetItemRange();
+            RangeBar.Progress = viewModel.Data.GetItemRange();
         }
 
         /// <summary>
