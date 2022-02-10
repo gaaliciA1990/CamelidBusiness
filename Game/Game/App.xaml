@@ -424,6 +424,17 @@
                         Value="StartAndExpand" />
             </Style>
 
+            <Style x:Key="FlexCardMonsterImage"
+                   TargetType="Image"
+                   BasedOn="{StaticResource ImageBattleLargeStyle}">
+                <Setter Property="AbsoluteLayout.LayoutBounds"
+                        Value="0.47, 0.1, 3, 3" />
+                <Setter Property="AbsoluteLayout.LayoutFlags"
+                        Value="All" />
+                <Setter Property="HorizontalOptions"
+                        Value="StartAndExpand" />
+            </Style>
+
             <!-- ImageButton -->
 
             <Style TargetType="ImageButton">
