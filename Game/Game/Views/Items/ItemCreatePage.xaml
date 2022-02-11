@@ -58,7 +58,7 @@
                 <ImageButton Source="icon_save.png"
                              HorizontalOptions="Start"
                              Clicked="Save_Clicked"
-                             Style="{StaticResource NavigationButtonStyle}"/>
+                             Style="{StaticResource NavigationButtonStyle}" />
             </StackLayout>
 
             <ScrollView VerticalScrollBarVisibility="Always"
@@ -83,10 +83,10 @@
 
                         <Frame Style="{StaticResource CrudiBottomFrame}">
                             <Entry x:Name="NameEntry"
-                               Placeholder="Name"
-                               Text="{Binding Data.Name, Mode=TwoWay}"
-                               TextChanged="Entry_TextChanged"
-                               Style="{StaticResource EntryStyle}" />
+                                   Placeholder="Name"
+                                   Text="{Binding Data.Name, Mode=TwoWay}"
+                                   TextChanged="Entry_TextChanged"
+                                   Style="{StaticResource EntryStyle}" />
                         </Frame>
 
                         <Grid HorizontalOptions="CenterAndExpand"
@@ -126,11 +126,11 @@
 
                         <Frame Style="{StaticResource CrudiBottomFrame}">
                             <Entry x:Name="DescriptionEntry"
-                               TextChanged="Entry_TextChanged"
-                               Text="{Binding Data.Description, Mode= TwoWay}"
-                               Style="{StaticResource EntryBottomStyle}" />
+                                   TextChanged="Entry_TextChanged"
+                                   Text="{Binding Data.Description, Mode= TwoWay}"
+                                   Style="{StaticResource EntryBottomStyle}" />
                         </Frame>
-                        
+
                     </StackLayout>
 
                     <!--Attributes setup-->
@@ -172,126 +172,128 @@
                             </Grid.ColumnDefinitions>
 
                             <Frame  Grid.Row="0"
-                                Grid.Column="0"
-                                Style="{StaticResource AttributeFrame}">
-                                <Label Text="RNG"
-                                   Style="{StaticResource LabelStyle}" />
+                                    Grid.Column="0"
+                                    Style="{StaticResource AttributeFrame}">
+                                <Label Text="VAL"
+                                       Style="{StaticResource LabelStyle}" />
                             </Frame>
-
 
                             <StackLayout Grid.Row="0"
-                                     Grid.Column="1"
+                                         Grid.Column="1"
                                          Grid.ColumnSpan="2"
-                                     Orientation="Horizontal"
-                                     VerticalOptions="Center">
-
-                                <Label x:Name="RangeLabel"
-                                   Text="{Binding Data.Range, Mode=TwoWay}"
-                                   Style="{StaticResource ValueStyle}">
-                                    <Label.Margin>
-                                        <OnPlatform x:TypeArguments="Thickness">
-                                            <On Platform="iOS"
-                                            Value="15,0" />
-                                            <On Platform="Android"
-                                            Value="10,0" />
-                                        </OnPlatform>
-                                    </Label.Margin>
-                                </Label>
-
-                                <Slider x:Name="RangeSlider"
-                                    Value="{Binding Data.Range, Mode=TwoWay}"
-                                    ValueChanged="Range_OnSliderValueChanged"
-                                    Style="{StaticResource SliderStyle}">
-                                    <Slider.Margin>
-                                        <OnPlatform x:TypeArguments="Thickness">
-                                            <On Platform="iOS"
-                                            Value="15,0" />
-                                            <On Platform="Android"
-                                            Value="10,0" />
-                                        </OnPlatform>
-                                    </Slider.Margin>
-                                </Slider>
-                            </StackLayout>
-
-
-                            <Frame  Grid.Row="1"
-                                Grid.Column="0"
-                                Style="{StaticResource AttributeFrame}">
-                                <Label Text="VAL"
-                                   Style="{StaticResource LabelStyle}" />
-                            </Frame>
-
-                            <StackLayout Grid.Row="1"
-                                     Grid.Column="1"
-                                         Grid.ColumnSpan="2"
-                                     Orientation="Horizontal"
-                                     VerticalOptions="Center">
+                                         Orientation="Horizontal"
+                                         VerticalOptions="Center">
 
                                 <Label x:Name="ValueLabel"
-                                   Text="{Binding Data.Value, Mode=TwoWay}"
-                                   Style="{StaticResource ValueStyle}">
+                                       Text="{Binding Data.Value, Mode=TwoWay}"
+                                       Style="{StaticResource ValueStyle}">
                                     <Label.Margin>
                                         <OnPlatform x:TypeArguments="Thickness">
                                             <On Platform="iOS"
-                                            Value="15,0" />
+                                                Value="15,0" />
                                             <On Platform="Android"
-                                            Value="10,0" />
+                                                Value="10,0" />
                                         </OnPlatform>
                                     </Label.Margin>
                                 </Label>
 
                                 <Slider x:Name="ValueSlider"
-                                    Value="{Binding Data.Value, Mode=TwoWay}"
-                                    ValueChanged="Value_OnSliderValueChanged"
-                                    Style="{StaticResource SliderStyle}">
+                                        Value="{Binding Data.Value, Mode=TwoWay}"
+                                        ValueChanged="Value_OnSliderValueChanged"
+                                        Style="{StaticResource SliderStyle}">
                                     <Slider.Margin>
                                         <OnPlatform x:TypeArguments="Thickness">
                                             <On Platform="iOS"
-                                            Value="15,0" />
+                                                Value="15,0" />
                                             <On Platform="Android"
-                                            Value="10,0" />
+                                                Value="10,0" />
                                         </OnPlatform>
                                     </Slider.Margin>
                                 </Slider>
                             </StackLayout>
 
-
-                            <Frame  Grid.Row="2"
-                                Grid.Column="0"
-                                Style="{StaticResource AttributeFrame}">
-                                <Label Text="DMG"
-                                   Style="{StaticResource LabelStyle}" />
+                            <Frame  Grid.Row="1"
+                                    Grid.Column="0"
+                                    Style="{StaticResource AttributeFrame}">
+                                <Label Text="RNG"
+                                       Style="{StaticResource LabelStyle}" />
                             </Frame>
 
-                            <StackLayout Grid.Row="2"
-                                     Grid.Column="1"
+                            <StackLayout Grid.Row="1"
+                                         Grid.Column="1"
                                          Grid.ColumnSpan="2"
-                                     Orientation="Horizontal"
-                                     VerticalOptions="Center">
+                                         Orientation="Horizontal"
+                                         VerticalOptions="Center">
 
-                                <Label x:Name="DamageLabel"
-                                   Text="{Binding Data.Damage, Mode=TwoWay}"
-                                   Style="{StaticResource ValueStyle}">
+                                <Label x:Name="RangeLabel"
+                                       Text="{Binding Data.Range, Mode=TwoWay}"
+                                       Style="{StaticResource ValueStyle}">
                                     <Label.Margin>
                                         <OnPlatform x:TypeArguments="Thickness">
                                             <On Platform="iOS"
-                                            Value="15,0" />
+                                                Value="15,0" />
                                             <On Platform="Android"
-                                            Value="10,0" />
+                                                Value="10,0" />
+                                        </OnPlatform>
+                                    </Label.Margin>
+                                </Label>
+
+                                <Slider x:Name="RangeSlider"
+                                        Value="{Binding Data.Range, Mode=TwoWay}"
+                                        ValueChanged="Range_OnSliderValueChanged"
+                                        Style="{StaticResource SliderStyle}">
+                                    <Slider.Margin>
+                                        <OnPlatform x:TypeArguments="Thickness">
+                                            <On Platform="iOS"
+                                                Value="15,0" />
+                                            <On Platform="Android"
+                                                Value="10,0" />
+                                        </OnPlatform>
+                                    </Slider.Margin>
+                                </Slider>
+                            </StackLayout>
+
+                            <Frame  x:Name="DamageFrame"
+                                    Grid.Row="2"
+                                    Grid.Column="0"
+                                    Style="{StaticResource AttributeFrame}"
+                                    IsVisible="false">
+                                <Label x:Name="DisplayDamageLabel" 
+                                       Text="DMG"
+                                       Style="{StaticResource LabelStyle}" />
+                            </Frame>
+
+                            <StackLayout Grid.Row="2"
+                                         Grid.Column="1"
+                                         Grid.ColumnSpan="2"
+                                         Orientation="Horizontal"
+                                         VerticalOptions="Center">
+
+                                <Label x:Name="DamageLabel"
+                                       Text="{Binding Data.Damage, Mode=TwoWay}"
+                                       Style="{StaticResource ValueStyle}"
+                                       IsVisible="false">
+                                    <Label.Margin>
+                                        <OnPlatform x:TypeArguments="Thickness">
+                                            <On Platform="iOS"
+                                                Value="15,0" />
+                                            <On Platform="Android"
+                                                Value="10,0" />
                                         </OnPlatform>
                                     </Label.Margin>
                                 </Label>
 
                                 <Slider x:Name="DamageSlider"
-                                    Value="{Binding Data.Damage, Mode=TwoWay}"
-                                    ValueChanged="Damage_OnSliderValueChanged"
-                                    Style="{StaticResource SliderStyle}">
+                                        Value="{Binding Data.Damage, Mode=TwoWay}"
+                                        ValueChanged="Damage_OnSliderValueChanged"
+                                        Style="{StaticResource SliderStyle}"
+                                        IsVisible="false">
                                     <Slider.Margin>
                                         <OnPlatform x:TypeArguments="Thickness">
                                             <On Platform="iOS"
-                                            Value="15,0" />
+                                                Value="15,0" />
                                             <On Platform="Android"
-                                            Value="10,0" />
+                                                Value="10,0" />
                                         </OnPlatform>
                                     </Slider.Margin>
                                 </Slider>
