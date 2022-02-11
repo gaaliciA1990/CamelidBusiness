@@ -26,13 +26,10 @@
 
         <StackLayout Orientation="Horizontal"
                      Grid.Row="0">
-            <ImageButton Source="leftarrow.png"
-                         Aspect="AspectFit"
+            <ImageButton Source="icon_back.png"
                          Clicked="BackButton_Clicked"
                          HorizontalOptions="Start"
-                         Padding="10"
-                         WidthRequest="45"
-                         HeightRequest="45" />
+                         Style="{StaticResource NavigationButtonStyle}" />
 
             <Label FontSize="Large"
                    FontAttributes="Bold, Italic"
@@ -42,12 +39,9 @@
                    Style="{StaticResource ValueStyle}" />
 
             <ImageButton Source="icon_save.png"
-                         Aspect="AspectFit"
                          HorizontalOptions="Start"
                          Clicked="Save_Clicked"
-                         Padding="10"
-                         WidthRequest="45"
-                         HeightRequest="45" />
+                         Style="{StaticResource NavigationButtonStyle}" />
         </StackLayout>
 
         <Grid Grid.Row="1"
