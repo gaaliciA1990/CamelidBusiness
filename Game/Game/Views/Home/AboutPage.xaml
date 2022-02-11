@@ -92,7 +92,7 @@
                     <StackLayout Grid.Row="1"
                                  Grid.ColumnSpan="2"
                                  HorizontalOptions="Center"
-                                 Orientation="Horizontal">
+                                 Orientation="Vertical">
                         <StackLayout Style="{StaticResource HorizontalStack}">
                             <Label Text="Database Settings"
                                    Style="{DynamicResource LabelStyle}" />
