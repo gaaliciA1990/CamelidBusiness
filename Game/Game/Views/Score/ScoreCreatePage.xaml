@@ -25,13 +25,10 @@
                      VerticalOptions="FillAndExpand">
             <StackLayout Orientation="Horizontal"
                          Grid.Row="0">
-                <ImageButton Source="icon_cancel.png"
-                             Aspect="AspectFit"
+                <ImageButton Source="icon_back.png"
                              HorizontalOptions="Start"
                              Clicked="Cancel_Clicked"
-                             Padding="10"
-                             WidthRequest="45"
-                             HeightRequest="45" />
+                             Style="{StaticResource NavigationButtonStyle}" />
 
                 <Label Font="Bold"
                        HorizontalOptions="CenterAndExpand"
@@ -41,12 +38,9 @@
 
 
                 <ImageButton Source="icon_save.png"
-                             Aspect="AspectFit"
                              HorizontalOptions="Start"
                              Clicked="Save_Clicked"
-                             Padding="10"
-                             WidthRequest="45"
-                             HeightRequest="45" />
+                             Style="{StaticResource NavigationButtonStyle}"/>
             </StackLayout>
             <!--Score entries, centered to the screen relatively-->
             <Frame RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.33}"
