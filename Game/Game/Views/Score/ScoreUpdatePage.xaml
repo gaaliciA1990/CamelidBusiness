@@ -73,7 +73,6 @@
                    Style="{StaticResource EntryStyle}"
                    Text="{Binding Data.Name, Mode=TwoWay}" />
 
-
             <!--Score Fields-->
             <Label x:Name="ScoreLabel"
                    Grid.Row="1"
@@ -160,6 +159,7 @@
                    Style="{StaticResource ValueStyle}"
                    Text="{Binding Data.ExperienceGainedTotal}" />
 
+            <!--Label for list of dead characters-->
             <Grid Grid.Row="0"
                   Grid.Column="2"
                   Grid.RowSpan="3">
@@ -167,8 +167,7 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
-                <StackLayout Orientation="Horizontal">
-                    <!--Label for list of dead characters-->
+                <StackLayout Orientation="Vertical">
                     <Label x:Name="CharacterDeadLabel"
                            Grid.Row="0"
                            Grid.Column="0"
@@ -191,7 +190,7 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
-                <StackLayout Orientation="Horizontal">
+                <StackLayout Orientation="Vertical">
                     <!--Label for list of monsters killed-->
                     <Label x:Name="MonsterDeadLabel"
                            Grid.Row="0"
@@ -215,7 +214,7 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
-                <StackLayout Orientation="Horizontal">
+                <StackLayout Orientation="Vertical">
                     <!--Label for list of Items drops-->
                     <Label Grid.Row="0"
                            Grid.Column="0"
