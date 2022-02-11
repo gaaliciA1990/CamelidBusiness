@@ -44,7 +44,7 @@ namespace Game.Views
 
             // Load the first image in the list when the Create page is opened
             this.ViewModel.Data.ImageURI = imageList[imageIndex];
-            
+
             BindingContext = this.ViewModel;
 
             this.ViewModel.Title = "Create";
@@ -159,7 +159,7 @@ namespace Game.Views
             // check if we are at the first photo and move to last photo when clicked
             if (imageIndex == 0)
             {
-                imageIndex = imageCount - 1 ;
+                imageIndex = imageCount - 1;
             }
 
             // Move to the previous photo in the list
@@ -218,6 +218,8 @@ namespace Game.Views
         /// <param name="e"></param>
         private void Picker_SelectedIndexChanged(object sender, EventArgs e)
         {
+            bool locPrimaryHand = false;
+
             // Check the dictionary for the Location and Attribute key and remove to start fresh
             if (errors.ContainsKey("Location"))
             {
@@ -240,9 +242,41 @@ namespace Game.Views
                 errors["Attribute"] = "Attribute is required";
             }
 
+            if (this.ViewModel.Data.Location == ItemLocationEnum.PrimaryHand)
+            {
+                locPrimaryHand = true;
+            }
+
+            IsDamageSliderVisible(locPrimaryHand);
+
             // Display the error message generated
             BindableLayout.SetItemsSource(errorMessageList, null);
             BindableLayout.SetItemsSource(errorMessageList, errors);
+        }
+
+        /// <summary>
+        /// Validate if Primary hand is selected in picker and show or hide the 
+        /// damage details accordingly
+        /// </summary>
+        /// <param name="locPrimaryHand"></param>
+        public void IsDamageSliderVisible(bool locPrimaryHand)
+        {
+            //Validate location is Primary hand and show damage slider
+            if (locPrimaryHand == true)
+            {
+                DamageFrame.IsVisible = true;
+                DisplayDamageLabel.IsVisible = true;
+                DamageLabel.IsVisible = true;
+                DamageSlider.IsVisible = true;
+            }
+            // If location is not primary hand, hide damage
+            if (locPrimaryHand == false)
+            {
+                DamageFrame.IsVisible = false;
+                DisplayDamageLabel.IsVisible = false;
+                DamageLabel.IsVisible = false;
+                DamageSlider.IsVisible = false;
+            }
         }
 
         /// <summary>
