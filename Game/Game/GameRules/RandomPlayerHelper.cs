@@ -11,13 +11,20 @@ namespace Game.GameRules
 {
     public static class RandomPlayerHelper
     {
+        //Flag to notify the class if the UTs are using it
         private static bool InTestMode = false;
 
+        /// <summary>
+        /// Function set test mode flag to true
+        /// </summary>
         public static void TurnOnTestMode()
         {
             InTestMode = true;
         }
 
+        /// <summary>
+        /// Function set test mode flag to false
+        /// </summary>
         public static void TurnOffTestMode()
         {
             InTestMode = false;
