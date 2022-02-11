@@ -259,7 +259,7 @@ namespace Game.Views
         /// damage details accordingly
         /// </summary>
         /// <param name="locPrimaryHand"></param>
-        public void IsDamageSliderVisible(bool locPrimaryHand)
+        private void IsDamageSliderVisible(bool locPrimaryHand)
         {
             //Validate location is Primary hand and show damage slider
             if (locPrimaryHand == true)
