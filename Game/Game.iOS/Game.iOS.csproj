@@ -155,18 +155,6 @@
     <BundleResource Include="Resources\battleboard.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\shield4.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\shield1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\shield2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\shield3.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\item.png" />
   </ItemGroup>
   <ItemGroup>
