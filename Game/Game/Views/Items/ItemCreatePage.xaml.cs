@@ -50,8 +50,8 @@ namespace Game.Views
             this.ViewModel.Title = "Create";
 
             // Set the entry placeholder text
-            NameEntry.Placeholder = "Give your character a name";
-            DescriptionEntry.Placeholder = "Describe your character";
+            NameEntry.Placeholder = "Give it a name";
+            DescriptionEntry.Placeholder = "Describe your item";
 
             //Need to make the SelectedItem a string, so it can select the correct item.
             LocationPicker.SelectedItem = ViewModel.Data.Location.ToString();
