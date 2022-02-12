@@ -81,12 +81,12 @@
                                  Padding="20"
                                  Style="{StaticResource OuterBoxStack}">
 
-                        <Frame Style="{StaticResource CrudiBottomFrame}">
+                        <Frame Style="{StaticResource CrudiTopFrame}">
                             <Entry x:Name="NameEntry"
                                    Placeholder="Name"
                                    Text="{Binding Data.Name, Mode=TwoWay}"
                                    TextChanged="Entry_TextChanged"
-                                   Style="{StaticResource EntryStyle}" />
+                                   Style="{StaticResource EntryTopStyle}" />
                         </Frame>
 
                         <Grid HorizontalOptions="CenterAndExpand"
@@ -105,23 +105,19 @@
                                          x:Name="LeftButton"
                                          Source="leftarrow.png"
                                          Clicked="LeftButton_Clicked"
-                                         BorderColor="DarkSlateGray"
-                                         CornerRadius="1" />
+                                         HorizontalOptions="Start"/>
                             <Image  Grid.Column="1"
                                     Grid.Row="0"
                                     x:Name="ImageLabel"
-                                    Source="{Binding Data.ImageURI}"
-                                    HorizontalOptions="FillAndExpand"
-                                    VerticalOptions="FillAndExpand"
-                                    Aspect="AspectFit"
-                                    Margin="10" />
+                                    Source="{Binding Data.ImageURI}" 
+                                    Style="{StaticResource CrudiImageStyle}"
+                                    Scale="1.25"/>
                             <ImageButton Grid.Column="2"
                                          Grid.Row="0"
                                          x:Name="RightButton"
                                          Source="rightarrow.png"
                                          Clicked="RightButton_Clicked"
-                                         BorderColor="DarkSlateGray"
-                                         CornerRadius="5" />
+                                         HorizontalOptions="End" />
                         </Grid>
 
                         <Frame Style="{StaticResource CrudiBottomFrame}">
