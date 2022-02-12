@@ -81,12 +81,12 @@
                                  Padding="20"
                                  Style="{StaticResource OuterBoxStack}">
 
-                        <Frame Style="{StaticResource CrudiBottomFrame}">
+                        <Frame Style="{StaticResource CrudiTopFrame}">
                             <Entry x:Name="NameEntry"
                                Placeholder="Name"
                                Text="{Binding Data.Name, Mode=TwoWay}"
                                TextChanged="Entry_TextChanged"
-                               Style="{StaticResource EntryStyle}"/>
+                               Style="{StaticResource EntryTopStyle}"/>
                         </Frame>
 
 
@@ -129,7 +129,7 @@
                             <Entry x:Name="DescriptionEntry"
                                TextChanged="Entry_TextChanged"
                                Text="{Binding Data.Description, Mode= TwoWay}"
-                               Style="{StaticResource EntryStyle}" />
+                               Style="{StaticResource EntryBottomStyle}" />
                         </Frame>
                     </StackLayout>
 
