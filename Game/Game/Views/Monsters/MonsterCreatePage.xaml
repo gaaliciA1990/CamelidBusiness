@@ -60,16 +60,12 @@
                                  VerticalOptions="FillAndExpand"
                                  Style="{StaticResource OuterBoxStack}">
 
-                        <Entry x:Name="NameEntry"
-                               FontSize="Medium"
-                               HorizontalOptions="FillAndExpand"
-                               BackgroundColor="White"
-                               MaxLength="20"
-                               Keyboard="Text"
-                               ReturnType="Done"
+                        <Frame Style="{StaticResource CrudiTopFrame}">
+                            <Entry x:Name="NameEntry"
                                TextChanged="Entry_TextChanged"
                                Text="{Binding Data.Name, Mode=TwoWay}"
                                Style="{StaticResource EntryTopStyle}" />
+                        </Frame>
 
                         <Grid HorizontalOptions="CenterAndExpand"
                               VerticalOptions="Fill">
@@ -83,31 +79,32 @@
                             </Grid.RowDefinitions>
 
                             <ImageButton Grid.Column="0"
-                                     Grid.Row="0"
-                                     x:Name="LeftButton"
-                                     Source="leftarrow.png"
-                                     Clicked="LeftButton_Clicked"
-                                     HorizontalOptions="Start" />
-                            
+                                         Grid.Row="0"
+                                         x:Name="LeftButton"
+                                         Source="leftarrow.png"
+                                         Clicked="LeftButton_Clicked"
+                                         HorizontalOptions="Start" />
+
                             <Image  Grid.Column="1"
                                     Grid.Row="0"
                                     x:Name="ImageLabel"
                                     Source="{Binding Data.ImageURI}"
-                                    Style="{StaticResource CrudiImageStyle}"/>
+                                    Style="{StaticResource CrudiImageStyle}" />
 
                             <ImageButton Grid.Column="2"
-                                     Grid.Row="0"
-                                     x:Name="RightButton"
-                                     Source="rightarrow.png"
-                                     Clicked="RightButton_Clicked"
-                                     HorizontalOptions="End" />
+                                         Grid.Row="0"
+                                         x:Name="RightButton"
+                                         Source="rightarrow.png"
+                                         Clicked="RightButton_Clicked"
+                                         HorizontalOptions="End" />
                         </Grid>
 
-                        <Entry x:Name="DescriptionEntry"
-                               TextChanged="Entry_TextChanged"
-                               Text="{Binding Data.Description, Mode= TwoWay}"
-                               Style="{StaticResource EntryBottomStyle}"/>
-                        
+                        <Frame Style="{StaticResource CrudiBottomFrame}">
+                            <Entry x:Name="DescriptionEntry"
+                                   TextChanged="Entry_TextChanged"
+                                   Text="{Binding Data.Description, Mode= TwoWay}"
+                                   Style="{StaticResource EntryBottomStyle}" />
+                        </Frame>
                     </StackLayout>
 
                     <!--Attributes setup-->
@@ -117,7 +114,7 @@
                                  VerticalOptions="FillAndExpand"
                                  Padding="10"
                                  Style="{StaticResource OuterBoxStack}">
-                        
+
                         <Grid HorizontalOptions="Center"
                               VerticalOptions="FillAndExpand">
                             <Grid.ColumnDefinitions>
@@ -132,24 +129,22 @@
                                          Grid.ColumnSpan="2"
                                          HorizontalOptions="Center">
                                 <Frame Style="{StaticResource AttributeFrame}"
-                                       WidthRequest="80"
-                                       >
+                                       WidthRequest="80">
                                     <Label Text="DIFFICULTY"
                                            Style="{StaticResource LabelStyle}" />
                                 </Frame>
 
                                 <!--Difficulty Labels-->
-                                <StackLayout x:Name="DifficultyStack" 
-                                            HorizontalOptions="Center"
-                                            >
+                                <StackLayout x:Name="DifficultyStack"
+                                             HorizontalOptions="Center">
                                 </StackLayout>
                             </StackLayout>
 
                             <Frame Grid.Row="1"
-                               Grid.Column="0"
-                               Style="{StaticResource AttributeFrame}">
+                                   Grid.Column="0"
+                                   Style="{StaticResource AttributeFrame}">
                                 <Label Text="ATK"
-                                   Style="{StaticResource LabelStyle}" />
+                                       Style="{StaticResource LabelStyle}" />
                             </Frame>
                             <!--Attack Slider-->
                             <StackLayout Grid.Row="1"
@@ -185,12 +180,12 @@
                                     </Slider.Margin>
                                 </Slider>
                             </StackLayout>
-                            
+
                             <Frame Grid.Row="2"
-                               Grid.Column="0"
-                               Style="{StaticResource AttributeFrame}">
+                                   Grid.Column="0"
+                                   Style="{StaticResource AttributeFrame}">
                                 <Label Text="DEF"
-                                   Style="{StaticResource LabelStyle}" />
+                                       Style="{StaticResource LabelStyle}" />
                             </Frame>
                             <!--Defense Slider-->
                             <StackLayout Grid.Row="2"
@@ -229,10 +224,10 @@
                             </StackLayout>
 
                             <Frame Grid.Row="3"
-                               Grid.Column="0"
-                               Style="{StaticResource AttributeFrame}">
+                                   Grid.Column="0"
+                                   Style="{StaticResource AttributeFrame}">
                                 <Label Text="SPD"
-                                   Style="{StaticResource LabelStyle}" />
+                                       Style="{StaticResource LabelStyle}" />
                             </Frame>
                             <!--Speed Slider-->
                             <StackLayout Grid.Row="3"
@@ -271,19 +266,19 @@
                         </Grid>
 
                         <!--Items selection-->
-                        <StackLayout HorizontalOptions="CenterAndExpand" 
+                        <StackLayout HorizontalOptions="CenterAndExpand"
                                      Orientation="Horizontal"
                                      HeightRequest="90">
                             <StackLayout x:Name="ItemBox"
-                                         Style="{StaticResource ItemBox}"/>
+                                         Style="{StaticResource ItemBox}" />
                             <ImageButton x:Name="RollDice"
-                                    Source="icon_dice.png"
-                                    Clicked="RollDice_Clicked"
-                                    CornerRadius="5" 
-                                    Style="{StaticResource ImageMediumStyle}"
-                                    HeightRequest="80"
-                                    WidthRequest="80"
-                                    HorizontalOptions="End"/>
+                                         Source="icon_dice.png"
+                                         Clicked="RollDice_Clicked"
+                                         CornerRadius="5"
+                                         Style="{StaticResource ImageMediumStyle}"
+                                         HeightRequest="80"
+                                         WidthRequest="80"
+                                         HorizontalOptions="End" />
                         </StackLayout>
 
                     </StackLayout>
@@ -365,8 +360,8 @@
 
                             <ImageButton x:Name="PopupCloseButton"
                                          Clicked="ClosePopup_Clicked"
-                                         Source="icon_cancel.png" 
-                                         Style="{StaticResource DeleteButtonStyle}"/>
+                                         Source="icon_cancel.png"
+                                         Style="{StaticResource DeleteButtonStyle}" />
                         </StackLayout>
                     </Frame>
                 </StackLayout>
