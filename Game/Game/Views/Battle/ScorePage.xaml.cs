@@ -19,10 +19,15 @@ namespace Game.Views
         /// <summary>
         /// Constructor
         /// </summary>
-        public ScorePage()
+        public ScorePage(float? elapsedTime = null)
         {
             InitializeComponent();
             DrawOutput();
+
+            if (elapsedTime != null)
+            {
+                ElapsedTime.Text = String.Format("Battle took {0:0.00} sec", elapsedTime);
+            }
         }
 
         /// <summary>
