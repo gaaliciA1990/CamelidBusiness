@@ -5,6 +5,7 @@ using Xamarin.Forms.Xaml;
 using Game.Models;
 using Game.ViewModels;
 using Game.Engine.EngineInterfaces;
+using System.Diagnostics;
 
 namespace Game.Views
 {
@@ -27,6 +28,10 @@ namespace Game.Views
 
         public async void AutobattleButton_Clicked(object sender, EventArgs e)
         {
+            //Measure start time
+            var stopwatch = new Stopwatch();
+            stopwatch.Start();
+
             // Call into Auto Battle from here to do the Battle...
 
             // To See Level UP happening, a character needs to be close to the next level
@@ -48,6 +53,13 @@ namespace Game.Views
             BattleMessageValue.Text = BattleMessage;
 
             AutobattleImage.Source = "troll6_d.gif";
+
+
+            //measure elapsed time
+            stopwatch.Stop();
+            var elapsed_time = (float)stopwatch.ElapsedMilliseconds/1000;
+
+            await Navigation.PushModalAsync(new ScorePage(elapsed_time));
         }
     }
 }
