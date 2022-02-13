@@ -277,9 +277,6 @@
     <AndroidResource Include="Resources\drawable\bronze_spear.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\basic_stick.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable\basic_hat.png" />
   </ItemGroup>
   <ItemGroup>
