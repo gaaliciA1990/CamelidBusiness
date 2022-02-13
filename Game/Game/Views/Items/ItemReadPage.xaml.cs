@@ -36,10 +36,6 @@ namespace Game.Views
             InitializeComponent();
 
             BindingContext = this.ViewModel = data;
-            LocationPicker.SelectedItem = data.Data.Location.ToString();
-            LocationPicker.IsEnabled = false;
-            AttributePicker.SelectedItem = data.Data.Attribute.ToString();
-            AttributePicker.IsEnabled = false;
 
             RangeBar.Progress = (float)ViewModel.Data.Range / 15;
             ValueBar.Progress = (float)ViewModel.Data.Value / 15;

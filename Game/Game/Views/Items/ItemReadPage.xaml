@@ -75,17 +75,29 @@
                     <StackLayout Style="{StaticResource HorizontalStack}"
                                  HorizontalOptions="FillAndExpand"
                                  VerticalOptions="Center">
-                        <Picker HorizontalOptions="FillAndExpand"
-                                Style="{StaticResource CRUDIPickerStyle}"
-                                ItemsSource="{x:Static local:ItemLocationEnumHelper.GetListCharacter}"
-                                SelectedItem="{Binding Data.Location, Converter={StaticResource StringEnum}, Mode=TwoWay}"
-                                x:Name="LocationPicker" />
+                        <Grid HorizontalOptions="CenterAndExpand">
+                            <Label Grid.Row="0"
+                                   Text="Location" 
+                                   Style="{StaticResource CrudiLabelStyle}" 
+                                   HorizontalTextAlignment="Start"/>
+                            <Frame Grid.Row="1" Style="{StaticResource CrudiTopFrame}">
+                                <Label x:Name="LocationPicker"
+                                   Text="{Binding Data.Location}"
+                                   Style="{StaticResource CrudiLabelStyle}" />
+                            </Frame>
+                        </Grid>
 
-                        <Picker HorizontalOptions="FillAndExpand"
-                                Style="{StaticResource CRUDIPickerStyle}"
-                                ItemsSource="{x:Static local:AttributeEnumHelper.GetListCharacter}"
-                                SelectedItem="{Binding Data.Attribute, Converter={StaticResource StringEnum}, Mode=TwoWay}"
-                                x:Name="AttributePicker" />
+                        <Grid HorizontalOptions="CenterAndExpand">
+                            <Label Grid.Row="0"
+                                   Text="Attribute" 
+                                   Style="{StaticResource CrudiLabelStyle}" 
+                                   HorizontalTextAlignment="Start"/>
+                            <Frame Grid.Row="1" Style="{StaticResource CrudiTopFrame}">
+                                <Label x:Name="AttributePicker"
+                                   Text="{Binding Data.Attribute}"
+                                   Style="{StaticResource CrudiLabelStyle}" />
+                            </Frame>
+                        </Grid>
                     </StackLayout>
 
                     <Grid HorizontalOptions="Center"
