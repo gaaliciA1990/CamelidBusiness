@@ -81,6 +81,186 @@ namespace Game.GameRules
                     Location = ItemLocationEnum.Finger,
                     Attribute = AttributeEnum.MaxHealth,
                     IsUnique = true},
+
+                new ItemModel {
+                    Name = "Fuzzy Boots",
+                    Description = "Fuzzy boots keeping you warm",
+                    ImageURI = "basic_boots.png",
+                    Range = 0,
+                    Damage = 0,
+                    Value = 2,
+                    Location = ItemLocationEnum.Finger,
+                    Attribute = AttributeEnum.MaxHealth},
+
+                new ItemModel {
+                    Name = "Dia Earrings",
+                    Description = "Colorful earings",
+                    ImageURI = "basic_earring.png",
+                    Range = 0,
+                    Damage = 0,
+                    Value = 2,
+                    Location = ItemLocationEnum.Finger,
+                    Attribute = AttributeEnum.MaxHealth},
+
+                new ItemModel {
+                    Name = "Ruby Earrings",
+                    Description = "Long ruby earings",
+                    ImageURI = "basic_earring2.png",
+                    Range = 0,
+                    Damage = 0,
+                    Value = 2,
+                    Location = ItemLocationEnum.Finger,
+                    Attribute = AttributeEnum.MaxHealth},
+
+                new ItemModel {
+                    Name = "Soft gold earrings",
+                    Description = "Shiny",
+                    ImageURI = "basic_earring3.png",
+                    Range = 0,
+                    Damage = 0,
+                    Value = 2,
+                    Location = ItemLocationEnum.Finger,
+                    Attribute = AttributeEnum.MaxHealth},
+
+                new ItemModel {
+                    Name = "Furry hat",
+                    Description = "You look stylish!",
+                    ImageURI = "basic_hat.png",
+                    Range = 0,
+                    Damage = 0,
+                    Value = 2,
+                    Location = ItemLocationEnum.Head,
+                    Attribute = AttributeEnum.Defense},
+
+                new ItemModel {
+                    Name = "French beret",
+                    Description = "Where's the croissant?",
+                    ImageURI = "basic_hat2.png",
+                    Range = 0,
+                    Damage = 0,
+                    Value = 2,
+                    Location = ItemLocationEnum.Head,
+                    Attribute = AttributeEnum.Defense},
+
+                new ItemModel {
+                    Name = "Sombrero",
+                    Description = "Hola!",
+                    ImageURI = "basic_sombrero.png",
+                    Range = 0,
+                    Damage = 0,
+                    Value = 2,
+                    Location = ItemLocationEnum.Head,
+                    Attribute = AttributeEnum.Defense},
+
+                new ItemModel {
+                    Name = "Gold necklace",
+                    Description = "Blinding their sights",
+                    ImageURI = "basic_necklace.png",
+                    Range = 0,
+                    Damage = 0,
+                    Value = 2,
+                    Location = ItemLocationEnum.Necklass,
+                    Attribute = AttributeEnum.MaxHealth},
+
+                new ItemModel {
+                    Name = "Silver necklace",
+                    Description = "So pretty!",
+                    ImageURI = "basic_necklace2.png",
+                    Range = 0,
+                    Damage = 0,
+                    Value = 2,
+                    Location = ItemLocationEnum.Necklass,
+                    Attribute = AttributeEnum.Attack},
+
+                new ItemModel {
+                    Name = "Winter scarf",
+                    Description = "Keep you warm",
+                    ImageURI = "basic_scarf.png",
+                    Range = 0,
+                    Damage = 0,
+                    Value = 2,
+                    Location = ItemLocationEnum.Necklass,
+                    Attribute = AttributeEnum.Speed},
+
+                new ItemModel {
+                    Name = "Ancient shield",
+                    Description = "Bronze shield",
+                    ImageURI = "basic_shield.png",
+                    Range = 0,
+                    Damage = 0,
+                    Value = 2,
+                    Location = ItemLocationEnum.OffHand,
+                    Attribute = AttributeEnum.Defense},
+
+                new ItemModel {
+                    Name = "Smiling shield",
+                    Description = "Scaring your enemies away",
+                    ImageURI = "basic_shield2.png",
+                    Range = 0,
+                    Damage = 0,
+                    Value = 2,
+                    Location = ItemLocationEnum.OffHand,
+                    Attribute = AttributeEnum.Defense},
+
+                new ItemModel {
+                    Name = "Andean shield",
+                    Description = "So colorful",
+                    ImageURI = "basic_shield3.png",
+                    Range = 0,
+                    Damage = 0,
+                    Value = 2,
+                    Location = ItemLocationEnum.OffHand,
+                    Attribute = AttributeEnum.Defense},
+
+                new ItemModel {
+                    Name = "Ballet shoes",
+                    Description = "Dance through the battlefield",
+                    ImageURI = "basic_slippers.png",
+                    Range = 0,
+                    Damage = 0,
+                    Value = 2,
+                    Location = ItemLocationEnum.Feet,
+                    Attribute = AttributeEnum.Speed},
+
+                new ItemModel {
+                    Name = "Warm socks",
+                    Description = "They're warm",
+                    ImageURI = "basic_socks.png",
+                    Range = 0,
+                    Damage = 0,
+                    Value = 2,
+                    Location = ItemLocationEnum.Feet,
+                    Attribute = AttributeEnum.Speed},
+
+                new ItemModel {
+                    Name = "Tree branch",
+                    Description = "Savagae",
+                    ImageURI = "basic_stick.jpg",
+                    Range = 0,
+                    Damage = 0,
+                    Value = 2,
+                    Location = ItemLocationEnum.PrimaryHand,
+                    Attribute = AttributeEnum.Attack},
+
+                new ItemModel {
+                    Name = "Rusty sword",
+                    Description = "Little rusty but can do some damage",
+                    ImageURI = "basic_sword.png",
+                    Range = 0,
+                    Damage = 0,
+                    Value = 2,
+                    Location = ItemLocationEnum.PrimaryHand,
+                    Attribute = AttributeEnum.Attack },
+
+                new ItemModel {
+                    Name = "Torch",
+                    Description = "Burn them to ashes!",
+                    ImageURI = "basic_torch.png",
+                    Range = 0,
+                    Damage = 0,
+                    Value = 2,
+                    Location = ItemLocationEnum.PrimaryHand,
+                    Attribute = AttributeEnum.Attack },
             };
 
             return datalist;
