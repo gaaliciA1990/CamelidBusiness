@@ -145,6 +145,42 @@
                         <StackLayout Style="{StaticResource HorizontalStack}"
                                      HorizontalOptions="FillAndExpand"
                                      VerticalOptions="Center">
+
+                            <Grid HorizontalOptions="CenterAndExpand">
+                                <Label Grid.Row="0"
+                                   Text="Select location" 
+                                   Style="{StaticResource CrudiLabelStyle}" 
+                                   HorizontalTextAlignment="Start"/>
+                                <Frame Grid.Row="1" Style="{StaticResource CrudiTopFrame}">
+                                    <Picker HorizontalOptions="FillAndExpand"
+                                    ItemsSource="{x:Static local:ItemLocationEnumHelper.GetListCharacter}"
+                                    SelectedItem="{Binding Data.Location, Converter={StaticResource StringEnum}, Mode=TwoWay}"
+                                    Style="{StaticResource CRUDIPickerStyle}"
+                                    BackgroundColor="white"
+                                    SelectedIndexChanged="LocationPicker_SelectedIndexChanged"
+                                    x:Name="LocationPicker" />
+                                </Frame>
+                            </Grid>
+
+                            <Grid HorizontalOptions="CenterAndExpand">
+                                <Label Grid.Row="0" 
+                                   Text="Select attribute" 
+                                   Style="{StaticResource CrudiLabelStyle}" 
+                                   HorizontalTextAlignment="Start"/>
+                                <Frame Grid.Row="1" Style="{StaticResource CrudiTopFrame}">
+                                    <Picker HorizontalOptions="FillAndExpand"
+                                    ItemsSource="{x:Static local:AttributeEnumHelper.GetListCharacter}"
+                                    SelectedItem="{Binding Data.Attribute, Converter={StaticResource StringEnum}, Mode=TwoWay}"
+                                    Style="{StaticResource CRUDIPickerStyle}"
+                                    BackgroundColor="white"
+                                    SelectedIndexChanged="AttributePicker_SelectedIndexChanged"
+                                    x:Name="AttributePicker" />
+                                </Frame>
+                            </Grid>
+
+
+
+                            <!--
                             <Picker Title="Select a location"
                                     HorizontalOptions="FillAndExpand"
                                     ItemsSource="{x:Static local:ItemLocationEnumHelper.GetListCharacter}"
@@ -162,6 +198,7 @@
                                     BackgroundColor="white"
                                     SelectedIndexChanged="AttributePicker_SelectedIndexChanged"
                                     x:Name="AttributePicker" />
+                            -->
                         </StackLayout>
 
                         <Grid HorizontalOptions="Center"
