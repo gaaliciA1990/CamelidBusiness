@@ -1,50 +1,82 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Game.Views.ScorePage">
+             x:Class="Game.Views.ScorePage"
+             Style="{StaticResource BattleStyle}">
 
     <ContentPage.Content>
-        <ScrollView HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
-            <StackLayout Style="{StaticResource VerticalStack}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
 
-            <Label Text="Score Page" Style="{StaticResource CenterMessageLargeStyle}"/>
+            <Label Grid.Row="0" Grid.Column="1" Text="Score" Style="{StaticResource LabelStyle}"/>
 
-            <Button Clicked="CloseButton_Clicked" Text="Close"/>
+            <Grid Grid.Row="1" Grid.Column="1" VerticalOptions="CenterAndExpand">
+                <Label Grid.Row="1" x:Name="TotalScore" Padding="10" Style="{StaticResource LabelStyle}"/>
+                <Label Grid.Row="2" x:Name="TotalRounds" Padding="10" Style="{StaticResource LabelStyle}"/>
+                <Label Grid.Row="3" x:Name="TotalKilled" Padding="10" Style="{StaticResource LabelStyle}"/>
+                <Label Grid.Row="4" x:Name="TotalCollected" Padding="10" Style="{StaticResource LabelStyle}"/>
+            </Grid>
 
-            <StackLayout Style="{StaticResource HorizontalStack}">
-                <Label Text="Score : " Style="{StaticResource MessageStyle}"/>
-                <Label Text="0" x:Name="TotalScore" Style="{StaticResource MessageStyle}"/>
-            </StackLayout>
+            <Frame Grid.Row="1" Grid.Column="0" 
+                   HorizontalOptions="FillAndExpand" 
+                   VerticalOptions="FillAndExpand" 
+                   BorderColor="Transparent"
+                   BackgroundColor="#50FFFFFF">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0" Text="Dead Characters" Style="{StaticResource LabelStyle}"/>
+                    <Grid Grid.Row="1" x:Name="CharacterListGrid"/>
+                </Grid>
+            </Frame>
 
-            <Label Text="Characters" Style="{StaticResource MessageStyle}"/>
-            <FlexLayout x:Name="CharacterListFrame"
-                                    JustifyContent="Start"
-                                    AlignContent="Start"
-                                    Wrap="Wrap"/>
+            <Frame Grid.Row="1" Grid.Column="2" 
+                   HorizontalOptions="FillAndExpand" 
+                   VerticalOptions="FillAndExpand" 
+                   BorderColor="Transparent"
+                   BackgroundColor="#50FFFFFF">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0" Text="Dead Monsters" Style="{StaticResource LabelStyle}"/>
+                    <Grid Grid.Row="1" x:Name="MonsterListGrid"/>
+                </Grid>
+            </Frame>
 
-            <Label Text="Monsters" Style="{StaticResource MessageStyle}"/>
-                <StackLayout Style="{StaticResource HorizontalStack}">
-                    <Label Text="Killed : " Style="{StaticResource LabelStyle}"/>
-                    <Label Text="0" x:Name="TotalKilled" Style="{StaticResource ValueStyle}"/>
-                </StackLayout>
-                <FlexLayout x:Name="MonsterListFrame"
-                                    JustifyContent="Start"
-                                    AlignContent="Start"
-                                    Wrap="Wrap"/>
+            <Frame Grid.Row="2" Grid.Column="0" 
+                   Grid.ColumnSpan="3"
+                   HorizontalOptions="FillAndExpand" 
+                   VerticalOptions="FillAndExpand" 
+                   BorderColor="Transparent"
+                   BackgroundColor="#50FFFFFF">
+                <Grid Padding="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Text="Items Found" Style="{StaticResource LabelStyle}"/>
+                    <StackLayout Grid.Column="1" Orientation="Horizontal" HeightRequest="50" x:Name="ItemsStackLayout"/>
+                </Grid>
+            </Frame>
 
-            <Label Text="Items" Style="{StaticResource MessageStyle}"/>
-                <StackLayout Style="{StaticResource HorizontalStack}">
-                    <Label Text="Collected : " Style="{StaticResource LabelStyle}"/>
-                    <Label Text="0" x:Name="TotalCollected" Style="{StaticResource ValueStyle}"/>
-                </StackLayout>
-                <FlexLayout x:Name="ItemListFrame"
-                                    JustifyContent="Start"
-                                    AlignContent="Start"
-                                    Wrap="Wrap"/>
-                
+
+            <StackLayout Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="CenterAndExpand" Orientation="Horizontal">
                 <Button Clicked="CloseButton_Clicked" Text="Close"/>
-
-        </StackLayout>
-        </ScrollView>
+            </StackLayout>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

@@ -33,29 +33,65 @@ namespace Game.Views
         /// </summary>
         public void DrawOutput()
         {
-
-            // Draw the Characters
-            foreach (var data in EngineViewModel.Engine.EngineSettings.BattleScore.CharacterModelDeathList)
+            //Number of colums to display characters and monsters
+            var columns = 3;
+            
+            //Populate Grid with Characters
+            for (var x = 0; x < EngineViewModel.Engine.EngineSettings.BattleScore.CharacterModelDeathList.Count(); x++)
             {
-                CharacterListFrame.Children.Add(CreateCharacterDisplayBox(data));
+                var col = x % columns;
+                var row = (int)Math.Floor((double)x / columns);
+                if (col == 0)
+                    CharacterListGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Star });
+            
+                var data = EngineViewModel.Engine.EngineSettings.BattleScore.CharacterModelDeathList[x];
+                var cell = CreateCharacterDisplayBox(data);
+            
+                cell.SetValue(Grid.RowProperty, row);
+                cell.SetValue(Grid.ColumnProperty, col);
+                CharacterListGrid.Children.Add(cell);
+            }
+            
+            //Get duplicate counts of Monsters
+            var Monsters = from x in EngineViewModel.Engine.EngineSettings.BattleScore.MonsterModelDeathList
+                           group x by x.ImageURI into g
+                           orderby g.Key
+                           let count = g.Count()
+                           select new { Value = g.First(), Count = count };
+            
+            //Populate Grid with Monsters
+            for (var x = 0; x < Monsters.Count(); x++)
+            {
+                var col = x % columns;
+                var row = (int)Math.Floor((double)x / columns);
+                if (col == 0)
+                    MonsterListGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Star });
+            
+                var data = Monsters.ElementAt(x).Value;
+                var count = Monsters.ElementAt(x).Count;
+                var cell = CreateMonsterDisplayBox(data, count);
+            
+                cell.SetValue(Grid.RowProperty, row);
+                cell.SetValue(Grid.ColumnProperty, col);
+                MonsterListGrid.Children.Add(cell);
+            }
+            
+            //Get duplicate counts of items
+            var Items = from x in EngineViewModel.Engine.EngineSettings.BattleScore.ItemModelDropList
+                        group x by x.ImageURI into g
+                        let count = g.Count()
+                        select new { Value = g.First(), Count = count };
+            
+            foreach (var data in Items)
+            {
+                ItemsStackLayout.Children.Add(CreateItemDisplayBox(data.Value, data.Count));
             }
 
-            // Draw the Monsters
-            foreach (var data in EngineViewModel.Engine.EngineSettings.BattleScore.MonsterModelDeathList.Distinct())
-            {
-                MonsterListFrame.Children.Add(CreateMonsterDisplayBox(data));
-            }
-
-            // Draw the Items
-            foreach (var data in EngineViewModel.Engine.EngineSettings.BattleScore.ItemModelDropList.Distinct())
-            {
-                ItemListFrame.Children.Add(CreateItemDisplayBox(data));
-            }
-
-            // Update Values in the UI
-            TotalKilled.Text = EngineViewModel.Engine.EngineSettings.BattleScore.MonsterModelDeathList.Count().ToString();
-            TotalCollected.Text = EngineViewModel.Engine.EngineSettings.BattleScore.ItemModelDropList.Count().ToString();
-            TotalScore.Text = EngineViewModel.Engine.EngineSettings.BattleScore.ExperienceGainedTotal.ToString();
+            //// Update Values in the UI
+            TotalKilled.Text = "Monsters Killed: " + EngineViewModel.Engine.EngineSettings.BattleScore.MonsterModelDeathList.Count().ToString();
+            TotalCollected.Text = "Items Collected: " +EngineViewModel.Engine.EngineSettings.BattleScore.ItemModelDropList.Count().ToString();
+            TotalScore.Text = "Score: " + EngineViewModel.Engine.EngineSettings.BattleScore.ExperienceGainedTotal.ToString();
+            TotalRounds.Text = "Rounds: " + EngineViewModel.Engine.EngineSettings.BattleScore.RoundCount.ToString();
         }
 
         /// <summary>
@@ -63,7 +99,7 @@ namespace Game.Views
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        public StackLayout CreateCharacterDisplayBox(PlayerInfoModel data)
+        public Grid CreateCharacterDisplayBox(PlayerInfoModel data)
         {
             if (data == null)
             {
@@ -73,11 +109,25 @@ namespace Game.Views
             // Hookup the image
             var PlayerImage = new Image
             {
-                Style = (Style)Application.Current.Resources["ImageBattleMediumStyle"],
+                Aspect = Aspect.AspectFit,
                 Source = data.ImageURI
             };
 
-            // Add the Level
+            // Add the Level under image
+            var PlayerNameLabel = new Label
+            {
+                Text = data.Name,
+                Style = (Style)Application.Current.Resources["ValueStyleMicro"],
+                HorizontalOptions = LayoutOptions.Center,
+                HorizontalTextAlignment = TextAlignment.Center,
+                Padding = 0,
+                LineBreakMode = LineBreakMode.TailTruncation,
+                CharacterSpacing = 1,
+                LineHeight = 1,
+                MaxLines = 1,
+            };
+
+            // Add the Level under Name
             var PlayerLevelLabel = new Label
             {
                 Text = "Level : " + data.Level,
@@ -91,20 +141,19 @@ namespace Game.Views
                 MaxLines = 1,
             };
 
-            // Put the Image Button and Text inside a layout
-            var PlayerStack = new StackLayout
-            {
-                Style = (Style)Application.Current.Resources["ScoreCharacterInfoBox"],
-                HorizontalOptions = LayoutOptions.Center,
-                Padding = 0,
-                Spacing = 0,
-                Children = {
-                    PlayerImage,
-                    PlayerLevelLabel,
-                },
-            };
+            // Put the Image Button and Text inside a Grid
+            Grid grid = new Grid();
+            grid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Star });
+            grid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
+            grid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
+            PlayerImage.SetValue(Grid.RowProperty, 0);
+            PlayerNameLabel.SetValue(Grid.RowProperty, 1);
+            PlayerLevelLabel.SetValue(Grid.RowProperty, 2);
+            grid.Children.Add(PlayerImage);
+            grid.Children.Add(PlayerNameLabel);
+            grid.Children.Add(PlayerLevelLabel);
 
-            return PlayerStack;
+            return grid;
         }
 
         /// <summary>
@@ -112,7 +161,7 @@ namespace Game.Views
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        public StackLayout CreateMonsterDisplayBox(PlayerInfoModel data)
+        public Grid CreateMonsterDisplayBox(PlayerInfoModel data, int? count = null)
         {
             if (data == null)
             {
@@ -122,14 +171,14 @@ namespace Game.Views
             // Hookup the image
             var PlayerImage = new Image
             {
-                Style = (Style)Application.Current.Resources["PlayerBattleSmallStyle"],
+                Aspect = Aspect.AspectFit,
                 Source = data.ImageURI
             };
 
-            // Add the Level
-            var PlayerLevelLabel = new Label
+            // Add count under image
+            var MonsterCountLabel = new Label
             {
-                Text = "Level : " + data.Level,
+                Text = "x" + count.ToString(),
                 Style = (Style)Application.Current.Resources["ValueStyleMicro"],
                 HorizontalOptions = LayoutOptions.Center,
                 HorizontalTextAlignment = TextAlignment.Center,
@@ -140,20 +189,16 @@ namespace Game.Views
                 MaxLines = 1,
             };
 
-            // Put the Image Button and Text inside a layout
-            var PlayerStack = new StackLayout
-            {
-                Style = (Style)Application.Current.Resources["ScoreMonsterInfoBox"],
-                HorizontalOptions = LayoutOptions.Center,
-                Padding = 0,
-                Spacing = 0,
-                Children = {
-                    PlayerImage,
-                    PlayerLevelLabel,
-                },
-            };
+            // Put the Image Button and Text inside a Grid
+            Grid grid = new Grid();
+            grid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Star });
+            grid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
+            PlayerImage.SetValue(Grid.RowProperty, 0);
+            MonsterCountLabel.SetValue(Grid.RowProperty, 1);
+            grid.Children.Add(PlayerImage);
+            grid.Children.Add(MonsterCountLabel);
 
-            return PlayerStack;
+            return grid;
         }
 
         /// <summary>
@@ -161,7 +206,7 @@ namespace Game.Views
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        public StackLayout CreateItemDisplayBox(ItemModel data)
+        public Grid CreateItemDisplayBox(ItemModel data, int? count = null)
         {
             if (data == null)
             {
@@ -171,23 +216,34 @@ namespace Game.Views
             // Hookup the image
             var PlayerImage = new Image
             {
-                Style = (Style)Application.Current.Resources["ImageBattleSmallStyle"],
+                Aspect = Aspect.AspectFit,
                 Source = data.ImageURI
             };
 
-            // Put the Image Button and Text inside a layout
-            var PlayerStack = new StackLayout
+            // Add count under image
+            var ItemCountLabel = new Label
             {
-                Style = (Style)Application.Current.Resources["ScoreItemInfoBox"],
+                Text = "x" + count.ToString(),
+                Style = (Style)Application.Current.Resources["ValueStyleMicro"],
                 HorizontalOptions = LayoutOptions.Center,
+                HorizontalTextAlignment = TextAlignment.Center,
                 Padding = 0,
-                Spacing = 0,
-                Children = {
-                    PlayerImage,
-                },
+                LineBreakMode = LineBreakMode.TailTruncation,
+                CharacterSpacing = 1,
+                LineHeight = 1,
+                MaxLines = 1,
             };
 
-            return PlayerStack;
+            // Put the Image Button and Text inside a Grid
+            Grid grid = new Grid();
+            grid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Star });
+            grid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
+            PlayerImage.SetValue(Grid.RowProperty, 0);
+            ItemCountLabel.SetValue(Grid.RowProperty, 1);
+            grid.Children.Add(PlayerImage);
+            grid.Children.Add(ItemCountLabel);
+
+            return grid;
         }
 
         /// <summary>
