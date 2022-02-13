@@ -72,6 +72,25 @@
                 </Setter>
             </Style>
 
+
+            <!--Styles for Battle pages-->
+            <Style x:Key="BattleStyle"
+                   TargetType="ContentPage">
+                <Setter Property="Background">
+                    <LinearGradientBrush StartPoint="0.5,0"
+                                         EndPoint="0.5,1">
+                        <GradientStop Color="{StaticResource GradientDarkColor}"
+                                      Offset="0.0" />
+                        <GradientStop Color="{StaticResource GradientLightColor}"
+                                      Offset="0.75" />
+                    </LinearGradientBrush>
+                </Setter>
+            </Style>
+
+
+
+
+
             <!-- Home page background style-->
             <Style x:Key="HomeStyle"
                    TargetType="ContentPage">
