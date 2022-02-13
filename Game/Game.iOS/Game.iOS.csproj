@@ -289,7 +289,6 @@
     <BundleResource Include="Resources\basic_sword.png" />
     <BundleResource Include="Resources\basic_shield2.png" />
     <BundleResource Include="Resources\basic_shield.png" />
-    <BundleResource Include="Resources\basic_stick.jpg" />
     <BundleResource Include="Resources\basic_earring3.png" />
     <BundleResource Include="Resources\basic_earring2.png" />
     <BundleResource Include="Resources\basic_slippers.png" />
