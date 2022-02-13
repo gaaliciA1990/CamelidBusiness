@@ -235,7 +235,7 @@ namespace Game.GameRules
                 new ItemModel {
                     Name = "Tree branch",
                     Description = "Savagae",
-                    ImageURI = "basic_stick.jpg",
+                    ImageURI = "basic_stick.png",
                     Range = 0,
                     Damage = 0,
                     Value = 2,
