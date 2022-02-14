@@ -37,8 +37,7 @@
                                         <Grid>
 
                                             <Image  Grid.Column="0" Grid.Row="0" Grid.RowSpan="3"
-                                                    Source="{Binding ImageURI}"
-                                                    Style="{StaticResource ImageMediumStyle}"/>
+                                                    Source="{Binding ImageURI}"/>
 
                                             <Label Grid.Column="1" Grid.Row="0"
                                                    Text="{Binding Name}" 
@@ -60,7 +59,7 @@
                         </ListView>
                     </StackLayout>
 
-                    <StackLayout HorizontalOptions="CenterAndExpand">
+                    <StackLayout HorizontalOptions="Center">
 
                         <Label Text="Count" Style="{StaticResource CenterMessageStyle}"/>
 
@@ -96,8 +95,7 @@
                                     <ViewCell>
                                         <Grid>
                                             <Image  Grid.Column="0" Grid.Row="0" Grid.RowSpan="3"
-                                                    Source="{Binding ImageURI}"
-                                                    Style="{StaticResource ImageMediumStyle}"/>
+                                                    Source="{Binding ImageURI}"/>
 
                                             <Label Grid.Column="1" Grid.Row="0"
                                                    Text="{Binding Name}" 
