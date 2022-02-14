@@ -525,11 +525,6 @@ namespace Game.Views
             CharacterImage.Source = ViewModel.Data.ImageURI;
         }
 
-
-
-
-
-
         /// <summary>
         /// When the left button is clicked, the image will change to the previous index or the end of the
         /// index if at 0.
