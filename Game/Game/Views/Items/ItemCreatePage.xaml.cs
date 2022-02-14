@@ -255,7 +255,7 @@ namespace Game.Views
         }
 
         /// <summary>
-        /// Validate if Primary hand is selected in picker and show or hide the 
+        /// Validate if Primary hand is selected in picker and show or show the 
         /// damage details accordingly
         /// </summary>
         /// <param name="locPrimaryHand"></param>
@@ -264,19 +264,26 @@ namespace Game.Views
             //Validate location is Primary hand and show damage slider
             if (locPrimaryHand == true)
             {
-                DamageFrame.IsVisible = true;
-                DisplayDamageLabel.IsVisible = true;
-                DamageLabel.IsVisible = true;
-                DamageSlider.IsVisible = true;
+                ShowDamageOption(true);
             }
-            // If location is not primary hand, hide damage
+
+            // If location is not primary hand, show damage
             if (locPrimaryHand == false)
             {
-                DamageFrame.IsVisible = false;
-                DisplayDamageLabel.IsVisible = false;
-                DamageLabel.IsVisible = false;
-                DamageSlider.IsVisible = false;
+                ShowDamageOption(false);
             }
+        }
+
+        /// <summary>
+        /// Helper function to either show or show the Damage selection on Item Create Page
+        /// </summary>
+        /// <param name="hide"></param>
+        private void ShowDamageOption(bool show)
+        {
+            DamageFrame.IsVisible = show;
+            DisplayDamageLabel.IsVisible = show;
+            DamageLabel.IsVisible = show;
+            DamageSlider.IsVisible = show;
         }
 
         /// <summary>
