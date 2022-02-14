@@ -149,7 +149,7 @@
                                    HorizontalTextAlignment="Start"/>
                                 <Frame Grid.Row="1" Style="{StaticResource CrudiTopFrame}">
                                     <Picker HorizontalOptions="FillAndExpand"
-                                    ItemsSource="{x:Static local:ItemLocationEnumHelper.GetListCharacter}"
+                                    ItemsSource="{x:Static local:ItemLocationEnumHelper.GetListItem}"
                                     SelectedItem="{Binding Data.Location, Converter={StaticResource StringEnum}, Mode=TwoWay}"
                                     Style="{StaticResource CRUDIPickerStyle}"
                                     BackgroundColor="white"
