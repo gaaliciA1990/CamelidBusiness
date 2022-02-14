@@ -58,6 +58,7 @@ namespace Game.Views
             AttributePicker.SelectedItem = ViewModel.Data.Attribute.ToString();
         }
 
+        #region SaveAndCancel
         /// <summary>
         /// Save by calling for Create
         /// </summary>
@@ -116,6 +117,9 @@ namespace Game.Views
             _ = await Navigation.PopModalAsync();
         }
 
+        #endregion SaveAndCancel
+
+        #region EventHandlers
         /// <summary>
         /// Catch the change to the slider for Range
         /// </summary>
@@ -145,72 +149,6 @@ namespace Game.Views
         {
             DamageLabel.Text = string.Format("{0}", Math.Round(e.NewValue));
         }
-
-        /// <summary>
-        /// When the left button is clicked, the image will change to the previous index or the end of the
-        /// index if at 0.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void LeftButton_Clicked(object sender, EventArgs e)
-        {
-            int imageCount = imageList.Count;
-
-            // check if we are at the first photo and move to last photo when clicked
-            if (imageIndex == 0)
-            {
-                imageIndex = imageCount - 1;
-            }
-
-            // Move to the previous photo in the list
-            if (imageIndex > 0)
-            {
-                imageIndex--;
-            }
-
-            // Update the image
-            this.ViewModel.Data.ImageURI = imageList[imageIndex];
-            ImageLabel.Source = this.ViewModel.Data.ImageURI;
-        }
-
-        /// <summary>
-        /// When the right button is clicked, the image will change to the next index or the beginning of the
-        /// index if at the last index. 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void RightButton_Clicked(object sender, EventArgs e)
-        {
-            int imageCount = imageList.Count;
-
-            // check if we are at the last photo and move to first photo when clicked
-            if (imageIndex == imageCount - 1)
-            {
-                imageIndex = 0;
-            }
-
-            // Move to the next photo in the list
-            if (imageIndex < imageCount - 1)
-            {
-                imageIndex++;
-            }
-
-            // Update the image
-            this.ViewModel.Data.ImageURI = imageList[imageIndex];
-            ImageLabel.Source = this.ViewModel.Data.ImageURI;
-        }
-
-        /// <summary>
-        /// Validate the Entry fields for Name and Descriptions
-        /// are filled with valid text
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Entry_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            Entry_Validator();
-        }
-
         /// <summary>
         /// Validate picker field option has a valid input
         /// </summary>
@@ -310,5 +248,76 @@ namespace Game.Views
 
             return isValid;
         }
+
+        /// <summary>
+        /// Validate the Entry fields for Name and Descriptions
+        /// are filled with valid text
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Entry_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Entry_Validator();
+        }
+
+        #endregion EventHandlers
+
+        #region ImageSelection
+
+        /// <summary>
+        /// When the left button is clicked, the image will change to the previous index or the end of the
+        /// index if at 0.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void LeftButton_Clicked(object sender, EventArgs e)
+        {
+            int imageCount = imageList.Count;
+
+            // check if we are at the first photo and move to last photo when clicked
+            if (imageIndex == 0)
+            {
+                imageIndex = imageCount - 1;
+            }
+
+            // Move to the previous photo in the list
+            if (imageIndex > 0)
+            {
+                imageIndex--;
+            }
+
+            // Update the image
+            this.ViewModel.Data.ImageURI = imageList[imageIndex];
+            ImageLabel.Source = this.ViewModel.Data.ImageURI;
+        }
+
+        /// <summary>
+        /// When the right button is clicked, the image will change to the next index or the beginning of the
+        /// index if at the last index. 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void RightButton_Clicked(object sender, EventArgs e)
+        {
+            int imageCount = imageList.Count;
+
+            // check if we are at the last photo and move to first photo when clicked
+            if (imageIndex == imageCount - 1)
+            {
+                imageIndex = 0;
+            }
+
+            // Move to the next photo in the list
+            if (imageIndex < imageCount - 1)
+            {
+                imageIndex++;
+            }
+
+            // Update the image
+            this.ViewModel.Data.ImageURI = imageList[imageIndex];
+            ImageLabel.Source = this.ViewModel.Data.ImageURI;
+        }
+
+        #endregion ImageSelection
     }
 }
