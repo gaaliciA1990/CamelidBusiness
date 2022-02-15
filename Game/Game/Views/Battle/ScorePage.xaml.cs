@@ -83,6 +83,7 @@ namespace Game.Views
             
             //Get duplicate counts of items
             var Items = from x in EngineViewModel.Engine.EngineSettings.BattleScore.ItemModelDropList
+                        where x.IsUnique = true
                         group x by x.ImageURI into g
                         let count = g.Count()
                         select new { Value = g.First(), Count = count };
@@ -225,28 +226,12 @@ namespace Game.Views
                 Source = data.ImageURI
             };
 
-            // Add count under image
-            var ItemCountLabel = new Label
-            {
-                Text = "x" + count.ToString(),
-                Style = (Style)Application.Current.Resources["ValueStyleMicro"],
-                HorizontalOptions = LayoutOptions.Center,
-                HorizontalTextAlignment = TextAlignment.Center,
-                Padding = 0,
-                LineBreakMode = LineBreakMode.TailTruncation,
-                CharacterSpacing = 1,
-                LineHeight = 1,
-                MaxLines = 1,
-            };
-
             // Put the Image Button and Text inside a Grid
             Grid grid = new Grid();
             grid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Star });
             grid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
             PlayerImage.SetValue(Grid.RowProperty, 0);
-            ItemCountLabel.SetValue(Grid.RowProperty, 1);
             grid.Children.Add(PlayerImage);
-            grid.Children.Add(ItemCountLabel);
 
             return grid;
         }

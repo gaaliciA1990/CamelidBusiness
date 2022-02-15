@@ -69,7 +69,7 @@
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <Label Grid.Column="0" Text="Items Found" Style="{StaticResource LabelStyle}"/>
+                    <Label Grid.Column="0" Text="Unique Items Found"  Style="{StaticResource LabelStyle}"/>
                     <StackLayout Grid.Column="1" Orientation="Horizontal" HeightRequest="50" x:Name="ItemsStackLayout"/>
                 </Grid>
             </Frame>
