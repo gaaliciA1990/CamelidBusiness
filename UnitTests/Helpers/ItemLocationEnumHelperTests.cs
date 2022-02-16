@@ -96,6 +96,7 @@ namespace UnitTests.Helpers
                                             )
                                             .OrderBy(a => a)
                                             .ToList();
+            myExpectedList[myExpectedList.FindIndex(c => c == "Finger")] = "Ear";
 
             // Act
 
