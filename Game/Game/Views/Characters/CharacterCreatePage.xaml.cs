@@ -96,30 +96,36 @@ namespace Game.Views
 
 
         /// <summary>
-        /// adjust attribute values to include item bonuses 
+        /// adjust attribute values displayed next to the slider
+        /// to include item bonuses 
         /// </summary>
         public void AdjustValuesWithBonuses(ItemModel item)
         {
             switch (item.Attribute)
             {
-                case AttributeEnum.Speed:
-                    ViewModel.Data.Speed += Math.Min(0, 50 - ViewModel.Data.GetSpeedTotal);
-                    SpeedValue.Text = ViewModel.Data.GetSpeedTotal.ToString();
-                    SpeedSlider.Maximum = 50 - ViewModel.Data.GetSpeedTotal + ViewModel.Data.Speed;
-                    break;
+                //case AttributeEnum.Speed:
+                //    ViewModel.Data.Speed += Math.Min(0, 50 - ViewModel.Data.GetSpeedTotal);
+                //    SpeedValue.Text = ViewModel.Data.GetSpeedTotal.ToString();
+                //    SpeedSlider.Maximum = 50 - ViewModel.Data.GetSpeedTotal + ViewModel.Data.Speed;
+                //    break;
+                
                 case AttributeEnum.Defense:
                     ViewModel.Data.Defense += Math.Min(0, 50 - ViewModel.Data.GetDefenseTotal);
                     DefenseValue.Text = ViewModel.Data.GetDefenseTotal.ToString();
                     break;
+                
                 case AttributeEnum.Attack:
                     ViewModel.Data.Attack += Math.Min(0, 50 - ViewModel.Data.GetAttackTotal);
                     AttackValue.Text = ViewModel.Data.GetAttackTotal.ToString();
                     break;
+                
                 case AttributeEnum.MaxHealth:
                     MaxHealthValue.Text = ViewModel.Data.GetMaxHealthTotal.ToString();
                     break;
+               
                 case AttributeEnum.CurrentHealth:
                     break;
+                
                 case AttributeEnum.Unknown:
                     AdjustSliderValues();
                     break;
@@ -127,7 +133,7 @@ namespace Game.Views
         }
 
         /// <summary>
-        /// Adjust slider values
+        /// Adjust slider to show the added bonus values
         /// </summary>
         /// <param name="s"></param>
         public void AdjustSliderValues()
