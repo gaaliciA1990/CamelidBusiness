@@ -40,10 +40,6 @@
                             <Grid HeightRequest="150">
                                 <Frame OutlineColor="Black"
                                        Padding="1">
-                                    <Frame.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="FlexMonster_Clicked"
-                                                              CommandParameter="{Binding Id}" />
-                                    </Frame.GestureRecognizers>
                                     <Grid BackgroundColor="{StaticResource PrimaryBackgroundColor}">
 
                                         <Frame Style="{StaticResource FlexCardImageFrame}">
@@ -73,6 +69,13 @@
                                         </StackLayout>
                                     </Grid>
                                 </Frame>
+                                <ImageButton
+                                            Grid.Column="0"
+                                            Grid.Row="0"
+                                            HorizontalOptions="FillAndExpand"
+                                            VerticalOptions="FillAndExpand"
+                                            Clicked="FlexMonster_Clicked" CommandParameter="{Binding Id}"
+                                        />
                             </Grid>
                         </DataTemplate>
                     </BindableLayout.ItemTemplate>
