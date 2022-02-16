@@ -19,13 +19,13 @@ namespace Game.Views
     public partial class ItemCreatePage : ContentPage
     {
         //Variable to keep track of the items in location picker
-        List<string> myLocationItems = ItemLocationEnumHelper.GetListItem;
+        public List<string> myLocationItems = ItemLocationEnumHelper.GetListItem;
 
         // List of Item images for the player to select
-        private List<String> imageList = GameImagesHelper.GetItemImage();
+        public List<String> imageList = GameImagesHelper.GetItemImage();
 
         // Image index variable, to load first image on Create page to implement "scrolling"
-        private int imageIndex = 0;
+        public int imageIndex = 0;
 
         // The item to create
         public GenericViewModel<ItemModel> ViewModel = new GenericViewModel<ItemModel>();
@@ -34,7 +34,7 @@ namespace Game.Views
         public ItemCreatePage(bool UnitTest) { }
 
         // Dictionary of errors to return based on field being encountered
-        Dictionary<string, string> errors = new Dictionary<string, string>();
+        public Dictionary<string, string> errors = new Dictionary<string, string>();
 
         /// <summary>
         /// Constructor for Create makes a new model
@@ -157,7 +157,7 @@ namespace Game.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void AttributePicker_SelectedIndexChanged(object sender, EventArgs e)
+        public void AttributePicker_SelectedIndexChanged(object sender, EventArgs e)
         {
             Picker_Validator();
 
@@ -174,7 +174,7 @@ namespace Game.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void LocationPicker_SelectedIndexChanged(object sender, EventArgs e)
+        public void LocationPicker_SelectedIndexChanged(object sender, EventArgs e)
         {
 
             var obj = (Xamarin.Forms.Picker)sender;
@@ -182,23 +182,23 @@ namespace Game.Views
             {
                 ViewModel.Data.Location = ItemLocationEnum.Finger;
             }
-
+            
             if (myLocationItems[obj.SelectedIndex] != "Ear")
             {
                 ViewModel.Data.Location = ItemLocationEnumHelper.ConvertStringToEnum(myLocationItems[obj.SelectedIndex]);
             }
-
-
+            
+            
             Picker_Validator();
-
+            
             //Make damage slider visible if needed
             IsDamageSliderVisible();
-
+            
             //Otherwise just update the selected item
             obj.SelectedItem = ViewModel.Data.Location == ItemLocationEnum.Finger ? "Ear" : ViewModel.Data.Location.ToString();
         }
 
-        private void Picker_Validator()
+        public void Picker_Validator()
         {
             // Check the dictionary for the Location and Attribute key and remove to start fresh
             if (errors.ContainsKey("Location"))
@@ -233,29 +233,20 @@ namespace Game.Views
         /// damage details accordingly
         /// </summary>
         /// <param name="locPrimaryHand"></param>
-        private void IsDamageSliderVisible()
+        public void IsDamageSliderVisible()
         {
             
-            bool locPrimaryHand = this.ViewModel.Data.Location == ItemLocationEnum.PrimaryHand ? true : false;
-            
-            //Validate location is Primary hand and show damage slider
-            if (locPrimaryHand == true)
-            {
-                ShowDamageOption(true);
-            }
+            bool isLocPrimaryHand = this.ViewModel.Data.Location == ItemLocationEnum.PrimaryHand;
 
-            // If location is not primary hand, show damage
-            if (locPrimaryHand == false)
-            {
-                ShowDamageOption(false);
-            }
+            // Show/Hide Range
+            ShowDamageOption(isLocPrimaryHand);
         }
 
         /// <summary>
         /// Helper function to either show or show the Damage selection on Item Create Page
         /// </summary>
         /// <param name="hide"></param>
-        private void ShowDamageOption(bool show)
+        public void ShowDamageOption(bool show)
         {
             DamageFrame.IsVisible = show;
             DisplayDamageLabel.IsVisible = show;
@@ -309,7 +300,7 @@ namespace Game.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void LeftButton_Clicked(object sender, EventArgs e)
+        public void LeftButton_Clicked(object sender, EventArgs e)
         {
             int imageCount = imageList.Count;
 
@@ -320,7 +311,7 @@ namespace Game.Views
             }
 
             // Move to the previous photo in the list
-            if (imageIndex > 0)
+            else if (imageIndex > 0)
             {
                 imageIndex--;
             }
@@ -336,7 +327,7 @@ namespace Game.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void RightButton_Clicked(object sender, EventArgs e)
+        public void RightButton_Clicked(object sender, EventArgs e)
         {
             int imageCount = imageList.Count;
 
@@ -347,7 +338,7 @@ namespace Game.Views
             }
 
             // Move to the next photo in the list
-            if (imageIndex < imageCount - 1)
+            else if (imageIndex < imageCount - 1)
             {
                 imageIndex++;
             }
@@ -365,16 +356,16 @@ namespace Game.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public void ChangeSelectedItem()
-        {
+        //public void ChangeSelectedItem()
+        //{
             //Check if the value being changed is Ear, if yes, we need to convert before handing over to StringEnum
-
+        
             //ViewModel.Data.Location;
-
+        
             //{Binding Data.Location, Converter={StaticResource StringEnum}, Mode=TwoWay}"
-
+        
             //AttributePicker.SelectedItem = 
-        }
+        //}
 
         #endregion PickerHandler
     }
