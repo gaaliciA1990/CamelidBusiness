@@ -117,6 +117,9 @@ namespace Game.Models
                                             )
                                             .OrderBy(a => a)
                                             .ToList();
+
+                myReturn[myReturn.FindIndex(c => c == "Finger")] = "Ear";
+
                 return myReturn;
             }
         }

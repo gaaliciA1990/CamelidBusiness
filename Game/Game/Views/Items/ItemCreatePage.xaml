@@ -148,13 +148,12 @@
                                    Style="{StaticResource CrudiLabelStyle}" 
                                    HorizontalTextAlignment="Start"/>
                                 <Frame Grid.Row="1" Style="{StaticResource CrudiTopFrame}">
-                                    <Picker HorizontalOptions="FillAndExpand"
+                                    <Picker x:Name="LocationPicker" HorizontalOptions="FillAndExpand"
                                     ItemsSource="{x:Static local:ItemLocationEnumHelper.GetListItem}"
-                                    SelectedItem="{Binding Data.Location, Converter={StaticResource StringEnum}, Mode=TwoWay}"
                                     Style="{StaticResource CRUDIPickerStyle}"
                                     BackgroundColor="white"
-                                    SelectedIndexChanged="Picker_SelectedIndexChanged"
-                                    x:Name="LocationPicker" />
+                                    SelectedIndexChanged="LocationPicker_SelectedIndexChanged"
+                                    />
                                 </Frame>
                             </Grid>
 
@@ -169,7 +168,7 @@
                                     SelectedItem="{Binding Data.Attribute, Converter={StaticResource StringEnum}, Mode=TwoWay}"
                                     Style="{StaticResource CRUDIPickerStyle}"
                                     BackgroundColor="white"
-                                    SelectedIndexChanged="Picker_SelectedIndexChanged"
+                                    SelectedIndexChanged="AttributePicker_SelectedIndexChanged"
                                     x:Name="AttributePicker" />
                                 </Frame>
                             </Grid>

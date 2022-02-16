@@ -18,6 +18,9 @@ namespace Game.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ItemCreatePage : ContentPage
     {
+        //Variable to keep track of the items in location picker
+        List<string> myLocationItems = ItemLocationEnumHelper.GetListItem;
+
         // List of Item images for the player to select
         private List<String> imageList = GameImagesHelper.GetItemImage();
 
@@ -154,10 +157,49 @@ namespace Game.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Picker_SelectedIndexChanged(object sender, EventArgs e)
+        private void AttributePicker_SelectedIndexChanged(object sender, EventArgs e)
         {
-            bool locPrimaryHand = false;
+            Picker_Validator();
 
+            //Make damage slider visible if needed
+            IsDamageSliderVisible();
+
+            // Display the error message generated
+            BindableLayout.SetItemsSource(errorMessageList, null);
+            BindableLayout.SetItemsSource(errorMessageList, errors);
+        }
+
+        /// <summary>
+        /// Validate picker field option has a valid input
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void LocationPicker_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            var obj = (Xamarin.Forms.Picker)sender;
+            if (myLocationItems[obj.SelectedIndex] == "Ear")
+            {
+                ViewModel.Data.Location = ItemLocationEnum.Finger;
+            }
+
+            if (myLocationItems[obj.SelectedIndex] != "Ear")
+            {
+                ViewModel.Data.Location = ItemLocationEnumHelper.ConvertStringToEnum(myLocationItems[obj.SelectedIndex]);
+            }
+
+
+            Picker_Validator();
+
+            //Make damage slider visible if needed
+            IsDamageSliderVisible();
+
+            //Otherwise just update the selected item
+            obj.SelectedItem = ViewModel.Data.Location == ItemLocationEnum.Finger ? "Ear" : ViewModel.Data.Location.ToString();
+        }
+
+        private void Picker_Validator()
+        {
             // Check the dictionary for the Location and Attribute key and remove to start fresh
             if (errors.ContainsKey("Location"))
             {
@@ -180,16 +222,10 @@ namespace Game.Views
                 errors["Attribute"] = "Attribute is required";
             }
 
-            if (this.ViewModel.Data.Location == ItemLocationEnum.PrimaryHand)
-            {
-                locPrimaryHand = true;
-            }
-
-            IsDamageSliderVisible(locPrimaryHand);
-
             // Display the error message generated
             BindableLayout.SetItemsSource(errorMessageList, null);
             BindableLayout.SetItemsSource(errorMessageList, errors);
+
         }
 
         /// <summary>
@@ -197,8 +233,11 @@ namespace Game.Views
         /// damage details accordingly
         /// </summary>
         /// <param name="locPrimaryHand"></param>
-        private void IsDamageSliderVisible(bool locPrimaryHand)
+        private void IsDamageSliderVisible()
         {
+            
+            bool locPrimaryHand = this.ViewModel.Data.Location == ItemLocationEnum.PrimaryHand ? true : false;
+            
             //Validate location is Primary hand and show damage slider
             if (locPrimaryHand == true)
             {
@@ -319,5 +358,24 @@ namespace Game.Views
         }
 
         #endregion ImageSelection
+
+        #region PickerHandler
+        /// <summary>
+        /// Special handler for Location Earing since it needs to be converted back to our default of Finger
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void ChangeSelectedItem()
+        {
+            //Check if the value being changed is Ear, if yes, we need to convert before handing over to StringEnum
+
+            //ViewModel.Data.Location;
+
+            //{Binding Data.Location, Converter={StaticResource StringEnum}, Mode=TwoWay}"
+
+            //AttributePicker.SelectedItem = 
+        }
+
+        #endregion PickerHandler
     }
 }
