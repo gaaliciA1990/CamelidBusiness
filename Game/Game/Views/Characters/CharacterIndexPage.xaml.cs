@@ -43,15 +43,13 @@ namespace Game.Views
         /// <param name="args"></param>
         public async void FlexCharacter_Clicked(object sender, EventArgs args)
         {
-            Frame lblClicked = (Frame)sender;
-            var item = (TapGestureRecognizer)lblClicked.GestureRecognizers[0];
-            var id = item.CommandParameter;
+            var button = sender as ImageButton;
+            var id = button.CommandParameter as string;
             var data = ViewModel.Dataset.FirstOrDefault(m => m.Id.Equals(id));
 
-            // Open the read page
             await Navigation.PushAsync(new CharacterReadPage(new GenericViewModel<CharacterModel>(data)));
-
         }
+
 
         /// <summary>
         /// Call to Create a new record
