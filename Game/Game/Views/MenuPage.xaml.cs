@@ -50,8 +50,8 @@ namespace Game.Views
                     return;
                 }
 
-                var id = (int)((HomeMenuItemModel)e.SelectedItem).Id;
-                await RootPage.NavigateFromMenu(id);
+                //var id = (int)((HomeMenuItemModel)e.SelectedItem).Id;
+                //await RootPage.NavigateFromMenu(id);
             };
         }
     }

@@ -44,6 +44,9 @@ namespace Game.Views
         public async void FlexCharacter_Clicked(object sender, EventArgs args)
         {
             var button = sender as ImageButton;
+            if (button == null)
+                return;
+
             var id = button.CommandParameter as string;
             var data = ViewModel.Dataset.FirstOrDefault(m => m.Id.Equals(id));
 
