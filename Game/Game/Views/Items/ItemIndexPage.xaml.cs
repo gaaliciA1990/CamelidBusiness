@@ -75,16 +75,16 @@ namespace Game.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public async void FlexItem_Clicked(object sender, EventArgs e)
+        public async void FlexItem_Clicked(object sender, EventArgs args)
         {
-            Frame lblClicked = (Frame)sender;
-            var item = (TapGestureRecognizer)lblClicked.GestureRecognizers[0];
-            var id = item.CommandParameter as String;
+            var button = sender as ImageButton;
+            var id = button.CommandParameter as string;
             var data = ViewModel.Dataset.FirstOrDefault(m => m.Id.Equals(id));
 
-            // Open the read page
             await Navigation.PushAsync(new ItemReadPage(new GenericViewModel<ItemModel>(data)));
         }
+
+
 
         /// <summary>
         /// Call to go back a page
