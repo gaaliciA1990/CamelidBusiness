@@ -9,7 +9,7 @@ namespace Game.Helpers
     /// This helper class is used for selecting preset images in the 
     /// game for Creating or Updating Items, Characters, and Monsters
     /// </summary>
-    class GameImagesHelper
+    public class GameImagesHelper
     {
         /// <summary>
         /// Creates a list of images for viewing in items CRUDI layouts
