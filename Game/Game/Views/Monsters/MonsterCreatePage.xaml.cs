@@ -487,20 +487,14 @@ namespace Game.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void RightButton_Clicked(object sender, EventArgs e)
+        public void RightButton_Clicked(object sender, EventArgs e)
         {
             int imageCount = imageList.Count;
 
-            // check if we are at the last photo and move to first photo when clicked
-            if (imageIndex == imageCount - 1)
+            imageIndex++;
+            if (imageIndex >= imageCount)
             {
                 imageIndex = 0;
-            }
-
-            // Move to the next photo in the list
-            if (imageIndex < imageCount - 1)
-            {
-                imageIndex++;
             }
 
             // Update the image
@@ -514,7 +508,7 @@ namespace Game.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void LeftButton_Clicked(object sender, EventArgs e)
+        public void LeftButton_Clicked(object sender, EventArgs e)
         {
             int imageCount = imageList.Count;
 
