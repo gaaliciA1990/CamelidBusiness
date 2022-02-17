@@ -53,7 +53,7 @@
                                  Grid.Row="0"
                                  Grid.Column="2">
 
-                        <ImageButton Source="item.png"
+                        <ImageButton Source="autobattle.png"
                                      Style="{StaticResource ImageLargeStyle}"
                                      Clicked="AutobattleButton_Clicked" />
 
