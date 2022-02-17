@@ -142,6 +142,7 @@
     <Content Include="Assets\Wide310x150Logo.scale-100.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
     <Content Include="Assets\Wide310x150Logo.scale-400.png" />
+    <Content Include="autobattle.png" />
     <Content Include="basic_boots.png" />
     <Content Include="basic_earring.png" />
     <Content Include="basic_earring2.png" />
