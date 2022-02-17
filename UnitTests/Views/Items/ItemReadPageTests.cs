@@ -92,5 +92,19 @@ namespace UnitTests.Views
             // Assert
             Assert.IsTrue(true); // Got to here, so it happened...
         }
+
+        [Test]
+        public void ItemReadPage_OnBackButtonPressed_Should_Pass()
+        {
+            // Arrange
+
+            // Act
+            page.BackButton_Clicked(null, null);
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
     }
 }
