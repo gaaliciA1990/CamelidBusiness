@@ -92,5 +92,34 @@ namespace UnitTests.Views
             // Assert
             Assert.IsTrue(true); // Got to here, so it happened...
         }
+
+        [Test]
+        public void MonsterReadPage_OnBackButtonPressed_Should_Pass()
+        {
+            // Arrange
+
+            // Act
+            page.Back_Clicked(null, null);
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
+        [Test]
+        public void MonsterReadPage_AddItemsToDisplay_Should_Display_Item()
+        {
+            // Arrange
+            var ItemBox = (StackLayout)page.FindByName("ItemBox");
+
+            // Act
+            page.AddItemsToDisplay();
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(ItemBox.Children.Count==1);
+        }
     }
 }
