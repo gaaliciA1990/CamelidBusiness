@@ -70,7 +70,7 @@ namespace Game.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private async void BackButton_Clicked(object sender, EventArgs e)
+        public async void BackButton_Clicked(object sender, EventArgs e)
         {
             //Pop itself from the stack
             await Navigation.PopAsync();
@@ -105,7 +105,7 @@ namespace Game.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private async void StartGameButton_Clicked(object sender, EventArgs e)
+        public async void StartGameButton_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new NavigationPage(new GamePage()));
 
