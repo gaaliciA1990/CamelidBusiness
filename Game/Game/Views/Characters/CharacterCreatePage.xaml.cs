@@ -147,7 +147,9 @@ namespace Game.Views
         /// <param name="s"></param>
         public void SetSliderMaximumBound()
         {
+            // reload the label text when Level is changed
             SpeedValue.Text = ViewModel.Data.GetSpeedTotal.ToString();
+            // Prevent the max slide value from increasing beyond 20
             SpeedSlider.Maximum = 20 - ViewModel.Data.GetSpeedTotal + ViewModel.Data.Speed;
 
             DefenseValue.Text = ViewModel.Data.GetDefenseTotal.ToString();
