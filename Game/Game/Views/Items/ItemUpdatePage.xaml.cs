@@ -17,10 +17,10 @@ namespace Game.Views
     public partial class ItemUpdatePage : ContentPage
     {
         // List of Item images for the player to select
-        private List<String> imageList = GameImagesHelper.GetItemImage();
+        public List<String> imageList = GameImagesHelper.GetItemImage();
 
         // Image index variable, to load first image on Create page to implement "scrolling"
-        private int imageIndex = 0;
+        public int imageIndex = 0;
 
         // View Model for Item
         public readonly GenericViewModel<ItemModel> ViewModel;
@@ -32,7 +32,7 @@ namespace Game.Views
         public ItemUpdatePage(bool UnitTest) { }
 
         //errors
-        Dictionary<string, string> errors = new Dictionary<string, string>();
+        public Dictionary<string, string> errors = new Dictionary<string, string>();
 
         /// <summary>
         /// Constructor that takes and existing data item
@@ -134,7 +134,7 @@ namespace Game.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void LeftButton_Clicked(object sender, EventArgs e)
+        public void LeftButton_Clicked(object sender, EventArgs e)
         {
             int imageCount = imageList.Count;
 
@@ -145,7 +145,7 @@ namespace Game.Views
             }
 
             // Move to the previous photo in the list
-            if (imageIndex > 0)
+            else if (imageIndex > 0)
             {
                 imageIndex--;
             }
@@ -161,7 +161,7 @@ namespace Game.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void RightButton_Clicked(object sender, EventArgs e)
+        public void RightButton_Clicked(object sender, EventArgs e)
         {
             int imageCount = imageList.Count;
 
@@ -172,7 +172,7 @@ namespace Game.Views
             }
 
             // Move to the next photo in the list
-            if (imageIndex < imageCount - 1)
+            else if (imageIndex < imageCount - 1)
             {
                 imageIndex++;
             }
@@ -189,7 +189,7 @@ namespace Game.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void AttributePicker_SelectedIndexChanged(object sender, EventArgs e)
+        public void AttributePicker_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (errors.ContainsKey("LocationAttribute"))
             { 
@@ -210,7 +210,7 @@ namespace Game.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void LocationPicker_SelectedIndexChanged(object sender, EventArgs e)
+        public void LocationPicker_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (errors.ContainsKey("LocationAttribute")) 
             { 
