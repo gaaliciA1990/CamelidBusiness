@@ -7,6 +7,7 @@ using Game.Models;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Mocks;
+using System.Linq;
 
 namespace UnitTests.Views
 {
@@ -101,6 +102,24 @@ namespace UnitTests.Views
 
             // Act
             _ = OnBackButtonPressed();
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
+        [Test]
+        public void MonsterUpdatePage_Item_ShowPopup_Default_Should_Pass()
+        {
+            // Arrange
+
+            var item = page.GetItemToDisplay();
+
+            // Act
+            var itemButton = item.Children.FirstOrDefault(m => m.GetType().Name.Equals("Button"));
+
+            _ = page.ShowPopup();
 
             // Reset
 
