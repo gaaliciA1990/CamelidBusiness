@@ -95,57 +95,65 @@ namespace Game.Views
         }
 
 
-        /// <summary>
-        /// adjust attribute values displayed next to the slider
-        /// to include item bonuses 
-        /// </summary>
-        public void AdjustValuesWithBonuses(ItemModel item)
-        {
-            switch (item.Attribute)
-            {
-                //case AttributeEnum.Speed:
-                //    ViewModel.Data.Speed += Math.Min(0, 50 - ViewModel.Data.GetSpeedTotal);
-                //    SpeedValue.Text = ViewModel.Data.GetSpeedTotal.ToString();
-                //    SpeedSlider.Maximum = 50 - ViewModel.Data.GetSpeedTotal + ViewModel.Data.Speed;
-                //    break;
+        ///// <summary>
+        ///
+        /// COMMENTED OUT AS THIS ISN'T DOING ANYTHING THAT WE CAN TEST AND 
+        /// DOESN'T APPEAR TO HAVE A USE IN SOLVING THE EXPANDING SLIDER MAX
+        /// PROBLEM. KEEPING IN IN THE EVENT THIS IS NEEDED
+        /// 
+        ///// adjust attribute values displayed next to the slider
+        ///// to include item bonuses 
+        ///// </summary>
+        //public void AdjustValuesWithBonuses(ItemModel item)
+        //{
+        //    switch (item.Attribute)
+        //    {
+        //        //case AttributeEnum.Speed:
+        //        //    ViewModel.Data.Speed += Math.Min(0, 50 - ViewModel.Data.GetSpeedTotal);
+        //        //    SpeedValue.Text = ViewModel.Data.GetSpeedTotal.ToString();
+        //        //    SpeedSlider.Maximum = 50 - ViewModel.Data.GetSpeedTotal + ViewModel.Data.Speed;
+        //        //    break;
                 
-                case AttributeEnum.Defense:
-                    ViewModel.Data.Defense += Math.Min(0, 50 - ViewModel.Data.GetDefenseTotal);
-                    DefenseValue.Text = ViewModel.Data.GetDefenseTotal.ToString();
-                    break;
+        //        case AttributeEnum.Defense:
+        //            ViewModel.Data.Defense += Math.Min(0, 50 - ViewModel.Data.GetDefenseTotal);
+        //            DefenseValue.Text = ViewModel.Data.GetDefenseTotal.ToString();
+        //            break;
                 
-                case AttributeEnum.Attack:
-                    ViewModel.Data.Attack += Math.Min(0, 50 - ViewModel.Data.GetAttackTotal);
-                    AttackValue.Text = ViewModel.Data.GetAttackTotal.ToString();
-                    break;
+        //        case AttributeEnum.Attack:
+        //            ViewModel.Data.Attack += Math.Min(0, 50 - ViewModel.Data.GetAttackTotal);
+        //            AttackValue.Text = ViewModel.Data.GetAttackTotal.ToString();
+        //            break;
                 
-                case AttributeEnum.MaxHealth:
-                    MaxHealthValue.Text = ViewModel.Data.GetMaxHealthTotal.ToString();
-                    break;
+        //        case AttributeEnum.MaxHealth:
+        //            MaxHealthValue.Text = ViewModel.Data.GetMaxHealthTotal.ToString();
+        //            break;
                
-                case AttributeEnum.CurrentHealth:
-                    break;
+        //        case AttributeEnum.CurrentHealth:
+        //            break;
                 
-                case AttributeEnum.Unknown:
-                    AdjustSliderValues();
-                    break;
-            }
-        }
+        //        case AttributeEnum.Unknown:
+        //            AdjustSliderValues();
+        //            break;
+        //    }
+        //}
 
         /// <summary>
-        /// Adjust slider to show the added bonus values
+        /// Setting the max bound on the slider to ensure it doesn't auto-adjust
+        /// and ensure the labels are updating correctly when changes are made
+        /// 
+        /// Nothing can go over 20 on the display, player is OP at that point
         /// </summary>
         /// <param name="s"></param>
         public void AdjustSliderValues()
         {
             SpeedValue.Text = ViewModel.Data.GetSpeedTotal.ToString();
-            SpeedSlider.Maximum = 50 - ViewModel.Data.GetSpeedTotal + ViewModel.Data.Speed;
+            SpeedSlider.Maximum = 20 - ViewModel.Data.GetSpeedTotal + ViewModel.Data.Speed;
 
             DefenseValue.Text = ViewModel.Data.GetDefenseTotal.ToString();
-            DefenseSlider.Maximum = 50 - ViewModel.Data.GetDefenseTotal + ViewModel.Data.Defense;
+            DefenseSlider.Maximum = 20 - ViewModel.Data.GetDefenseTotal + ViewModel.Data.Defense;
 
             AttackValue.Text = ViewModel.Data.GetAttackTotal.ToString();
-            AttackSlider.Maximum = 50 - ViewModel.Data.GetAttackTotal + ViewModel.Data.Attack;
+            AttackSlider.Maximum = 20 - ViewModel.Data.GetAttackTotal + ViewModel.Data.Attack;
         }
 
         /// <summary>
@@ -266,7 +274,7 @@ namespace Game.Views
 
             _ = ViewModel.Data.AddItem(PopupLocationEnum, data.Id);
 
-            AdjustValuesWithBonuses(data);
+            //AdjustValuesWithBonuses(data);
 
             UpdatePageBindingContext();
 
