@@ -362,16 +362,10 @@ namespace Game.Views
         {
             int imageCount = imageList.Count;
 
-            // check if we are at the last photo and move to first photo when clicked
-            if (imageIndex == imageCount - 1)
+            imageIndex++;
+            if (imageIndex >= imageCount)
             {
                 imageIndex = 0;
-            }
-
-            // Move to the next photo in the list
-            if (imageIndex < imageCount - 1)
-            {
-                imageIndex++;
             }
 
             // Update the image
@@ -389,16 +383,11 @@ namespace Game.Views
         {
             int imageCount = imageList.Count;
 
-            // check if we are at the first photo and move to last photo when clicked
-            if (imageIndex == 0)
+            //decrement, if less than imagecount loop back
+            imageIndex--;
+            if (imageIndex < 0)
             {
                 imageIndex = imageCount - 1;
-            }
-
-            // Move to the previous photo in the list
-            if (imageIndex > 0)
-            {
-                imageIndex--;
             }
 
             // Update the image
