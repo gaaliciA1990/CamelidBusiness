@@ -367,7 +367,7 @@ namespace UnitTests.Views
             // Reset
 
             // Assert
-            Assert.IsTrue(true);
+            Assert.IsTrue(true); // Since we arrived, we passed
         }
     }
 }
