@@ -93,6 +93,7 @@ namespace Game.Views
         /// Populate the items the player dopped in their game. 
         /// TODO: UPDATE SO DYNAMICALLY SHOW ITEMS
         /// </summary>
+        /*
         private void PopulateItems()
         {
             //just for testing layout for dead characters list
@@ -107,6 +108,7 @@ namespace Game.Views
                 ItemsDroppedList.Children.Add(img);
             }
         }
+        */
         /// <summary>
         /// Save calls to Update
         /// </summary>
@@ -141,7 +143,7 @@ namespace Game.Views
         /// Helper function to help validate required input fields
         /// </summary>
         /// <returns></returns>
-        private bool Entry_Validator()
+        public bool Entry_Validator()
         {
             bool isValid = true;
 
@@ -161,7 +163,7 @@ namespace Game.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Entry_TextChanged(object sender, TextChangedEventArgs e)
+        public void Entry_TextChanged(object sender, TextChangedEventArgs e)
         {
             Entry_Validator();
         }
