@@ -171,7 +171,6 @@
     <Content Include="d10.png" />
     <Content Include="d20_2.png" />
     <Content Include="button_delete.png" />
-    <Content Include="dungeon_door.png" />
     <Content Include="icon_back.png" />
     <Content Include="icon_dice.png" />
     <Content Include="icon_edit.png" />
