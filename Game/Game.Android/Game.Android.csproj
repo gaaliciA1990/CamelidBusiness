@@ -114,9 +114,6 @@
     <AndroidResource Include="Resources\drawable\knight.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\item.png" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable\icon_new.png" />
   </ItemGroup>
   <ItemGroup>
