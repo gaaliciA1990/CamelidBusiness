@@ -316,6 +316,27 @@ namespace UnitTests.Views
             // Assert
             Assert.AreEqual("alpaca2.png", page.ViewModel.Data.ImageURI);
         }
+
+        /// <summary>
+        /// Test the right button click successfully changes to the first index
+        /// when the last image in the list is reached
+        /// </summary>
+        [Test]
+        public void CharacterCratePage_RightButton_Clicked_Index_Is_Zero_Valid_Should_Pass()
+        {
+            // Arrange
+
+            // Act - click the right button 3 times to reach the end
+            for (int i = 0; i < 3; i++)
+            {
+                page.RightButton_Clicked(null, null);
+            }
+            // Reset
+
+            // Assert - should be back at the beginning of the image list
+            Assert.AreEqual("alpaca1.png", page.ViewModel.Data.ImageURI);
+        }
+
         /// <summary>
         /// Test the left button click successfully changes the character image
         /// </summary>
