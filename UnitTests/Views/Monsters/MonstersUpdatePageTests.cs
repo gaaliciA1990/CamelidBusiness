@@ -273,6 +273,22 @@ namespace UnitTests.Views
             Assert.IsTrue(true); // Got to here, so it happened...
         }
 
+        [Test]
+        public void MonsterUpdatePage_OnPopupItemSelected_Clicked_Valid_Should_Pass()
+        {
+            // Arrange
+            ItemModel data = new ItemModel();
+            var selectedCharacterChangedEventArgs = new SelectedItemChangedEventArgs(data, 0);
+
+            // Act
+            page.OnPopupItemSelected(null, selectedCharacterChangedEventArgs);
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
         /// <summary>
         /// Test the right button click successfully changes the monster image
         /// </summary>
