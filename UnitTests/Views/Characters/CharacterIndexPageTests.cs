@@ -80,10 +80,9 @@ namespace UnitTests.Views
         }
 
         [Test]
-        public void CharacterIndexPage_OnCharacterSelected_Clicked_Default_Should_Pass()
+        public void CharacterIndexPage_FlexCharacter_Clicked_Default_Should_Pass()
         {
             // Arrange
-
             var selectedCharacter = new CharacterModel();
 
             var selectedCharacterChangedEventArgs = new SelectedItemChangedEventArgs(selectedCharacter, 0);
@@ -98,7 +97,7 @@ namespace UnitTests.Views
         }
 
         [Test]
-        public void CharacterIndexPage_OnCharacterSelected_Clicked_Invalid_Null_Should_Fail()
+        public void CharacterIndexPage_FlexCharacter_Clicked_Invalid_Null_Should_Fail()
         {
             // Arrange
 
