@@ -86,6 +86,8 @@ namespace UnitTests.Views
         public void MonsterCreatePage_Save_Clicked_Null_Image_Should_Pass()
         {
             // Arrange
+            page.ViewModel.Data.Name = "Test";
+            page.ViewModel.Data.Description = "Test";
             page.ViewModel.Data.ImageURI = null;
 
             // Act
@@ -359,5 +361,6 @@ namespace UnitTests.Views
             // Assert
             Assert.IsTrue(true); // Got to here, so it happened...
         }
+
     }
 }
