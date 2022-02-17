@@ -39,7 +39,7 @@
                                  Grid.Row="0"
                                  Grid.Column="1">
 
-                        <Label Text="Dungeon"
+                        <Label Text="Caverns"
                                Style="{StaticResource CenterMessageStyle}" />
 
                         <ImageButton Source="dungeon_door.png"
