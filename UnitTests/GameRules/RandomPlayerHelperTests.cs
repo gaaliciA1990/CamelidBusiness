@@ -374,5 +374,24 @@ namespace UnitTests.Helpers
             // Assert
             Assert.AreEqual(PlayerTypeEnum.Monster, result.PlayerType);
         }
+
+        [Test]
+        public void RandomPlayerHelper_GetRandomUniqueItem_Valid__Should_Return_RandomUnique()
+        {
+            // Arrange
+            _ = DiceHelper.EnableForcedRolls();
+            _ = DiceHelper.SetForcedRollValue(2);
+
+            var expected = ItemIndexViewModel.Instance.Dataset.ElementAt(1).Id;
+
+            // Act
+            var result = RandomPlayerHelper.GetRandomUniqueItem();
+
+            // Reset
+            _ = DiceHelper.DisableForcedRolls();
+
+            // Assert
+            Assert.AreEqual(expected, result);
+        }
     }
 }
