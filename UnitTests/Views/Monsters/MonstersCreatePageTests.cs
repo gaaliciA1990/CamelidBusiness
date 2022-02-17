@@ -362,5 +362,23 @@ namespace UnitTests.Views
             Assert.IsTrue(true); // Got to here, so it happened...
         }
 
+        /// <summary>
+        /// Test the buttons for the monster's difficulty selected are created.
+        /// Compare the difficulty of the button to the page model to confirm
+        /// the Save happened
+        /// </summary>
+        [Test]
+        public void MonsterCreatePage_CreateDifficultyButton_Valid_Should_Pass()
+        {
+            // Arrange
+
+            // Act
+            page.CreateDifficultyButton(DifficultyEnum.Easy);
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(DifficultyEnum.Easy, page.ViewModel.Data.Difficulty);
+        }
     }
 }
