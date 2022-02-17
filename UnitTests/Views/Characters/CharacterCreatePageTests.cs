@@ -300,5 +300,21 @@ namespace UnitTests.Views
             // Assert
             Assert.IsTrue(true); // Got to here, so it happened...
         }
+
+        /// <summary>
+        /// Test the right button click successfully changes the character image
+        /// </summary>
+        [Test]
+        public void CharacterCratePage_RightButton_Clicked_Valid_Should_Pass()
+        {
+            // Arrange
+
+            // Act
+            page.RightButton_Clicked(null, null);
+            // Reset
+
+            // Assert
+            Assert.AreEqual("alpaca2.png", page.ViewModel.Data.ImageURI);
+        }
     }
 }
