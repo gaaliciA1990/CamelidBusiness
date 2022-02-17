@@ -65,13 +65,17 @@ namespace UnitTests.Views
             Assert.IsTrue(true); // Got to here, so it happened...
         }
 
+        /// <summary>
+        /// Test the back button is clicked. If successful, we should reach the end
+        /// and return true
+        /// </summary>
         [Test]
-        public void CharacterIndexPage_OnBackButtonPressed_Valid_Should_Pass()
+        public void CharacterIndexPage_Back_Clicked_Valid_Should_Pass()
         {
             // Arrange
 
             // Act
-            _ = OnBackButtonPressed();
+            page.Back_Clicked(null, null);
 
             // Reset
 
@@ -137,24 +141,6 @@ namespace UnitTests.Views
 
             // Act
             OnAppearing();
-
-            // Reset
-
-            // Assert
-            Assert.IsTrue(true); // Got to here, so it happened...
-        }
-
-        /// <summary>
-        /// Test the back button is clicked. If successful, we should reach the end
-        /// and return true
-        /// </summary>
-        [Test]
-        public void CharacterIndexPage_Back_Clicked_Default_Should_Pass()
-        {
-            // Arrange
-
-            // Act
-            page.Back_Clicked(null, null);
 
             // Reset
 
