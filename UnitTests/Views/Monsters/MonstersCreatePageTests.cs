@@ -123,5 +123,21 @@ namespace UnitTests.Views
             // Assert
             Assert.IsTrue(true); // Got to here, so it happened...
         }
+
+        [Test]
+        public void MonsterCreatePage_Save_Difficulty_CurrentDifficulty_Null_Should_Pass()
+        {
+            // Arrange
+            page.CurrentDifficulty = null;
+            var dummy = new Button();
+
+            // Act
+            page.SaveDifficulty(dummy, DifficultyEnum.Impossible);
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
     }
 }
