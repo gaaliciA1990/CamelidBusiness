@@ -80,6 +80,21 @@ namespace UnitTests.Views
         }
 
         [Test]
+        public void ScoreUpdatePage_Save_Clicked_Valid_Name_Should_Pass()
+        {
+            // Arrange
+            page.ViewModel.Data.Name = "valid";
+
+            // Act
+            page.Save_Clicked(null, null);
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
+        [Test]
         public void ScoreUpdatePage_Save_Clicked_Null_Image_Should_Pass()
         {
             // Arrange
@@ -107,5 +122,50 @@ namespace UnitTests.Views
             // Assert
             Assert.IsTrue(true); // Got to here, so it happened...
         }
+
+        [Test]
+        public void ScoreUpdatePage_Entry_Validator_Valid_Name_Should_Pass()
+        {
+            // Arrange
+            page.ViewModel.Data.Name = "Valid";
+            // Act
+            var result = page.Entry_Validator();
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(result);
+        }
+
+        [Test]
+        public void ScoreUpdatePage_Entry_Validator_Invalid_Name_Should_Fail()
+        {
+            // Arrange
+            page.ViewModel.Data.Name = null;
+
+            // Act
+            var result = page.Entry_Validator();
+
+            // Reset
+
+            // Assert
+            Assert.IsFalse(result);
+        }
+
+        [Test]
+        public void ScoreUpdatePage_Entry_TextChanged_Invalid_Name_Should_Fail()
+        {
+            // Arrange
+
+            // Act
+            page.Entry_TextChanged(null, null);
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true);
+        }
+
+
     }
 }
