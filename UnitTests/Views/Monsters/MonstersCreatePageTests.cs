@@ -373,12 +373,13 @@ namespace UnitTests.Views
             // Arrange
 
             // Act
-            page.CreateDifficultyButton(DifficultyEnum.Easy);
+            var button = page.CreateDifficultyButton(DifficultyEnum.Average);
+            button.SendClicked();
 
             // Reset
 
             // Assert
-            Assert.AreEqual(DifficultyEnum.Easy, page.ViewModel.Data.Difficulty);
+            Assert.AreEqual(DifficultyEnum.Average, page.ViewModel.Data.Difficulty);
         }
     }
 }
