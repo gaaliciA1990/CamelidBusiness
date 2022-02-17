@@ -146,5 +146,34 @@ namespace UnitTests.Views
             // Assert
             Assert.IsTrue(true); // Got to here, so it happened...
         }
+
+        [Test]
+        public void ScoreIndexPage_OnBackButtonPressed_Should_Pass()
+        {
+            // Arrange
+
+            // Act
+            page.BackButton_Clicked(null, null);
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
+
+        [Test]
+        public void ScoreIndexPage_OnStartGameButton_Should_Pass()
+        {
+            // Arrange
+
+            // Act
+            page.StartGameButton_Clicked(null, null);
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
     }
 }
