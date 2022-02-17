@@ -4,10 +4,13 @@ using Game;
 using Game.Views;
 using Game.ViewModels;
 using Game.Models;
+using Game.Helpers;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Mocks;
 using System.Linq;
+using System.Collections.Generic;
+using System;
 
 namespace UnitTests.Views
 {
@@ -212,6 +215,46 @@ namespace UnitTests.Views
 
             // Assert
             Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
+        /// <summary>
+        /// Test the right button click successfully changes the monster image
+        /// </summary>
+        [Test]
+        public void MonsterCreatePage_LeftButton_Clicked_Valid_Should_Pass()
+        {
+            // Arrange
+            List<String> imageList = GameImagesHelper.GetMonsterImage();
+            var expected = imageList[imageList.Count - 1];
+
+            // Act
+            page.LeftButton_Clicked(null, null);
+            // Reset
+
+            // Assert
+            Assert.AreEqual(expected, page.ViewModel.Data.ImageURI);
+        }
+
+        /// <summary>
+        /// Test the right button click successfully changes the monster image
+        /// </summary>
+        [Test]
+        public void MonsterCreatePage_LeftButton_Clicked_At_First_Photo_Should_Pass()
+        {
+            // Arrange
+            List<String> imageList = GameImagesHelper.GetMonsterImage();
+            var expected = imageList[imageList.Count - 1];
+            for (int i = 0; i < imageList.Count; i++)
+            {
+                page.LeftButton_Clicked(null, null);
+            }
+
+            // Act
+            page.LeftButton_Clicked(null, null);
+            // Reset
+
+            // Assert
+            Assert.AreEqual(expected, page.ViewModel.Data.ImageURI);
         }
     }
 }
