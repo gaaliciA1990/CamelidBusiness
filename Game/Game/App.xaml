@@ -559,10 +559,10 @@
                    TargetType="ImageButton">
                 <Setter Property="VerticalOptions"
                         Value="CenterAndExpand" />
-                <Setter Property="HeightRequest"
-                        Value="50" />
-                <Setter Property="WidthRequest"
-                        Value="100" />
+                <Setter Property="MinimumHeightRequest"
+                        Value="5" />
+                <Setter Property="MinimumWidthRequest"
+                        Value="5" />
                 <Setter Property="HorizontalOptions"
                         Value="CenterAndExpand" />
                 <Setter Property="VerticalOptions"
@@ -570,7 +570,7 @@
                 <Setter Property="Aspect"
                         Value="AspectFit" />
                 <Setter Property="Scale"
-                        Value="1.25" />
+                        Value="2.5" />
                 <Setter Property="BackgroundColor"
                         Value="Transparent" />
             </Style>
