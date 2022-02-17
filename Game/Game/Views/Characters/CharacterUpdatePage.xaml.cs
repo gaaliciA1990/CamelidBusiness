@@ -97,36 +97,41 @@ namespace Game.Views
             return true;
         }
 
-        /// <summary>
-        /// adjust attribute values to include item bonuses 
-        /// </summary>
-        public void AdjustValuesWithBonuses(ItemModel item)
-        {
-            switch (item.Attribute)
-            {
-                case AttributeEnum.Speed:
-                    ViewModel.Data.Speed += Math.Min(0, 50 - ViewModel.Data.GetSpeedTotal);
-                    SpeedValue.Text = ViewModel.Data.GetSpeedTotal.ToString();
-                    SpeedSlider.Maximum = 50 - ViewModel.Data.GetSpeedTotal + ViewModel.Data.Speed;
-                    break;
-                case AttributeEnum.Defense:
-                    ViewModel.Data.Defense += Math.Min(0, 50 - ViewModel.Data.GetDefenseTotal);
-                    DefenseValue.Text = ViewModel.Data.GetDefenseTotal.ToString();
-                    break;
-                case AttributeEnum.Attack:
-                    ViewModel.Data.Attack += Math.Min(0, 50 - ViewModel.Data.GetAttackTotal);
-                    AttackValue.Text = ViewModel.Data.GetAttackTotal.ToString();
-                    break;
-                case AttributeEnum.MaxHealth:
-                    MaxHealthValue.Text = ViewModel.Data.GetMaxHealthTotal.ToString();
-                    break;
-                case AttributeEnum.CurrentHealth:
-                    break;
-                case AttributeEnum.Unknown:
-                    AdjustSliderValues();
-                    break;
-            }
-        }
+        ///// <summary>
+        ///
+        /// COMMENTED OUT AS THIS ISN'T DOING ANYTHING THAT WE CAN TEST AND 
+        /// DOESN'T APPEAR TO HAVE A USE IN SOLVING THE EXPANDING SLIDER MAX
+        /// PROBLEM. KEEPING IN IN THE EVENT THIS IS NEEDED
+        /// 
+        ///// adjust attribute values to include item bonuses 
+        ///// </summary>
+        //public void AdjustValuesWithBonuses(ItemModel item)
+        //{
+        //    switch (item.Attribute)
+        //    {
+        //        case AttributeEnum.Speed:
+        //            ViewModel.Data.Speed += Math.Min(0, 50 - ViewModel.Data.GetSpeedTotal);
+        //            SpeedValue.Text = ViewModel.Data.GetSpeedTotal.ToString();
+        //            SpeedSlider.Maximum = 50 - ViewModel.Data.GetSpeedTotal + ViewModel.Data.Speed;
+        //            break;
+        //        case AttributeEnum.Defense:
+        //            ViewModel.Data.Defense += Math.Min(0, 50 - ViewModel.Data.GetDefenseTotal);
+        //            DefenseValue.Text = ViewModel.Data.GetDefenseTotal.ToString();
+        //            break;
+        //        case AttributeEnum.Attack:
+        //            ViewModel.Data.Attack += Math.Min(0, 50 - ViewModel.Data.GetAttackTotal);
+        //            AttackValue.Text = ViewModel.Data.GetAttackTotal.ToString();
+        //            break;
+        //        case AttributeEnum.MaxHealth:
+        //            MaxHealthValue.Text = ViewModel.Data.GetMaxHealthTotal.ToString();
+        //            break;
+        //        case AttributeEnum.CurrentHealth:
+        //            break;
+        //        case AttributeEnum.Unknown:
+        //            AdjustSliderValues();
+        //            break;
+        //    }
+        //}
 
         /// <summary>
         /// Adjust slider values
@@ -272,8 +277,6 @@ namespace Game.Views
             _ = ViewModel.Data.AddItem(PopupLocationEnum, data.Id);
             
             AddItemsToDisplay();
-
-            AdjustValuesWithBonuses(data);
 
             UpdatePageBindingContext();
 
