@@ -7,15 +7,13 @@
 
     <ContentPage.Content>
         <StackLayout VerticalOptions="Center"
-                     HorizontalOptions="CenterAndExpand"
-                     Padding="30">
+                     HorizontalOptions="CenterAndExpand">
             <Image Source="logo.png"
                    Style="{StaticResource ImageLargeStyle}"
-                   Scale="1.5"
-                   Margin="5" />
+                   Scale="1.65"
+                   Margin="40"/>
 
-            <StackLayout HorizontalOptions="Center"
-                         Padding="5">
+            <StackLayout HorizontalOptions="Center">
                 <ImageButton x:Name="GameButton"
                              Source="button_start.png"
                              Clicked="GameButton_Clicked"
