@@ -155,9 +155,6 @@
     <BundleResource Include="Resources\battleboard.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\item.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\icon_add.png" />
   </ItemGroup>
   <ItemGroup>
