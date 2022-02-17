@@ -139,5 +139,19 @@ namespace UnitTests.Views
             // Assert
             Assert.IsTrue(true); // Got to here, so it happened...
         }
+
+        [Test]
+        public void MonsterCreatePage_ShowPopup_Default_Should_Pass()
+        {
+            // Arrange
+
+            // Act
+            var result = page.ShowPopup();
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(result, true); // Got to here, so it happened...
+        }
     }
 }
