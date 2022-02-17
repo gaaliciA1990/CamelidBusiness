@@ -58,5 +58,19 @@ namespace UnitTests.Views
             // Assert
             Assert.IsTrue(true); // Got to here, so it happened...
         }
+
+        [Test]
+        public void HomePage_StartButton_Clicked_Default_Should_Pass()
+        {
+            // Arrange
+
+            // Act
+            page.AboutButton_Clicked(null, null);
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
     }
 }
