@@ -19,7 +19,7 @@ namespace Game.Views
     public partial class ItemIndexPage : ContentPage
     {
         // The view model, used for data binding
-        readonly ItemIndexViewModel ViewModel = ItemIndexViewModel.Instance;
+        public readonly ItemIndexViewModel ViewModel = ItemIndexViewModel.Instance;
 
         // Empty Constructor for UTs
         public ItemIndexPage(bool UnitTest) { }
@@ -93,7 +93,7 @@ namespace Game.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private async void BackButton_Clicked(object sender, EventArgs e)
+        public async void BackButton_Clicked(object sender, EventArgs e)
         {
             //Pop itself from the stack
             await Navigation.PopAsync();
