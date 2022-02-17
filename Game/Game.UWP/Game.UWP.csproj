@@ -166,6 +166,7 @@
     <Content Include="button_continegame.png" />
     <Content Include="button_start.png" />
     <Content Include="button_startgame.png" />
+    <Content Include="caverns.png" />
     <Content Include="characters.png" />
     <Content Include="curved_bow.png" />
     <Content Include="d10.png" />
