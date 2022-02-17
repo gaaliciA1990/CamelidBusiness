@@ -345,5 +345,21 @@ namespace UnitTests.Views
             // Assert - should be back at the beginning of the image list
             Assert.AreEqual("alpaca1.png", page.ViewModel.Data.ImageURI);
         }
+
+        /// <summary>
+        /// Test the left button click successfully changes the character image
+        /// </summary>
+        [Test]
+        public void CharacterUpdatePage_LeftButton_Clicked_Valid_Should_Pass()
+        {
+            // Arrange
+
+            // Act
+            page.LeftButton_Clicked(null, null);
+            // Reset
+
+            // Assert
+            Assert.AreEqual("alpaca3.png", page.ViewModel.Data.ImageURI);
+        }
     }
 }
