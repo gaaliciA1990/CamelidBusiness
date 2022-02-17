@@ -414,5 +414,19 @@ namespace UnitTests.Views
             Assert.AreEqual(expected.ToString(), control.Text); // Got to here, so it happened...
         }
         #endregion DisplayServerResults
+
+        [Test]
+        public void AboutPage_StartButton_Clicked_Default_Should_Pass()
+        {
+            // Arrange
+
+            // Act
+            page.StartButton_Clicked(null, null);
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
     }
 }
