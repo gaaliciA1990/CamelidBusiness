@@ -331,5 +331,22 @@ namespace UnitTests.Views
             // Assert
             Assert.AreEqual("alpaca3.png", page.ViewModel.Data.ImageURI);
         }
+
+        /// <summary>
+        /// Test the level change method call to Manage health
+        /// Should return true if method is successfully reached
+        /// </summary>
+        [Test]
+        public void CharacterCratePage_Level_Changed_Valid_Should_Pass()
+        {
+            // Arrange
+
+            // Act
+            page.Level_Changed(null, null);
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true);
+        }
     }
 }
