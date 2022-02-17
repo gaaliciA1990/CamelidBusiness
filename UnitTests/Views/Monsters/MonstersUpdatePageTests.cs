@@ -156,7 +156,7 @@ namespace UnitTests.Views
         }
 
         [Test]
-        public void MonsterCreatePage_Defense_OnSliderDefenseChanged_Default_Should_Pass()
+        public void MonsterUpdatePage_Defense_OnSliderDefenseChanged_Default_Should_Pass()
         {
             // Arrange
             var data = new MonsterModel();
@@ -178,7 +178,7 @@ namespace UnitTests.Views
         }
 
         [Test]
-        public void MonsterCreatePage_Speed_OnSliderDefenseChanged_Default_Should_Pass()
+        public void MonsterUpdatePage_Speed_OnSliderDefenseChanged_Default_Should_Pass()
         {
             // Arrange
             var data = new MonsterModel();
@@ -192,6 +192,21 @@ namespace UnitTests.Views
 
             // Act
             page.Speed_OnSliderValueChanged(null, args);
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
+        [Test]
+        public void MonsterUpdatedPage_RollDice_Clicked_Default_Should_Pass()
+        {
+            // Arrange
+            page.ViewModel.Data = new MonsterModel();
+
+            // Act
+            page.RollDice_Clicked(null, null);
 
             // Reset
 
