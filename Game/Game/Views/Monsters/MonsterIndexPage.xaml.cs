@@ -19,7 +19,7 @@ namespace Game.Views
     public partial class MonsterIndexPage : ContentPage
     {
         // The view model, used for data binding
-        readonly MonsterIndexViewModel ViewModel = MonsterIndexViewModel.Instance;
+        public readonly MonsterIndexViewModel ViewModel = MonsterIndexViewModel.Instance;
 
         // Empty Constructor for UTs
         public MonsterIndexPage(bool UnitTest) { }
@@ -93,7 +93,7 @@ namespace Game.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private async void Back_Clicked(object sender, EventArgs e)
+        public async void Back_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new NavigationPage(new VillagePage()));
         }
