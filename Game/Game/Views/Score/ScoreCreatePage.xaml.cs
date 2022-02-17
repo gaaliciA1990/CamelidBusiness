@@ -52,12 +52,6 @@ namespace Game.Views
                 return;
             }
 
-            // If the image in the data box is empty, use the default one..
-            if (string.IsNullOrEmpty(ViewModel.Data.ImageURI))
-            {
-                ViewModel.Data.ImageURI = Services.ItemService.DefaultImageURI;
-            }
-
             MessagingCenter.Send(this, "Create", ViewModel.Data);
             _ = await Navigation.PopModalAsync();
         }
@@ -76,7 +70,7 @@ namespace Game.Views
         /// Helper function to help validate required input fields
         /// </summary>
         /// <returns></returns>
-        private bool Entry_Validator()
+        public bool Entry_Validator()
         {
             bool isValid = true;
 
@@ -96,7 +90,7 @@ namespace Game.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Entry_TextChanged(object sender, TextChangedEventArgs e)
+        public void Entry_TextChanged(object sender, TextChangedEventArgs e)
         {
             Entry_Validator();
         }
