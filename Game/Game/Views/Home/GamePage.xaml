@@ -42,7 +42,7 @@
                         <Label Text="Caverns"
                                Style="{StaticResource CenterMessageStyle}" />
 
-                        <ImageButton Source="dungeon_door.png"
+                        <ImageButton Source="caverns.png"
                                      Style="{StaticResource ImageLargeStyle}"
                                      Clicked="DungeonButton_Clicked" />
 
