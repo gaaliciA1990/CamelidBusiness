@@ -231,6 +231,46 @@ namespace UnitTests.Views
             Assert.AreEqual(expected, page.ViewModel.Data.ImageURI);
         }
 
+        /// <summary>
+        /// Test the right button click successfully changes the monster image
+        /// </summary>
+        [Test]
+        public void MonsterCreatePage_LeftButton_Clicked_Valid_Should_Pass()
+        {
+            // Arrange
+            List<String> imageList = GameImagesHelper.GetMonsterImage();
+            var expected = imageList[imageList.Count - 1];
+
+            // Act
+            page.LeftButton_Clicked(null, null);
+            // Reset
+
+            // Assert
+            Assert.AreEqual(expected, page.ViewModel.Data.ImageURI);
+        }
+
+        /// <summary>
+        /// Test the right button click successfully changes the monster image
+        /// </summary>
+        [Test]
+        public void MonsterCreatePage_LeftButton_Clicked_At_First_Photo_Should_Pass()
+        {
+            // Arrange
+            List<String> imageList = GameImagesHelper.GetMonsterImage();
+            var expected = imageList[imageList.Count - 1];
+            for (int i = 0; i < imageList.Count; i++)
+            {
+                page.LeftButton_Clicked(null, null);
+            }
+
+            // Act
+            page.LeftButton_Clicked(null, null);
+            // Reset
+
+            // Assert
+            Assert.AreEqual(expected, page.ViewModel.Data.ImageURI);
+        }
+
         [Test]
         public void MonsterCreatePage_ClosePopup_Clicked_Default_Should_Pass()
         {
