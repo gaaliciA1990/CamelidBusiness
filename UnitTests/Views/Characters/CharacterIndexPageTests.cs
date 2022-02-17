@@ -144,5 +144,23 @@ namespace UnitTests.Views
             // Assert
             Assert.IsTrue(true); // Got to here, so it happened...
         }
+
+        /// <summary>
+        /// Test the back button is clicked. If successful, we should reach the end
+        /// and return true
+        /// </summary>
+        [Test]
+        public void CharacterIndexPage_Back_Clicked_Default_Should_Pass()
+        {
+            // Arrange
+
+            // Act
+            page.Back_Clicked(null, null);
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
     }
 }
