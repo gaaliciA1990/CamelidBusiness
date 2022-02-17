@@ -140,13 +140,13 @@ namespace Game.Views
         public void AdjustSliderValues()
         {
             SpeedValue.Text = ViewModel.Data.GetSpeedTotal.ToString();
-            SpeedSlider.Maximum = 50 - ViewModel.Data.GetSpeedTotal + ViewModel.Data.Speed;
+            SpeedSlider.Maximum = 20 - ViewModel.Data.GetSpeedTotal + ViewModel.Data.Speed;
 
             DefenseValue.Text = ViewModel.Data.GetDefenseTotal.ToString();
-            DefenseSlider.Maximum = 50 - ViewModel.Data.GetDefenseTotal + ViewModel.Data.Defense;
+            DefenseSlider.Maximum = 20 - ViewModel.Data.GetDefenseTotal + ViewModel.Data.Defense;
 
             AttackValue.Text = ViewModel.Data.GetAttackTotal.ToString();
-            AttackSlider.Maximum = 50 - ViewModel.Data.GetAttackTotal + ViewModel.Data.Attack;
+            AttackSlider.Maximum = 20 - ViewModel.Data.GetAttackTotal + ViewModel.Data.Attack;
         }
 
 
