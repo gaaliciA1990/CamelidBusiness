@@ -67,7 +67,7 @@ namespace Game.Views
 
             AddItemsToDisplay();
 
-            AdjustSliderValues();
+            SetSliderMaximumBound();
 
             ClanPicker.SelectedItem = ViewModel.Data.Clan.ToString();
         }
@@ -134,10 +134,14 @@ namespace Game.Views
         //}
 
         /// <summary>
-        /// Adjust slider values
+        /// Setting the max bound on the slider to ensure it doesn't auto-adjust
+        /// and ensure the labels are updating correctly when changes are made
+        /// 
+        /// Nothing can go over 20 on the display, player is OP at that point, no need to 
+        /// show the values since it's reached our "perceived" max values
         /// </summary>
         /// <param name="s"></param>
-        public void AdjustSliderValues()
+        public void SetSliderMaximumBound()
         {
             SpeedValue.Text = ViewModel.Data.GetSpeedTotal.ToString();
             SpeedSlider.Maximum = 20 - ViewModel.Data.GetSpeedTotal + ViewModel.Data.Speed;
@@ -225,7 +229,7 @@ namespace Game.Views
         {
             LevelValue.Text = string.Format("{0}", Math.Round(e.NewValue));
 
-            AdjustSliderValues();
+            SetSliderMaximumBound();
 
             //TODO: may need a condition to change on whole value
             Level_Changed(null, null);
@@ -280,7 +284,7 @@ namespace Game.Views
 
             UpdatePageBindingContext();
 
-            AdjustSliderValues();
+            SetSliderMaximumBound();
 
             ClosePopup();
         }
@@ -464,7 +468,7 @@ namespace Game.Views
 
             _ = UpdatePageBindingContext();
 
-            AdjustSliderValues();
+            SetSliderMaximumBound();
 
             return true;
         }
