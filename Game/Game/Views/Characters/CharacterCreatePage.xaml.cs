@@ -548,7 +548,7 @@ namespace Game.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void LeftButton_Clicked(object sender, EventArgs e)
+        public void LeftButton_Clicked(object sender, EventArgs e)
         {
             int imageCount = imageList[ViewModel.Data.Clan].Count;
 
