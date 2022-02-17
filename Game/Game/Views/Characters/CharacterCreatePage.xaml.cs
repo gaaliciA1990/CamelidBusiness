@@ -277,8 +277,6 @@ namespace Game.Views
 
             _ = ViewModel.Data.AddItem(PopupLocationEnum, data.Id);
 
-            //AdjustValuesWithBonuses(data);
-
             UpdatePageBindingContext();
 
             SetSliderMaximumBound();
