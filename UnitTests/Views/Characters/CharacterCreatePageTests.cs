@@ -316,5 +316,20 @@ namespace UnitTests.Views
             // Assert
             Assert.AreEqual("alpaca2.png", page.ViewModel.Data.ImageURI);
         }
+        /// <summary>
+        /// Test the left button click successfully changes the character image
+        /// </summary>
+        [Test]
+        public void CharacterCratePage_LeftButton_Clicked_Valid_Should_Pass()
+        {
+            // Arrange
+
+            // Act
+            page.LeftButton_Clicked(null, null);
+            // Reset
+
+            // Assert
+            Assert.AreEqual("alpaca3.png", page.ViewModel.Data.ImageURI);
+        }
     }
 }
