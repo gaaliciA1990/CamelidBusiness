@@ -292,6 +292,7 @@
     <BundleResource Include="Resources\basic_socks.png" />
     <BundleResource Include="Resources\basic_scarf.png" />
     <BundleResource Include="Resources\basic_necklace2.png" />
+    <BundleResource Include="Resources\autobattle.png" />
     <Content Include="Resources\basic_stick.png" />
     <BundleResource Include="Resources\caverns.png" />
     <Content Include="Resources\monsters.png" />
