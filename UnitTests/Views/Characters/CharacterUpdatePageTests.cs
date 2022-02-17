@@ -80,10 +80,15 @@ namespace UnitTests.Views
             Assert.IsTrue(true); // Got to here, so it happened...
         }
 
+        /// <summary>
+        /// Test that image is set to default image when save is clicked.
+        /// </summary>
         [Test]
         public void CharacterUpdatePage_Save_Clicked_Null_Image_Should_Pass()
         {
             // Arrange
+            page.ViewModel.Data.Name = "test";
+            page.ViewModel.Data.Description = "test";
             page.ViewModel.Data.ImageURI = null;
 
             // Act
@@ -92,7 +97,7 @@ namespace UnitTests.Views
             // Reset
 
             // Assert
-            Assert.IsTrue(true); // Got to here, so it happened...
+            Assert.AreEqual("alpaca1.png", page.ViewModel.Data.ImageURI); 
         }
 
         [Test]
