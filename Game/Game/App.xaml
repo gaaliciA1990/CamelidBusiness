@@ -1129,9 +1129,9 @@
                 <Setter Property="VerticalOptions"
                         Value="Center" />
                 <Setter Property="BackgroundColor"
-                        Value="{StaticResource PrimaryBackgroundColor}" />
+                        Value="Transparent" />
                 <Setter Property="MinimumTrackColor"
-                        Value="{StaticResource PrimaryBackgroundColor}" />
+                        Value="{StaticResource SecondaryTextColor}" />
                 <Setter Property="MaximumTrackColor"
                         Value="{StaticResource PrimaryBackgroundColor}" />
                 <Setter Property="Maximum"
