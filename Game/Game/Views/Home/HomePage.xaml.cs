@@ -34,7 +34,7 @@ namespace Game.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private async void AboutButton_Clicked(object sender, EventArgs e)
+        public async void AboutButton_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new AboutPage());
         }
