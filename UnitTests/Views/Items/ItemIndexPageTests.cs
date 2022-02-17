@@ -116,6 +116,7 @@ namespace UnitTests.Views
         [Test]
         public void ItemIndexPage_OnAppearing_Valid_Should_Pass()
         {
+
             // Arrange
 
             // Warm it up
@@ -147,5 +148,40 @@ namespace UnitTests.Views
             // Assert
             Assert.IsTrue(true); // Got to here, so it happened...
         }
+
+
+        [Test]
+        public void ItemIndexPage_OnItemSelected_Clicked_Should_Pass()
+        {
+            // Arrange
+            var ImageButton = new ImageButton();
+            var id = page.ViewModel.Dataset[0].Id;
+
+        
+            // Act
+            ImageButton.CommandParameter = id;
+            page.FlexItem_Clicked(ImageButton, null);
+        
+            // Reset
+        
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        
+        }
+
+        [Test]
+        public void ItemIndexPage_OnBackButtonPressed_Should_Pass()
+        {
+            // Arrange
+
+            // Act
+            page.BackButton_Clicked(null, null);
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
     }
 }
