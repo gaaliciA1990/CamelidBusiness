@@ -48,11 +48,11 @@ namespace Game.Views
 
             _ = await AutoBattle.RunAutoBattle();
 
-            var BattleMessage = string.Format("Done {0} Rounds", AutoBattle.Battle.EngineSettings.BattleScore.RoundCount);
+            //var BattleMessage = string.Format("Done {0} Rounds", AutoBattle.Battle.EngineSettings.BattleScore.RoundCount);
 
-            BattleMessageValue.Text = BattleMessage;
+            //BattleMessageValue.Text = BattleMessage;
 
-            AutobattleImage.Source = "troll6_d.gif";
+            //AutobattleImage.Source = "troll6_d.gif";
 
 
             //measure elapsed time
