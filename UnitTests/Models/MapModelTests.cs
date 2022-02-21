@@ -457,7 +457,7 @@ namespace UnitTests.Models
             _ = map.PopulateMapModel(PlayerList);
 
             // Act
-            var result = map.IsEmptySquare(0, 1);
+            var result = map.IsEmptySquare(1, 0);
 
             // Reset
 
@@ -719,8 +719,8 @@ namespace UnitTests.Models
             // Reset
 
             // Assert 
-            Assert.AreEqual(0, result.Column);
-            Assert.AreEqual(1, result.Row);
+            Assert.AreEqual(1, result.Column);
+            Assert.AreEqual(0, result.Row);
         }
 
         [Test]
