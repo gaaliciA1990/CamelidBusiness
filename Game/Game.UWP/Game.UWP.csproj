@@ -161,6 +161,7 @@
     <Content Include="basic_stick.png" />
     <Content Include="basic_sword.png" />
     <Content Include="basic_torch.png" />
+    <Content Include="battleBackground.jpg" />
     <Content Include="battleboard.png" />
     <Content Include="bronze_mace.png" />
     <Content Include="bronze_spear.png" />

@@ -333,5 +333,8 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\autobattle.png" />
   </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\battleBackground.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>
