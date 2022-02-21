@@ -52,6 +52,16 @@ namespace Game.Views
             // Start the Battle Engine
             _ = BattleEngineViewModel.Instance.Engine.StartBattle(false);
 
+            //Set row and colum sizes
+            for (var i = 0; i < BattleEngineViewModel.Instance.Engine.EngineSettings.MapModel.MapYAxiesCount; i++)
+            {
+                MapGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(10 + i, GridUnitType.Star) });
+            }
+            for (var i = 0; i < BattleEngineViewModel.Instance.Engine.EngineSettings.MapModel.MapXAxiesCount; i++)
+            {
+                MapGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Star });
+            }
+
             // Populate the UI Map
             DrawMapGridInitialState();
 
@@ -202,19 +212,19 @@ namespace Game.Views
                         return false;
                     }
 
-                    var stackObject = (StackLayout)MapObject;
+                    var gridObject = (Grid)MapObject;
 
                     // Remove the ImageButton
-                    stackObject.Children.RemoveAt(0);
+                    gridObject.Children.RemoveAt(0);
 
                     var PlayerImageButton = DetermineMapImageButton(data);
 
-                    stackObject.Children.Add(PlayerImageButton);
+                    gridObject.Children.Add(PlayerImageButton);
 
                     // Update the Image in the Datastructure
                     _ = MapGridObjectAddImage(PlayerImageButton, data);
 
-                    stackObject.BackgroundColor = DetermineMapBackgroundColor(data);
+                    //gridObject.BackgroundColor = DetermineMapBackgroundColor(data);
                 }
             }
 
@@ -302,38 +312,30 @@ namespace Game.Views
         /// </summary>
         /// <param name="mapLocationModel"></param>
         /// <returns></returns>
-        public Frame MakeMapGridBox(MapModelLocation mapLocationModel)
+        public Grid MakeMapGridBox(MapModelLocation mapLocationModel)
         {
             if (mapLocationModel.Player == null)
             {
                 mapLocationModel.Player = BattleEngineViewModel.Instance.Engine.EngineSettings.MapModel.EmptySquare;
             }
 
+            //Format Player Image
             var PlayerImageButton = DetermineMapImageButton(mapLocationModel);
+            PlayerImageButton.HorizontalOptions = LayoutOptions.FillAndExpand;
+            PlayerImageButton.VerticalOptions = LayoutOptions.FillAndExpand;
+            PlayerImageButton.Aspect = Aspect.AspectFit;
 
-            var PlayerStack = new StackLayout
-            {
-                Padding = 0,
-                Style = (Style)Application.Current.Resources["BattleMapImageBox"],
-                HorizontalOptions = LayoutOptions.Center,
-                VerticalOptions = LayoutOptions.Center,
-                BackgroundColor = DetermineMapBackgroundColor(mapLocationModel),
-                Children = {
-                    PlayerImageButton
-                },
-            };
+            //Create Player Cell
+            Grid cell = new Grid();
+            cell.RowDefinitions.Add(new RowDefinition { Height = GridLength.Star });
+            cell.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Star });
+            //cell.Children.Add(PlayerLabel, 0, 0);
+            cell.Children.Add(PlayerImageButton, 0, 0);
 
             _ = MapGridObjectAddImage(PlayerImageButton, mapLocationModel);
-            _ = MapGridObjectAddStack(PlayerStack, mapLocationModel);
+            _ = MapGridObjectAddStack(cell, mapLocationModel);
 
-            var MapFrame = new Frame
-            {
-                Style = (Style)Application.Current.Resources["BattleMapFrame"],
-                Content = PlayerStack,
-                AutomationId = GetDictionaryFrameName(mapLocationModel)
-            };
-
-            return MapFrame;
+            return cell;
         }
 
         /// <summary>
@@ -365,7 +367,7 @@ namespace Game.Views
         /// <param name="data"></param>
         /// <param name="MapModel"></param>
         /// <returns></returns>
-        public bool MapGridObjectAddStack(StackLayout data, MapModelLocation MapModel)
+        public bool MapGridObjectAddStack(Grid data, MapModelLocation MapModel)
         {
             var name = GetDictionaryStackName(MapModel);
 
@@ -400,6 +402,10 @@ namespace Game.Views
             {
                 Style = (Style)Application.Current.Resources["BattleMapPlayerSmallStyle"],
                 Source = MapLocationModel.Player.ImageURI,
+
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                VerticalOptions = LayoutOptions.FillAndExpand,
+                Aspect = Aspect.AspectFit,
 
                 // Store the guid to identify this button
                 AutomationId = MapLocationModel.Player.Guid
@@ -873,7 +879,7 @@ namespace Game.Views
             DrawPlayerBoxes();
 
             // Update the Mode
-            BattleModeValue.Text = BattleEngineViewModel.Instance.Engine.EngineSettings.BattleSettingsModel.BattleModeEnum.ToMessage();
+            //BattleModeValue.Text = BattleEngineViewModel.Instance.Engine.EngineSettings.BattleSettingsModel.BattleModeEnum.ToMessage();
 
             ShowBattleModeDisplay();
 
@@ -891,6 +897,7 @@ namespace Game.Views
                     //GameUIDisplay.IsVisible = false;
                     AttackerAttack.Source = ActionEnum.Unknown.ToImageURI();
                     StartBattleButton.IsVisible = true;
+                    BattleMapDisplay.IsVisible = false;
                     break;
 
                 case BattleStateEnum.NewRound:
@@ -903,6 +910,7 @@ namespace Game.Views
                     // Hide the Game Board
                     GameUIDisplay.IsVisible = false;
                     AttackerAttack.Source = ActionEnum.Unknown.ToImageURI();
+                    Page.BackgroundImageSource = "";
 
                     // Show the Game Over Display
                     GameOverDisplay.IsVisible = true;
@@ -910,6 +918,7 @@ namespace Game.Views
 
                 case BattleStateEnum.RoundOver:
                 case BattleStateEnum.Battling:
+                    Page.BackgroundImageSource = "BattleBackground.jpg";
                     GameUIDisplay.IsVisible = true;
                     BattlePlayerInfomationBox.IsVisible = true;
                     MessageDisplayBox.IsVisible = true;
