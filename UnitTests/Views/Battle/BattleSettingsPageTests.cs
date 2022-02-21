@@ -207,7 +207,7 @@ namespace UnitTests.Views
             // Reset
 
             // Assert
-            Assert.AreEqual(BattleModeEnum.SimpleNext, BattleEngineViewModel.Instance.Engine.EngineSettings.BattleSettingsModel.BattleModeEnum);
+            Assert.AreEqual(BattleModeEnum.MapFull, BattleEngineViewModel.Instance.Engine.EngineSettings.BattleSettingsModel.BattleModeEnum);
         }
 
         [Test]
@@ -232,7 +232,7 @@ namespace UnitTests.Views
             // Reset
 
             // Assert
-            Assert.AreEqual(BattleModeEnum.SimpleNext, BattleEngineViewModel.Instance.Engine.EngineSettings.BattleSettingsModel.BattleModeEnum);
+            Assert.AreEqual(BattleModeEnum.MapFull, BattleEngineViewModel.Instance.Engine.EngineSettings.BattleSettingsModel.BattleModeEnum);
         }
 
         [Test]
