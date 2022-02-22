@@ -527,6 +527,20 @@
                         Value="CenterAndExpand" />
             </Style>
 
+            <Style x:Key="CancelButtonStyle"
+                   TargetType="ImageButton">
+                <Setter Property="Aspect"
+                        Value="AspectFit" />
+                <Setter Property="Scale"
+                        Value="2" />
+                <Setter Property="WidthRequest"
+                        Value="30" />
+                <Setter Property="HeightRequest"
+                        Value="40" />
+                <Setter Property="HorizontalOptions"
+                        Value="CenterAndExpand" />
+            </Style>
+
             <Style x:Key="StartGameButtonStyle"
                    TargetType="ImageButton">
                 <Setter Property="BackgroundColor"
