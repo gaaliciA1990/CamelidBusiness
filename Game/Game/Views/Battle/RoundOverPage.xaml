@@ -187,9 +187,9 @@
                             </ListView>
 
                             <ImageButton x:Name="ListViewPopupCloseButton"
-                                         Clicked="ClosePopup_Clicked"
+                                         Clicked="CloseSelectorPopup_Clicked"
                                          Source="icon_cancel.png" 
-                                         Style="{StaticResource DeleteButtonStyle}"/>
+                                         Style="{StaticResource CancelButtonStyle}"/>
                         </StackLayout>
                     </Frame>
                 </StackLayout>
