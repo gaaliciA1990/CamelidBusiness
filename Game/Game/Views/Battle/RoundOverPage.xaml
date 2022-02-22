@@ -44,7 +44,7 @@
                         <Button Grid.Row="0" Grid.Column="1" HorizontalOptions="Start" Clicked="AutoAssignButton_Clicked" Text="Auto Assign"/>
 
                         <StackLayout Grid.Row="1" Grid.Column="1"> 
-                            <Label  Text="Items Selected" Style="{StaticResource LabelStyle}"/>
+                            <Label x:Name="ItemLabel" Text="Items Selected" Style="{StaticResource LabelStyle}"/>
                             <FlexLayout x:Name="ItemListSelectedFrame"
                                         JustifyContent="Start"
                                         AlignContent="Start"
@@ -108,6 +108,88 @@
                             <Button x:Name="PopupCloseButton" 
                                 Clicked="ClosePopup_Clicked" 
                                 Text="Close"/>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+            </StackLayout>
+            
+            <!-- Item selector popup -->
+            <!--The Item Popup-->
+            <StackLayout x:Name="PopupItemSelector"
+                         Style="{StaticResource ItemSelectorPopup}"
+                         Grid.Row="0"
+                         Grid.RowSpan="2">
+
+                <StackLayout Style="{StaticResource ItemSelectorInnerPopup}">
+
+                    <Frame  BorderColor="{StaticResource TriciaryTextColor}"
+                            Padding="1">
+                        <StackLayout Style="{StaticResource VerticalStack}"
+                                     HorizontalOptions="CenterAndExpand"
+                                     Padding="2">
+                            <Label x:Name="PopupLocationLabel"
+                                   Style="{StaticResource PopupItemTextStyle}" />
+                            <Label x:Name="PopupLocationValue"
+                                   Style="{StaticResource PopupItemTextStyle}" />
+
+                            <ListView x:Name="PopupLocationItemListView"
+                                      CachingStrategy="RecycleElement"
+                                      ItemSelected="OnPopupItemSelected"
+                                      HasUnevenRows="true"
+                                      Margin="5,0,5,0"
+                                      RowHeight="80">
+
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <Grid ColumnSpacing="5"
+                                                  RowSpacing="1">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="auto" />
+                                                    <ColumnDefinition Width="*" />
+                                                </Grid.ColumnDefinitions>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="auto" />
+                                                    <RowDefinition Height="auto" />
+                                                    <RowDefinition Height="auto" />
+                                                </Grid.RowDefinitions>
+
+                                                <Image  Grid.Column="0"
+                                                        Grid.Row="0"
+                                                        Grid.RowSpan="3"
+                                                        Source="{Binding ImageURI}"
+                                                        Style="{StaticResource ImageSmallStyle}"
+                                                        VerticalOptions="CenterAndExpand" />
+
+                                                <Label Grid.Column="1"
+                                                       Grid.Row="0"
+                                                       Text="{Binding Name}"
+                                                       Style="{StaticResource ListStyle}" />
+
+                                                <StackLayout Grid.Column="1"
+                                                             Grid.Row="1"
+                                                             Orientation="Horizontal">
+                                                    <Label Text="{Binding Attribute}"
+                                                           Style="{StaticResource ListStyle}" />
+                                                    <Label Text="{Binding Value}"
+                                                           Style="{StaticResource ListStyle}" />
+                                                </StackLayout>
+
+                                                <Label Grid.Column="1"
+                                                       Grid.Row="2"
+                                                       Text="{Binding Description}"
+                                                       Style="{StaticResource ListStyle}"
+                                                       FontSize="Micro" />
+                                            </Grid>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+
+                            <ImageButton x:Name="ListViewPopupCloseButton"
+                                         Clicked="ClosePopup_Clicked"
+                                         Source="icon_cancel.png" 
+                                         Style="{StaticResource DeleteButtonStyle}"/>
                         </StackLayout>
                     </Frame>
                 </StackLayout>
