@@ -21,6 +21,9 @@ namespace Game.Views
         //Hold the currently selected character
         public PlayerInfoModel CurrentSelectedChar = null;
 
+        //Hold currently selected button for the character
+        public ImageButton CurrentSelectedButton = null;
+
         /// <summary>
         /// Constructor
         /// </summary>
@@ -99,8 +102,21 @@ namespace Game.Views
         /// <summary>
         /// Add the Dropped Items to the Display
         /// </summary>
-        public void DrawSelectedItems(PlayerInfoModel player)
+        public void DrawSelectedItems(object sender, PlayerInfoModel player)
         {
+
+            if (CurrentSelectedButton == (ImageButton)sender)
+            {
+                CurrentSelectedButton.IsEnabled = true;
+            }
+
+            if (CurrentSelectedButton != (ImageButton)sender)
+            {
+                CurrentSelectedButton = (ImageButton)sender;
+                CurrentSelectedButton.IsEnabled = false;
+                CurrentSelectedButton.BackgroundColor = Xamarin.Forms.Color.Beige;
+            }
+
             // Clear and Populate the Dropped Items
             var FlexList = ItemListSelectedFrame.Children.ToList();
             foreach (var data in FlexList)
@@ -117,6 +133,8 @@ namespace Game.Views
 
             //Draw the items currently equipped on this character
             AddItemsToDisplay();
+
+
         }
         /// <summary>
         /// Show the Items the Character has
@@ -272,7 +290,7 @@ namespace Game.Views
 
             // Add a event to the user can click the item and see more
             //todo: this is where to hook up the item loading function
-            PlayerImage.Clicked += (sender, args) => DrawSelectedItems(data);
+            PlayerImage.Clicked += (sender, args) => DrawSelectedItems(sender, data);
 
             // Add the Level
             var PlayerLevelLabel = new Label
@@ -349,9 +367,6 @@ namespace Game.Views
 
             _ = CurrentSelectedChar.AddItem(PopupLocationEnum, data.Id);
 
-            //UpdatePageBindingContext();
-
-
             AddItemsToDisplay();
 
             //Close the popup
@@ -366,6 +381,8 @@ namespace Game.Views
         public bool ShowPopup(ItemLocationEnum location)
         {
             PopupItemSelector.IsVisible = true;
+            // Remember the location for this popup
+            PopupLocationEnum = location;
 
             // Make a fake item for None
             var NoneItem = new ItemModel
@@ -383,15 +400,23 @@ namespace Game.Views
             };
 
             // Add the rest of the items to the list
-            itemList.AddRange(BattleEngineViewModel.Instance.Engine.EngineSettings.BattleScore.ItemModelDropList.ToList());
+            foreach(var item in BattleEngineViewModel.Instance.Engine.EngineSettings.BattleScore.ItemModelDropList.Distinct())
+            {
+                if (item.Location == PopupLocationEnum)
+                {
+                    itemList.Add(item);
+                }
+            }
 
             // Populate the list with the items
             PopupLocationItemListView.ItemsSource = itemList;
 
-            // Remember the location for this popup
-            PopupLocationEnum = location;
-
             return true;
+        }
+
+        public void CloseSelectorPopup_Clicked(object sender, EventArgs e)
+        {
+            PopupItemSelector.IsVisible = false;
         }
 
         /// <summary>
