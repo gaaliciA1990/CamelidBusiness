@@ -27,7 +27,7 @@ namespace Game.Views
             TotalFound.Text = BattleEngineViewModel.Instance.Engine.EngineSettings.BattleScore.ItemModelDropList.Count().ToString();
 
             // Update the Selected Number, this gets updated later when selected refresh happens
-            TotalSelected.Text = BattleEngineViewModel.Instance.Engine.EngineSettings.BattleScore.ItemModelSelectList.Count().ToString();
+            //TotalSelected.Text = BattleEngineViewModel.Instance.Engine.EngineSettings.BattleScore.ItemModelSelectList.Count().ToString();
 
             DrawCharacterList();
 
@@ -67,7 +67,7 @@ namespace Game.Views
             DrawSelectedItems();
 
             // Only need to update the selected, the Dropped is set in the constructor
-            TotalSelected.Text = BattleEngineViewModel.Instance.Engine.EngineSettings.BattleScore.ItemModelSelectList.Count().ToString();
+            //TotalSelected.Text = BattleEngineViewModel.Instance.Engine.EngineSettings.BattleScore.ItemModelSelectList.Count().ToString();
         }
 
         /// <summary>

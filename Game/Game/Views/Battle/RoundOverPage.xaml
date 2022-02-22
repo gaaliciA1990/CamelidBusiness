@@ -13,51 +13,61 @@
             <StackLayout Style="{StaticResource VerticalStack}"
                     AbsoluteLayout.LayoutBounds="1,1,1,1" 
                     AbsoluteLayout.LayoutFlags="All">
+                <Label Text="Round Cleared" Style="{StaticResource CenterMessageLargeStyle}"/>
 
                 <ScrollView x:Name="ScrollView">
 
-                    <StackLayout Style="{StaticResource VerticalStack}">
+                    <Grid IsClippedToBounds="true" VerticalOptions="CenterAndExpand">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="350"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
 
-                        <Label Text="Round Cleared" Style="{StaticResource CenterMessageLargeStyle}"/>
-
-                        <Button Clicked="CloseButton_Clicked" Text="Close"/>
-
-                        <StackLayout Style="{StaticResource HorizontalStack}">
-                            <Label Text="Round : " Style="{StaticResource MessageStyle}"/>
-                            <Label Text="0" x:Name="TotalRound" Style="{StaticResource MessageStyle}"/>
+                        <StackLayout Grid.Row="0" Grid.Column="0" Grid.RowSpan="3">
+                            <StackLayout Style="{StaticResource HorizontalStack}">
+                                <Label Text="Round : " Style="{StaticResource MessageStyle}"/>
+                                <Label Text="0" x:Name="TotalRound" Style="{StaticResource LabelStyle}"/>
+                            </StackLayout>
+                            
+                            <FlexLayout x:Name="CharacterListFrame"
+                                        JustifyContent="Start"
+                                        AlignContent="Start"
+                                        Wrap="Wrap"/>
                         </StackLayout>
 
-                        <Label Text="Characters" Style="{StaticResource MessageStyle}"/>
-                        <FlexLayout x:Name="CharacterListFrame"
-                                    JustifyContent="Start"
-                                    AlignContent="Start"
-                                    Wrap="Wrap"/>
+                        <Button Grid.Row="0" Grid.Column="1" HorizontalOptions="Start" Clicked="AutoAssignButton_Clicked" Text="Auto Assign"/>
 
-                        <Label Text="Items Found" Style="{StaticResource MessageStyle}"/>
-                        <StackLayout Style="{StaticResource HorizontalStack}">
-                            <Label Text="Found : " Style="{StaticResource LabelStyle}"/>
-                            <Label Text="0" x:Name="TotalFound" Style="{StaticResource ValueStyle}"/>
+                        <StackLayout Grid.Row="1" Grid.Column="1"> 
+                            <Label  Text="Items Selected" Style="{StaticResource LabelStyle}"/>
+                            <FlexLayout x:Name="ItemListSelectedFrame"
+                                        JustifyContent="Start"
+                                        AlignContent="Start"
+                                        Wrap="Wrap"/>
                         </StackLayout>
-                        <FlexLayout x:Name="ItemListFoundFrame"
-                                    JustifyContent="Start"
-                                    AlignContent="Start"
-                                    Wrap="Wrap"/>
 
-                        <Button Clicked="AutoAssignButton_Clicked" Text="Assign Items"/>
+                        <StackLayout Grid.Row="2" Grid.Column="1">
+                            <Label Text="Items Found" Style="{StaticResource LabelStyle}"/>
 
-                        <Label Text="Items Selected" Style="{StaticResource MessageStyle}"/>
-                        <StackLayout Style="{StaticResource HorizontalStack}">
-                            <Label Text="Selected : " Style="{StaticResource LabelStyle}"/>
-                            <Label Text="0" x:Name="TotalSelected" Style="{StaticResource ValueStyle}"/>
+                            <StackLayout Style="{StaticResource HorizontalStack}">
+                                <Label Text="Found : " Style="{StaticResource LabelStyle}"/>
+                                <Label Text="0" x:Name="TotalFound" Style="{StaticResource ValueStyle}"/>
+                            </StackLayout>
+
+                            <FlexLayout x:Name="ItemListFoundFrame"
+                                        JustifyContent="Start"
+                                        AlignContent="Start"
+                                        Wrap="Wrap"/>
                         </StackLayout>
-                        <FlexLayout x:Name="ItemListSelectedFrame"
-                                    JustifyContent="Start"
-                                    AlignContent="Start"
-                                    Wrap="Wrap"/>
 
-                        <Button Clicked="CloseButton_Clicked" Text="Close"/>
+                        <Button Grid.Row="3" Grid.ColumnSpan="2" Clicked="CloseButton_Clicked" Text="Close"/>
 
-                    </StackLayout>
+                    </Grid>
                 </ScrollView>
             </StackLayout>
 
