@@ -6,119 +6,134 @@
              mc:Ignorable="d"
              x:Name="BrowseItemsPage"
              x:Class="Game.Views.PickCharactersPage"
-             Title="{Binding Title}">
+             Style="{StaticResource BattleStyle}"
+             Title="{Binding Title}"
+             NavigationPage.HasNavigationBar="False">
 
     <ContentPage.Content>
-        <ScrollView VerticalScrollBarVisibility="Never">
-            <StackLayout Style="{StaticResource OuterBoxStack}">
+        <StackLayout Style="{StaticResource OuterBoxStack}">
+            <StackLayout Orientation="Horizontal">
+                <ImageButton x:Name="homeButton"
+                             Source="icon_home.png"
+                             HorizontalOptions="Start"
+                             Clicked="homeButton_Clicked"
+                             Style="{StaticResource NavigationButtonStyle}" />
 
-                <Label Text="Battle Time" Style="{StaticResource CenterMessageLargeStyle}"/>
-
-                <StackLayout Style="{StaticResource HorizontalStack}" HorizontalOptions="CenterAndExpand">
-
-                    <StackLayout HorizontalOptions="Start">
-
-                        <Label Text="Characters" Style="{StaticResource CenterMessageStyle}"/>
-
-                        <ListView 
-                                x:Name="CharactersListView" 
-                                ItemsSource="{Binding DatabaseCharacterList}"
-                                IsRefreshing="{Binding IsBusy, Mode=OneWay}"
-                                RefreshCommand="{Binding LoadItemsCommand}"
-                                CachingStrategy="RecycleElement"
-                                ItemSelected="OnDatabaseCharacterItemSelected"
-                                HasUnevenRows="true"
-                                Margin="5,0,5,0"
-                                RowHeight="80">
-
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <ViewCell>
-                                        <Grid>
-
-                                            <Image  Grid.Column="0" Grid.Row="0" Grid.RowSpan="3"
-                                                    Source="{Binding ImageURI}"/>
-
-                                            <Label Grid.Column="1" Grid.Row="0"
-                                                   Text="{Binding Name}" 
-                                                   Style="{StaticResource ListStyle}"
-                                                   FontAttributes="Bold"/>
-
-                                            <Label Grid.Column="1" Grid.Row="1"
-                                                   Text="{Binding Path=Level, StringFormat='Level {0:G}'}" 
-                                                   Style="{StaticResource ListStyle}"/>
-
-                                            <Label Grid.Column="1" Grid.Row="2"
-                                                    Text="{Binding Path=MaxHealth, StringFormat= '{0:G} hp'}" 
-                                                    Style="{StaticResource ListStyle}"/>
-
-                                        </Grid>
-                                    </ViewCell>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                    </StackLayout>
-
-                    <StackLayout HorizontalOptions="Center">
-
-                        <Label Text="Count" Style="{StaticResource CenterMessageStyle}"/>
-
-                        <Label Style="{StaticResource CenterMessageStyle}" 
-                            x:Name="PartyCountLabel"
-                            Text="0"/>
-
-                        <Button 
-                            x:Name="BeginBattleButton"
-                            Clicked="BattleButton_Clicked" 
-                            Text="Begin"
-                            IsEnabled="False"/>
-
-                    </StackLayout>
-
-                    <StackLayout HorizontalOptions="End">
-
-                        <Label Text="Party" Style="{StaticResource CenterMessageStyle}"/>
-
-                        <ListView 
-                                x:Name="PartyListView" 
-                                ItemsSource="{Binding PartyCharacterList}"
-                                IsRefreshing="{Binding IsBusy, Mode=OneWay}"
-                                RefreshCommand="{Binding LoadItemsCommand}"
-                                CachingStrategy="RecycleElement"
-                                ItemSelected="OnPartyCharacterItemSelected"
-                                HasUnevenRows="true"
-                                Margin="5,0,5,0"
-                                RowHeight="80">
-
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <ViewCell>
-                                        <Grid>
-                                            <Image  Grid.Column="0" Grid.Row="0" Grid.RowSpan="3"
-                                                    Source="{Binding ImageURI}"/>
-
-                                            <Label Grid.Column="1" Grid.Row="0"
-                                                   Text="{Binding Name}" 
-                                                   Style="{StaticResource ListStyle}"
-                                                   FontAttributes="Bold"/>
-
-                                            <Label Grid.Column="1" Grid.Row="1"
-                                                   Text="{Binding Path=Level, StringFormat='Level {0:G}'}" 
-                                                   Style="{StaticResource ListStyle}"/>
-
-                                            <Label Grid.Column="1" Grid.Row="2"
-                                                    Text="{Binding Path=MaxHealth, StringFormat= '{0:G} hp'}" 
-                                                    Style="{StaticResource ListStyle}"/>
-
-                                        </Grid>
-                                    </ViewCell>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                    </StackLayout>
-                </StackLayout>
+                <Label Text="Select Your Champions"
+                       Style="{StaticResource HeaderStyle}"
+                       FontSize="Large" />
 
             </StackLayout>
-        </ScrollView>
+            
+            <StackLayout Orientation="Horizontal">
+                <Label x:Name="ChampionHeaderLabel"
+                       Text="Champions"
+                       Style="{StaticResource HeaderStyle}"
+                       HorizontalOptions="Start" />
+                <Label x:Name="PartyHeaderLabel"
+                       Text="Party"
+                       Style="{StaticResource HeaderStyle}"
+                       HorizontalOptions="EndAndExpand" />
+            </StackLayout>
+            
+            <StackLayout Style="{StaticResource HorizontalStack}"
+                         HorizontalOptions="CenterAndExpand">
+                
+                <Frame Style="{StaticResource SelectChampionFrame}">
+                    <CollectionView x:Name="CharactersListView"
+                                    ItemsSource="{Binding DatabaseCharacterList}"
+                                    ItemsLayout="VerticalGrid, 2"
+                                    Grid.Column="0"
+                                    SelectionMode="Multiple"
+                                    SelectionChanged="OnDatabaseCharacterItemSelected"
+                                    ItemSizingStrategy="MeasureAllItems"
+                                    VerticalScrollBarVisibility="Never" >
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Padding="5">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="35" />
+                                        <RowDefinition Height="35" />
+                                        <RowDefinition Height="35" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="50" />
+                                        <ColumnDefinition Width="65" />
+                                    </Grid.ColumnDefinitions>
+                                    <Frame Style="{StaticResource FlexIndexFrame}"
+                                           Grid.RowSpan="3">
+                                        <Image x:Name="CharacterImg"
+                                               Source="{Binding ImageURI}"/>
+                                    </Frame>
+
+                                    <Frame Style="{StaticResource PlayerSelectDetailsFrame}"
+                                           Grid.Column="1"
+                                           Grid.ColumnSpan="2"
+                                           WidthRequest="125">
+                                    <Label x:Name="CharacterName"
+                                           Text="{Binding Name}"
+                                           Style="{StaticResource LabelStyle}"
+                                           HorizontalTextAlignment="Center" />
+                                    </Frame>
+                                    
+                                    <Frame Style="{StaticResource PlayerSelectDetailsFrame}"
+                                           Grid.Column="1"
+                                           Grid.Row="1"
+                                           Grid.ColumnSpan="2">
+                                        <Label x:Name="CharacterLevel"
+                                               Text="{Binding Path=Level, StringFormat='Level {0:G}'}"
+                                               Style="{StaticResource ListStyle}" 
+                                               HorizontalOptions="Center"/>
+                                    </Frame>
+
+                                    <Frame Style="{StaticResource PlayerSelectDetailsFrame}"
+                                           Grid.Column="1"
+                                           Grid.Row="2"
+                                           Grid.ColumnSpan="2">
+                                        <Label x:Name="CharacterHP"
+                                               Text="{Binding Path=MaxHealth, StringFormat= '{0:G} HP'}"
+                                               Style="{StaticResource ListStyle}"
+                                               HorizontalOptions="Center" />
+                                    </Frame>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </Frame>
+
+                <Frame Style="{StaticResource PartySelectedFrame}">
+                    <CollectionView x:Name="PartyListView"
+                                    ItemsSource="{Binding PartyCharacterList}"
+                                    ItemsLayout="VerticalGrid, 2"
+                                    Grid.Column="1">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Padding="1">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="110" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="100" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Frame Style="{StaticResource FlexIndexFrame}"
+                                           Grid.RowSpan="1"
+                                           WidthRequest="150">
+                                        <Image x:Name="PartyCharacterImg"
+                                               Grid.RowSpan="3"
+                                               Source="{Binding ImageURI}" />
+                                    </Frame>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </Frame>
+            </StackLayout>
+            <ImageButton x:Name="StartBattleButton"
+                         Source="button_startgame.png"
+                         Style="{StaticResource StartGameButtonStyle}"
+                         Clicked="BattleButton_Clicked"
+                         IsEnabled="False"/>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>
