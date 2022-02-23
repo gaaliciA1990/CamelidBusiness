@@ -912,8 +912,60 @@
                         Value="Start" />
                 <Setter Property="HorizontalOptions"
                         Value="CenterAndExpand" />
+                <Setter Property="CornerRadius"
+                        Value="20" />
                 <Setter Property="BorderColor"
                         Value="{StaticResource SecondaryBackgroundColor}" />
+            </Style>
+
+            <Style TargetType="Frame"
+                   x:Key="PlayerSelectDetailsFrame">
+                <Setter Property="HeightRequest"
+                        Value="50" />
+                <Setter Property="WidthRequest"
+                        Value="75" />
+                <Setter Property="Margin"
+                        Value="10,5,10,5" />
+                <Setter Property="Padding"
+                        Value="0" />
+                <Setter Property="VerticalOptions"
+                        Value="Start" />
+                <Setter Property="HorizontalOptions"
+                        Value="CenterAndExpand" />
+                <Setter Property="CornerRadius"
+                        Value="20" />
+                <Setter Property="BackgroundColor"
+                        Value="{StaticResource LightBackgroundColor}" />
+                <Setter Property="BorderColor"
+                        Value="{StaticResource PrimaryBackgroundColor}" />
+            </Style>
+
+            <Style TargetType="Frame"
+                   x:Key="SelectChampionFrame">
+                <Setter Property="BackgroundColor"
+                        Value="{StaticResource CrudiItemSelectColor}" />
+                <Setter Property="BorderColor"
+                        Value="{StaticResource PrimaryBackgroundColor}" />
+                <Setter Property="CornerRadius"
+                        Value="10" />
+                <Setter Property="WidthRequest"
+                        Value="500" />
+            </Style>
+
+            <Style TargetType="Frame"
+                   x:Key="PartySelectedFrame">
+                <Setter Property="BackgroundColor"
+                        Value="Transparent"/>
+                <Setter Property="BorderColor"
+                        Value="Transparent" />
+                <Setter Property="CornerRadius"
+                        Value="10" />
+                <Setter Property="WidthRequest"
+                        Value="300" />
+                <Setter Property="Margin"
+                        Value="25,0,0,0" />
+                <Setter Property="HorizontalOptions"
+                        Value="EndAndExpand" />
             </Style>
 
             <Style TargetType="Frame"
