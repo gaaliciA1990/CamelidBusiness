@@ -161,7 +161,7 @@ namespace Game.Views
             Button toReturn = new Button
             {
                 Text = label,
-                BorderRadius = 10,
+                CornerRadius = 10,
                 BorderWidth = 1,
                 BorderColor = Xamarin.Forms.Color.Black,
                 Padding = new Xamarin.Forms.Thickness(5.0),
