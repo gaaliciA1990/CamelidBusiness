@@ -9,6 +9,7 @@ using Xamarin.Forms.Xaml;
 
 using Game.Models;
 using Game.ViewModels;
+using System.Timers;
 
 namespace Game.Views
 {
@@ -28,6 +29,8 @@ namespace Game.Views
         // Hold the Map Objects, for easy access to update them
         public Dictionary<string, object> MapLocationObject = new Dictionary<string, object>();
 
+        //Action User Chooses for Player
+        public ActionEnum userChosenActionForPlayer = new ActionEnum();
 
         // Empty Constructor for UTs
         bool UnitTestSetting;
@@ -74,6 +77,8 @@ namespace Game.Views
             // Set the Battle Mode
             ShowBattleMode();
         }
+
+
 
         /// <summary>
         /// Dray the Player Boxes
@@ -200,19 +205,30 @@ namespace Game.Views
 
                 var imageObject = (ImageButton)MapObject;
 
+                MapObject = GetMapGridObject(GetDictionaryStackName(data));
+                var gridObject = (Grid)MapObject;
+
+                //DO SOMETHING TO SHOW WHO'S TURN IS NEXT
+                //JUST CHANGING THE GRID CELL COLOR AT THE MOMENT
+                if (data.Player == BattleEngineViewModel.Instance.Engine.Round.GetNextPlayerTurn())
+                {
+                    gridObject.BackgroundColor = Color.Gold;
+                }
+                else if (gridObject != null)
+                {
+                    gridObject.BackgroundColor = Color.Transparent;
+                }
+
                 // Check automation ID on the Image, That should match the Player, if not a match, the cell is now different need to update
                 if (!imageObject.AutomationId.Equals(data.Player.Guid))
                 {
                     // The Image is different, so need to re-create the Image Object and add it to the Stack
                     // That way the correct monster is in the box.
 
-                    MapObject = GetMapGridObject(GetDictionaryStackName(data));
                     if (MapObject == null)
                     {
                         return false;
                     }
-
-                    var gridObject = (Grid)MapObject;
 
                     // Remove the ImageButton
                     gridObject.Children.RemoveAt(0);
@@ -467,15 +483,11 @@ namespace Game.Views
         /// <returns></returns>
         public bool SetSelectedEmpty(MapModelLocation data)
         {
-            // TODO: Info
-
-            /*
-             * This gets called when the characters is clicked on
-             * Usefull if you want to select the location to move to etc.
-             * 
-             * For Mike's simple battle grammar there is no selection of action so I just return true
-             */
-
+            if (userChosenActionForPlayer == ActionEnum.Move)
+            {
+                SelectActionMessage.Text = data.Player.Name + " moved.";
+                NextAttackExample(ActionEnum.Move, data);
+            }
             return true;
         }
 
@@ -486,14 +498,22 @@ namespace Game.Views
         /// <returns></returns>
         public bool SetSelectedMonster(MapModelLocation data)
         {
-            // TODO: Info
+            //Check if user can select monster to attack
+            if (userChosenActionForPlayer == ActionEnum.Attack)
+            {
+                //procede with attack if character can reach monster with range
+                var attacker = BattleEngineViewModel.Instance.Engine.Round.GetNextPlayerTurn();
+                var inRange = BattleEngineViewModel.Instance.Engine.EngineSettings.MapModel.IsTargetInRange(attacker, data.Player);
+                if (inRange)
+                {
+                    SelectActionMessage.Text = data.Player.Name + " attacked.";
+                    NextAttackExample(ActionEnum.Attack, data);
+                }
+                else
+                {
 
-            /*
-             * This gets called when the Monster is clicked on
-             * Usefull if you want to select the monster to attack etc.
-             * 
-             * For Mike's simple battle grammar there is no selection of action so I just return true
-             */
+                }
+            }
 
             data.IsSelectedTarget = true;
             return true;
@@ -637,12 +657,12 @@ namespace Game.Views
         /// So the pattern is Click Next, Next, Next until game is over
         /// 
         /// </summary>
-        public void NextAttackExample()
+        public void NextAttackExample(ActionEnum action = ActionEnum.Unknown, MapModelLocation data = null)
         {
             BattleEngineViewModel.Instance.Engine.EngineSettings.BattleStateEnum = BattleStateEnum.Battling;
 
             // Get the turn, set the current player and attacker to match
-            SetAttackerAndDefender();
+            SetAttackerAndDefender(action, data);
 
             // Hold the current state
             var RoundCondition = BattleEngineViewModel.Instance.Engine.Round.RoundNextTurn();
@@ -653,7 +673,7 @@ namespace Game.Views
             // Show the outcome on the Board
             DrawGameAttackerDefenderBoard();
 
-            if (RoundCondition == RoundEnum.NewRound)
+            if (RoundCondition == RoundEnum.NewRound || BattleEngineViewModel.Instance.Engine.EngineSettings.PlayerList.Where(m => m.PlayerType == PlayerTypeEnum.Monster).ToList().Count() == 0)
             {
                 BattleEngineViewModel.Instance.Engine.EngineSettings.BattleStateEnum = BattleStateEnum.NewRound;
 
@@ -683,22 +703,113 @@ namespace Game.Views
                 GameOver();
                 return;
             }
+
+            //If Round is not over, allow user to choose action for next player.
+            //just for characters right now, idk
+            PlayerTurnPickAction();
         }
+
+
+        /// <summary>
+        //allow user to chose action
+        /// </summary>
+        public void PlayerTurnPickAction()
+        {
+            var attacker = BattleEngineViewModel.Instance.Engine.Round.GetNextPlayerTurn();
+            if (attacker.PlayerType == PlayerTypeEnum.Character)
+            {
+                // if character's turn, show select action popup
+                SelectAction.IsVisible = true;
+                //set title forn select action popup
+                SelectActionMessage.Text = attacker.Name + "'s turn. Choose an action.";
+
+                AttackButton.IsVisible = false;
+            }
+            //need to 
+            else
+            {
+                AttackButton.IsVisible = true;
+            }
+        }
+
+        /// <summary>
+        /// Allow user to click on opponent space when choosing attack action
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
+        public void SelectMonsterToAttack(object sender, EventArgs args)
+        {
+            var attacker = BattleEngineViewModel.Instance.Engine.Round.GetNextPlayerTurn();
+            SelectAction.IsVisible = false;
+            AttackerName.Text = "Select Monster to attack";
+            AttackerAttack.Source = "";
+            DefenderName.Text = "";
+            userChosenActionForPlayer = ActionEnum.Attack;
+            visualizeAttackOptions(attacker);
+        }
+
+        /// <summary>
+        /// Do something to show user attack options
+        /// </summary>
+        /// <param name=""></param>
+        public void visualizeAttackOptions(PlayerInfoModel attacker)
+        {
+            foreach (var monster in BattleEngineViewModel.Instance.Engine.EngineSettings.PlayerList.Where(m => m.PlayerType == PlayerTypeEnum.Monster).ToList())
+            {
+                var inRange = BattleEngineViewModel.Instance.Engine.EngineSettings.MapModel.IsTargetInRange(attacker, monster);
+                if (inRange)
+                {
+                    var monsterLocation = BattleEngineViewModel.Instance.Engine.EngineSettings.MapModel.GetLocationForPlayer(monster);
+                    var MapObject = (Grid)GetMapGridObject(GetDictionaryStackName(monsterLocation));
+                    MapObject.BackgroundColor = Color.Blue;
+                }
+            }
+        }
+
+
+
+
+        /// <summary>
+        /// Allow user to click on empty space when choosing move action
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
+        public void SelectLocationToMoveTo(object sender, EventArgs args)
+        {
+            SelectAction.IsVisible = false;
+            AttackerName.Text = "Select a location to move to";
+            AttackerAttack.Source = "";
+            DefenderName.Text = "";
+            userChosenActionForPlayer = ActionEnum.Move;
+        }
+
 
         /// <summary>
         /// Decide The Turn and who to Attack
         /// </summary>
-        public void SetAttackerAndDefender()
+        public void SetAttackerAndDefender(ActionEnum action = ActionEnum.Unknown, MapModelLocation data = null)
         {
+            var attacker = BattleEngineViewModel.Instance.Engine.Round.GetNextPlayerTurn();
+            var attackerLocation = BattleEngineViewModel.Instance.Engine.EngineSettings.MapModel.GetLocationForPlayer(attacker);
+
             _ = BattleEngineViewModel.Instance.Engine.Round.SetCurrentAttacker(BattleEngineViewModel.Instance.Engine.Round.GetNextPlayerTurn());
 
             switch (BattleEngineViewModel.Instance.Engine.EngineSettings.CurrentAttacker.PlayerType)
             {
                 case PlayerTypeEnum.Character:
-                    // User would select who to attack
+                    if (action == ActionEnum.Move)
+                    {
+                        _ = BattleEngineViewModel.Instance.Engine.EngineSettings.MapModel.MovePlayerOnMap(attackerLocation, data);
+                    }
+                    if (action == ActionEnum.Attack)
+                    {
+                        _ = BattleEngineViewModel.Instance.Engine.Round.SetCurrentDefender(data.Player);
+                    }
+                    else 
+                    { 
+                        _ = BattleEngineViewModel.Instance.Engine.Round.SetCurrentDefender(BattleEngineViewModel.Instance.Engine.Round.Turn.AttackChoice(BattleEngineViewModel.Instance.Engine.EngineSettings.CurrentAttacker));
+                    }
 
-                    // for now just auto selecting
-                    _ = BattleEngineViewModel.Instance.Engine.Round.SetCurrentDefender(BattleEngineViewModel.Instance.Engine.Round.Turn.AttackChoice(BattleEngineViewModel.Instance.Engine.EngineSettings.CurrentAttacker));
                     break;
 
                 case PlayerTypeEnum.Monster:
@@ -708,7 +819,25 @@ namespace Game.Views
                     _ = BattleEngineViewModel.Instance.Engine.Round.SetCurrentDefender(BattleEngineViewModel.Instance.Engine.Round.Turn.AttackChoice(BattleEngineViewModel.Instance.Engine.EngineSettings.CurrentAttacker));
                     break;
             }
+
+            showActionPopup(action);
         }
+
+
+        async void showActionPopup(ActionEnum action) 
+        {
+            if (action == ActionEnum.Attack) { 
+                ActionPopupMessage.Source = "attackpopup.png";
+            }
+            if (action == ActionEnum.Move)
+            {
+                ActionPopupMessage.Source = "movepopup.png";
+            }
+            ActionPopup.IsVisible = true;
+            await Task.Delay(500);
+            ActionPopup.IsVisible = false;
+        }
+
 
         /// <summary>
         /// Game is over
