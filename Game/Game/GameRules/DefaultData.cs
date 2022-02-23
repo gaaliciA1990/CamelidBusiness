@@ -380,7 +380,7 @@ namespace Game.GameRules
                     Description = "Pretentious",
                     Level = 3,
                     MaxHealth = 15,
-                    ImageURI = "Llama2.png",
+                    ImageURI = "Llama3.png",
                     Clan = CharacterClanEnum.Llama,
                     Head = HeadString,
                     Necklass = NecklassString,
