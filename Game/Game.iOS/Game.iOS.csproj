@@ -293,11 +293,13 @@
     <BundleResource Include="Resources\basic_scarf.png" />
     <BundleResource Include="Resources\basic_necklace2.png" />
     <BundleResource Include="Resources\autobattle.png" />
+    <BundleResource Include="Resources\attackpopup.png" />
     <Content Include="Resources\basic_stick.png" />
     <BundleResource Include="Resources\caverns.png" />
     <BundleResource Include="Resources\battleBackground.jpg" />
     <Content Include="Resources\monsters.png" />
     <BundleResource Include="Resources\slider_thumbnail.png" />
     <BundleResource Include="Resources\pure_gold_ring.png" />
+    <BundleResource Include="Resources\movepopup.png" />
   </ItemGroup>
 </Project>

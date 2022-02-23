@@ -142,6 +142,7 @@
     <Content Include="Assets\Wide310x150Logo.scale-100.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
     <Content Include="Assets\Wide310x150Logo.scale-400.png" />
+    <Content Include="attackpopup.png" />
     <Content Include="autobattle.png" />
     <Content Include="basic_boots.png" />
     <Content Include="basic_earring.png" />
@@ -200,6 +201,7 @@
     <Content Include="monster5.png" />
     <Content Include="monster6.png" />
     <Content Include="monsters.png" />
+    <Content Include="movepopup.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="pure_gold_ring.png" />
     <Content Include="rightarrow.png" />
