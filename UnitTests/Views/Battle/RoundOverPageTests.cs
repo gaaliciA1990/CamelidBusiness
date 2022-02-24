@@ -258,5 +258,22 @@ namespace UnitTests.Views
             // Assert
             Assert.IsTrue(true); // Got to here, so it happened...
         }
+
+        [Test]
+        public void RoundOverPage_DrawSelectedItem_Click_Button_Valid_Should_Pass()
+        {
+            // Arrange
+            PlayerInfoModel player = new PlayerInfoModel();
+            var myStack = page.CreatePlayerDisplayBox(player);
+            ImageButton playerImage = (ImageButton)myStack.Children[0];
+            
+            // Act
+            playerImage.PropagateUpClicked();
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
     }
 }
