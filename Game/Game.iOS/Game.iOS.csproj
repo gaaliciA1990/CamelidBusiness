@@ -270,11 +270,6 @@
     <BundleResource Include="Resources\exit.png" />
     <BundleResource Include="Resources\icon_back.png" />
     <BundleResource Include="Resources\icon_dice.png" />
-    <BundleResource Include="Resources\bronze_spear.png" />
-    <BundleResource Include="Resources\curved_bow.png" />
-    <BundleResource Include="Resources\andean_cuff.png" />
-    <BundleResource Include="Resources\andean_hat.png" />
-    <BundleResource Include="Resources\bronze_mace.png" />
     <BundleResource Include="Resources\basic_necklace.png" />
     <BundleResource Include="Resources\basic_shield3.png" />
     <BundleResource Include="Resources\basic_hat.png" />
@@ -299,7 +294,6 @@
     <BundleResource Include="Resources\battleBackground.jpg" />
     <Content Include="Resources\monsters.png" />
     <BundleResource Include="Resources\slider_thumbnail.png" />
-    <BundleResource Include="Resources\pure_gold_ring.png" />
     <BundleResource Include="Resources\movepopup.png" />
     <BundleResource Include="Resources\unique_andeanscarf.png" />
     <BundleResource Include="Resources\unique_bronzemace.png" />
