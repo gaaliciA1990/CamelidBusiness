@@ -133,8 +133,6 @@ namespace Game.Views
 
             //Draw the items currently equipped on this character
             AddItemsToDisplay();
-
-
         }
         /// <summary>
         /// Show the Items the Character has
