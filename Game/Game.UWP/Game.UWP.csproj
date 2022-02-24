@@ -113,8 +113,6 @@
     <Content Include="alpaca2.png" />
     <Content Include="alpaca3.png" />
     <Content Include="alpacaclanlogo.png" />
-    <Content Include="andean_cuff.png" />
-    <Content Include="andean_hat.png" />
     <Content Include="Assets\LargeTile.scale-100.png" />
     <Content Include="Assets\LargeTile.scale-200.png" />
     <Content Include="Assets\LargeTile.scale-400.png" />
@@ -164,14 +162,11 @@
     <Content Include="basic_torch.png" />
     <Content Include="battleBackground.jpg" />
     <Content Include="battleboard.png" />
-    <Content Include="bronze_mace.png" />
-    <Content Include="bronze_spear.png" />
     <Content Include="button_continegame.png" />
     <Content Include="button_start.png" />
     <Content Include="button_startgame.png" />
     <Content Include="caverns.png" />
     <Content Include="characters.png" />
-    <Content Include="curved_bow.png" />
     <Content Include="d10.png" />
     <Content Include="d20_2.png" />
     <Content Include="button_delete.png" />
@@ -203,7 +198,6 @@
     <Content Include="monsters.png" />
     <Content Include="movepopup.png" />
     <Content Include="Properties\Default.rd.xml" />
-    <Content Include="pure_gold_ring.png" />
     <Content Include="rightarrow.png" />
     <Content Include="score.png" />
     <Content Include="slider_thumbnail.png" />
