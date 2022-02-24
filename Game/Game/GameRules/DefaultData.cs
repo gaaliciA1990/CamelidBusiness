@@ -147,23 +147,14 @@ namespace Game.GameRules
                     Attribute = AttributeEnum.Speed,
                     IsUnique = true},
 
-                new ItemModel {
-                    Name = "Fuzzy Boots",
-                    Description = "Fuzzy boots keeping you warm",
-                    ImageURI = "basic_boots.png",
-                    Range = 0,
-                    Damage = 0,
-                    Value = 1,
-                    Location = ItemLocationEnum.Finger,
-                    Attribute = AttributeEnum.MaxHealth},
-
+                
                 new ItemModel {
                     Name = "Dia Earrings",
                     Description = "Colorful earings",
                     ImageURI = "basic_earring.png",
                     Range = 0,
                     Damage = 0,
-                    Value = 2,
+                    Value = 1,
                     Location = ItemLocationEnum.Finger,
                     Attribute = AttributeEnum.MaxHealth},
 
@@ -183,19 +174,9 @@ namespace Game.GameRules
                     ImageURI = "basic_earring3.png",
                     Range = 0,
                     Damage = 0,
-                    Value = 2,
+                    Value = 3,
                     Location = ItemLocationEnum.Finger,
                     Attribute = AttributeEnum.MaxHealth},
-
-                new ItemModel {
-                    Name = "Furry hat",
-                    Description = "You look stylish!",
-                    ImageURI = "basic_hat.png",
-                    Range = 0,
-                    Damage = 0,
-                    Value = 2,
-                    Location = ItemLocationEnum.Head,
-                    Attribute = AttributeEnum.Defense},
 
                 new ItemModel {
                     Name = "French beret",
@@ -205,7 +186,7 @@ namespace Game.GameRules
                     Damage = 0,
                     Value = 2,
                     Location = ItemLocationEnum.Head,
-                    Attribute = AttributeEnum.Defense},
+                    Attribute = AttributeEnum.MaxHealth},
 
                 new ItemModel {
                     Name = "Sombrero",
@@ -213,9 +194,39 @@ namespace Game.GameRules
                     ImageURI = "basic_sombrero.png",
                     Range = 0,
                     Damage = 0,
-                    Value = 2,
+                    Value = 3,
                     Location = ItemLocationEnum.Head,
-                    Attribute = AttributeEnum.Defense},
+                    Attribute = AttributeEnum.Speed},
+
+                new ItemModel {
+                    Name = "Fuzzy Boots",
+                    Description = "Fuzzy boots keeping you warm",
+                    ImageURI = "basic_boots.png",
+                    Range = 0,
+                    Damage = 0,
+                    Value = 1,
+                    Location = ItemLocationEnum.Finger,
+                    Attribute = AttributeEnum.Speed},
+
+                new ItemModel {
+                    Name = "Ballet shoes",
+                    Description = "Dance through the battlefield",
+                    ImageURI = "basic_slippers.png",
+                    Range = 0,
+                    Damage = 0,
+                    Value = 1,
+                    Location = ItemLocationEnum.Feet,
+                    Attribute = AttributeEnum.Speed},
+
+                new ItemModel {
+                    Name = "Warm socks",
+                    Description = "They're warm",
+                    ImageURI = "basic_socks.png",
+                    Range = 0,
+                    Damage = 0,
+                    Value = 2,
+                    Location = ItemLocationEnum.Feet,
+                    Attribute = AttributeEnum.Speed},
 
                 new ItemModel {
                     Name = "Gold necklace",
@@ -223,9 +234,9 @@ namespace Game.GameRules
                     ImageURI = "basic_necklace.png",
                     Range = 0,
                     Damage = 0,
-                    Value = 2,
+                    Value = 3,
                     Location = ItemLocationEnum.Necklass,
-                    Attribute = AttributeEnum.MaxHealth},
+                    Attribute = AttributeEnum.Defense},
 
                 new ItemModel {
                     Name = "Silver necklace",
@@ -243,9 +254,9 @@ namespace Game.GameRules
                     ImageURI = "basic_scarf.png",
                     Range = 0,
                     Damage = 0,
-                    Value = 2,
+                    Value = 1,
                     Location = ItemLocationEnum.Necklass,
-                    Attribute = AttributeEnum.Speed},
+                    Attribute = AttributeEnum.Defense},
 
                 new ItemModel {
                     Name = "Ancient shield",
@@ -253,7 +264,7 @@ namespace Game.GameRules
                     ImageURI = "basic_shield.png",
                     Range = 0,
                     Damage = 0,
-                    Value = 2,
+                    Value = 1,
                     Location = ItemLocationEnum.OffHand,
                     Attribute = AttributeEnum.Defense},
 
@@ -273,29 +284,19 @@ namespace Game.GameRules
                     ImageURI = "basic_shield3.png",
                     Range = 0,
                     Damage = 0,
-                    Value = 2,
+                    Value = 3,
                     Location = ItemLocationEnum.OffHand,
                     Attribute = AttributeEnum.Defense},
 
                 new ItemModel {
-                    Name = "Ballet shoes",
-                    Description = "Dance through the battlefield",
-                    ImageURI = "basic_slippers.png",
+                    Name = "Furry hat",
+                    Description = "You look stylish!",
+                    ImageURI = "basic_hat.png",
                     Range = 0,
                     Damage = 0,
-                    Value = 2,
-                    Location = ItemLocationEnum.Feet,
-                    Attribute = AttributeEnum.Speed},
-
-                new ItemModel {
-                    Name = "Warm socks",
-                    Description = "They're warm",
-                    ImageURI = "basic_socks.png",
-                    Range = 0,
-                    Damage = 0,
-                    Value = 2,
-                    Location = ItemLocationEnum.Feet,
-                    Attribute = AttributeEnum.Speed},
+                    Value = 1,
+                    Location = ItemLocationEnum.Head,
+                    Attribute = AttributeEnum.Defense},
 
                 new ItemModel {
                     Name = "Tree branch",
@@ -303,7 +304,7 @@ namespace Game.GameRules
                     ImageURI = "basic_stick.png",
                     Range = 0,
                     Damage = 0,
-                    Value = 2,
+                    Value = 1,
                     Location = ItemLocationEnum.PrimaryHand,
                     Attribute = AttributeEnum.Attack},
 
@@ -323,7 +324,7 @@ namespace Game.GameRules
                     ImageURI = "basic_torch.png",
                     Range = 0,
                     Damage = 0,
-                    Value = 2,
+                    Value = 3,
                     Location = ItemLocationEnum.PrimaryHand,
                     Attribute = AttributeEnum.Attack },
             };
