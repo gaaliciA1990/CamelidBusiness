@@ -21,7 +21,7 @@ namespace UnitTests.GameRules
             // Reset
 
             // Assert
-            Assert.AreEqual(24, result.Count);
+            Assert.AreEqual(30, result.Count);
         }
 
         [Test]
@@ -35,7 +35,7 @@ namespace UnitTests.GameRules
             // Reset
 
             // Assert
-            Assert.AreEqual(3, result.Count);
+            Assert.AreEqual(9, result.Count);
         }
 
         [Test]
