@@ -18,9 +18,9 @@ namespace Game.GameRules
                 new ItemModel {
                     Name = "Curved Bow",
                     Description = "An enhanced, curvy bow",
-                    ImageURI = "curved_bow.png",
-                    Range = 6,
-                    Damage = 10,
+                    ImageURI = "unique_curvedbow.png",
+                    Range = 4,
+                    Damage = 3,
                     Value = 3,
                     Location = ItemLocationEnum.PrimaryHand,
                     Attribute = AttributeEnum.Attack,
@@ -29,9 +29,9 @@ namespace Game.GameRules
                 new ItemModel {
                     Name = "Bronze Spear",
                     Description = "A spectacular craftsmanship infused with magic that packs a punch!",
-                    ImageURI = "bronze_spear.png",
-                    Range = 3,
-                    Damage = 8,
+                    ImageURI = "unique_bronzespear.png",
+                    Range = 2,
+                    Damage = 4,
                     Value = 4,
                     Location = ItemLocationEnum.PrimaryHand,
                     Attribute = AttributeEnum.Attack,
@@ -40,9 +40,9 @@ namespace Game.GameRules
                 new ItemModel {
                     Name = "Bronze Maze",
                     Description = "An  metal mace to beat your enemies with",
-                    ImageURI = "bronze_mace.png",
+                    ImageURI = "unique_bronzemace.png",
                     Range = 1,
-                    Damage = 6,
+                    Damage = 5,
                     Value = 3,
                     Location = ItemLocationEnum.PrimaryHand,
                     Attribute = AttributeEnum.Attack,
@@ -51,7 +51,7 @@ namespace Game.GameRules
                 new ItemModel {
                     Name = "Andean Hat",
                     Description = "A traditional and colorful hat. Stylish and protected!",
-                    ImageURI = "andean_hat.png",
+                    ImageURI = "unique_andeanhat.png",
                     Range = 0,
                     Damage = 0,
                     Value = 4,
@@ -59,14 +59,24 @@ namespace Game.GameRules
                     Attribute = AttributeEnum.Defense,
                     IsUnique = true},
 
-
                 new ItemModel {
                     Name = "Andean Cuff",
                     Description = "Beautiful adornments",
-                    ImageURI = "andean_cuff.png",
+                    ImageURI = "unique_andeancuff.png",
                     Range = 0,
                     Damage = 0,
-                    Value = 5,
+                    Value = 2,
+                    Location = ItemLocationEnum.Necklass,
+                    Attribute = AttributeEnum.Defense,
+                    IsUnique = true},
+
+                new ItemModel {
+                    Name = "Andean Scarf",
+                    Description = "Stylish scarf that provides extra protection!",
+                    ImageURI = "unique_andeanscarf.png",
+                    Range = 0,
+                    Damage = 0,
+                    Value = 3,
                     Location = ItemLocationEnum.Necklass,
                     Attribute = AttributeEnum.Defense,
                     IsUnique = true},
@@ -74,7 +84,29 @@ namespace Game.GameRules
                 new ItemModel {
                     Name = "Pure Gold Ring",
                     Description = "Snazzy gold ring, will make you feel like the fanciest warrior",
-                    ImageURI = "pure_gold_ring.png",
+                    ImageURI = "unique_puregoldring.png",
+                    Range = 0,
+                    Damage = 0,
+                    Value = 4,
+                    Location = ItemLocationEnum.Finger,
+                    Attribute = AttributeEnum.MaxHealth,
+                    IsUnique = true},
+
+                new ItemModel {
+                    Name = "Incan Scarf",
+                    Description = "Elegantly crafted in the depths of Machu Picchu, this scarf looks amazing on you and boosts your health.",
+                    ImageURI = "unique_incanscarf.png",
+                    Range = 0,
+                    Damage = 0,
+                    Value = 4,
+                    Location = ItemLocationEnum.Necklass,
+                    Attribute = AttributeEnum.MaxHealth,
+                    IsUnique = true},
+
+                new ItemModel {
+                    Name = "Tumi Ring",
+                    Description = "Wow, you must be special! Let the power of the Incan god Inti flow through in this Tumi style ring that increase your health. ",
+                    ImageURI = "unique_puregoldenanklet.png",
                     Range = 0,
                     Damage = 0,
                     Value = 6,
@@ -83,12 +115,45 @@ namespace Game.GameRules
                     IsUnique = true},
 
                 new ItemModel {
+                    Name = "Fedora",
+                    Description = "You can be the cool camelid of party; with a speed boost no one can beat.",
+                    ImageURI = "unique_fedora.png",
+                    Range = 0,
+                    Damage = 0,
+                    Value = 5,
+                    Location = ItemLocationEnum.Head,
+                    Attribute = AttributeEnum.Speed,
+                    IsUnique = true},
+
+                new ItemModel {
+                    Name = "Golden Anklet",
+                    Description = "A stylish and lightweight anklet made from holy gold of the Incans to enhance you Speed. ",
+                    ImageURI = "unique_puregoldenanklet.png",
+                    Range = 0,
+                    Damage = 0,
+                    Value = 6,
+                    Location = ItemLocationEnum.Finger,
+                    Attribute = AttributeEnum.Speed,
+                    IsUnique = true},
+
+                new ItemModel {
+                    Name = "Pure Silver Anklet",
+                    Description = "Anklets aren’t just for the ladies, especially when they have a need for speed!",
+                    ImageURI = "unique_puresilveranklet.png",
+                    Range = 0,
+                    Damage = 0,
+                    Value = 3,
+                    Location = ItemLocationEnum.Finger,
+                    Attribute = AttributeEnum.Speed,
+                    IsUnique = true},
+
+                new ItemModel {
                     Name = "Fuzzy Boots",
                     Description = "Fuzzy boots keeping you warm",
                     ImageURI = "basic_boots.png",
                     Range = 0,
                     Damage = 0,
-                    Value = 2,
+                    Value = 1,
                     Location = ItemLocationEnum.Finger,
                     Attribute = AttributeEnum.MaxHealth},
 
