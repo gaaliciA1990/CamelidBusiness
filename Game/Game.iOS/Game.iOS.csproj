@@ -301,5 +301,17 @@
     <BundleResource Include="Resources\slider_thumbnail.png" />
     <BundleResource Include="Resources\pure_gold_ring.png" />
     <BundleResource Include="Resources\movepopup.png" />
+    <BundleResource Include="Resources\unique_andeanscarf.png" />
+    <BundleResource Include="Resources\unique_bronzemace.png" />
+    <BundleResource Include="Resources\unique_bronzespear.png" />
+    <BundleResource Include="Resources\unique_curvedbow.png" />
+    <BundleResource Include="Resources\unique_fedora.png" />
+    <BundleResource Include="Resources\unique_incanscarf.png" />
+    <BundleResource Include="Resources\unique_puregoldenanklet.png" />
+    <BundleResource Include="Resources\unique_puregoldring.png" />
+    <BundleResource Include="Resources\unique_puresilveranklet.png" />
+    <BundleResource Include="Resources\unique_tumiring.png" />
+    <BundleResource Include="Resources\unique_andeancuff.png" />
+    <BundleResource Include="Resources\unique_andeanhat.png" />
   </ItemGroup>
 </Project>
