@@ -106,7 +106,7 @@ namespace Game.GameRules
                 new ItemModel {
                     Name = "Tumi Ring",
                     Description = "Wow, you must be special! Let the power of the Incan god Inti flow through in this Tumi style ring that increase your health. ",
-                    ImageURI = "unique_puregoldenanklet.png",
+                    ImageURI = "unique_tumiring.png",
                     Range = 0,
                     Damage = 0,
                     Value = 5,
