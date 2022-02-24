@@ -227,18 +227,19 @@ namespace UnitTests.Views
 
             // Draw the Items
             BattleEngineViewModel.Instance.Engine.EngineSettings.BattleScore.ItemModelDropList.Add(new ItemModel());
-            BattleEngineViewModel.Instance.Engine.EngineSettings.BattleScore.ItemModelSelectList.Add(new ItemModel());
+            //BattleEngineViewModel.Instance.Engine.EngineSettings.BattleScore.ItemModelSelectList.Add(new ItemModel());
 
-            // Draw two times
-            page.DrawSelectedItems();
+            ImageButton dummy = new ImageButton();
+            PlayerInfoModel player = new PlayerInfoModel();
 
             // Act
-            page.DrawSelectedItems();
+            page.DrawSelectedItems(dummy, player);
 
             // Reset
 
             // Assert
-            Assert.IsTrue(true); // Got to here, so it happened...
+            Assert.AreEqual(player, page.CurrentSelectedChar);
+            Assert.AreEqual(Xamarin.Forms.Color.Beige, page.CurrentSelectedButton.BackgroundColor); // Got to here, so it happened...
         }
 
         [Test]
