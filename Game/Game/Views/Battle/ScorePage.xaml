@@ -7,76 +7,114 @@
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <Label Grid.Row="0" Grid.Column="1" Text="Score" Style="{StaticResource LabelStyle}"/>
+            <Label Grid.Row="0"
+                   Grid.Column="1"
+                   Text="GAME OVER"
+                   Style="{StaticResource HeaderStyle}" />
 
-            <Grid Grid.Row="1" Grid.Column="1" VerticalOptions="CenterAndExpand">
-                <Label Grid.Row="0" x:Name="ElapsedTime" Padding="10" Style="{StaticResource LabelStyle}"/>
-                <Label Grid.Row="1" x:Name="TotalScore" Padding="10" Style="{StaticResource LabelStyle}"/>
-                <Label Grid.Row="2" x:Name="TotalRounds" Padding="10" Style="{StaticResource LabelStyle}"/>
-                <Label Grid.Row="3" x:Name="TotalKilled" Padding="10" Style="{StaticResource LabelStyle}"/>
-                <Label Grid.Row="4" x:Name="TotalCollected" Padding="10" Style="{StaticResource LabelStyle}"/>
+            <Grid Grid.Row="1"
+                  Grid.Column="1"
+                  VerticalOptions="CenterAndExpand">
+                <Label Grid.Row="0"
+                       x:Name="ElapsedTime"
+                       Padding="10"
+                       Style="{StaticResource LabelStyle}" />
+                <Label Grid.Row="1"
+                       x:Name="TotalScore"
+                       Padding="10"
+                       Style="{StaticResource LabelStyle}" />
+                <Label Grid.Row="2"
+                       x:Name="TotalRounds"
+                       Padding="10"
+                       Style="{StaticResource LabelStyle}" />
+                <Label Grid.Row="3"
+                       x:Name="TotalKilled"
+                       Padding="10"
+                       Style="{StaticResource LabelStyle}" />
+                <Label Grid.Row="4"
+                       x:Name="TotalCollected"
+                       Padding="10"
+                       Style="{StaticResource LabelStyle}" />
             </Grid>
 
-            <Frame Grid.Row="1" Grid.Column="0" 
-                   HorizontalOptions="FillAndExpand" 
-                   VerticalOptions="FillAndExpand" 
+            <Frame Grid.Row="1"
+                   Grid.Column="0"
+                   HorizontalOptions="FillAndExpand"
+                   VerticalOptions="FillAndExpand"
                    BorderColor="Transparent"
                    BackgroundColor="#50FFFFFF">
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
-                    <Label Grid.Row="0" Text="Dead Characters" Style="{StaticResource LabelStyle}"/>
-                    <Grid Grid.Row="1" x:Name="CharacterListGrid"/>
+                    <Label Grid.Row="0"
+                           Text="Dead Characters"
+                           Style="{StaticResource LabelStyle}" />
+                    <Grid Grid.Row="1"
+                          x:Name="CharacterListGrid" />
                 </Grid>
             </Frame>
 
-            <Frame Grid.Row="1" Grid.Column="2" 
-                   HorizontalOptions="FillAndExpand" 
-                   VerticalOptions="FillAndExpand" 
+            <Frame Grid.Row="1"
+                   Grid.Column="2"
+                   HorizontalOptions="FillAndExpand"
+                   VerticalOptions="FillAndExpand"
                    BorderColor="Transparent"
                    BackgroundColor="#50FFFFFF">
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
-                    <Label Grid.Row="0" Text="Dead Monsters" Style="{StaticResource LabelStyle}"/>
-                    <Grid Grid.Row="1" x:Name="MonsterListGrid"/>
+                    <Label Grid.Row="0"
+                           Text="Dead Monsters"
+                           Style="{StaticResource LabelStyle}" />
+                    <Grid Grid.Row="1"
+                          x:Name="MonsterListGrid" />
                 </Grid>
             </Frame>
 
-            <Frame Grid.Row="2" Grid.Column="0" 
+            <Frame Grid.Row="2"
+                   Grid.Column="0"
                    Grid.ColumnSpan="3"
-                   HorizontalOptions="FillAndExpand" 
-                   VerticalOptions="FillAndExpand" 
+                   HorizontalOptions="FillAndExpand"
+                   VerticalOptions="FillAndExpand"
                    BorderColor="Transparent"
                    BackgroundColor="#50FFFFFF">
                 <Grid Padding="10">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <Label Grid.Column="0" Text="Unique Items Found"  Style="{StaticResource LabelStyle}"/>
-                    <StackLayout Grid.Column="1" Orientation="Horizontal" HeightRequest="50" x:Name="ItemsStackLayout"/>
+                    <Label Grid.Column="0"
+                           Text="Unique Items Found"
+                           Style="{StaticResource LabelStyle}" />
+                    <StackLayout Grid.Column="1"
+                                 Orientation="Horizontal"
+                                 HeightRequest="50"
+                                 x:Name="ItemsStackLayout" />
                 </Grid>
             </Frame>
 
-
-            <StackLayout Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="CenterAndExpand" Orientation="Horizontal">
-                <Button Clicked="CloseButton_Clicked" Text="Close"/>
+            <StackLayout Grid.Row="3"
+                         Grid.Column="0"
+                         Grid.ColumnSpan="3"
+                         HorizontalOptions="CenterAndExpand"
+                         Orientation="Horizontal">
+                <Button Clicked="CloseButton_Clicked"
+                        Text="Close" />
             </StackLayout>
         </Grid>
     </ContentPage.Content>
