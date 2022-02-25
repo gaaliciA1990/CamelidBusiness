@@ -9,27 +9,57 @@
         <!--Menu Bar-->
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="3*"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="3*" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Horizontal" HorizontalOptions="StartAndExpand">
-                <ImageButton Source="icon_edit.png" Clicked="Setttings_Clicked" Style="{StaticResource BattleToolbarStyle}"/>
-                <ImageButton Source="icon_cancel.png" Clicked="ExitButton_Clicked" Style="{StaticResource BattleToolbarStyle}"/>
+            <StackLayout Grid.Row="0"
+                         Grid.Column="0"
+                         Orientation="Horizontal"
+                         HorizontalOptions="StartAndExpand">
+                <ImageButton Source="icon_edit.png"
+                             Clicked="Setttings_Clicked"
+                             Style="{StaticResource BattleToolbarStyle}" />
+                <ImageButton Source="icon_cancel.png"
+                             Clicked="ExitButton_Clicked"
+                             Style="{StaticResource BattleToolbarStyle}" />
             </StackLayout>
-            <StackLayout Grid.Row="0" Grid.Column="1" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-                <Label x:Name="BattleModeValue" Text="" Style="{StaticResource ValueStyleMicro}" HorizontalTextAlignment="Center"/>
-                <Label x:Name="AttackerName" Text="" Style="{StaticResource ValueStyleBattleMicro}"/>
-                <Image x:Name="AttackerAttack" Source="mapcell.png" Style="{StaticResource ImageSmallStyle}"/>
-                <Label x:Name="DefenderName" Text="" Style="{StaticResource ValueStyleBattleMicro}"/>
+            <StackLayout Grid.Row="0"
+                         Grid.Column="1"
+                         Orientation="Horizontal"
+                         HorizontalOptions="CenterAndExpand">
+                <Label x:Name="BattleModeValue"
+                       Text=""
+                       Style="{StaticResource ValueStyleMicro}"
+                       HorizontalTextAlignment="Center" />
+                <Label x:Name="AttackerName"
+                       Text=""
+                       Style="{StaticResource ValueStyleBattleMicro}" />
+                <Image x:Name="AttackerAttack"
+                       Source="mapcell.png"
+                       Style="{StaticResource ImageSmallStyle}" />
+                <Label x:Name="DefenderName"
+                       Text=""
+                       Style="{StaticResource ValueStyleBattleMicro}" />
             </StackLayout>
-            <StackLayout Grid.Row="0" Grid.Column="2" Orientation="Horizontal" HorizontalOptions="EndAndExpand">
-                <Button x:Name="AttackButton" Clicked="AttackButton_Clicked" Text="Next Attack" HorizontalOptions="EndAndExpand" IsVisible="False"/>
-                <Button x:Name="NextRoundButton" Clicked="NextRoundButton_Clicked" Text="Next Round" HorizontalOptions="EndAndExpand" IsVisible="False"/>
+            <StackLayout Grid.Row="0"
+                         Grid.Column="2"
+                         Orientation="Horizontal"
+                         HorizontalOptions="EndAndExpand">
+                <Button x:Name="AttackButton"
+                        Clicked="AttackButton_Clicked"
+                        Text="Next Attack"
+                        HorizontalOptions="EndAndExpand"
+                        IsVisible="False" />
+                <Button x:Name="NextRoundButton"
+                        Clicked="NextRoundButton_Clicked"
+                        Text="Next Round"
+                        HorizontalOptions="EndAndExpand"
+                        IsVisible="False" />
             </StackLayout>
         </Grid>
     </NavigationPage.TitleView>
@@ -37,148 +67,220 @@
     <ContentPage.Content>
         <Grid IsVisible="True">
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
             <!--The Game UI Screen -->
             <Grid VerticalOptions="FillAndExpand"
-                  x:Name="GameUIDisplay" 
+                  x:Name="GameUIDisplay"
                   IsVisible="True"
-                  Grid.Row="0" Grid.Column="0">
+                  Grid.Row="0"
+                  Grid.Column="0">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="4.5*"/>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="4.5*" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
                 <!-- Get Ready Page-->
-                <Grid Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" x:Name="StartBattleButton" IsVisible="False">
+                <Grid Grid.Row="0"
+                      Grid.Column="0"
+                      Grid.RowSpan="2"
+                      x:Name="StartBattleButton"
+                      IsVisible="False">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="3*"/>
-                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="3*" />
+                        <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
-                    <Label Grid.Row="0" Text="{x:Static local:StartMessagesModelHelper.GetRandomMessage}" Style="{StaticResource CenterMessageLargeStyle}"/>
-                    <Button Grid.Row="1" Clicked="StartButton_Clicked" Text="Start Battle" />
+                    <Label Grid.Row="0"
+                           Text="{x:Static local:StartMessagesModelHelper.GetRandomMessage}"
+                           Style="{StaticResource CenterMessageLargeStyle}" />
+                    <Button Grid.Row="1"
+                            Clicked="StartButton_Clicked"
+                            Text="Start Battle" />
                 </Grid>
 
-
-
                 <!--Action Message-->
-                <Grid Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" 
-                                HorizontalOptions="FillAndExpand" 
-                                VerticalOptions="FillAndExpand" 
-                                x:Name="ActionPopup" 
-                                IsVisible="False">
+                <Grid Grid.Row="0"
+                      Grid.Column="0"
+                      Grid.RowSpan="2"
+                      HorizontalOptions="FillAndExpand"
+                      VerticalOptions="FillAndExpand"
+                      x:Name="ActionPopup"
+                      IsVisible="False">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="2*"/>
-                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="2*" />
+                        <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
-                    <Image Grid.Row="1" Grid.Column="0" x:Name="ActionPopupMessage" Aspect="AspectFit" Source="movepopup.png" HorizontalOptions="CenterAndExpand"/>
+                    <Image Grid.Row="1"
+                           Grid.Column="0"
+                           x:Name="ActionPopupMessage"
+                           Aspect="AspectFit"
+                           Source="movepopup.png"
+                           HorizontalOptions="CenterAndExpand" />
                 </Grid>
 
                 <!--The Top of the Battle UI Holds the List of Players-->
-                <StackLayout Grid.Row="0" Grid.Column="0" VerticalOptions="Start" x:Name="TopPlayerDisplay">
+                <StackLayout Grid.Row="0"
+                             Grid.Column="0"
+                             VerticalOptions="Start"
+                             x:Name="TopPlayerDisplay">
                     <StackLayout Style="{StaticResource VerticalStack}"
-                        x:Name="GamePlayersTopDisplay" 
-                        IsVisible="true" 
-                        VerticalOptions="Start" 
-                        HorizontalOptions="CenterAndExpand">
+                                 x:Name="GamePlayersTopDisplay"
+                                 IsVisible="true"
+                                 VerticalOptions="Start"
+                                 HorizontalOptions="CenterAndExpand">
 
-                        <Label Text="Characters" Style="{StaticResource CenterMessageStyle}" HorizontalOptions="CenterAndExpand"/>
-                        <StackLayout x:Name="CharacterBox" Style="{StaticResource HorizontalStack}" HorizontalOptions="CenterAndExpand"/>
+                        <Label Text="Characters"
+                               Style="{StaticResource CenterMessageStyle}"
+                               HorizontalOptions="CenterAndExpand" />
+                        <StackLayout x:Name="CharacterBox"
+                                     Style="{StaticResource HorizontalStack}"
+                                     HorizontalOptions="CenterAndExpand" />
 
-                        <Label Text="Monsters" Style="{StaticResource CenterMessageStyle}" HorizontalOptions="CenterAndExpand"/>
-                        <StackLayout x:Name="MonsterBox" Style="{StaticResource HorizontalStack}" HorizontalOptions="CenterAndExpand"/>
+                        <Label Text="Monsters"
+                               Style="{StaticResource CenterMessageStyle}"
+                               HorizontalOptions="CenterAndExpand" />
+                        <StackLayout x:Name="MonsterBox"
+                                     Style="{StaticResource HorizontalStack}"
+                                     HorizontalOptions="CenterAndExpand" />
                     </StackLayout>
                 </StackLayout>
 
                 <!--The Battle Map Display -->
-                <Grid Grid.Row="1" Grid.Column="0" x:Name="BattleMapDisplay">
-                    <Grid x:Name="MapGrid"/>
+                <Grid Grid.Row="1"
+                      Grid.Column="0"
+                      x:Name="BattleMapDisplay">
+                    <Grid x:Name="MapGrid" />
                 </Grid>
 
                 <!--Select Action Page-->
-                <Grid Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" 
-                                HorizontalOptions="FillAndExpand" 
-                                VerticalOptions="FillAndExpand" 
-                                x:Name="SelectAction" 
-                                IsVisible="False">
-                    <Frame Style="{StaticResource DeletePopupFrame}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                <Grid Grid.Row="0"
+                      Grid.Column="0"
+                      Grid.RowSpan="2"
+                      HorizontalOptions="FillAndExpand"
+                      VerticalOptions="FillAndExpand"
+                      x:Name="SelectAction"
+                      IsVisible="False">
+                    <Frame Style="{StaticResource DeletePopupFrame}"
+                           HorizontalOptions="CenterAndExpand"
+                           VerticalOptions="CenterAndExpand">
                         <Grid>
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
                             </Grid.RowDefinitions>
-                            <Label Grid.Row="0" x:Name="SelectActionMessage" Text="" Style="{StaticResource LabelBaseStyle}" HorizontalOptions="CenterAndExpand"/>
-                            <StackLayout Grid.Row="1" Orientation="Horizontal" Padding="10">
-                                <Image Source="action_attack.png" Aspect="AspectFit"/>
-                                <Label Text="Attack" Style="{StaticResource LabelBaseStyle}"/>
+                            <Label Grid.Row="0"
+                                   x:Name="SelectActionMessage"
+                                   Text=""
+                                   Style="{StaticResource LabelBaseStyle}"
+                                   HorizontalOptions="CenterAndExpand" />
+                            <StackLayout Grid.Row="1"
+                                         Orientation="Horizontal"
+                                         Padding="10">
+                                <Image Source="action_attack.png"
+                                       Aspect="AspectFit" />
+                                <Label Text="Attack"
+                                       Style="{StaticResource LabelBaseStyle}" />
                             </StackLayout>
-                            <StackLayout Grid.Row="2" Orientation="Horizontal" Padding="10">
-                                <Image Source="action_move.png" Aspect="AspectFit" />
-                                <Label Text="Move" Style="{StaticResource LabelBaseStyle}"/>
+                            <StackLayout Grid.Row="2"
+                                         Orientation="Horizontal"
+                                         Padding="10">
+                                <Image Source="action_move.png"
+                                       Aspect="AspectFit" />
+                                <Label Text="Move"
+                                       Style="{StaticResource LabelBaseStyle}" />
                             </StackLayout>
 
-                            <ImageButton Grid.Row="1" Clicked="SelectMonsterToAttack" CommandParameter="test" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
-                            <ImageButton Grid.Row="2" Clicked="SelectLocationToMoveTo" CommandParameter="test" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                            <ImageButton Grid.Row="1"
+                                         Clicked="SelectMonsterToAttack"
+                                         CommandParameter="test"
+                                         HorizontalOptions="FillAndExpand"
+                                         VerticalOptions="FillAndExpand" />
+                            <ImageButton Grid.Row="2"
+                                         Clicked="SelectLocationToMoveTo"
+                                         CommandParameter="test"
+                                         HorizontalOptions="FillAndExpand"
+                                         VerticalOptions="FillAndExpand" />
                         </Grid>
                     </Frame>
                 </Grid>
 
                 <!--The Bottom of the Battle UI  Holds the Player to Player boxes, Buttons, and the Messages-->
-                <StackLayout Grid.Row="1" Grid.Column="0" x:Name="BattleBottomBox" Style="{StaticResource BattleUIBottomBox}" IsVisible="False">
+                <StackLayout Grid.Row="1"
+                             Grid.Column="0"
+                             x:Name="BattleBottomBox"
+                             Style="{StaticResource BattleUIBottomBox}"
+                             IsVisible="False">
 
                     <Frame x:Name="BattlePlayerInfomationBox"
-                                Style="{StaticResource PlayerBattleOuterFrame}"
-                                IsVisible="False">
+                           Style="{StaticResource PlayerBattleOuterFrame}"
+                           IsVisible="False">
 
-                        <StackLayout x:Name="BattlePlayerBox" Style="{StaticResource PlayerBattleOuterBox}">
+                        <StackLayout x:Name="BattlePlayerBox"
+                                     Style="{StaticResource PlayerBattleOuterBox}">
 
-                            <StackLayout x:Name="AttackerBox" Style="{StaticResource PlayerBattleInfoBox}" HorizontalOptions="Start">
-                                <Image x:Name="AttackerImage" Source="knight.png" Style="{StaticResource ImageBattleMediumStyle}"/>
-                                <Label x:Name="AttackerHealth" Text="" Style="{StaticResource ValueStyleBattleMicro}"/>
+                            <StackLayout x:Name="AttackerBox"
+                                         Style="{StaticResource PlayerBattleInfoBox}"
+                                         HorizontalOptions="Start">
+                                <Image x:Name="AttackerImage"
+                                       Source="knight.png"
+                                       Style="{StaticResource ImageBattleMediumStyle}" />
+                                <Label x:Name="AttackerHealth"
+                                       Text=""
+                                       Style="{StaticResource ValueStyleBattleMicro}" />
                             </StackLayout>
 
-                            <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-                                <Label x:Name="BattlePlayerBoxVersus" Text="vs" Style="{StaticResource ValueStyleBattleMicro}"
-                                    Padding="0,5,0,0"
-                                    VerticalOptions="Center" VerticalTextAlignment="Center" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+                            <StackLayout HorizontalOptions="Center"
+                                         VerticalOptions="Center">
+                                <Label x:Name="BattlePlayerBoxVersus"
+                                       Text="vs"
+                                       Style="{StaticResource ValueStyleBattleMicro}"
+                                       Padding="0,5,0,0"
+                                       VerticalOptions="Center"
+                                       VerticalTextAlignment="Center"
+                                       HorizontalOptions="Center"
+                                       HorizontalTextAlignment="Center" />
                             </StackLayout>
 
-                            <StackLayout x:Name="DefenderBox" Style="{StaticResource PlayerBattleInfoBox}" HorizontalOptions="End">
-                                <Image x:Name="DefenderImage" Source="troll.png" Style="{StaticResource ImageBattleMediumStyle}"/>
-                                <Label x:Name="DefenderHealth" Text="" Style="{StaticResource ValueStyleBattleMicro}"/>
+                            <StackLayout x:Name="DefenderBox"
+                                         Style="{StaticResource PlayerBattleInfoBox}"
+                                         HorizontalOptions="End">
+                                <Image x:Name="DefenderImage"
+                                       Source="troll.png"
+                                       Style="{StaticResource ImageBattleMediumStyle}" />
+                                <Label x:Name="DefenderHealth"
+                                       Text=""
+                                       Style="{StaticResource ValueStyleBattleMicro}" />
                             </StackLayout>
                         </StackLayout>
                     </Frame>
 
+                    <StackLayout Style="{StaticResource VerticalStack}"
+                                 HeightRequest="100"
+                                 HorizontalOptions="CenterAndExpand">
 
-                    <StackLayout 
-                            Style="{StaticResource VerticalStack}" 
-                            HeightRequest="100"
-                            HorizontalOptions="CenterAndExpand">
+                        <StackLayout x:Name="MessageDisplayBox"
+                                     IsVisible="false"
+                                     Style="{StaticResource VerticalStack}"
+                                     VerticalOptions="StartAndExpand"
+                                     HorizontalOptions="CenterAndExpand">
 
-                        <StackLayout x:Name="MessageDisplayBox" 
-                            IsVisible="false"
-                            Style="{StaticResource VerticalStack}" 
-                                    VerticalOptions="StartAndExpand"
-                                    HorizontalOptions="CenterAndExpand">
-
-                            <Label x:Name="BattleMessages" 
-                                    HorizontalOptions="FillAndExpand" 
-                                    LineBreakMode="WordWrap" 
-                                    MaxLines="3"
-                                    LineHeight="1"
-                                    CharacterSpacing="1"
-                                    Style="{StaticResource LabelStyle}"
-                                    FontSize="Micro"/>
+                            <Label x:Name="BattleMessages"
+                                   HorizontalOptions="FillAndExpand"
+                                   LineBreakMode="WordWrap"
+                                   MaxLines="3"
+                                   LineHeight="1"
+                                   CharacterSpacing="1"
+                                   Style="{StaticResource LabelStyle}"
+                                   FontSize="Micro" />
 
                             <!--<WebView
                         x:Name="HtmlBox"
