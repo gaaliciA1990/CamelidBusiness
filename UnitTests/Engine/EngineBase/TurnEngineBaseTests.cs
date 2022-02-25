@@ -1373,7 +1373,7 @@ namespace UnitTests.Engine.EngineBase
             // Reset
 
             // Assert
-            Assert.AreEqual(ActionEnum.Attack, result);
+            Assert.AreEqual(ActionEnum.Move, result);
         }
         #endregion DetermineActionChoice
 

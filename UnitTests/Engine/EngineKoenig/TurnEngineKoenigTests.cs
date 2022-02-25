@@ -1353,7 +1353,7 @@ namespace UnitTests.Engine.EngineKoenig
             // Reset
 
             // Assert
-            Assert.AreEqual(ActionEnum.Attack, result);
+            Assert.AreEqual(ActionEnum.Move, result);
         }
         #endregion DetermineActionChoice
 
