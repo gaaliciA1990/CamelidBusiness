@@ -1037,7 +1037,7 @@ namespace Game.Views
 
                 case BattleStateEnum.GameOver:
                     // Migrate to the score page, since this is the game over state
-                    Navigation.PushModalAsync(new ScorePage());
+                    Navigation.PushAsync(new ScorePage());
                     break;
 
                 case BattleStateEnum.RoundOver:
