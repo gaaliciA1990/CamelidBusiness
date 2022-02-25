@@ -642,6 +642,13 @@
                    BasedOn="{StaticResource VerticalStack}">
             </Style>
 
+            <Style TargetType="StackLayout"
+                   x:Key="NewRoundStackLayout"
+                   BasedOn="{StaticResource VerticalStack}">
+                <Setter Property="VerticalOptions"
+                        Value="CenterAndExpand"/>
+            </Style>
+
             <Style x:Key="ItemSelectorPopup"
                    TargetType="StackLayout">
                 <Setter Property="IsVisible"
