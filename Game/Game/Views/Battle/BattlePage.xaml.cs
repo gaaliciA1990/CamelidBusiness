@@ -914,11 +914,13 @@ namespace Game.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public async void NextRoundButton_Clicked(object sender, EventArgs e)
+        public void NextRoundButton_Clicked(object sender, EventArgs e)
         {
             BattleEngineViewModel.Instance.Engine.EngineSettings.BattleStateEnum = BattleStateEnum.Battling;
             ShowBattleMode();
-            await Navigation.PushModalAsync(new NewRoundPage());
+
+            //commented out because we don't want to show the new round button again
+            //await Navigation.PushModalAsync(new NewRoundPage());
         }
 
         /// <summary>
