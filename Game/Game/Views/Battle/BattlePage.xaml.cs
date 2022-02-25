@@ -1036,13 +1036,8 @@ namespace Game.Views
                     break;
 
                 case BattleStateEnum.GameOver:
-                    // Hide the Game Board
-                    GameUIDisplay.IsVisible = false;
-                    AttackerAttack.Source = ActionEnum.Unknown.ToImageURI();
-                    Page.BackgroundImageSource = "";
-
-                    // Show the Game Over Display
-                    GameOverDisplay.IsVisible = true;
+                    // Migrate to the score page, since this is the game over state
+                    Navigation.PushModalAsync(new ScorePage());
                     break;
 
                 case BattleStateEnum.RoundOver:
