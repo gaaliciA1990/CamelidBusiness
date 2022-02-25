@@ -17,6 +17,9 @@ namespace Game.Views
         // This uses the Instance so it can be shared with other Battle Pages as needed
         public BattleEngineViewModel EngineViewModel = BattleEngineViewModel.Instance;
 
+        public Animation parent = new Animation();
+        public uint duration = 3000;
+
         /// <summary>
         /// Constructor
         /// </summary>
@@ -25,17 +28,29 @@ namespace Game.Views
             InitializeComponent();
 
             // Draw the Characters
-            foreach (var data in EngineViewModel.Engine.EngineSettings.CharacterList)
-            {
-                PartyListFrame.Children.Add(CreatePlayerDisplayBox(data));
-            }
+            //foreach (var data in EngineViewModel.Engine.EngineSettings.CharacterList)
+            //{
+            //    PartyListFrame.Children.Add(CreatePlayerDisplayBox(data));
+            //}
 
             // Draw the Monsters
             foreach (var data in EngineViewModel.Engine.EngineSettings.MonsterList)
             {
-                MonsterListFrame.Children.Add(CreatePlayerDisplayBox(data));
+                var monster = CreatePlayerDisplayBox(data);
+                monster.Opacity = 0;
+                MonsterListFrame.Children.Add(monster);
             }
 
+        }
+
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            foreach(var monster in MonsterListFrame.Children)
+            {
+                await monster.FadeTo(1, 500, Easing.Linear);
+            }
         }
 
         /// <summary>
