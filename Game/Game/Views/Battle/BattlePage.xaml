@@ -197,7 +197,7 @@
             </Grid>
 
             <!--The Game Over Screen -->
-            <StackLayout 
+            <!--<StackLayout 
                 Grid.Row="0" Grid.Column="0"
                     Style="{StaticResource VerticalStack}"
                     AbsoluteLayout.LayoutBounds="1,1,1,1" 
@@ -216,7 +216,7 @@
                     <Button x:Name="ExitButton" Clicked="ExitButton_Clicked" Text="Exit" WidthRequest="50"></Button>
 
                 </StackLayout>
-            </StackLayout>
+            </StackLayout>-->
         </Grid>
     </ContentPage.Content>
 </ContentPage>
