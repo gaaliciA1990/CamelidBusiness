@@ -40,6 +40,9 @@ namespace Game.Views
             // Update the Selected Number, this gets updated later when selected refresh happens
             //TotalSelected.Text = BattleEngineViewModel.Instance.Engine.EngineSettings.BattleScore.ItemModelSelectList.Count().ToString();
 
+            //Set the itemlabel
+            ItemLabel.Text = "Choose a Character!!!";
+
             DrawCharacterList();
 
             DrawItemLists();
@@ -104,18 +107,14 @@ namespace Game.Views
         /// </summary>
         public void DrawSelectedItems(object sender, PlayerInfoModel player)
         {
-
-            if (CurrentSelectedButton == (ImageButton)sender)
-            {
-                CurrentSelectedButton.IsEnabled = true;
-            }
-
-            if (CurrentSelectedButton != (ImageButton)sender)
+            if(CurrentSelectedButton == null)
             {
                 CurrentSelectedButton = (ImageButton)sender;
-                CurrentSelectedButton.IsEnabled = false;
-                CurrentSelectedButton.BackgroundColor = Xamarin.Forms.Color.Beige;
             }
+
+            CurrentSelectedButton.BackgroundColor = Xamarin.Forms.Color.Transparent;
+            CurrentSelectedButton = (ImageButton)sender;
+            CurrentSelectedButton.BackgroundColor = Xamarin.Forms.Color.Beige;
 
             // Clear and Populate the Dropped Items
             var FlexList = ItemListSelectedFrame.Children.ToList();
@@ -133,6 +132,8 @@ namespace Game.Views
 
             //Draw the items currently equipped on this character
             AddItemsToDisplay();
+
+            ItemLabel.Text = "Items Selected for " + CurrentSelectedChar.Name;
         }
         /// <summary>
         /// Show the Items the Character has

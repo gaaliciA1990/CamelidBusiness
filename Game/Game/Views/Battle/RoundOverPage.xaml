@@ -44,7 +44,7 @@
                         <Button Grid.Row="0" Grid.Column="1" HorizontalOptions="Start" Clicked="AutoAssignButton_Clicked" Text="Auto Assign"/>
 
                         <StackLayout Grid.Row="1" Grid.Column="1"> 
-                            <Label x:Name="ItemLabel" Text="Items Selected" Style="{StaticResource LabelStyle}"/>
+                            <Label x:Name="ItemLabel" Style="{StaticResource LabelStyle}"/>
                             <FlexLayout x:Name="ItemListSelectedFrame"
                                         JustifyContent="Start"
                                         AlignContent="Start"
