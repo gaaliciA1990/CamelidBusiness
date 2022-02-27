@@ -203,6 +203,73 @@ namespace Game.Models
         }
 
         /// <summary>
+        /// Return List of cells next to player that are empty
+        /// </summary>
+        /// <param name="player"></param>
+        /// <returns></returns>
+        public List<MapModelLocation> GetPlayerEmptyAdjacentCells(MapModelLocation player)
+        {
+            var Result = new List<MapModelLocation>();
+
+            if (player.Row > 0 && MapGridLocation[player.Column, player.Row - 1].Player.PlayerType == PlayerTypeEnum.Unknown)
+            {
+                Result.Add(MapGridLocation[player.Column, player.Row - 1]);
+            }
+            if (player.Row + 1 < MapYAxiesCount && MapGridLocation[player.Column, player.Row + 1].Player.PlayerType == PlayerTypeEnum.Unknown)
+            {
+                Result.Add(MapGridLocation[player.Column, player.Row + 1]);
+            }
+            if (player.Column > 0 && MapGridLocation[player.Column - 1, player.Row].Player.PlayerType == PlayerTypeEnum.Unknown)
+            {
+                Result.Add(MapGridLocation[player.Column - 1, player.Row]);
+            }
+            if (player.Column + 1 < MapXAxiesCount && MapGridLocation[player.Column + 1, player.Row].Player.PlayerType == PlayerTypeEnum.Unknown)
+            {
+                Result.Add(MapGridLocation[player.Column + 1, player.Row]);
+            }
+            return Result;
+        }
+
+
+        /// <summary>
+        /// Return cells the player can move to using Breadth-First-Seach 
+        /// default max distance of 2
+        /// </summary>
+        /// <param name="player"></param>
+        /// <param name="children"></param>
+        /// <returns></returns>
+        public HashSet<MapModelLocation> GetAvailableLocationsFromPlayer(MapModelLocation player, int distance = 2)
+        {
+            var Result = new HashSet<MapModelLocation>();
+            var gridLocationQueue = new Queue<MapModelLocation>();
+            var depths = new Dictionary<MapModelLocation, int>();
+            gridLocationQueue.Enqueue(player);
+            depths[player] = 0;
+
+            while (gridLocationQueue.Count() > 0)
+            {
+                var currentCell = gridLocationQueue.Dequeue();
+                if (depths[currentCell] == distance + 1)
+                {
+                    break;
+                }
+                Result.Add(currentCell);
+
+                foreach (var child in GetPlayerEmptyAdjacentCells(currentCell))
+                {
+                    if (depths.ContainsKey(child))
+                    {
+                        continue;
+                    }
+                    gridLocationQueue.Enqueue(child);
+                    depths[child] = depths[currentCell] + 1;
+                }
+            }
+            return Result;
+        }
+
+
+        /// <summary>
         /// Return who is at the location
         /// Could be Character, Monster or Empty
         /// </summary>
