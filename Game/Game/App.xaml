@@ -1071,7 +1071,26 @@
                 <Setter Property="Padding"
                         Value="3" />
             </Style>
-            
+
+            <Style x:Key="ChoseActionFrame"
+                   TargetType="Frame">
+                <Setter Property="HeightRequest"
+                        Value="100" />
+                <Setter Property="WidthRequest"
+                        Value="400" />
+                <Setter Property="Opacity"
+                        Value="0.8" />
+                <Setter Property="BackgroundColor"
+                        Value="{StaticResource LightBackgroundColor}" />
+                <Setter Property="BorderColor"
+                        Value="Black" />
+                <Setter Property="CornerRadius"
+                        Value="5" />
+                <Setter Property="IsClippedToBounds"
+                        Value="True" />
+            </Style>
+
+
             <!-- Grid -->
             <Style TargetType="Grid">
                 <Setter Property="ColumnSpacing"
