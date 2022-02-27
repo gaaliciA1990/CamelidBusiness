@@ -25,7 +25,7 @@ namespace Game.Engine.EngineGame
         }
 
         // The BaseEngine
-        public new EngineSettingsModel EngineSettings { get; set; } = EngineSettingsModel.Instance;
+        public new EngineSettingsModel EngineSettings { get; } = EngineSettingsModel.Instance;
 
         /// <summary>
         /// Add the charcter to the character list
@@ -34,7 +34,9 @@ namespace Game.Engine.EngineGame
         /// <returns></returns>
         public override bool PopulateCharacterList(CharacterModel data)
         {
-            return base.PopulateCharacterList(data);
+            EngineSettings.CharacterList.Add(new PlayerInfoModel(data));
+
+            return true;
         }
 
         /// <summary>
@@ -44,7 +46,17 @@ namespace Game.Engine.EngineGame
         /// <returns></returns>
         public override bool StartBattle(bool isAutoBattle)
         {
-            return base.StartBattle(isAutoBattle);
+            // Reset the Score so it is fresh
+            EngineSettings.BattleScore = new ScoreModel
+            {
+                AutoBattle = isAutoBattle
+            };
+
+            BattleRunning = true;
+
+            _ = Round.NewRound();
+
+            return true;
         }
 
         /// <summary>
@@ -53,7 +65,11 @@ namespace Game.Engine.EngineGame
         /// <returns></returns>
         public override bool EndBattle()
         {
-            return base.EndBattle();
+            BattleRunning = false;
+
+            _ = EngineSettings.BattleScore.CalculateScore();
+
+            return true;
         }
     }
 }
