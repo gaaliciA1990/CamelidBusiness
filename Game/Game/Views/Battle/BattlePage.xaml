@@ -165,24 +165,21 @@
                       Grid.Column="0"
                       Grid.RowSpan="2"
                       HorizontalOptions="FillAndExpand"
-                      VerticalOptions="FillAndExpand"
+                      VerticalOptions="EndAndExpand"
                       x:Name="SelectAction"
                       IsVisible="False">
-                    <Frame Style="{StaticResource DeletePopupFrame}"
+                    <Frame Style="{StaticResource ChoseActionFrame}"
                            HorizontalOptions="CenterAndExpand"
                            VerticalOptions="CenterAndExpand">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*" />
-                                <RowDefinition Height="*" />
-                                <RowDefinition Height="*" />
                             </Grid.RowDefinitions>
-                            <Label Grid.Row="0"
-                                   x:Name="SelectActionMessage"
-                                   Text=""
-                                   Style="{StaticResource LabelBaseStyle}"
-                                   HorizontalOptions="CenterAndExpand" />
-                            <StackLayout Grid.Row="1"
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <StackLayout Grid.Column="0"
                                          Orientation="Horizontal"
                                          Padding="10">
                                 <Image Source="action_attack.png"
@@ -190,7 +187,7 @@
                                 <Label Text="Attack"
                                        Style="{StaticResource LabelBaseStyle}" />
                             </StackLayout>
-                            <StackLayout Grid.Row="2"
+                            <StackLayout Grid.Column="1"
                                          Orientation="Horizontal"
                                          Padding="10">
                                 <Image Source="action_move.png"
@@ -199,19 +196,22 @@
                                        Style="{StaticResource LabelBaseStyle}" />
                             </StackLayout>
 
-                            <ImageButton Grid.Row="1"
+                            <ImageButton Grid.Column="0"
                                          Clicked="SelectMonsterToAttack"
+                                         x:Name="selectMonsterButton"
                                          CommandParameter="test"
                                          HorizontalOptions="FillAndExpand"
                                          VerticalOptions="FillAndExpand" />
-                            <ImageButton Grid.Row="2"
+                            <ImageButton Grid.Column="1"
                                          Clicked="SelectLocationToMoveTo"
+                                         x:Name="selectLocationButton"
                                          CommandParameter="test"
                                          HorizontalOptions="FillAndExpand"
                                          VerticalOptions="FillAndExpand" />
                         </Grid>
                     </Frame>
                 </Grid>
+
 
                 <!--The Bottom of the Battle UI  Holds the Player to Player boxes, Buttons, and the Messages-->
                 <StackLayout Grid.Row="1"
