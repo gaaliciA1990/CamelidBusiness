@@ -1,7 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+
 using Game.Engine.EngineBase;
 using Game.Engine.EngineInterfaces;
 using Game.Engine.EngineModels;
+using Game.GameRules;
 using Game.Models;
 
 namespace Game.Engine.EngineGame
@@ -31,16 +35,16 @@ namespace Game.Engine.EngineGame
         /// <summary>
         /// Clear the List between Rounds
         /// </summary>
+        /// <returns></returns>
         public override bool ClearLists()
         {
-            EngineSettings.ItemPool.Clear();
-            EngineSettings.MonsterList.Clear();
-            return true;
+            return base.ClearLists();
         }
 
         /// <summary>
-        /// Call to make a new set of monsters..
+        /// Call to make a new set of monsters...
         /// </summary>
+        /// <returns></returns>
         public override bool NewRound()
         {
             // End the existing round
@@ -49,7 +53,7 @@ namespace Game.Engine.EngineGame
             // Remove Character Buffs
             _ = RemoveCharacterBuffs();
 
-            // Populate New Monsters..
+            // Populate New Monsters...
             _ = AddMonstersToRound();
 
             // Make the BaseEngine.PlayerList
@@ -74,7 +78,7 @@ namespace Game.Engine.EngineGame
         ///   
         /*
             * Hint: 
-            * I don't have crudi monsters yet so will add 6 new ones..
+            * I don't have crudi monsters yet so will add 6 new ones...
             * If you have crudi monsters, then pick from the list
 
             * Consdier how you will scale the monsters up to be appropriate for the characters to fight
@@ -85,7 +89,26 @@ namespace Game.Engine.EngineGame
         public override int AddMonstersToRound()
         {
             // TODO: Teams, You need to implement your own Logic can not use mine.
-            return 0;
+
+            var TargetLevel = 1;
+
+            if (EngineSettings.CharacterList.Count() > 0)
+            {
+                // Get the Min Character Level (linq is soo cool....)
+                TargetLevel = Convert.ToInt32(EngineSettings.CharacterList.Min(m => m.Level));
+            }
+
+            for (var i = 0; i < EngineSettings.MaxNumberPartyMonsters; i++)
+            {
+                var data = RandomPlayerHelper.GetRandomMonster(TargetLevel, EngineSettings.BattleSettingsModel.AllowMonsterItems);
+
+                // Help identify which Monster it is
+                data.Name += " " + EngineSettings.MonsterList.Count() + 1;
+
+                EngineSettings.MonsterList.Add(new PlayerInfoModel(data));
+            }
+
+            return EngineSettings.MonsterList.Count();
         }
 
         /// <summary>
@@ -93,6 +116,7 @@ namespace Game.Engine.EngineGame
         /// Clear the ItemModel List
         /// Clear the MonsterModel List
         /// </summary>
+        /// <returns></returns>
         public override bool EndRound()
         {
             // In Auto Battle this happens and the characters get their items, In manual mode need to do it manualy
@@ -115,6 +139,12 @@ namespace Game.Engine.EngineGame
             // In Auto Battle this happens and the characters get their items
             // When called manualy, make sure to do the character pickup before calling EndRound
 
+            // Have each character pickup items...
+            foreach (var character in EngineSettings.CharacterList)
+            {
+                _ = PickupItemsFromPool(character);
+            }
+
             return true;
         }
 
@@ -127,37 +157,66 @@ namespace Game.Engine.EngineGame
         /// Starts the Turn
         /// 
         /// </summary>
+        /// <returns></returns>
         public override RoundEnum RoundNextTurn()
         {
-            // No characters, game is over..
+            // No characters, game is over...
+            if (EngineSettings.CharacterList.Count < 1)
+            {
+                // Game Over
+                EngineSettings.RoundStateEnum = RoundEnum.GameOver;
+                return EngineSettings.RoundStateEnum;
+            }
 
             // Check if round is over
+            if (EngineSettings.MonsterList.Count < 1)
+            {
+                // If over, New Round
+                EngineSettings.RoundStateEnum = RoundEnum.NewRound;
+                return RoundEnum.NewRound;
+            }
 
-            // If in Auto Battle pick the next attacker
+            if (EngineSettings.BattleScore.AutoBattle)
+            {
+                // Decide Who gets next turn
+                // Remember who just went...
+                EngineSettings.CurrentAttacker = GetNextPlayerTurn();
 
-            // Do the turn..
+                // Only Attack for now
+                EngineSettings.CurrentAction = ActionEnum.Attack;
+            }
 
-            return RoundEnum.Unknown;
+            // Do the turn....
+            _ = Turn.TakeTurn(EngineSettings.CurrentAttacker);
+
+            EngineSettings.RoundStateEnum = RoundEnum.NextTurn;
+
+            return EngineSettings.RoundStateEnum;
         }
 
         /// <summary>
         /// Get the Next Player to have a turn
         /// </summary>
+        /// <returns></returns>
         public override PlayerInfoModel GetNextPlayerTurn()
         {
             // Remove the Dead
+            _ = RemoveDeadPlayersFromList();
 
             // Get Next Player
+            var PlayerCurrent = GetNextPlayerInList();
 
-            return null;
+            return PlayerCurrent;
         }
 
         /// <summary>
         /// Remove Dead Players from the List
         /// </summary>
+        /// <returns></returns>
         public override List<PlayerInfoModel> RemoveDeadPlayersFromList()
         {
-            return null;
+            EngineSettings.PlayerList = EngineSettings.PlayerList.Where(m => m.Alive == true).ToList();
+            return EngineSettings.PlayerList;
         }
 
         /// <summary>
@@ -165,9 +224,23 @@ namespace Game.Engine.EngineGame
         /// </summary>
         public override List<PlayerInfoModel> OrderPlayerListByTurnOrder()
         {
-            // TODO Teams: Implement the order
+            // Order is based by... 
+            // Order by Speed (Desending)
+            // Then by Highest level (Descending)
+            // Then by Highest Experience Points (Descending)
+            // Then by Character before MonsterModel (enum assending)
+            // Then by Alphabetic on Name (Assending)
+            // Then by First in list order (Assending
 
-            return null;
+            EngineSettings.PlayerList = EngineSettings.PlayerList.OrderByDescending(a => a.GetSpeed())
+                .ThenByDescending(a => a.Level)
+                .ThenByDescending(a => a.ExperienceTotal)
+                .ThenByDescending(a => a.PlayerType)
+                .ThenBy(a => a.Name)
+                .ThenBy(a => a.ListOrder)
+                .ToList();
+
+            return EngineSettings.PlayerList;
         }
 
         /// <summary>
@@ -176,19 +249,48 @@ namespace Game.Engine.EngineGame
         public override List<PlayerInfoModel> MakePlayerList()
         {
             // Start from a clean list of players
+            EngineSettings.PlayerList.Clear();
 
             // Remember the Insert order, used for Sorting
+            var ListOrder = 0;
 
-            // Add the Characters
+            foreach (var data in EngineSettings.CharacterList)
+            {
+                if (data.Alive)
+                {
+                    EngineSettings.PlayerList.Add(
+                        new PlayerInfoModel(data)
+                        {
+                            // Remember the order
+                            ListOrder = ListOrder
+                        });
 
-            // Add the Monsters
+                    ListOrder++;
+                }
+            }
 
-            return null;
+            foreach (var data in EngineSettings.MonsterList)
+            {
+                if (data.Alive)
+                {
+                    EngineSettings.PlayerList.Add(
+                        new PlayerInfoModel(data)
+                        {
+                            // Remember the order
+                            ListOrder = ListOrder
+                        });
+
+                    ListOrder++;
+                }
+            }
+
+            return EngineSettings.PlayerList;
         }
 
         /// <summary>
         /// Get the Information about the Player
         /// </summary>
+        /// <returns></returns>
         public override PlayerInfoModel GetNextPlayerInList()
         {
             // Walk the list from top to bottom
@@ -196,20 +298,34 @@ namespace Game.Engine.EngineGame
             // If not, return first player (looped)
 
             // If List is empty, return null
+            if (EngineSettings.PlayerList.Count == 0)
+            {
+                return null;
+            }
 
             // No current player, so set the first one
+            if (EngineSettings.CurrentAttacker == null)
+            {
+                return EngineSettings.PlayerList.FirstOrDefault();
+            }
 
             // Find current player in the list
+            var index = EngineSettings.PlayerList.FindIndex(m => m.Guid.Equals(EngineSettings.CurrentAttacker.Guid));
 
             // If at the end of the list, return the first element
+            if (index == EngineSettings.PlayerList.Count() - 1)
+            {
+                return EngineSettings.PlayerList.FirstOrDefault();
+            }
 
             // Return the next element
-            return null;
+            return EngineSettings.PlayerList[index + 1];
         }
 
         /// <summary>
         /// Pickup Items Dropped
         /// </summary>
+        /// <param name="character"></param>
         public override bool PickupItemsFromPool(PlayerInfoModel character)
         {
 
@@ -217,7 +333,19 @@ namespace Game.Engine.EngineGame
 
             // I use the same logic for Auto Battle as I do for Manual Battle
 
-            return false;
+            //if (BaseEngine.BattleScore.AutoBattle)
+            {
+                // Have the character, walk the items in the pool, and decide if any are better than current one.
+
+                _ = GetItemFromPoolIfBetter(character, ItemLocationEnum.Head);
+                _ = GetItemFromPoolIfBetter(character, ItemLocationEnum.Necklass);
+                _ = GetItemFromPoolIfBetter(character, ItemLocationEnum.PrimaryHand);
+                _ = GetItemFromPoolIfBetter(character, ItemLocationEnum.OffHand);
+                _ = GetItemFromPoolIfBetter(character, ItemLocationEnum.RightFinger);
+                _ = GetItemFromPoolIfBetter(character, ItemLocationEnum.LeftFinger);
+                _ = GetItemFromPoolIfBetter(character, ItemLocationEnum.Feet);
+            }
+            return true;
         }
 
         /// <summary>
@@ -225,27 +353,96 @@ namespace Game.Engine.EngineGame
         /// 
         /// Uses Value to determine
         /// </summary>
+        /// <param name="character"></param>
+        /// <param name="setLocation"></param>
         public override bool GetItemFromPoolIfBetter(PlayerInfoModel character, ItemLocationEnum setLocation)
         {
-            return false;
+            var thisLocation = setLocation;
+            if (setLocation == ItemLocationEnum.RightFinger)
+            {
+                thisLocation = ItemLocationEnum.Finger;
+            }
+
+            if (setLocation == ItemLocationEnum.LeftFinger)
+            {
+                thisLocation = ItemLocationEnum.Finger;
+            }
+
+            var myList = EngineSettings.ItemPool.Where(a => a.Location == thisLocation)
+                .OrderByDescending(a => a.Value)
+                .ToList();
+
+            // If no items in the list, return...
+            if (!myList.Any())
+            {
+                return false;
+            }
+
+            var CharacterItem = character.GetItemByLocation(setLocation);
+            if (CharacterItem == null)
+            {
+                _ = SwapCharacterItem(character, setLocation, myList.FirstOrDefault());
+                return true;
+            }
+
+            foreach (var PoolItem in myList)
+            {
+                if (PoolItem.Value > CharacterItem.Value)
+                {
+                    _ = SwapCharacterItem(character, setLocation, PoolItem);
+                    return true;
+                }
+            }
+
+            return true;
         }
 
         /// <summary>
         /// Swap the Item the character has for one from the pool
         /// 
         /// Drop the current item back into the Pool
+        /// 
         /// </summary>
+        /// <param name="character"></param>
+        /// <param name="setLocation"></param>
+        /// <param name="PoolItem"></param>
+        /// <returns></returns>
         public override ItemModel SwapCharacterItem(PlayerInfoModel character, ItemLocationEnum setLocation, ItemModel PoolItem)
         {
-            return null;
+            // Put on the new ItemModel, which drops the one back to the pool
+            var droppedItem = character.AddItem(setLocation, PoolItem.Id);
+
+            // Add the PoolItem to the list of selected items
+            EngineSettings.BattleScore.ItemModelSelectList.Add(PoolItem);
+
+            // Remove the ItemModel just put on from the pool
+            _ = EngineSettings.ItemPool.Remove(PoolItem);
+
+            if (droppedItem != null)
+            {
+                // Add the dropped ItemModel to the pool
+                EngineSettings.ItemPool.Add(droppedItem);
+            }
+
+            return droppedItem;
         }
 
         /// <summary>
         /// For all characters in player list, remove their buffs
         /// </summary>
+        /// <returns></returns>
         public override bool RemoveCharacterBuffs()
         {
-            return false;
+            foreach (var data in EngineSettings.PlayerList)
+            {
+                _ = data.ClearBuffs();
+            }
+
+            foreach (var data in EngineSettings.CharacterList)
+            {
+                _ = data.ClearBuffs();
+            }
+            return true;
         }
     }
 }
