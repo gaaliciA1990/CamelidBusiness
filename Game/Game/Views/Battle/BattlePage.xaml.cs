@@ -36,6 +36,12 @@ namespace Game.Views
         bool UnitTestSetting;
         public BattlePage(bool UnitTest) { UnitTestSetting = UnitTest; }
 
+        //Available Empty Places To Move To
+        public HashSet<MapModelLocation> AvailableLocations = new HashSet<MapModelLocation>();
+
+        //Available Monsters To Attack
+        public HashSet<MapModelLocation> AvailableMonsters = new HashSet<MapModelLocation>();
+
         /// <summary>
         /// Constructor
         /// </summary>
@@ -485,8 +491,11 @@ namespace Game.Views
         {
             if (userChosenActionForPlayer == ActionEnum.Move)
             {
-                SelectActionMessage.Text = data.Player.Name + " moved.";
-                NextAttackExample(ActionEnum.Move, data);
+                if (AvailableLocations.Contains(data))
+                {
+                    NextAttackExample(ActionEnum.Move, data);
+                    userChosenActionForPlayer = ActionEnum.Unknown;
+                }
             }
             return true;
         }
@@ -506,8 +515,8 @@ namespace Game.Views
                 var inRange = BattleEngineViewModel.Instance.Engine.EngineSettings.MapModel.IsTargetInRange(attacker, data.Player);
                 if (inRange)
                 {
-                    SelectActionMessage.Text = data.Player.Name + " attacked.";
                     NextAttackExample(ActionEnum.Attack, data);
+                    userChosenActionForPlayer = ActionEnum.Unknown;
                 }
                 else
                 {
@@ -673,7 +682,7 @@ namespace Game.Views
             // Show the outcome on the Board
             DrawGameAttackerDefenderBoard();
 
-            if (RoundCondition == RoundEnum.NewRound || BattleEngineViewModel.Instance.Engine.EngineSettings.PlayerList.Where(m => m.PlayerType == PlayerTypeEnum.Monster).ToList().Count() == 0)
+            if (RoundCondition == RoundEnum.NewRound)
             {
                 BattleEngineViewModel.Instance.Engine.EngineSettings.BattleStateEnum = BattleStateEnum.NewRound;
 
@@ -716,12 +725,46 @@ namespace Game.Views
         public void PlayerTurnPickAction()
         {
             var attacker = BattleEngineViewModel.Instance.Engine.Round.GetNextPlayerTurn();
+
+            AttackerName.Text = attacker.Name + "'s turn, select an action";
+            AttackerAttack.Source = "";
+            DefenderName.Text = "";
+
+            var attackerLocation = BattleEngineViewModel.Instance.Engine.EngineSettings.MapModel.GetLocationForPlayer(attacker);
             if (attacker.PlayerType == PlayerTypeEnum.Character)
             {
+                //Check if player can move on this turn
+                AvailableLocations = BattleEngineViewModel.Instance.Engine.EngineSettings.MapModel.GetAvailableLocationsFromPlayer(attackerLocation);
+
+                //if cant character is trapped, dont allow user to select move option
+                selectLocationButton.IsEnabled = true;
+                selectLocationButton.BackgroundColor = Color.Transparent;
+                if (AvailableLocations.Count() == 1)
+                {
+                    selectLocationButton.IsEnabled = false;
+                    selectLocationButton.BackgroundColor = Color.DarkGray;
+                }
+
+                //if cant attack character, dont allow user to select attack option 
+                selectMonsterButton.IsEnabled = false;
+                selectMonsterButton.BackgroundColor = Color.DarkGray;
+                AvailableMonsters.Clear();
+                foreach (var monster in BattleEngineViewModel.Instance.Engine.EngineSettings.PlayerList.Where(m => m.PlayerType == PlayerTypeEnum.Monster).Where(m => m.Alive == true).ToList())
+                {
+                    var inRange = BattleEngineViewModel.Instance.Engine.EngineSettings.MapModel.IsTargetInRange(attacker, monster);
+                    if (inRange)
+                    {
+                        System.Diagnostics.Debug.WriteLine("************************ " + monster.Name);
+                        selectMonsterButton.IsEnabled = true;
+                        selectMonsterButton.BackgroundColor = Color.Transparent;
+
+                        var monsterLocation = BattleEngineViewModel.Instance.Engine.EngineSettings.MapModel.GetLocationForPlayer(monster);
+                        AvailableMonsters.Add(monsterLocation);
+                    }
+                }
+
                 // if character's turn, show select action popup
                 SelectAction.IsVisible = true;
-                //set title forn select action popup
-                SelectActionMessage.Text = attacker.Name + "'s turn. Choose an action.";
 
                 AttackButton.IsVisible = false;
             }
@@ -739,6 +782,12 @@ namespace Game.Views
         /// <param name="args"></param>
         public void SelectMonsterToAttack(object sender, EventArgs args)
         {
+            foreach (var location in AvailableMonsters)
+            {
+                var MapObject = (Grid)GetMapGridObject(GetDictionaryStackName(location));
+                MapObject.BackgroundColor = Color.Blue;
+            }
+
             var attacker = BattleEngineViewModel.Instance.Engine.Round.GetNextPlayerTurn();
             SelectAction.IsVisible = false;
             AttackerName.Text = "Select Monster to attack";
@@ -776,6 +825,12 @@ namespace Game.Views
         /// <param name="args"></param>
         public void SelectLocationToMoveTo(object sender, EventArgs args)
         {
+            foreach (var location in AvailableLocations)
+            {
+                var MapObject = (Grid)GetMapGridObject(GetDictionaryStackName(location));
+                MapObject.BackgroundColor = Color.Blue;
+            }
+
             SelectAction.IsVisible = false;
             AttackerName.Text = "Select a location to move to";
             AttackerAttack.Source = "";
