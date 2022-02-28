@@ -62,7 +62,6 @@ namespace Game.Views
             _ = UpdatePageBindingContext();
 
             //Erase default info
-            // TODO: update this when we get connected to the database
             NameEntry.Placeholder = nameHolder;
             DescriptionEntry.Placeholder = descriptionHolder;
             DescriptionEntry.Text = "";
