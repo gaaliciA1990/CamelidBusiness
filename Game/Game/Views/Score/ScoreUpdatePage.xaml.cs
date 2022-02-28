@@ -72,7 +72,6 @@ namespace Game.Views
 
         /// <summary>
         /// Populate the monsters the player killed in their game. 
-        /// TODO: UPDATE SO DYNAMICALLY SHOW MONSTERS
         /// </summary>
         private void PopulateMonsters()
         {
@@ -91,7 +90,6 @@ namespace Game.Views
 
         /// <summary>
         /// Populate the items the player dopped in their game. 
-        /// TODO: UPDATE SO DYNAMICALLY SHOW ITEMS
         /// </summary>
         /*
         private void PopulateItems()
