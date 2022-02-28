@@ -50,7 +50,7 @@ namespace UnitTests.Engine.EngineGame
             // Arrange
 
             // Act
-            var result = Engine.EngineSettings = EngineSettingsModel.Instance;
+            var result = Engine.EngineSettings;
 
             // Reset
 
