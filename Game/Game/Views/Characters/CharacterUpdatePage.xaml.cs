@@ -231,7 +231,6 @@ namespace Game.Views
 
             SetSliderMaximumBound();
 
-            //TODO: may need a condition to change on whole value
             Level_Changed(null, null);
         }
 
