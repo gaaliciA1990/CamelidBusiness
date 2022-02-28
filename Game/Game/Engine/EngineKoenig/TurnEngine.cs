@@ -102,7 +102,6 @@ namespace Game.Engine.EngineKoenig
         public override bool MoveAsTurn(PlayerInfoModel Attacker)
         {
             /*
-             * TODO: TEAMS Work out your own move logic if you are implementing move
              * 
              * Mike's Logic
              * The monster or charcter will move to a different square if one is open
@@ -206,7 +205,6 @@ namespace Game.Engine.EngineKoenig
 
             // Select first in the list
 
-            // TODO: Teams, You need to implement your own Logic can not use mine.
             var Defender = EngineSettings.PlayerList
                 .Where(m => m.Alive && m.PlayerType == PlayerTypeEnum.Character)
                 .OrderBy(m => m.ListOrder).FirstOrDefault();
@@ -232,7 +230,6 @@ namespace Game.Engine.EngineKoenig
             // Select first one to hit in the list for now...
             // Attack the Weakness (lowest HP) MonsterModel first 
 
-            // TODO: Teams, You need to implement your own Logic can not use mine.
 
             var Defender = EngineSettings.PlayerList
                 .Where(m => m.Alive && m.PlayerType == PlayerTypeEnum.Monster)
@@ -457,7 +454,6 @@ namespace Game.Engine.EngineKoenig
         /// </summary>
         public override List<ItemModel> GetRandomMonsterItemDrops(int round)
         {
-            // TODO: Teams, You need to implement your own modification to the Logic cannot use mine as is.
 
             // You decide how to drop monster items, level, etc.
 
