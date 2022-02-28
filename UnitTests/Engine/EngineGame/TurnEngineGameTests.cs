@@ -3,6 +3,7 @@ using NUnit.Framework;
 
 using Game.Engine.EngineGame;
 using Game.Models;
+using System.Collections.Generic;
 
 namespace UnitTests.Engine.EngineGame
 {
@@ -125,15 +126,27 @@ namespace UnitTests.Engine.EngineGame
         [Test]
         public void RoundEngine_SelectCharacterToAttack_Valid_Default_Should_Pass()
         {
-            // Arrange 
+            // Arrange
+
+            // remember the list
+            var saveList = Engine.EngineSettings.PlayerList;
+
+            Engine.EngineSettings.PlayerList = new List<PlayerInfoModel>();
+
+            var data = new PlayerInfoModel(new CharacterModel());
+            Engine.EngineSettings.PlayerList.Add(data);
 
             // Act
             var result = Engine.Round.Turn.SelectCharacterToAttack();
 
             // Reset
 
+            // Restore the List
+            Engine.EngineSettings.PlayerList = saveList;
+            _ = Engine.StartBattle(false);   // Clear the Engine
+
             // Assert
-            Assert.AreEqual(null, result);
+            Assert.AreNotEqual(null, result);
         }
         #endregion SelectCharacterToAttack
 
@@ -141,15 +154,21 @@ namespace UnitTests.Engine.EngineGame
         [Test]
         public void RoundEngine_UseAbility_Valid_Default_Should_Pass()
         {
-            // Arrange 
+            // Arrange
+
+            var characterPlayer = new PlayerInfoModel(new CharacterModel { Job = CharacterJobEnum.Unknown });
+
+            // remove it so it is not found
+            characterPlayer.AbilityTracker.Add(AbilityEnum.Heal, 1);
+            Engine.EngineSettings.CurrentActionAbility = AbilityEnum.Heal;
 
             // Act
-            var result = Engine.Round.Turn.UseAbility(null);
+            var result = Engine.Round.Turn.UseAbility(characterPlayer);
 
             // Reset
 
             // Assert
-            Assert.AreEqual(false, result);
+            Assert.AreEqual(true, result);
         }
         #endregion UseAbility
 
@@ -165,7 +184,7 @@ namespace UnitTests.Engine.EngineGame
             // Reset
 
             // Assert
-            Assert.AreEqual(HitStatusEnum.Unknown, result);
+            Assert.AreEqual(HitStatusEnum.Hit, result);
         }
         #endregion BattleSettingsOverrideHitStatusEnum
 
@@ -181,7 +200,7 @@ namespace UnitTests.Engine.EngineGame
             // Reset
 
             // Assert
-            Assert.AreEqual(HitStatusEnum.Unknown, result);
+            Assert.AreEqual(HitStatusEnum.Hit, result);
         }
         #endregion BattleSettingsOverride
 
@@ -197,7 +216,7 @@ namespace UnitTests.Engine.EngineGame
             // Reset
 
             // Assert
-            Assert.AreEqual(false, result);
+            Assert.AreEqual(true, result);
         }
         #endregion CalculateExperience
 
@@ -213,7 +232,7 @@ namespace UnitTests.Engine.EngineGame
             // Reset
 
             // Assert
-            Assert.AreEqual(HitStatusEnum.Unknown, result);
+            Assert.AreEqual(HitStatusEnum.Hit, result);
         }
         #endregion CalculateAttackStatus
 
@@ -253,15 +272,27 @@ namespace UnitTests.Engine.EngineGame
         [Test]
         public void RoundEngine_SelectMonsterToAttack_Valid_Default_Should_Pass()
         {
-            // Arrange 
+            // Arrange
+
+            // remember the list
+            var saveList = Engine.EngineSettings.PlayerList;
+
+            Engine.EngineSettings.PlayerList = new List<PlayerInfoModel>();
+
+            var data = new PlayerInfoModel(new MonsterModel());
+            Engine.EngineSettings.PlayerList.Add(data);
 
             // Act
             var result = Engine.Round.Turn.SelectMonsterToAttack();
 
             // Reset
 
+            // Restore the List
+            Engine.EngineSettings.PlayerList = saveList;
+            _ = Engine.StartBattle(false);   // Clear the Engine
+
             // Assert
-            Assert.AreEqual(null, result);
+            Assert.AreNotEqual(null, result);
         }
         #endregion SelectMonsterToAttack
 
@@ -277,7 +308,7 @@ namespace UnitTests.Engine.EngineGame
             // Reset
 
             // Assert
-            Assert.AreEqual(ActionEnum.Unknown, result);
+            Assert.AreEqual(ActionEnum.Move, result);
         }
         #endregion DetermineActionChoice
 
@@ -293,7 +324,7 @@ namespace UnitTests.Engine.EngineGame
             // Reset
 
             // Assert
-            Assert.AreEqual(false, result);
+            Assert.AreEqual(true, result);
         }
         #endregion TurnAsAttack
 
@@ -309,7 +340,7 @@ namespace UnitTests.Engine.EngineGame
             // Reset
 
             // Assert
-            Assert.AreEqual(false, result);
+            Assert.AreEqual(true, result);
         }
         #endregion TargetDied
 
@@ -325,7 +356,7 @@ namespace UnitTests.Engine.EngineGame
             // Reset
 
             // Assert
-            Assert.AreEqual(false, result);
+            Assert.AreEqual(true, result);
         }
         #endregion TakeTurn
 
@@ -341,7 +372,7 @@ namespace UnitTests.Engine.EngineGame
             // Reset
 
             // Assert
-            Assert.AreEqual(HitStatusEnum.Unknown, result);
+            Assert.AreEqual(HitStatusEnum.Hit, result);
         }
         #endregion RollToHitTarget
 
@@ -357,7 +388,7 @@ namespace UnitTests.Engine.EngineGame
             // Reset
 
             // Assert
-            Assert.AreEqual(null, result);
+            Assert.LessOrEqual(result.Count,1);
         }
         #endregion GetRandomMonsterItemDrops
 
@@ -373,7 +404,7 @@ namespace UnitTests.Engine.EngineGame
             // Reset
 
             // Assert
-            Assert.AreEqual(false, result);
+            Assert.AreEqual(true, result);
         }
         #endregion DetermineCriticalMissProblem
 
@@ -389,7 +420,7 @@ namespace UnitTests.Engine.EngineGame
             // Reset
 
             // Assert
-            Assert.AreEqual(0, result);
+            Assert.LessOrEqual(result, 7);
         }
         #endregion DropItems
     }
