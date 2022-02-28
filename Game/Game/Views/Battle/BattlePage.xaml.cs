@@ -535,7 +535,7 @@ namespace Game.Views
         /// <returns></returns>
         public bool SetSelectedCharacter(MapModelLocation data)
         {
-            // TODO: Info
+            // TODO: Implement animation (wiggles)
 
             /*
              * This gets called when the characters is clicked on
