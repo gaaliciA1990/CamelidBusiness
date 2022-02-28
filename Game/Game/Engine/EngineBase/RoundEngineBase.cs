@@ -97,7 +97,6 @@ namespace Game.Engine.EngineBase
         /// <returns></returns>
         public virtual int AddMonstersToRound()
         {
-            // TODO: Teams, You need to implement your own Logic can not use mine.
 
             var TargetLevel = 1;
 
@@ -382,7 +381,6 @@ namespace Game.Engine.EngineBase
         public virtual bool PickupItemsFromPool(PlayerInfoModel character)
         {
 
-            // TODO: Teams, You need to implement your own Logic if not using auto apply
 
             // I use the same logic for Auto Battle as I do for Manual Battle
 
