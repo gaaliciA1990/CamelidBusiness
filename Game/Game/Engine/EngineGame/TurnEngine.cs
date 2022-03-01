@@ -8,6 +8,7 @@ using Game.ViewModels;
 using Game.GameRules;
 using Game.Engine.EngineInterfaces;
 using Game.Engine.EngineModels;
+using System;
 
 namespace Game.Engine.EngineGame
 {
@@ -101,18 +102,8 @@ namespace Game.Engine.EngineGame
         /// <returns></returns>
         public override bool MoveAsTurn(PlayerInfoModel Attacker)
         {
-            /*
-             * TODO: TEAMS Work out your own move logic if you are implementing move
-             * 
-             * Mike's Logic
-             * The monster or charcter will move to a different square if one is open
-             * Find the Desired Target
-             * Jump to the closest space near the target that is open
-             * 
-             * If no open spaces, return false
-             * 
-             */
-
+            var locationAttacker = EngineSettings.MapModel.GetLocationForPlayer(Attacker);
+            
             if (Attacker.PlayerType == PlayerTypeEnum.Monster)
             {
                 // For Attack, Choose Who
@@ -123,6 +114,12 @@ namespace Game.Engine.EngineGame
                     return false;
                 }
 
+                if (locationAttacker == null)
+                {
+                    return false;
+                }
+
+
                 // Get X, Y for Defender
                 var locationDefender = EngineSettings.MapModel.GetLocationForPlayer(EngineSettings.CurrentDefender);
                 if (locationDefender == null)
@@ -130,22 +127,37 @@ namespace Game.Engine.EngineGame
                     return false;
                 }
 
-                var locationAttacker = EngineSettings.MapModel.GetLocationForPlayer(Attacker);
-                if (locationAttacker == null)
+                var possibleLocations = BattleEngineViewModel.Instance.Engine.EngineSettings.MapModel.GetAvailableLocationsFromPlayer(locationAttacker);
+                if(possibleLocations.Count() <= 1)
                 {
                     return false;
                 }
 
-                // Find Location Nearest to Defender that is Open.
+                MapModelLocation bestLocation = null;
+                double bestDistance = 10000000.0;
 
-                // Get the Open Locations
-                var openSquare = EngineSettings.MapModel.ReturnClosestEmptyLocation(locationDefender);
+                //find best location from possible locations using eucledian distance
+                foreach (var location in possibleLocations)
+                {
+                    double x1 = location.Column;
+                    double y1 = location.Row;
+                    double x2 = locationDefender.Column;
+                    double y2 = locationDefender.Row;
+                    var distance = Math.Sqrt(Math.Pow(x1 - x2, 2) + Math.Pow(y1 - y2, 2));
+                    bestLocation = (bestDistance > distance) ? location : bestLocation;
+                    bestDistance = (bestDistance > distance) ? distance : bestDistance;
+                }
 
-                Debug.WriteLine(string.Format("{0} moves from {1},{2} to {3},{4}", locationAttacker.Player.Name, locationAttacker.Column, locationAttacker.Row, openSquare.Column, openSquare.Row));
+                Debug.WriteLine(string.Format("{0} moves from {1},{2} to {3},{4}", locationAttacker.Player.Name, locationAttacker.Column, locationAttacker.Row, bestLocation.Column, bestLocation.Row));
 
-                EngineSettings.BattleMessagesModel.TurnMessage = Attacker.Name + " moves closer to " + EngineSettings.CurrentDefender.Name;
-
-                return EngineSettings.MapModel.MovePlayerOnMap(locationAttacker, openSquare);
+                return EngineSettings.MapModel.MovePlayerOnMap(locationAttacker, bestLocation);
+            }
+            else if (Attacker.PlayerType == PlayerTypeEnum.Character)
+            {
+                var cell = BattleEngineViewModel.Instance.Engine.EngineSettings.MoveMapLocation;
+                var emptyMapObject = EngineSettings.MapModel.MapGridLocation[cell.Column, cell.Row];
+                Debug.WriteLine(string.Format("{0} moves from {1},{2} to {3},{4}", locationAttacker.Player.Name, locationAttacker.Column, locationAttacker.Row, cell.Column, cell.Row));
+                return EngineSettings.MapModel.MovePlayerOnMap(locationAttacker, emptyMapObject);
             }
 
             return true;
