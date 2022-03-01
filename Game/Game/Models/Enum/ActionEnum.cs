@@ -16,7 +16,9 @@
         Move = 10,
 
         // Ability
-        Ability = 20
+        Ability = 20,
+
+        Skip = 30
     }
 
     /// <summary>
