@@ -3,6 +3,7 @@
 using Game.Models;
 using System.Threading.Tasks;
 using Game.ViewModels;
+using System.Linq;
 
 namespace Scenario
 {
@@ -233,5 +234,108 @@ namespace Scenario
             Assert.AreEqual(1, EngineViewModel.Engine.EngineSettings.BattleScore.RoundCount);
         }
         #endregion Scenario2
+
+        #region Scenario3
+        [Test]
+        public void HackathonScenario_Scenario_33_Character_Should_Skip_Turn_And_Restores_2_Health()
+        {
+            /* 
+            * Scenario Number:  
+            *      33
+            *      
+            * Description: 
+            *      Make a Character called Mike and A monster called Pat.
+            *      On Mike's turn, he decides to skip his turn allowing Pat to start his next turn.
+            *      Mike gains 2 health points for skipping.
+            * 
+            * Changes Required (Classes, Methods etc.)  List Files, Methods, and Describe Changes: 
+            *      Added SkipAsTurn method in the Turn engine,
+            *      Action Enum for skip
+            * 
+            * Test Algrorithm:
+            *      Create Character named Mike
+            *      Create Monster named Pat
+            *      Set speed of Mike to 3 so he goes first 
+            *      Set speed of Pat to 1 
+            *      Create Map Grid and add players
+            *      Play Mike's turn
+            *      Asserts to check that Mike Skipped
+            *  
+            *      Startup Battle
+            *      Run one turn
+            * 
+            * Test Conditions:
+            *      Default condition is sufficient
+            *      
+            *      
+            * 
+            * Validation:
+            *      Check if Pat's turn after Mike played his turn
+            *      Check Mike didn't move
+            *      Check Mike didn't cause damage to Pat
+            *      Check Mike current health increased by 2
+            *  
+            */
+
+            //Arrange
+            var CharacterPlayerMike = new PlayerInfoModel(
+                            new CharacterModel
+                            {
+                                Speed = 3, // Will go first...
+                                Level = 1,
+                                CurrentHealth = 10,
+                                MaxHealth = 20,
+                                ExperienceTotal = 1,
+                                ExperienceRemaining = 1,
+                                Name = "Mike",
+                                PrimaryHand = ItemIndexViewModel.Instance.Dataset.Where(m => m.Range > 1).ToList().OrderByDescending(m => m.Range).FirstOrDefault().Id
+                            });
+
+            var MonsterPlayerPat = new PlayerInfoModel(
+                            new MonsterModel
+                            {
+                                Speed = 1, // Will go last...
+                                Level = 1,
+                                CurrentHealth = 10,
+                                ExperienceTotal = 1,
+                                ExperienceRemaining = 1,
+                                Name = "Pat",
+                                PrimaryHand = ItemIndexViewModel.Instance.Dataset.Where(m => m.Range > 1).ToList().OrderByDescending(m => m.Range).FirstOrDefault().Id
+                            });
+
+            EngineViewModel.Engine.EngineSettings.BattleSettingsModel.BattleModeEnum = BattleModeEnum.MapFull;
+
+            EngineViewModel.Engine.EngineSettings.PlayerList.Clear();
+            EngineViewModel.Engine.EngineSettings.MonsterList.Clear();
+            EngineViewModel.Engine.EngineSettings.CharacterList.Clear();
+            EngineViewModel.Engine.EngineSettings.CharacterList.Add(CharacterPlayerMike);
+            EngineViewModel.Engine.EngineSettings.MonsterList.Add(MonsterPlayerPat);
+            EngineViewModel.Engine.EngineSettings.PlayerList.Add(CharacterPlayerMike);
+            EngineViewModel.Engine.EngineSettings.PlayerList.Add(MonsterPlayerPat);
+
+            _ = EngineViewModel.Engine.EngineSettings.MapModel.PopulateMapModel(EngineViewModel.Engine.EngineSettings.PlayerList);
+
+            var monsterHealth = MonsterPlayerPat.GetCurrentHealth();
+            var characterHealth = CharacterPlayerMike.GetCurrentHealth();
+            var characterLocation = EngineViewModel.Engine.EngineSettings.MapModel.GetLocationForPlayer(CharacterPlayerMike);
+
+            //Act
+            EngineViewModel.Engine.EngineSettings.CurrentAttacker = EngineViewModel.Engine.Round.GetNextPlayerTurn();
+            EngineViewModel.Engine.EngineSettings.CurrentAction = ActionEnum.Skip;
+            var RoundCondition = EngineViewModel.Engine.Round.RoundNextTurn();
+
+            //Reset
+            EngineViewModel.Engine.EngineSettings.CurrentAction = ActionEnum.Unknown;
+            EngineViewModel.Engine.EngineSettings.CurrentAction = ActionEnum.Unknown;
+            EngineViewModel.Engine.EngineSettings.BattleStateEnum = BattleStateEnum.Unknown;
+            EngineViewModel.Engine.EngineSettings.BattleSettingsModel.BattleModeEnum = BattleModeEnum.Unknown;
+
+            //Assert
+            Assert.AreEqual(MonsterPlayerPat.Name, EngineViewModel.Engine.Round.GetNextPlayerTurn().Name); //Check Pat's turn is next
+            Assert.AreEqual(characterLocation, EngineViewModel.Engine.EngineSettings.MapModel.GetLocationForPlayer(CharacterPlayerMike)); //Check Mike didn't move
+            Assert.AreEqual(monsterHealth, MonsterPlayerPat.GetCurrentHealth()); //Check Mike didn'dt cause damage
+            Assert.AreEqual(characterHealth + 2, CharacterPlayerMike.GetCurrentHealth()); //Check Mike health increased by 2
+        }
+        #endregion Scenario3
     }
 }
