@@ -6,7 +6,6 @@
              mc:Ignorable="d"
              x:Class="Game.Views.AboutPage"
              Title="About"
-             NavigationPage.HasNavigationBar="False"
              Style="{StaticResource CRUDiStyle}">
 
     

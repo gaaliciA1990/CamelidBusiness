@@ -9,8 +9,7 @@
              xmlns:local_enum="clr-namespace:Game.Models"
              x:Class="Game.Views.MonsterCreatePage"
              Style="{StaticResource CRUDiStyle}"
-             Title="{Binding Title}"
-             NavigationPage.HasNavigationBar="False">
+             Title="{Binding Title}">
 
     <ContentPage.Resources>
         <ResourceDictionary>

@@ -5,7 +5,6 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="Game.Views.ScoreReadPage"
-             NavigationPage.HasNavigationBar="False"
              Style="{StaticResource CRUDiStyle}"
              Title="{Binding Title}">
 

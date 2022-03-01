@@ -7,8 +7,7 @@
              x:Name="BrowseItemsPage"
              x:Class="Game.Views.PickCharactersPage"
              Style="{StaticResource BattleStyle}"
-             Title="{Binding Title}"
-             NavigationPage.HasNavigationBar="False">
+             Title="{Binding Title}">
 
     <ContentPage.Content>
         <StackLayout Style="{StaticResource OuterBoxStack}">

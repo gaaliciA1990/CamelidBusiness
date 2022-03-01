@@ -106,14 +106,14 @@
                         Value="False" />
                 <Setter Property="NavigationPage.HasNavigationBar"
                         Value="False" />
-                <Setter Property="BarBackgroundColor"
-                        Value="{StaticResource ViewBackgroundColor}" />
-                <Setter Property="BarTextColor"
-                        Value="{StaticResource SecondaryTextColor}" />
             </Style>
-
+            
             <Style TargetType="ContentPage"
                    ApplyToDerivedTypes="True">
+                <Setter Property="Shell.NavBarIsVisible"
+                        Value="False" />
+                <Setter Property="NavigationPage.HasNavigationBar"
+                        Value="False" />
                 <Setter Property="BackgroundColor"
                         Value="{DynamicResource PageBackgroundColor}" />
                 <Setter Property="Padding"

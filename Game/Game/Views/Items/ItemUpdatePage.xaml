@@ -8,8 +8,7 @@
              xmlns:local="using:Game.Models"
              x:Class="Game.Views.ItemUpdatePage"
              Style="{StaticResource CRUDiStyle}"
-             Title="{Binding Title}"
-             NavigationPage.HasNavigationBar="False">
+             Title="{Binding Title}">
 
     <ContentPage.Resources>
         <ResourceDictionary>

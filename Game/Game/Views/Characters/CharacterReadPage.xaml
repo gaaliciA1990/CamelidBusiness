@@ -6,8 +6,7 @@
              mc:Ignorable="d"
              x:Class="Game.Views.CharacterReadPage"
              Style="{StaticResource CRUDiStyle}"
-             Title="{Binding Title}"
-             NavigationPage.HasNavigationBar="False">
+             Title="{Binding Title}">
 
     <ContentPage.Content>
         <Grid>
