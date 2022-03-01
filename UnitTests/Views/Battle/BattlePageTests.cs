@@ -974,7 +974,7 @@ namespace UnitTests.Views
             // Make UI Map
             _ = page.CreateMapGridObjects();
 
-            var nameImage = "MapR5C0ImageButton";
+            var nameImage = "MapR0C0ImageButton";
             _ = page.MapLocationObject.TryGetValue(nameImage, out var dataImage);
 
             // Act
