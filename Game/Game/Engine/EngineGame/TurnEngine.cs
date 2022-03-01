@@ -80,6 +80,10 @@ namespace Game.Engine.EngineGame
                 case ActionEnum.Move:
                     result = MoveAsTurn(Attacker);
                     break;
+
+                case ActionEnum.Skip:
+                    result = SkipAsTurn(Attacker);
+                    break;
             }
 
             EngineSettings.BattleScore.TurnCount++;
@@ -92,6 +96,16 @@ namespace Game.Engine.EngineGame
 
             return result;
         }
+
+
+        public override bool SkipAsTurn(PlayerInfoModel Attacker)
+        {
+            //Add 2 health to player
+            Attacker.CurrentHealth += 2;
+
+            return true;
+        }
+
 
         /// <summary>
         /// Find a Desired Target

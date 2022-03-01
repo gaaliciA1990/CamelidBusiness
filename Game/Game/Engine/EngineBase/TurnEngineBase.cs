@@ -138,6 +138,17 @@ namespace Game.Engine.EngineBase
             return EngineSettings.CurrentAction;
         }
 
+
+
+        public virtual bool SkipAsTurn(PlayerInfoModel Attacker)
+        {
+            //Add 2 health to player
+            Attacker.CurrentHealth += 2;
+
+            return true;
+        }
+
+
         /// <summary>
         /// Find a Desired Target
         /// Move close to them
