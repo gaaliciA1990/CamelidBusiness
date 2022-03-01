@@ -179,24 +179,40 @@
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <StackLayout Grid.Column="0"
-                                         Orientation="Horizontal"
-                                         Padding="10">
-                                <Image Source="action_attack.png"
-                                       Aspect="AspectFit" />
-                                <Label Text="Attack"
-                                       Style="{StaticResource LabelBaseStyle}" />
-                            </StackLayout>
-                            <StackLayout Grid.Column="1"
-                                         Orientation="Horizontal"
-                                         Padding="10">
-                                <Image Source="action_move.png"
-                                       Aspect="AspectFit" />
-                                <Label Text="Move"
-                                       Style="{StaticResource LabelBaseStyle}" />
-                            </StackLayout>
 
+                            <Grid Grid.Column="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="0" Source="action_attack.png"
+                                       Aspect="AspectFit" />
+                                <Label Grid.Column="1" Text="Attack"
+                                       Style="{StaticResource LabelBaseStyle}" />
+                            </Grid>
+                            <Grid Grid.Column="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="0" Source="action_move.png"
+                                       Aspect="AspectFit" />
+                                <Label Grid.Column="1" Text="Move"
+                                       Style="{StaticResource LabelBaseStyle}" />
+                            </Grid>
+                            <Grid Grid.Column="2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="0" Source="action_default.png"
+                                       Aspect="AspectFit" />
+                                <Label Grid.Column="1" Text="skip"
+                                       Style="{StaticResource LabelBaseStyle}" />
+                            </Grid>
+                            
                             <ImageButton Grid.Column="0"
                                          Clicked="SelectMonsterToAttack"
                                          x:Name="selectMonsterButton"
@@ -206,6 +222,12 @@
                             <ImageButton Grid.Column="1"
                                          Clicked="SelectLocationToMoveTo"
                                          x:Name="selectLocationButton"
+                                         CommandParameter="test"
+                                         HorizontalOptions="FillAndExpand"
+                                         VerticalOptions="FillAndExpand" />
+                            <ImageButton Grid.Column="2"
+                                         Clicked="skipTurn"
+                                         x:Name="skipTurnButton"
                                          CommandParameter="test"
                                          HorizontalOptions="FillAndExpand"
                                          VerticalOptions="FillAndExpand" />

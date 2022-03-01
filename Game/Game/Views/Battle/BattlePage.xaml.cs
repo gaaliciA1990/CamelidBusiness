@@ -837,6 +837,20 @@ namespace Game.Views
             BattleEngineViewModel.Instance.Engine.EngineSettings.CurrentAction = ActionEnum.Move;
         }
 
+        /// <summary>
+        /// Skip turn, +2 health
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
+        public void skipTurn(object sender, EventArgs args)
+        {
+            SelectAction.IsVisible = false;
+            BattleEngineViewModel.Instance.Engine.EngineSettings.CurrentAction = ActionEnum.Skip;
+            NextAttackExample(ActionEnum.Skip, null);
+        }
+
+
+
 
         /// <summary>
         /// Decide The Turn and who to Attack
@@ -847,6 +861,8 @@ namespace Game.Views
             var attackerLocation = BattleEngineViewModel.Instance.Engine.EngineSettings.MapModel.GetLocationForPlayer(attacker);
 
             _ = BattleEngineViewModel.Instance.Engine.Round.SetCurrentAttacker(BattleEngineViewModel.Instance.Engine.Round.GetNextPlayerTurn());
+            _ = BattleEngineViewModel.Instance.Engine.Round.SetCurrentDefender(null);
+
 
             switch (BattleEngineViewModel.Instance.Engine.EngineSettings.CurrentAttacker.PlayerType)
             {
@@ -854,10 +870,6 @@ namespace Game.Views
                     if (action == ActionEnum.Attack)
                     {
                         _ = BattleEngineViewModel.Instance.Engine.Round.SetCurrentDefender(data.Player);
-                    }
-                    if (action == ActionEnum.Move)
-                    {
-                        _ = BattleEngineViewModel.Instance.Engine.Round.SetCurrentDefender(null);
                     }
                     break;
 
