@@ -29,9 +29,6 @@ namespace Game.Views
         // Hold the Map Objects, for easy access to update them
         public Dictionary<string, object> MapLocationObject = new Dictionary<string, object>();
 
-        //Action User Chooses for Player
-        public ActionEnum userChosenActionForPlayer = new ActionEnum();
-
         // Empty Constructor for UTs
         bool UnitTestSetting;
         public BattlePage(bool UnitTest) { UnitTestSetting = UnitTest; }
@@ -489,12 +486,14 @@ namespace Game.Views
         /// <returns></returns>
         public bool SetSelectedEmpty(MapModelLocation data)
         {
-            if (userChosenActionForPlayer == ActionEnum.Move)
+            if (BattleEngineViewModel.Instance.Engine.EngineSettings.CurrentAction == ActionEnum.Move)
             {
                 if (AvailableLocations.Contains(data))
                 {
+                    BattleEngineViewModel.Instance.Engine.EngineSettings.MoveMapLocation = new CordinatesModel { Row = data.Row, Column = data.Column };
                     NextAttackExample(ActionEnum.Move, data);
-                    userChosenActionForPlayer = ActionEnum.Unknown;
+                    BattleEngineViewModel.Instance.Engine.EngineSettings.MoveMapLocation = null;
+                    BattleEngineViewModel.Instance.Engine.EngineSettings.CurrentAction = ActionEnum.Unknown;
                 }
             }
             return true;
@@ -508,7 +507,7 @@ namespace Game.Views
         public bool SetSelectedMonster(MapModelLocation data)
         {
             //Check if user can select monster to attack
-            if (userChosenActionForPlayer == ActionEnum.Attack)
+            if (BattleEngineViewModel.Instance.Engine.EngineSettings.CurrentAction == ActionEnum.Attack)
             {
                 //procede with attack if character can reach monster with range
                 var attacker = BattleEngineViewModel.Instance.Engine.Round.GetNextPlayerTurn();
@@ -516,7 +515,7 @@ namespace Game.Views
                 if (inRange)
                 {
                     NextAttackExample(ActionEnum.Attack, data);
-                    userChosenActionForPlayer = ActionEnum.Unknown;
+                    BattleEngineViewModel.Instance.Engine.EngineSettings.CurrentAction = ActionEnum.Unknown;
                 }
                 else
                 {
@@ -579,28 +578,28 @@ namespace Game.Views
         public void DrawGameBoardAttackerDefenderSection()
         {
             BattlePlayerBoxVersus.Text = "";
-
+            
             if (BattleEngineViewModel.Instance.Engine.EngineSettings.CurrentAttacker == null)
             {
                 return;
             }
-
-            if (BattleEngineViewModel.Instance.Engine.EngineSettings.CurrentDefender == null)
-            {
-                return;
-            }
-
+            
             AttackerImage.Source = BattleEngineViewModel.Instance.Engine.EngineSettings.CurrentAttacker.ImageURI;
             AttackerName.Text = BattleEngineViewModel.Instance.Engine.EngineSettings.CurrentAttacker.Name;
             AttackerHealth.Text = BattleEngineViewModel.Instance.Engine.EngineSettings.CurrentAttacker.GetCurrentHealthTotal.ToString() + " / " + BattleEngineViewModel.Instance.Engine.EngineSettings.CurrentAttacker.GetMaxHealthTotal.ToString();
 
             // Show what action the Attacker used
             AttackerAttack.Source = BattleEngineViewModel.Instance.Engine.EngineSettings.PreviousAction.ToImageURI();
-
+            
             var item = ItemIndexViewModel.Instance.GetItem(BattleEngineViewModel.Instance.Engine.EngineSettings.CurrentAttacker.PrimaryHand);
-            if (item != null)
+            if (item != null && BattleEngineViewModel.Instance.Engine.EngineSettings.PreviousAction == ActionEnum.Attack)
             {
                 AttackerAttack.Source = item.ImageURI;
+            }
+
+            if (BattleEngineViewModel.Instance.Engine.EngineSettings.CurrentDefender == null)
+            {
+                return;
             }
 
             DefenderImage.Source = BattleEngineViewModel.Instance.Engine.EngineSettings.CurrentDefender.ImageURI;
@@ -612,8 +611,9 @@ namespace Game.Views
                 _ = UpdateMapGrid();
                 DefenderImage.BackgroundColor = Color.Red;
             }
-
+            
             BattlePlayerBoxVersus.Text = "vs";
+
         }
 
         /// <summary>
@@ -726,13 +726,13 @@ namespace Game.Views
         {
             var attacker = BattleEngineViewModel.Instance.Engine.Round.GetNextPlayerTurn();
 
-            AttackerName.Text = attacker.Name + "'s turn, select an action";
-            AttackerAttack.Source = "";
-            DefenderName.Text = "";
-
             var attackerLocation = BattleEngineViewModel.Instance.Engine.EngineSettings.MapModel.GetLocationForPlayer(attacker);
             if (attacker.PlayerType == PlayerTypeEnum.Character)
             {
+                AttackerName.Text = attacker.Name + "'s turn, select an action";
+                AttackerAttack.Source = "";
+                DefenderName.Text = "";
+
                 //Check if player can move on this turn
                 AvailableLocations = BattleEngineViewModel.Instance.Engine.EngineSettings.MapModel.GetAvailableLocationsFromPlayer(attackerLocation);
 
@@ -754,7 +754,6 @@ namespace Game.Views
                     var inRange = BattleEngineViewModel.Instance.Engine.EngineSettings.MapModel.IsTargetInRange(attacker, monster);
                     if (inRange)
                     {
-                        System.Diagnostics.Debug.WriteLine("************************ " + monster.Name);
                         selectMonsterButton.IsEnabled = true;
                         selectMonsterButton.BackgroundColor = Color.Transparent;
 
@@ -793,7 +792,7 @@ namespace Game.Views
             AttackerName.Text = "Select Monster to attack";
             AttackerAttack.Source = "";
             DefenderName.Text = "";
-            userChosenActionForPlayer = ActionEnum.Attack;
+            BattleEngineViewModel.Instance.Engine.EngineSettings.CurrentAction = ActionEnum.Attack;
             visualizeAttackOptions(attacker);
         }
 
@@ -835,7 +834,7 @@ namespace Game.Views
             AttackerName.Text = "Select a location to move to";
             AttackerAttack.Source = "";
             DefenderName.Text = "";
-            userChosenActionForPlayer = ActionEnum.Move;
+            BattleEngineViewModel.Instance.Engine.EngineSettings.CurrentAction = ActionEnum.Move;
         }
 
 
@@ -852,19 +851,14 @@ namespace Game.Views
             switch (BattleEngineViewModel.Instance.Engine.EngineSettings.CurrentAttacker.PlayerType)
             {
                 case PlayerTypeEnum.Character:
-                    if (action == ActionEnum.Move)
-                    {
-                        _ = BattleEngineViewModel.Instance.Engine.EngineSettings.MapModel.MovePlayerOnMap(attackerLocation, data);
-                    }
                     if (action == ActionEnum.Attack)
                     {
                         _ = BattleEngineViewModel.Instance.Engine.Round.SetCurrentDefender(data.Player);
                     }
-                    else 
-                    { 
-                        _ = BattleEngineViewModel.Instance.Engine.Round.SetCurrentDefender(BattleEngineViewModel.Instance.Engine.Round.Turn.AttackChoice(BattleEngineViewModel.Instance.Engine.EngineSettings.CurrentAttacker));
+                    if (action == ActionEnum.Move)
+                    {
+                        _ = BattleEngineViewModel.Instance.Engine.Round.SetCurrentDefender(null);
                     }
-
                     break;
 
                 case PlayerTypeEnum.Monster:

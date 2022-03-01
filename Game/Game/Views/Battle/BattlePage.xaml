@@ -46,27 +46,6 @@
                             Text="Start Battle" />
                 </Grid>
 
-                <!--Action Message-->
-                <Grid Grid.Row="0"
-                      Grid.Column="0"
-                      Grid.RowSpan="2"
-                      HorizontalOptions="FillAndExpand"
-                      VerticalOptions="FillAndExpand"
-                      x:Name="ActionPopup"
-                      IsVisible="False">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="2*" />
-                        <RowDefinition Height="*" />
-                    </Grid.RowDefinitions>
-                    <Image Grid.Row="1"
-                           Grid.Column="0"
-                           x:Name="ActionPopupMessage"
-                           Aspect="AspectFit"
-                           Source="movepopup.png"
-                           HorizontalOptions="CenterAndExpand" />
-                </Grid>
-
                 <!--The Top of the Battle UI Holds the List of Players-->
                 <StackLayout Grid.Row="0"
                              Grid.Column="0"
@@ -153,17 +132,34 @@
                     </StackLayout>
                 </Grid>
 
-
-
-
-
-
                 <!--The Battle Map Display -->
                 <Grid Grid.Row="1"
                       Grid.Column="0"
                       x:Name="BattleMapDisplay">
                     <Grid x:Name="MapGrid" />
                 </Grid>
+
+                <!--Action Message-->
+                <Grid Grid.Row="0"
+                      Grid.Column="0"
+                      Grid.RowSpan="2"
+                      HorizontalOptions="FillAndExpand"
+                      VerticalOptions="FillAndExpand"
+                      x:Name="ActionPopup"
+                      IsVisible="False">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="2*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Image Grid.Row="1"
+                           Grid.Column="0"
+                           x:Name="ActionPopupMessage"
+                           Aspect="AspectFit"
+                           Source="movepopup.png"
+                           HorizontalOptions="CenterAndExpand" />
+                </Grid>
+
 
                 <!--Select Action Page-->
                 <Grid Grid.Row="0"
