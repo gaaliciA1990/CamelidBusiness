@@ -237,7 +237,7 @@ namespace Scenario
         }
         #endregion Scenario2
 
-        #region Scenario3
+        #region Scenario33
         [Test]
         public void HackathonScenario_Scenario_33_Character_Should_Skip_Turn_And_Restores_2_Health()
         {
@@ -328,7 +328,6 @@ namespace Scenario
 
             //Reset
             EngineViewModel.Engine.EngineSettings.CurrentAction = ActionEnum.Unknown;
-            EngineViewModel.Engine.EngineSettings.CurrentAction = ActionEnum.Unknown;
             EngineViewModel.Engine.EngineSettings.BattleStateEnum = BattleStateEnum.Unknown;
             EngineViewModel.Engine.EngineSettings.BattleSettingsModel.BattleModeEnum = BattleModeEnum.Unknown;
 
@@ -338,7 +337,7 @@ namespace Scenario
             Assert.AreEqual(monsterHealth, MonsterPlayerPat.GetCurrentHealth()); //Check Mike didn'dt cause damage
             Assert.AreEqual(characterHealth + 2, CharacterPlayerMike.GetCurrentHealth()); //Check Mike health increased by 2
         }
-        #endregion Scenario3
+        #endregion Scenario33
 
         #region Scenario4
         [Test]
@@ -483,5 +482,70 @@ namespace Scenario
             Assert.IsNotNull(result);
         }
         #endregion Scenario32
+
+        #region Scenario34
+        [Test]
+        public void HackathonScenario_Scenario_34_Player_With_Speed_2_Should_Have_Options_To_Move_Only_A_Distance_Of_Up_To_2_Spaces()
+        {
+            /* 
+            * Scenario Number:  
+            *      34
+            *      
+            * Description: 
+            *      Make a Character called Mike and and add it to the map gris.
+            *      Get available locations mike can move to
+            * 
+            * Changes Required (Classes, Methods etc.)  List Files, Methods, and Describe Changes: 
+            *      GetAvailableLocationsFromPlayer; gets all available locations player can move to within given distance
+            * 
+            * Test Algrorithm:
+            *      Create Character named Mike
+            *      Add mike to map grid
+            *      Call GetAvailableLocationsFromPlayer given mike and mike's speed
+            *      function returns all available locations mike can move to where distance =  mike's speed
+            * 
+            * Test Conditions:
+            *      Default condition is sufficient
+            *      
+            * Validation:
+            *      Check distance from mike to locations returned from GetAvailableLocationsFromPlayer and assert that they are within the distance of mike's speed 
+            *  
+            */
+
+            ///Arrange
+            var CharacterPlayerMike = new PlayerInfoModel(
+                            new CharacterModel
+                            {
+                                Speed = 2,
+                                Level = 1,
+                                CurrentHealth = 10,
+                                MaxHealth = 20,
+                                ExperienceTotal = 1,
+                                ExperienceRemaining = 1,
+                                Name = "Mike"
+                            });
+
+            EngineViewModel.Engine.EngineSettings.BattleSettingsModel.BattleModeEnum = BattleModeEnum.MapFull;
+            EngineViewModel.Engine.EngineSettings.PlayerList.Clear();
+            EngineViewModel.Engine.EngineSettings.CharacterList.Clear();
+            EngineViewModel.Engine.EngineSettings.CharacterList.Add(CharacterPlayerMike);
+            EngineViewModel.Engine.EngineSettings.PlayerList.Add(CharacterPlayerMike);
+            _ = EngineViewModel.Engine.EngineSettings.MapModel.PopulateMapModel(EngineViewModel.Engine.EngineSettings.PlayerList);
+
+            ///Act
+            var playerLocation = EngineViewModel.Engine.EngineSettings.MapModel.GetLocationForPlayer(CharacterPlayerMike);
+            var locations = EngineViewModel.Engine.EngineSettings.MapModel.GetAvailableLocationsFromPlayer(playerLocation, CharacterPlayerMike.Speed);
+
+            ///Reset
+
+            ///Assert
+            foreach (var location in locations)
+            {
+                var distance = Math.Sqrt(Math.Pow(playerLocation.Column - location.Column, 2) + Math.Pow(playerLocation.Row - location.Row, 2));
+                Assert.LessOrEqual(distance, CharacterPlayerMike.Speed);
+            }
+        }
+
+        #endregion Scenario34
     }
 }
