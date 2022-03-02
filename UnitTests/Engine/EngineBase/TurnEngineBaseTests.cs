@@ -9,6 +9,7 @@ using Game.ViewModels;
 using Game.Engine.EngineBase;
 using Game.Engine.EngineModels;
 using Game.GameRules;
+using System;
 
 namespace UnitTests.Engine.EngineBase
 {
@@ -1353,8 +1354,24 @@ namespace UnitTests.Engine.EngineBase
 
             var CharacterPlayer = new PlayerInfoModel(new CharacterModel());
 
+            ItemModel longRangeWeapon = new ItemModel
+            {
+                Name = "###Max Range Weapon###",
+                Id = "UniqueId$$%%^^",
+                Description = "",
+                ImageURI = "unique_curvedbow.png",
+                Range = Math.Max(Engine.EngineSettings.MapModel.MapXAxiesCount, Engine.EngineSettings.MapModel.MapYAxiesCount),
+                Damage = 3,
+                Value = 3,
+                Location = ItemLocationEnum.PrimaryHand,
+                Attribute = AttributeEnum.Attack,
+                IsUnique = false
+            };
+
+            ItemIndexViewModel.Instance.Dataset.Add(longRangeWeapon);
+
             // Get the longest range weapon in stock.
-            var weapon = ItemIndexViewModel.Instance.Dataset.Where(m => m.Range > 1).ToList().OrderByDescending(m => m.Range).FirstOrDefault();
+            var weapon = longRangeWeapon;
             CharacterPlayer.PrimaryHand = weapon.Id;
             Engine.EngineSettings.PlayerList.Add(CharacterPlayer);
 
@@ -1371,9 +1388,10 @@ namespace UnitTests.Engine.EngineBase
             var result = Engine.Round.Turn.DetermineActionChoice(CharacterPlayer);
 
             // Reset
+            ItemIndexViewModel.Instance.Dataset.Remove(longRangeWeapon);
 
             // Assert
-            Assert.AreEqual(ActionEnum.Move, result);
+            Assert.AreEqual(ActionEnum.Attack, result);
         }
         #endregion DetermineActionChoice
 

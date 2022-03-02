@@ -382,14 +382,19 @@ namespace UnitTests.Engine.EngineGame
         public void RoundEngine_GetRandomMonsterItemDrops_Valid_Default_Should_Pass()
         {
             // Arrange 
+            PlayerInfoModel monster = new PlayerInfoModel(new MonsterModel
+            {
+                Job = CharacterJobEnum.GreatLeader
+            });
+            Engine.Round.SetCurrentDefender(monster);
 
             // Act
-            var result = Engine.Round.Turn.GetRandomMonsterItemDrops(1);
+            var result = Engine.Round.Turn.GetRandomMonsterItemDrops(10);
 
             // Reset
 
             // Assert
-            Assert.LessOrEqual(result.Count,1);
+            Assert.LessOrEqual(result.Count,10);
         }
 
         [Test]

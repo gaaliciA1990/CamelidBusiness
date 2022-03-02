@@ -345,8 +345,6 @@ namespace Scenario
         }
         #endregion Scenario33
 
-
-
         #region Scenario4
         [Test]
         public void HakathonScenario_Scenario_4_Valid_Default_Should_Pass()
@@ -441,6 +439,7 @@ namespace Scenario
             EngineViewModel.Engine.EngineSettings.CurrentAction = ActionEnum.Unknown;
             EngineViewModel.Engine.EngineSettings.CurrentAction = ActionEnum.Unknown;
             EngineViewModel.Engine.EngineSettings.BattleStateEnum = BattleStateEnum.Unknown;
+            EngineViewModel.Engine.EngineSettings.BattleSettingsModel.AllowCriticalHit = false;
             EngineViewModel.Engine.EngineSettings.BattleSettingsModel.BattleModeEnum = BattleModeEnum.Unknown;
 
             //Assert
@@ -488,10 +487,6 @@ namespace Scenario
             // Set Character Conditions
 
             // Create playlister with 1 monster and 1 character
-            EngineViewModel.Engine.EngineSettings.MaxNumberPartyCharacters = 1;
-            EngineViewModel.Engine.EngineSettings.MaxNumberPartyMonsters = 1;
-            EngineViewModel.Engine.EngineSettings.MaxTurnCount = 2;
-            EngineViewModel.Engine.EngineSettings.MaxRoundCount = 1;
 
             var CharacterPlayerJenny = new PlayerInfoModel(
                             new CharacterModel
@@ -717,8 +712,6 @@ namespace Scenario
         }
 
         #endregion Scenario28
-
-
 
         #region Scenario17
         [Test]

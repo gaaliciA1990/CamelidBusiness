@@ -6,6 +6,7 @@ using NUnit.Framework;
 using Game.Engine.EngineGame;
 using Game.Models;
 using Game.ViewModels;
+using Game.Helpers;
 
 namespace UnitTests.Engine.EngineGame
 {
@@ -76,10 +77,23 @@ namespace UnitTests.Engine.EngineGame
         {
             //Arrange
 
+            _ = DiceHelper.EnableForcedRolls();
+            _ = DiceHelper.SetForcedRollValue(3);
+
+            var data = new CharacterModel { Level = 1, MaxHealth = 10 };
+
+            AutoBattleEngine.Battle.EngineSettings.CharacterList.Add(new PlayerInfoModel(data));
+            AutoBattleEngine.Battle.EngineSettings.CharacterList.Add(new PlayerInfoModel(data));
+            AutoBattleEngine.Battle.EngineSettings.CharacterList.Add(new PlayerInfoModel(data));
+            AutoBattleEngine.Battle.EngineSettings.CharacterList.Add(new PlayerInfoModel(data));
+            AutoBattleEngine.Battle.EngineSettings.CharacterList.Add(new PlayerInfoModel(data));
+            AutoBattleEngine.Battle.EngineSettings.CharacterList.Add(new PlayerInfoModel(data));
+
             //Act
             var result = await AutoBattleEngine.RunAutoBattle();
 
             //Reset
+            _ = DiceHelper.DisableForcedRolls();
 
             //Assert
             Assert.AreEqual(true, result);
