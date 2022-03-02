@@ -77,7 +77,7 @@ namespace UnitTests.Helpers
             _ = DiceHelper.DisableForcedRolls();
 
             // Assert
-            Assert.AreEqual("Saavy Coyote", result);
+            Assert.AreEqual("Furious Bear", result);
         }
 
         [Test]
@@ -94,7 +94,7 @@ namespace UnitTests.Helpers
             _ = DiceHelper.DisableForcedRolls();
 
             // Assert
-            Assert.AreEqual("Old and Powerfull", result);
+            Assert.AreEqual("Big and Ugly", result);
         }
 
         [Test]
@@ -184,7 +184,7 @@ namespace UnitTests.Helpers
         {
             // Arrange
             _ = DiceHelper.EnableForcedRolls();
-            _ = DiceHelper.SetForcedRollValue(2);
+            _ = DiceHelper.SetForcedRollValue(3);
 
             // Act
             var result = RandomPlayerHelper.GetMonsterImage();
