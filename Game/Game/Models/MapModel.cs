@@ -68,9 +68,11 @@ namespace Game.Models
 
             var rnd = new Random();
 
+
             // Randomly position Characters in the first two columns
             var characters = PlayerList.Where(m => m.PlayerType == PlayerTypeEnum.Character);
-            var randomCharacterCells = Enumerable.Range(0, MapYAxiesCount * 2).OrderBy(c => rnd.Next()).Take(characters.Count()).ToList();
+            var characterCols = (int)Math.Ceiling((double)characters.Count() / MapYAxiesCount);
+            var randomCharacterCells = Enumerable.Range(0, MapYAxiesCount * characterCols).OrderBy(c => rnd.Next()).Take(characters.Count()).ToList();
 
             for (var c = 0; c < characters.Count(); c++)
             {
@@ -79,16 +81,16 @@ namespace Game.Models
                 MapGridLocation[col, row].Player = characters.ElementAt(c);
             }
 
-
             // populate the map with the monsters randomly in the laster two columns
             var monsters = PlayerList.Where(m => m.PlayerType == PlayerTypeEnum.Monster);
-            var randomMonsterCells = Enumerable.Range(0, MapYAxiesCount * 2).OrderBy(m => rnd.Next()).Take(monsters.Count()).ToList();
+            var monsterCols = (int)Math.Ceiling((double)monsters.Count() / MapYAxiesCount);
+            var randomMonsterCells = Enumerable.Range((MapYAxiesCount* MapXAxiesCount)-(MapYAxiesCount * monsterCols),
+                MapYAxiesCount * monsterCols).OrderBy(m => rnd.Next()).Take(monsters.Count()).ToList();
 
             for (var m = 0; m < monsters.Count(); m++)
             {
-                var shiftCol = MapXAxiesCount - 2;
                 var row = (int)randomMonsterCells[m] % MapYAxiesCount;
-                var col = (int)Math.Floor((double)randomMonsterCells[m] / MapYAxiesCount) + shiftCol;
+                var col = (int)Math.Floor((double)randomMonsterCells[m] / MapYAxiesCount);
                 MapGridLocation[col, row].Player = monsters.ElementAt(m);
             }
 

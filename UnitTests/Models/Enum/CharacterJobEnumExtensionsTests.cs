@@ -32,7 +32,7 @@ namespace UnitTests.Models
             // Reset
 
             // Assert
-            Assert.AreEqual("Fighter", result);
+            Assert.AreEqual("Player", result);
         }
 
         [Test]
@@ -46,7 +46,7 @@ namespace UnitTests.Models
             // Reset
 
             // Assert
-            Assert.AreEqual("Cleric", result);
+            Assert.AreEqual("Player", result);
         }
     }
 }
