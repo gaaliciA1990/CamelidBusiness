@@ -308,6 +308,26 @@ namespace Game.Engine.EngineGame
                 case HitStatusEnum.Hit:
                     // It's a Hit
 
+                    //Update weapon's durability 
+                    if (EngineSettingsModel.Instance.BattleSettingsModel.AllowItemDurability && Attacker.PlayerType == PlayerTypeEnum.Character && Attacker.PrimaryHand != null)
+                    {
+                        var counter = Attacker.ItemUseTracker[Attacker.PrimaryHand];
+                        Attacker.ItemUseTracker[Attacker.PrimaryHand] = counter - 1;
+
+                        //Remove the item from the player's hand entirely if the item runs out of usage
+                        if ((counter - 1) == 0)
+                        {
+                            //Find the item's name
+                            var itemName = ItemIndexViewModel.Instance.Dataset.Where(m => m.Id == Attacker.PrimaryHand).FirstOrDefault();
+
+                            Debug.WriteLine("Item being dropped: " + itemName.Id);
+                            //Update turn special message
+                            EngineSettingsModel.Instance.BattleMessagesModel.ItemCrackedMessage = itemName.Name + " cracked and cannot be used anymore.";
+
+                            Attacker.PrimaryHand = null;
+                        }
+                    }
+
                     //Calculate Damage
                     EngineSettings.BattleMessagesModel.DamageAmount = Attacker.GetDamageRollValue();
 

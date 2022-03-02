@@ -17,6 +17,12 @@ namespace Game.Models
         // The Ability will be the List of Abilities per Job, and a count of how many times they can use it per round
         public Dictionary<AbilityEnum, int> AbilityTracker = new Dictionary<AbilityEnum, int>();
 
+        //Track the number of times a weapon can be used left
+        public Dictionary<string, int> ItemUseTracker = new Dictionary<string, int>();
+
+        //Default number of use
+        private int numUse = 10;
+
         /// <summary>
         /// Default Constructor
         /// </summary>
