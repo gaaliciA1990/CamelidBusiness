@@ -507,19 +507,30 @@ namespace Game.Engine.EngineGame
 
             // You decide how to drop monster items, level, etc.
 
-            // The Number drop can be Up to the Round Count, but may be less.  
+            // The Number drop can be Up to the character Count and a half, but may be less.  
             // Negative results in nothing dropped
-            var NumberToDrop = (DiceHelper.RollDice(1, round + 1) - 1);
+            var upperBound = BattleEngineViewModel.Instance.Engine.EngineSettings.CharacterList.Count;
+            var NumberToDrop = (DiceHelper.RollDice(1, upperBound * 2) - upperBound);
 
             var result = new List<ItemModel>();
 
+            //Drop basic items first
             for (var i = 0; i < NumberToDrop; i++)
             {
-                // Get a random Unique Item
-                var data = ItemIndexViewModel.Instance.GetItem(RandomPlayerHelper.GetMonsterUniqueItem());
-                result.Add(data);
+                result.Add(ItemIndexViewModel.Instance.GetItem(RandomPlayerHelper.GetRandomBasicItem()));
             }
 
+            //Special drops
+            // Get a random Unique Item if there's a boss in the round boss - every 3 rounds, there's a 70% chance of boss dropping an item
+            if (round % 3 == 0 && DiceHelper.RollDice(1, 10) >= 7)
+            {
+                result.Add(ItemIndexViewModel.Instance.GetItem(RandomPlayerHelper.GetRandomUniqueItem()));
+            }
+            //Every 10th round, drop unqiue item is 100%
+            if (round % 10 == 0)
+            {
+                result.Add(ItemIndexViewModel.Instance.GetItem(RandomPlayerHelper.GetRandomUniqueItem()));
+            }
             return result;
         }
 
