@@ -431,11 +431,13 @@ namespace Scenario
             EngineViewModel.Engine.EngineSettings.CurrentAttacker = EngineViewModel.Engine.Round.GetNextPlayerTurn();
             EngineViewModel.Engine.EngineSettings.CurrentDefender = EngineViewModel.Engine.Round.GetNextPlayerInList(); // Set target to be attacked to next player in list
             EngineViewModel.Engine.EngineSettings.CurrentAction = ActionEnum.Attack;
+            _ = DiceHelper.EnableForcedRolls();
             _ = DiceHelper.SetForcedRollValue(20); // force attacker roll to 20
             var RoundCondition = EngineViewModel.Engine.Round.RoundNextTurn();
             Console.WriteLine(EngineViewModel.Engine.EngineSettings.BattleMessagesModel.AttackStatus);
 
             //Reset
+            _ = DiceHelper.DisableForcedRolls();
             EngineViewModel.Engine.EngineSettings.CurrentAction = ActionEnum.Unknown;
             EngineViewModel.Engine.EngineSettings.CurrentAction = ActionEnum.Unknown;
             EngineViewModel.Engine.EngineSettings.BattleStateEnum = BattleStateEnum.Unknown;
