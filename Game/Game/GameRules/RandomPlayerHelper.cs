@@ -52,7 +52,8 @@ namespace Game.GameRules
             {
                 DiceHelper.DisableForcedRolls();
                 result = ItemIndexViewModel.Instance.Dataset.ElementAt(DiceHelper.RollDice(1, ItemIndexViewModel.Instance.Dataset.Count()) - 1).Id;
-                
+                DiceHelper.EnableForcedRolls();
+
             }
             if (InTestMode == false)
             {
@@ -72,6 +73,23 @@ namespace Game.GameRules
             var result = ItemIndexViewModel.Instance.UniqueItems.ElementAt(DiceHelper.RollDice(1, ItemIndexViewModel.Instance.UniqueItems.Count()) - 1).Id;
 
             return result;
+        }
+
+        /// <summary>
+        /// Function to help generate a random basic item
+        /// </summary>
+        /// <returns></returns>
+        public static string GetRandomBasicItem()
+        {
+            var listItem = ItemIndexViewModel.Instance.Dataset.Where(m => m.IsUnique == false).ToList();
+
+            //In case this is being called from the unit test/hack mode
+            DiceHelper.DisableForcedRolls();
+            var result = listItem.ElementAt(DiceHelper.RollDice(1, listItem.Count()) - 1).Id;
+            DiceHelper.EnableForcedRolls();
+
+            return result;
+
         }
         
 
