@@ -10,10 +10,10 @@
         Unknown = 0,
 
         // Fighters hit hard and have fight abilities
-        Fighter = 10,
+        RoundBoss = 10,
 
         // Clerics defend well and have buff abilities
-        Cleric = 12,
+        GreatLeader = 12,
 
     }
 
@@ -34,12 +34,12 @@
 
             switch (value)
             {
-                case CharacterJobEnum.Fighter:
-                    Message = "Fighter";
+                case CharacterJobEnum.RoundBoss:
+                    Message = "Round Boss";
                     break;
 
-                case CharacterJobEnum.Cleric:
-                    Message = "Cleric";
+                case CharacterJobEnum.GreatLeader:
+                    Message = "Great Leader";
                     break;
 
                 case CharacterJobEnum.Unknown:
