@@ -21,7 +21,6 @@ namespace Game.Models
             PlayerType = PlayerTypeEnum.Obstacle;
             Guid = Id;
             ImageURI = "obstacle1.png";
-
         }
 
         /// <summary>
