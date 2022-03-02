@@ -124,6 +124,25 @@
                     VerticalOptions="Center"
                     x:Name="AllowMonsterItemsSwitch"
                     Toggled="AllowMonsterItems_Toggled"/>
+
+                <Label Grid.Row="5" Grid.Column="0"
+                    Text="% Chance Monsters Respawn "
+                    HorizontalTextAlignment="Start"
+                    HorizontalOptions="Start"
+                    Style="{DynamicResource LabelStyle}"
+                    />
+
+
+                <Entry Grid.Row="5" Grid.Column="1"
+                    WidthRequest="50"
+                    TextChanged="ZombieToggle"
+                    x:Name="ZombieChance"
+                    FontSize="Micro"
+                    MaxLength="5"
+                    CursorPosition="0"
+                    SelectionLength = "5"
+                    Keyboard="Numeric"
+                    />
             </Grid>
 
             <Button Clicked="CloseButton_Clicked" Text="Close" HorizontalOptions="CenterAndExpand"/>

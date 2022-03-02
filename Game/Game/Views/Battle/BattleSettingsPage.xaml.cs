@@ -42,6 +42,9 @@ namespace Game.Views
                 CharacterHitPicker.Items.Add(item);
             }
 
+
+            ZombieChance.Text = (BattleEngineViewModel.Instance.Engine.EngineSettings.BattleSettingsModel.MonsterRespawnChance * 100).ToString();
+
             // Set Values to current State
             MonsterHitPicker.SelectedItem = BattleEngineViewModel.Instance.Engine.EngineSettings.BattleSettingsModel.MonsterHitEnum.ToString();
             MonsterHitPicker.SelectedIndex = MonsterHitPicker.Items.IndexOf(MonsterHitPicker.SelectedItem.ToString());
@@ -137,6 +140,22 @@ namespace Game.Views
 
             BattleEngineViewModel.Instance.Engine.EngineSettings.BattleSettingsModel.AllowCriticalMiss = false;
         }
+
+        /// <summary>
+        /// Change change monsters respawn
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void ZombieToggle(object sender, EventArgs e)
+        {
+            var isNumeric = int.TryParse(ZombieChance.Text, out int n);
+            if (isNumeric)
+            {
+                BattleEngineViewModel.Instance.Engine.EngineSettings.BattleSettingsModel.MonsterRespawnChance = (float)n / 100;
+            }
+        }
+
+
 
         /// <summary>
         /// Toggle Critical Hit
