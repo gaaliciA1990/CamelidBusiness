@@ -421,9 +421,12 @@ namespace Game.Engine.EngineGame
             // Drop Items to ItemModel Pool
             var myItemList = Target.DropAllItems();
 
-            // I feel generous, even when characters die, random drops happen :-)
             // If Random drops are enabled, then add some....
-            myItemList.AddRange(GetRandomMonsterItemDrops(EngineSettings.BattleScore.RoundCount));
+            if(Target.PlayerType == PlayerTypeEnum.Monster)
+            {
+                myItemList.AddRange(GetRandomMonsterItemDrops(EngineSettings.BattleScore.RoundCount));
+            }
+            
 
             // Add to ScoreModel
             foreach (var ItemModel in myItemList)
@@ -503,10 +506,7 @@ namespace Game.Engine.EngineGame
         /// </summary>
         public override List<ItemModel> GetRandomMonsterItemDrops(int round)
         {
-            // TODO: Teams, You need to implement your own modification to the Logic cannot use mine as is.
-
-            // You decide how to drop monster items, level, etc.
-
+            PlayerInfoModel Target = EngineSettings.CurrentDefender;
             // The Number drop can be Up to the character Count and a half, but may be less.  
             // Negative results in nothing dropped
             var upperBound = BattleEngineViewModel.Instance.Engine.EngineSettings.CharacterList.Count;
@@ -514,20 +514,23 @@ namespace Game.Engine.EngineGame
 
             var result = new List<ItemModel>();
 
-            //Drop basic items first
-            for (var i = 0; i < NumberToDrop; i++)
+            //Drop basic items
+            if (Target.Job == CharacterJobEnum.Unknown)
             {
-                result.Add(ItemIndexViewModel.Instance.GetItem(RandomPlayerHelper.GetRandomBasicItem()));
+                for (var i = 0; i < NumberToDrop; i++)
+                {
+                    result.Add(ItemIndexViewModel.Instance.GetItem(RandomPlayerHelper.GetRandomBasicItem()));
+                }
             }
 
             //Special drops
             // Get a random Unique Item if there's a boss in the round boss - every 3 rounds, there's a 70% chance of boss dropping an item
-            if (round % 3 == 0 && DiceHelper.RollDice(1, 10) >= 7)
+            if (Target.Job == CharacterJobEnum.RoundBoss && DiceHelper.RollDice(1, 10) >= 7)
             {
                 result.Add(ItemIndexViewModel.Instance.GetItem(RandomPlayerHelper.GetRandomUniqueItem()));
             }
             //Every 10th round, drop unqiue item is 100%
-            if (round % 10 == 0)
+            if (Target.Job == CharacterJobEnum.GreatLeader)
             {
                 result.Add(ItemIndexViewModel.Instance.GetItem(RandomPlayerHelper.GetRandomUniqueItem()));
             }
