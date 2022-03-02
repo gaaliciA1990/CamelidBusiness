@@ -547,5 +547,112 @@ namespace Scenario
         }
 
         #endregion Scenario34
+
+        #region Scenario28
+        [Test]
+        public async Task HackathonScenario_Scenario_28_Valid_Default_Should_Pass()
+        {
+            /* 
+            * Scenario Number:  
+            *      28
+            *      
+            * Description: 
+            *      Item wears down with each use: There is a number of uses per item after that, it breaks forever. 
+            *      Broken items are dropped 
+            *      Enable with a debug switch. 
+            *      Display in the message what happened
+            * 
+            * Changes Required (Classes, Methods etc.)  List Files, Methods, and Describe Changes: 
+            *      BattleMessagesModel - create a getter for turn message special
+            *      BattleSettingsModel - create a debug switch for item durability
+            *      PlayerInfoModel - create a new field for tracker weapon's usage
+            * 
+            * Test Algrorithm:
+            *      Create Character named Doug
+            *      Character always misses
+            *  
+            *      Startup Battle
+            *      Run Auto Battle
+            * 
+            * Test Conditions:
+            *      Default condition is sufficient
+            * 
+            * Validation:
+            *      
+            */
+
+            //Arrange
+
+            // Set Character Conditions
+
+            //Only have 1 monster and 1 character
+            EngineViewModel.Engine.EngineSettings.MaxNumberPartyCharacters = 1;
+            EngineViewModel.Engine.EngineSettings.MaxNumberPartyMonsters = 1;
+            EngineViewModel.Engine.EngineSettings.MaxTurnCount = 15;
+            EngineViewModel.Engine.EngineSettings.MaxRoundCount = 2;
+            EngineViewModel.Engine.EngineSettings.BattleSettingsModel.AllowItemDurability = true;
+
+            var item = new ItemModel();
+            item.Value = 6;
+            item.Range = 7;
+            item.Damage = 8;
+            item.Attribute = AttributeEnum.Attack;
+            item.Location = ItemLocationEnum.PrimaryHand;
+            item.Name = "test item";
+
+            var CharacterPlayerEvie = new PlayerInfoModel(
+                            new CharacterModel
+                            {
+                                Speed = 1, // Will go first...
+                                Level = 1,
+                                CurrentHealth = 20,
+                                ExperienceTotal = 1,
+                                ExperienceRemaining = 1,
+                                Name = "Evie",
+                                PrimaryHand = item.Id
+                            });
+            var CharacterMonsterEfie = new PlayerInfoModel(new MonsterModel
+            {
+                Speed = 1, // Will go first...
+                Level = 1,
+                CurrentHealth = 20,
+                ExperienceTotal = 100,
+                ExperienceRemaining = 100,
+                Name = "Efie"
+            });
+
+            //Give the item only 5 times usage
+            ItemIndexViewModel.Instance.Dataset.Add(item);
+            CharacterPlayerEvie.ItemUseTracker[item.Id] = 5;
+
+            EngineViewModel.Engine.EngineSettings.CharacterList.Add(CharacterPlayerEvie);
+            EngineViewModel.Engine.EngineSettings.MonsterList.Add(CharacterMonsterEfie);
+            EngineViewModel.Engine.EngineSettings.PlayerList.Add(CharacterPlayerEvie);
+            EngineViewModel.Engine.EngineSettings.PlayerList.Add(CharacterMonsterEfie);
+            EngineViewModel.Engine.EngineSettings.CurrentAttacker = CharacterPlayerEvie;
+            EngineViewModel.Engine.EngineSettings.CurrentDefender = CharacterMonsterEfie;
+
+            // Auto Battle will add the monsters
+
+            // Character always miss
+            EngineViewModel.Engine.EngineSettings.BattleSettingsModel.CharacterHitEnum = HitStatusEnum.Hit;
+            EngineViewModel.Engine.EngineSettings.BattleSettingsModel.MonsterHitEnum = HitStatusEnum.Miss;
+
+            //Act
+            //var result = await EngineViewModel.AutoBattleEngine.RunAutoBattle();
+            for (int i = 0; i < 10; i++)
+            {
+                EngineViewModel.Engine.Round.RoundNextTurn();
+            }
+
+            //Reset
+            EngineViewModel.Engine.EngineSettings.BattleSettingsModel.CharacterHitEnum = HitStatusEnum.Default;
+
+            //Assert
+            Assert.AreEqual(null, EngineViewModel.Engine.EngineSettings.PlayerList[0].PrimaryHand);
+            Assert.AreEqual(true, EngineViewModel.Engine.EngineSettings.BattleMessagesModel.GetItemBrokenMessage().Contains(item.Name));
+        }
+
+        #endregion Scenario28
     }
 }
