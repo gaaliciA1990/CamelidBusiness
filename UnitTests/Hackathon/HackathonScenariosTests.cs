@@ -460,8 +460,12 @@ namespace Scenario
             * 
             * Changes Required (Classes, Methods etc.)  List Files, Methods, and Describe Changes: 
             *      <List Files Changed>
-            *      <List Classes Changed>
-            *      <List Methods Changed>
+            *      PlayerTypeEnum.cs
+            *      PlayInfoModel.cs -> PlayerInfoModel(ObstacleModel data)
+            *      BattlePage.xaml.cs -> DetermineMapImageButton(), 
+            *      MapModel.cs -> PopulateMapModel()
+            *      Created ObstacleModel file
+            *      
             * 
             * Test Algrorithm:
             *      <Step by step how to validate this change>
