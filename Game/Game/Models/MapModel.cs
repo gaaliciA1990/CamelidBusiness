@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Game.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+
 
 namespace Game.Models
 {
@@ -23,6 +25,9 @@ namespace Game.Models
         public MapModelLocation[,] MapGridLocation;
 
         public PlayerInfoModel EmptySquare = new PlayerInfoModel { PlayerType = PlayerTypeEnum.Unknown, ImageURI = "mapcell.png" };
+
+        // random number generator
+        private Random rand = new Random();
 
         public MapModel()
         {
@@ -52,7 +57,7 @@ namespace Game.Models
 
         /// <summary>
         /// Initialize the Data Structure
-        /// Add Characters and Monsters to the Map
+        /// Add Characters, Monsters, and Obstacles to the Map
         /// </summary>
         /// <param name="PlayerList"></param>
         /// <returns></returns>
@@ -60,8 +65,27 @@ namespace Game.Models
         {
             _ = ClearMapGrid();
 
+            var obstacle = GameImagesHelper.GetObstacleImage();
+            var randomObstacle = 0;
+            var totalObstacles = 5;
             var x = 0;
             var y = 0;
+
+            // Populate the map with obstacles randomly
+            for (int i = 0; i < totalObstacles; i++)
+            {
+                randomObstacle = rand.Next(0, obstacle.Count);
+                // Randomly select a location on the grid for x and y
+                x = rand.Next(0, MapXAxiesCount);
+                y = rand.Next(0, MapYAxiesCount);
+
+                // Create a new obstacle at the randomly selected location
+                MapGridLocation[x, y].Player = new PlayerInfoModel { PlayerType = PlayerTypeEnum.Obstacle, ImageURI = obstacle[randomObstacle]};
+            }
+
+            x = 0;
+            y = 0;
+
             foreach (var data in PlayerList.Where(m => m.PlayerType == PlayerTypeEnum.Character))
             {
                 MapGridLocation[x, y].Player = data;
@@ -271,7 +295,7 @@ namespace Game.Models
 
         /// <summary>
         /// Return who is at the location
-        /// Could be Character, Monster or Empty
+        /// Could be Character, Monster, Obstacle or Empty
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
