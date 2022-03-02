@@ -197,6 +197,9 @@
     <Content Include="monster6.png" />
     <Content Include="monsters.png" />
     <Content Include="movepopup.png" />
+    <Content Include="obstacle1.png" />
+    <Content Include="obstacle2.png" />
+    <Content Include="obstacle3.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="rightarrow.png" />
     <Content Include="score.png" />
