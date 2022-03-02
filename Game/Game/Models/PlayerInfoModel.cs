@@ -100,8 +100,10 @@ namespace Game.Models
             Necklass = data.Necklass;
             PrimaryHand = data.PrimaryHand;
 
-            //Add the item to the dictionary
-            ItemUseTracker.Add(PrimaryHand, numUse);
+            if(PrimaryHand != null)
+            {
+                ItemUseTracker.Add(PrimaryHand, numUse);
+            }
 
             OffHand = data.OffHand;
             RightFinger = data.RightFinger;
