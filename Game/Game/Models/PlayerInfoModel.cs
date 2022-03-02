@@ -101,7 +101,11 @@ namespace Game.Models
             PrimaryHand = data.PrimaryHand;
 
             //Add the item to the dictionary
-            ItemUseTracker.Add(PrimaryHand, numUse);
+            if (PrimaryHand != null)
+            {
+                ItemUseTracker.Add(PrimaryHand, numUse);
+            }
+
 
             OffHand = data.OffHand;
             RightFinger = data.RightFinger;
@@ -177,6 +181,7 @@ namespace Game.Models
             Head = data.Head;
             Necklass = data.Necklass;
             PrimaryHand = data.PrimaryHand;
+
             OffHand = data.OffHand;
             RightFinger = data.RightFinger;
             LeftFinger = data.LeftFinger;
