@@ -562,7 +562,7 @@ namespace Scenario
 
         #region Scenario28
         [Test]
-        public async Task HackathonScenario_Scenario_28_Valid_Default_Should_Pass()
+        public void HackathonScenario_Scenario_28_Valid_Default_Should_Pass()
         {
             /* 
             * Scenario Number:  
@@ -600,17 +600,15 @@ namespace Scenario
             //Only have 1 monster and 1 character
             EngineViewModel.Engine.EngineSettings.MaxNumberPartyCharacters = 1;
             EngineViewModel.Engine.EngineSettings.MaxNumberPartyMonsters = 1;
-            EngineViewModel.Engine.EngineSettings.MaxTurnCount = 15;
-            EngineViewModel.Engine.EngineSettings.MaxRoundCount = 2;
             EngineViewModel.Engine.EngineSettings.BattleSettingsModel.AllowItemDurability = true;
 
-            var item = new ItemModel();
-            item.Value = 6;
-            item.Range = 7;
-            item.Damage = 8;
-            item.Attribute = AttributeEnum.Attack;
-            item.Location = ItemLocationEnum.PrimaryHand;
-            item.Name = "test item";
+            var item = ItemIndexViewModel.Instance.Dataset.Where(m => m.Location == ItemLocationEnum.PrimaryHand).FirstOrDefault();
+            //item.Value = 6;
+            //item.Range = 7;
+            //item.Damage = 8;
+            //item.Attribute = AttributeEnum.Attack;
+            //item.Location = ItemLocationEnum.PrimaryHand;
+            //item.Name = "test item";
 
             var CharacterPlayerEvie = new PlayerInfoModel(
                             new CharacterModel
@@ -633,10 +631,6 @@ namespace Scenario
                 Name = "Efie"
             });
 
-            //Give the item only 5 times usage
-            ItemIndexViewModel.Instance.Dataset.Add(item);
-            CharacterPlayerEvie.ItemUseTracker[item.Id] = 5;
-
             EngineViewModel.Engine.EngineSettings.CharacterList.Add(CharacterPlayerEvie);
             EngineViewModel.Engine.EngineSettings.MonsterList.Add(CharacterMonsterEfie);
             EngineViewModel.Engine.EngineSettings.PlayerList.Add(CharacterPlayerEvie);
@@ -644,14 +638,12 @@ namespace Scenario
             EngineViewModel.Engine.EngineSettings.CurrentAttacker = CharacterPlayerEvie;
             EngineViewModel.Engine.EngineSettings.CurrentDefender = CharacterMonsterEfie;
 
-            // Auto Battle will add the monsters
 
-            // Character always miss
+            // Character always hit
             EngineViewModel.Engine.EngineSettings.BattleSettingsModel.CharacterHitEnum = HitStatusEnum.Hit;
             EngineViewModel.Engine.EngineSettings.BattleSettingsModel.MonsterHitEnum = HitStatusEnum.Miss;
 
             //Act
-            //var result = await EngineViewModel.AutoBattleEngine.RunAutoBattle();
             for (int i = 0; i < 10; i++)
             {
                 EngineViewModel.Engine.Round.RoundNextTurn();
@@ -659,6 +651,7 @@ namespace Scenario
 
             //Reset
             EngineViewModel.Engine.EngineSettings.BattleSettingsModel.CharacterHitEnum = HitStatusEnum.Default;
+            EngineViewModel.Engine.EngineSettings.BattleSettingsModel.AllowItemDurability = false;
 
             //Assert
             Assert.AreEqual(null, EngineViewModel.Engine.EngineSettings.PlayerList[0].PrimaryHand);

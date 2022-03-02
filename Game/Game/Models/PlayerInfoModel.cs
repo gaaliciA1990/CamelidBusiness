@@ -99,6 +99,10 @@ namespace Game.Models
             Head = data.Head;
             Necklass = data.Necklass;
             PrimaryHand = data.PrimaryHand;
+
+            //Add the item to the dictionary
+            ItemUseTracker.Add(PrimaryHand, numUse);
+
             OffHand = data.OffHand;
             RightFinger = data.RightFinger;
             LeftFinger = data.LeftFinger;
