@@ -324,20 +324,28 @@ namespace Scenario
             //Act
             EngineViewModel.Engine.EngineSettings.CurrentAttacker = EngineViewModel.Engine.Round.GetNextPlayerTurn();
             EngineViewModel.Engine.EngineSettings.CurrentAction = ActionEnum.Skip;
+            var name = EngineViewModel.Engine.Round.GetNextPlayerTurn().Name;
+            var location = EngineViewModel.Engine.EngineSettings.MapModel.GetLocationForPlayer(CharacterPlayerMike);
+
             var RoundCondition = EngineViewModel.Engine.Round.RoundNextTurn();
 
             //Reset
+            EngineViewModel.Engine.EngineSettings.PlayerList.Clear();
+            EngineViewModel.Engine.EngineSettings.MonsterList.Clear();
+            EngineViewModel.Engine.EngineSettings.CharacterList.Clear();
             EngineViewModel.Engine.EngineSettings.CurrentAction = ActionEnum.Unknown;
             EngineViewModel.Engine.EngineSettings.BattleStateEnum = BattleStateEnum.Unknown;
             EngineViewModel.Engine.EngineSettings.BattleSettingsModel.BattleModeEnum = BattleModeEnum.Unknown;
 
             //Assert
-            Assert.AreEqual(MonsterPlayerPat.Name, EngineViewModel.Engine.Round.GetNextPlayerTurn().Name); //Check Pat's turn is next
-            Assert.AreEqual(characterLocation, EngineViewModel.Engine.EngineSettings.MapModel.GetLocationForPlayer(CharacterPlayerMike)); //Check Mike didn't move
+            Assert.AreEqual(MonsterPlayerPat.Name, name); //Check Pat's turn is next
+            Assert.AreEqual(characterLocation, location); //Check Mike didn't move
             Assert.AreEqual(monsterHealth, MonsterPlayerPat.GetCurrentHealth()); //Check Mike didn'dt cause damage
             Assert.AreEqual(characterHealth + 2, CharacterPlayerMike.GetCurrentHealth()); //Check Mike health increased by 2
         }
         #endregion Scenario33
+
+
 
         #region Scenario4
         [Test]
@@ -654,5 +662,116 @@ namespace Scenario
         }
 
         #endregion Scenario28
+
+
+
+        #region Scenario17
+        [Test]
+        public void HackathonScenario_17_Monster_Should_Revive_As_Zombie_After_Mike_Kills_It()
+        {
+            /* 
+            * Scenario Number:  
+            *      17
+            *      
+            * Description: 
+            *      Make a Character called Mike and A monster called Pat.
+            *      On Mike's turn, he Attacks and kills Pat
+            *      Pat Becomes a Zombie and his helath is restored to half his max health
+            * 
+            * Changes Required (Classes, Methods etc.)  List Files, Methods, and Describe Changes: 
+            *      Added MonsterRespawnChance float for probability Pat becomes zombie,
+            *      in RemoveIfDead methid, restore monster's health, change name, and set back to alive
+            *      added entry in battle settings for user to choose probability monster becomes zombie
+            * 
+            * Test Algrorithm:
+            *      Create Character named Mike
+            *      Create Monster named Pat
+            *      Set Pat health to 1 so Pat dies when hit 
+            *      Set speed of Mike to 3 and Pat speed to 1 so Mike goes first 
+            *      Create Map Grid and add players
+            *      Set CharacterHitEnum to Hit so Mike wont miss
+            *      Play Mike's turn with attack option and Pat as defender
+            *      
+            *  
+            * 
+            * Test Conditions:
+            *      Default condition is sufficient
+            *      
+            *      
+            * 
+            * Validation:
+            *      Asserts to check that Mike Is still alive
+            *      Assert to check Pat is a zombie
+            *      Assert to check Pat's healt is half his max health
+            *  
+            */
+
+            //Arrange
+            var CharacterPlayerMike = new PlayerInfoModel(
+                            new CharacterModel
+                            {
+                                Speed = 3, // Will go first...
+                                Level = 1,
+                                CurrentHealth = 10,
+                                MaxHealth = 20,
+                                ExperienceTotal = 1,
+                                ExperienceRemaining = 1,
+                                Name = "Mike",
+                                PrimaryHand = ItemIndexViewModel.Instance.Dataset.Where(m => m.Range > 1).ToList().OrderByDescending(m => m.Range).FirstOrDefault().Id
+                            });
+
+            var MonsterPlayerPat = new PlayerInfoModel(
+                            new MonsterModel
+                            {
+                                Speed = 1, // Will go last...
+                                Level = 1,
+                                CurrentHealth = 1,
+                                ExperienceTotal = 1,
+                                MaxHealth = 12,
+                                ExperienceRemaining = 1,
+                                Name = "Pat",
+                                PrimaryHand = ItemIndexViewModel.Instance.Dataset.Where(m => m.Range > 1).ToList().OrderByDescending(m => m.Range).FirstOrDefault().Id
+                            });
+
+            EngineViewModel.Engine.EngineSettings.BattleSettingsModel.BattleModeEnum = BattleModeEnum.MapFull;
+
+            EngineViewModel.Engine.EngineSettings.PlayerList.Clear();
+            EngineViewModel.Engine.EngineSettings.MonsterList.Clear();
+            EngineViewModel.Engine.EngineSettings.CharacterList.Clear();
+            EngineViewModel.Engine.EngineSettings.CharacterList.Add(CharacterPlayerMike);
+            EngineViewModel.Engine.EngineSettings.MonsterList.Add(MonsterPlayerPat);
+            EngineViewModel.Engine.EngineSettings.PlayerList.Add(CharacterPlayerMike);
+            EngineViewModel.Engine.EngineSettings.PlayerList.Add(MonsterPlayerPat);
+
+
+            _ = EngineViewModel.Engine.EngineSettings.MapModel.PopulateMapModel(EngineViewModel.Engine.EngineSettings.PlayerList);
+
+            //Act
+            EngineViewModel.Engine.EngineSettings.CurrentAttacker = EngineViewModel.Engine.Round.GetNextPlayerTurn();
+            EngineViewModel.Engine.EngineSettings.CurrentDefender = MonsterPlayerPat;
+            EngineViewModel.Engine.EngineSettings.CurrentAction = ActionEnum.Attack;
+            EngineViewModel.Engine.EngineSettings.BattleSettingsModel.MonsterRespawnChance = 1;
+            EngineViewModel.Engine.EngineSettings.BattleSettingsModel.CharacterHitEnum = HitStatusEnum.Hit;
+
+
+            var RoundCondition = EngineViewModel.Engine.Round.RoundNextTurn();
+
+            //Reset
+            EngineViewModel.Engine.EngineSettings.PlayerList.Clear();
+            EngineViewModel.Engine.EngineSettings.MonsterList.Clear();
+            EngineViewModel.Engine.EngineSettings.CharacterList.Clear();
+            EngineViewModel.Engine.EngineSettings.CurrentAction = ActionEnum.Unknown;
+            EngineViewModel.Engine.EngineSettings.BattleStateEnum = BattleStateEnum.Unknown;
+            EngineViewModel.Engine.EngineSettings.BattleSettingsModel.BattleModeEnum = BattleModeEnum.Unknown;
+            EngineViewModel.Engine.EngineSettings.BattleSettingsModel.MonsterRespawnChance = 0;
+            EngineViewModel.Engine.EngineSettings.BattleSettingsModel.CharacterHitEnum = HitStatusEnum.Unknown;
+
+            //Assert
+            Assert.AreEqual(true, MonsterPlayerPat.Alive); // Check monster is alive
+            Assert.AreEqual("Zombie", MonsterPlayerPat.Name.Substring(0, 6)); // Check monster is zombie
+            Assert.AreEqual(MonsterPlayerPat.CurrentHealth, MonsterPlayerPat.MaxHealth / 2); // Check health is half of max health
+        }
+
+        #endregion Scenario17
     }
 }
