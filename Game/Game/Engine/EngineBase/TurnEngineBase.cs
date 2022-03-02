@@ -8,6 +8,7 @@ using Game.ViewModels;
 using Game.GameRules;
 using Game.Engine.EngineModels;
 using Game.Engine.EngineInterfaces;
+using System;
 
 namespace Game.Engine.EngineBase
 {
@@ -555,6 +556,8 @@ namespace Game.Engine.EngineBase
 
         /// <summary>
         /// If Dead process Target Died
+        /// If zomby option is on, use MonsterRespawnChance from battle settings 
+        /// to determine of monster respawns as Zombie
         /// </summary>
         /// <param name="Target"></param>
         public virtual bool RemoveIfDead(PlayerInfoModel Target)
@@ -562,8 +565,20 @@ namespace Game.Engine.EngineBase
             // Check for alive
             if (Target.Alive == false)
             {
-                _ = TargetDied(Target);
-                return true;
+                Random random = new Random();
+                if (random.NextDouble() <= EngineSettings.BattleSettingsModel.MonsterRespawnChance && (Target.Name.Length < 6 || Target.Name.Substring(0, 6) != "Zombie"))
+                {
+                    Target.Alive = true;
+                    Target.CurrentHealth = (int)(Target.GetMaxHealth() * .5);
+                    Target.Name = "Zombie" + Target.Name;
+                    return false;
+                }
+                else
+                {
+
+                    _ = TargetDied(Target);
+                    return true;
+                }
             }
 
             return false;
