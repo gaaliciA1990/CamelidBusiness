@@ -337,5 +337,149 @@ namespace Scenario
             Assert.AreEqual(characterHealth + 2, CharacterPlayerMike.GetCurrentHealth()); //Check Mike health increased by 2
         }
         #endregion Scenario3
+
+        #region Scenario4
+        [Test]
+        public void HakathonScenario_Scenario_4_Valid_Default_Should_Pass()
+        {
+            /* 
+            * Scenario Number:  
+            *      4
+            *      
+            * Description: 
+            *      Attacker always has a critical hit that causes double damage
+            * 
+            * Changes Required (Classes, Methods etc.)  List Files, Methods, and Describe Changes: 
+            *      None required for this test
+            * 
+            * Test Algrorithm:
+            *      Create Character named Dave
+            *      Create Monster named Steve
+            *      Set speed of Dave to 3 so he goes first 
+            *      Set speed of Steve to 1 
+            *      Create Map Grid and add players
+            *      Play Dave's turn to attack
+            *      Asserts to check that Dave's attack was Critical
+            *      Assert to check Dave's attack was doubled
+            * 
+            * Test Conditions:
+            *      Default condition is sufficient
+            * 
+            * Validation:
+            *      Verify we got a CriticalHit when a 20 was rolled
+            *  
+            */
+
+            // Arrange
+            var CharacterPlayerDave = new PlayerInfoModel(
+                new CharacterModel
+                {
+                    Speed = 3, // Will go first...
+                    Level = 2,
+                    CurrentHealth = 15,
+                    MaxHealth = 20,
+                    ExperienceTotal = 1,
+                    ExperienceRemaining = 1,
+                    Name = "Dave",
+                    PrimaryHand = ItemIndexViewModel.Instance.Dataset.Where(m => m.Range > 1).ToList().OrderByDescending(m => m.Range).FirstOrDefault().Id
+                });
+
+            var MonsterPlayerSteve = new PlayerInfoModel(
+                new MonsterModel
+                {
+                    Speed = 2, // Will go last...
+                    Level = 2,
+                    CurrentHealth = 20,
+                    ExperienceTotal = 1,
+                    ExperienceRemaining = 1,
+                    Name = "Steve",
+                    PrimaryHand = ItemIndexViewModel.Instance.Dataset.Where(m => m.Range > 1).ToList().OrderByDescending(m => m.Range).FirstOrDefault().Id
+                });
+
+            EngineViewModel.Engine.EngineSettings.BattleSettingsModel.BattleModeEnum = BattleModeEnum.MapFull;
+            EngineViewModel.Engine.EngineSettings.BattleSettingsModel.AllowCriticalHit = true; // Allow critical hits
+            _ = DiceHelper.EnableForcedRolls(); // Enable forced rolls
+
+            // Clear the player, character, and monster list
+            EngineViewModel.Engine.EngineSettings.PlayerList.Clear();
+            EngineViewModel.Engine.EngineSettings.MonsterList.Clear();
+            EngineViewModel.Engine.EngineSettings.CharacterList.Clear();
+
+            // Add our character and monsters to our lists of players 
+            EngineViewModel.Engine.EngineSettings.CharacterList.Add(CharacterPlayerDave);
+            EngineViewModel.Engine.EngineSettings.MonsterList.Add(MonsterPlayerSteve);
+            EngineViewModel.Engine.EngineSettings.PlayerList.Add(CharacterPlayerDave);
+            EngineViewModel.Engine.EngineSettings.PlayerList.Add(MonsterPlayerSteve);
+
+            // Populate the map with the players
+            _ = EngineViewModel.Engine.EngineSettings.MapModel.PopulateMapModel(EngineViewModel.Engine.EngineSettings.PlayerList);
+
+            var monsterHealth = MonsterPlayerSteve.GetCurrentHealth();
+            var characterHealth = CharacterPlayerDave.GetCurrentHealth();
+            var characterLocation = EngineViewModel.Engine.EngineSettings.MapModel.GetLocationForPlayer(CharacterPlayerDave);
+
+            //Act
+            EngineViewModel.Engine.EngineSettings.CurrentAttacker = EngineViewModel.Engine.Round.GetNextPlayerTurn();
+            EngineViewModel.Engine.EngineSettings.CurrentDefender = EngineViewModel.Engine.Round.GetNextPlayerInList(); // Set target to be attacked to next player in list
+            EngineViewModel.Engine.EngineSettings.CurrentAction = ActionEnum.Attack;
+            _ = DiceHelper.SetForcedRollValue(20); // force attacker roll to 20
+            var RoundCondition = EngineViewModel.Engine.Round.RoundNextTurn();
+            Console.WriteLine(EngineViewModel.Engine.EngineSettings.BattleMessagesModel.AttackStatus);
+
+            //Reset
+            EngineViewModel.Engine.EngineSettings.CurrentAction = ActionEnum.Unknown;
+            EngineViewModel.Engine.EngineSettings.CurrentAction = ActionEnum.Unknown;
+            EngineViewModel.Engine.EngineSettings.BattleStateEnum = BattleStateEnum.Unknown;
+            EngineViewModel.Engine.EngineSettings.BattleSettingsModel.BattleModeEnum = BattleModeEnum.Unknown;
+
+            //Assert
+            Assert.AreEqual(HitStatusEnum.CriticalHit, EngineViewModel.Engine.EngineSettings.BattleMessagesModel.HitStatus); // confirm the battle message after attack is critical attack
+        }
+        #endregion Scenario4
+
+        #region Scenario32
+        [Test]
+        public void HakathonScenario_Scenario_32_Valid_Default_Should_Pass()
+        {
+            /* 
+            * Scenario Number: 
+            *      32
+            *      
+            * Description: 
+            *      The map has obstacles that need to be either destroyed to open the map or moved around to 
+            *      reach the final destination
+            * 
+            * Changes Required (Classes, Methods etc.)  List Files, Methods, and Describe Changes: 
+            *      <List Files Changed>
+            *      <List Classes Changed>
+            *      <List Methods Changed>
+            * 
+            * Test Algrorithm:
+            *      <Step by step how to validate this change>
+            * 
+            * Test Conditions:
+            *      <List the different test conditions to make>
+            * 
+            * Validation:
+            *      <List how to validate this change>
+            *  
+            */
+
+            // Arrange
+
+            // Act
+
+            // Assert
+
+
+            // Act
+            var result = EngineViewModel;
+
+            // Reset
+
+            // Assert
+            Assert.IsNotNull(result);
+        }
+        #endregion Scenario32
     }
 }
