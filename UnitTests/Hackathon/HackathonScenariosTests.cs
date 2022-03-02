@@ -450,14 +450,14 @@ namespace Scenario
 
         #region Scenario32
         [Test]
-        public void HakathonScenario_Scenario_32_Valid_Default_Should_Pass()
+        public void HakathonScenario_Scenario_32_Valid_Obastacle_Encountered_Should_Pass()
         {
             /* 
             * Scenario Number: 
             *      32
             *      
             * Description: 
-            *      The map has obstacles that need to be either destroyed to open the map or moved around to 
+            *      The map has obstacles that need to be moved around to 
             *      reach the final destination
             * 
             * Changes Required (Classes, Methods etc.)  List Files, Methods, and Describe Changes: 
@@ -470,30 +470,85 @@ namespace Scenario
             *      
             * 
             * Test Algrorithm:
-            *      <Step by step how to validate this change>
+            *      Create Character named Jenny and Monster name Gill
+            *      Add both to map grid with obstacles
+            *      Have the players move on the map
+            *      Iterate over the map and determine if we encounter an obstacle
             * 
             * Test Conditions:
-            *      <List the different test conditions to make>
+            *      Obstacle encounters
             * 
             * Validation:
-            *      <List how to validate this change>
+            *      Verify we encounter at least 1 Obstacle on the map when traversing it
             *  
             */
 
-            // Arrange
+            //Arrange
 
-            // Act
+            // Set Character Conditions
 
-            // Assert
+            // Create playlister with 1 monster and 1 character
+            EngineViewModel.Engine.EngineSettings.MaxNumberPartyCharacters = 1;
+            EngineViewModel.Engine.EngineSettings.MaxNumberPartyMonsters = 1;
+            EngineViewModel.Engine.EngineSettings.MaxTurnCount = 2;
+            EngineViewModel.Engine.EngineSettings.MaxRoundCount = 1;
 
+            var CharacterPlayerJenny = new PlayerInfoModel(
+                            new CharacterModel
+                            {
+                                Speed = 1, // Will go first...
+                                Level = 1,
+                                CurrentHealth = 20,
+                                ExperienceTotal = 1,
+                                ExperienceRemaining = 1,
+                                Name = "Jenny",
+                            });
+            var MonsterPlayerGill = new PlayerInfoModel(new MonsterModel
+            {
+                Speed = 1, // Will go first...
+                Level = 1,
+                CurrentHealth = 20,
+                ExperienceTotal = 1,
+                ExperienceRemaining = 1,
+                Name = "Gill",
 
-            // Act
-            var result = EngineViewModel;
+            });
 
-            // Reset
+            // Clear the player, character, and monster list
+            EngineViewModel.Engine.EngineSettings.PlayerList.Clear();
+            EngineViewModel.Engine.EngineSettings.MonsterList.Clear();
+            EngineViewModel.Engine.EngineSettings.CharacterList.Clear();
 
-            // Assert
-            Assert.IsNotNull(result);
+            // Add our character and monsters to our lists of players 
+            EngineViewModel.Engine.EngineSettings.CharacterList.Add(CharacterPlayerJenny);
+            EngineViewModel.Engine.EngineSettings.MonsterList.Add(MonsterPlayerGill);
+            EngineViewModel.Engine.EngineSettings.PlayerList.Add(CharacterPlayerJenny);
+            EngineViewModel.Engine.EngineSettings.PlayerList.Add(MonsterPlayerGill);
+
+            // Populate the map with the players
+            _ = EngineViewModel.Engine.EngineSettings.MapModel.PopulateMapModel(EngineViewModel.Engine.EngineSettings.PlayerList);
+
+            var characterLocation = EngineViewModel.Engine.EngineSettings.MapModel.GetLocationForPlayer(CharacterPlayerJenny);
+
+            //Act
+
+            //Reset
+            EngineViewModel.Engine.EngineSettings.CurrentAction = ActionEnum.Unknown;
+            EngineViewModel.Engine.EngineSettings.CurrentAction = ActionEnum.Unknown;
+            EngineViewModel.Engine.EngineSettings.BattleStateEnum = BattleStateEnum.Unknown;
+            EngineViewModel.Engine.EngineSettings.BattleSettingsModel.BattleModeEnum = BattleModeEnum.Unknown;
+
+            //Assert
+            var obstacleCount = 0;
+            foreach (var location in EngineViewModel.Engine.EngineSettings.MapModel.MapGridLocation)
+            {
+                if (location.Player.PlayerType == PlayerTypeEnum.Obstacle)
+                {
+                    obstacleCount++;
+                }
+            }
+            // Assert we have obstacles on the map
+            Assert.NotZero(obstacleCount);
         }
         #endregion Scenario32
 
