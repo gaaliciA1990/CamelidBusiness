@@ -307,5 +307,8 @@
     <BundleResource Include="Resources\unique_tumiring.png" />
     <BundleResource Include="Resources\unique_andeancuff.png" />
     <BundleResource Include="Resources\unique_andeanhat.png" />
+    <BundleResource Include="Resources\obstacle2.png" />
+    <BundleResource Include="Resources\obstacle3.png" />
+    <BundleResource Include="Resources\obstacle1.png" />
   </ItemGroup>
 </Project>
