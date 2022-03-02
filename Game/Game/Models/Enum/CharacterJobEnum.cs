@@ -10,10 +10,17 @@
         Unknown = 0,
 
         // Fighters hit hard and have fight abilities
-        RoundBoss = 10,
+
+        Fighter = 10,
+
+        RoundBoss = 13,
 
         // Clerics defend well and have buff abilities
-        GreatLeader = 12,
+
+        Cleric = 12,
+
+
+        GreatLeader = 22,
 
     }
 
