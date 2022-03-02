@@ -1,5 +1,6 @@
 ﻿using Game.Helpers;
 using System;
+using System.Threading;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -65,53 +66,91 @@ namespace Game.Models
         {
             _ = ClearMapGrid();
 
-            var obstacle = GameImagesHelper.GetObstacleImage();
-            var randomObstacle = 0;
-            var totalObstacles = 5;
+
             var x = 0;
             var y = 0;
 
-            // Populate the map with obstacles randomly
-            for (int i = 0; i < totalObstacles; i++)
-            {
-                randomObstacle = rand.Next(0, obstacle.Count);
-                // Randomly select a location on the grid for x and y
-                x = rand.Next(0, MapXAxiesCount);
-                y = rand.Next(0, MapYAxiesCount);
-
-                // Create a new obstacle at the randomly selected location
-                MapGridLocation[x, y].Player = new PlayerInfoModel { PlayerType = PlayerTypeEnum.Obstacle, ImageURI = obstacle[randomObstacle]};
-            }
-
-            x = 0;
-            y = 0;
-
+            // Randomly position Characters in the first two columns
             foreach (var data in PlayerList.Where(m => m.PlayerType == PlayerTypeEnum.Character))
             {
-                MapGridLocation[x, y].Player = data;
-
-                // If too many to fit on a row, start at the next row
-                y++;
-                if (y >= MapYAxiesCount)
+                var tryAgain = true;
+                do
                 {
-                    y = 0;
-                    x++;
-                }
+                    // randomly select an x and y within the first two columns
+                    x = rand.Next(0, 2);
+                    y = rand.Next(0, MapYAxiesCount);
+
+                    // Add the Charactes to emtpy cells that aren't covered by an a player or monster
+                    if (MapGridLocation[x, y].Player.PlayerType == EmptySquare.PlayerType)
+                    {
+                        MapGridLocation[x, y].Player = data;
+                        tryAgain = false;
+                    }
+                    else
+                    {
+                        // Otherwise try a new location 
+                        tryAgain = true;
+                        Thread.Sleep(100); // sleep for 100 milliseconds between random number generations
+                    }
+                } while (tryAgain);
             }
 
-            x = MapXAxiesCount - 1;
-            y = 0;
+
+            // populate the map with the monsters randomly in the laster two columns
             foreach (var data in PlayerList.Where(m => m.PlayerType == PlayerTypeEnum.Monster))
             {
-                MapGridLocation[x, y].Player = data;
-
-                // If too many to fit on a row, start at the next row
-                y++;
-                if (y >= MapYAxiesCount)
+                var tryAgain = true;
+                do
                 {
-                    y = 0;
-                    x--;
-                }
+                    // randomly select an x and y within the last two columns
+                    x = rand.Next(MapXAxiesCount - 2, MapXAxiesCount);
+                    y = rand.Next(0, MapYAxiesCount);
+
+                    // Add the Mosnters to emtpy cells that aren't covered by an a player or monster
+                    if (MapGridLocation[x, y].Player.PlayerType == EmptySquare.PlayerType)
+                    {
+                        MapGridLocation[x, y].Player = data;
+                        tryAgain = false;
+                    }
+                    else
+                    {
+                        // Otherwise try a new location 
+                        tryAgain = true;
+                        Thread.Sleep(100); // sleep for 100 milliseconds between random number generations
+                    }
+                } while (tryAgain);
+            }
+
+            var obstacle = GameImagesHelper.GetObstacleImage();
+            var randomObstacle = 0;
+            var totalObstacles = 3;
+
+            // Populate the map with obstacles randomly in spaces that aren't populated by characters or monsters
+            for (int i = 0; i < totalObstacles; i++)
+            {
+                var tryAgain = true;
+
+                do
+                {
+                    randomObstacle = rand.Next(0, obstacle.Count);
+                    // Randomly select a location on the grid for x and y
+                    x = rand.Next(0, MapXAxiesCount);
+                    y = rand.Next(0, MapYAxiesCount);
+
+                    // Add the obstacles to emtpy cells that aren't covered by an a player or mosnter
+                    if (MapGridLocation[x, y].Player.PlayerType == EmptySquare.PlayerType)
+                    {
+                        // Create a new obstacle at the randomly selected location
+                        MapGridLocation[x, y].Player = new PlayerInfoModel { PlayerType = PlayerTypeEnum.Obstacle, ImageURI = obstacle[randomObstacle]}; ;
+                        tryAgain = false;
+                    }
+                    else
+                    {
+                        // Otherwise try a new location 
+                        tryAgain = true;
+                        Thread.Sleep(100); // sleep for 100 milliseconds between random number generations
+                    }
+                } while (tryAgain);
             }
 
             return true;
