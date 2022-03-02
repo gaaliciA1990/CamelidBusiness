@@ -708,6 +708,7 @@ namespace Scenario
 
             //Reset
             EngineViewModel.Engine.EngineSettings.BattleSettingsModel.CharacterHitEnum = HitStatusEnum.Default;
+            EngineViewModel.Engine.EngineSettings.BattleSettingsModel.MonsterHitEnum = HitStatusEnum.Default;
             EngineViewModel.Engine.EngineSettings.BattleSettingsModel.AllowItemDurability = false;
 
             //Assert
