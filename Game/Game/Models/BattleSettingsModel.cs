@@ -25,5 +25,8 @@
 
         // Can monsters have Items and weapons?
         public bool AllowItemDurability = false;
+
+        // % Chance monsters respawn
+        public float MonsterRespawnChance = 0.0f;
     }
 }
