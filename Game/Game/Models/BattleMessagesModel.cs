@@ -26,6 +26,9 @@
         // Turn Special Message
         public string TurnMessageSpecial = string.Empty;
 
+        // Item ran out of use message
+        public string ItemCrackedMessage = string.Empty;
+
         // Turn Experience Earned Message
         public string ExperienceEarned = string.Empty;
 
@@ -97,6 +100,11 @@
         public string GetTurnMessage()
         {
             return AttackerName + GetSwingResult() + TargetName;
+        }
+
+        public string GetItemBrokenMessage()
+        {
+            return ItemCrackedMessage;
         }
 
         /// <summary>
