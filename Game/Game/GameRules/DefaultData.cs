@@ -517,9 +517,23 @@ namespace Game.GameRules
                 },
 
                 new MonsterModel {
+                    Name = "Furious Bear",
+                    Description = "Big and Ugly",
+                    ImageURI = "monster1.png",
+                    Job = CharacterJobEnum.RoundBoss
+                },
+
+                new MonsterModel {
                     Name = "Saavy Coyote",
                     Description = "Old and Powerfull",
                     ImageURI = "monster2.png",
+                },
+
+                new MonsterModel {
+                    Name = "Wicked Coyote",
+                    Description = "Old and Powerfull",
+                    ImageURI = "monster2.png",
+                    Job = CharacterJobEnum.RoundBoss
                 },
 
                 new MonsterModel {
@@ -529,9 +543,17 @@ namespace Game.GameRules
                 },
 
                 new MonsterModel {
+                    Name = "Witty Culpeo",
+                    Description = "Don't mess with",
+                    ImageURI = "monster3.png",
+                    Job = CharacterJobEnum.RoundBoss
+                },
+
+                new MonsterModel {
                     Name = "Great Leader",
                     Description = "Camelid with a grudge",
                     ImageURI = "monster.png",
+                    Job = CharacterJobEnum.GreatLeader
                 },
 
                 new MonsterModel {
@@ -541,10 +563,25 @@ namespace Game.GameRules
                 },
 
                 new MonsterModel {
+                    Name = "Hangry Lion",
+                    Description = "He's from the mountain",
+                    ImageURI = "monster5.png",
+                    Job = CharacterJobEnum.RoundBoss
+                },
+
+                new MonsterModel {
                     Name = "Puma Pam",
                     Description = "Sleek and fast",
                     ImageURI = "monster6.png",
                 },
+
+                new MonsterModel {
+                    Name = "Superior Puma",
+                    Description = "Sleek and fast",
+                    ImageURI = "monster6.png",
+                    Job = CharacterJobEnum.RoundBoss
+                },
+
             };
 
             return datalist;
