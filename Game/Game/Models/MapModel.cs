@@ -66,91 +66,55 @@ namespace Game.Models
         {
             _ = ClearMapGrid();
 
-
-            var x = 0;
-            var y = 0;
+            var rnd = new Random();
 
             // Randomly position Characters in the first two columns
-            foreach (var data in PlayerList.Where(m => m.PlayerType == PlayerTypeEnum.Character))
-            {
-                var tryAgain = true;
-                do
-                {
-                    // randomly select an x and y within the first two columns
-                    x = rand.Next(0, 2);
-                    y = rand.Next(0, MapYAxiesCount);
+            var characters = PlayerList.Where(m => m.PlayerType == PlayerTypeEnum.Character);
+            var randomCharacterCells = Enumerable.Range(0, MapYAxiesCount * 2).OrderBy(c => rnd.Next()).Take(characters.Count()).ToList();
 
-                    // Add the Charactes to emtpy cells that aren't covered by an a player or monster
-                    if (MapGridLocation[x, y].Player.PlayerType == EmptySquare.PlayerType)
-                    {
-                        MapGridLocation[x, y].Player = data;
-                        tryAgain = false;
-                    }
-                    else
-                    {
-                        // Otherwise try a new location 
-                        tryAgain = true;
-                        Thread.Sleep(100); // sleep for 100 milliseconds between random number generations
-                    }
-                } while (tryAgain);
+            for (var c = 0; c < characters.Count(); c++)
+            {
+                var row = (int)randomCharacterCells[c] % MapYAxiesCount;
+                var col = (int)Math.Floor((double)randomCharacterCells[c] / MapYAxiesCount);
+                MapGridLocation[col, row].Player = characters.ElementAt(c);
             }
 
 
             // populate the map with the monsters randomly in the laster two columns
-            foreach (var data in PlayerList.Where(m => m.PlayerType == PlayerTypeEnum.Monster))
-            {
-                var tryAgain = true;
-                do
-                {
-                    // randomly select an x and y within the last two columns
-                    x = rand.Next(MapXAxiesCount - 2, MapXAxiesCount);
-                    y = rand.Next(0, MapYAxiesCount);
+            var monsters = PlayerList.Where(m => m.PlayerType == PlayerTypeEnum.Monster);
+            var randomMonsterCells = Enumerable.Range(0, MapYAxiesCount * 2).OrderBy(m => rnd.Next()).Take(monsters.Count()).ToList();
 
-                    // Add the Mosnters to emtpy cells that aren't covered by an a player or monster
-                    if (MapGridLocation[x, y].Player.PlayerType == EmptySquare.PlayerType)
-                    {
-                        MapGridLocation[x, y].Player = data;
-                        tryAgain = false;
-                    }
-                    else
-                    {
-                        // Otherwise try a new location 
-                        tryAgain = true;
-                        Thread.Sleep(100); // sleep for 100 milliseconds between random number generations
-                    }
-                } while (tryAgain);
+            for (var m = 0; m < monsters.Count(); m++)
+            {
+                var shiftCol = MapXAxiesCount - 2;
+                var row = (int)randomMonsterCells[m] % MapYAxiesCount;
+                var col = (int)Math.Floor((double)randomMonsterCells[m] / MapYAxiesCount) + shiftCol;
+                MapGridLocation[col, row].Player = monsters.ElementAt(m);
             }
 
             var obstacle = GameImagesHelper.GetObstacleImage();
-            var randomObstacle = 0;
             var totalObstacles = 3;
 
             // Populate the map with obstacles randomly in spaces that aren't populated by characters or monsters
-            for (int i = 0; i < totalObstacles; i++)
+            var randomObstacleCells = Enumerable.Range(0, MapYAxiesCount * MapXAxiesCount).OrderBy(c => rnd.Next()).Take(MapYAxiesCount * MapXAxiesCount).ToList();
+            
+            for (var o = 0; o < randomObstacleCells.Count(); o++)
             {
-                var tryAgain = true;
-
-                do
+                if (totalObstacles <= 0)
                 {
-                    randomObstacle = rand.Next(0, obstacle.Count);
-                    // Randomly select a location on the grid for x and y
-                    x = rand.Next(0, MapXAxiesCount);
-                    y = rand.Next(0, MapYAxiesCount);
-
-                    // Add the obstacles to emtpy cells that aren't covered by an a player or mosnter
-                    if (MapGridLocation[x, y].Player.PlayerType == EmptySquare.PlayerType)
-                    {
-                        // Create a new obstacle at the randomly selected location
-                        MapGridLocation[x, y].Player = new PlayerInfoModel { PlayerType = PlayerTypeEnum.Obstacle, ImageURI = obstacle[randomObstacle]}; ;
-                        tryAgain = false;
-                    }
-                    else
-                    {
-                        // Otherwise try a new location 
-                        tryAgain = true;
-                        Thread.Sleep(100); // sleep for 100 milliseconds between random number generations
-                    }
-                } while (tryAgain);
+                    break;
+                }
+            
+                var row = (int)randomObstacleCells[o] % MapYAxiesCount;
+                var col = (int)Math.Floor((double)randomObstacleCells[o] / MapYAxiesCount);
+            
+                // Add the obstacles to emtpy cells that aren't covered by an a player or mosnter
+                if (MapGridLocation[col, row].Player.PlayerType == EmptySquare.PlayerType)
+                {
+                    // Create a new obstacle at the randomly selected location
+                    MapGridLocation[col, row].Player = new PlayerInfoModel { PlayerType = PlayerTypeEnum.Obstacle, ImageURI = obstacle[rnd.Next(0, 3)] };
+                    totalObstacles--;
+                }
             }
 
             return true;
