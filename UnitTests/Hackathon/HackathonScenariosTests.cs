@@ -4,6 +4,8 @@ using Game.Models;
 using System.Threading.Tasks;
 using Game.ViewModels;
 using System.Linq;
+using Game.Helpers;
+using System;
 
 namespace Scenario
 {
