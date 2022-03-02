@@ -4,6 +4,7 @@ using NUnit.Framework;
 using Game.Engine.EngineGame;
 using Game.Models;
 using System.Collections.Generic;
+using Game.Helpers;
 
 namespace UnitTests.Engine.EngineGame
 {
@@ -390,6 +391,49 @@ namespace UnitTests.Engine.EngineGame
             // Assert
             Assert.LessOrEqual(result.Count,1);
         }
+
+        [Test]
+        public void RoundEngine_GetRandomMonsterItemDrops_Valid_Round_3_Should_Pass()
+        {
+            // Arrange 
+            PlayerInfoModel monster = new PlayerInfoModel(new MonsterModel
+            {
+                Job = CharacterJobEnum.RoundBoss
+            });
+            Engine.Round.SetCurrentDefender(monster);
+            DiceHelper.EnableForcedRolls();
+            DiceHelper.SetForcedRollValue(8);
+
+            // Act
+            var result = Engine.Round.Turn.GetRandomMonsterItemDrops(3);
+
+            // Reset
+            DiceHelper.DisableForcedRolls();
+
+            // Assert
+            Assert.AreEqual(true, result.Find(m => m.IsUnique == true).IsUnique);
+        }
+
+        [Test]
+        public void RoundEngine_GetRandomMonsterItemDrops_Valid_Round_10_Should_Pass()
+        {
+            // Arrange 
+            PlayerInfoModel monster = new PlayerInfoModel(new MonsterModel
+            {
+                Job = CharacterJobEnum.GreatLeader
+            });
+            Engine.Round.SetCurrentDefender(monster);
+
+            // Act
+            var result = Engine.Round.Turn.GetRandomMonsterItemDrops(10);
+
+            // Reset
+            
+            // Assert
+            Assert.AreEqual(true, result.Find(m => m.IsUnique == true).IsUnique);
+        }
+
+
         #endregion GetRandomMonsterItemDrops
 
         #region DetermineCriticalMissProblem
