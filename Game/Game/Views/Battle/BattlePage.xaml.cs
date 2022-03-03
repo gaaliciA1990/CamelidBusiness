@@ -736,9 +736,9 @@ namespace Game.Views
             var attackerLocation = BattleEngineViewModel.Instance.Engine.EngineSettings.MapModel.GetLocationForPlayer(attacker);
             if (attacker.PlayerType == PlayerTypeEnum.Character)
             {
-                AttackerName.Text = attacker.Name + "'s turn, select an action";
-                AttackerAttack.Source = "";
-                DefenderName.Text = "";
+                //AttackerName.Text = attacker.Name + "'s turn, select an action";
+                //AttackerAttack.Source = "";
+                //DefenderName.Text = "";
 
                 //Check if player can move on this turn
                 AvailableLocations = BattleEngineViewModel.Instance.Engine.EngineSettings.MapModel.GetAvailableLocationsFromPlayer(attackerLocation);
@@ -894,7 +894,16 @@ namespace Game.Views
         {
             if (action == ActionEnum.Attack)
             {
-                ActionPopupMessage.Source = "attackpopup.png";
+                if (BattleEngineViewModel.Instance.Engine.EngineSettings.BattleMessagesModel.HitStatus == HitStatusEnum.Hit ||
+                    BattleEngineViewModel.Instance.Engine.EngineSettings.BattleMessagesModel.HitStatus == HitStatusEnum.CriticalHit) 
+                { 
+                    ActionPopupMessage.Source = "attackpopup.png";
+                }
+                else if (BattleEngineViewModel.Instance.Engine.EngineSettings.BattleMessagesModel.HitStatus == HitStatusEnum.Miss ||
+                    BattleEngineViewModel.Instance.Engine.EngineSettings.BattleMessagesModel.HitStatus == HitStatusEnum.CriticalMiss)
+                {
+                    ActionPopupMessage.Source = "misspopup.png";
+                }
             }
             else if (action == ActionEnum.Move)
             {
