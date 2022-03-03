@@ -453,5 +453,8 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\monster2_animation.GIF" />
   </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\misspopup.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

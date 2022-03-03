@@ -204,6 +204,7 @@
     <Content Include="llama3_animation.GIF" />
     <Content Include="llamaclanlogo.png" />
     <Content Include="logo.png" />
+    <Content Include="misspopup.png" />
     <Content Include="monster.png" />
     <Content Include="monster1.png" />
     <Content Include="monster1_animation.GIF" />
