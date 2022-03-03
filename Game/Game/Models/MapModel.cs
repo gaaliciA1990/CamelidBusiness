@@ -62,7 +62,7 @@ namespace Game.Models
         /// </summary>
         /// <param name="PlayerList"></param>
         /// <returns></returns>
-        public bool PopulateMapModel(List<PlayerInfoModel> PlayerList)
+        public bool PopulateMapModel(List<PlayerInfoModel> PlayerList, bool addObstacles = true)
         {
             _ = ClearMapGrid();
 
@@ -94,28 +94,31 @@ namespace Game.Models
                 MapGridLocation[col, row].Player = monsters.ElementAt(m);
             }
 
-            var obstacle = GameImagesHelper.GetObstacleImage();
-            var totalObstacles = 3;
+            if (addObstacles)
+            { 
+                var obstacle = GameImagesHelper.GetObstacleImage();
+                var totalObstacles = 3;
 
-            // Populate the map with obstacles randomly in spaces that aren't populated by characters or monsters
-            var randomObstacleCells = Enumerable.Range(0, MapYAxiesCount * MapXAxiesCount).OrderBy(c => rnd.Next()).Take(MapYAxiesCount * MapXAxiesCount).ToList();
-            
-            for (var o = 0; o < randomObstacleCells.Count(); o++)
-            {
-                if (totalObstacles <= 0)
+                // Populate the map with obstacles randomly in spaces that aren't populated by characters or monsters
+                var randomObstacleCells = Enumerable.Range(0, MapYAxiesCount * MapXAxiesCount).OrderBy(c => rnd.Next()).Take(MapYAxiesCount * MapXAxiesCount).ToList();
+                
+                for (var o = 0; o < randomObstacleCells.Count(); o++)
                 {
-                    break;
-                }
-            
-                var row = (int)randomObstacleCells[o] % MapYAxiesCount;
-                var col = (int)Math.Floor((double)randomObstacleCells[o] / MapYAxiesCount);
-            
-                // Add the obstacles to emtpy cells that aren't covered by an a player or mosnter
-                if (MapGridLocation[col, row].Player.PlayerType == EmptySquare.PlayerType)
-                {
-                    // Create a new obstacle at the randomly selected location
-                    MapGridLocation[col, row].Player = new PlayerInfoModel { PlayerType = PlayerTypeEnum.Obstacle, ImageURI = obstacle[rnd.Next(0, 3)] };
-                    totalObstacles--;
+                    if (totalObstacles <= 0)
+                    {
+                        break;
+                    }
+                
+                    var row = (int)randomObstacleCells[o] % MapYAxiesCount;
+                    var col = (int)Math.Floor((double)randomObstacleCells[o] / MapYAxiesCount);
+                
+                    // Add the obstacles to emtpy cells that aren't covered by an a player or mosnter
+                    if (MapGridLocation[col, row].Player.PlayerType == EmptySquare.PlayerType)
+                    {
+                        // Create a new obstacle at the randomly selected location
+                        MapGridLocation[col, row].Player = new PlayerInfoModel { PlayerType = PlayerTypeEnum.Obstacle, ImageURI = obstacle[rnd.Next(0, 3)] };
+                        totalObstacles--;
+                    }
                 }
             }
 

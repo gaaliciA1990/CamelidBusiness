@@ -353,7 +353,7 @@ namespace UnitTests.Models
             PlayerList.Add(new PlayerInfoModel(Monster));
             PlayerList.Add(new PlayerInfoModel(Monster));
 
-            _ = map.PopulateMapModel(PlayerList);
+            _ = map.PopulateMapModel(PlayerList, false);
 
             // Act
             var result = map.GetEmptyLocations();
@@ -433,7 +433,7 @@ namespace UnitTests.Models
         }
 
         [Test]
-        public void MapModel_IsEmptySquare_Valid_Empty_Should_Pass()
+        public void MapModel_GetEmptyLocations_Valid_Empty_Should_Pass()
         {
             // Arrange
             var map = new MapModel();
@@ -454,15 +454,15 @@ namespace UnitTests.Models
             PlayerList.Add(new PlayerInfoModel(Monster));
             PlayerList.Add(new PlayerInfoModel(Monster));
 
-            _ = map.PopulateMapModel(PlayerList);
+            _ = map.PopulateMapModel(PlayerList); // with obstacles
 
             // Act
-            var result = map.IsEmptySquare(1, 0);
+            var result = map.GetEmptyLocations();
 
             // Reset
 
             // Assert 
-            Assert.AreEqual(true, result);
+            Assert.AreEqual(0, result.Count);
         }
 
         [Test]
@@ -706,12 +706,7 @@ namespace UnitTests.Models
             PlayerList.Add(new PlayerInfoModel(Character));
             PlayerList.Add(new PlayerInfoModel(Character));
 
-            var Monster = new MonsterModel();
-            PlayerList.Add(new PlayerInfoModel(Monster));
-            PlayerList.Add(new PlayerInfoModel(Monster));
-            PlayerList.Add(new PlayerInfoModel(Monster));
-
-            _ = map.PopulateMapModel(PlayerList);
+            _ = map.PopulateMapModel(PlayerList, false);
 
             // Act
             var result = map.ReturnClosestEmptyLocation(map.MapGridLocation[0, 0]);
@@ -719,8 +714,10 @@ namespace UnitTests.Models
             // Reset
 
             // Assert 
-            Assert.AreEqual(1, result.Column);
-            Assert.AreEqual(0, result.Row);
+            Assert.LessOrEqual(result.Column,1);
+            Assert.GreaterOrEqual(result.Column,0);
+            Assert.LessOrEqual(result.Row, 1);
+            Assert.GreaterOrEqual(result.Row, 0);
         }
 
         [Test]
@@ -814,7 +811,8 @@ namespace UnitTests.Models
 
             // Assert 
             Assert.AreEqual(0, result.Column);
-            Assert.AreEqual(0, result.Row);
+            Assert.GreaterOrEqual(result.Row,0);
+            Assert.LessOrEqual(result.Row,1);
         }
 
         [Test]
