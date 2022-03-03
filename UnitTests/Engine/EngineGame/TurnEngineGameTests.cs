@@ -619,6 +619,134 @@ namespace UnitTests.Engine.EngineGame
             // Assert
             Assert.AreEqual(HitStatusEnum.Hit, result);
         }
+
+        [Test]
+        public void TurnEngine_RolltoHitTarget_Hit_Should_Pass()
+        {
+            // Arrange
+            var AttackScore = 10;
+            var DefenseScore = 0;
+
+            _ = DiceHelper.EnableForcedRolls();
+            _ = DiceHelper.SetForcedRollValue(3); // Always roll a 3.
+
+            // Act
+            var result = Engine.Round.Turn.RollToHitTarget(AttackScore, DefenseScore);
+
+            // Reset
+            _ = DiceHelper.DisableForcedRolls();
+
+            // Assert
+            Assert.AreEqual(HitStatusEnum.Hit, result);
+        }
+
+        [Test]
+        public void TurnEngine_RolltoHitTarget_Miss_Should_Pass()
+        {
+            // Arrange
+            var AttackScore = 1;
+            var DefenseScore = 100;
+
+            _ = DiceHelper.EnableForcedRolls();
+            _ = DiceHelper.SetForcedRollValue(2);
+
+            // Act
+            var result = Engine.Round.Turn.RollToHitTarget(AttackScore, DefenseScore);
+
+            // Reset
+            _ = DiceHelper.DisableForcedRolls();
+
+            // Assert
+            Assert.AreEqual(HitStatusEnum.Miss, result);
+        }
+
+        [Test]
+        public void TurnEngine_RolltoHitTarget_Forced_1_Should_Miss()
+        {
+            // Arrange
+            var AttackScore = 1;
+            var DefenseScore = 100;
+
+            _ = DiceHelper.EnableForcedRolls();
+            _ = DiceHelper.SetForcedRollValue(1);
+
+            // Act
+            var result = Engine.Round.Turn.RollToHitTarget(AttackScore, DefenseScore);
+
+            // Reset
+            _ = DiceHelper.DisableForcedRolls();
+
+            // Assert
+            Assert.AreEqual(HitStatusEnum.Miss, result);
+        }
+
+        [Test]
+        public void TurnEngine_RolltoHitTarget_Forced_20_Should_Hit()
+        {
+            // Arrange
+            var AttackScore = 1;
+            var DefenseScore = 100;
+
+            _ = DiceHelper.EnableForcedRolls();
+            _ = DiceHelper.SetForcedRollValue(20);
+
+            // Act
+            var result = Engine.Round.Turn.RollToHitTarget(AttackScore, DefenseScore);
+
+            // Reset
+            _ = DiceHelper.DisableForcedRolls();
+
+            // Assert
+            Assert.AreEqual(HitStatusEnum.Hit, result);
+        }
+
+        [Test]
+        public void TurnEngine_RolltoHitTarget_Valid_Forced_1_Critical_Miss_Should_Return_CriticalMiss()
+        {
+            // Arrange
+            var AttackScore = 1;
+            var DefenseScore = 100;
+
+            _ = DiceHelper.EnableForcedRolls();
+            _ = DiceHelper.SetForcedRollValue(1);
+
+            var oldSeting = EngineSettingsModel.Instance.BattleSettingsModel.AllowCriticalMiss;
+            EngineSettingsModel.Instance.BattleSettingsModel.AllowCriticalMiss = true;
+
+            // Act
+            var result = Engine.Round.Turn.RollToHitTarget(AttackScore, DefenseScore);
+
+            // Reset
+            _ = DiceHelper.DisableForcedRolls();
+            EngineSettingsModel.Instance.BattleSettingsModel.AllowCriticalMiss = oldSeting;
+
+            // Assert
+            Assert.AreEqual(HitStatusEnum.CriticalMiss, result);
+        }
+
+        [Test]
+        public void TurnEngine_RolltoHitTarget_Valid_Forced_20_Critical_Hit_Should_Return_CriticalHit()
+        {
+            // Arrange
+            var AttackScore = 1;
+            var DefenseScore = 100;
+
+            _ = DiceHelper.EnableForcedRolls();
+            _ = DiceHelper.SetForcedRollValue(20);
+
+            var oldSeting = EngineSettingsModel.Instance.BattleSettingsModel.AllowCriticalHit;
+            EngineSettingsModel.Instance.BattleSettingsModel.AllowCriticalHit = true;
+
+            // Act
+            var result = Engine.Round.Turn.RollToHitTarget(AttackScore, DefenseScore);
+
+            // Reset
+            _ = DiceHelper.DisableForcedRolls();
+            EngineSettingsModel.Instance.BattleSettingsModel.AllowCriticalHit = oldSeting;
+
+            // Assert
+            Assert.AreEqual(HitStatusEnum.CriticalHit, result);
+        }
         #endregion RollToHitTarget
 
         #region GetRandomMonsterItemDrops
