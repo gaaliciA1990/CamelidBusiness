@@ -680,6 +680,9 @@ namespace Game.Views
             // Hold the current state
             var RoundCondition = BattleEngineViewModel.Instance.Engine.Round.RoundNextTurn();
 
+            //show action 
+            showActionPopup(BattleEngineViewModel.Instance.Engine.EngineSettings.PreviousAction);
+
             // Output the Message of what happened.
             GameMessage();
 
@@ -884,19 +887,21 @@ namespace Game.Views
                     _ = BattleEngineViewModel.Instance.Engine.Round.SetCurrentDefender(BattleEngineViewModel.Instance.Engine.Round.Turn.AttackChoice(BattleEngineViewModel.Instance.Engine.EngineSettings.CurrentAttacker));
                     break;
             }
-
-            showActionPopup(action);
         }
 
 
         async void showActionPopup(ActionEnum action) 
         {
-            if (action == ActionEnum.Attack) { 
+            if (action == ActionEnum.Attack)
+            {
                 ActionPopupMessage.Source = "attackpopup.png";
             }
-            if (action == ActionEnum.Move)
+            else if (action == ActionEnum.Move)
             {
                 ActionPopupMessage.Source = "movepopup.png";
+            }
+            else {
+                return;
             }
             ActionPopup.IsVisible = true;
             await Task.Delay(500);
