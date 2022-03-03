@@ -18,6 +18,8 @@ namespace Game.Views
         // Hold the Engine, so it can be swapped out for unit testing
         public IAutoBattleInterface AutoBattle = BattleEngineViewModel.Instance.AutoBattleEngine;
 
+        private bool returnToGamePage = false;
+
         /// <summary>
         /// Constructor
         /// </summary>
@@ -60,6 +62,21 @@ namespace Game.Views
             var elapsed_time = (float)stopwatch.ElapsedMilliseconds/1000;
 
             await Navigation.PushModalAsync(new ScorePage(elapsed_time));
+
+            returnToGamePage = true;
+        }
+
+        /// <summary>
+        /// Close the auto battle page after user returns from Score page
+        /// </summary>
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            if (returnToGamePage)
+            {
+                _ = await Navigation.PopAsync();
+            }
         }
     }
 }
