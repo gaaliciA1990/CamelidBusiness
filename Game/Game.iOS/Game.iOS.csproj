@@ -292,6 +292,9 @@
     <BundleResource Include="Resources\aboutGame_background.png" />
     <BundleResource Include="Resources\autobattle_background.png" />
     <BundleResource Include="aboutGame_background.png" />
+    <BundleResource Include="Resources\alpaca1_animation.GIF" />
+    <BundleResource Include="Resources\alpaca2_animation.GIF" />
+    <BundleResource Include="Resources\alpaca3_animation.GIF" />
     <Content Include="Resources\basic_stick.png" />
     <BundleResource Include="Resources\caverns.png" />
     <BundleResource Include="Resources\battleBackground.jpg" />
@@ -302,6 +305,16 @@
     <BundleResource Include="Resources\gamePage_background.png" />
     <BundleResource Include="Resources\battleLoadingScreens_background.png" />
     <BundleResource Include="Resources\characterSelect_background.png" />
+    <BundleResource Include="Resources\llama1_animation.GIF" />
+    <BundleResource Include="Resources\llama2_animation.GIF" />
+    <BundleResource Include="Resources\llama3_animation.GIF" />
+    <BundleResource Include="Resources\monster3_animation.GIF" />
+    <BundleResource Include="Resources\monster4_animation.GIF" />
+    <BundleResource Include="Resources\monster5_animation.GIF" />
+    <BundleResource Include="Resources\monster6_animation.GIF" />
+    <BundleResource Include="Resources\greatLeader_animation.GIF" />
+    <BundleResource Include="Resources\monster1_animation.GIF" />
+    <BundleResource Include="Resources\monster2_animation.GIF" />
     <Content Include="Resources\monsters.png" />
     <BundleResource Include="Resources\slider_thumbnail.png" />
     <BundleResource Include="Resources\movepopup.png" />
@@ -323,5 +336,8 @@
     <BundleResource Include="Resources\scorePage_background.png" />
     <BundleResource Include="Resources\villagePage_background.png" />
     <BundleResource Include="Resources\roundOver_background.png" />
+    <BundleResource Include="Resources\vicuna1_animation.GIF" />
+    <BundleResource Include="Resources\vicuna2_animation.GIF" />
+    <BundleResource Include="Resources\vicuna3_animation.GIF" />
   </ItemGroup>
 </Project>
