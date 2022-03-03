@@ -291,6 +291,7 @@
     <BundleResource Include="Resources\attackpopup.png" />
     <BundleResource Include="Resources\aboutGame_background.png" />
     <BundleResource Include="Resources\autobattle_background.png" />
+    <BundleResource Include="aboutGame_background.png" />
     <Content Include="Resources\basic_stick.png" />
     <BundleResource Include="Resources\caverns.png" />
     <BundleResource Include="Resources\battleBackground.jpg" />
