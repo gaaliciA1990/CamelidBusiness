@@ -225,19 +225,39 @@ namespace Game.Engine.EngineGame
                 return null;
             }
 
-            if (EngineSettings.PlayerList.Count < 1)
+            if (EngineSettings.PlayerList.Where(m => m.Alive && m.PlayerType == PlayerTypeEnum.Character).Count() < 1)
             {
                 return null;
             }
 
-            // Select first in the list
+            // Sort By Distance
+            var attacker = EngineSettings.MapModel.GetLocationForPlayer(EngineSettings.CurrentAttacker);
+            var availableCharactters = EngineSettings.PlayerList.Where(m => m.Alive && m.PlayerType == PlayerTypeEnum.Character);
 
-            // TODO: Teams, You need to implement your own Logic can not use mine.
-            var Defender = EngineSettings.PlayerList
-                .Where(m => m.Alive && m.PlayerType == PlayerTypeEnum.Character)
-                .OrderBy(m => m.ListOrder).FirstOrDefault();
+            if (attacker == null)
+            {
+                return availableCharactters.ElementAt(0);
+            }
 
-            return Defender;
+            Func<PlayerInfoModel, double> lambda = (PlayerInfoModel character) => {
+                var defender = EngineSettings.MapModel.GetLocationForPlayer(character);
+                var distance = Math.Sqrt(Math.Pow((int?)attacker.Column??0 - (int?)defender.Column??0, 2) + Math.Pow((int?)attacker.Row??0 - (int?)defender.Row??0, 2));
+                return distance;
+            };
+
+            var OrderedByDistance = availableCharactters.OrderBy(character => lambda(character));
+            var chosenCharacter = OrderedByDistance.ElementAt(0);
+
+            foreach (var character in OrderedByDistance)
+            {
+                //if next closest is more desirable, change target 
+                if (character.GetAttackTotal > chosenCharacter.GetAttackTotal * 1.5)
+                {
+                    chosenCharacter = character;
+                }
+            }
+
+            return chosenCharacter;
         }
 
         /// <summary>
