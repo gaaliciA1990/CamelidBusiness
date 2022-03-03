@@ -104,6 +104,7 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="aboutGame_background.png" />
     <Content Include="about_game.png" />
     <Content Include="action_ability.png" />
     <Content Include="action_attack.png" />
@@ -142,6 +143,7 @@
     <Content Include="Assets\Wide310x150Logo.scale-400.png" />
     <Content Include="attackpopup.png" />
     <Content Include="autobattle.png" />
+    <Content Include="autobattle_background.png" />
     <Content Include="basic_boots.png" />
     <Content Include="basic_earring.png" />
     <Content Include="basic_earring2.png" />
@@ -162,6 +164,7 @@
     <Content Include="basic_torch.png" />
     <Content Include="battleBackground.jpg" />
     <Content Include="battleboard.png" />
+    <Content Include="battleLoadingScreens_background.png" />
     <Content Include="battle_background1.png" />
     <Content Include="battle_background2.png" />
     <Content Include="battle_background3.png" />
@@ -171,11 +174,11 @@
     <Content Include="button_startgame.png" />
     <Content Include="caverns.png" />
     <Content Include="characters.png" />
+    <Content Include="characterSelect_background.png" />
     <Content Include="d10.png" />
     <Content Include="d20_2.png" />
     <Content Include="button_delete.png" />
     <Content Include="gamePage_background.png" />
-    <Content Include="gamePage_background2.png" />
     <Content Include="icon_back.png" />
     <Content Include="icon_dice.png" />
     <Content Include="icon_edit.png" />
@@ -208,6 +211,7 @@
     <Content Include="obstacle3.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="rightarrow.png" />
+    <Content Include="roundOver_background.png" />
     <Content Include="score.png" />
     <Content Include="scorePage_background.png" />
     <Content Include="slider_thumbnail.png" />
