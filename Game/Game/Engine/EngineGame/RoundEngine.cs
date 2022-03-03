@@ -7,6 +7,7 @@ using Game.Engine.EngineInterfaces;
 using Game.Engine.EngineModels;
 using Game.GameRules;
 using Game.Models;
+using Game.ViewModels;
 
 namespace Game.Engine.EngineGame
 {
@@ -88,20 +89,50 @@ namespace Game.Engine.EngineGame
         /// <returns></returns>
         public override int AddMonstersToRound()
         {
-            // TODO: Teams, You need to implement your own Logic can not use mine.
+            var round = EngineSettings.BattleScore.RoundCount;
+
+            //Get a round boss every 3 rounds
+            bool getRoundBoss = (round > 0 && round % 3 == 0);
+
+            //Get a great boss every 10 rounds
+            bool getGreatBoss= (round > 0 && round % 10 == 0);
 
             var TargetLevel = 1;
 
             if (EngineSettings.CharacterList.Count() > 0)
             {
-                // Get the Min Character Level (linq is soo cool....)
-                TargetLevel = Convert.ToInt32(EngineSettings.CharacterList.Min(m => m.Level));
+                // Get the Average character level
+                TargetLevel = Convert.ToInt32(EngineSettings.CharacterList.Average(m => m.Level));
             }
 
             for (var i = 0; i < EngineSettings.MaxNumberPartyMonsters; i++)
             {
-                var data = RandomPlayerHelper.GetRandomMonster(TargetLevel, EngineSettings.BattleSettingsModel.AllowMonsterItems);
+                MonsterModel data = null;
 
+                //Get regular minions
+                if (getGreatBoss == false && getRoundBoss == false)
+                {
+                    data = RandomPlayerHelper.GetRandomMonster(TargetLevel, EngineSettings.BattleSettingsModel.AllowMonsterItems);
+                }
+
+                //Add great leader
+                if (getGreatBoss)
+                {
+                    data = MonsterIndexViewModel.Instance.Dataset.Where(m => m.Job == CharacterJobEnum.GreatLeader).First();
+
+                    data = RandomPlayerHelper.GetRandomMonster(TargetLevel, EngineSettings.BattleSettingsModel.AllowMonsterItems, CharacterJobEnum.GreatLeader);
+                    //Reset so it only generates 1 great leader
+                    getGreatBoss = false;
+                }
+
+                //Add round boss
+                if(getRoundBoss)
+                {
+                    data = RandomPlayerHelper.GetRandomMonster(TargetLevel, EngineSettings.BattleSettingsModel.AllowMonsterItems, CharacterJobEnum.RoundBoss);
+                    //Reset so that only 1 boss gets generated
+                    getRoundBoss = false;
+                }
+                
                 // Help identify which Monster it is
                 data.Name += " " + EngineSettings.MonsterList.Count() + 1;
 
