@@ -271,6 +271,68 @@ namespace UnitTests.Engine.EngineGame
             // Assert
             Assert.AreNotEqual(null, result);
         }
+
+        [Test]
+        public void RoundEngine_SelectCharacterToAttack_Empty_PlayerList_Should_Fail()
+        {
+            // Arrange
+
+            // remember the list
+            var saveList = Engine.EngineSettings.PlayerList;
+
+            Engine.EngineSettings.PlayerList = null;
+
+            // Act
+            var result = Engine.Round.Turn.SelectCharacterToAttack();
+
+            // Reset
+
+            // Restore the List
+            Engine.EngineSettings.PlayerList = saveList;
+            _ = Engine.StartBattle(false);   // Clear the Engine
+
+            // Assert
+            Assert.AreNotEqual(false, result);
+        }
+
+        [Test]
+        public void RoundEngine_Valid_PlayerList_Should_return_Character_Defender()
+        {
+            // Arrange
+
+            // remember the list
+            var saveList = Engine.EngineSettings.PlayerList;
+
+            Engine.EngineSettings.PlayerList = new List<PlayerInfoModel>();
+
+            var attacker = new PlayerInfoModel(new MonsterModel());
+            var closeWeak = new PlayerInfoModel(new CharacterModel { Attack = 5 });
+            var farStrong = new PlayerInfoModel(new CharacterModel { Attack = 15 });
+            Engine.EngineSettings.PlayerList.Add(attacker);
+            Engine.EngineSettings.PlayerList.Add(closeWeak);
+            Engine.EngineSettings.PlayerList.Add(farStrong);
+            Engine.EngineSettings.MapModel.MapGridLocation[0, 0].Player = attacker;
+            Engine.EngineSettings.MapModel.MapGridLocation[1, 0].Player = closeWeak;
+            Engine.EngineSettings.MapModel.MapGridLocation[0, 2].Player = farStrong;
+
+            Engine.EngineSettings.CurrentAttacker = attacker;
+
+            // Act
+            var result = Engine.Round.Turn.SelectCharacterToAttack();
+
+            // Reset
+            Engine.EngineSettings.MapModel.ClearMapGrid();
+            Engine.EngineSettings.PlayerList.Clear();
+            Engine.EngineSettings.CurrentAttacker = null;
+
+            // Restore the List
+            Engine.EngineSettings.PlayerList = saveList;
+            _ = Engine.StartBattle(false);   // Clear the Engine
+
+            // Assert
+            Assert.AreEqual(farStrong, result);
+        }
+
         #endregion SelectCharacterToAttack
 
         #region UseAbility
@@ -293,6 +355,7 @@ namespace UnitTests.Engine.EngineGame
             // Assert
             Assert.AreEqual(true, result);
         }
+
         #endregion UseAbility
 
         #region BattleSettingsOverrideHitStatusEnum
