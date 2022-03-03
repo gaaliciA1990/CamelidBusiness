@@ -266,21 +266,39 @@ namespace Game.Engine.EngineGame
                 return null;
             }
 
-            if (EngineSettings.PlayerList.Count < 1)
+            if (EngineSettings.PlayerList.Where(m => m.Alive && m.PlayerType == PlayerTypeEnum.Monster).Count() < 1)
             {
                 return null;
             }
 
-            // Select first one to hit in the list for now...
-            // Attack the Weakness (lowest HP) MonsterModel first 
+            // Sort By Distance
+            var attacker = EngineSettings.MapModel.GetLocationForPlayer(EngineSettings.CurrentAttacker);
+            var availableMonsters = EngineSettings.PlayerList.Where(m => m.Alive && m.PlayerType == PlayerTypeEnum.Monster);
 
-            // TODO: Teams, You need to implement your own Logic can not use mine.
+            if (attacker == null)
+            {
+                return availableMonsters.ElementAt(0);
+            }
 
-            var Defender = EngineSettings.PlayerList
-                .Where(m => m.Alive && m.PlayerType == PlayerTypeEnum.Monster)
-                .OrderBy(m => m.CurrentHealth).FirstOrDefault();
+            Func<PlayerInfoModel, double> lambda = (PlayerInfoModel monster) => {
+                var defender = EngineSettings.MapModel.GetLocationForPlayer(monster);
+                var distance = Math.Sqrt(Math.Pow(attacker.Column - defender.Column, 2) + Math.Pow(attacker.Row - defender.Row, 2));
+                return distance;
+            };
 
-            return Defender;
+            var OrderedByDistance = availableMonsters.OrderBy(character => lambda(character));
+            var chosenMonster = OrderedByDistance.ElementAt(0);
+
+            foreach (var monster in OrderedByDistance)
+            {
+                //if next closest is more desirable, change target 
+                if (monster.GetAttackTotal > chosenMonster.GetAttackTotal * 1.5)
+                {
+                    chosenMonster = monster;
+                }
+            }
+
+            return chosenMonster;
         }
 
         /// <summary>
