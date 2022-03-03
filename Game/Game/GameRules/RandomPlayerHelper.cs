@@ -115,8 +115,10 @@ namespace Game.GameRules
         public static string GetMonsterImage()
         {
             //extract from our current dataset
-            var allURIs = from monster in MonsterIndexViewModel.Instance.Dataset select monster.ImageURI;
-
+            //var allURIs = from monster in MonsterIndexViewModel.Instance.Dataset select monster.ImageURI  ;
+            //Hide the great leader
+            var temp = MonsterIndexViewModel.Instance.Dataset.ToList().Where(m => m.ImageURI != "monster.png");
+            var allURIs = from monster in temp select monster.ImageURI;
             var result = allURIs.ElementAt(DiceHelper.RollDice(1, allURIs.Count()) - 1);
 
             return result;
@@ -300,33 +302,65 @@ namespace Game.GameRules
         /// </summary>
         /// <param name="MaxLevel"></param>
         /// <returns></returns>
-        public static MonsterModel GetRandomMonster(int MaxLevel, bool Items = false)
+        public static MonsterModel GetRandomMonster(int MaxLevel, bool Items = false, CharacterJobEnum boss = CharacterJobEnum.Unknown)
         {
+            MonsterModel result = null;
+            var basicMonsters = MonsterIndexViewModel.Instance.Dataset.ToList().Where(m => m.Job != CharacterJobEnum.GreatLeader);
+
+
             // If there are no Monsters in the system, return a default one
             if (MonsterIndexViewModel.Instance.Dataset.Count == 0)
             {
                 return new MonsterModel();
             }
 
-            var rnd = DiceHelper.RollDice(1, MonsterIndexViewModel.Instance.Dataset.Count);
+            //var rnd = DiceHelper.RollDice(1, MonsterIndexViewModel.Instance.Dataset.Count);
+            var rnd = DiceHelper.RollDice(1, basicMonsters.Count());
 
-            var result = new MonsterModel(MonsterIndexViewModel.Instance.Dataset.ElementAt(rnd - 1))
+            //Make a Great Boss
+            if (boss == CharacterJobEnum.GreatLeader)
             {
-                Level = DiceHelper.RollDice(1, MaxLevel),
+                result = new MonsterModel(MonsterIndexViewModel.Instance.Dataset.Where(m => m.Job == CharacterJobEnum.GreatLeader).First())
+                {
+                    Level = DiceHelper.RollDice(1, MaxLevel),
 
-                // Randomize Name
-                Name = GetMonsterName(),
-                Description = GetMonsterDescription(),
+                    // Randomize the Attributes
+                    Attack = GetAbilityValue(),
+                    Speed = GetAbilityValue(),
+                    Defense = GetAbilityValue(),
 
-                // Randomize the Attributes
-                Attack = GetAbilityValue(),
-                Speed = GetAbilityValue(),
-                Defense = GetAbilityValue(),
+                    Difficulty = DifficultyEnum.Impossible
+                };
+            }
 
-                ImageURI = GetMonsterImage(),
+            //Make regular monster, including round boss
+            if(boss != CharacterJobEnum.GreatLeader)
+            {
+                result = new MonsterModel(basicMonsters.ElementAt(rnd - 1))
+                {
+                    Level = DiceHelper.RollDice(1, MaxLevel),
+                    // Randomize Name
+                    Name = GetMonsterName(),
+                    Description = GetMonsterDescription(),
 
-                Difficulty = GetMonsterDifficultyValue()
-            };
+                    // Randomize the Attributes
+                    Attack = GetAbilityValue(),
+                    Speed = GetAbilityValue(),
+                    Defense = GetAbilityValue(),
+
+                    ImageURI = GetMonsterImage(),
+
+                    Difficulty = GetMonsterDifficultyValue(),
+                    Job = CharacterJobEnum.Unknown
+                };
+            }
+            
+            //Set round boss job and difficulty
+            if (boss == CharacterJobEnum.RoundBoss)
+            {
+                result.Job = CharacterJobEnum.RoundBoss;
+                result.Difficulty = DifficultyEnum.Difficult;
+            }
 
             // Adjust values based on Difficulty
             result.Attack = result.Difficulty.ToModifier(result.Attack);
