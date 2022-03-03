@@ -5,6 +5,7 @@ using Game.Engine.EngineGame;
 using Game.Models;
 using System.Collections.Generic;
 using Game.Helpers;
+using Game.Engine.EngineModels;
 
 namespace UnitTests.Engine.EngineGame
 {
@@ -73,6 +74,125 @@ namespace UnitTests.Engine.EngineGame
             // Assert
             Assert.AreEqual(false, result);
         }
+
+        [Test]
+        public void TurnEngine_MoveAsTurn_Default_Valid_Character_And_Move_Location_Should_Pass()
+        {
+            // Arrange
+            var Character = new PlayerInfoModel(new CharacterModel());
+
+            // Remove everyone
+            Engine.EngineSettings.PlayerList.Clear();
+            Engine.EngineSettings.PlayerList.Add(Character);
+
+            Engine.EngineSettings.MapModel.MapGridLocation[0, 0].Player = Character;
+            Engine.EngineSettings.MoveMapLocation = new CordinatesModel {Row=0,Column=1 };
+
+            // Act
+            var result = Engine.Round.Turn.MoveAsTurn(Character);
+
+            // Reset
+            Engine.EngineSettings.PlayerList.Clear();
+            Engine.EngineSettings.MapModel.ClearMapGrid();
+            Engine.EngineSettings.CurrentDefender = null;
+
+            // Assert
+            Assert.AreEqual(true, result);
+        }
+
+        [Test]
+        public void TurnEngine_MoveAsTurn_Default_Valid_Monster_Invalid_Defender_Should_Fail()
+        {
+            // Arrange
+            var monster = new PlayerInfoModel(new MonsterModel());
+
+            // Remove everyone
+            Engine.EngineSettings.PlayerList.Clear();
+
+            Engine.EngineSettings.PlayerList.Add(monster);
+
+            _ = Engine.EngineSettings.MapModel.PopulateMapModel(Engine.EngineSettings.PlayerList, false);
+
+            Engine.EngineSettings.CurrentDefender = null;
+
+            // Act
+            var result = Engine.Round.Turn.MoveAsTurn(monster);
+
+            // Reset
+            Engine.EngineSettings.PlayerList.Clear();
+            Engine.EngineSettings.MapModel.ClearMapGrid();
+            Engine.EngineSettings.CurrentDefender = null;
+
+            // Assert
+            Assert.AreEqual(false, result);
+        }
+
+        [Test]
+        public void TurnEngine_MoveAsTurn_Default_Valid_Monster_No_Possible_Locations_Should_Fail()
+        {
+            // Arrange
+            var monster = new PlayerInfoModel(new MonsterModel());
+            var character = new PlayerInfoModel(new CharacterModel());
+
+            // Remove everyone
+            Engine.EngineSettings.PlayerList.Clear();
+
+            Engine.EngineSettings.PlayerList.Add(monster);
+            Engine.EngineSettings.PlayerList.Add(character);
+            Engine.EngineSettings.PlayerList.Add(character);
+
+            Engine.EngineSettings.MapModel.ClearMapGrid();
+            Engine.EngineSettings.MapModel.MapGridLocation[0, 0].Player = monster;
+            Engine.EngineSettings.MapModel.MapGridLocation[1, 0].Player = character;
+            Engine.EngineSettings.MapModel.MapGridLocation[0, 1].Player = character;
+
+            Engine.EngineSettings.CurrentDefender = character;
+            
+            // Act
+            var result = Engine.Round.Turn.MoveAsTurn(monster);
+
+            // Reset
+            Engine.EngineSettings.PlayerList.Clear();
+            Engine.EngineSettings.MapModel.ClearMapGrid();
+            Engine.EngineSettings.CurrentDefender = null;
+
+            // Assert
+            Assert.AreEqual(false, result);
+        }
+
+
+        [Test]
+        public void TurnEngine_MoveAsTurn_Default_Valid_Monster_Possible_Locations_Should_Pass()
+        {
+            // Arrange
+            var monster = new PlayerInfoModel(new MonsterModel());
+            var character = new PlayerInfoModel(new CharacterModel());
+
+            // Remove everyone
+            Engine.EngineSettings.PlayerList.Clear();
+
+            Engine.EngineSettings.PlayerList.Add(monster);
+            Engine.EngineSettings.PlayerList.Add(character);
+
+            Engine.EngineSettings.MapModel.ClearMapGrid();
+            Engine.EngineSettings.MapModel.MapGridLocation[0, 0].Player = monster;
+            Engine.EngineSettings.MapModel.MapGridLocation[1, 0].Player = character;
+
+            Engine.EngineSettings.CurrentDefender = character;
+
+            // Act
+            var result = Engine.Round.Turn.MoveAsTurn(monster);
+
+            // Reset
+            Engine.EngineSettings.PlayerList.Clear();
+            Engine.EngineSettings.MapModel.ClearMapGrid();
+            Engine.EngineSettings.CurrentDefender = null;
+
+            // Assert
+            Assert.AreEqual(true, result);
+        }
+
+
         #endregion MoveAsTurn
 
         #region ApplyDamage

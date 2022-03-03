@@ -136,10 +136,6 @@ namespace Game.Engine.EngineGame
 
                 // Get X, Y for Defender
                 var locationDefender = EngineSettings.MapModel.GetLocationForPlayer(EngineSettings.CurrentDefender);
-                if (locationDefender == null)
-                {
-                    return false;
-                }
 
                 var possibleLocations = BattleEngineViewModel.Instance.Engine.EngineSettings.MapModel.GetAvailableLocationsFromPlayer(locationAttacker);
                 if(possibleLocations.Count() <= 1)
