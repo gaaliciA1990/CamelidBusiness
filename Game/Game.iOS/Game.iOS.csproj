@@ -292,6 +292,12 @@
     <Content Include="Resources\basic_stick.png" />
     <BundleResource Include="Resources\caverns.png" />
     <BundleResource Include="Resources\battleBackground.jpg" />
+    <BundleResource Include="Resources\gamePage_background2.png" />
+    <BundleResource Include="Resources\battle_background1.png" />
+    <BundleResource Include="Resources\battle_background2.png" />
+    <BundleResource Include="Resources\battle_background3.png" />
+    <BundleResource Include="Resources\battle_background4.png" />
+    <BundleResource Include="Resources\gamePage_background.png" />
     <Content Include="Resources\monsters.png" />
     <BundleResource Include="Resources\slider_thumbnail.png" />
     <BundleResource Include="Resources\movepopup.png" />
@@ -310,5 +316,7 @@
     <BundleResource Include="Resources\obstacle2.png" />
     <BundleResource Include="Resources\obstacle3.png" />
     <BundleResource Include="Resources\obstacle1.png" />
+    <BundleResource Include="Resources\scorePage_background.png" />
+    <BundleResource Include="Resources\villagePage_background.png" />
   </ItemGroup>
 </Project>
