@@ -84,9 +84,16 @@ namespace Game.GameRules
             var listItem = ItemIndexViewModel.Instance.Dataset.Where(m => m.IsUnique == false).ToList();
 
             //In case this is being called from the unit test/hack mode
-            DiceHelper.DisableForcedRolls();
+            if (DiceHelper.ForceRollsToNotRandom)
+            {
+                DiceHelper.DisableForcedRolls();
+                var toReturn = listItem.ElementAt(DiceHelper.RollDice(1, listItem.Count()) - 1).Id;
+                DiceHelper.EnableForcedRolls();
+                return toReturn;
+            }
+
+            //In regular game mode
             var result = listItem.ElementAt(DiceHelper.RollDice(1, listItem.Count()) - 1).Id;
-            DiceHelper.EnableForcedRolls();
 
             return result;
 
