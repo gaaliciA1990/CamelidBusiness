@@ -922,5 +922,171 @@ namespace UnitTests.Engine.EngineGame
             Assert.AreEqual("Doug", result.Name);
         }
         #endregion GetNextPlayerTurn
+
+        #region AddMonstersToRound
+        [Test]
+        public void AddMonstersToRound_Round_1_Valid_Should_Pass()
+        {
+            // Arrange
+            Engine.EngineSettings.BattleScore.RoundCount = 1;
+            Engine.EngineSettings.MonsterList.Clear();
+
+            var CharacterPlayerEvie = new PlayerInfoModel(
+                                        new CharacterModel
+                                        {
+                                            Speed = 200,
+                                            Level = 4,
+                                            Alive = false,
+                                            CurrentHealth = 1,
+                                            ExperienceTotal = 1,
+                                            Name = "Evie",
+                                            ListOrder = 1,
+                                        });
+
+            var CharacterPlayerEfie = new PlayerInfoModel(
+                                        new CharacterModel
+                                        {
+                                            Speed = 20,
+                                            Level = 2,
+                                            Alive = false,
+                                            CurrentHealth = 1,
+                                            ExperienceTotal = 1,
+                                            Name = "Efie",
+                                            ListOrder = 2,
+                                        });
+
+
+            // Add each model here to warm up and load it.
+            _ = Game.Helpers.DataSetsHelper.WarmUp();
+
+            Engine.EngineSettings.CharacterList.Clear();
+
+            Engine.EngineSettings.CharacterList.Add(CharacterPlayerEvie);
+            Engine.EngineSettings.CharacterList.Add(CharacterPlayerEfie);
+
+            // Act
+            var result = Engine.Round.AddMonstersToRound();
+
+            var maxMonsterLevel = Engine.EngineSettings.MonsterList.Max(m => m.Level);
+
+            // Reset
+
+            // Assert
+            //Test if the max level in that monster list is lesser or equal to character list average level
+
+            Assert.AreEqual(6, result);
+            Assert.LessOrEqual(4, maxMonsterLevel);
+        }
+
+        [Test]
+        public void AddMonstersToRound_Round_3_Valid_Should_Return_1_Round_Boss()
+        {
+            // Arrange
+            Engine.EngineSettings.BattleScore.RoundCount = 3;
+            Engine.EngineSettings.MonsterList.Clear();
+
+            var CharacterPlayerEvie = new PlayerInfoModel(
+                                        new CharacterModel
+                                        {
+                                            Speed = 200,
+                                            Level = 4,
+                                            Alive = false,
+                                            CurrentHealth = 1,
+                                            ExperienceTotal = 1,
+                                            Name = "Evie",
+                                            ListOrder = 1,
+                                        });
+
+            var CharacterPlayerEfie = new PlayerInfoModel(
+                                        new CharacterModel
+                                        {
+                                            Speed = 20,
+                                            Level = 2,
+                                            Alive = false,
+                                            CurrentHealth = 1,
+                                            ExperienceTotal = 1,
+                                            Name = "Efie",
+                                            ListOrder = 2,
+                                        });
+
+
+            // Add each model here to warm up and load it.
+            _ = Game.Helpers.DataSetsHelper.WarmUp();
+
+            Engine.EngineSettings.CharacterList.Clear();
+
+            Engine.EngineSettings.CharacterList.Add(CharacterPlayerEvie);
+            Engine.EngineSettings.CharacterList.Add(CharacterPlayerEfie);
+
+            // Act
+            var result = Engine.Round.AddMonstersToRound();
+
+            var maxMonsterLevel = Engine.EngineSettings.MonsterList.Max(m => m.Level);
+
+            // Reset
+
+            // Assert
+            //Test if the max level in that monster list is lesser or equal to character list average level
+
+            Assert.AreEqual(6, result);
+            //Assert.LessOrEqual(maxMonsterLevel, 4);
+            Assert.AreEqual(1, Engine.EngineSettings.MonsterList.ToList().Where(m => m.Job == CharacterJobEnum.RoundBoss).Count());
+        }
+
+        [Test]
+        public void AddMonstersToRound_Round_10_Valid_Should_Return_1_Great_Boss()
+        {
+            // Arrange
+            Engine.EngineSettings.BattleScore.RoundCount = 10;
+            Engine.EngineSettings.MonsterList.Clear();
+
+            var CharacterPlayerEvie = new PlayerInfoModel(
+                                        new CharacterModel
+                                        {
+                                            Speed = 200,
+                                            Level = 4,
+                                            Alive = false,
+                                            CurrentHealth = 1,
+                                            ExperienceTotal = 1,
+                                            Name = "Evie",
+                                            ListOrder = 1,
+                                        });
+
+            var CharacterPlayerEfie = new PlayerInfoModel(
+                                        new CharacterModel
+                                        {
+                                            Speed = 20,
+                                            Level = 2,
+                                            Alive = false,
+                                            CurrentHealth = 1,
+                                            ExperienceTotal = 1,
+                                            Name = "Efie",
+                                            ListOrder = 2,
+                                        });
+
+
+            // Add each model here to warm up and load it.
+            _ = Game.Helpers.DataSetsHelper.WarmUp();
+
+            Engine.EngineSettings.CharacterList.Clear();
+
+            Engine.EngineSettings.CharacterList.Add(CharacterPlayerEvie);
+            Engine.EngineSettings.CharacterList.Add(CharacterPlayerEfie);
+
+            // Act
+            var result = Engine.Round.AddMonstersToRound();
+
+            var maxMonsterLevel = Engine.EngineSettings.MonsterList.Max(m => m.Level);
+
+            // Reset
+
+            // Assert
+            //Test if the max level in that monster list is lesser or equal to character list average level
+
+            Assert.AreEqual(6, result);
+            Assert.AreEqual(true, Engine.EngineSettings.MonsterList.ToList().Any(m => m.Job == CharacterJobEnum.GreatLeader));
+        }
+
+        #endregion
     }
 }
