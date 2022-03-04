@@ -191,7 +191,7 @@ namespace UnitTests.Engine.EngineGame
             //Arrange
             AutoBattleEngine.Battle.EngineSettings.MaxNumberPartyCharacters = 6;
 
-            CharacterIndexViewModel.Instance.Dataset.Clear();
+            AutoBattleEngine.Battle.EngineSettings.CharacterList.Clear();
 
             //Act
             var result = AutoBattleEngine.CreateCharacterParty();
