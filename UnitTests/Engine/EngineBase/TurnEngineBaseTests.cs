@@ -1662,5 +1662,23 @@ namespace UnitTests.Engine.EngineBase
         }
 
         #endregion DetermineCriticalMissProblem
+
+        #region SkipAsTurn
+
+        [Test]
+        public void SkipAsTurn_Valid_Default_Should_Pass()
+        {
+            //Arrange
+            PlayerInfoModel player = new PlayerInfoModel(new CharacterModel());
+
+            //Act
+            var result = Engine.Round.Turn.SkipAsTurn(player);
+            //Reset
+
+            //Assert
+            Assert.AreEqual(true, result);
+
+        }
+        #endregion SkipAsTurn
     }
 }
