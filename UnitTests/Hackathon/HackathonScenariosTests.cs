@@ -223,12 +223,14 @@ namespace Scenario
 
             // Monsters always hit
             EngineViewModel.Engine.EngineSettings.BattleSettingsModel.MonsterHitEnum = HitStatusEnum.Hit;
+            EngineViewModel.Engine.EngineSettings.BattleSettingsModel.CharacterHitEnum = HitStatusEnum.Miss;
 
             //Act
             var result = await EngineViewModel.AutoBattleEngine.RunAutoBattle();
 
             //Reset
             EngineViewModel.Engine.EngineSettings.BattleSettingsModel.MonsterHitEnum = HitStatusEnum.Default;
+            EngineViewModel.Engine.EngineSettings.BattleSettingsModel.CharacterHitEnum = HitStatusEnum.Default;
 
             //Assert
             Assert.AreEqual(true, result);
