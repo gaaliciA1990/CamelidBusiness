@@ -363,7 +363,7 @@ namespace UnitTests.Engine.EngineGame
         public void RoundEngine_BattleSettingsOverrideHitStatusEnum_Valid_Default_Should_Pass()
         {
             // Arrange 
-            Engine.EngineSettings.BattleMessagesModel.HitStatus = HitStatusEnum.CriticalMiss;
+            Engine.EngineSettings.BattleMessagesModel.HitStatus = HitStatusEnum.Hit;
 
 
             // Act
