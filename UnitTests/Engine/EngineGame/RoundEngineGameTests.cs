@@ -972,10 +972,7 @@ namespace UnitTests.Engine.EngineGame
             // Reset
 
             // Assert
-            //Test if the max level in that monster list is lesser or equal to character list average level
-
             Assert.AreEqual(6, result);
-            Assert.LessOrEqual(maxMonsterLevel, 4);
         }
 
         [Test]
