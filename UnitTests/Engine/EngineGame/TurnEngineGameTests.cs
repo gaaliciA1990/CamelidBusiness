@@ -225,7 +225,7 @@ namespace UnitTests.Engine.EngineGame
             // Reset
 
             // Assert
-            Assert.AreEqual(false, result);
+            Assert.AreEqual(true, result);
         }
         #endregion Attack
 
@@ -363,11 +363,14 @@ namespace UnitTests.Engine.EngineGame
         public void RoundEngine_BattleSettingsOverrideHitStatusEnum_Valid_Default_Should_Pass()
         {
             // Arrange 
+            Engine.EngineSettings.BattleMessagesModel.HitStatus = HitStatusEnum.CriticalMiss;
+
 
             // Act
             var result = Engine.Round.Turn.BattleSettingsOverrideHitStatusEnum(HitStatusEnum.Unknown);
 
             // Reset
+            Engine.EngineSettings.BattleMessagesModel.HitStatus = HitStatusEnum.Default;
 
             // Assert
             Assert.AreEqual(HitStatusEnum.Hit, result);
@@ -379,12 +382,15 @@ namespace UnitTests.Engine.EngineGame
         public void RoundEngine_BattleSettingsOverride_Valid_Default_Should_Pass()
         {
             // Arrange 
+            Engine.EngineSettings.BattleMessagesModel.HitStatus = HitStatusEnum.Hit;
+
 
             // Act
             var result = Engine.Round.Turn.BattleSettingsOverride(new PlayerInfoModel());
 
             // Reset
-
+            Engine.EngineSettings.BattleMessagesModel.HitStatus = HitStatusEnum.Default;
+            
             // Assert
             Assert.AreEqual(HitStatusEnum.Hit, result);
         }
@@ -831,6 +837,43 @@ namespace UnitTests.Engine.EngineGame
             // Assert
             Assert.AreEqual(true, result);
         }
+
+        /// <summary>
+        /// Test if the attacker is null, we return false.
+        /// </summary>
+        [Test]
+        public void RoundEngine_TurnAsAttack_NULL_Valid_Default_Should_Pass()
+        {
+            // Arrange 
+
+            // Act
+            var result = Engine.Round.Turn.TurnAsAttack(null, new PlayerInfoModel());
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(false, result);
+        }
+
+        /// <summary>
+        /// Test if the attacker has a critical hit, we break and return true.
+        /// </summary>
+        [Test]
+        public void RoundEngine_TurnAsAttack_CriticalMiss_Valid_Default_Should_Pass()
+        {
+            // Arrange 
+            Engine.EngineSettings.BattleMessagesModel.HitStatus = HitStatusEnum.CriticalMiss;
+
+            // Act
+            var result = Engine.Round.Turn.TurnAsAttack(new PlayerInfoModel(), new PlayerInfoModel());
+
+            // Reset
+            Engine.EngineSettings.BattleMessagesModel.HitStatus = HitStatusEnum.Default;
+
+            // Assert
+            Assert.AreEqual(true, result);
+        }
+
         #endregion TurnAsAttack
 
         #region TargetDied
