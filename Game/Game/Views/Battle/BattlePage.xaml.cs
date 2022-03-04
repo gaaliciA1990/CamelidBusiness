@@ -890,7 +890,7 @@ namespace Game.Views
         }
 
 
-        async void showActionPopup(ActionEnum action) 
+        public async void showActionPopup(ActionEnum action) 
         {
             if (action == ActionEnum.Attack)
             {
