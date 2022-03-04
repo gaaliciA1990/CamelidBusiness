@@ -207,27 +207,6 @@ namespace Game.Models
 
         }
 
-        /// <summary>
-        /// Create PlayerInfoModel from Obstacle
-        /// </summary>
-        /// <param name="data"></param>
-        public PlayerInfoModel(ObstacleModel data)
-        {
-            PlayerType = data.PlayerType;
-            Guid = data.Guid;
-            Alive = data.Alive;
-            ImageURI = data.ImageURI;
-            MaxHealth = data.GetMaxHealthTotal;
-            CurrentHealth = data.GetCurrentHealthTotal;
-
-            // Set the Base Attributes
-            MaxHealth = data.MaxHealth;
-            CurrentHealth = data.CurrentHealth;
-
-            // Give the copy a differet quid, so it can be used in the battles as a copy
-            Guid = System.Guid.NewGuid().ToString();
-        }
-
         public override string FormatOutput()
         {
             var myReturn = string.Empty;
