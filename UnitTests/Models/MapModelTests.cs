@@ -353,7 +353,7 @@ namespace UnitTests.Models
             PlayerList.Add(new PlayerInfoModel(Monster));
             PlayerList.Add(new PlayerInfoModel(Monster));
 
-            _ = map.PopulateMapModel(PlayerList, false);
+            _ = map.PopulateMapModel(PlayerList);
 
             // Act
             var result = map.GetEmptyLocations();
@@ -496,7 +496,7 @@ namespace UnitTests.Models
             PlayerList.Add(new PlayerInfoModel(Monster));
             PlayerList.Add(new PlayerInfoModel(Monster));
 
-            _ = map.PopulateMapModel(PlayerList); // with obstacles
+            _ = map.PopulateMapModel(PlayerList); 
 
             // Act
             var result = map.GetEmptyLocations();
@@ -504,7 +504,7 @@ namespace UnitTests.Models
             // Reset
 
             // Assert 
-            Assert.AreEqual(0, result.Count);
+            Assert.AreEqual(3, result.Count);
         }
 
         [Test]
@@ -748,7 +748,7 @@ namespace UnitTests.Models
             PlayerList.Add(new PlayerInfoModel(Character));
             PlayerList.Add(new PlayerInfoModel(Character));
 
-            _ = map.PopulateMapModel(PlayerList, false);
+            _ = map.PopulateMapModel(PlayerList);
 
             // Act
             var result = map.ReturnClosestEmptyLocation(map.MapGridLocation[0, 0]);
