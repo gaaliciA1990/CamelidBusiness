@@ -45,6 +45,22 @@ namespace Game.Engine.EngineGame
         }
 
         /// <summary>
+        /// Set the Current Attacker
+        /// </summary>
+        public override bool SetCurrentAttacker(PlayerInfoModel player)
+        {
+            return base.SetCurrentAttacker(player);
+        }
+
+        /// <summary>
+        /// Set the Current Attacker
+        /// </summary>
+        public override bool SetCurrentDefender(PlayerInfoModel player)
+        {
+            return base.SetCurrentDefender(player);
+        }
+
+        /// <summary>
         /// Call to make a new set of monsters...
         /// </summary>
         /// <returns></returns>
