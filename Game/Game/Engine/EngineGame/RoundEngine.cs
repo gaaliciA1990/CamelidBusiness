@@ -27,8 +27,6 @@ namespace Game.Engine.EngineGame
             Turn = new TurnEngine();
         }
 
-        public object BaseEngine { get; private set; }
-
         /// <summary>
         /// Clear the List between Rounds
         /// </summary>
