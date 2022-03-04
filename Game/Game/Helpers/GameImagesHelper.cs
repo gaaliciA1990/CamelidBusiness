@@ -47,17 +47,5 @@ namespace Game.Helpers
 
             return ImageList;
         }
-
-
-        /// <summary>
-        /// Creates a list of images for obstacles
-        /// </summary>
-        /// <returns></returns>
-        public static List<String> GetObstacleImage()
-        {
-            List<String> ImageList = new List<String> { "obstacle1.png", "obstacle2.png", "obstacle3.png" };
-
-            return ImageList;
-        }
     }
 }
