@@ -13,8 +13,5 @@
 
         // The Monster
         Monster = 2,
-
-        // Map Obstacle
-        Obstacle = 3,
     }
 }
