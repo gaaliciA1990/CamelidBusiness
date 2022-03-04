@@ -368,6 +368,8 @@ namespace UnitTests.Engine.EngineGame
             var CharacterPlayer = new PlayerInfoModel(Character);
             Engine.EngineSettings.CharacterList.Clear();
             Engine.EngineSettings.CharacterList.Add(new PlayerInfoModel(Character));
+            Engine.EngineSettings.BattleScore.AutoBattle = true;
+
 
             // Make the List
             Engine.EngineSettings.PlayerList = Engine.Round.MakePlayerList();
@@ -376,9 +378,10 @@ namespace UnitTests.Engine.EngineGame
             var result = Engine.Round.PickupItemsFromPool(CharacterPlayer);
 
             // Reset
+            Engine.EngineSettings.BattleScore.AutoBattle = false;
 
             // Assert
-            Assert.AreEqual(false, result);
+            Assert.AreEqual(true, result);
         }
 
         [Test]
@@ -391,9 +394,9 @@ namespace UnitTests.Engine.EngineGame
                 Level = 1,
                 CurrentHealth = 1,
                 ExperienceTotal = 1,
-                Name = "Z",
+                Name = "Zed",
                 ListOrder = 1,
-                Guid = "me"
+                Guid = "me2"
             };
 
             // Add each model here to warm up and load it.
