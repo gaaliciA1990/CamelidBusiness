@@ -113,7 +113,7 @@ namespace UnitTests.Engine.EngineGame
 
             Engine.EngineSettings.PlayerList.Add(monster);
 
-            _ = Engine.EngineSettings.MapModel.PopulateMapModel(Engine.EngineSettings.PlayerList, false);
+            _ = Engine.EngineSettings.MapModel.PopulateMapModel(Engine.EngineSettings.PlayerList);
 
             Engine.EngineSettings.CurrentDefender = null;
 
