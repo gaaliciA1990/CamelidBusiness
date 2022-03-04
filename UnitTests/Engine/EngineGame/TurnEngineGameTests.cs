@@ -1195,5 +1195,25 @@ namespace UnitTests.Engine.EngineGame
             Assert.LessOrEqual(result, 7);
         }
         #endregion DropItems
+
+        #region SkipAsTurn
+
+        [Test]
+        public void SkipAsTurn_Valid_Default_Should_Pass()
+        {
+            //Arrange
+            PlayerInfoModel player = new PlayerInfoModel(new CharacterModel());
+
+            //Act
+            var result = Engine.Round.Turn.SkipAsTurn(player);
+            //Reset
+
+            //Assert
+            Assert.AreEqual(true, result);
+
+        }
+        #endregion SkipAsTurn
     }
+
+
 }
