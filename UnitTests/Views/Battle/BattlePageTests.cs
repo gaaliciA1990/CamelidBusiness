@@ -1016,5 +1016,157 @@ namespace UnitTests.Views
             // Assert
             Assert.IsTrue(true); // Got Here
         }
+
+        #region ShowActionPopup
+        [Test]
+        public void BattlePage_ShowActionPopup_HitEnum_Hit_Should_Pass()
+        {
+            //Arrange
+            BattleEngineViewModel.Instance.Engine.EngineSettings.BattleMessagesModel.HitStatus = HitStatusEnum.Hit;
+
+            //Act
+            page.showActionPopup(ActionEnum.Attack);
+
+            //Reset
+            BattleEngineViewModel.Instance.Engine.EngineSettings.BattleMessagesModel.HitStatus = HitStatusEnum.Default;
+
+            //Assert
+            Assert.AreEqual(true, true);
+        }
+
+        [Test]
+        public void BattlePage_ShowActionPopup_HitEnum_Miss_Should_Pass()
+        {
+            //Arrange
+            BattleEngineViewModel.Instance.Engine.EngineSettings.BattleMessagesModel.HitStatus = HitStatusEnum.Miss;
+
+            //Act
+            page.showActionPopup(ActionEnum.Attack);
+
+            //Reset
+            BattleEngineViewModel.Instance.Engine.EngineSettings.BattleMessagesModel.HitStatus = HitStatusEnum.Default;
+
+            //Assert
+            Assert.AreEqual(true, true);
+        }
+
+        [Test]
+        public void BattlePage_ShowActionPopup_HitEnum_CriticalMiss_Should_Pass()
+        {
+            //Arrange
+            BattleEngineViewModel.Instance.Engine.EngineSettings.BattleMessagesModel.HitStatus = HitStatusEnum.CriticalMiss;
+
+            //Act
+            page.showActionPopup(ActionEnum.Attack);
+
+            //Reset
+            BattleEngineViewModel.Instance.Engine.EngineSettings.BattleMessagesModel.HitStatus = HitStatusEnum.Default;
+
+            //Assert
+            Assert.AreEqual(true, true);
+        }
+
+        [Test]
+        public void BattlePage_ShowActionPopup_ActionEnum_Move_Should_Pass()
+        {
+            //Arrange
+            
+
+            //Act
+            page.showActionPopup(ActionEnum.Move);
+
+            //Reset
+            
+            //Assert
+            Assert.AreEqual(true, true);
+        }
+
+        [Test]
+        public void BattlePage_ShowActionPopup_ActionEnum_Unknown_Should_Pass()
+        {
+            //Arrange
+
+
+            //Act
+            page.showActionPopup(ActionEnum.Unknown);
+
+            //Reset
+
+            //Assert
+            Assert.AreEqual(true, true);
+        }
+
+        [Test]
+        public void BattlePage_DetermineMapImageButton_PlayerTypeEnum_Character_Should_Pass()
+        {
+            //Arrange
+            var data = BattleEngineViewModel.Instance.Engine.EngineSettings.MapModel.MapGridLocation[0,0];
+            var PlayerImageButton = DetermineMapImageButton(data);
+            MapModelLocation data2 = new MapModelLocation();
+            BattleEngineViewModel.Instance.Engine.EngineSettings.CurrentAction = ActionEnum.Attack;
+
+            //Act
+            PlayerImageButton.PropagateUpClicked();
+
+            //Reset
+
+            //Assert
+            Assert.AreEqual(true, true);
+        }
+
+        [Test]
+        public void BattlePage_DetermineMapImageButton_PlayerTypeEnum_Monster_Should_Pass()
+        {
+            //Arrange
+            var data = BattleEngineViewModel.Instance.Engine.EngineSettings.MapModel.MapGridLocation[0, 0];
+            data.Player.PlayerType = PlayerTypeEnum.Monster;
+            var PlayerImageButton = DetermineMapImageButton(data);
+            BattleEngineViewModel.Instance.Engine.EngineSettings.CurrentAction = ActionEnum.Attack;
+
+            //Act
+            PlayerImageButton.PropagateUpClicked();
+
+            //Reset
+
+            //Assert
+            Assert.AreEqual(true, true);
+        }
+
+        [Test]
+        public void BattlePage_DetermineMapImageButton_PlayerTypeEnum_Obstacle_Should_Pass()
+        {
+            //Arrange
+            var data = BattleEngineViewModel.Instance.Engine.EngineSettings.MapModel.MapGridLocation[0, 0];
+            data.Player.PlayerType = PlayerTypeEnum.Obstacle;
+            var PlayerImageButton = DetermineMapImageButton(data);
+            BattleEngineViewModel.Instance.Engine.EngineSettings.CurrentAction = ActionEnum.Attack;
+
+            //Act
+            PlayerImageButton.PropagateUpClicked();
+
+            //Reset
+
+            //Assert
+            Assert.AreEqual(true, true);
+        }
+
+        [Test]
+        public void BattlePage_DetermineMapImageButton_PlayerTypeEnum_Unkown_Should_Pass()
+        {
+            //Arrange
+            var data = BattleEngineViewModel.Instance.Engine.EngineSettings.MapModel.MapGridLocation[0, 0];
+            data.Player.PlayerType = PlayerTypeEnum.Unknown;
+            var PlayerImageButton = DetermineMapImageButton(data);
+            BattleEngineViewModel.Instance.Engine.EngineSettings.CurrentAction = ActionEnum.Attack;
+
+            //Act
+            PlayerImageButton.PropagateUpClicked();
+
+            //Reset
+
+            //Assert
+            Assert.AreEqual(true, true);
+        }
+        #endregion
     }
 }
