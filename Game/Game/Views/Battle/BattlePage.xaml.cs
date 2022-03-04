@@ -326,7 +326,7 @@ namespace Game.Views
 
         /// <summary>
         /// Make the Game Map Frame 
-        /// Place the Character, Monster or obstacle in the frame
+        /// Place the Character, Monster in the frame
         /// If empty, place Empty
         /// </summary>
         /// <param name="mapLocationModel"></param>
@@ -430,7 +430,7 @@ namespace Game.Views
                 AutomationId = MapLocationModel.Player.Guid
             };
 
-            // Show the characters, monsters, obstacles and empty cells on the grid based on playertype
+            // Show the characters, monsters, and empty cells on the grid based on playertype
             switch (MapLocationModel.Player.PlayerType)
             {
                 case PlayerTypeEnum.Character:
@@ -438,9 +438,6 @@ namespace Game.Views
                     break;
                 case PlayerTypeEnum.Monster:
                     data.Clicked += (sender, args) => SetSelectedMonster(MapLocationModel);
-                    break;
-                case PlayerTypeEnum.Obstacle:
-                    data.Clicked += (sender, args) => SetSelectedEmpty(MapLocationModel);
                     break;
                 case PlayerTypeEnum.Unknown:
                 default:
