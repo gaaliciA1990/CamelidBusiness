@@ -1136,24 +1136,6 @@ namespace UnitTests.Views
         }
 
         [Test]
-        public void BattlePage_DetermineMapImageButton_PlayerTypeEnum_Obstacle_Should_Pass()
-        {
-            //Arrange
-            var data = BattleEngineViewModel.Instance.Engine.EngineSettings.MapModel.MapGridLocation[0, 0];
-            data.Player.PlayerType = PlayerTypeEnum.Obstacle;
-            var PlayerImageButton = DetermineMapImageButton(data);
-            BattleEngineViewModel.Instance.Engine.EngineSettings.CurrentAction = ActionEnum.Attack;
-
-            //Act
-            PlayerImageButton.PropagateUpClicked();
-
-            //Reset
-
-            //Assert
-            Assert.AreEqual(true, true);
-        }
-
-        [Test]
         public void BattlePage_DetermineMapImageButton_PlayerTypeEnum_Unkown_Should_Pass()
         {
             //Arrange
