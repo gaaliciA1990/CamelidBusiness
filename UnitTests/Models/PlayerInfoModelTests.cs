@@ -53,6 +53,21 @@ namespace UnitTests.Models
         }
 
         [Test]
+        public void PlayerInfoModel_Obstacle_Monster_Default_Should_Pass()
+        {
+            // Arrange
+            var data = new ObstacleModel();
+
+            // Act
+            var result = new PlayerInfoModel(data);
+
+            // Reset
+
+            // Assert
+            Assert.IsNotNull(result);
+        }
+
+        [Test]
         public void PlayerInfoModel_Constructor_Character_Fighter_Default_Should_Pass()
         {
             // Arrange
