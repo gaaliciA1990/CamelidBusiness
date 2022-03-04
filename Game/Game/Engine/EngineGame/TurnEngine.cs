@@ -182,33 +182,7 @@ namespace Game.Engine.EngineGame
         /// <returns></returns>
         public override bool ChooseToUseAbility(PlayerInfoModel Attacker)
         {
-            // See if healing is needed.
-            EngineSettings.CurrentActionAbility = Attacker.SelectHealingAbility();
-            if (EngineSettings.CurrentActionAbility != AbilityEnum.Unknown)
-            {
-                EngineSettings.CurrentAction = ActionEnum.Ability;
-                return true;
-            }
-
-            // If not needed, then role dice to see if other ability should be used
-            // <30% chance
-            if (DiceHelper.RollDice(1, 10) < 3)
-            {
-                EngineSettings.CurrentActionAbility = Attacker.SelectAbilityToUse();
-
-                if (EngineSettings.CurrentActionAbility != AbilityEnum.Unknown)
-                {
-                    // Ability can , switch to unknown to exit
-                    EngineSettings.CurrentAction = ActionEnum.Ability;
-                    return true;
-                }
-
-                // No ability available
-                return false;
-            }
-
-            // Don't try
-            return false;
+            return base.ChooseToUseAbility(Attacker);
         }
 
         /// <summary>
@@ -455,7 +429,7 @@ namespace Game.Engine.EngineGame
             // Drop Items to ItemModel Pool
             var myItemList = Target.DropAllItems();
 
-            // If Random drops are enabled, then add some....
+            // Monsters only drop items
             if(Target.PlayerType == PlayerTypeEnum.Monster)
             {
                 myItemList.AddRange(GetRandomMonsterItemDrops(EngineSettings.BattleScore.RoundCount));
@@ -488,51 +462,7 @@ namespace Game.Engine.EngineGame
         /// </summary>
         public override HitStatusEnum RollToHitTarget(int AttackScore, int DefenseScore)
         {
-            var d20 = DiceHelper.RollDice(1, 20);
-
-            if (d20 == 1)
-            {
-                EngineSettings.BattleMessagesModel.HitStatus = HitStatusEnum.Miss;
-                EngineSettings.BattleMessagesModel.AttackStatus = " rolls 1 to miss ";
-
-                if (EngineSettings.BattleSettingsModel.AllowCriticalMiss)
-                {
-                    EngineSettings.BattleMessagesModel.AttackStatus = " rolls 1 to completly miss ";
-                    EngineSettings.BattleMessagesModel.HitStatus = HitStatusEnum.CriticalMiss;
-                }
-
-                return EngineSettings.BattleMessagesModel.HitStatus;
-            }
-
-            if (d20 == 20)
-            {
-                EngineSettings.BattleMessagesModel.AttackStatus = " rolls 20 for hit ";
-                EngineSettings.BattleMessagesModel.HitStatus = HitStatusEnum.Hit;
-
-                if (EngineSettings.BattleSettingsModel.AllowCriticalHit)
-                {
-                    EngineSettings.BattleMessagesModel.AttackStatus = " rolls 20 for lucky hit ";
-                    EngineSettings.BattleMessagesModel.HitStatus = HitStatusEnum.CriticalHit;
-                }
-                return EngineSettings.BattleMessagesModel.HitStatus;
-            }
-
-            var ToHitScore = d20 + AttackScore;
-            if (ToHitScore < DefenseScore)
-            {
-                EngineSettings.BattleMessagesModel.AttackStatus = " rolls " + d20 + " and misses ";
-
-                // Miss
-                EngineSettings.BattleMessagesModel.HitStatus = HitStatusEnum.Miss;
-                EngineSettings.BattleMessagesModel.DamageAmount = 0;
-                return EngineSettings.BattleMessagesModel.HitStatus;
-            }
-
-            EngineSettings.BattleMessagesModel.AttackStatus = " rolls " + d20 + " and hits ";
-
-            // Hit
-            EngineSettings.BattleMessagesModel.HitStatus = HitStatusEnum.Hit;
-            return EngineSettings.BattleMessagesModel.HitStatus;
+            return base.RollToHitTarget(AttackScore, DefenseScore);
         }
 
         /// <summary>
