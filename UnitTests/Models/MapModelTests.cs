@@ -432,6 +432,25 @@ namespace UnitTests.Models
             Assert.AreEqual(false, result);
         }
 
+
+        [Test]
+        public void MapModel_IsEmptySquare_Empty_Square_Should_Pass()
+        {
+            // Arrange
+
+            var map = new MapModel();
+
+
+            // Act
+            var result = map.IsEmptySquare(0, 0);
+
+            // Reset
+
+            // Assert 
+            Assert.AreEqual(true, result);
+        }
+
+
         [Test]
         public void GetPlayerEmptyAdjacentCells_Player_With_Empty_Adjacent_Cells_Should_Return_Empty_List()
         {
