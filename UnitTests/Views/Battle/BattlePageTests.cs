@@ -9,6 +9,7 @@ using Game;
 using Game.Views;
 using Game.Models;
 using Game.ViewModels;
+using System.Collections.Generic;
 
 namespace UnitTests.Views
 {
@@ -1123,6 +1124,8 @@ namespace UnitTests.Views
             var PlayerImageButton = DetermineMapImageButton(data);
             BattleEngineViewModel.Instance.Engine.EngineSettings.CurrentAction = ActionEnum.Attack;
 
+            BattleEngineViewModel.Instance.Engine.EngineSettings.BattleMessagesModel.TurnMessage = "test";
+
             //Act
             PlayerImageButton.PropagateUpClicked();
 
@@ -1167,6 +1170,49 @@ namespace UnitTests.Views
             //Assert
             Assert.AreEqual(true, true);
         }
+        #endregion
+
+        #region
+
+        [Test]
+        public void BattlePage_VisualizeAttackOptions_Default_Should_Pass()
+        {
+            //Arrange
+            var monster1 = new PlayerInfoModel(new MonsterModel());
+            var monster2 = new PlayerInfoModel(new MonsterModel());
+            var player = new PlayerInfoModel(new CharacterModel()
+            {
+                PlayerType = PlayerTypeEnum.Character
+            });
+
+            // Arrange
+            var map = new MapModel();
+
+            map.MapXAxiesCount = 3;
+            map.MapYAxiesCount = 3;
+            map.MapGridLocation = new MapModelLocation[map.MapXAxiesCount, map.MapYAxiesCount];
+
+            var PlayerList = new List<PlayerInfoModel>();
+            PlayerList.Add(new PlayerInfoModel(player));
+            PlayerList.Add(new PlayerInfoModel(monster1));
+
+            _ = map.PopulateMapModel(PlayerList);
+            var start = map.GetPlayerAtLocation(0, 0);
+            var end = map.GetPlayerAtLocation(1, 0);
+
+            BattleEngineViewModel.Instance.Engine.EngineSettings.PlayerList.Add(monster1);
+            BattleEngineViewModel.Instance.Engine.EngineSettings.PlayerList.Add(monster2);
+
+            //Act
+            visualizeAttackOptions(player);
+
+            //Reset
+
+            //Assert
+            Assert.AreEqual(true, true);
+        }
+
+
         #endregion
     }
 }
