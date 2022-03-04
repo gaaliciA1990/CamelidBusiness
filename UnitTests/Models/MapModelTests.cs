@@ -433,6 +433,29 @@ namespace UnitTests.Models
         }
 
         [Test]
+        public void GetPlayerEmptyAdjacentCells_Player_With_Empty_Adjacent_Cells_Should_Return_Empty_List()
+        {
+            // Arrange
+            var map = new MapModel();
+
+            var Character = new CharacterModel();
+            var player = new PlayerInfoModel(Character);
+
+            var a = map.MapGridLocation[1, 1].Player = player;
+
+            // Act
+            var result = map.GetPlayerEmptyAdjacentCells(map.GetLocationForPlayer(player));
+
+            // Reset
+
+            //Assert
+            Assert.AreEqual(4, result.Count);
+
+        }
+
+
+
+        [Test]
         public void MapModel_GetEmptyLocations_Valid_Empty_Should_Pass()
         {
             // Arrange
