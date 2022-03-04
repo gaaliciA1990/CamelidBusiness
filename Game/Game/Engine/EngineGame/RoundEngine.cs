@@ -236,14 +236,13 @@ namespace Game.Engine.EngineGame
         /// <param name="character"></param>
         public override bool PickupItemsFromPool(PlayerInfoModel character)
         {
+            // For auto battle, automatically assign items based on item value
+            if (EngineSettings.BattleScore.AutoBattle)
+            {
+                return base.PickupItemsFromPool(character);
+            }
 
-            // TODO: Teams, You need to implement your own Logic if not using auto apply
-
-
-            // I use the same logic for Auto Battle as I do for Manual Battle
-
-            // if (BaseEngine.BattleScore.AutoBattle)
-            return base.PickupItemsFromPool(character);
+            return true;
         }
 
         /// <summary>
