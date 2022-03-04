@@ -33,7 +33,7 @@
 
                         <StackLayout Grid.Row="0" Grid.Column="0" Grid.RowSpan="3">
                             <StackLayout Style="{StaticResource HorizontalStack}">
-                                <Label Text="Round : " Style="{StaticResource MessageStyle}"/>
+                                <Label Text="Round: " Style="{StaticResource MessageStyle}"/>
                                 <Label Text="0" x:Name="TotalRound" Style="{StaticResource LabelStyle}"/>
                             </StackLayout>
                             
@@ -43,14 +43,17 @@
                                         Wrap="Wrap"/>
                         </StackLayout>
 
-                        <Button Grid.Row="0" Grid.Column="1" HorizontalOptions="Start" Clicked="AutoAssignButton_Clicked" Text="Auto Assign"/>
-
                         <StackLayout Grid.Row="1" Grid.Column="1"> 
                             <Label x:Name="ItemLabel" Style="{StaticResource LabelStyle}"/>
-                            <FlexLayout x:Name="ItemListSelectedFrame"
-                                        JustifyContent="Start"
-                                        AlignContent="Start"
-                                        Wrap="Wrap"/>
+                            <ScrollView>
+                                <FlexLayout x:Name="ItemListSelectedFrame"
+                                            JustifyContent="Start"
+                                            AlignContent="Start"
+                                            Wrap="NoWrap"
+                                            VerticalOptions="Start"
+                                            HorizontalOptions="Start" />
+                            </ScrollView>
+
                         </StackLayout>
 
                         <StackLayout Grid.Row="2" Grid.Column="1">
@@ -60,11 +63,15 @@
                                 <Label Text="Found : " Style="{StaticResource LabelStyle}"/>
                                 <Label Text="0" x:Name="TotalFound" Style="{StaticResource ValueStyle}"/>
                             </StackLayout>
+                            <ScrollView>
+                                <FlexLayout x:Name="ItemListFoundFrame"
+                                            JustifyContent="Start"
+                                            AlignContent="Start"
+                                            Wrap="Wrap"
+                                            VerticalOptions="Start"
+                                            HorizontalOptions="Start" />
+                            </ScrollView>
 
-                            <FlexLayout x:Name="ItemListFoundFrame"
-                                        JustifyContent="Start"
-                                        AlignContent="Start"
-                                        Wrap="Wrap"/>
                         </StackLayout>
 
                     </Grid>
