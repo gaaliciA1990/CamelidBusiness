@@ -374,49 +374,7 @@ namespace Game.Engine.EngineGame
         /// </summary>
         public override bool TargetDied(PlayerInfoModel Target)
         {
-            bool found;
-
-            // Mark Status in output
-            EngineSettings.BattleMessagesModel.TurnMessageSpecial = " and causes death. ";
-
-            // Removing the 
-            _ = EngineSettings.MapModel.RemovePlayerFromMap(Target);
-
-            // INFO: Teams, Hookup your Boss if you have one...
-
-            // Using a switch so in the future additional PlayerTypes can be added (Boss...)
-            switch (Target.PlayerType)
-            {
-                case PlayerTypeEnum.Character:
-                    // Add the Character to the killed list
-                    EngineSettings.BattleScore.CharacterAtDeathList += Target.FormatOutput() + "\n";
-
-                    EngineSettings.BattleScore.CharacterModelDeathList.Add(Target);
-
-                    _ = DropItems(Target);
-
-                    found = EngineSettings.CharacterList.Remove(EngineSettings.CharacterList.Find(m => m.Guid.Equals(Target.Guid)));
-                    found = EngineSettings.PlayerList.Remove(EngineSettings.PlayerList.Find(m => m.Guid.Equals(Target.Guid)));
-
-                    return true;
-
-                case PlayerTypeEnum.Monster:
-                default:
-                    // Add one to the monsters killed count...
-                    EngineSettings.BattleScore.MonsterSlainNumber++;
-
-                    // Add the MonsterModel to the killed list
-                    EngineSettings.BattleScore.MonstersKilledList += Target.FormatOutput() + "\n";
-
-                    EngineSettings.BattleScore.MonsterModelDeathList.Add(Target);
-
-                    _ = DropItems(Target);
-
-                    found = EngineSettings.MonsterList.Remove(EngineSettings.MonsterList.Find(m => m.Guid.Equals(Target.Guid)));
-                    found = EngineSettings.PlayerList.Remove(EngineSettings.PlayerList.Find(m => m.Guid.Equals(Target.Guid)));
-
-                    return true;
-            }
+            return base.TargetDied(Target);
         }
 
         /// <summary>
@@ -489,7 +447,7 @@ namespace Game.Engine.EngineGame
 
             //Special drops
             // Get a random Unique Item if there's a boss in the round boss - every 3 rounds, there's a 70% chance of boss dropping an item
-            if (Target.Job == CharacterJobEnum.RoundBoss && DiceHelper.RollDice(1, 10) >= 7)
+            if (Target.Job == CharacterJobEnum.RoundBoss && DiceHelper.RollDice(1, 10) >= 3)
             {
                 result.Add(ItemIndexViewModel.Instance.GetItem(RandomPlayerHelper.GetRandomUniqueItem()));
             }
