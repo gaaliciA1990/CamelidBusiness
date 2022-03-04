@@ -58,11 +58,11 @@ namespace Game.Models
 
         /// <summary>
         /// Initialize the Data Structure
-        /// Add Characters, Monsters, and Obstacles to the Map
+        /// Add Characters, Monsters to the Map
         /// </summary>
         /// <param name="PlayerList"></param>
         /// <returns></returns>
-        public bool PopulateMapModel(List<PlayerInfoModel> PlayerList, bool addObstacles = true)
+        public bool PopulateMapModel(List<PlayerInfoModel> PlayerList)
         {
             _ = ClearMapGrid();
 
@@ -92,34 +92,6 @@ namespace Game.Models
                 var row = (int)randomMonsterCells[m] % MapYAxiesCount;
                 var col = (int)Math.Floor((double)randomMonsterCells[m] / MapYAxiesCount);
                 MapGridLocation[col, row].Player = monsters.ElementAt(m);
-            }
-
-            if (addObstacles)
-            { 
-                var obstacle = GameImagesHelper.GetObstacleImage();
-                var totalObstacles = 3;
-
-                // Populate the map with obstacles randomly in spaces that aren't populated by characters or monsters
-                var randomObstacleCells = Enumerable.Range(0, MapYAxiesCount * MapXAxiesCount).OrderBy(c => rnd.Next()).Take(MapYAxiesCount * MapXAxiesCount).ToList();
-                
-                for (var o = 0; o < randomObstacleCells.Count(); o++)
-                {
-                    if (totalObstacles <= 0)
-                    {
-                        break;
-                    }
-                
-                    var row = (int)randomObstacleCells[o] % MapYAxiesCount;
-                    var col = (int)Math.Floor((double)randomObstacleCells[o] / MapYAxiesCount);
-                
-                    // Add the obstacles to emtpy cells that aren't covered by an a player or mosnter
-                    if (MapGridLocation[col, row].Player.PlayerType == EmptySquare.PlayerType)
-                    {
-                        // Create a new obstacle at the randomly selected location
-                        MapGridLocation[col, row].Player = new PlayerInfoModel { PlayerType = PlayerTypeEnum.Obstacle, ImageURI = obstacle[rnd.Next(0, 3)] };
-                        totalObstacles--;
-                    }
-                }
             }
 
             return true;
@@ -303,7 +275,7 @@ namespace Game.Models
 
         /// <summary>
         /// Return who is at the location
-        /// Could be Character, Monster, Obstacle or Empty
+        /// Could be Character, Monster, or Empty
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
