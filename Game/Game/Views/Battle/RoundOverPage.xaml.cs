@@ -294,7 +294,7 @@ namespace Game.Views
             // Add the Level
             var PlayerLevelLabel = new Label
             {
-                Text = "Level : " + data.Level,
+                Text = "Level: " + data.Level,
                 Style = (Style)Application.Current.Resources["ValueStyleMicro"],
                 HorizontalOptions = LayoutOptions.Center,
                 HorizontalTextAlignment = TextAlignment.Center,
@@ -308,7 +308,7 @@ namespace Game.Views
             // Add the HP
             var PlayerHPLabel = new Label
             {
-                Text = "HP : " + data.GetCurrentHealthTotal,
+                Text = "HP: " + data.GetCurrentHealthTotal,
                 Style = (Style)Application.Current.Resources["ValueStyleMicro"],
                 HorizontalOptions = LayoutOptions.Center,
                 HorizontalTextAlignment = TextAlignment.Center,
@@ -463,20 +463,6 @@ namespace Game.Views
 
             // Show the New Round Screen
             ShowModalNewRoundPage();
-        }
-
-        /// <summary>
-        /// Start next Round, returning to the battle screen
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        public void AutoAssignButton_Clicked(object sender, EventArgs e)
-        {
-            // Distribute the Items
-            _ = BattleEngineViewModel.Instance.Engine.Round.PickupItemsForAllCharacters();
-
-            // Show what was picked up
-            DrawItemLists();
         }
 
         /// <summary>
