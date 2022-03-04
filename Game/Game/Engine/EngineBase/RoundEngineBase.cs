@@ -419,6 +419,7 @@ namespace Game.Engine.EngineBase
                 thisLocation = ItemLocationEnum.Finger;
             }
 
+            // create a list that contains the items in the location that are ordered by descending value
             var myList = EngineSettings.ItemPool.Where(a => a.Location == thisLocation)
                 .OrderByDescending(a => a.Value)
                 .ToList();
