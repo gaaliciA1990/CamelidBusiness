@@ -1119,18 +1119,21 @@ namespace UnitTests.Views
         public void BattlePage_DetermineMapImageButton_PlayerTypeEnum_Monster_Should_Pass()
         {
             //Arrange
-            var data = BattleEngineViewModel.Instance.Engine.EngineSettings.MapModel.MapGridLocation[0, 0];
-            data.Player.PlayerType = PlayerTypeEnum.Monster;
-            var PlayerImageButton = DetermineMapImageButton(data);
+            var save = BattleEngineViewModel.Instance.Engine.EngineSettings.MapModel;
+            var player = new PlayerInfoModel(new MonsterModel());
+            BattleEngineViewModel.Instance.Engine.EngineSettings.MapModel.MapGridLocation[0, 0].Player = player;
+            var location = BattleEngineViewModel.Instance.Engine.EngineSettings.MapModel.GetLocationForPlayer(player);
+            var PlayerImageButton = DetermineMapImageButton(location);
             BattleEngineViewModel.Instance.Engine.EngineSettings.CurrentAction = ActionEnum.Attack;
-
-            BattleEngineViewModel.Instance.Engine.EngineSettings.BattleMessagesModel.TurnMessage = "test";
-
+            
             //Act
             PlayerImageButton.PropagateUpClicked();
-
+            
             //Reset
-
+            BattleEngineViewModel.Instance.Engine.EngineSettings.MapModel = save;
+            BattleEngineViewModel.Instance.Engine.EngineSettings.CurrentAction = ActionEnum.Unknown;
+            
+            
             //Assert
             Assert.AreEqual(true, true);
         }

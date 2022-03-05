@@ -71,10 +71,11 @@ namespace Game.Models
 
             // Randomly position Characters in the first two columns
             var characters = PlayerList.Where(m => m.PlayerType == PlayerTypeEnum.Character);
-            var characterCols = (int)Math.Ceiling((double)characters.Count() / MapYAxiesCount);
-            var randomCharacterCells = Enumerable.Range(0, MapYAxiesCount * characterCols).OrderBy(c => rnd.Next()).Take(characters.Count()).ToList();
+            var characterCount = (characters.Count() <= MapXAxiesCount * MapYAxiesCount ? characters.Count() : MapXAxiesCount * MapYAxiesCount);
+            var characterCols = (int)Math.Ceiling((double)characterCount / MapYAxiesCount);
+            var randomCharacterCells = Enumerable.Range(0, MapYAxiesCount * characterCols).OrderBy(c => rnd.Next()).Take(characterCount).ToList();
 
-            for (var c = 0; c < characters.Count(); c++)
+            for (var c = 0; c < characterCount; c++)
             {
                 var row = (int)randomCharacterCells[c] % MapYAxiesCount;
                 var col = (int)Math.Floor((double)randomCharacterCells[c] / MapYAxiesCount);
@@ -83,11 +84,12 @@ namespace Game.Models
 
             // populate the map with the monsters randomly in the laster two columns
             var monsters = PlayerList.Where(m => m.PlayerType == PlayerTypeEnum.Monster);
-            var monsterCols = (int)Math.Ceiling((double)monsters.Count() / MapYAxiesCount);
-            var randomMonsterCells = Enumerable.Range((MapYAxiesCount* MapXAxiesCount)-(MapYAxiesCount * monsterCols),
-                MapYAxiesCount * monsterCols).OrderBy(m => rnd.Next()).Take(monsters.Count()).ToList();
+            var monsterCount = (monsters.Count() <= MapXAxiesCount * MapYAxiesCount ? monsters.Count() : MapXAxiesCount * MapYAxiesCount);
+            var monsterCols = (int)Math.Ceiling((double)monsterCount / MapYAxiesCount);
+            var randomMonsterCells = Enumerable.Range((MapYAxiesCount * MapXAxiesCount) - (MapYAxiesCount * monsterCols),
+                MapYAxiesCount * monsterCols).OrderBy(m => rnd.Next()).Take(monsterCount).ToList();
 
-            for (var m = 0; m < monsters.Count(); m++)
+            for (var m = 0; m < monsterCount; m++)
             {
                 var row = (int)randomMonsterCells[m] % MapYAxiesCount;
                 var col = (int)Math.Floor((double)randomMonsterCells[m] / MapYAxiesCount);

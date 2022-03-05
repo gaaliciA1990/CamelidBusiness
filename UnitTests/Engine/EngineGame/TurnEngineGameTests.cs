@@ -373,7 +373,7 @@ namespace UnitTests.Engine.EngineGame
             Engine.EngineSettings.BattleMessagesModel.HitStatus = HitStatusEnum.Default;
 
             // Assert
-            Assert.AreEqual(HitStatusEnum.Hit, result);
+            Assert.AreEqual(HitStatusEnum.CriticalMiss, result);
         }
         #endregion BattleSettingsOverrideHitStatusEnum
 
