@@ -416,12 +416,18 @@ namespace UnitTests.Engine.EngineGame
         [Test]
         public void RoundEngine_CalculateAttackStatus_Valid_Default_Should_Pass()
         {
-            // Arrange 
+            // Arrange
+
+            //Force the die roll
+            DiceHelper.EnableForcedRolls();
+            DiceHelper.SetForcedRollValue(19);
 
             // Act
             var result = Engine.Round.Turn.CalculateAttackStatus(new PlayerInfoModel(), new PlayerInfoModel());
 
             // Reset
+            DiceHelper.DisableForcedRolls();
+            DiceHelper.SetForcedRollValue(1);
 
             // Assert
             Assert.AreEqual(HitStatusEnum.Hit, result);
