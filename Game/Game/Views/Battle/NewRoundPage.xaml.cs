@@ -86,7 +86,7 @@ namespace Game.Views
             var PlayerLevelLabel = new Label
             {
                 Text = "Level : " + data.Level,
-                Style = (Style)Application.Current.Resources["ValueStyleMicro"],
+                Style = (Style)Application.Current.Resources["ValueStyleBattleMicro"],
                 HorizontalOptions = LayoutOptions.Center,
                 HorizontalTextAlignment = TextAlignment.Center,
                 Padding = 0,
@@ -100,7 +100,7 @@ namespace Game.Views
             var PlayerHPLabel = new Label
             {
                 Text = "HP : " + data.GetCurrentHealthTotal,
-                Style = (Style)Application.Current.Resources["ValueStyleMicro"],
+                Style = (Style)Application.Current.Resources["ValueStyleBattleMicro"],
                 HorizontalOptions = LayoutOptions.Center,
                 HorizontalTextAlignment = TextAlignment.Center,
                 Padding = 0,
