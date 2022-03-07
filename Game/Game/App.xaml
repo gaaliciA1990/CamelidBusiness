@@ -33,7 +33,8 @@
 
             <Color x:Key="PrimaryTextColor">#15071D</Color>
             <Color x:Key="SecondaryTextColor">#FFFF</Color>
-            <Color x:Key="TriciaryTextColor">#328706</Color>
+            <Color x:Key="TriciaryTextColor">#62a49a</Color>
+            
             <Color x:Key="CrudiItemSelectColor">#4C3C48</Color>
             <Color x:Key="GradientDarkColor">#62a49a</Color>
             <Color x:Key="GradientLightColor">#f8de8f</Color>
@@ -245,6 +246,8 @@
                         Value="Center" />
                 <Setter Property="LineBreakMode"
                         Value="NoWrap" />
+                <Setter Property="TextColor"
+                        Value="{StaticResource SecondaryTextColor}" />
             </Style>
 
             <Style TargetType="Label"
