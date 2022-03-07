@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Game.Views.NewRoundPage">
+             x:Class="Game.Views.NewRoundPage"
+             BackgroundImageSource="battleLoadingScreens_background.png">
 
     <ContentPage.Content>
 
@@ -14,13 +15,14 @@
                                     AlignContent="Start"
                                     Wrap="Wrap"/>-->
 
-            <Label Text="here are your enemies" Style="{StaticResource MessageLargeStyle}"/>
+            <Label Text="here are your enemies" 
+                   Style="{StaticResource MessageLargeStyle}"/>
 
             <FlexLayout x:Name="MonsterListFrame"
-                                    JustifyContent="Center"
-                                    AlignContent="Center"
-                            HorizontalOptions="CenterAndExpand"
-                                    Wrap="Wrap"/>
+                        JustifyContent="Center"
+                        AlignContent="Center"
+                        HorizontalOptions="CenterAndExpand"
+                        Wrap="Wrap"/>
 
             <StackLayout Padding="1"></StackLayout>
 
