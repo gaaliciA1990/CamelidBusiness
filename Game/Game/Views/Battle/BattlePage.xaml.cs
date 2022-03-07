@@ -1220,7 +1220,7 @@ namespace Game.Views
 
                 case BattleStateEnum.RoundOver:
                 case BattleStateEnum.Battling:
-                    Page.BackgroundImageSource = "BattleBackground.jpg";
+                    Page.BackgroundImageSource = $"battle_background{(new Random()).Next(1, 5)}.png";
                     GameUIDisplay.IsVisible = true;
                     BattlePlayerInfomationBox.IsVisible = true;
                     MessageDisplayBox.IsVisible = true;
