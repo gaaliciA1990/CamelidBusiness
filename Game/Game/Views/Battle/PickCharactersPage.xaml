@@ -6,8 +6,7 @@
              mc:Ignorable="d"
              x:Name="BrowseItemsPage"
              x:Class="Game.Views.PickCharactersPage"
-             Style="{StaticResource BattleStyle}"
-             Title="{Binding Title}">
+             BackgroundImageSource="characterSelect_background.png">
 
     <ContentPage.Content>
         <StackLayout Style="{StaticResource OuterBoxStack}">
@@ -20,18 +19,19 @@
 
                 <Label Text="Select Your Champions"
                        Style="{StaticResource HeaderStyle}"
-                       FontSize="Large" />
+                       FontSize="Large"
+                       TextColor="{StaticResource SecondaryTextColor}"/>
 
             </StackLayout>
             
             <StackLayout Orientation="Horizontal">
                 <Label x:Name="ChampionHeaderLabel"
                        Text="Champions"
-                       Style="{StaticResource HeaderStyle}"
+                       Style="{StaticResource CenterMessageLargeStyle}"
                        HorizontalOptions="Start" />
                 <Label x:Name="PartyHeaderLabel"
                        Text="Party"
-                       Style="{StaticResource HeaderStyle}"
+                       Style="{StaticResource CenterMessageLargeStyle}"
                        HorizontalOptions="EndAndExpand" />
             </StackLayout>
             
