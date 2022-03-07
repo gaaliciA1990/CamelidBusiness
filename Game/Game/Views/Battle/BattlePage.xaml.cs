@@ -1200,6 +1200,7 @@ namespace Game.Views
                 case BattleStateEnum.Starting:
                     //GameUIDisplay.IsVisible = false;
                     AttackerAttack.Source = ActionEnum.Unknown.ToImageURI();
+                    Page.BackgroundImageSource = "battleLoadingScreens_background.png";
                     StartBattleButton.IsVisible = true;
                     BattleMapDisplay.IsVisible = false;
                     break;
