@@ -7,6 +7,7 @@ using Game.Engine.EngineGame;
 using Game.Models;
 using Game.ViewModels;
 using Game.Helpers;
+using System.Collections.ObjectModel;
 
 namespace UnitTests.Engine.EngineGame
 {
@@ -70,6 +71,68 @@ namespace UnitTests.Engine.EngineGame
             Assert.IsNotNull(result);
         }
         #endregion Constructor
+
+        #region CreateCharacterParty
+        [Test]
+        public void AutoBattleEngine_CreateCharacterParty_Valid_Characters_Dataset_Not_Enough_Should_Create_Random_Upto_6()
+        {
+            //Arrange
+            AutoBattleEngine.Battle.EngineSettings.MaxNumberPartyCharacters = 6;
+            //Reset the dataset
+            var originalSet = CharacterIndexViewModel.Instance.Dataset;
+            ObservableCollection<CharacterModel> workingSet = new ObservableCollection<CharacterModel>();
+            for(int i = 0; i < 3; i++)
+            {
+                workingSet.Add(originalSet[i]);
+            }
+
+            CharacterIndexViewModel.Instance.Dataset = workingSet;
+
+            AutoBattleEngine.Battle.EngineSettings.CharacterList.Clear();
+
+            //Act
+            var result = AutoBattleEngine.CreateCharacterParty();
+
+            //Reset
+            CharacterIndexViewModel.Instance.Dataset = originalSet;
+
+            //Assert
+            Assert.AreEqual(6, AutoBattleEngine.Battle.EngineSettings.CharacterList.Count);
+        }
+
+        [Test]
+        public void AutoBattleEngine_CreateCharacterParty_Valid_Characters_CharacterIndex_None_Should_Create_6()
+        {
+            //Arrange
+            AutoBattleEngine.Battle.EngineSettings.MaxNumberPartyCharacters = 6;
+
+            AutoBattleEngine.Battle.EngineSettings.CharacterList.Clear();
+
+            //Act
+            var result = AutoBattleEngine.CreateCharacterParty();
+
+            //Reset
+
+            //Assert
+            Assert.AreEqual(6, AutoBattleEngine.Battle.EngineSettings.CharacterList.Count);
+        }
+
+        [Test]
+        public void AutoBattleEngine_CreateCharacterParty_Valid_Characters_Should_Assign_6()
+        {
+            //Arrange
+
+            //Act
+            var result = AutoBattleEngine.CreateCharacterParty();
+
+            //Reset
+
+            //Assert
+            Assert.AreEqual(6, AutoBattleEngine.Battle.EngineSettings.CharacterList.Count);
+        }
+
+
+        #endregion CreateCharacterParty   
 
         #region RunAutoBattle
         [Test]
@@ -170,39 +233,6 @@ namespace UnitTests.Engine.EngineGame
         }
         #endregion RunAutoBattle
 
-        #region CreateCharacterParty
-        [Test]
-        public void AutoBattleEngine_CreateCharacterParty_Valid_Characters_Should_Assign_6()
-        {
-            //Arrange
-
-            //Act
-            var result = AutoBattleEngine.CreateCharacterParty();
-
-            //Reset
-
-            //Assert
-            Assert.AreEqual(6, AutoBattleEngine.Battle.EngineSettings.CharacterList.Count);
-        }
-
-        [Test]
-        public void AutoBattleEngine_CreateCharacterParty_Valid_Characters_CharacterIndex_None_Should_Create_6()
-        {
-            //Arrange
-            AutoBattleEngine.Battle.EngineSettings.MaxNumberPartyCharacters = 6;
-
-            AutoBattleEngine.Battle.EngineSettings.CharacterList.Clear();
-
-            //Act
-            var result = AutoBattleEngine.CreateCharacterParty();
-
-            //Reset
-
-            //Assert
-            Assert.AreEqual(6, AutoBattleEngine.Battle.EngineSettings.CharacterList.Count);
-        }
-        #endregion CreateCharacterParty   
-
         #region DetectInfinateLoop
         [Test]
         public void AutoBattleEngine_DetectInfinateLoop_InValid_RoundCount_More_Than_Max_Should_Return_True()
@@ -223,12 +253,15 @@ namespace UnitTests.Engine.EngineGame
         public void AutoBattleEngine_DetectInfinateLoop_InValid_TurnCount_Count_More_Than_Max_Should_Return_True()
         {
             // Arrange
+            AutoBattleEngine.Battle.EngineSettings.MaxRoundCount = 1000;
+            AutoBattleEngine.Battle.EngineSettings.MaxTurnCount = 1;
             AutoBattleEngine.Battle.EngineSettings.BattleScore.TurnCount = AutoBattleEngine.Battle.EngineSettings.MaxTurnCount + 1;
 
             // Act
             var result = AutoBattleEngine.DetectInfinateLoop();
 
             // Reset
+            AutoBattleEngine.Battle.EngineSettings.MaxTurnCount = 1000;
 
             // Assert
             Assert.AreEqual(true, result);
