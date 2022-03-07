@@ -557,7 +557,7 @@ namespace Game.Views
         /// <returns></returns>
         public Color DetermineMapBackgroundColor(MapModelLocation MapModel)
         {
-            string BattleMapBackgroundColor;
+            string BattleMapBackgroundColor = "";
             switch (MapModel.Player.PlayerType)
             {
                 case PlayerTypeEnum.Character:
