@@ -123,7 +123,7 @@ namespace Game.Views
             var PlayerNameLabel = new Label
             {
                 Text = data.Name,
-                Style = (Style)Application.Current.Resources["ValueStyleMicro"],
+                Style = (Style)Application.Current.Resources["ValueStyleBattleMicro"],
                 HorizontalOptions = LayoutOptions.Center,
                 HorizontalTextAlignment = TextAlignment.Center,
                 Padding = 0,
@@ -137,7 +137,7 @@ namespace Game.Views
             var PlayerLevelLabel = new Label
             {
                 Text = "Level : " + data.Level,
-                Style = (Style)Application.Current.Resources["ValueStyleMicro"],
+                Style = (Style)Application.Current.Resources["ValueStyleBattleMicro"],
                 HorizontalOptions = LayoutOptions.Center,
                 HorizontalTextAlignment = TextAlignment.Center,
                 Padding = 0,
@@ -185,7 +185,7 @@ namespace Game.Views
             var MonsterCountLabel = new Label
             {
                 Text = "x" + count.ToString(),
-                Style = (Style)Application.Current.Resources["ValueStyleMicro"],
+                Style = (Style)Application.Current.Resources["ValueStyleBattleMicro"],
                 HorizontalOptions = LayoutOptions.Center,
                 HorizontalTextAlignment = TextAlignment.Center,
                 Padding = 0,
