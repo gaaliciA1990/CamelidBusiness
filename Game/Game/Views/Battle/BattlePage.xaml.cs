@@ -257,8 +257,7 @@ namespace Game.Views
 
                     // Update the Image in the Datastructure
                     _ = MapGridObjectAddImage((ImageButton)PlayerGrid.Children.ElementAt(PlayerGrid.Children.Count-1), data);
-                    //_ = MapGridObjectAddHealthValue((Label)PlayerGrid.Children.ElementAt(PlayerGrid.Children.Count-1), data);
-
+                    
                     //gridObject.BackgroundColor = DetermineMapBackgroundColor(data);
                 }
             }
@@ -376,61 +375,59 @@ namespace Game.Views
             cell.RowDefinitions.Add(new RowDefinition { Height = GridLength.Star });
             cell.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Star });
 
-            var player = new Image
-            {
-                Style = (Style)Application.Current.Resources["BattleMapPlayerSmallStyle"],
-                Source = mapLocationModel.Player.ImageURI,
-
-                HorizontalOptions = LayoutOptions.FillAndExpand,
-                VerticalOptions = LayoutOptions.FillAndExpand,
-                Aspect = Aspect.AspectFit
-
-            };
-
             // Add health status
             if (mapLocationModel.Player.PlayerType != PlayerTypeEnum.Unknown)
             {
-                cell.Children.Add(player, 0, 0);
-
-                var healthGrid = new Grid();
-                healthGrid.HorizontalOptions = LayoutOptions.Start;
-                healthGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
-                healthGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
-                healthGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Star });
-
-                var healthValue = new Label
-                {
-                    Text = mapLocationModel.Player.GetCurrentHealthTotal.ToString(),
-                    MaxLines = 1,
-                    HorizontalOptions = LayoutOptions.Start,
-                    VerticalOptions = LayoutOptions.Center
-                };
-
-                var healthIcon = new Image
-                {
-                    Source = "healthicon.png",
-                    Scale = 0.3,
-                    AnchorX = 0,
-                    Aspect = Aspect.AspectFit,
-                    HorizontalOptions = LayoutOptions.Start,
-                    VerticalOptions = LayoutOptions.Center,
-                };
-
-                healthGrid.Children.Add(healthValue, 0, 0);
-                healthGrid.Children.Add(healthIcon, 1, 0);
-                cell.Children.Add(healthGrid,1,0);
-
+                var (healhtStatus, healthValue) = createHealthstatus(mapLocationModel);
+                cell.Children.Add(healhtStatus, 1, 0);
                 _ = MapGridObjectAddHealthValue(healthValue, mapLocationModel);
             }
 
-            Grid.SetColumn(PlayerImageButton, 0);
             cell.Children.Add(PlayerImageButton, 0, 0);
-
             _ = MapGridObjectAddImage(PlayerImageButton, mapLocationModel);
             _ = MapGridObjectAddStack(cell, mapLocationModel);
             
             return cell;
         }
+
+
+
+        /// <summary>
+        /// Return Grid health status and healht label object
+        /// </summary>
+        /// <param name="mapLocationModel"></param>
+        /// <returns></returns>
+        public (Grid,Label) createHealthstatus(MapModelLocation mapLocationModel)
+        {
+            var healthGrid = new Grid();
+            healthGrid.HorizontalOptions = LayoutOptions.Start;
+            healthGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
+            healthGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
+            healthGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Star });
+
+            var healthValue = new Label
+            {
+                Text = mapLocationModel.Player.GetCurrentHealthTotal.ToString(),
+                MaxLines = 1,
+                HorizontalOptions = LayoutOptions.Start,
+                VerticalOptions = LayoutOptions.Center
+            };
+
+            var healthIcon = new Image
+            {
+                Source = "healthicon.png",
+                Scale = 0.3,
+                AnchorX = 0,
+                Aspect = Aspect.AspectFit,
+                HorizontalOptions = LayoutOptions.Start,
+                VerticalOptions = LayoutOptions.Center,
+            };
+
+            healthGrid.Children.Add(healthValue, 0, 0);
+            healthGrid.Children.Add(healthIcon, 1, 0);
+            return (healthGrid, healthValue);
+        }
+
 
         /// <summary>
         /// This add the ImageButton to the stack to kep track of
@@ -518,11 +515,11 @@ namespace Game.Views
             var data = new ImageButton
             {
                 Style = (Style)Application.Current.Resources["BattleMapPlayerSmallStyle"],
-                //Source = MapLocationModel.Player.ImageURI,
+                Source = MapLocationModel.Player.ImageURI,
 
                 HorizontalOptions = LayoutOptions.FillAndExpand,
                 VerticalOptions = LayoutOptions.FillAndExpand,
-                //Aspect = Aspect.AspectFit,
+                Aspect = Aspect.AspectFit,
                 
                 BackgroundColor = Color.Transparent,
 
