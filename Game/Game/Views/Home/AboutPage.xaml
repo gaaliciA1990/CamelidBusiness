@@ -6,7 +6,7 @@
              mc:Ignorable="d"
              x:Class="Game.Views.AboutPage"
              Title="About"
-             Style="{StaticResource CRUDiStyle}">
+             BackgroundImageSource="aboutGame_background.png">
 
     
     <ContentPage.Content>
@@ -33,48 +33,54 @@
                                  HorizontalOptions="CenterAndExpand"
                                  Grid.Row="0"
                                  Grid.Column="1">
-                        <Frame BackgroundColor="White"
+                        <Frame BackgroundColor="{StaticResource LightBackgroundColor}"
                                BorderColor="Black"
                                WidthRequest="500"
                                HeightRequest="110"
                                Padding="5, 0"
-                               Margin="5">
+                               Margin="5"
+                               Opacity=".75">
                             <StackLayout Orientation="Vertical">
                                 <Label Text="Welcome to the our game! This is a raid dungeon crawler that focuses around 3 Camelid Clans: Alpacas, Llamas, and Vincuñas. Your job is to help the champions defeat the threat to their land. As you go through the levels, you will pick up items
                                and gain XP to improve your characters to defeat the Great Leader. Hurry, your champions need you!"
                                        HorizontalTextAlignment="Start"
-                                       FontSize="Caption" />
+                                       FontSize="Caption"
+                                       FontAttributes="Bold"/>
                             </StackLayout>
                         </Frame>
 
-                        <Frame BackgroundColor="White"
+                        <Frame BackgroundColor="{StaticResource LightBackgroundColor}"
                                BorderColor="Black"
                                WidthRequest="500"
                                HeightRequest="75"
                                Padding="5,5"
-                               Margin="5">
+                               Margin="5"
+                               Opacity=".75">
                             <StackLayout Orientation="Vertical">
-                                <Label Text="Credits"
+                                <Label Text="Developers and Desginer"
                                        Style="{StaticResource HeaderStyle}"
                                        HorizontalOptions="Center"
-                                       HorizontalTextAlignment="Center"
-                                       FontAttributes="Bold" />
+                                       HorizontalTextAlignment="Center"/>
                                 <StackLayout Orientation="Horizontal">
                                     <Label Text="Alicia Garcia"
                                            FontSize="Micro"
                                            HorizontalOptions="Center"
-                                           HorizontalTextAlignment="Center" />
+                                           HorizontalTextAlignment="Center"
+                                           FontAttributes="Bold" />
                                     <Label Text="Carlo Provenzani"
                                            FontSize="Micro"
                                            HorizontalOptions="Center"
-                                           HorizontalTextAlignment="Center" />
+                                           HorizontalTextAlignment="Center"
+                                           FontAttributes="Bold"/>
                                     <Label Text="Avery Dinh"
                                            FontSize="Micro"
                                            HorizontalOptions="Center"
-                                           HorizontalTextAlignment="Center" />
+                                           HorizontalTextAlignment="Center"
+                                           FontAttributes="Bold"/>
                                     <Label Text="Khaliun Enkhbold"
                                            FontSize="Micro"
-                                           HorizontalOptions="Center" />
+                                           HorizontalOptions="Center"
+                                           FontAttributes="Bold"/>
                                 </StackLayout>
 
                             </StackLayout>
