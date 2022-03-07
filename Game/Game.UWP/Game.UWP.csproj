@@ -183,6 +183,7 @@
     <Content Include="button_delete.png" />
     <Content Include="gamePage_background.png" />
     <Content Include="greatLeader_animation.GIF" />
+    <Content Include="healthicon.png" />
     <Content Include="icon_back.png" />
     <Content Include="icon_dice.png" />
     <Content Include="icon_edit.png" />
