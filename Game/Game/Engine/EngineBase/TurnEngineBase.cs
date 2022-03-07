@@ -565,20 +565,22 @@ namespace Game.Engine.EngineBase
             // Check for alive
             if (Target.Alive == false)
             {
-                Random random = new Random();
-                if (random.NextDouble() <= EngineSettings.BattleSettingsModel.MonsterRespawnChance && (Target.Name.Length < 6 || Target.Name.Substring(0, 6) != "Zombie"))
-                {
-                    Target.Alive = true;
-                    Target.CurrentHealth = (int)(Target.GetMaxHealth() * .5);
-                    Target.Name = "Zombie" + Target.Name;
-                    return false;
-                }
-                else
-                {
+                //Random random = new Random();
+                //if (random.NextDouble() <= EngineSettings.BattleSettingsModel.MonsterRespawnChance && (Target.Name.Length < 6 || Target.Name.Substring(0, 6) != "Zombie"))
+                //{
+                //    Target.Alive = true;
+                //    Target.CurrentHealth = (int)(Target.GetMaxHealth() * .5);
+                //    Target.Name = "Zombie" + Target.Name;
+                //    return false;
+                //}
+                //else
+                //{
 
-                    _ = TargetDied(Target);
-                    return true;
-                }
+                //    _ = TargetDied(Target);
+                //    return true;
+                //}
+                _ = TargetDied(Target);
+                return true;
             }
 
             return false;
