@@ -222,6 +222,20 @@ namespace Game.Views
                     gridObject.BackgroundColor = Color.Transparent;
                 }
 
+                //Update Helth
+                var healthObject = (Label)GetMapGridObject(GetDictionaryHealthLabel(data));
+                if (healthObject != null)
+                { 
+                    if (int.TryParse(healthObject.Text, out int healthValue))
+                    {
+                        var currentHealth = data.Player.GetCurrentHealthTotal;
+                        if (!healthValue.Equals(currentHealth))
+                        {
+                            healthObject.Text = currentHealth.ToString();
+                        }
+                    }
+                }
+
                 // Check automation ID on the Image, That should match the Player, if not a match, the cell is now different need to update
                 if (!imageObject.AutomationId.Equals(data.Player.Guid))
                 {
@@ -234,14 +248,16 @@ namespace Game.Views
                     }
 
                     // Remove the ImageButton
-                    gridObject.Children.RemoveAt(0);
+                    //gridObject.Children.RemoveAt(10);
+                    gridObject.Children.Clear();
 
-                    var PlayerImageButton = DetermineMapImageButton(data);
-
-                    gridObject.Children.Add(PlayerImageButton);
+                    var PlayerGrid = MakeMapGridBox(data);
+                    
+                    gridObject.Children.Add(PlayerGrid);
 
                     // Update the Image in the Datastructure
-                    _ = MapGridObjectAddImage(PlayerImageButton, data);
+                    _ = MapGridObjectAddImage((ImageButton)PlayerGrid.Children.ElementAt(PlayerGrid.Children.Count-1), data);
+                    //_ = MapGridObjectAddHealthValue((Label)PlayerGrid.Children.ElementAt(PlayerGrid.Children.Count-1), data);
 
                     //gridObject.BackgroundColor = DetermineMapBackgroundColor(data);
                 }
@@ -279,6 +295,17 @@ namespace Game.Views
         {
             // Look up the Frame in the Dictionary
             return string.Format("MapR{0}C{1}ImageButton", data.Row, data.Column);
+        }
+
+        /// <summary>
+        /// Covert the player health to a name for the dictionary to lookup
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        public string GetDictionaryHealthLabel(MapModelLocation data)
+        {
+            // Look up the Frame in the Dictionary
+            return string.Format("MapR{0}C{1}HealthLabel", data.Row, data.Column);
         }
 
         /// <summary>
@@ -348,12 +375,60 @@ namespace Game.Views
             Grid cell = new Grid();
             cell.RowDefinitions.Add(new RowDefinition { Height = GridLength.Star });
             cell.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Star });
-            //cell.Children.Add(PlayerLabel, 0, 0);
+
+            var player = new Image
+            {
+                Style = (Style)Application.Current.Resources["BattleMapPlayerSmallStyle"],
+                Source = mapLocationModel.Player.ImageURI,
+
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                VerticalOptions = LayoutOptions.FillAndExpand,
+                Aspect = Aspect.AspectFit
+
+            };
+
+            // Add health status
+            if (mapLocationModel.Player.PlayerType != PlayerTypeEnum.Unknown)
+            {
+                cell.Children.Add(player, 0, 0);
+
+                var healthGrid = new Grid();
+                healthGrid.HorizontalOptions = LayoutOptions.Start;
+                healthGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
+                healthGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
+                healthGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Star });
+
+                var healthValue = new Label
+                {
+                    Text = mapLocationModel.Player.GetCurrentHealthTotal.ToString(),
+                    MaxLines = 1,
+                    HorizontalOptions = LayoutOptions.Start,
+                    VerticalOptions = LayoutOptions.Center
+                };
+
+                var healthIcon = new Image
+                {
+                    Source = "healthicon.png",
+                    Scale = 0.3,
+                    AnchorX = 0,
+                    Aspect = Aspect.AspectFit,
+                    HorizontalOptions = LayoutOptions.Start,
+                    VerticalOptions = LayoutOptions.Center,
+                };
+
+                healthGrid.Children.Add(healthValue, 0, 0);
+                healthGrid.Children.Add(healthIcon, 1, 0);
+                cell.Children.Add(healthGrid,1,0);
+
+                _ = MapGridObjectAddHealthValue(healthValue, mapLocationModel);
+            }
+
+            Grid.SetColumn(PlayerImageButton, 0);
             cell.Children.Add(PlayerImageButton, 0, 0);
 
             _ = MapGridObjectAddImage(PlayerImageButton, mapLocationModel);
             _ = MapGridObjectAddStack(cell, mapLocationModel);
-
+            
             return cell;
         }
 
@@ -366,6 +441,29 @@ namespace Game.Views
         public bool MapGridObjectAddImage(ImageButton data, MapModelLocation MapModel)
         {
             var name = GetDictionaryImageButtonName(MapModel);
+
+            // First check to see if it has data, if so update rather than add
+            if (MapLocationObject.ContainsKey(name))
+            {
+                // Update it
+                MapLocationObject[name] = data;
+                return true;
+            }
+
+            MapLocationObject.Add(name, data);
+
+            return true;
+        }
+
+        /// <summary>
+        /// Add health label of player to dictionary
+        /// </summary>
+        /// <param name="data"></param>
+        /// <param name="MapModel"></param>
+        /// <returns></returns>
+        public bool MapGridObjectAddHealthValue(Label data, MapModelLocation MapModel)
+        {
+            var name = GetDictionaryHealthLabel(MapModel);
 
             // First check to see if it has data, if so update rather than add
             if (MapLocationObject.ContainsKey(name))
@@ -420,11 +518,13 @@ namespace Game.Views
             var data = new ImageButton
             {
                 Style = (Style)Application.Current.Resources["BattleMapPlayerSmallStyle"],
-                Source = MapLocationModel.Player.ImageURI,
+                //Source = MapLocationModel.Player.ImageURI,
 
                 HorizontalOptions = LayoutOptions.FillAndExpand,
                 VerticalOptions = LayoutOptions.FillAndExpand,
-                Aspect = Aspect.AspectFit,
+                //Aspect = Aspect.AspectFit,
+                
+                BackgroundColor = Color.Transparent,
 
                 // Store the guid to identify this button
                 AutomationId = MapLocationModel.Player.Guid
