@@ -216,8 +216,6 @@ namespace Game.Views
                 MapObject = GetMapGridObject(GetDictionaryStackName(data));
                 var gridObject = (Grid)MapObject;
 
-                
-
                 //DO SOMETHING TO SHOW WHO'S TURN IS NEXT
                 //JUST CHANGING THE GRID CELL COLOR AT THE MOMENT
                 if (LoadingNewBattle == false && data.Player == BattleEngineViewModel.Instance.Engine.Round.GetNextPlayerTurn())
@@ -901,10 +899,12 @@ namespace Game.Views
 
                 AttackButton.IsVisible = false;
             }
-            //need to 
+            //otherwise it's the monster, let them do their thing automatically
             else
             {
-                AttackButton.IsVisible = true;
+                //AttackButton.IsVisible = true;
+                AttackButton_Clicked(null, null);
+                _ = Task.Delay(2000);
             }
         }
 
