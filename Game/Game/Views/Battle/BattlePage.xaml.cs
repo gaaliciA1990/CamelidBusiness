@@ -255,6 +255,10 @@ namespace Game.Views
                     
                     gridObject.Children.Add(PlayerGrid);
 
+                    //Player died
+                    if (BattleEngineViewModel.Instance.Engine.EngineSettings.PreviousAction == ActionEnum.Attack)
+                        showCellAnimation(gridObject);
+
                     // Update the Image in the Datastructure
                     _ = MapGridObjectAddImage((ImageButton)PlayerGrid.Children.ElementAt(PlayerGrid.Children.Count-1), data);
                     
@@ -264,6 +268,24 @@ namespace Game.Views
 
             return true;
         }
+
+        /// <summary>
+        /// Play animations
+        /// </summary>
+        /// <param name="img"></param>
+        public async void showCellAnimation(Grid cell)
+        {
+            var animationImage = new Image
+            {
+                Source = "explosion.gif",
+                IsAnimationPlaying = false
+            };
+            cell.Children.Add(animationImage);
+            await Task.Delay(100);
+            animationImage.SetValue(Image.IsAnimationPlayingProperty, true);
+        }
+
+
 
         /// <summary>
         /// Convert the Stack to a name for the dictionary to lookup
