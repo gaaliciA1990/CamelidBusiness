@@ -398,10 +398,16 @@ namespace Game.Views
                 NoneItem
             };
 
+            //Special case for earings though
+            if (location == ItemLocationEnum.RightFinger || location == ItemLocationEnum.LeftFinger)
+            {
+                location = ItemLocationEnum.Finger;
+            }
+
             // Add the rest of the items to the list
             foreach(var item in BattleEngineViewModel.Instance.Engine.EngineSettings.BattleScore.ItemModelDropList.Distinct())
             {
-                if (item.Location == PopupLocationEnum)
+                if (item.Location == location)//PopupLocationEnum)
                 {
                     itemList.Add(item);
                 }
