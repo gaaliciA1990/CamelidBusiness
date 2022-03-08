@@ -226,6 +226,7 @@
     <Content Include="obstacle2.png" />
     <Content Include="obstacle3.png" />
     <Content Include="Properties\Default.rd.xml" />
+    <Content Include="question-mark-icon.png" />
     <Content Include="rightarrow.png" />
     <Content Include="roundOver_background.png" />
     <Content Include="score.png" />
