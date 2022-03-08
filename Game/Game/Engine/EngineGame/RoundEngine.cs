@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 
 using Game.Engine.EngineBase;
@@ -81,10 +82,10 @@ namespace Game.Engine.EngineGame
             var round = EngineSettings.BattleScore.RoundCount;
 
             //Get a round boss every 3 rounds
-            bool getRoundBoss = (round > 0 && round % 3 == 0);
+            bool getRoundBoss = (round > 0 && (round + 1) % 3 == 0);
 
             //Get a great boss every 10 rounds
-            bool getGreatBoss= (round > 0 && round % 10 == 0);
+            bool getGreatBoss= (round > 0 && (round + 1) % 10 == 0);
 
             var TargetLevel = 1;
 
@@ -102,6 +103,7 @@ namespace Game.Engine.EngineGame
                 if (getGreatBoss == false && getRoundBoss == false)
                 {
                     data = RandomPlayerHelper.GetRandomMonster(TargetLevel, EngineSettings.BattleSettingsModel.AllowMonsterItems);
+                    
                 }
 
                 //Add great leader
@@ -112,6 +114,7 @@ namespace Game.Engine.EngineGame
                     data = RandomPlayerHelper.GetRandomMonster(TargetLevel, EngineSettings.BattleSettingsModel.AllowMonsterItems, CharacterJobEnum.GreatLeader);
                     //Reset so it only generates 1 great leader
                     getGreatBoss = false;
+                    Debug.WriteLine("A great boss has been added to the round, name: {0}", data.Name);
                 }
 
                 //Add round boss
@@ -120,6 +123,7 @@ namespace Game.Engine.EngineGame
                     data = RandomPlayerHelper.GetRandomMonster(TargetLevel, EngineSettings.BattleSettingsModel.AllowMonsterItems, CharacterJobEnum.RoundBoss);
                     //Reset so that only 1 boss gets generated
                     getRoundBoss = false;
+                    Debug.WriteLine("A round boss has been added to the round, name: {0}", data.Name);
                 }
                 
                 // Help identify which Monster it is
