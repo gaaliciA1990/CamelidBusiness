@@ -20,6 +20,9 @@ namespace Game.Views
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0060:Remove unused parameter", Justification = "<Pending>")]
     public partial class BattlePage : ContentPage
     {
+        //Flag to state that the page is loading
+        private bool LoadingNewBattle = false;
+
         // HTML Formatting for message output box
         public HtmlWebViewSource htmlSource = new HtmlWebViewSource();
 
@@ -149,7 +152,9 @@ namespace Game.Views
                 Children = {
                     PlayerImage,
                 },
+                BackgroundColor = Color.Transparent
             };
+
 
             return PlayerStack;
         }
@@ -211,11 +216,15 @@ namespace Game.Views
                 MapObject = GetMapGridObject(GetDictionaryStackName(data));
                 var gridObject = (Grid)MapObject;
 
+                
+
                 //DO SOMETHING TO SHOW WHO'S TURN IS NEXT
                 //JUST CHANGING THE GRID CELL COLOR AT THE MOMENT
-                if (data.Player == BattleEngineViewModel.Instance.Engine.Round.GetNextPlayerTurn())
+                if (LoadingNewBattle == false && data.Player == BattleEngineViewModel.Instance.Engine.Round.GetNextPlayerTurn())
                 {
+                    
                     gridObject.BackgroundColor = Color.Gold;
+
                 }
                 else if (gridObject != null)
                 {
@@ -815,6 +824,8 @@ namespace Game.Views
                 Debug.WriteLine("New Round");
 
                 // Show the Round Over, after that is cleared, it will show the New Round Dialog
+                BattleEngineViewModel.Instance.Engine.Round.SetCurrentAttacker(null);
+                BattleEngineViewModel.Instance.Engine.Round.SetCurrentDefender(null);
                 ShowModalRoundOverPage();
                 return;
             }
@@ -1112,6 +1123,7 @@ namespace Game.Views
         public void NextRoundButton_Clicked(object sender, EventArgs e)
         {
             BattleEngineViewModel.Instance.Engine.EngineSettings.BattleStateEnum = BattleStateEnum.Battling;
+            UpdateMapGrid();
             ShowBattleMode();
 
             //commented out because we don't want to show the new round button again
@@ -1150,7 +1162,11 @@ namespace Game.Views
         /// </summary>
         public async void ShowModalRoundOverPage()
         {
+            LoadingNewBattle = true;
             ShowBattleMode();
+
+            //reset
+            //LoadingNewBattle = false;
             await Navigation.PushModalAsync(new RoundOverPage());
         }
 
@@ -1167,8 +1183,13 @@ namespace Game.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
-
+            
             ShowBattleMode();
+            //Reset after finish loading
+            if(LoadingNewBattle == true)
+            {
+                LoadingNewBattle = false;
+            }
         }
 
         /// <summary>
