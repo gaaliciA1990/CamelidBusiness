@@ -317,6 +317,7 @@
     <BundleResource Include="Resources\monster1_animation.GIF" />
     <BundleResource Include="Resources\monster2_animation.GIF" />
     <BundleResource Include="Resources\misspopup.png" />
+    <BundleResource Include="Resources\explosion.gif" />
     <Content Include="Resources\monsters.png" />
     <BundleResource Include="Resources\slider_thumbnail.png" />
     <BundleResource Include="Resources\movepopup.png" />
