@@ -314,7 +314,7 @@ namespace Game.Views
             };
 
             // Add the rest of the items to the list
-            itemList.AddRange(ItemIndexViewModel.Instance.GetLocationItems(location));
+            itemList.AddRange(ItemIndexViewModel.Instance.GetLocationItems(location).Where(item => item.IsUnique == false));
 
             // Populate the list with the items
             PopupLocationItemListView.ItemsSource = itemList;
