@@ -164,6 +164,36 @@ namespace UnitTests.Engine.EngineGame
 
 
         [Test]
+        public void TurnEngine_MoveAsTurn_Valid_Monster_Chose_To_Same_Locations_Should_Pass()
+        {
+            // Arrange
+            var monster = new PlayerInfoModel(new MonsterModel());
+            var character = new PlayerInfoModel(new CharacterModel());
+
+            // Remove everyone
+            Engine.EngineSettings.PlayerList.Clear();
+
+            Engine.EngineSettings.PlayerList.Add(monster);
+            Engine.EngineSettings.PlayerList.Add(character);
+            //The character is next to the monster, bext location doesn't change
+            Engine.EngineSettings.MapModel.ClearMapGrid();
+            Engine.EngineSettings.MapModel.MapGridLocation[0, 0].Player = monster;
+            Engine.EngineSettings.MapModel.MapGridLocation[1, 0].Player = character;
+
+            Engine.EngineSettings.CurrentDefender = character;
+
+            // Act
+            var result = Engine.Round.Turn.MoveAsTurn(monster);
+
+            // Reset
+            Engine.EngineSettings.PlayerList.Clear();
+            Engine.EngineSettings.MapModel.ClearMapGrid();
+            Engine.EngineSettings.CurrentDefender = null;
+
+            // Assert
+            Assert.AreEqual(false, result);
+        }
+
         public void TurnEngine_MoveAsTurn_Default_Valid_Monster_Possible_Locations_Should_Pass()
         {
             // Arrange
@@ -178,7 +208,7 @@ namespace UnitTests.Engine.EngineGame
 
             Engine.EngineSettings.MapModel.ClearMapGrid();
             Engine.EngineSettings.MapModel.MapGridLocation[0, 0].Player = monster;
-            Engine.EngineSettings.MapModel.MapGridLocation[1, 0].Player = character;
+            Engine.EngineSettings.MapModel.MapGridLocation[2, 0].Player = character;
 
             Engine.EngineSettings.CurrentDefender = character;
 
