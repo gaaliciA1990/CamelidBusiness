@@ -981,7 +981,7 @@ namespace UnitTests.Engine.EngineGame
         public void AddMonstersToRound_Round_3_Valid_Should_Return_1_Round_Boss()
         {
             // Arrange
-            Engine.EngineSettings.BattleScore.RoundCount = 3;
+            Engine.EngineSettings.BattleScore.RoundCount = 8;
             Engine.EngineSettings.MonsterList.Clear();
 
             var CharacterPlayerEvie = new PlayerInfoModel(
@@ -1036,7 +1036,7 @@ namespace UnitTests.Engine.EngineGame
         public void AddMonstersToRound_Round_10_Valid_Should_Return_1_Great_Boss()
         {
             // Arrange
-            Engine.EngineSettings.BattleScore.RoundCount = 10;
+            Engine.EngineSettings.BattleScore.RoundCount = 9;
             Engine.EngineSettings.MonsterList.Clear();
 
             var CharacterPlayerEvie = new PlayerInfoModel(
