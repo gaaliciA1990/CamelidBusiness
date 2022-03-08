@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
-
+using System.Collections.ObjectModel;
+using System.Linq;
+using Game.Helpers;
 using Game.Models;
 using Game.ViewModels;
 
@@ -355,6 +357,35 @@ namespace Game.GameRules
             return datalist;
         }
 
+        public static string FindRandomBasicItem(ObservableCollection<ItemModel> collection, ItemLocationEnum location, int level = 1)
+        {
+            string findImageURI;
+            //level 1 = stick, level 2 = sword, level 3 = torch
+            switch (level){
+                case 2:
+                    findImageURI = "basic_sword.png";
+                    break;
+                case 3:
+                    findImageURI = "basic_torch.png";
+                    break;
+                default:
+                    findImageURI = "basic_stick.png";
+                    break;
+            }
+
+            //Find the requested item from the default item pool, but only the basic ones
+            if(location == ItemLocationEnum.PrimaryHand)
+            {
+                var returnItem = collection.Where(item => item.ImageURI == findImageURI).FirstOrDefault();
+                return returnItem.Id;
+            }
+
+            //otherwise find the item as specified by location, but only the basic ones
+            var myList = collection.Where(item => item.Location == location && item.IsUnique == false);
+            var toReturn = myList.ElementAt(DiceHelper.RollDice(1, myList.Count() - 1) );
+            return toReturn.Id;
+        }
+
         /// <summary>
         /// Load Characters
         /// </summary>
@@ -362,13 +393,14 @@ namespace Game.GameRules
         /// <returns></returns>
         public static List<CharacterModel> LoadData(CharacterModel temp)
         {
-            var HeadString = ItemIndexViewModel.Instance.GetDefaultItemId(ItemLocationEnum.Head);
-            var NecklassString = ItemIndexViewModel.Instance.GetDefaultItemId(ItemLocationEnum.Necklass);
-            var PrimaryHandString = ItemIndexViewModel.Instance.GetDefaultItemId(ItemLocationEnum.PrimaryHand);
-            var OffHandString = ItemIndexViewModel.Instance.GetDefaultItemId(ItemLocationEnum.OffHand);
-            var FeetString = ItemIndexViewModel.Instance.GetDefaultItemId(ItemLocationEnum.Feet);
-            var RightFingerString = ItemIndexViewModel.Instance.GetDefaultItemId(ItemLocationEnum.Finger);
-            var LeftFingerString = ItemIndexViewModel.Instance.GetDefaultItemId(ItemLocationEnum.Finger);
+            var AvailableItems = ItemIndexViewModel.Instance.Dataset;
+            //var HeadString = ItemIndexViewModel.Instance.GetDefaultItemId(ItemLocationEnum.Head);
+            //var NecklassString = ItemIndexViewModel.Instance.GetDefaultItemId(ItemLocationEnum.Necklass);
+            //var PrimaryHandString = ItemIndexViewModel.Instance.GetDefaultItemId(ItemLocationEnum.PrimaryHand);
+            //var OffHandString = ItemIndexViewModel.Instance.GetDefaultItemId(ItemLocationEnum.OffHand);
+            //var FeetString = ItemIndexViewModel.Instance.GetDefaultItemId(ItemLocationEnum.Feet);
+            //var RightFingerString = ItemIndexViewModel.Instance.GetDefaultItemId(ItemLocationEnum.Finger);
+            //var LeftFingerString = ItemIndexViewModel.Instance.GetDefaultItemId(ItemLocationEnum.Finger);
 
             var datalist = new List<CharacterModel>()
             {
@@ -379,11 +411,11 @@ namespace Game.GameRules
                     MaxHealth = 10,
                     ImageURI = "Alpaca1.png",
                     Clan = CharacterClanEnum.Alpaca,
-                    Head = HeadString,
-                    PrimaryHand = PrimaryHandString,
-                    OffHand = OffHandString,
-                    RightFinger = RightFingerString,
-                    LeftFinger = LeftFingerString,
+                    Head = FindRandomBasicItem(AvailableItems, ItemLocationEnum.Head),
+                    PrimaryHand = FindRandomBasicItem(AvailableItems, ItemLocationEnum.PrimaryHand, 3),
+                    OffHand = FindRandomBasicItem(AvailableItems, ItemLocationEnum.OffHand),
+                    RightFinger = FindRandomBasicItem(AvailableItems, ItemLocationEnum.Finger),
+                    LeftFinger = FindRandomBasicItem(AvailableItems, ItemLocationEnum.Finger),
                 },
 
                  new CharacterModel {
@@ -393,11 +425,11 @@ namespace Game.GameRules
                     MaxHealth = 5,
                     ImageURI = "Alpaca2.png",
                     Clan = CharacterClanEnum.Alpaca,
-                    Head = HeadString,
-                    PrimaryHand = PrimaryHandString,
-                    OffHand = OffHandString,
-                    RightFinger = RightFingerString,
-                    LeftFinger = LeftFingerString,
+                    Head = FindRandomBasicItem(AvailableItems, ItemLocationEnum.Head),
+                    PrimaryHand = FindRandomBasicItem(AvailableItems, ItemLocationEnum.PrimaryHand, 1),
+                    OffHand = FindRandomBasicItem(AvailableItems, ItemLocationEnum.OffHand),
+                    RightFinger = FindRandomBasicItem(AvailableItems, ItemLocationEnum.Finger),
+                    LeftFinger = FindRandomBasicItem(AvailableItems, ItemLocationEnum.Finger),
                 },
                   new CharacterModel {
                     Name = "Sunny",
@@ -406,11 +438,11 @@ namespace Game.GameRules
                     MaxHealth = 7,
                     ImageURI = "Alpaca3.png",
                     Clan = CharacterClanEnum.Alpaca,
-                    Head = HeadString,
-                    PrimaryHand = PrimaryHandString,
-                    OffHand = OffHandString,
-                    RightFinger = RightFingerString,
-                    LeftFinger = LeftFingerString,
+                    Head = FindRandomBasicItem(AvailableItems, ItemLocationEnum.Head),
+                    PrimaryHand = FindRandomBasicItem(AvailableItems, ItemLocationEnum.PrimaryHand, 2),
+                    OffHand = FindRandomBasicItem(AvailableItems, ItemLocationEnum.OffHand),
+                    RightFinger = FindRandomBasicItem(AvailableItems, ItemLocationEnum.Finger),
+                    LeftFinger = FindRandomBasicItem(AvailableItems, ItemLocationEnum.Finger),
                 },
 
                 new CharacterModel {
@@ -420,11 +452,11 @@ namespace Game.GameRules
                     MaxHealth = 5,
                     ImageURI = "Llama2.png",
                     Clan = CharacterClanEnum.Llama,
-                    Head = HeadString,
-                    Necklass = NecklassString,
-                    PrimaryHand = PrimaryHandString,
-                    Feet = FeetString,
-                    LeftFinger = LeftFingerString,
+                    Head = FindRandomBasicItem(AvailableItems, ItemLocationEnum.Head),
+                    PrimaryHand = FindRandomBasicItem(AvailableItems, ItemLocationEnum.PrimaryHand, 1),
+                    OffHand = FindRandomBasicItem(AvailableItems, ItemLocationEnum.OffHand),
+                    RightFinger = FindRandomBasicItem(AvailableItems, ItemLocationEnum.Finger),
+                    LeftFinger = FindRandomBasicItem(AvailableItems, ItemLocationEnum.Finger),
                 },
 
                 new CharacterModel {
@@ -434,11 +466,11 @@ namespace Game.GameRules
                     MaxHealth = 7,
                     ImageURI = "Llama1.png",
                     Clan = CharacterClanEnum.Llama,
-                    Head = HeadString,
-                    Necklass = NecklassString,
-                    PrimaryHand = PrimaryHandString,
-                    Feet = FeetString,
-                    LeftFinger = LeftFingerString,
+                    Head = FindRandomBasicItem(AvailableItems, ItemLocationEnum.Head),
+                    PrimaryHand = FindRandomBasicItem(AvailableItems, ItemLocationEnum.PrimaryHand, 2),
+                    OffHand = FindRandomBasicItem(AvailableItems, ItemLocationEnum.OffHand),
+                    RightFinger = FindRandomBasicItem(AvailableItems, ItemLocationEnum.Finger),
+                    LeftFinger = FindRandomBasicItem(AvailableItems, ItemLocationEnum.Finger),
                 },
 
                 new CharacterModel {
@@ -448,11 +480,11 @@ namespace Game.GameRules
                     MaxHealth = 10,
                     ImageURI = "Llama3.png",
                     Clan = CharacterClanEnum.Llama,
-                    Head = HeadString,
-                    Necklass = NecklassString,
-                    PrimaryHand = PrimaryHandString,
-                    Feet = FeetString,
-                    LeftFinger = LeftFingerString,
+                    Head = FindRandomBasicItem(AvailableItems, ItemLocationEnum.Head),
+                    PrimaryHand = FindRandomBasicItem(AvailableItems, ItemLocationEnum.PrimaryHand, 3),
+                    OffHand = FindRandomBasicItem(AvailableItems, ItemLocationEnum.OffHand),
+                    RightFinger = FindRandomBasicItem(AvailableItems, ItemLocationEnum.Finger),
+                    LeftFinger = FindRandomBasicItem(AvailableItems, ItemLocationEnum.Finger),
                 },
 
                 new CharacterModel {
@@ -462,11 +494,11 @@ namespace Game.GameRules
                     MaxHealth = 5,
                     ImageURI = "Vicuna3.png",
                     Clan = CharacterClanEnum.Vicuna,
-                    Necklass = NecklassString,
-                    PrimaryHand = PrimaryHandString,
-                    OffHand = OffHandString,
-                    Feet = FeetString,
-                    RightFinger = RightFingerString,
+                    Necklass = FindRandomBasicItem(AvailableItems, ItemLocationEnum.Necklass),
+                    PrimaryHand = FindRandomBasicItem(AvailableItems, ItemLocationEnum.PrimaryHand, 1),
+                    OffHand = FindRandomBasicItem(AvailableItems, ItemLocationEnum.OffHand),
+                    RightFinger = FindRandomBasicItem(AvailableItems, ItemLocationEnum.Finger),
+                    Feet = FindRandomBasicItem(AvailableItems, ItemLocationEnum.Feet),
                 },
 
                 new CharacterModel {
@@ -476,11 +508,11 @@ namespace Game.GameRules
                     MaxHealth = 7,
                     ImageURI = "Vicuna2.png",
                     Clan = CharacterClanEnum.Vicuna,
-                    Necklass = NecklassString,
-                    PrimaryHand = PrimaryHandString,
-                    OffHand = OffHandString,
-                    Feet = FeetString,
-                    RightFinger = RightFingerString,
+                    Necklass = FindRandomBasicItem(AvailableItems, ItemLocationEnum.Necklass),
+                    PrimaryHand = FindRandomBasicItem(AvailableItems, ItemLocationEnum.PrimaryHand, 1),
+                    OffHand = FindRandomBasicItem(AvailableItems, ItemLocationEnum.OffHand),
+                    RightFinger = FindRandomBasicItem(AvailableItems, ItemLocationEnum.Finger),
+                    Feet = FindRandomBasicItem(AvailableItems, ItemLocationEnum.Feet),
                 },
 
                  new CharacterModel {
@@ -490,11 +522,11 @@ namespace Game.GameRules
                     MaxHealth = 10,
                     ImageURI = "Vicuna1.png",
                     Clan = CharacterClanEnum.Vicuna,
-                    Necklass = NecklassString,
-                    PrimaryHand = PrimaryHandString,
-                    OffHand = OffHandString,
-                    Feet = FeetString,
-                    RightFinger = RightFingerString,
+                    Necklass = FindRandomBasicItem(AvailableItems, ItemLocationEnum.Necklass),
+                    PrimaryHand = FindRandomBasicItem(AvailableItems, ItemLocationEnum.PrimaryHand, 1),
+                    OffHand = FindRandomBasicItem(AvailableItems, ItemLocationEnum.OffHand),
+                    LeftFinger = FindRandomBasicItem(AvailableItems, ItemLocationEnum.Finger),
+                    Feet = FindRandomBasicItem(AvailableItems, ItemLocationEnum.Feet),
                 }
             };
 
