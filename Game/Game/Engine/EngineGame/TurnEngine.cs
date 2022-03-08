@@ -138,6 +138,7 @@ namespace Game.Engine.EngineGame
                 var locationDefender = EngineSettings.MapModel.GetLocationForPlayer(EngineSettings.CurrentDefender);
 
                 var possibleLocations = BattleEngineViewModel.Instance.Engine.EngineSettings.MapModel.GetAvailableLocationsFromPlayer(locationAttacker);
+
                 if(possibleLocations.Count() <= 1)
                 {
                     return false;
@@ -156,6 +157,12 @@ namespace Game.Engine.EngineGame
                     var distance = Math.Sqrt(Math.Pow(x1 - x2, 2) + Math.Pow(y1 - y2, 2));
                     bestLocation = (bestDistance > distance) ? location : bestLocation;
                     bestDistance = (bestDistance > distance) ? distance : bestDistance;
+                }
+
+                //Don't let them move within their own cell, they disappear!!!!
+                if(bestLocation == locationAttacker)
+                {
+                    return false;
                 }
 
                 Debug.WriteLine(string.Format("{0} moves from {1},{2} to {3},{4}", locationAttacker.Player.Name, locationAttacker.Column, locationAttacker.Row, bestLocation.Column, bestLocation.Row));
