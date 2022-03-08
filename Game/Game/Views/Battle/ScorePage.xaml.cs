@@ -40,6 +40,9 @@ namespace Game.Views
         {
             //Number of colums to display characters and monsters
             var columns = 3;
+
+            //Number of unique items
+            var numUniqueItems = 12;
             
             //Populate Grid with Characters
             for (var x = 0; x < EngineViewModel.Engine.EngineSettings.BattleScore.CharacterModelDeathList.Count(); x++)
@@ -80,17 +83,28 @@ namespace Game.Views
                 cell.SetValue(Grid.ColumnProperty, col);
                 MonsterListGrid.Children.Add(cell);
             }
-            
+
             //Get duplicate counts of items
-            var Items = from x in EngineViewModel.Engine.EngineSettings.BattleScore.ItemModelDropList
-                        where x.IsUnique = true
-                        group x by x.ImageURI into g
-                        let count = g.Count()
-                        select new { Value = g.First(), Count = count };
+            //var Items = from x in EngineViewModel.Engine.EngineSettings.BattleScore.ItemModelDropList
+            //            where x.IsUnique = true
+            //            group x by x.ImageURI into g
+            //            let count = g.Count()
+            //            select new { Value = g.First(), Count = count };
+
+            //Find unique items only
+            var Items = BattleEngineViewModel.Instance.Engine.EngineSettings.BattleScore.ItemModelDropList.Where(i => i.IsUnique == true).Distinct();
             
             foreach (var data in Items)
             {
-                ItemsStackLayout.Children.Add(CreateItemDisplayBox(data.Value, data.Count));
+                ItemsStackLayout.Children.Add(CreateItemDisplayBox(data)); //data.Count));
+            }
+
+            //Add mysterious boxes if they didn't find all unique items
+            var counter = Items.Count();
+            while (counter < numUniqueItems)
+            {
+                ItemsStackLayout.Children.Add(CreateItemDisplayBox(null));
+                counter++;
             }
 
             //// Update Values in the UI
@@ -214,9 +228,11 @@ namespace Game.Views
         /// <returns></returns>
         public Grid CreateItemDisplayBox(ItemModel data, int? count = null)
         {
+            //If null then it's a mysterious box
             if (data == null)
             {
                 data = new ItemModel();
+                data.ImageURI = "question-mark-icon.png";
             }
 
             // Hookup the image
