@@ -121,12 +121,12 @@
                          HorizontalOptions="EndAndExpand">
                         <Button x:Name="AttackButton"
                         Clicked="AttackButton_Clicked"
-                        Text="Next Attack"
+                        Text="FIGHT!!"
                         HorizontalOptions="EndAndExpand"
                         IsVisible="False" />
                         <Button x:Name="NextRoundButton"
                         Clicked="NextRoundButton_Clicked"
-                        Text="Next Round"
+                        Text="Start Round"
                         HorizontalOptions="EndAndExpand"
                         IsVisible="False" />
                     </StackLayout>
