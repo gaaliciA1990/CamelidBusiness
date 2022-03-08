@@ -223,7 +223,7 @@ namespace Game.Views
                 if (LoadingNewBattle == false && data.Player == BattleEngineViewModel.Instance.Engine.Round.GetNextPlayerTurn())
                 {
                     
-                    gridObject.BackgroundColor = Color.Gold;
+                    gridObject.BackgroundColor = Color.LightYellow;
 
                 }
                 else if (gridObject != null)
@@ -918,7 +918,7 @@ namespace Game.Views
             foreach (var location in AvailableMonsters)
             {
                 var MapObject = (Grid)GetMapGridObject(GetDictionaryStackName(location));
-                MapObject.BackgroundColor = Color.Blue;
+                MapObject.BackgroundColor = Color.LightSalmon;
             }
 
             var attacker = BattleEngineViewModel.Instance.Engine.Round.GetNextPlayerTurn();
@@ -943,7 +943,7 @@ namespace Game.Views
                 {
                     var monsterLocation = BattleEngineViewModel.Instance.Engine.EngineSettings.MapModel.GetLocationForPlayer(monster);
                     var MapObject = (Grid)GetMapGridObject(GetDictionaryStackName(monsterLocation));
-                    MapObject.BackgroundColor = Color.Blue;
+                    MapObject.BackgroundColor = Color.LightSalmon;
                 }
             }
         }
@@ -961,7 +961,7 @@ namespace Game.Views
             foreach (var location in AvailableLocations)
             {
                 var MapObject = (Grid)GetMapGridObject(GetDictionaryStackName(location));
-                MapObject.BackgroundColor = Color.Blue;
+                MapObject.BackgroundColor = Color.Beige;
             }
 
             SelectAction.IsVisible = false;
