@@ -65,6 +65,21 @@ namespace UnitTests.Views
         }
 
         [Test]
+        public void BattlePage_OnAppearing_LoadingNewBattle_True_Should_Reset_To_False()
+        {
+            // Get the current valute
+            this.LoadingNewBattle = true;
+
+            // Act
+            OnAppearing();
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(false, page.LoadingNewBattle); // Got to here, so it happened...
+        }
+
+        [Test]
         public void BattlePage_Constructor_Default_Should_Pass()
         {
             // Arrange
@@ -602,6 +617,23 @@ namespace UnitTests.Views
             var result = page.SetSelectedEmpty(new MapModelLocation());
 
             // Reset
+
+            // Assert
+            Assert.AreEqual(true, result); // Got to here, so it happened...
+        }
+
+        [Test]
+        public void BattlePage_SetSelectedEmpty_Valid_AvailableLocations_Contain_Data_Should_Pass()
+        {
+            // Arrange
+            var data = new MapModelLocation();
+            page.AvailableLocations.Add(data);
+            BattleEngineViewModel.Instance.Engine.EngineSettings.CurrentAction = ActionEnum.Move;
+            // Act
+            var result = page.SetSelectedEmpty(data);
+
+            // Reset
+            BattleEngineViewModel.Instance.Engine.EngineSettings.CurrentAction = ActionEnum.Unknown;
 
             // Assert
             Assert.AreEqual(true, result); // Got to here, so it happened...
@@ -1237,6 +1269,68 @@ namespace UnitTests.Views
             Assert.AreEqual(true, true);
         }
 
+        [Test]
+        public void BattlePage_VisualizeAttackOptions_Valid_InRange_Should_Pass()
+        {
+            //Arrange
+            var monster1 = new PlayerInfoModel(new MonsterModel());
+            var monster2 = new PlayerInfoModel(new MonsterModel());
+            var player = new PlayerInfoModel(new CharacterModel()
+            {
+                PlayerType = PlayerTypeEnum.Character
+            });
+
+            // Arrange
+            var map = new MapModel();
+
+            map.MapXAxiesCount = 3;
+            map.MapYAxiesCount = 3;
+            map.MapGridLocation = new MapModelLocation[map.MapXAxiesCount, map.MapYAxiesCount];
+
+            var PlayerList = new List<PlayerInfoModel>();
+            PlayerList.Add(new PlayerInfoModel(player));
+            PlayerList.Add(new PlayerInfoModel(monster1));
+
+            _ = map.PopulateMapModel(PlayerList);
+            var start = new MapModelLocation() {
+                Column = 0,
+                Row = 0
+            };
+            //map.GetPlayerAtLocation(0, 0);
+            var end = new MapModelLocation()
+            {
+                Column = 1,
+                Row = 0
+            };
+            MapModelLocation playerLocation = new MapModelLocation()
+            {
+                Column = 0,
+                Row = 0,
+                Player = player,
+                IsSelectedTarget = false
+            };
+            MapModelLocation monsterLocation = new MapModelLocation()
+            {
+                Column = 0,
+                Row = 0,
+                Player = player,
+                IsSelectedTarget = false
+            };
+            BattleEngineViewModel.Instance.Engine.EngineSettings.MapModel.MovePlayerOnMap(start, playerLocation);
+            BattleEngineViewModel.Instance.Engine.EngineSettings.MapModel.MovePlayerOnMap(end, monsterLocation);
+
+            BattleEngineViewModel.Instance.Engine.EngineSettings.PlayerList.Add(monster1);
+            BattleEngineViewModel.Instance.Engine.EngineSettings.PlayerList.Add(monster2);
+
+            //Act
+            visualizeAttackOptions(player);
+
+            //Reset
+
+            //Assert
+            Assert.AreEqual(true, true);
+        }
+
 
         #endregion
 
@@ -1307,6 +1401,33 @@ namespace UnitTests.Views
             //Assert
             Assert.AreEqual(true, true);
         }
+        #endregion
+
+        #region SkipTurn
+
+        //[Test]
+        //public void BattlePage_SkipTurn_Default_Should_Pass()
+        //{
+        //    //Arrange
+        //    BattleEngineViewModel.Instance.Engine.EngineSettings.CharacterList.Add(new PlayerInfoModel(new CharacterModel()));
+
+        //    BattleEngineViewModel.Instance.Engine.EngineSettings.MonsterList.Clear();
+
+        //    _ = BattleEngineViewModel.Instance.Engine.Round.MakePlayerList();
+        //    Grid selectAction = new Grid();
+        //    //Act
+        //    skipTurn(selectAction, null);
+
+        //    //Reset
+
+        //    //Assert
+        //    Assert.AreEqual(true, true);
+        //}
+
+        #endregion
+
+        #region OnAppearing
+
         #endregion
     }
 }
