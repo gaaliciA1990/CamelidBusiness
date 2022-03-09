@@ -318,6 +318,8 @@
     <BundleResource Include="Resources\monster2_animation.GIF" />
     <BundleResource Include="Resources\misspopup.png" />
     <BundleResource Include="Resources\explosion.gif" />
+    <BundleResource Include="Resources\icon_random.png" />
+    <BundleResource Include="Resources\delete.png" />
     <Content Include="Resources\monsters.png" />
     <BundleResource Include="Resources\slider_thumbnail.png" />
     <BundleResource Include="Resources\movepopup.png" />
