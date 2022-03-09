@@ -82,11 +82,16 @@ namespace UnitTests.Views
         public void BattlePage_AttackButton_Clicked_Default_Should_Pass()
         {
             // Arrange
+            BattleEngineViewModel.Instance.Engine.EngineSettings.CharacterList.Add(new PlayerInfoModel(new CharacterModel()));
+
+            BattleEngineViewModel.Instance.Engine.EngineSettings.MonsterList.Clear();
+
+            _ = BattleEngineViewModel.Instance.Engine.Round.MakePlayerList();
 
             // Act
             page.AttackButton_Clicked(null, null);
-
-            // Reset
+            //Reset
+            //BattleEngineViewModel.Instance.Engine.EngineSettings.MaxTurnCount = 1000;
 
             // Assert
             Assert.IsTrue(true); // Got to here, so it happened...
