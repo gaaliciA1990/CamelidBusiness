@@ -21,7 +21,7 @@ namespace Game.Views
     public partial class BattlePage : ContentPage
     {
         //Flag to state that the page is loading
-        private bool LoadingNewBattle = false;
+        public bool LoadingNewBattle = false;
 
         // HTML Formatting for message output box
         public HtmlWebViewSource htmlSource = new HtmlWebViewSource();
