@@ -52,10 +52,6 @@ namespace UnitTests.Views
         public void AutoBattlePage_AttackButton_Clicked_Default_Should_Pass()
         {
             // Arrange
-
-            _ = DiceHelper.EnableForcedRolls();
-            _ = DiceHelper.SetForcedRollValue(3);
-
             _ = DiceHelper.EnableForcedRolls();
             _ = DiceHelper.SetForcedRollValue(3);
 
