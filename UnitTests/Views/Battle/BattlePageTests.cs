@@ -1124,6 +1124,13 @@ namespace UnitTests.Views
         public void BattlePage_DetermineMapImageButton_PlayerTypeEnum_Monster_Should_Pass()
         {
             //Arrange
+
+            BattleEngineViewModel.Instance.Engine.EngineSettings.CharacterList.Add(new PlayerInfoModel(new CharacterModel()));
+
+            BattleEngineViewModel.Instance.Engine.EngineSettings.MonsterList.Clear();
+
+            _ = BattleEngineViewModel.Instance.Engine.Round.MakePlayerList();
+
             var save = BattleEngineViewModel.Instance.Engine.EngineSettings.MapModel;
             var player = new PlayerInfoModel(new MonsterModel());
             BattleEngineViewModel.Instance.Engine.EngineSettings.MapModel.MapGridLocation[0, 0].Player = player;
