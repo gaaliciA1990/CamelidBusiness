@@ -409,7 +409,7 @@ namespace Game.GameRules
                     Description = "Majestic",
                     Level = 3,
                     MaxHealth = 10,
-                    ImageURI = "Alpaca1.png",
+                    ImageURI = "alpaca1_animation.gif",
                     Clan = CharacterClanEnum.Alpaca,
                     Head = FindRandomBasicItem(AvailableItems, ItemLocationEnum.Head),
                     PrimaryHand = FindRandomBasicItem(AvailableItems, ItemLocationEnum.PrimaryHand, 3),
@@ -423,7 +423,7 @@ namespace Game.GameRules
                     Description = "Elegant",
                     Level = 1,
                     MaxHealth = 5,
-                    ImageURI = "Alpaca2.png",
+                    ImageURI = "alpaca2_animation.gif",
                     Clan = CharacterClanEnum.Alpaca,
                     Head = FindRandomBasicItem(AvailableItems, ItemLocationEnum.Head),
                     PrimaryHand = FindRandomBasicItem(AvailableItems, ItemLocationEnum.PrimaryHand, 1),
@@ -436,7 +436,7 @@ namespace Game.GameRules
                     Description = "Dimwitted",
                     Level = 2,
                     MaxHealth = 7,
-                    ImageURI = "Alpaca3.png",
+                    ImageURI = "alpaca3_animation.gif",
                     Clan = CharacterClanEnum.Alpaca,
                     Head = FindRandomBasicItem(AvailableItems, ItemLocationEnum.Head),
                     PrimaryHand = FindRandomBasicItem(AvailableItems, ItemLocationEnum.PrimaryHand, 2),
@@ -450,7 +450,7 @@ namespace Game.GameRules
                     Description = "Wild",
                     Level = 1,
                     MaxHealth = 5,
-                    ImageURI = "Llama2.png",
+                    ImageURI = "llama2_animation.gif",
                     Clan = CharacterClanEnum.Llama,
                     Head = FindRandomBasicItem(AvailableItems, ItemLocationEnum.Head),
                     PrimaryHand = FindRandomBasicItem(AvailableItems, ItemLocationEnum.PrimaryHand, 1),
@@ -464,7 +464,7 @@ namespace Game.GameRules
                     Description = "Sardonic",
                     Level = 2,
                     MaxHealth = 7,
-                    ImageURI = "Llama1.png",
+                    ImageURI = "llama1_animation.gif",
                     Clan = CharacterClanEnum.Llama,
                     Head = FindRandomBasicItem(AvailableItems, ItemLocationEnum.Head),
                     PrimaryHand = FindRandomBasicItem(AvailableItems, ItemLocationEnum.PrimaryHand, 2),
@@ -478,7 +478,7 @@ namespace Game.GameRules
                     Description = "Pretentious",
                     Level = 3,
                     MaxHealth = 10,
-                    ImageURI = "Llama3.png",
+                    ImageURI = "llama3_animation.gif",
                     Clan = CharacterClanEnum.Llama,
                     Head = FindRandomBasicItem(AvailableItems, ItemLocationEnum.Head),
                     PrimaryHand = FindRandomBasicItem(AvailableItems, ItemLocationEnum.PrimaryHand, 3),
@@ -492,7 +492,7 @@ namespace Game.GameRules
                     Description = "Untaimed",
                     Level = 1,
                     MaxHealth = 5,
-                    ImageURI = "Vicuna3.png",
+                    ImageURI = "vicuna3_animation.gif",
                     Clan = CharacterClanEnum.Vicuna,
                     Necklass = FindRandomBasicItem(AvailableItems, ItemLocationEnum.Necklass),
                     PrimaryHand = FindRandomBasicItem(AvailableItems, ItemLocationEnum.PrimaryHand, 1),
@@ -506,7 +506,7 @@ namespace Game.GameRules
                     Description = "Cautious",
                     Level = 2,
                     MaxHealth = 7,
-                    ImageURI = "Vicuna2.png",
+                    ImageURI = "vicuna2_animation.gif",
                     Clan = CharacterClanEnum.Vicuna,
                     Necklass = FindRandomBasicItem(AvailableItems, ItemLocationEnum.Necklass),
                     PrimaryHand = FindRandomBasicItem(AvailableItems, ItemLocationEnum.PrimaryHand, 1),
@@ -520,7 +520,7 @@ namespace Game.GameRules
                     Description = "Jovial",
                     Level = 3,
                     MaxHealth = 10,
-                    ImageURI = "Vicuna1.png",
+                    ImageURI = "vicuna1_animation.gif",
                     Clan = CharacterClanEnum.Vicuna,
                     Necklass = FindRandomBasicItem(AvailableItems, ItemLocationEnum.Necklass),
                     PrimaryHand = FindRandomBasicItem(AvailableItems, ItemLocationEnum.PrimaryHand, 1),
@@ -534,7 +534,7 @@ namespace Game.GameRules
         }
 
         /// <summary>
-        /// Load Characters
+        /// Load Monsters
         /// </summary>
         /// <param name="temp"></param>
         /// <returns></returns>
@@ -545,72 +545,72 @@ namespace Game.GameRules
                 new MonsterModel {
                     Name = "Angry Bear",
                     Description = "Big and Ugly",
-                    ImageURI = "monster1.png",
+                    ImageURI = "monster1_animation.gif",
                 },
 
                 new MonsterModel {
                     Name = "Furious Bear",
                     Description = "Big and Ugly",
-                    ImageURI = "monster1.png",
+                    ImageURI = "monster1_animation.gif",
                     Job = CharacterJobEnum.RoundBoss
                 },
 
                 new MonsterModel {
                     Name = "Saavy Coyote",
                     Description = "Old and Powerfull",
-                    ImageURI = "monster2.png",
+                    ImageURI = "monster2_animation.gif",
                 },
 
                 new MonsterModel {
                     Name = "Wicked Coyote",
                     Description = "Old and Powerfull",
-                    ImageURI = "monster2.png",
+                    ImageURI = "monster2_animation.gif",
                     Job = CharacterJobEnum.RoundBoss
                 },
 
                 new MonsterModel {
                     Name = "Cunning Culpeo",
                     Description = "Don't mess with",
-                    ImageURI = "monster3.png",
+                    ImageURI = "monster3_animation.gif",
                 },
 
                 new MonsterModel {
                     Name = "Witty Culpeo",
                     Description = "Don't mess with",
-                    ImageURI = "monster3.png",
+                    ImageURI = "monster3_animation.gif",
                     Job = CharacterJobEnum.RoundBoss
                 },
 
                 new MonsterModel {
                     Name = "Great Leader",
                     Description = "Camelid with a grudge",
-                    ImageURI = "monster.png",
+                    ImageURI = "greatLeader_animation.gif",
                     Job = CharacterJobEnum.GreatLeader
                 },
 
                 new MonsterModel {
                     Name = "Ferocious Lion",
                     Description = "He's from the mountain",
-                    ImageURI = "monster5.png",
+                    ImageURI = "monster5_animation.gif",
                 },
 
                 new MonsterModel {
                     Name = "Hangry Lion",
                     Description = "He's from the mountain",
-                    ImageURI = "monster5.png",
+                    ImageURI = "monster5_animation.gif",
                     Job = CharacterJobEnum.RoundBoss
                 },
 
                 new MonsterModel {
                     Name = "Puma Pam",
                     Description = "Sleek and fast",
-                    ImageURI = "monster6.png",
+                    ImageURI = "monster6_animation.gif",
                 },
 
                 new MonsterModel {
                     Name = "Superior Puma",
                     Description = "Sleek and fast",
-                    ImageURI = "monster6.png",
+                    ImageURI = "monster6_animation.gif",
                     Job = CharacterJobEnum.RoundBoss
                 },
 
