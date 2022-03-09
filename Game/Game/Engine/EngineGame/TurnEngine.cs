@@ -9,6 +9,8 @@ using Game.GameRules;
 using Game.Engine.EngineInterfaces;
 using Game.Engine.EngineModels;
 using System;
+using Game.Services;
+using System.Threading.Tasks;
 
 namespace Game.Engine.EngineGame
 {
@@ -455,10 +457,19 @@ namespace Game.Engine.EngineGame
             {
                 for (var i = 0; i < NumberToDrop; i++)
                 {
-                    result.Add(ItemIndexViewModel.Instance.GetItem(RandomPlayerHelper.GetRandomBasicItem()));
+                    Task<ItemModel> amazonItemDelivery = Task.Run<ItemModel>(async () => await GetAmazonItemsDelivery(0));
+                    var item = amazonItemDelivery.Result;
+                    if (item != null)
+                    {
+                        item.IsUnique = true;
+                        result.Add(item);
+                    }
+                    else { 
+                        result.Add(ItemIndexViewModel.Instance.GetItem(RandomPlayerHelper.GetRandomBasicItem()));
+                    }
                 }
             }
-
+            
             //Special drops
             // Get a random Unique Item if there's a boss in the round boss - every 3 rounds, there's a 70% chance of boss dropping an item
             if (Target.Job == CharacterJobEnum.RoundBoss && DiceHelper.RollDice(1, 10) >= 3)
@@ -471,6 +482,27 @@ namespace Game.Engine.EngineGame
                 result.Add(ItemIndexViewModel.Instance.GetItem(RandomPlayerHelper.GetRandomUniqueItem()));
             }
             return result;
+        }
+
+
+
+        /// <summary>
+        /// Get Item using the HTTP Post command
+        /// </summary>
+        /// <returns></returns>
+        public async Task<ItemModel> GetAmazonItemsDelivery(int round)
+        {
+            var number = 1;
+            var level = round;  // Max Value of 6
+            var attribute = AttributeEnum.Unknown;  // Any Attribute
+            var location = ItemLocationEnum.Unknown;    // Any Location
+            var random = true;  // Random between 1 and Level
+            var updateDataBase = true;  // Add them to the DB
+            var category = 7;   // Team 7
+
+            var itemList = await ItemService.GetItemsFromServerPostAsync(number, level, attribute, location, category, random, updateDataBase);
+
+            return itemList.FirstOrDefault();
         }
 
         /// <summary>
