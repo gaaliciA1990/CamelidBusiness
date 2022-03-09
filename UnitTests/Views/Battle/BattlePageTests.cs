@@ -1169,7 +1169,7 @@ namespace UnitTests.Views
         }
         #endregion
 
-        #region
+        #region Attack
 
         [Test]
         public void BattlePage_VisualizeAttackOptions_Default_Should_Pass()
@@ -1209,6 +1209,57 @@ namespace UnitTests.Views
             Assert.AreEqual(true, true);
         }
 
+
+        #endregion
+
+        #region DetermineMapBackgroundColor
+        [Test]
+        public void BattlePage_DetermineMapBackgroundColor_PlayerTypeEnum_Character_Should_Pass()
+        {
+            //Arrange
+            var data = BattleEngineViewModel.Instance.Engine.EngineSettings.MapModel.MapGridLocation[0, 0];
+            data.Player.PlayerType = PlayerTypeEnum.Character;
+
+            //Act
+            var result = DetermineMapBackgroundColor(data);
+
+            //Reset
+
+            //Assert
+            Assert.AreEqual(true, true);
+        }
+
+        [Test]
+        public void BattlePage_DetermineMapBackgroundColor_PlayerTypeEnum_Monster_Should_Pass()
+        {
+            //Arrange
+            var data = BattleEngineViewModel.Instance.Engine.EngineSettings.MapModel.MapGridLocation[0, 0];
+            data.Player.PlayerType = PlayerTypeEnum.Monster;
+
+            //Act
+            var result = DetermineMapBackgroundColor(data);
+
+            //Reset
+
+            //Assert
+            Assert.AreEqual(true, true);
+        }
+
+        [Test]
+        public void BattlePage_DetermineMapBackgroundColor_PlayerTypeEnum_Unknown_Should_Pass()
+        {
+            //Arrange
+            var data = BattleEngineViewModel.Instance.Engine.EngineSettings.MapModel.MapGridLocation[0, 0];
+            data.Player.PlayerType = PlayerTypeEnum.Unknown;
+
+            //Act
+            var result = DetermineMapBackgroundColor(data);
+
+            //Reset
+
+            //Assert
+            Assert.AreEqual(true, true);
+        }
 
         #endregion
     }
