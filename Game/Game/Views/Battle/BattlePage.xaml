@@ -5,8 +5,8 @@
              xmlns:local="using:Game.Models"
              x:Name="Page">
 
-    <ContentPage.Content>
-        <Grid IsVisible="True">
+    <AbsoluteLayout HorizontalOptions="Fill" VerticalOptions="Fill" x:Name="MainLayout">
+        <Grid IsVisible="True" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
@@ -343,5 +343,5 @@
                 </StackLayout>
             </StackLayout>-->
         </Grid>
-    </ContentPage.Content>
+    </AbsoluteLayout>
 </ContentPage>

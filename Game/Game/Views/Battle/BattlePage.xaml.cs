@@ -255,7 +255,6 @@ namespace Game.Views
                     }
 
                     // Remove the ImageButton
-                    //gridObject.Children.RemoveAt(10);
                     gridObject.Children.Clear();
 
                     var PlayerGrid = MakeMapGridBox(data);
@@ -264,7 +263,7 @@ namespace Game.Views
 
                     //Player died
                     if (BattleEngineViewModel.Instance.Engine.EngineSettings.PreviousAction == ActionEnum.Attack)
-                        showCellAnimation(gridObject);
+                        DeathAnimation(data);
 
                     // Update the Image in the Datastructure
                     _ = MapGridObjectAddImage((ImageButton)PlayerGrid.Children.ElementAt(PlayerGrid.Children.Count-1), data);
@@ -280,16 +279,50 @@ namespace Game.Views
         /// Play animations
         /// </summary>
         /// <param name="img"></param>
-        public async void showCellAnimation(Grid cell)
+        public async void DeathAnimation(MapModelLocation data)
         {
+            var (x, y, w, h) = getPlayerSizeAndLocation(data);
+            var deadPlayer = BattleEngineViewModel.Instance.Engine.EngineSettings.CurrentDefender.ImageURI;
+
             var animationImage = new Image
             {
                 Source = "explosion.gif",
-                IsAnimationPlaying = false
+                IsAnimationPlaying = false,
+                Opacity = 0.7,
+                Aspect = Aspect.AspectFit
             };
-            cell.Children.Add(animationImage);
+
+            AbsoluteLayout.SetLayoutBounds(animationImage, new Rectangle(x, y, w, h));
+            AbsoluteLayout.SetLayoutFlags(animationImage, AbsoluteLayoutFlags.None);
+            
+            //Explosion
+            MainLayout.Children.Add(animationImage);
             await Task.Delay(100);
             animationImage.SetValue(Image.IsAnimationPlayingProperty, true);
+            await Task.Delay(1000);
+            
+            //ghost moves out of screen
+            animationImage.SetValue(Image.SourceProperty, deadPlayer);
+            await animationImage.TranslateTo(0, -MainLayout.Height, 2000);
+            
+            //delete object
+            MainLayout.Children.Remove(animationImage);
+        }
+
+
+        /// <summary>
+        /// Get location for player on screen
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        public (double, double, double, double) getPlayerSizeAndLocation(MapModelLocation data)
+        {
+            var w = MainLayout.Width / BattleEngineViewModel.Instance.Engine.EngineSettings.MapModel.MapXAxiesCount;
+            var h = MainLayout.Height / BattleEngineViewModel.Instance.Engine.EngineSettings.MapModel.MapYAxiesCount;
+            var x = w * data.Column;
+            var y = (h * data.Row);
+
+            return (x, y, w, h);
         }
 
 
