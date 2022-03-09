@@ -194,6 +194,7 @@ namespace UnitTests.Engine.EngineGame
             Assert.AreEqual(false, result);
         }
 
+        [Test]
         public void TurnEngine_MoveAsTurn_Default_Valid_Monster_Possible_Locations_Should_Pass()
         {
             // Arrange
