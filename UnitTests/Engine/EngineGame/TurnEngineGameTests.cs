@@ -364,6 +364,34 @@ namespace UnitTests.Engine.EngineGame
             Assert.AreEqual(farStrong, result);
         }
 
+        [Test]
+        public void TurnEngine_SelectCharacterToAttack_Valid_No_Alive_Player_List_Should_Pass()
+        {
+            // Arrange
+            // remember the list
+            var saveList = Engine.EngineSettings.PlayerList;
+            Engine.EngineSettings.PlayerList.Clear();
+            var deadPlayer = new PlayerInfoModel()
+            {
+                Alive = false,
+                PlayerType = PlayerTypeEnum.Monster
+            };
+            Engine.EngineSettings.PlayerList.Add(deadPlayer);
+
+            // Act
+            var result = Engine.Round.Turn.SelectCharacterToAttack();
+
+            // Reset
+
+            // Restore the List
+            Engine.EngineSettings.PlayerList = saveList;
+            _ = Engine.StartBattle(false);   // Clear the Engine
+
+            // Assert
+            Assert.AreEqual(null, result);
+        }
+
+
         #endregion SelectCharacterToAttack
 
         #region UseAbility
