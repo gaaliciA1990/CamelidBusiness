@@ -202,14 +202,19 @@ namespace Game.Engine.EngineGame
                 return null;
             }
 
-            if (EngineSettings.PlayerList.Where(m => m.Alive && m.PlayerType == PlayerTypeEnum.Character).Count() < 1)
+            var availableCharactters = EngineSettings.PlayerList.Where(m => m.Alive && m.PlayerType == PlayerTypeEnum.Character);
+
+            //if (EngineSettings.PlayerList.Where(m => m.Alive && m.PlayerType == PlayerTypeEnum.Character).Count() < 1)
+            //{
+            //    return null;
+            //}
+            if (availableCharactters.Count() < 1)
             {
                 return null;
             }
 
             // Sort By Distance
             var attacker = EngineSettings.MapModel.GetLocationForPlayer(EngineSettings.CurrentAttacker);
-            var availableCharactters = EngineSettings.PlayerList.Where(m => m.Alive && m.PlayerType == PlayerTypeEnum.Character);
 
             if (attacker == null)
             {
@@ -247,14 +252,16 @@ namespace Game.Engine.EngineGame
                 return null;
             }
 
-            if (EngineSettings.PlayerList.Where(m => m.Alive && m.PlayerType == PlayerTypeEnum.Monster).Count() < 1)
+            var availableMonsters = EngineSettings.PlayerList.Where(m => m.Alive && m.PlayerType == PlayerTypeEnum.Monster);
+
+            if (availableMonsters.Count() < 1)
             {
                 return null;
             }
 
             // Sort By Distance
             var attacker = EngineSettings.MapModel.GetLocationForPlayer(EngineSettings.CurrentAttacker);
-            var availableMonsters = EngineSettings.PlayerList.Where(m => m.Alive && m.PlayerType == PlayerTypeEnum.Monster);
+            
 
             if (attacker == null)
             {
