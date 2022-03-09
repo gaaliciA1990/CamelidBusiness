@@ -351,6 +351,34 @@ namespace UnitTests.Views
         }
 
         [Test]
+        public void BattlePage_NextAttackExample_PlayerPickNextTurn_Should_Pass()
+        {
+            // Arrange
+            var player1 = new PlayerInfoModel(new CharacterModel());
+            var player2 = new PlayerInfoModel(new CharacterModel());
+            var monster = new PlayerInfoModel(new MonsterModel());
+
+            BattleEngineViewModel.Instance.Engine.EngineSettings.CharacterList.Add(player1);
+            BattleEngineViewModel.Instance.Engine.EngineSettings.CharacterList.Add(player2);
+
+            BattleEngineViewModel.Instance.Engine.EngineSettings.MonsterList.Add(monster);
+            BattleEngineViewModel.Instance.Engine.EngineSettings.PlayerList.Add(player1);
+            BattleEngineViewModel.Instance.Engine.EngineSettings.PlayerList.Add(player2);
+            BattleEngineViewModel.Instance.Engine.EngineSettings.PlayerList.Add(monster);
+            _ = BattleEngineViewModel.Instance.Engine.EngineSettings.MapModel.PopulateMapModel(BattleEngineViewModel.Instance.Engine.EngineSettings.PlayerList);
+
+            _ = BattleEngineViewModel.Instance.Engine.Round.MakePlayerList();
+
+            // Act
+            page.NextAttackExample();
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
+        [Test]
         public void BattlePage_SetAttackerAndDefender_Character_vs_Monster_Should_Pass()
         {
             // Arrange
@@ -1261,6 +1289,24 @@ namespace UnitTests.Views
             Assert.AreEqual(true, true);
         }
 
+        #endregion
+
+        #region GetDictionaryFramename
+        [Test]
+        public void BattlePage_GetDictionaryFrameName_Default_Should_Pass()
+        {
+            //Arrange
+            var data = BattleEngineViewModel.Instance.Engine.EngineSettings.MapModel.MapGridLocation[0, 0];
+            data.Player.PlayerType = PlayerTypeEnum.Character;
+
+            //Act
+            var result = GetDictionaryFrameName(data);
+
+            //Reset
+
+            //Assert
+            Assert.AreEqual(true, true);
+        }
         #endregion
     }
 }
