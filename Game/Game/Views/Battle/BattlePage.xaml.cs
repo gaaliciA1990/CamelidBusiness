@@ -266,7 +266,7 @@ namespace Game.Views
                         DeathAnimation(data);
 
                     // Update the Image in the Datastructure
-                    _ = MapGridObjectAddImage((ImageButton)PlayerGrid.Children.ElementAt(PlayerGrid.Children.Count-1), data);
+                    _ = MapGridObjectAddImageButton((ImageButton)PlayerGrid.Children.ElementAt(PlayerGrid.Children.Count-1), data);
                     
                     //gridObject.BackgroundColor = DetermineMapBackgroundColor(data);
                 }
@@ -430,23 +430,30 @@ namespace Game.Views
             var PlayerImageButton = DetermineMapImageButton(mapLocationModel);
             PlayerImageButton.HorizontalOptions = LayoutOptions.FillAndExpand;
             PlayerImageButton.VerticalOptions = LayoutOptions.FillAndExpand;
-            PlayerImageButton.Aspect = Aspect.AspectFit;
-
+            
             //Create Player Cell
             Grid cell = new Grid();
             cell.RowDefinitions.Add(new RowDefinition { Height = GridLength.Star });
             cell.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Star });
 
-            // Add health status
+            // Add Player Image and health status
             if (mapLocationModel.Player.PlayerType != PlayerTypeEnum.Unknown)
             {
+                var playerImage = new Image {
+                    Source = mapLocationModel.Player.ImageURI,
+                    IsAnimationPlaying = true
+                };
+                cell.Children.Add(playerImage, 0, 0);
+
                 var (healhtStatus, healthValue) = createHealthstatus(mapLocationModel);
                 cell.Children.Add(healhtStatus, 1, 0);
                 _ = MapGridObjectAddHealthValue(healthValue, mapLocationModel);
+
             }
 
             cell.Children.Add(PlayerImageButton, 0, 0);
-            _ = MapGridObjectAddImage(PlayerImageButton, mapLocationModel);
+            Grid.SetColumnSpan(PlayerImageButton, 2);
+            _ = MapGridObjectAddImageButton(PlayerImageButton, mapLocationModel);
             _ = MapGridObjectAddStack(cell, mapLocationModel);
             
             return cell;
@@ -497,7 +504,7 @@ namespace Game.Views
         /// <param name="data"></param>
         /// <param name="MapModel"></param>
         /// <returns></returns>
-        public bool MapGridObjectAddImage(ImageButton data, MapModelLocation MapModel)
+        public bool MapGridObjectAddImageButton(ImageButton data, MapModelLocation MapModel)
         {
             var name = GetDictionaryImageButtonName(MapModel);
 
@@ -577,11 +584,11 @@ namespace Game.Views
             var data = new ImageButton
             {
                 Style = (Style)Application.Current.Resources["BattleMapPlayerSmallStyle"],
-                Source = MapLocationModel.Player.ImageURI,
+                //Source = MapLocationModel.Player.ImageURI,
 
                 HorizontalOptions = LayoutOptions.FillAndExpand,
                 VerticalOptions = LayoutOptions.FillAndExpand,
-                Aspect = Aspect.AspectFit,
+                //Aspect = Aspect.AspectFit,
                 
                 BackgroundColor = Color.Transparent,
 
