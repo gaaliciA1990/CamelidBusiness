@@ -14,9 +14,9 @@
             <ImageButton x:Name="StartButton"
                          Clicked="StartButton_Clicked"
                          Source="button_start.png"
-                         Style="{StaticResource DeleteButtonStyle}"
+                         Style="{StaticResource HomeButtonStyle}"
                          HorizontalOptions="StartAndExpand"
-                         Margin="10,0,0,0"/>
+                         Margin="35,15,10,10"/>
 
             <ScrollView Padding="10,10,10,10"
                         VerticalOptions="Start"
