@@ -380,9 +380,9 @@ namespace UnitTests.Helpers
         {
             // Arrange
             _ = DiceHelper.EnableForcedRolls();
-            _ = DiceHelper.SetForcedRollValue(2);
+            _ = DiceHelper.SetForcedRollValue(1);
 
-            var expected = ItemIndexViewModel.Instance.Dataset.ElementAt(1).Id;
+            var expected = ItemIndexViewModel.Instance.UniqueItems.ElementAt(1).Id;
 
             // Act
             var result = RandomPlayerHelper.GetRandomUniqueItem();
