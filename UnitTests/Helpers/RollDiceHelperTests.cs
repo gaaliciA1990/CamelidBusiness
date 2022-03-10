@@ -48,6 +48,7 @@ namespace UnitTests.Helpers
             var result = DiceHelper.RollDice(1, 6);
 
             // Reset
+            _ = DiceHelper.SetForcedRollValue(1);
             _ = DiceHelper.DisableForcedRolls();
 
             // Assert
@@ -58,6 +59,7 @@ namespace UnitTests.Helpers
         public void RollDiceHelper_RollDice_InValid_NegTime_6sided_Should_Fail()
         {
             // Arrange
+            DiceHelper.DisableForcedRolls();
 
             // Act
             var result = DiceHelper.RollDice(-1, 6);
@@ -72,6 +74,7 @@ namespace UnitTests.Helpers
         public void RollDiceHelper_RollDice_InValid_1Time_0sided_Should_Fail()
         {
             // Arrange
+            DiceHelper.DisableForcedRolls();
 
             // Act
             var result = DiceHelper.RollDice(1, 0);
