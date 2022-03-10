@@ -134,7 +134,7 @@ namespace Game.GameRules
                     Range = 0,
                     Damage = 0,
                     Value = 6,
-                    Location = ItemLocationEnum.Finger,
+                    Location = ItemLocationEnum.Feet,
                     Attribute = AttributeEnum.Speed,
                     IsUnique = true},
 
@@ -145,7 +145,7 @@ namespace Game.GameRules
                     Range = 0,
                     Damage = 0,
                     Value = 5,
-                    Location = ItemLocationEnum.Finger,
+                    Location = ItemLocationEnum.Feet,
                     Attribute = AttributeEnum.Speed,
                     IsUnique = true},
 
@@ -207,7 +207,7 @@ namespace Game.GameRules
                     Range = 0,
                     Damage = 0,
                     Value = 1,
-                    Location = ItemLocationEnum.Finger,
+                    Location = ItemLocationEnum.Feet,
                     Attribute = AttributeEnum.Speed},
 
                 new ItemModel {
