@@ -292,7 +292,7 @@ namespace Game.Views
             var (x, y, w, h) = getPlayerSizeAndLocation(data);
             var deadPlayer = BattleEngineViewModel.Instance.Engine.EngineSettings.CurrentDefender.ImageURI;
 
-            var animationImage = new Image
+            var explosionGif = new Image
             {
                 Source = "explosion.gif",
                 Opacity = 0.6,
@@ -302,19 +302,46 @@ namespace Game.Views
                 IsAnimationPlaying = true
             };
 
-            AbsoluteLayout.SetLayoutBounds(animationImage, new Rectangle(x, y, w, h));
-            AbsoluteLayout.SetLayoutFlags(animationImage, AbsoluteLayoutFlags.None);
+            var wingsGif = new Image
+            {
+                Source = "wings.gif",
+                Opacity = 0.6,
+                VerticalOptions = LayoutOptions.CenterAndExpand,
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                Aspect = Aspect.AspectFit,
+                IsAnimationPlaying = true
+            };
+
+            var ghostImage = new Image
+            {
+                Source = deadPlayer,
+                Opacity = 0.6,
+                Scale = 0.75,
+                VerticalOptions = LayoutOptions.CenterAndExpand,
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                Aspect = Aspect.AspectFit,
+                IsAnimationPlaying = false
+            };
+
+
+            Grid animationGrid = new Grid();
             
+            AbsoluteLayout.SetLayoutBounds(animationGrid, new Rectangle(x, y, w, h));
+            AbsoluteLayout.SetLayoutFlags(animationGrid, AbsoluteLayoutFlags.None);
+
             //Explosion
-            MainLayout.Children.Add(animationImage);
+            animationGrid.Children.Add(explosionGif, 0, 0);
+            MainLayout.Children.Add(animationGrid);
             await Task.Delay(1000);
-            
+
             //ghost moves out of screen
-            animationImage.SetValue(Image.SourceProperty, deadPlayer);
-            await animationImage.TranslateTo(0, -MainLayout.Height, 2000);
+            animationGrid.Children.Clear();
+            animationGrid.Children.Add(wingsGif, 0, 0);
+            animationGrid.Children.Add(ghostImage, 0, 0);
+            await animationGrid.TranslateTo(0, -MainLayout.Height, 5000);
             
             //delete object
-            MainLayout.Children.Remove(animationImage);
+            MainLayout.Children.Remove(animationGrid);
         }
 
 
