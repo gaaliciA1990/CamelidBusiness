@@ -6,6 +6,7 @@ using Game.Models;
 using Game.ViewModels;
 using Game.Engine.EngineInterfaces;
 using System.Diagnostics;
+using System.Threading.Tasks;
 
 namespace Game.Views
 {
@@ -18,6 +19,10 @@ namespace Game.Views
         // Hold the Engine, so it can be swapped out for unit testing
         public IAutoBattleInterface AutoBattle = BattleEngineViewModel.Instance.AutoBattleEngine;
 
+        // waiting time before starting the game
+        public int WaitTime = 150;
+
+
         /// <summary>
         /// Constructor
         /// </summary>
@@ -28,6 +33,15 @@ namespace Game.Views
 
         public async void AutobattleButton_Clicked(object sender, EventArgs e)
         {
+            // Hide the button and begin battle message
+            StartBattleButton.IsVisible = false;
+            BeginBattleLabel.IsVisible = false;
+
+            // Show battle message 
+            BattleMessageValue.IsVisible = true;
+
+            await Task.Delay(WaitTime);
+
             //Measure start time
             var stopwatch = new Stopwatch();
             stopwatch.Start();
@@ -47,13 +61,6 @@ namespace Game.Views
             BattleEngineViewModel.Instance.Engine.EngineSettings.CharacterList.Add(CharacterPlayer);
 
             _ = await AutoBattle.RunAutoBattle();
-
-            //var BattleMessage = string.Format("Done {0} Rounds", AutoBattle.Battle.EngineSettings.BattleScore.RoundCount);
-
-            //BattleMessageValue.Text = BattleMessage;
-
-            //AutobattleImage.Source = "troll6_d.gif";
-
 
             //measure elapsed time
             stopwatch.Stop();
