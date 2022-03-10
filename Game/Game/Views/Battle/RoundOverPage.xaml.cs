@@ -138,12 +138,19 @@ namespace Game.Views
         /// <summary>
         /// Show the Items the Character has
         /// </summary>
-        public void AddItemsToDisplay()
+        public void AddItemsToDisplay(bool InTestMode = false)
         {
             var FlexList = ItemListSelectedFrame.Children.ToList();
+
+            if (InTestMode)
+            {
+                FlexList.Add(new StackLayout());
+            }
+
             foreach (var data in FlexList)
             {
                 _ = ItemListSelectedFrame.Children.Remove(data);
+                if (InTestMode) return;
             }
 
             //Add a StackLayout for each of the children 
