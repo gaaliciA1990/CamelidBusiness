@@ -388,10 +388,69 @@ namespace UnitTests.Helpers
             var result = RandomPlayerHelper.GetRandomUniqueItem();
 
             // Reset
+            DiceHelper.SetForcedRollValue(1);
             _ = DiceHelper.DisableForcedRolls();
 
             // Assert
             Assert.AreEqual(expected, result);
+        }
+
+        [Test]
+        public async Task RandomPlayerHelper_GetRandomBasicItem_Valid_Items_True_Should_Return_An_Item()
+        {
+            // Arrange
+            var saveList = ItemIndexViewModel.Instance.Dataset;
+            ItemIndexViewModel.Instance.Dataset.Clear();
+            var item = new ItemModel() { IsUnique = false };
+            ItemIndexViewModel.Instance.Dataset.Add(item);
+
+            // Act
+            var result = RandomPlayerHelper.GetRandomBasicItem();
+
+            // Reset
+            ItemIndexViewModel.Instance.Dataset = saveList;
+            // Assert
+            Assert.AreEqual(result, item.Id);
+        }
+
+        [Test]
+        public async Task RandomPlayerHelper_GetRandomBasicItem_Valid_InTestMode_True_Should_Return_An_Item()
+        {
+            // Arrange
+            var saveList = ItemIndexViewModel.Instance.Dataset;
+            ItemIndexViewModel.Instance.Dataset.Clear();
+            var item = new ItemModel() { IsUnique = false };
+            ItemIndexViewModel.Instance.Dataset.Add(item);
+            DiceHelper.EnableForcedRolls();
+
+            // Act
+            var result = RandomPlayerHelper.GetRandomBasicItem();
+
+            // Reset
+            ItemIndexViewModel.Instance.Dataset = saveList;
+            DiceHelper.DisableForcedRolls();
+
+            // Assert
+            Assert.AreEqual(result, item.Id);
+        }
+
+        [Test]
+        public async Task RandomPlayerHelper_GetRandomBasicItem_Invalid_Empty_ListItem_Should_Return_Null()
+        {
+            // Arrange
+            var saveList = ItemIndexViewModel.Instance.Dataset;
+            ItemIndexViewModel.Instance.Dataset.Clear();
+            var item = new ItemModel() { IsUnique = true };
+            ItemIndexViewModel.Instance.Dataset.Add(item);
+
+            // Act
+            var result = RandomPlayerHelper.GetRandomBasicItem();
+
+            // Reset
+            ItemIndexViewModel.Instance.Dataset = saveList;
+
+            // Assert
+            Assert.AreEqual(result, null);
         }
     }
 }
