@@ -171,6 +171,7 @@
     <Content Include="Assets\Wide310x150Logo.scale-400.png" />
     <Content Include="attackpopup.png" />
     <Content Include="autobattle.png" />
+    <Content Include="autoBattle_animation.gif" />
     <Content Include="autobattle_background.png" />
     <Content Include="basic_boots.png" />
     <Content Include="basic_earring.png" />
