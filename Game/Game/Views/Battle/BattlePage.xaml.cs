@@ -20,6 +20,8 @@ namespace Game.Views
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0060:Remove unused parameter", Justification = "<Pending>")]
     public partial class BattlePage : ContentPage
     {
+        public bool InTestMode = false;
+
         //Flag to state that the page is loading
         public bool LoadingNewBattle = false;
 
@@ -281,6 +283,13 @@ namespace Game.Views
         /// <param name="img"></param>
         public async void DeathAnimation(MapModelLocation data)
         {
+            //Do nothing while in test mode
+            if (InTestMode)
+            {
+                return;
+            }
+
+
             var (x, y, w, h) = getPlayerSizeAndLocation(data);
             var deadPlayer = BattleEngineViewModel.Instance.Engine.EngineSettings.CurrentDefender.ImageURI;
 
@@ -835,6 +844,11 @@ namespace Game.Views
         /// </summary>
         public void NextAttackExample(ActionEnum action = ActionEnum.Unknown, MapModelLocation data = null)
         {
+            if (InTestMode)
+            {
+                return;
+            }
+
             BattleEngineViewModel.Instance.Engine.EngineSettings.BattleStateEnum = BattleStateEnum.Battling;
 
             // Get the turn, set the current player and attacker to match
