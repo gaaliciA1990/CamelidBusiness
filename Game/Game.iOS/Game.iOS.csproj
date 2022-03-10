@@ -322,6 +322,7 @@
     <BundleResource Include="Resources\explosion.gif" />
     <BundleResource Include="Resources\icon_random.png" />
     <BundleResource Include="Resources\delete.png" />
+    <BundleResource Include="Resources\gameTile.png" />
     <Content Include="Resources\monsters.png" />
     <BundleResource Include="Resources\slider_thumbnail.png" />
     <BundleResource Include="Resources\movepopup.png" />
@@ -347,5 +348,6 @@
     <BundleResource Include="Resources\vicuna2_animation.GIF" />
     <BundleResource Include="Resources\vicuna3_animation.GIF" />
     <BundleResource Include="Resources\wings.gif" />
+    <BundleResource Include="Resources\splash_screen.png" />
   </ItemGroup>
 </Project>
