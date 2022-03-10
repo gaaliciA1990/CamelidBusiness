@@ -106,9 +106,6 @@
   <ItemGroup>
     <Content Include="aboutGame_background.png" />
     <Content Include="about_game.png" />
-    <Content Include="action_ability.png" />
-    <Content Include="action_attack.png" />
-    <Content Include="action_default.png" />
     <Content Include="action_move.png" />
     <Content Include="action_skip.png" />
     <Content Include="alpaca1.png" />
