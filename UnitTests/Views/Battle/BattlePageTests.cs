@@ -54,12 +54,12 @@ namespace UnitTests.Views
         public void BattlePage_OnAppearing_Should_Pass()
         {
             // Get the current valute
-
+            InTestMode = true;
             // Act
             OnAppearing();
 
             // Reset
-
+            InTestMode = false;
             // Assert
             Assert.IsTrue(true); // Got to here, so it happened...
         }
@@ -68,13 +68,14 @@ namespace UnitTests.Views
         public void BattlePage_OnAppearing_LoadingNewBattle_True_Should_Reset_To_False()
         {
             // Get the current valute
+            InTestMode = true;
             this.LoadingNewBattle = true;
 
             // Act
             OnAppearing();
 
             // Reset
-
+            InTestMode = false;
             // Assert
             Assert.AreEqual(false, page.LoadingNewBattle); // Got to here, so it happened...
         }
@@ -97,7 +98,10 @@ namespace UnitTests.Views
         public void BattlePage_AttackButton_Clicked_Default_Should_Pass()
         {
             // Arrange
-            BattleEngineViewModel.Instance.Engine.EngineSettings.CharacterList.Add(new PlayerInfoModel(new CharacterModel()));
+            page.InTestMode = true;
+            BattleEngineViewModel.Instance.Engine.EngineSettings.CharacterList.Add(new PlayerInfoModel(new CharacterModel(){
+                MaxHealth = 100,
+                CurrentHealth = 100}));
 
             BattleEngineViewModel.Instance.Engine.EngineSettings.MonsterList.Clear();
 
@@ -106,6 +110,7 @@ namespace UnitTests.Views
             // Act
             page.AttackButton_Clicked(null, null);
             //Reset
+            page.InTestMode = false;
             //BattleEngineViewModel.Instance.Engine.EngineSettings.MaxTurnCount = 1000;
 
             // Assert
@@ -158,12 +163,12 @@ namespace UnitTests.Views
         public void BattlePage_NextRoundButton_Clicked_Default_Should_Pass()
         {
             // Arrange
-
+            page.InTestMode = true;
             // Act
             page.NextRoundButton_Clicked(null, null);
 
             // Reset
-
+            page.InTestMode = false;
             // Assert
             Assert.IsTrue(true); // Got to here, so it happened...
         }
@@ -172,12 +177,12 @@ namespace UnitTests.Views
         public void BattlePage_ShowModalRoundOverPage_Default_Should_Pass()
         {
             // Arrange
-
+            page.InTestMode = true;
             // Act
             page.ShowModalRoundOverPage();
 
             // Reset
-
+            page.InTestMode = false;
             // Assert
             Assert.IsTrue(true); // Got to here, so it happened...
         }
@@ -187,12 +192,12 @@ namespace UnitTests.Views
         public void BattlePage_ClearMessages_Default_Should_Pass()
         {
             // Arrange
-
+            page.InTestMode = true;
             // Act
             page.ClearMessages();
 
             // Reset
-
+            page.InTestMode = false;
             // Assert
             Assert.IsTrue(true); // Got to here, so it happened...
         }
@@ -201,12 +206,12 @@ namespace UnitTests.Views
         public void BattlePage_GameMessage_Default_Should_Pass()
         {
             // Arrange
-
+            page.InTestMode = true;
             // Act
             page.GameMessage();
 
             // Reset
-
+            page.InTestMode = false;
             // Assert
             Assert.IsTrue(true); // Got to here, so it happened...
         }
@@ -229,6 +234,7 @@ namespace UnitTests.Views
         public void BattlePage_DrawGameBoardAttackerDefender_CurrentAttacker_Null_CurrentDefender_Null_Should_Pass()
         {
             // Arrange
+            page.InTestMode = true;
             _ = BattleEngineViewModel.Instance.Engine.Round.SetCurrentAttacker(null);
             _ = BattleEngineViewModel.Instance.Engine.Round.SetCurrentDefender(null);
 
@@ -236,6 +242,7 @@ namespace UnitTests.Views
             page.DrawGameAttackerDefenderBoard();
 
             // Reset
+            page.InTestMode = false;
 
             // Assert
             Assert.IsTrue(true); // Got to here, so it happened...
@@ -245,6 +252,7 @@ namespace UnitTests.Views
         public void BattlePage_DrawGameBoardAttackerDefender_CurrentAttacker_InValid_Null_Should_Pass()
         {
             // Arrange
+            page.InTestMode = true;
 
             var PlayerInfo = new PlayerInfoModel(new CharacterModel());
 
@@ -255,6 +263,7 @@ namespace UnitTests.Views
             page.DrawGameAttackerDefenderBoard();
 
             // Reset
+            page.InTestMode = false;
 
             // Assert
             Assert.IsTrue(true); // Got to here, so it happened...
@@ -265,6 +274,7 @@ namespace UnitTests.Views
         {
             // Arrange
 
+            page.InTestMode = true;
             var PlayerInfo = new PlayerInfoModel(new CharacterModel());
 
             _ = BattleEngineViewModel.Instance.Engine.Round.SetCurrentAttacker(null);
@@ -274,7 +284,7 @@ namespace UnitTests.Views
             page.DrawGameAttackerDefenderBoard();
 
             // Reset
-
+            page.InTestMode = false;
             // Assert
             Assert.IsTrue(true); // Got to here, so it happened...
         }
@@ -283,7 +293,7 @@ namespace UnitTests.Views
         public void BattlePage_DrawGameBoardAttackerDefender_CurrentDefender_Valid_Should_Pass()
         {
             // Arrange
-
+            page.InTestMode = true;
             _ = BattleEngineViewModel.Instance.Engine.Round.SetCurrentAttacker(new PlayerInfoModel(new CharacterModel()));
             _ = BattleEngineViewModel.Instance.Engine.Round.SetCurrentDefender(new PlayerInfoModel(new CharacterModel { Alive = false }));
 
@@ -291,7 +301,7 @@ namespace UnitTests.Views
             page.DrawGameAttackerDefenderBoard();
 
             // Reset
-
+            page.InTestMode = false;
             // Assert
             Assert.IsTrue(true); // Got to here, so it happened...
         }
@@ -300,6 +310,7 @@ namespace UnitTests.Views
         public void BattlePage_DrawGameBoardAttackerDefender_Invalid_AttackerSource_Null_Should_Pass()
         {
             // Arrange
+            page.InTestMode = true;
 
             _ = BattleEngineViewModel.Instance.Engine.Round.SetCurrentAttacker(new PlayerInfoModel(new CharacterModel()));
             _ = BattleEngineViewModel.Instance.Engine.Round.SetCurrentDefender(new PlayerInfoModel(new CharacterModel { Alive = false }));
@@ -313,6 +324,7 @@ namespace UnitTests.Views
             page.DrawGameAttackerDefenderBoard();
 
             // Reset
+            page.InTestMode = false;
             BattleEngineViewModel.Instance.Engine.EngineSettings.CurrentAttacker.PrimaryHand = oldItem;
 
             // Assert
@@ -323,7 +335,7 @@ namespace UnitTests.Views
         public void BattlePage_NextAttackExample_NextRound_Should_Pass()
         {
             // Arrange
-
+            page.InTestMode = true;
             BattleEngineViewModel.Instance.Engine.EngineSettings.CharacterList.Add(new PlayerInfoModel(new CharacterModel()));
 
             BattleEngineViewModel.Instance.Engine.EngineSettings.MonsterList.Clear();
@@ -336,7 +348,7 @@ namespace UnitTests.Views
             page.NextAttackExample();
 
             // Reset
-
+            page.InTestMode = false;
             // Assert
             Assert.IsTrue(true); // Got to here, so it happened...
         }
@@ -345,6 +357,7 @@ namespace UnitTests.Views
         public void BattlePage_NextAttackExample_GameOver_Should_Pass()
         {
             // Arrange
+            page.InTestMode = true;
 
             BattleEngineViewModel.Instance.Engine.EngineSettings.CharacterList.Clear();
             BattleEngineViewModel.Instance.Engine.EngineSettings.MonsterList.Clear();
@@ -357,10 +370,11 @@ namespace UnitTests.Views
             // Has no Character, so should show end game
 
             // Act
+            
             page.NextAttackExample();
 
             // Reset
-
+            page.InTestMode = false;
             // Assert
             Assert.IsTrue(true); // Got to here, so it happened...
         }
@@ -369,6 +383,7 @@ namespace UnitTests.Views
         public void BattlePage_NextAttackExample_PlayerPickNextTurn_Should_Pass()
         {
             // Arrange
+            page.InTestMode = true;
             var player1 = new PlayerInfoModel(new CharacterModel());
             var player2 = new PlayerInfoModel(new CharacterModel());
             var monster = new PlayerInfoModel(new MonsterModel());
@@ -388,7 +403,7 @@ namespace UnitTests.Views
             page.NextAttackExample();
 
             // Reset
-
+            page.InTestMode = false;
             // Assert
             Assert.IsTrue(true); // Got to here, so it happened...
         }
@@ -598,12 +613,12 @@ namespace UnitTests.Views
         public void BattlePage_SetSelectedMonster_Default_Should_Pass()
         {
             // Arrange
-
+            page.InTestMode = true;
             // Act
             var result = page.SetSelectedMonster(new MapModelLocation());
 
             // Reset
-
+            page.InTestMode = false;
             // Assert
             Assert.AreEqual(true, result); // Got to here, so it happened...
         }
@@ -612,12 +627,13 @@ namespace UnitTests.Views
         public void BattlePage_SetSelectedEmpty_Default_Should_Pass()
         {
             // Arrange
+            page.InTestMode = true;
 
             // Act
             var result = page.SetSelectedEmpty(new MapModelLocation());
 
             // Reset
-
+            page.InTestMode = false;
             // Assert
             Assert.AreEqual(true, result); // Got to here, so it happened...
         }
@@ -626,6 +642,7 @@ namespace UnitTests.Views
         public void BattlePage_SetSelectedEmpty_Valid_AvailableLocations_Contain_Data_Should_Pass()
         {
             // Arrange
+            page.InTestMode = true;
             var data = new MapModelLocation();
             page.AvailableLocations.Add(data);
             BattleEngineViewModel.Instance.Engine.EngineSettings.CurrentAction = ActionEnum.Move;
@@ -633,6 +650,7 @@ namespace UnitTests.Views
             var result = page.SetSelectedEmpty(data);
 
             // Reset
+            page.InTestMode = false;
             BattleEngineViewModel.Instance.Engine.EngineSettings.CurrentAction = ActionEnum.Unknown;
 
             // Assert
@@ -643,12 +661,14 @@ namespace UnitTests.Views
         public void BattlePage_UpdateMapGrid_InValid_Bogus_Image_Should_Fail()
         {
             // Make the Row Bogus
+            page.InTestMode = true;
             BattleEngineViewModel.Instance.Engine.EngineSettings.MapModel.MapGridLocation[0, 0].Row = -1;
 
             // Act
             var result = page.UpdateMapGrid();
 
             // Reset
+            page.InTestMode = false;
             BattleEngineViewModel.Instance.Engine.EngineSettings.MapModel.MapGridLocation[0, 0].Row = 0;
 
             // Assert
@@ -659,6 +679,7 @@ namespace UnitTests.Views
         public void BattlePage_UpdateMapGrid_InValid_Bogus_ImageButton_Should_Fail()
         {
             // Get the current valute
+            page.InTestMode = true;
             var name = "MapR0C0ImageButton";
             _ = page.MapLocationObject.TryGetValue(name, out var data);
             _ = page.MapLocationObject.Remove(name);
@@ -667,6 +688,7 @@ namespace UnitTests.Views
             var result = page.UpdateMapGrid();
 
             // Reset
+            page.InTestMode = false;
             page.MapLocationObject.Add(name, data);
 
             // Assert
@@ -677,6 +699,7 @@ namespace UnitTests.Views
         public void BattlePage_UpdateMapGrid_InValid_Bogus_Stack_Should_Fail()
         {
             // Get the current valute
+            page.InTestMode = true;
             var nameStack = "MapR0C0Stack";
             _ = page.MapLocationObject.TryGetValue(nameStack, out var dataStack);
             _ = page.MapLocationObject.Remove(nameStack);
@@ -693,6 +716,7 @@ namespace UnitTests.Views
             var result = page.UpdateMapGrid();
 
             // Reset
+            page.InTestMode = false;
             _ = page.MapLocationObject.Remove(nameImage);
             page.MapLocationObject.Add(nameImage, dataImage);
             page.MapLocationObject.Add(nameStack, dataStack);
@@ -705,7 +729,7 @@ namespace UnitTests.Views
         public void BattlePage_UpdateMapGrid_Valid_Stack_Should_Pass()
         {
             // Need to build out a valid MapGrid with Engine MapGridLocation
-
+            page.InTestMode = true;
             // Make Map in Engine
 
             var MonsterPlayer = new PlayerInfoModel(new MonsterModel());
@@ -730,6 +754,7 @@ namespace UnitTests.Views
             _ = page.UpdateMapGrid();
 
             // Reset
+            page.InTestMode = false;
 
             // Assert
             Assert.AreEqual(true, result); // Got to here, so it happened...
@@ -739,12 +764,12 @@ namespace UnitTests.Views
         public async Task BattlePage_ShowBattleSettingsPage_Default_Should_Pass()
         {
             // Get the current valute
-
+            page.InTestMode = true;
             // Act
             await page.ShowBattleSettingsPage();
 
             // Reset
-
+            page.InTestMode = false;
             // Assert
             Assert.IsTrue(true); // Got to here, so it happened...
         }
@@ -753,12 +778,12 @@ namespace UnitTests.Views
         public void BattlePage_Settings_Clicked_Default_Should_Pass()
         {
             // Get the current valute
-
+            page.InTestMode = true;
             // Act
             page.Setttings_Clicked(null, null);
 
             // Reset
-
+            page.InTestMode = false;
             // Assert
             Assert.IsTrue(true); // Got to here, so it happened...
         }
@@ -782,12 +807,12 @@ namespace UnitTests.Views
         public void BattleSettingsPage_ShowBattleMode_Default_Should_Pass()
         {
             // Arrange
-
+            page.InTestMode = true;
             // Act
             page.ShowBattleMode();
 
             // Reset
-
+            page.InTestMode = false;
             // Assert
             Assert.IsTrue(true); // Got Here
         }
@@ -813,6 +838,7 @@ namespace UnitTests.Views
         public void BattleSettingsPage_ShowBattleModeUIElements_NewRound_Should_Pass()
         {
             // Arrange
+            page.InTestMode = true;
             var save = BattleEngineViewModel.Instance.Engine.EngineSettings.BattleStateEnum;
             BattleEngineViewModel.Instance.Engine.EngineSettings.BattleStateEnum = BattleStateEnum.NewRound;
 
@@ -821,7 +847,7 @@ namespace UnitTests.Views
 
             // Reset
             BattleEngineViewModel.Instance.Engine.EngineSettings.BattleStateEnum = save;
-
+            page.InTestMode = false;
             // Assert
             Assert.IsTrue(true); // Got Here
         }
@@ -1058,6 +1084,7 @@ namespace UnitTests.Views
         public void BattleSettingsPage_MapIcon_Clicked_Empty_Should_Pass()
         {
             // Arrange
+            page.InTestMode = true;
             var CharacterPlayer = new PlayerInfoModel(new CharacterModel());
             BattleEngineViewModel.Instance.Engine.EngineSettings.PlayerList.Add(CharacterPlayer);
 
@@ -1078,7 +1105,7 @@ namespace UnitTests.Views
             ((ImageButton)dataImage).PropagateUpClicked();
 
             // Reset
-
+            page.InTestMode = false;
             // Assert
             Assert.IsTrue(true); // Got Here
         }
@@ -1166,6 +1193,7 @@ namespace UnitTests.Views
         public void BattlePage_DetermineMapImageButton_PlayerTypeEnum_Character_Should_Pass()
         {
             //Arrange
+            InTestMode = true;
             var data = BattleEngineViewModel.Instance.Engine.EngineSettings.MapModel.MapGridLocation[0,0];
             var PlayerImageButton = DetermineMapImageButton(data);
             MapModelLocation data2 = new MapModelLocation();
@@ -1175,7 +1203,7 @@ namespace UnitTests.Views
             PlayerImageButton.PropagateUpClicked();
 
             //Reset
-
+            InTestMode = false;
             //Assert
             Assert.AreEqual(true, true);
         }
@@ -1184,6 +1212,7 @@ namespace UnitTests.Views
         public void BattlePage_DetermineMapImageButton_PlayerTypeEnum_Monster_Should_Pass()
         {
             //Arrange
+            InTestMode = true;
 
             BattleEngineViewModel.Instance.Engine.EngineSettings.CharacterList.Add(new PlayerInfoModel(new CharacterModel()));
 
@@ -1200,8 +1229,9 @@ namespace UnitTests.Views
             
             //Act
             PlayerImageButton.PropagateUpClicked();
-            
+
             //Reset
+            InTestMode = false;
             BattleEngineViewModel.Instance.Engine.EngineSettings.MapModel = save;
             BattleEngineViewModel.Instance.Engine.EngineSettings.CurrentAction = ActionEnum.Unknown;
             
@@ -1214,6 +1244,7 @@ namespace UnitTests.Views
         public void BattlePage_DetermineMapImageButton_PlayerTypeEnum_Unkown_Should_Pass()
         {
             //Arrange
+            InTestMode = true;
             var data = BattleEngineViewModel.Instance.Engine.EngineSettings.MapModel.MapGridLocation[0, 0];
             data.Player.PlayerType = PlayerTypeEnum.Unknown;
             var PlayerImageButton = DetermineMapImageButton(data);
@@ -1223,6 +1254,7 @@ namespace UnitTests.Views
             PlayerImageButton.PropagateUpClicked();
 
             //Reset
+            InTestMode = false;
 
             //Assert
             Assert.AreEqual(true, true);
