@@ -117,6 +117,23 @@ namespace UnitTests.Views
         }
 
         [Test]
+        public void CharacterIndexPage_FlexCharacter_Clicked_Valid_Should_Pass()
+        {
+            // Arrange
+            ImageButton button = new ImageButton();
+            button.CommandParameter = CharacterIndexViewModel.Instance.Dataset[0].Id;
+            var selectedCharacterChangedEventArgs = new SelectedItemChangedEventArgs(null, 0);
+
+            // Act
+            page.FlexCharacter_Clicked(button, selectedCharacterChangedEventArgs);
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
+        [Test]
         public void CharacterIndexPage_OnAppearing_Valid_Should_Pass()
         {
             // Arrange
