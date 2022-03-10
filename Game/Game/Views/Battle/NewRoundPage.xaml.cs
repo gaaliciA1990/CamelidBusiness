@@ -41,11 +41,14 @@ namespace Game.Views
                 MonsterListFrame.Children.Add(monster);
             }
 
+            AnimateMonsterLoading();
         }
 
-        protected async override void OnAppearing()
+        /// <summary>
+        /// Add animation for the monster loading
+        /// </summary>
+        public async void AnimateMonsterLoading()
         {
-            base.OnAppearing();
 
             foreach(var monster in MonsterListFrame.Children)
             {
