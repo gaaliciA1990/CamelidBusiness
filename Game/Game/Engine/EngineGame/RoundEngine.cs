@@ -84,15 +84,15 @@ namespace Game.Engine.EngineGame
             //Get a round boss every 3 rounds
             bool getRoundBoss = (round > 0 && (round + 1) % 3 == 0);
 
-            //Get a great boss every 10 rounds
-            bool getGreatBoss= (round > 0 && (round + 1) % 10 == 0);
+            //Get a great boss every 5 rounds
+            bool getGreatBoss= (round > 0 && (round + 1) % 5 == 0);
 
             var TargetLevel = 1;
 
             if (EngineSettings.CharacterList.Count() > 0)
             {
                 // Get the Average character level
-                TargetLevel = Convert.ToInt32(EngineSettings.CharacterList.Average(m => m.Level));
+                TargetLevel = Convert.ToInt32(EngineSettings.CharacterList.Average(m => m.Level) * .80);
             }
 
             for (var i = 0; i < EngineSettings.MaxNumberPartyMonsters; i++)
@@ -103,7 +103,7 @@ namespace Game.Engine.EngineGame
                 if (getGreatBoss == false && getRoundBoss == false)
                 {
                     data = RandomPlayerHelper.GetRandomMonster(TargetLevel, EngineSettings.BattleSettingsModel.AllowMonsterItems);
-                    
+            
                 }
 
                 //Add great leader
