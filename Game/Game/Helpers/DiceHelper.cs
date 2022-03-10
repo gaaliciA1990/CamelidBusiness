@@ -29,6 +29,7 @@ namespace Game.Helpers
         // Turn Random State Off
         public static bool DisableForcedRolls()
         {
+            SetForcedRollValue(1);
             ForceRollsToNotRandom = false;
 
             return ForceRollsToNotRandom;
