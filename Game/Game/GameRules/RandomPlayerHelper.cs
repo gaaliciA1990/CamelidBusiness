@@ -70,7 +70,7 @@ namespace Game.GameRules
         public static string GetRandomUniqueItem()
         {
 
-            var result = ItemIndexViewModel.Instance.UniqueItems.ElementAt(DiceHelper.RollDice(1, ItemIndexViewModel.Instance.UniqueItems.Count()) - 1).Id;
+            var result = ItemIndexViewModel.Instance.UniqueItems.ElementAt(DiceHelper.RollDice(1, ItemIndexViewModel.Instance.UniqueItems.Count() - 1)).Id;
 
             return result;
         }
