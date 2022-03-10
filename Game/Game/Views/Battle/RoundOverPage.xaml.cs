@@ -105,7 +105,7 @@ namespace Game.Views
         /// <summary>
         /// Add the Dropped Items to the Display
         /// </summary>
-        public void DrawSelectedItems(object sender, PlayerInfoModel player)
+        public void DrawSelectedItems(object sender, PlayerInfoModel player, bool InTestMode = false)
         {
             if(CurrentSelectedButton == null)
             {
@@ -118,9 +118,19 @@ namespace Game.Views
 
             // Clear and Populate the Dropped Items
             var FlexList = ItemListSelectedFrame.Children.ToList();
+
+            if (InTestMode)
+            {
+                FlexList.Add(new StackLayout());
+            }
             foreach (var data in FlexList)
             {
                 _ = ItemListSelectedFrame.Children.Remove(data);
+                //for the sake of testing only this portion without messing with the view
+                if (InTestMode)
+                {
+                    return;
+                }
             }
 
             //foreach (var data in BattleEngineViewModel.Instance.Engine.EngineSettings.BattleScore.ItemModelSelectList)
