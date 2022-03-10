@@ -141,15 +141,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\action_ability.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\action_attack.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\action_default.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\action_move.png" />
   </ItemGroup>
   <ItemGroup>
