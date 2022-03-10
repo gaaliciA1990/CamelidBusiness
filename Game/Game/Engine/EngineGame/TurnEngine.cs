@@ -457,11 +457,17 @@ namespace Game.Engine.EngineGame
             {
                 for (var i = 0; i < NumberToDrop; i++)
                 {
+                    if (BattleEngineViewModel.Instance.Engine.EngineSettings.BattleScore.AutoBattle)
+                    {
+                        result.Add(ItemIndexViewModel.Instance.GetItem(RandomPlayerHelper.GetRandomBasicItem()));
+                        continue;
+                    }
+
                     Task<ItemModel> amazonItemDelivery = Task.Run<ItemModel>(async () => await GetAmazonItemsDelivery(0));
                     var item = amazonItemDelivery.Result;
                     if (item != null)
                     {
-                        item.IsUnique = true;
+                        item.IsUnique = false;
                         result.Add(item);
                     }
                     else { 
