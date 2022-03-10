@@ -130,7 +130,7 @@ namespace Game.GameRules
             //extract from our current dataset
             //var allURIs = from monster in MonsterIndexViewModel.Instance.Dataset select monster.ImageURI  ;
             //Hide the great leader
-            var temp = MonsterIndexViewModel.Instance.Dataset.ToList().Where(m => m.ImageURI != "monster.png");
+            var temp = MonsterIndexViewModel.Instance.Dataset.ToList().Where(m => m.ImageURI != "monster.png" && m.ImageURI != "greatLeader_animation.gif");
             var allURIs = from monster in temp select monster.ImageURI;
             var result = allURIs.ElementAt(DiceHelper.RollDice(1, allURIs.Count()) - 1);
 
