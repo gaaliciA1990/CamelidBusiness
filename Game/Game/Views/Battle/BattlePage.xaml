@@ -5,19 +5,12 @@
              xmlns:local="using:Game.Models"
              x:Name="Page">
 
-    <AbsoluteLayout HorizontalOptions="Fill" VerticalOptions="Fill" x:Name="MainLayout">
-        <Grid IsVisible="True" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-
+    <ContentPage.Content>
+        <AbsoluteLayout x:Name="MainLayout" VerticalOptions="FillAndExpand" HorizontalOptions="CenterAndExpand">
             <!--The Game UI Screen -->
-            <Grid VerticalOptions="FillAndExpand"
+            <Grid IsVisible="True" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All"
+                  VerticalOptions="FillAndExpand"
                   x:Name="GameUIDisplay"
-                  IsVisible="True"
                   Grid.Row="0"
                   Grid.Column="0">
                 <Grid.RowDefinitions>
@@ -342,6 +335,6 @@
 
                 </StackLayout>
             </StackLayout>-->
-        </Grid>
     </AbsoluteLayout>
+    </ContentPage.Content>
 </ContentPage>
