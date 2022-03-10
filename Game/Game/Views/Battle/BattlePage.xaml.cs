@@ -290,7 +290,8 @@ namespace Game.Views
             }
 
             var (x, y, w, h) = getPlayerSizeAndLocation(data);
-            var deadPlayer = BattleEngineViewModel.Instance.Engine.EngineSettings.CurrentDefender.ImageURI;
+            var deadPlayer = BattleEngineViewModel.Instance.Engine.EngineSettings.CurrentDefender != null ? 
+                BattleEngineViewModel.Instance.Engine.EngineSettings.CurrentDefender.ImageURI : "";
 
             var explosionGif = new Image
             {
