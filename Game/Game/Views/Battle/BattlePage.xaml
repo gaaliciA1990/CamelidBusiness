@@ -200,7 +200,7 @@
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <Image Grid.Column="0" Source="action_default.png"
+                                <Image Grid.Column="0" Source="action_skip.png"
                                        Aspect="AspectFit" />
                                 <Label Grid.Column="1" Text="skip"
                                        Style="{StaticResource LabelBaseStyle}" />
