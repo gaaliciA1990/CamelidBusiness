@@ -262,5 +262,52 @@ namespace UnitTests.Views
             // Assert
             Assert.IsTrue(true); // Got to here, so it happened...
         }
+
+        [Test]
+        public void RoundOverPage_CloseSelectorPopup_Clicked_Button_Valid_Should_Pass()
+        {
+            // Arrange
+
+            // Act
+            page.CloseSelectorPopup_Clicked(null, null);
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
+        [Test]
+        public void RoundOverPage_Showpopup_Clicked_Button_Default_Should_Pass()
+        {
+            // Arrange
+            var item = new ItemModel() {
+                Location = ItemLocationEnum.RightFinger
+            };
+            BattleEngineViewModel.Instance.Engine.EngineSettings.BattleScore.ItemModelDropList.Add(item);
+
+            // Act
+            var result = page.ShowPopup(ItemLocationEnum.RightFinger);
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(result); // Got to here, so it happened...
+        }
+
+        [Test]
+        public void RoundOverPage_AddItemsToDisplay_Default_Should_Pass()
+        {
+            // Arrange
+
+
+            // Act
+            page.AddItemsToDisplay(true);
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
     }
 }
