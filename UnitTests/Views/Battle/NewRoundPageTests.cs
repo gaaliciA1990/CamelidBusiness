@@ -108,5 +108,19 @@ namespace UnitTests.Views
             // Assert
             Assert.IsNotNull(result); // Got to here, so it happened...
         }
+
+        [Test]
+        public void NewRoundPage_AnimateMonsterLoading_Default_Should_Pass()
+        {
+            // Arrange
+            // Act
+
+            page.AnimateMonsterLoading();
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
     }
 }
