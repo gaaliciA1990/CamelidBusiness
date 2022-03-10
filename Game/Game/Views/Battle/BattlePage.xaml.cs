@@ -289,16 +289,17 @@ namespace Game.Views
                 return;
             }
 
-
             var (x, y, w, h) = getPlayerSizeAndLocation(data);
             var deadPlayer = BattleEngineViewModel.Instance.Engine.EngineSettings.CurrentDefender.ImageURI;
 
             var animationImage = new Image
             {
                 Source = "explosion.gif",
-                IsAnimationPlaying = false,
-                Opacity = 0.7,
-                Aspect = Aspect.AspectFit
+                Opacity = 0.6,
+                VerticalOptions = LayoutOptions.CenterAndExpand,
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                Aspect = Aspect.AspectFit,
+                IsAnimationPlaying = true
             };
 
             AbsoluteLayout.SetLayoutBounds(animationImage, new Rectangle(x, y, w, h));
@@ -306,8 +307,6 @@ namespace Game.Views
             
             //Explosion
             MainLayout.Children.Add(animationImage);
-            await Task.Delay(100);
-            animationImage.SetValue(Image.IsAnimationPlayingProperty, true);
             await Task.Delay(1000);
             
             //ghost moves out of screen
