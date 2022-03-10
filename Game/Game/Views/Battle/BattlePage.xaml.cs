@@ -844,10 +844,6 @@ namespace Game.Views
         /// </summary>
         public void NextAttackExample(ActionEnum action = ActionEnum.Unknown, MapModelLocation data = null)
         {
-            if (InTestMode)
-            {
-                return;
-            }
 
             BattleEngineViewModel.Instance.Engine.EngineSettings.BattleStateEnum = BattleStateEnum.Battling;
 
