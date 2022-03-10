@@ -644,6 +644,7 @@ namespace UnitTests.Views
             // Arrange
             page.InTestMode = true;
             var data = new MapModelLocation();
+            data.Player = new PlayerInfoModel() { PlayerType = PlayerTypeEnum.Monster };
             page.AvailableLocations.Add(data);
             BattleEngineViewModel.Instance.Engine.EngineSettings.CurrentAction = ActionEnum.Move;
             // Act
@@ -757,7 +758,7 @@ namespace UnitTests.Views
             page.InTestMode = false;
 
             // Assert
-            Assert.AreEqual(true, result); // Got to here, so it happened...
+            Assert.AreEqual(false, result); // Got to here, so it happened...
         }
 
         [Test]
