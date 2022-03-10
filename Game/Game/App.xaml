@@ -576,20 +576,12 @@
 
             <Style x:Key="HomeButtonStyle"
                    TargetType="ImageButton">
-                <Setter Property="VerticalOptions"
-                        Value="Center" />
-                <Setter Property="MinimumHeightRequest"
-                        Value="5" />
-                <Setter Property="MinimumWidthRequest"
-                        Value="5" />
-                <Setter Property="HorizontalOptions"
-                        Value="CenterAndExpand" />
-                <Setter Property="Aspect"
-                        Value="AspectFit" />
+                <Setter Property="HeightRequest"
+                        Value="10" />
+                <Setter Property="WidthRequest"
+                        Value="20" />
                 <Setter Property="Scale"
-                        Value="2.5" />
-                <Setter Property="BackgroundColor"
-                        Value="Transparent" />
+                        Value="4.0" />
             </Style>
 
             <!-- Button -->
