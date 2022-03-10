@@ -309,5 +309,78 @@ namespace UnitTests.Views
             // Assert
             Assert.IsTrue(true); // Got to here, so it happened...
         }
+
+        [Test]
+        public void RoundOverPage_Showpopup_Clicked_Event_Default_Should_Pass()
+        {
+            // Arrange
+            var item = new ItemModel()
+            {
+                Location = ItemLocationEnum.RightFinger
+            };
+            BattleEngineViewModel.Instance.Engine.EngineSettings.BattleScore.ItemModelDropList.Add(item);
+
+            // Act
+            var result = page.ShowPopup(ItemLocationEnum.RightFinger);
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(result); // Got to here, so it happened...
+        }
+
+        [Test]
+        public void RoundOverPage_DrawSelectedItems_Clicked_Event_Default_Should_Pass()
+        {
+            // Arrange
+            BattleEngineViewModel.Instance.Engine.EngineSettings.BattleScore.ItemModelDropList.Add(new ItemModel());
+            //BattleEngineViewModel.Instance.Engine.EngineSettings.BattleScore.ItemModelSelectList.Add(new ItemModel());
+
+            ImageButton dummy = new ImageButton();
+            PlayerInfoModel player = new PlayerInfoModel();
+
+            // Act
+            page.DrawSelectedItems(dummy, player, true);
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
+        [Test]
+        public void RoundOverPage_OnPopupItemSelected_Clicked_Event_InValid_Null_Should_Pass()
+        {
+            // Arrange
+            var SelectedItemChanged = new SelectedItemChangedEventArgs(null);
+
+            // Act
+            page.OnPopupItemSelected(null, SelectedItemChanged);
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
+        [Test]
+        public void RoundOverPage_OnPopupItemSelected_Clicked_Event_Valid_Should_Pass()
+        {
+            // Arrange
+            page.PopupLocationEnum = ItemLocationEnum.Head;
+            var SelectedItemChanged = new SelectedItemChangedEventArgs(new ItemModel()
+            {
+                Location = ItemLocationEnum.Head
+            });
+            page.CurrentSelectedChar = new PlayerInfoModel(new CharacterModel());
+
+            // Act
+            page.OnPopupItemSelected(null, SelectedItemChanged);
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
     }
 }
