@@ -1069,11 +1069,14 @@ namespace UnitTests.Engine.EngineGame
         public void RoundEngine_RollToHitTarget_Valid_Default_Should_Pass()
         {
             // Arrange 
+            DiceHelper.EnableForcedRolls();
+            DiceHelper.SetForcedRollValue(20);
 
             // Act
             var result = Engine.Round.Turn.RollToHitTarget(1,1);
 
             // Reset
+            DiceHelper.DisableForcedRolls();
 
             // Assert
             Assert.AreEqual(HitStatusEnum.Hit, result);
