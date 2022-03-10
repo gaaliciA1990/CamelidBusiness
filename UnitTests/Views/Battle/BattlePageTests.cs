@@ -1437,24 +1437,25 @@ namespace UnitTests.Views
 
         #region SkipTurn
 
-        //[Test]
-        //public void BattlePage_SkipTurn_Default_Should_Pass()
-        //{
-        //    //Arrange
-        //    BattleEngineViewModel.Instance.Engine.EngineSettings.CharacterList.Add(new PlayerInfoModel(new CharacterModel()));
+        [Test]
+        public void BattlePage_SkipTurn_Default_Should_Pass()
+        {
+            //Arrange
+            BattleEngineViewModel.Instance.Engine.EngineSettings.CharacterList.Add(new PlayerInfoModel(new CharacterModel()));
 
-        //    BattleEngineViewModel.Instance.Engine.EngineSettings.MonsterList.Clear();
+            BattleEngineViewModel.Instance.Engine.EngineSettings.MonsterList.Clear();
 
-        //    _ = BattleEngineViewModel.Instance.Engine.Round.MakePlayerList();
-        //    Grid selectAction = new Grid();
-        //    //Act
-        //    skipTurn(selectAction, null);
+            _ = BattleEngineViewModel.Instance.Engine.Round.MakePlayerList();
 
-        //    //Reset
+            page.InTestMode = true;
+            //Act
+            page.skipTurn(null, null);
 
-        //    //Assert
-        //    Assert.AreEqual(true, true);
-        //}
+            //Reset
+            page.InTestMode = false;
+            //Assert
+            Assert.AreEqual(true, true);
+        }
 
         #endregion
 
