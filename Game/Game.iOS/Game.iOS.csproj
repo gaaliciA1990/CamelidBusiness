@@ -346,5 +346,6 @@
     <BundleResource Include="Resources\vicuna1_animation.GIF" />
     <BundleResource Include="Resources\vicuna2_animation.GIF" />
     <BundleResource Include="Resources\vicuna3_animation.GIF" />
+    <BundleResource Include="Resources\wings.gif" />
   </ItemGroup>
 </Project>

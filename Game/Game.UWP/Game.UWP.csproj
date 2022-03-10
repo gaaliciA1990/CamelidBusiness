@@ -285,6 +285,7 @@
     <Content Include="vicunaclanlogo.png" />
     <Content Include="village.png" />
     <Content Include="villagePage_background.png" />
+    <Content Include="wings.gif" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
