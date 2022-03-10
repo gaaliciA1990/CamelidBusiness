@@ -216,5 +216,23 @@ namespace UnitTests.Views
         //    // Assert
         //    Assert.IsTrue(true); // Got to here, so it happened...
         //}
+
+        #region HomeButton_Clicked
+
+        [Test]
+        public void PickCharactersPage_HomeButton_Clicked_Default_Should_Pass()
+        {
+            // Arrange
+
+            // Act
+            page.homeButton_Clicked(null,null);
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
+        #endregion
     }
 }
