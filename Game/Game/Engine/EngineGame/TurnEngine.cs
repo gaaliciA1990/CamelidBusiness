@@ -465,7 +465,7 @@ namespace Game.Engine.EngineGame
 
                     Task<ItemModel> amazonItemDelivery = Task.Run<ItemModel>(async () => await GetAmazonItemsDelivery(0));
                     var item = amazonItemDelivery.Result;
-                    if (item != null)
+                    if (item != null && item.ImageURI.Contains("unique") == false)
                     {
                         item.IsUnique = false;
                         result.Add(item);
