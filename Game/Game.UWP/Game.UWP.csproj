@@ -110,6 +110,7 @@
     <Content Include="action_attack.png" />
     <Content Include="action_default.png" />
     <Content Include="action_move.png" />
+    <Content Include="action_skip.png" />
     <Content Include="alpaca1.png" />
     <Content Include="alpaca1_animation.GIF" />
     <Content Include="alpaca2.png" />

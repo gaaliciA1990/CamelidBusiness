@@ -297,6 +297,7 @@
     <BundleResource Include="Resources\alpaca2_animation.GIF" />
     <BundleResource Include="Resources\alpaca3_animation.GIF" />
     <BundleResource Include="Resources\autoBattle_animation.gif" />
+    <BundleResource Include="Resources\action_skip.png" />
     <Content Include="Resources\basic_stick.png" />
     <BundleResource Include="Resources\caverns.png" />
     <BundleResource Include="Resources\battleBackground.jpg" />
