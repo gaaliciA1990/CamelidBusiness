@@ -16,7 +16,8 @@
                 <ImageButton x:Name="GameButton"
                              Source="button_start.png"
                              Clicked="GameButton_Clicked"
-                             Style="{StaticResource HomeButtonStyle}" />
+                             Style="{StaticResource HomeButtonStyle}"
+                             Margin="0,10,0,30"/>
                 <ImageButton x:Name="AboutButton"
                              Source="about_game.png"
                              Clicked="AboutButton_Clicked"
