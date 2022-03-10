@@ -326,11 +326,12 @@ namespace Game.Views
         /// <returns></returns>
         public (double, double, double, double) getPlayerSizeAndLocation(MapModelLocation data)
         {
+            var yShift = MainLayout.Height / 7;
+            var yHeight = MainLayout.Height - yShift;
             var w = MainLayout.Width / BattleEngineViewModel.Instance.Engine.EngineSettings.MapModel.MapXAxiesCount;
-            var h = MainLayout.Height / BattleEngineViewModel.Instance.Engine.EngineSettings.MapModel.MapYAxiesCount;
+            var h = yHeight / BattleEngineViewModel.Instance.Engine.EngineSettings.MapModel.MapYAxiesCount;
             var x = w * data.Column;
-            var y = (h * data.Row);
-
+            var y = (h * data.Row) + yShift;
             return (x, y, w, h);
         }
 
