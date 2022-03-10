@@ -162,7 +162,7 @@ namespace Game.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private async void homeButton_Clicked(object sender, EventArgs e)
+        public async void homeButton_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new NavigationPage(new GamePage()));
         }
