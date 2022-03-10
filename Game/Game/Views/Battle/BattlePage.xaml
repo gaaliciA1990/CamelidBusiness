@@ -180,7 +180,7 @@
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <Image Grid.Column="0" Source="action_attack.png"
+                                <Image Grid.Column="0" Source="basic_sword.png"
                                        Aspect="AspectFit" />
                                 <Label Grid.Column="1" Text="Attack"
                                        Style="{StaticResource LabelBaseStyle}" />
