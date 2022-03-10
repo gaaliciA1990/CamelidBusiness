@@ -438,6 +438,7 @@ namespace UnitTests.Engine.EngineBase
             var result = Engine.Round.Turn.RollToHitTarget(AttackScore, DefenseScore);
 
             // Reset
+            DiceHelper.SetForcedRollValue(1);
             _ = DiceHelper.DisableForcedRolls();
 
             // Assert
@@ -458,6 +459,7 @@ namespace UnitTests.Engine.EngineBase
             var result = Engine.Round.Turn.RollToHitTarget(AttackScore, DefenseScore);
 
             // Reset
+            DiceHelper.SetForcedRollValue(1);
             _ = DiceHelper.DisableForcedRolls();
 
             // Assert
@@ -498,6 +500,7 @@ namespace UnitTests.Engine.EngineBase
             var result = Engine.Round.Turn.RollToHitTarget(AttackScore, DefenseScore);
 
             // Reset
+            DiceHelper.SetForcedRollValue(1);
             _ = DiceHelper.DisableForcedRolls();
 
             // Assert
