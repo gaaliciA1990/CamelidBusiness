@@ -692,7 +692,7 @@ namespace Game.Views
         {
             if (BattleEngineViewModel.Instance.Engine.EngineSettings.CurrentAction == ActionEnum.Move)
             {
-                if (AvailableLocations.Contains(data))
+                if (data.Player.PlayerType == PlayerTypeEnum.Unknown)
                 {
                     BattleEngineViewModel.Instance.Engine.EngineSettings.MoveMapLocation = new CordinatesModel { Row = data.Row, Column = data.Column };
                     NextAttackExample(ActionEnum.Move, data);
