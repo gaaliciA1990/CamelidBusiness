@@ -83,6 +83,12 @@ namespace Game.GameRules
         {
             var listItem = ItemIndexViewModel.Instance.Dataset.Where(m => m.IsUnique == false).ToList();
 
+            //ItemViewModel failed to load default data
+            if(listItem.Count() == 0)
+            {
+                return null;
+            }
+
             //In case this is being called from the unit test/hack mode
             if (DiceHelper.ForceRollsToNotRandom)
             {
