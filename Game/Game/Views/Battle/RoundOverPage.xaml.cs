@@ -37,9 +37,6 @@ namespace Game.Views
             // Update the Found Number
             TotalFound.Text = BattleEngineViewModel.Instance.Engine.EngineSettings.BattleScore.ItemModelDropList.Count().ToString();
 
-            // Update the Selected Number, this gets updated later when selected refresh happens
-            //TotalSelected.Text = BattleEngineViewModel.Instance.Engine.EngineSettings.BattleScore.ItemModelSelectList.Count().ToString();
-
             //Set the itemlabel
             ItemLabel.Text = "Choose a Character!!!";
 
@@ -78,10 +75,6 @@ namespace Game.Views
         public void DrawItemLists()
         {
             DrawDroppedItems();
-            //DrawSelectedItems();
-
-            // Only need to update the selected, the Dropped is set in the constructor
-            //TotalSelected.Text = BattleEngineViewModel.Instance.Engine.EngineSettings.BattleScore.ItemModelSelectList.Count().ToString();
         }
 
         /// <summary>
@@ -132,11 +125,6 @@ namespace Game.Views
                     return;
                 }
             }
-
-            //foreach (var data in BattleEngineViewModel.Instance.Engine.EngineSettings.BattleScore.ItemModelSelectList)
-            //{
-            //    ItemListSelectedFrame.Children.Add(GetItemToDisplay(data));
-            //}
 
             CurrentSelectedChar = player;
 
@@ -305,7 +293,6 @@ namespace Game.Views
             };
 
             // Add a event to the user can click the item and see more
-            //todo: this is where to hook up the item loading function
             PlayerImage.Clicked += (sender, args) => DrawSelectedItems(sender, data);
 
             // Add the Level
