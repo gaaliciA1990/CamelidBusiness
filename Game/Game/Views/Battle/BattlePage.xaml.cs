@@ -882,7 +882,7 @@ namespace Game.Views
             var RoundCondition = BattleEngineViewModel.Instance.Engine.Round.RoundNextTurn();
 
             //show action 
-            showActionPopup(BattleEngineViewModel.Instance.Engine.EngineSettings.PreviousAction);
+            ShowActionPopup(BattleEngineViewModel.Instance.Engine.EngineSettings.PreviousAction);
 
             // Output the Message of what happened.
             GameMessage();
@@ -980,9 +980,8 @@ namespace Game.Views
             //otherwise it's the monster, let them do their thing automatically
             else
             {
-                //AttackButton.IsVisible = true;
                 AttackButton_Clicked(null, null);
-                _ = Task.Delay(2000);
+                _ = Task.Delay(4000);
             }
         }
 
@@ -1095,7 +1094,7 @@ namespace Game.Views
         }
 
 
-        public async void showActionPopup(ActionEnum action) 
+        public async void ShowActionPopup(ActionEnum action) 
         {
             if (action == ActionEnum.Attack)
             {

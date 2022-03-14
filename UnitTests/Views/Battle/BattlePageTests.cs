@@ -1119,7 +1119,7 @@ namespace UnitTests.Views
             BattleEngineViewModel.Instance.Engine.EngineSettings.BattleMessagesModel.HitStatus = HitStatusEnum.Hit;
 
             //Act
-            page.showActionPopup(ActionEnum.Attack);
+            page.ShowActionPopup(ActionEnum.Attack);
 
             //Reset
             BattleEngineViewModel.Instance.Engine.EngineSettings.BattleMessagesModel.HitStatus = HitStatusEnum.Default;
@@ -1135,7 +1135,7 @@ namespace UnitTests.Views
             BattleEngineViewModel.Instance.Engine.EngineSettings.BattleMessagesModel.HitStatus = HitStatusEnum.Miss;
 
             //Act
-            page.showActionPopup(ActionEnum.Attack);
+            page.ShowActionPopup(ActionEnum.Attack);
 
             //Reset
             BattleEngineViewModel.Instance.Engine.EngineSettings.BattleMessagesModel.HitStatus = HitStatusEnum.Default;
@@ -1151,7 +1151,7 @@ namespace UnitTests.Views
             BattleEngineViewModel.Instance.Engine.EngineSettings.BattleMessagesModel.HitStatus = HitStatusEnum.CriticalMiss;
 
             //Act
-            page.showActionPopup(ActionEnum.Attack);
+            page.ShowActionPopup(ActionEnum.Attack);
 
             //Reset
             BattleEngineViewModel.Instance.Engine.EngineSettings.BattleMessagesModel.HitStatus = HitStatusEnum.Default;
@@ -1167,7 +1167,7 @@ namespace UnitTests.Views
             
 
             //Act
-            page.showActionPopup(ActionEnum.Move);
+            page.ShowActionPopup(ActionEnum.Move);
 
             //Reset
             
@@ -1182,7 +1182,7 @@ namespace UnitTests.Views
 
 
             //Act
-            page.showActionPopup(ActionEnum.Unknown);
+            page.ShowActionPopup(ActionEnum.Unknown);
 
             //Reset
 
