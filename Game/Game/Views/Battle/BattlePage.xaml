@@ -205,7 +205,7 @@
                                 <Label Grid.Column="1" Text="skip"
                                        Style="{StaticResource LabelBaseStyle}" />
                             </Grid>
-                            
+
                             <ImageButton Grid.Column="0"
                                          Clicked="SelectMonsterToAttack"
                                          x:Name="selectMonsterButton"
@@ -298,43 +298,10 @@
                                    Style="{StaticResource LabelStyle}"
                                    FontSize="Micro" />
 
-                            <!--<WebView
-                        x:Name="HtmlBox"
-                        WidthRequest="100"
-                        MinimumWidthRequest="100"
-                        HeightRequest="100"
-                        MinimumHeightRequest="100"
-                        HorizontalOptions="FillAndExpand"
-                        VerticalOptions="Start"
-                        BackgroundColor="Transparent"
-                        IsVisible="false"
-                        />-->
                         </StackLayout>
                     </StackLayout>
                 </StackLayout>
             </Grid>
-
-            <!--The Game Over Screen -->
-            <!--<StackLayout 
-                Grid.Row="0" Grid.Column="0"
-                    Style="{StaticResource VerticalStack}"
-                    AbsoluteLayout.LayoutBounds="1,1,1,1" 
-                    AbsoluteLayout.LayoutFlags="All"
-                    HorizontalOptions="FillAndExpand"
-                    x:Name="GameOverDisplay" 
-                    IsVisible="false">
-
-                <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Padding="10">
-                    <Label Text="Thank you for Playing" Style="{StaticResource CenterMessageLargeStyle}"/>
-
-                    <Label Text="Check your score, or click Exit and return soon" Style="{StaticResource MessageStyle}" LineBreakMode="WordWrap" HorizontalTextAlignment="Center" MaxLines="5" Padding="20"/>
-
-                    <Button x:Name="ShowScoreButton" Clicked="ShowScoreButton_Clicked" Text="Score" WidthRequest="50"/>
-
-                    <Button x:Name="ExitButton" Clicked="ExitButton_Clicked" Text="Exit" WidthRequest="50"></Button>
-
-                </StackLayout>
-            </StackLayout>-->
-    </AbsoluteLayout>
+        </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>
