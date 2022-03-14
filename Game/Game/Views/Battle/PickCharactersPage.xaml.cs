@@ -80,32 +80,6 @@ namespace Game.Views
 
         }
 
-        ///// <summary>
-        ///     COLLECTIONVIEW ALLOWS FOR DESELECT, NO NEED FOR A MANUAL DESELECTION IN THE 
-        ///     PARTY VIEW
-        ///     
-        ///// The row selected from the list
-        ///// </summary>
-        ///// <param name="sender"></param>
-        ///// <param name="args"></param>
-        //public void OnPartyCharacterItemSelected(object sender, SelectionChangedEventArgs args)
-        //{
-        //    CharacterModel data = args.CurrentSelection as CharacterModel;
-        //    if (data == null)
-        //    {
-        //        return;
-        //    }
-
-        //    // Manually deselect Character.
-        //    PartyListView.SelectedItem = null;
-
-        //    // Remove the character from the list
-        //    _ = BattleEngineViewModel.Instance.PartyCharacterList.Remove(data);
-
-        //    //UpdateNextButtonState();
-        //}
-
-
         /// <summary>
         /// Start Game button is dependent on characters being in battele
         /// 
