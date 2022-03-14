@@ -289,7 +289,7 @@ namespace Game.Views
                 return;
             }
 
-            var (x, y, w, h) = getPlayerSizeAndLocation(data);
+            var (x, y, w, h) = GetPlayerSizeAndLocation(data);
             var deadPlayer = BattleEngineViewModel.Instance.Engine.EngineSettings.CurrentDefender != null ? 
                 BattleEngineViewModel.Instance.Engine.EngineSettings.CurrentDefender.ImageURI : "";
 
@@ -351,7 +351,7 @@ namespace Game.Views
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        public (double, double, double, double) getPlayerSizeAndLocation(MapModelLocation data)
+        public (double, double, double, double) GetPlayerSizeAndLocation(MapModelLocation data)
         {
             var yShift = MainLayout.Height / 7;
             var yHeight = MainLayout.Height - yShift;
