@@ -8,13 +8,6 @@
 
         <StackLayout Style="{StaticResource NewRoundStackLayout}">
 
-            <!--<Label Text="Characters" Style="{StaticResource MessageLargeStyle}"/>-->
-
-            <!--<FlexLayout x:Name="PartyListFrame"
-                                    JustifyContent="Start"
-                                    AlignContent="Start"
-                                    Wrap="Wrap"/>-->
-
             <Label Text="here are your enemies" 
                    Style="{StaticResource MessageLargeStyle}"/>
 
