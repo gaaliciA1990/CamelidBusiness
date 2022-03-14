@@ -84,13 +84,6 @@ namespace Game.Views
                 MonsterListGrid.Children.Add(cell);
             }
 
-            //Get duplicate counts of items
-            //var Items = from x in EngineViewModel.Engine.EngineSettings.BattleScore.ItemModelDropList
-            //            where x.IsUnique = true
-            //            group x by x.ImageURI into g
-            //            let count = g.Count()
-            //            select new { Value = g.First(), Count = count };
-
             //Find unique items only
             var Items = BattleEngineViewModel.Instance.Engine.EngineSettings.BattleScore.ItemModelDropList.Where(i => i.IsUnique == true).Distinct();
             
