@@ -322,64 +322,173 @@ namespace Scenario
             Assert.AreEqual(true, AutoBattle.Battle.EngineSettings.BattleScore.RoundCount < AutoBattle.Battle.EngineSettings.MaxRoundCount);
         }
 
-        //[Test]
-        //public async Task AutoBattleEngine_RunAutoBattle_GameOver_Round_2_Should_Pass()
-        //{
-        //    /* 
-        //     * 
-        //     * 2 Character, Speed slowest, only 1 HP each
-        //     * 
-        //     * 2 Monsters
-        //     * 
-        //     * Should end in the first round
-        //     * 
-        //     */
+       [Test]
+        public async Task AutoBattleEngine_RunAutoBattle_Monsters_2_Should_Pass()
+        {
+            //Arrange
 
-        //    //Arrange
+            // Add Characters
 
-        //    // Add Characters
+            AutoBattle.Battle.EngineSettings.MaxNumberPartyCharacters = 2;
 
-        //    Engine.EngineSettings.MaxNumberPartyCharacters = 2;
+            var CharacterPlayerA = new PlayerInfoModel(
+                            new CharacterModel
+                            {
+                                Speed = -1,
+                                Level = 10,
+                                CurrentHealth = 1,
+                                ExperienceTotal = 1,
+                                ExperienceRemaining = 1,
+                                Name = "Mike",
+                                ListOrder = 1,
+                            });
 
-        //    var CharacterPlayerMike = new PlayerInfoModel(
-        //                    new CharacterModel
-        //                    {
-        //                        Speed = -1, // Will go last...
-        //                        Level = 10,
-        //                        CurrentHealth = 1,
-        //                        ExperienceTotal = 1,
-        //                        ExperienceRemaining = 1,
-        //                        Name = "Mike",
-        //                    });
-
-        //    Engine.EngineSettings.CharacterList.Add(CharacterPlayerMike);
-        //    Engine.EngineSettings.CharacterList.Add(CharacterPlayerMike);
+            AutoBattle.Battle.EngineSettings.CharacterList.Add(CharacterPlayerA);
+            AutoBattle.Battle.EngineSettings.CharacterList.Add(CharacterPlayerA);
 
 
-        //    // Add Monsters
+            // Add Monsters
 
-        //    Engine.EngineSettings.MaxNumberPartyMonsters = 2;
+            // Need to set the Monster count to 1, so the battle goes to Next Round Faster
+            AutoBattle.Battle.EngineSettings.MaxNumberPartyMonsters = 2;
 
-        //    var MonsterPlayer = new PlayerInfoModel(
-        //        new MonsterModel
-        //        {
-        //            Speed = 100, // Will go first...
-        //            Level = 10,
-        //            CurrentHealth = 1,
-        //            ExperienceTotal = 1,
-        //            ExperienceRemaining = 1,
-        //        });
+            //Act
+            var result = await AutoBattle.RunAutoBattle();
 
-        //    Engine.EngineSettings.MonsterList.Add(MonsterPlayer);
-        //    Engine.EngineSettings.MonsterList.Add(MonsterPlayer);
+            //Reset
+            AutoBattle.Battle.EngineSettings.CharacterList.Clear();
 
-        //    //Act
-        //    var result = await Engine.RunAutoBattle();
+            //Assert
+            Assert.AreEqual(true, result);
+        }
 
-        //    //Reset
+        [Test]
+        public async Task AutoBattleEngine_RunAutoBattle_Monsters_3_Should_Pass()
+        {
+            //Arrange
+            AutoBattle.Battle.EngineSettings.MaxTurnCount = 10000;
 
-        //    //Assert
-        //    Assert.AreEqual(true, result);
-        //}
+            // Add Characters
+
+            AutoBattle.Battle.EngineSettings.MaxNumberPartyCharacters = 3;
+
+            var CharacterPlayerA = new PlayerInfoModel(
+                            new CharacterModel
+                            {
+                                Speed = -1,
+                                Level = 10,
+                                CurrentHealth = 1,
+                                ExperienceTotal = 1,
+                                ExperienceRemaining = 1,
+                                Name = "Mike",
+                                ListOrder = 1,
+                            });
+
+            AutoBattle.Battle.EngineSettings.CharacterList.Add(CharacterPlayerA);
+            AutoBattle.Battle.EngineSettings.CharacterList.Add(CharacterPlayerA);
+            AutoBattle.Battle.EngineSettings.CharacterList.Add(CharacterPlayerA);
+
+
+            // Add Monsters
+
+            // Need to set the Monster count to 1, so the battle goes to Next Round Faster
+            AutoBattle.Battle.EngineSettings.MaxNumberPartyMonsters = 3;
+
+            //Act
+            var result = await AutoBattle.RunAutoBattle();
+
+            //Reset
+            AutoBattle.Battle.EngineSettings.CharacterList.Clear();
+            AutoBattle.Battle.EngineSettings.MaxTurnCount = 1000;
+
+            //Assert
+            Assert.AreEqual(true, result);
+        }
+
+        [Test]
+        public async Task AutoBattleEngine_RunAutoBattle_Monsters_4_Should_Pass()
+        {
+            //Arrange
+
+            // Add Characters
+
+            AutoBattle.Battle.EngineSettings.MaxNumberPartyCharacters = 4;
+
+            var CharacterPlayerA = new PlayerInfoModel(
+                            new CharacterModel
+                            {
+                                Speed = -1,
+                                Level = 10,
+                                CurrentHealth = 1,
+                                ExperienceTotal = 1,
+                                ExperienceRemaining = 1,
+                                Name = "Mike",
+                                ListOrder = 1,
+                            });
+
+            AutoBattle.Battle.EngineSettings.CharacterList.Add(CharacterPlayerA);
+            AutoBattle.Battle.EngineSettings.CharacterList.Add(CharacterPlayerA);
+            AutoBattle.Battle.EngineSettings.CharacterList.Add(CharacterPlayerA);
+            AutoBattle.Battle.EngineSettings.CharacterList.Add(CharacterPlayerA);
+
+
+            // Add Monsters
+
+            // Need to set the Monster count to 1, so the battle goes to Next Round Faster
+            AutoBattle.Battle.EngineSettings.MaxNumberPartyMonsters = 4;
+
+            //Act
+            var result = await AutoBattle.RunAutoBattle();
+
+            //Reset
+            AutoBattle.Battle.EngineSettings.CharacterList.Clear();
+
+
+            //Assert
+            Assert.AreEqual(true, result);
+        }
+
+        [Test]
+        public async Task AutoBattleEngine_RunAutoBattle_Monsters_5_Should_Pass()
+        {
+            //Arrange
+
+            // Add Characters
+
+            AutoBattle.Battle.EngineSettings.MaxNumberPartyCharacters = 5;
+
+            var CharacterPlayerA = new PlayerInfoModel(
+                            new CharacterModel
+                            {
+                                Speed = -1,
+                                Level = 10,
+                                CurrentHealth = 1,
+                                ExperienceTotal = 1,
+                                ExperienceRemaining = 1,
+                                Name = "Mike",
+                                ListOrder = 1,
+                            });
+
+            AutoBattle.Battle.EngineSettings.CharacterList.Add(CharacterPlayerA);
+            AutoBattle.Battle.EngineSettings.CharacterList.Add(CharacterPlayerA);
+            AutoBattle.Battle.EngineSettings.CharacterList.Add(CharacterPlayerA);
+            AutoBattle.Battle.EngineSettings.CharacterList.Add(CharacterPlayerA);
+            AutoBattle.Battle.EngineSettings.CharacterList.Add(CharacterPlayerA);
+
+
+            // Add Monsters
+
+            // Need to set the Monster count to 1, so the battle goes to Next Round Faster
+            AutoBattle.Battle.EngineSettings.MaxNumberPartyMonsters = 5;
+
+            //Act
+            var result = await AutoBattle.RunAutoBattle();
+
+            //Reset
+            AutoBattle.Battle.EngineSettings.CharacterList.Clear();
+
+            //Assert
+            Assert.AreEqual(true, result);
+        }
     }
 }
