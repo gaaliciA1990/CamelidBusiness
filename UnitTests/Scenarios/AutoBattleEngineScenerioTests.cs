@@ -366,27 +366,12 @@ namespace Scenario
         public async Task AutoBattleEngine_RunAutoBattle_Monsters_3_Should_Pass()
         {
             //Arrange
-            AutoBattle.Battle.EngineSettings.MaxTurnCount = 10000;
+            AutoBattle.Battle.EngineSettings.MaxRoundCount = 1000;
+            AutoBattle.Battle.EngineSettings.MaxTurnCount = 100000;
 
             // Add Characters
 
             AutoBattle.Battle.EngineSettings.MaxNumberPartyCharacters = 3;
-
-            var CharacterPlayerA = new PlayerInfoModel(
-                            new CharacterModel
-                            {
-                                Speed = -1,
-                                Level = 10,
-                                CurrentHealth = 1,
-                                ExperienceTotal = 1,
-                                ExperienceRemaining = 1,
-                                Name = "Mike",
-                                ListOrder = 1,
-                            });
-
-            AutoBattle.Battle.EngineSettings.CharacterList.Add(CharacterPlayerA);
-            AutoBattle.Battle.EngineSettings.CharacterList.Add(CharacterPlayerA);
-            AutoBattle.Battle.EngineSettings.CharacterList.Add(CharacterPlayerA);
 
 
             // Add Monsters
@@ -399,6 +384,7 @@ namespace Scenario
 
             //Reset
             AutoBattle.Battle.EngineSettings.CharacterList.Clear();
+            AutoBattle.Battle.EngineSettings.MaxRoundCount = 100;
             AutoBattle.Battle.EngineSettings.MaxTurnCount = 1000;
 
             //Assert
@@ -409,27 +395,12 @@ namespace Scenario
         public async Task AutoBattleEngine_RunAutoBattle_Monsters_4_Should_Pass()
         {
             //Arrange
+            AutoBattle.Battle.EngineSettings.MaxRoundCount = 1000;
+            AutoBattle.Battle.EngineSettings.MaxTurnCount = 100000;
 
             // Add Characters
 
             AutoBattle.Battle.EngineSettings.MaxNumberPartyCharacters = 4;
-
-            var CharacterPlayerA = new PlayerInfoModel(
-                            new CharacterModel
-                            {
-                                Speed = -1,
-                                Level = 10,
-                                CurrentHealth = 1,
-                                ExperienceTotal = 1,
-                                ExperienceRemaining = 1,
-                                Name = "Mike",
-                                ListOrder = 1,
-                            });
-
-            AutoBattle.Battle.EngineSettings.CharacterList.Add(CharacterPlayerA);
-            AutoBattle.Battle.EngineSettings.CharacterList.Add(CharacterPlayerA);
-            AutoBattle.Battle.EngineSettings.CharacterList.Add(CharacterPlayerA);
-            AutoBattle.Battle.EngineSettings.CharacterList.Add(CharacterPlayerA);
 
 
             // Add Monsters
@@ -441,6 +412,8 @@ namespace Scenario
             var result = await AutoBattle.RunAutoBattle();
 
             //Reset
+            AutoBattle.Battle.EngineSettings.MaxRoundCount = 100;
+            AutoBattle.Battle.EngineSettings.MaxTurnCount = 1000;
             AutoBattle.Battle.EngineSettings.CharacterList.Clear();
 
 
@@ -452,28 +425,12 @@ namespace Scenario
         public async Task AutoBattleEngine_RunAutoBattle_Monsters_5_Should_Pass()
         {
             //Arrange
+            AutoBattle.Battle.EngineSettings.MaxRoundCount = 1000;
+            AutoBattle.Battle.EngineSettings.MaxTurnCount = 100000;
 
             // Add Characters
 
             AutoBattle.Battle.EngineSettings.MaxNumberPartyCharacters = 5;
-
-            var CharacterPlayerA = new PlayerInfoModel(
-                            new CharacterModel
-                            {
-                                Speed = -1,
-                                Level = 10,
-                                CurrentHealth = 1,
-                                ExperienceTotal = 1,
-                                ExperienceRemaining = 1,
-                                Name = "Mike",
-                                ListOrder = 1,
-                            });
-
-            AutoBattle.Battle.EngineSettings.CharacterList.Add(CharacterPlayerA);
-            AutoBattle.Battle.EngineSettings.CharacterList.Add(CharacterPlayerA);
-            AutoBattle.Battle.EngineSettings.CharacterList.Add(CharacterPlayerA);
-            AutoBattle.Battle.EngineSettings.CharacterList.Add(CharacterPlayerA);
-            AutoBattle.Battle.EngineSettings.CharacterList.Add(CharacterPlayerA);
 
 
             // Add Monsters
@@ -485,6 +442,8 @@ namespace Scenario
             var result = await AutoBattle.RunAutoBattle();
 
             //Reset
+            AutoBattle.Battle.EngineSettings.MaxRoundCount = 100;
+            AutoBattle.Battle.EngineSettings.MaxTurnCount = 1000;
             AutoBattle.Battle.EngineSettings.CharacterList.Clear();
 
             //Assert
